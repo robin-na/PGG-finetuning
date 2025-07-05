@@ -1,0 +1,7 @@
+,_id,name,timeoutType,timeoutInSeconds,timeoutStrategy,timeoutBots,extendCount,createdAt,archivedAt
+0,nyDszKnmzaqv4Fhc6,15min_fail,lobby,900,fail,,,2024-07-08T13:38:00Z,2024-07-19T13:18:23Z
+1,iCtyHmQTgHf32kAzw,15min_ignore,lobby,900,ignore,,,2024-07-19T13:18:31Z,
+2,652gYE6hBaiWDt6hA,15min_fail,lobby,900,fail,,,2024-07-08T13:37:00Z,2024-07-19T13:18:15Z
+3,JfqXLfuQzcK5GQ8M3,15min_ignore,lobby,900,ignore,,,2024-07-19T13:18:12Z,
+4,gik9GcBHHQFLbGXwE,15min_fail,lobby,900,fail,,,2024-07-08T13:38:54Z,2024-07-19T13:18:39Z
+5,PcYuywzt9YzsHeCqS,15min_ignore,lobby,900,ignore,,,2024-07-19T13:18:57Z,
