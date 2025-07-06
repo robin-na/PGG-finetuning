@@ -3,7 +3,9 @@
 
 This script loads behavioural logs and environment parameters,
 constructs a dataset with player exits handled, trains the model
-for 10 epochs and exposes a `simulate_game` function.
+for 10 epochs and exposes a `simulate_game` function. When run
+directly it also saves the trained model to ``baseline_gru_set.pt``
+so later sessions can call ``simulate_game`` without retraining.
 
 Feature layout per round `t`
 ----------------------------
@@ -222,6 +224,22 @@ def train(model: GRUSetModel, samples: List[RoundSample], epochs: int = 10):
             count += 1
         print(f"epoch {ep} mean loss {total / count:.4f}")
 
+def save_trained_model(model: GRUSetModel, mapping: dict, path: str) -> None:
+    """Persist model parameters and player mapping to disk."""
+    torch.save({
+        "state_dict": model.state_dict(),
+        "player_mapping": mapping,
+        "hidden_dim": model.hidden_dim,
+    }, path)
+
+def load_trained_model(path: str) -> (GRUSetModel, dict):
+    """Load model parameters and mapping from ``save_trained_model``."""
+    ckpt = torch.load(path, map_location="cpu")
+    mapping = ckpt["player_mapping"]
+    model = GRUSetModel(num_players=len(mapping), hidden_dim=ckpt.get("hidden_dim", 128))
+    model.load_state_dict(ckpt["state_dict"])
+    return model, mapping
+
 def simulate_game(env_row: pd.Series, model: GRUSetModel, seed: int = 42):
     torch.manual_seed(seed)
     num_players = int(env_row['CONFIG_playerCount'])
@@ -272,3 +290,9 @@ if __name__ == '__main__':
     dataset, mapping = build_dataset(rounds, env)
     model = GRUSetModel(num_players=len(mapping))
     train(model, dataset, epochs=10)
+    save_trained_model(model, mapping, "baseline_gru_set.pt")
+    print("model saved to baseline_gru_set.pt")
+    # After this script runs you can load the weights and simulate with:
+    #   model, mapping = load_trained_model('baseline_gru_set.pt')
+    #   env_row = pd.read_csv(env).iloc[0]
+    #   history = simulate_game(env_row, model)
