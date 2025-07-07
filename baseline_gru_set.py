@@ -130,6 +130,9 @@ def build_dataset(rounds_path: str, env_path: str):
     samples: List[RoundSample] = []
     for gid, gdf in df.groupby('gameId'):
         gdf = gdf.sort_values('roundId')
+        if gid not in env_map.index:
+            print(f"warning: gameId {gid} missing from env data, skipping")
+            continue
         env_row = env_map.loc[gid]
         players = gdf['playerId'].unique().tolist()
         active = players.copy()
