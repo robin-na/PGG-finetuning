@@ -1,0 +1,26 @@
+{
+  "experiment_id": "exp_029_control",
+  "config_hash": "ff784423",
+  "timestamp": "2026-01-02T01:50:04.607833",
+  "config": {
+    "group_size": 3,
+    "game_length": 1,
+    "endowment": 20,
+    "horizon_knowledge": "known",
+    "mpcr": 0.58,
+    "multiplier": 1.7399999999999998,
+    "contribution_type": "variable",
+    "contribution_framing": "opt_out",
+    "communication_enabled": true,
+    "peer_outcome_visibility": false,
+    "actor_anonymity": false,
+    "punishment_enabled": false,
+    "punishment_cost": 1,
+    "punishment_impact": 2,
+    "reward_enabled": true,
+    "reward_cost": 2,
+    "reward_impact": 1.05,
+    "llm_model": "gpt-4o",
+    "llm_temperature": 1.0
+  }
+}

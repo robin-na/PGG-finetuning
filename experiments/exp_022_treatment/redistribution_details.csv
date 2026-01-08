@@ -1,0 +1,9 @@
+experiment_id,config_hash,game_id,round,actor_id,actor_name,target_id,target_name,type,units_decided,units_actual,was_scaled,cost,impact,timestamp
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_2,CAT,agent_1,CHICKEN,punishment,5,4,True,4,4,2026-01-02T02:00:35.079652
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_2,CAT,agent_1,CHICKEN,reward,5,4,True,4,3.8,2026-01-02T02:00:35.079814
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_2,CAT,agent_3,FISH,punishment,20,17,True,17,17,2026-01-02T02:00:35.079869
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_2,CAT,agent_3,FISH,reward,20,17,True,17,16.15,2026-01-02T02:00:35.079889
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_3,FISH,agent_1,CHICKEN,punishment,2,2,False,2,2,2026-01-02T02:00:42.422769
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_3,FISH,agent_1,CHICKEN,reward,2,2,False,2,1.9,2026-01-02T02:00:42.423620
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_3,FISH,agent_2,CAT,punishment,3,3,False,3,3,2026-01-02T02:00:42.423707
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_3,FISH,agent_2,CAT,reward,3,3,False,3,2.8499999999999996,2026-01-02T02:00:42.423734

@@ -1,0 +1,26 @@
+{
+  "experiment_id": "quick_test",
+  "config_hash": "7966c3e7",
+  "timestamp": "2025-12-30T20:01:10.381329",
+  "config": {
+    "group_size": 3,
+    "game_length": 1,
+    "endowment": 20,
+    "horizon_knowledge": "known",
+    "mpcr": 0.4,
+    "multiplier": 1.2000000000000002,
+    "contribution_type": "variable",
+    "contribution_framing": "opt_in",
+    "communication_enabled": false,
+    "peer_outcome_visibility": true,
+    "actor_anonymity": false,
+    "punishment_enabled": false,
+    "punishment_cost": 1,
+    "punishment_impact": 3,
+    "reward_enabled": false,
+    "reward_cost": 1,
+    "reward_impact": 1.0,
+    "llm_model": "gpt-4o",
+    "llm_temperature": 1.0
+  }
+}

@@ -1,0 +1,5 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_0,DOG,"Let's all agree to cooperate in this one-round game to maximize our collective payoff. Trust each other, and we'll all benefit.",2026-01-02T02:00:01.310049
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_1,CHICKEN,I agree with DOG. Let’s cooperate for this round to maximize everyone's payoff.,2026-01-02T02:00:02.581585
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_2,CAT,"I agree, cooperation is our best strategy for maximizing collective payoff. Let's commit to it and trust each other.",2026-01-02T02:00:03.749977
+exp_022_treatment,a2366e32,exp_022_treatment_game1,1,agent_3,FISH,I agree with everyone. Let's maintain cooperation to ensure we all achieve the highest collective payoff. Trust is key.,2026-01-02T02:00:05.142099

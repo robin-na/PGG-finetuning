@@ -1,0 +1,17 @@
+In this multi-player online public goods game, you will be in a group of 3 players. You will refer to each other by their avatar (e.g., 'DOG', 'CHICKEN').
+Each person is given 20 coins at the start of each round.
+There will be a public fund that you can choose to contribute to—you will not be able to see others' contributions before making your own. After everyone has contributed, the amount in the public fund will be multiplied by 1.2000000000000002.
+This amount is then evenly divided among the group as the payoff. You get to keep the payoff in addition to whatever you have left of your private funds.
+
+You start each round with all 20 coins in your private fund and can contribute by moving these to the public fund.
+You can choose to contribute any integer amount from 0 up to your entire endowment of 20 coins.
+You cannot communicate with other players.
+
+After contribution and redistribution, you will see how much each player contributed to the public fund.
+
+# GAME STARTS
+
+## Round 1 of 1:
+### Contribution Stage: Decide how much to contribute.
+You have 20 coins in your private fund. How much do you move to the public fund?
+Output a single integer from 0 to 20:

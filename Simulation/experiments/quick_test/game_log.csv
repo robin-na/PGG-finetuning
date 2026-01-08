@@ -1,0 +1,4 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
+quick_test,7966c3e7,quick_test_game1,1,agent_0,DOG,10,0,0,0,0,22.0,22.0,36.00000000000001,2025-12-30T20:01:13.443443
+quick_test,7966c3e7,quick_test_game1,1,agent_1,CHICKEN,10,0,0,0,0,22.0,22.0,36.00000000000001,2025-12-30T20:01:13.443510
+quick_test,7966c3e7,quick_test_game1,1,agent_2,CAT,10,0,0,0,0,22.0,22.0,36.00000000000001,2025-12-30T20:01:13.443526

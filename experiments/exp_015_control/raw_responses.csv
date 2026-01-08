@@ -1,0 +1,130 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,prompt_type,raw_response,parsed_result,timestamp
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_0,DOG,chat,"<REASONING>
+Collaboration can increase overall benefits. Proposing a cooperative strategy where mutual benefits are prioritized could encourage others to do the same, minimizing potential conflicts and leading to higher collective payoffs.
+</REASONING>
+<MESSAGE>
+Let's work together to maximize our earnings. Cooperation can lead to better outcomes for everyone involved. Are you interested in forming a collaborative strategy?
+</MESSAGE>",Let's work together to maximize our earnings. Cooperation can lead to better outcomes for everyone involved. Are you interested in forming a collaborative strategy?,2026-01-02T01:12:14.591796
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_1,CHICKEN,chat,"<REASONING>
+Cooperation can increase total group earnings, but always carries the risk of betrayal. Expressing interest in collaboration will open dialogue to form a mutually beneficial strategy.
+</REASONING>
+<MESSAGE>
+I agree. Let's discuss a collaborative strategy that benefits all. Open to suggestions on structuring our cooperation.
+</MESSAGE>",I agree. Let's discuss a collaborative strategy that benefits all. Open to suggestions on structuring our cooperation.,2026-01-02T01:12:15.962757
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_2,CAT,chat,"<REASONING>
+Collaboration can lead to Pareto improvements. Proposing a fair point-based distribution strategy, where each round contributes to cumulative gains, encourages long-term cooperation, avoiding short-term opportunism that diminishes total earnings.
+</REASONING>
+<MESSAGE>
+""Let's agree on a system where we equally share gains, ensuring each decision benefits everyone. Consistent cooperation can considerably increase our long-term rewards compared to acting selfishly. Thoughts?""
+</MESSAGE>","Let's agree on a system where we equally share gains, ensuring each decision benefits everyone. Consistent cooperation can considerably increase our long-term rewards compared to acting selfishly. Thoughts?",2026-01-02T01:12:17.581720
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_3,FISH,chat,"<REASONING>
+Collaborative strategies can maximize collective gains. By fostering trust and ensuring fair distribution, we can increase long-term payoffs over competitive, short-term actions. Propose a profit-sharing framework ensuring transparency and accountability.
+</REASONING>
+<MESSAGE>
+Agree on a fair profit-sharing strategy, ensuring three equal parts of collective gains. Transparency will strengthen trust, each decision involving shared input for maximum group benefit.
+</MESSAGE>","Agree on a fair profit-sharing strategy, ensuring three equal parts of collective gains. Transparency will strengthen trust, each decision involving shared input for maximum group benefit.",2026-01-02T01:12:19.136920
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_4,BIRD,chat,"<REASONING>
+A fair division of earnings can prevent conflict and ensure long-term gain. Reinforcing trust through transparency and collaboration leads to consistent, predictable outcomes. Given everyone's openness to cooperation, echoing the proposed fair and equal sharing approach seems the optimal path.
+</REASONING>
+<MESSAGE>
+Let's commit to splitting collective gains equally. Transparency and shared decision-making will guide us. Consistent collaboration can maximize earnings for all, focusing on long-term benefits rather than short-term individual gain.
+</MESSAGE>","Let's commit to splitting collective gains equally. Transparency and shared decision-making will guide us. Consistent collaboration can maximize earnings for all, focusing on long-term benefits rather than short-term individual gain.",2026-01-02T01:12:20.776497
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_5,RABBIT,chat,"<REASONING>
+A collective sharing strategy can maximize our group's earnings, but ensuring that we avoid betrayal or deviation is crucial. Reinforcing trust through transparency and shared governance will lead to mutually beneficial outcomes.
+</REASONING>
+<MESSAGE>
+I align with a fair profit-sharing strategy, ensuring equal distribution of gains and transparent decision-making. Let's formalize a protocol for group consensus to prevent deviations, focusing on long-term benefits.
+</MESSAGE>","I align with a fair profit-sharing strategy, ensuring equal distribution of gains and transparent decision-making. Let's formalize a protocol for group consensus to prevent deviations, focusing on long-term benefits.",2026-01-02T01:12:21.975193
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_6,TURTLE,chat,"<REASONING>
+Aligning with the group enhances long-term stability and rewards through mutual support. A fair profit-sharing model promotes trust and deters self-interest, maximizing collective gains. Engaging in transparent discourse establishes protocols ensuring consensus, vital for cohesive and effective strategy formulation.
+</REASONING>
+<MESSAGE>
+I support the equal distribution model and propose we formalize specific protocols for shared decision-making to ensure clarity and adherence. Let's devise a regular communication check to align our actions, focusing on sustainable collaboration for maximizing our returns.
+</MESSAGE>","I support the equal distribution model and propose we formalize specific protocols for shared decision-making to ensure clarity and adherence. Let's devise a regular communication check to align our actions, focusing on sustainable collaboration for maximizing our returns.",2026-01-02T01:12:24.404478
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_7,HAMSTER,chat,"<REASONING>
+Aligning with others on equal profit-sharing promotes trust and stability. Proposing a structured decision-making process can prevent misunderstandings, ensuring sustained collaboration and maximizing group benefits.
+</REASONING>
+<MESSAGE>
+I support an equal profit-sharing model. Let's create clear protocols for group decisions, ensuring transparency and coordination. Regular communication checks will help align our actions, focusing on sustained collaboration and maximizing long-term returns. Thoughts on meeting frequency and decision protocols?
+</MESSAGE>","I support an equal profit-sharing model. Let's create clear protocols for group decisions, ensuring transparency and coordination. Regular communication checks will help align our actions, focusing on sustained collaboration and maximizing long-term returns. Thoughts on meeting frequency and decision protocols?",2026-01-02T01:12:26.200322
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_8,FROG,chat,"<REASONING>
+To ensure cooperation and prevent miscommunication, I'll endorse the equal split strategy and propose a weekly meeting schedule to evaluate and adjust our strategies, keeping our long-term goals aligned.
+</REASONING>
+<MESSAGE>
+I support the equal gain-sharing strategy. Let's schedule weekly meetings for ongoing strategy evaluation and alignment. Regular communication can solidify our trust and enhance our collective outcomes.
+</MESSAGE>",I support the equal gain-sharing strategy. Let's schedule weekly meetings for ongoing strategy evaluation and alignment. Regular communication can solidify our trust and enhance our collective outcomes.,2026-01-02T01:12:27.840896
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_0,DOG,contribution,"<REASONING>
+The group is having an open discussion about forming a collaborative strategy that focuses on transparency, equal profit-sharing, and long-term benefits for everyone. The consensus seems to be strongly in favor of cooperation. Since this is the first round, establishing a foundation of trust is crucial. By contributing the full amount of 20 coins to the public fund, I will signal my commitment to the group's agreed strategy. If everyone contributes fully, the overall benefit to the group will be maximized, and I will also benefit in the long run as some players have already expressed an interest in ensuring equitable distribution of gains through structured protocols. Given the open communication and mutual agreements, the probability of everyone adhering to this strategy seems high. This round is crucial for setting a positive precedent for future cooperation.
+</REASONING>
+<CONTRIBUTE>
+0
+</CONTRIBUTE>",20,2026-01-02T01:12:30.400969
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_1,CHICKEN,contribution,"<REASONING>
+The chat stage suggests that most players are interested in forming a collaborative strategy based on equal gain-sharing, transparency, and cooperation. Since this is the first round, I want to establish myself as a trustworthy participant who values the long-term benefits of cooperation. By not withdrawing any coins, I contribute fully to the public fund which aligns with the group's notion of maximizing collective earnings.
+
+Knowing that contributions are multiplied and evenly distributed increases everyone's individual payoff when everyone contributes. By contributing everything this round, I encourage others to follow suit, reinforcing the agreed group strategy and potentially maximizing payoffs in subsequent rounds. Observing others' contributions will help me adjust future strategies based on the group's trustworthiness and adherence to our agreements.
+</REASONING>
+<CONTRIBUTE>
+0
+</CONTRIBUTE>",20,2026-01-02T01:12:33.471853
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_2,CAT,contribution,"<REASONING>
+The group seems to be keen on forming a stable cooperative strategy based on mutual trust and equal sharing of gains. Each player expresses support for contributing fully to the public fund, aiming for maximum collective benefit. Given this expressed intent to cooperate and the commitment to structure regular communication and decision-making protocols, it is reasonable to trust that the majority, if not all, will contribute the full amount to the public fund in the initial round.
+
+Contributing the full 20 coins aligns with the group's current expressed strategy. It maximizes both the individual and group payoffs because, if everyone contributes, the total pool is multiplied significantly, and each member receives a share from a larger pot. This round is crucial for building trust and setting the tone for sustained cooperation in subsequent rounds. Not contributing could undermine trust, provoke defection in future rounds, and lead to lower overall returns. Strategies emphasizing long-term gains typically involve initial cooperation to establish a baseline of trust and collective profitability.
+
+Thus, contributing all coins is a strategic move for both individual and collective benefits, especially given this is the first round with expressed mutual intentions of cooperation.
+</REASONING>
+<CONTRIBUTE>
+0
+</CONTRIBUTE>",20,2026-01-02T01:12:36.853069
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_3,FISH,contribution,"<REASONING>
+All the players in the game have expressed interest in a collective strategy emphasizing cooperation and equal distribution of gains. By contributing all 20 coins to the public fund, I demonstrate trust and commitment to the strategy proposed by the group. This approach is likely to generate higher overall returns by benefiting from the 2.7 multiplier, which when evenly distributed, can result in higher net earnings than withdrawing to the private fund. Additionally, signaling cooperation in the first round can foster trust and encourage other players to contribute, potentially leading to larger collective gains in subsequent rounds. Since the multiplier and even distribution among players incentivize contributing to the public fund, contributing all my coins aligns with both maximizing long-term earnings and adhering to the agreed-upon strategy.
+</REASONING>
+<CONTRIBUTE>
+0
+</CONTRIBUTE>",20,2026-01-02T01:12:38.807386
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_4,BIRD,contribution,"<REASONING>
+Considering the strong unanimity among all players for a cooperative strategy where gains are equally shared, and given the communication commitment towards transparency and trust-building, there is a strong incentive to contribute fully in the first round. Doing so sets a positive tone for the game, encouraging everyone to adhere to the agreed-upon strategy of maximizing the public fund's payoff for all participants.
+
+Contributing the full 20 coins helps establish a reputation as a reliable partner in this arrangement, potentially deterring selfish behavior in future rounds. With the entire amount being multiplied and redistributed, it also ensures an optimal short-term gain for the group. Since long-term collaboration seems to be the group's goal, this approach optimizes both immediate and future potential earnings within the established framework.
+
+Additionally, the first round's contributions will provide insight into the other players' commitment levels to the collaborative strategy, informing future decisions.
+</REASONING>
+<CONTRIBUTE>
+0
+</CONTRIBUTE>",20,2026-01-02T01:12:41.634179
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_5,RABBIT,contribution,"<REASONING>
+In this round, all players seem to be on board with a strategy of full cooperation, demonstrated by the shared agreement on equal profit-sharing, transparency, and consistent communication. Given this cooperative spirit and assuming other players act consistent with their stated intentions, contributing all coins to the public fund is the strategy that maximizes everyone's payoff.
+
+Each player seems committed to contributing fully to the public fund, and if everyone follows through, the multiplier effect will significantly boost the total funds available for redistribution, maximizing individual payoffs. There's a shared trust in this early stage of the game, and deviating by choosing a selfish strategy could undermine this trust and potentially lead to lesser payoffs in subsequent rounds.
+
+Therefore, to align with the cooperative strategy and maximize the potential payout this round as well as build trust that could be beneficial for future rounds, I will choose to contribute all 20 coins by not withdrawing any to my private fund.
+</REASONING>
+<CONTRIBUTE>
+0
+</CONTRIBUTE>",20,2026-01-02T01:12:44.607484
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_6,TURTLE,contribution,"<REASONING>
+In this game, we have the opportunity to benefit collectively by maximizing contributions to the public fund. Since each player can contribute either all or nothing, contributing all makes sense if we trust others to do the same since the public fund's value is nearly tripled and then distributed. 
+
+Given the discussion in the chat stage, it's clear that there is strong consensus among players to follow a cooperative strategy. All players voiced alignment with a fair profit-sharing model and an interest in establishing protocols for decision-making to ensure everyone collaborates for maximum long-term earnings.
+
+Contributing all 20 coins is a strategic decision if I expect that others will do the same. If we all contribute, each player's payoff will be significantly higher due to the multiplier and redistribution. This aligns with the group’s communicated intention of long-term gain over short-term individual maximization.
+
+So, in anticipation of adherence to the verbal commitment made by the rest of the players, I choose to contribute all coins to foster trust and achieve potentially higher returns for everyone.
+
+</REASONING>
+<CONTRIBUTE>
+0
+</CONTRIBUTE>",20,2026-01-02T01:12:48.318221
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_7,HAMSTER,contribution,"<REASONING>
+The initial conversation among players implies a unanimous agreement on a cooperative strategy aiming for maximum group earnings through equal contribution and profit-sharing. By choosing not to withdraw any coins (contributing all 20 coins to the public fund), I align with this consensus approach and demonstrate trust in the group's stated intentions. Given the multiplier of 2.6999999999999997, the potential payoff is maximized with full participation from all players. If each player contributes 20 coins, the public fund increases substantially, benefiting everyone when divided evenly after multiplying. This action fosters cooperation, encouraging mutual contributions in subsequent rounds, which is essential for long-term maximization of our payoffs.
+</REASONING>
+<CONTRIBUTE>
+0
+</CONTRIBUTE>",20,2026-01-02T01:12:50.731990
+exp_015_control,ed1c8fa3,exp_015_control_game1,1,agent_8,FROG,contribution,"<REASONING>
+The conversation among the players clearly shows a strong initial commitment to a cooperative strategy. They all agreed on the benefits of contributing to the public good, with a long-term shared gain concept over individual short-term benefits. Based on these discussions, I perceive a high level of trust and willingness to collaborate. Contributing my full 20 coins aligns with the collective strategy and builds trust. If everyone sticks to the agreement, the returns will be significantly higher than if I kept any coins in my private fund. It's essential to contribute fully in the first round to establish a pattern of mutual cooperation and encourage others to also honor the agreement.
+</REASONING>
+<CONTRIBUTE>
+0
+</CONTRIBUTE>",20,2026-01-02T01:12:53.956915

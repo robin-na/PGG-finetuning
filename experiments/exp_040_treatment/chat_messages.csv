@@ -1,0 +1,3 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
+exp_040_treatment,e842b757,exp_040_treatment_game1,1,agent_0,DOG,"Let's collaborate for better outcomes. By working together, we can maximize our total earnings, avoiding losses from competitive actions. Are you open to forming a mutually beneficial strategy?",2026-01-02T02:22:00.590180
+exp_040_treatment,e842b757,exp_040_treatment_game1,1,agent_1,CHICKEN,"I agree with collaboration. Let's form a strategy that ensures mutual benefit, maximizing collective earnings and minimizing losses. Open to suggestions on how we can execute this effectively.",2026-01-02T02:22:01.634138
