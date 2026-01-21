@@ -1,0 +1,26 @@
+{
+  "experiment_id": "VALIDATION_2_T",
+  "config_hash": null,
+  "timestamp": null,
+  "config": {
+    "group_size": 4,
+    "game_length": 10,
+    "endowment": 20,
+    "horizon_knowledge": "known",
+    "mpcr": 0.52,
+    "multiplier": 2.1,
+    "contribution_type": "variable",
+    "contribution_framing": "opt_out",
+    "communication_enabled": false,
+    "peer_outcome_visibility": true,
+    "actor_anonymity": false,
+    "punishment_enabled": true,
+    "punishment_cost": 0.05,
+    "punishment_impact": 3,
+    "reward_enabled": true,
+    "reward_cost": 1,
+    "reward_impact": 1,
+    "llm_model": "gpt-4o",
+    "llm_temperature": 1.0
+  }
+}
