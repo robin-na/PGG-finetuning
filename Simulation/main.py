@@ -4,7 +4,7 @@ Main experiment runner for Public Goods Game LLM agent simulation.
 This script orchestrates the complete simulation:
 1. Initializes configuration, environment, agents, and logger
 2. Runs the game loop through all rounds
-3. Handles chat, contribution, and redistribution stages
+3. Handles chat, contribution, and punishment/reward stages
 4. Logs all data for analysis
 
 Usage:
@@ -44,7 +44,7 @@ def run_single_game(
     1. Chat stage (if communication enabled)
     2. Contribution stage
     3. Payoff calculation
-    4. Redistribution stage (if punishment/reward enabled)
+    4. Punishment/reward stage (if punishment/reward enabled)
     5. Logging
 
     Args:
@@ -177,13 +177,13 @@ def run_single_game(
             print(f"Public fund (after multiplication): {public_fund} coins")
             print(f"Per-person share: {public_fund / config.group_size} coins\n")
 
-        # ===== Stage 4: Redistribution (if enabled) =====
+        # ===== Stage 4: Punishment/Reward (if enabled) =====
         punishments = {}
         rewards = {}
 
         if config.punishment_enabled or config.reward_enabled:
             if verbose:
-                print("Stage 4: Redistribution")
+                print("Stage 4: Punishment/Reward Stage")
 
             for agent in agents:
                 # Calculate current wallet balance (after contribution stage)
@@ -196,7 +196,7 @@ def run_single_game(
                 ]
 
                 # Build prompt with budget constraint
-                redist_prompt = prompt_builder.build_redistribution_prompt(
+                redist_prompt = prompt_builder.build_punishment_reward_prompt(
                     agent.agent_id,
                     agent.avatar_name,
                     round_num,
@@ -207,7 +207,7 @@ def run_single_game(
 
                 # Save prompt if verbose
                 if verbose:
-                    logger.save_prompt(game_id, round_num, agent.agent_id, "redistribution", redist_prompt)
+                    logger.save_prompt(game_id, round_num, agent.agent_id, "punishment_reward", redist_prompt)
 
                 amounts_decided, raw_response = agent.get_redistribution_decision(
                     redist_prompt,
@@ -217,7 +217,7 @@ def run_single_game(
                 # Log raw response
                 logger.log_raw_response(
                     game_id, round_num, agent.agent_id, agent.avatar_name,
-                    "redistribution", raw_response, str(amounts_decided)
+                    "punishment_reward", raw_response, str(amounts_decided)
                 )
 
                 # Calculate total cost
@@ -290,11 +290,11 @@ def run_single_game(
                                 print(f"  {agent.avatar_name} → {target_name}: {units_actual} reward units{scaled_marker}")
 
             if not punishments and not rewards and verbose:
-                print("  (No redistribution actions)")
+                print("  (No punishment/reward actions)")
             if verbose:
                 print()
 
-        # Apply redistribution to payoffs
+        # Apply punishment/reward adjustments to payoffs
         adjustments = env.apply_redistribution(punishments, rewards, base_payoffs)
         final_payoffs = {
             agent_id: base_payoffs[agent_id] + adjustments[agent_id]
