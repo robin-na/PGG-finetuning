@@ -153,6 +153,7 @@ class HFBackend(BaseLLMBackend):
         # - HF_MODEL_ID=meta-llama/Llama-3.1-8B-Instruct
         # - HF_TOKEN=... (required for gated/private models)
         # - HF_PEFT_PATH=/path/to/adapter (optional; enables local PEFT loading)
+        # - HF_DEVICE=cuda|cpu|auto (optional; auto uses CUDA when available)
 
         self.model = model or os.getenv("HF_MODEL_ID")
         if not self.model:
@@ -168,11 +169,28 @@ class HFBackend(BaseLLMBackend):
             import torch
 
             self.tokenizer = AutoTokenizer.from_pretrained(self.model)
-            base_model = AutoModelForCausalLM.from_pretrained(self.model)
+            hf_device = os.getenv("HF_DEVICE", "auto").lower()
+            if hf_device == "cuda":
+                if torch.cuda.is_available():
+                    device_map = "cuda"
+                    torch_dtype = torch.float16
+                else:
+                    device_map = "cpu"
+                    torch_dtype = torch.float32
+            elif hf_device == "cpu":
+                device_map = "cpu"
+                torch_dtype = torch.float32
+            else:
+                device_map = "auto"
+                torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
+
+            base_model = AutoModelForCausalLM.from_pretrained(
+                self.model,
+                device_map=device_map,
+                torch_dtype=torch_dtype
+            )
             self.model_runner = PeftModel.from_pretrained(base_model, self.peft_adapter_path)
             self.model_runner.eval()
-            if torch.cuda.is_available():
-                self.model_runner.to("cuda")
         else:
             from huggingface_hub import InferenceClient
             self.client = InferenceClient(model=self.model, token=token or os.getenv("HF_TOKEN"))
@@ -188,7 +206,10 @@ class HFBackend(BaseLLMBackend):
             prompt = f"{system_prompt}\n\nUser: {user_prompt}\nAssistant:"
             inputs = self.tokenizer(prompt, return_tensors="pt")
             if hasattr(self.model_runner, "device"):
-                inputs = {key: value.to(self.model_runner.device) for key, value in inputs.items()}
+                target_device = self.model_runner.device
+            else:
+                target_device = next(self.model_runner.parameters()).device
+            inputs = {key: value.to(target_device) for key, value in inputs.items()}
             outputs = self.model_runner.generate(
                 **inputs,
                 max_new_tokens=max_tokens,
