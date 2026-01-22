@@ -271,6 +271,49 @@ experiments/
             {game_id}_r{round}_{agent_id}_{type}.txt
 ```
 
+### Validation Config Manifest
+
+The validation experiment configs are collected into a single manifest at:
+
+```
+data/validation_configs.json
+```
+
+Each entry uses the normalized schema below:
+
+```json
+{
+  "experiment_id": "VALIDATION_1_C",
+  "config": {
+    "group_size": 3,
+    "game_length": 16,
+    "endowment": 20,
+    "horizon_knowledge": "known",
+    "mpcr": 0.67,
+    "multiplier": 2,
+    "contribution_type": "variable",
+    "contribution_framing": "opt_in",
+    "communication_enabled": false,
+    "peer_outcome_visibility": true,
+    "actor_anonymity": true,
+    "punishment_enabled": false,
+    "punishment_cost": 1,
+    "punishment_impact": 2,
+    "reward_enabled": false,
+    "reward_cost": 1,
+    "reward_impact": 1,
+    "llm_model": "gpt-4o",
+    "llm_temperature": 1.0
+  }
+}
+```
+
+Generate or refresh the manifest with:
+
+```bash
+python scripts/export_validation_configs.py
+```
+
 ### CSV Format
 
 ```csv
