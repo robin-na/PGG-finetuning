@@ -136,6 +136,29 @@ llm_model: str = "gpt-4"
 llm_temperature: float = 1.0
 ```
 
+#### Backend Selection
+
+By default, the simulation uses OpenAI. To switch providers, set `LLM_BACKEND`:
+
+```bash
+# OpenAI (default)
+export OPENAI_API_KEY="your-api-key"
+
+# vLLM (OpenAI-compatible server)
+export LLM_BACKEND="vllm"
+export VLLM_BASE_URL="http://localhost:8000/v1"
+# Optional: VLLM_API_KEY (if your server requires it)
+
+# Hugging Face Inference API
+export LLM_BACKEND="hf"
+export HF_MODEL_ID="meta-llama/Llama-3.1-8B-Instruct"
+export HF_TOKEN="your-hf-token"
+# Optional: local PEFT adapter path (requires transformers + peft)
+export HF_PEFT_PATH="/path/to/adapter"
+```
+
+The `LLMClient` API is unchanged; you can continue using `LLMClient(model=..., temperature=...)`. For Hugging Face, `model` defaults to `HF_MODEL_ID` unless you pass one explicitly. For vLLM, `model` is forwarded to the server (e.g., the model name you started vLLM with).
+
 ## Architecture
 
 ### Module Overview
@@ -265,6 +288,8 @@ This format matches the existing data structure from `player-rounds.csv`.
 - Using GPT-4: ~$0.045 per 1K tokens
 - Typical prompt: ~500 tokens, response: ~50 tokens
 - **Estimated cost per experiment: $2-5 USD**
+
+For open-source backends (vLLM or Hugging Face), the client does not assign any per-token cost (cost remains $0 in the usage summary).
 
 To track costs in real-time:
 ```python
