@@ -117,7 +117,7 @@ class LLMAgent:
         """Get punishment/reward decisions from LLM.
 
         Args:
-            prompt: Prompt describing other players and asking for redistribution
+            prompt: Prompt describing other players and asking for punishments/rewards
             num_targets: Expected number of targets (length of output array)
 
         Returns:
@@ -128,7 +128,7 @@ class LLMAgent:
 
         # Store in memory
         self.memory.append({
-            "type": "redistribution",
+            "type": "punishment_reward",
             "prompt": prompt,
             "response": response,
             "num_targets": num_targets

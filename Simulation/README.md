@@ -275,9 +275,19 @@ experiments/
     {experiment_name}/
         config.json          # Full configuration
         game_log.csv        # Round-by-round data
+        raw_responses.csv   # Raw LLM outputs with prompt_type labels
+        chat_messages.csv   # Per-round chat messages
+        redistribution_details.csv  # Punishment/reward action details
         prompts/            # Individual prompts (optional)
             {game_id}_r{round}_{agent_id}_{type}.txt
 ```
+
+### Raw Responses Prompt Types
+
+`raw_responses.csv` includes a `prompt_type` column with values such as `chat`, `contribution`,
+and `punishment_reward`. The punishment/reward prompt type was previously logged as
+`redistribution`; update any readers that filter on `redistribution` to also accept
+`punishment_reward` when working with newer logs.
 
 ### Validation Config Manifest
 
