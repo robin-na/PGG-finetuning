@@ -1,9 +1,0 @@
-experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
-exp_020_treatment,404fcaa8,exp_020_treatment_game1,1,agent_0,DOG,0,2,39,0,0,-30.4,-30.4,268.8,2026-01-02T01:25:21.780854
-exp_020_treatment,404fcaa8,exp_020_treatment_game1,1,agent_1,CHICKEN,0,17,23,0,0,-43.4,-43.4,268.8,2026-01-02T01:25:21.780926
-exp_020_treatment,404fcaa8,exp_020_treatment_game1,1,agent_2,CAT,20,10,0,0,0,3.6000000000000014,3.6000000000000014,268.8,2026-01-02T01:25:21.780942
-exp_020_treatment,404fcaa8,exp_020_treatment_game1,1,agent_3,FISH,20,10,0,0,0,3.6000000000000014,3.6000000000000014,268.8,2026-01-02T01:25:21.780958
-exp_020_treatment,404fcaa8,exp_020_treatment_game1,1,agent_4,BIRD,20,6,0,0,0,15.600000000000001,15.600000000000001,268.8,2026-01-02T01:25:21.780973
-exp_020_treatment,404fcaa8,exp_020_treatment_game1,1,agent_5,RABBIT,20,3,0,0,0,24.6,24.6,268.8,2026-01-02T01:25:21.780988
-exp_020_treatment,404fcaa8,exp_020_treatment_game1,1,agent_6,TURTLE,20,10,0,0,0,3.6000000000000014,3.6000000000000014,268.8,2026-01-02T01:25:21.781001
-exp_020_treatment,404fcaa8,exp_020_treatment_game1,1,agent_7,HAMSTER,20,4,0,0,0,21.6,21.6,268.8,2026-01-02T01:25:21.781016

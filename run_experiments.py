@@ -57,19 +57,27 @@ def generate_experiment_configs(n_samples=20, punishment_enabled=False, random_s
         # Binary parameters (threshold at 0.5)
         contribution_type = "all_or_nothing" if sample[2] > 0.5 else "variable"
         contribution_framing = "opt_out" if sample[3] > 0.5 else "opt_in"
-        communication_enabled = bool(sample[4] > 0.5)
+        communication_enabled = False  # Always False - chat not implemented in EDSL version
         peer_outcome_visibility = bool(sample[5] > 0.5)
         actor_anonymity = bool(sample[6] > 0.5)
         horizon_knowledge = "unknown" if sample[7] > 0.5 else "known"
 
-        # Punishment parameters (only matter if punishment_enabled=True)
-        punishment_cost = int(1 + sample[8] * 3)  # 1-4
+        # Unified cost for both punishment and reward
+        peer_incentive_cost = int(1 + sample[8] * 3)  # 1-4
         punishment_impact = int(1 + sample[9] * 3)  # 1-4
 
         # Reward parameters
         reward_enabled = bool(sample[10] > 0.5)
-        reward_cost = int(1 + sample[11] * 3)  # 1-4
+        # sample[11] no longer used (was reward_cost, now unified)
         reward_impact = 0.5 + sample[12] * 1.0  # 0.5-1.5
+
+        # Enforce mutual exclusivity: punishment XOR reward
+        # If both would be enabled, randomly choose one
+        if punishment_enabled and reward_enabled:
+            if sample[11] > 0.5:  # Use sample[11] as tiebreaker
+                punishment_enabled = False
+            else:
+                reward_enabled = False
 
         # Reserved for future parameter
         # sample[13] currently unused
@@ -95,12 +103,11 @@ def generate_experiment_configs(n_samples=20, punishment_enabled=False, random_s
 
             # Punishment
             punishment_enabled=punishment_enabled,
-            punishment_cost=punishment_cost,
+            peer_incentive_cost=peer_incentive_cost,
             punishment_impact=punishment_impact,
 
             # Reward
             reward_enabled=reward_enabled,
-            reward_cost=reward_cost,
             reward_impact=round(reward_impact, 2),
 
             # LLM settings
@@ -151,6 +158,23 @@ def run_all_experiments(output_dir="experiments"):
     print(f"✓ Generated {len(treatment_configs)} treatment configurations")
     print()
 
+    # Print statistics about configurations
+    print("Configuration Statistics:")
+    print(f"  Control group:")
+    control_reward = sum(1 for c in control_configs if c.reward_enabled)
+    control_punishment = sum(1 for c in control_configs if c.punishment_enabled)
+    print(f"    - Communication enabled: 0/{len(control_configs)} (0%) - Always False")
+    print(f"    - Reward enabled: {control_reward}/{len(control_configs)} ({control_reward/len(control_configs)*100:.0f}%)")
+    print(f"    - Punishment enabled: {control_punishment}/{len(control_configs)} ({control_punishment/len(control_configs)*100:.0f}%)")
+
+    print(f"  Treatment group:")
+    treatment_reward = sum(1 for c in treatment_configs if c.reward_enabled)
+    treatment_punishment = sum(1 for c in treatment_configs if c.punishment_enabled)
+    print(f"    - Communication enabled: 0/{len(treatment_configs)} (0%) - Always False")
+    print(f"    - Reward enabled: {treatment_reward}/{len(treatment_configs)} ({treatment_reward/len(treatment_configs)*100:.0f}%)")
+    print(f"    - Punishment enabled: {treatment_punishment}/{len(treatment_configs)} ({treatment_punishment/len(treatment_configs)*100:.0f}%)")
+    print()
+
     # Save all configurations
     all_configs = []
 
@@ -166,6 +190,8 @@ def run_all_experiments(output_dir="experiments"):
         print(f"  Group size: {config.group_size}, MPCR: {config.mpcr}, "
               f"Communication: {config.communication_enabled}, "
               f"Framing: {config.contribution_framing}")
+        print(f"  Punishment: {config.punishment_enabled}, "
+              f"Reward: {config.reward_enabled}")
 
         try:
             run_experiment(exp_name, config, num_games=1, verbose=False)
@@ -194,8 +220,11 @@ def run_all_experiments(output_dir="experiments"):
         exp_name = f"exp_{i:03d}_treatment"
         print(f"[{i}/20] Running {exp_name}...")
         print(f"  Group size: {config.group_size}, MPCR: {config.mpcr}, "
-              f"Punishment cost: {config.punishment_cost}, "
-              f"Punishment impact: {config.punishment_impact}")
+              f"Communication: {config.communication_enabled}, "
+              f"Framing: {config.contribution_framing}")
+        print(f"  Punishment: {config.punishment_enabled}, "
+              f"Reward: {config.reward_enabled}, "
+              f"Peer incentive cost: {config.peer_incentive_cost}")
 
         try:
             run_experiment(exp_name, config, num_games=1, verbose=False)
@@ -235,7 +264,21 @@ def config_to_key(config_dict):
     """
     Convert a config dict to a hashable key for comparison.
     Excludes punishment_enabled since we're comparing base configurations.
+    Handles backward compatibility with old parameter names.
     """
+    # Handle backward compatibility for peer_incentive_cost
+    if 'peer_incentive_cost' in config_dict:
+        peer_incentive_cost = config_dict['peer_incentive_cost']
+    elif config_dict.get('punishment_enabled', False):
+        # Old experiment with punishment - use punishment_cost
+        peer_incentive_cost = config_dict.get('punishment_cost', 1)
+    elif config_dict.get('reward_enabled', False):
+        # Old experiment with reward - use reward_cost
+        peer_incentive_cost = config_dict.get('reward_cost', 1)
+    else:
+        # No incentive mechanism
+        peer_incentive_cost = 1
+
     key_params = [
         config_dict['group_size'],
         config_dict['mpcr'],
@@ -246,7 +289,7 @@ def config_to_key(config_dict):
         config_dict['actor_anonymity'],
         config_dict['horizon_knowledge'],
         config_dict['reward_enabled'],
-        config_dict['reward_cost'],
+        peer_incentive_cost,
         config_dict['reward_impact']
     ]
     return tuple(key_params)
@@ -295,12 +338,21 @@ def generate_additional_configs(n_samples=10, punishment_enabled=False,
         actor_anonymity = bool(sample[6] > 0.5)
         horizon_knowledge = "unknown" if sample[7] > 0.5 else "known"
 
-        punishment_cost = int(1 + sample[8] * 3)  # 1-4
+        # Unified cost for both punishment and reward
+        peer_incentive_cost = int(1 + sample[8] * 3)  # 1-4
         punishment_impact = int(1 + sample[9] * 3)  # 1-4
 
         reward_enabled = bool(sample[10] > 0.5)
-        reward_cost = int(1 + sample[11] * 3)  # 1-4
+        # sample[11] no longer used (was reward_cost, now unified)
         reward_impact = 0.5 + sample[12] * 1.0  # 0.5-1.5
+
+        # Enforce mutual exclusivity: punishment XOR reward
+        # If both would be enabled, randomly choose one
+        if punishment_enabled and reward_enabled:
+            if sample[11] > 0.5:  # Use sample[11] as tiebreaker
+                punishment_enabled = False
+            else:
+                reward_enabled = False
 
         # Create config
         config = PGGConfig(
@@ -315,10 +367,9 @@ def generate_additional_configs(n_samples=10, punishment_enabled=False,
             peer_outcome_visibility=peer_outcome_visibility,
             actor_anonymity=actor_anonymity,
             punishment_enabled=punishment_enabled,
-            punishment_cost=punishment_cost,
+            peer_incentive_cost=peer_incentive_cost,
             punishment_impact=punishment_impact,
             reward_enabled=reward_enabled,
-            reward_cost=reward_cost,
             reward_impact=round(reward_impact, 2),
             llm_model="gpt-4o",
             llm_temperature=1.0
@@ -449,7 +500,7 @@ def run_additional_experiments(output_dir="Simulation/experiments", n_samples=10
         exp_name = f"exp_{i:03d}_treatment"
         print(f"[{i-start_num+1}/{len(treatment_configs)}] Running {exp_name}...")
         print(f"  Group size: {config.group_size}, MPCR: {config.mpcr}, "
-              f"Punishment cost: {config.punishment_cost}, "
+              f"Peer incentive cost: {config.peer_incentive_cost}, "
               f"Punishment impact: {config.punishment_impact}")
 
         try:
@@ -505,8 +556,8 @@ if __name__ == "__main__":
     # Run additional experiments with group_size < 10
     run_additional_experiments(
         output_dir="Simulation/experiments",
-        n_samples=20,  # 10 control + 10 treatment
-        max_group_size=20  # group_size will be in range [2, 9]
+        n_samples=10,  # 10 control + 10 treatment
+        max_group_size=15  # group_size will be in range [2, 9]
     )
 
     print("=" * 80)

@@ -1,2 +1,0 @@
-experiment_id,config_hash,game_id,round,actor_id,actor_name,target_id,target_name,type,units_decided,units_actual,was_scaled,cost,impact,timestamp
-exp_012_control,10c3ff06,exp_012_control_game1,1,agent_1,CHICKEN,agent_0,DOG,reward,3,3,False,3,2.8499999999999996,2026-01-02T01:10:27.592013

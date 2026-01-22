@@ -1,0 +1,4 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
+exp_052_control,4e33e848,exp_052_control_game1,1,agent_0,Alice,20,0,0,0,0,32.4,32.4,97.2,2026-01-21T23:35:58.161847
+exp_052_control,4e33e848,exp_052_control_game1,1,agent_1,Bob,20,0,0,0,0,32.4,32.4,97.2,2026-01-21T23:35:58.161880
+exp_052_control,4e33e848,exp_052_control_game1,1,agent_2,Charlie,20,0,0,0,0,32.4,32.4,97.2,2026-01-21T23:35:58.161897

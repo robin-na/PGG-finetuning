@@ -1,176 +1,108 @@
 """
-LLM-based agents for Public Goods Game simulation.
+Agent module for Public Goods Game simulation.
 
-This module defines the LLMAgent class that represents a player in the game.
-Agents use an LLM to make decisions about contributions, punishments, rewards, and chat.
+This module defines PGG agents that prepare context for EDSL parallel execution,
+replacing direct LLM API calls with context preparation for survey-based execution.
 """
 
-from typing import List, Dict
-from config import PGGConfig
-from llm_client import LLMClient
-from response_parser import ResponseParser
+from typing import List, Dict, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from config import PGGConfig
 
 
-# Avatar names for agents (following existing convention from generate_prompts.py)
-AVATAR_NAMES = [
-    "DOG", "CHICKEN", "CAT", "FISH", "BIRD", "RABBIT",
-    "TURTLE", "HAMSTER", "FROG", "MOUSE", "SNAKE", "BEAR",
-    "LION", "TIGER", "ELEPHANT", "MONKEY", "PANDA", "KOALA", "WOLF", "FOX"
-]
+class PGGAgent:
+    """Agent for PGG using EDSL execution (no direct LLM calls).
 
-
-class LLMAgent:
-    """An agent that plays the Public Goods Game using an LLM.
-
-    The agent makes decisions by:
-    1. Receiving a prompt describing the game state
-    2. Calling an LLM API to get a response
-    3. Parsing the response to extract the decision
-    4. Storing the interaction in memory for debugging
+    This agent prepares context dictionaries for EDSL survey execution
+    instead of making direct LLM API calls. The actual LLM calls are
+    handled by EDSLGameClient in parallel.
     """
 
-    def __init__(
-        self,
-        agent_id: str,
-        avatar_name: str,
-        llm_client: LLMClient,
-        config: PGGConfig
-    ):
-        """Initialize an LLM agent.
+    def __init__(self, agent_id: str, avatar_name: str, config: 'PGGConfig'):
+        """Initialize PGG agent.
 
         Args:
-            agent_id: Unique identifier for this agent (e.g., "agent_0")
-            avatar_name: Avatar name visible to other players (e.g., "DOG")
-            llm_client: LLM client for making API calls
+            agent_id: Unique identifier (e.g., "agent_0")
+            avatar_name: Human-readable name (e.g., "Alice")
             config: Game configuration
         """
         self.agent_id = agent_id
         self.avatar_name = avatar_name
-        self.llm_client = llm_client
         self.config = config
-        self.memory: List[Dict[str, str]] = []  # Store prompts and responses
+        self.memory: List[Dict] = []
 
-    def get_contribution_decision(self, prompt: str) -> tuple[int, str]:
-        """Get contribution decision from LLM.
-
-        Args:
-            prompt: Full prompt describing game state and asking for contribution
-
-        Returns:
-            tuple: (contribution_amount, raw_response)
-        """
-        # Call LLM
-        response = self.llm_client.call(prompt, max_tokens=500)
-
-        # Store in memory
-        self.memory.append({
-            "type": "contribution",
-            "prompt": prompt,
-            "response": response
-        })
-
-        # Parse response
-        amount = ResponseParser.parse_contribution(response, self.config.endowment)
-
-        # Validate based on contribution type
-        amount = ResponseParser.validate_contribution_type(
-            amount,
-            self.config.contribution_type,
-            self.config.endowment
-        )
-
-        return amount, response
-
-    def get_chat_message(self, prompt: str) -> tuple[str, str]:
-        """Get chat message from LLM.
+    def prepare_contribution_context(self, prompt: str) -> Dict:
+        """Prepare context for contribution survey.
 
         Args:
-            prompt: Prompt asking for chat message
+            prompt: Full contribution prompt for this agent
 
         Returns:
-            tuple: (chat_message, raw_response)
+            Context dict with agent_id, avatar_name, and prompt for EDSL execution
         """
-        # Call LLM
-        response = self.llm_client.call(prompt, max_tokens=500)
+        return {
+            "agent_id": self.agent_id,
+            "avatar_name": self.avatar_name,  # For two-stage reasoning
+            "prompt": prompt
+        }
 
-        # Store in memory
-        self.memory.append({
-            "type": "chat",
-            "prompt": prompt,
-            "response": response
-        })
-
-        # Parse response
-        message = ResponseParser.parse_chat_message(response)
-
-        # Check if agent wants to stay silent
-        if message.lower() in ["nothing", "none", "no message", "pass", "skip", ""]:
-            return "", response
-
-        return message, response
-
-    def get_redistribution_decision(
+    def prepare_redistribution_context(
         self,
         prompt: str,
-        num_targets: int
-    ) -> tuple[List[int], str]:
-        """Get punishment/reward decisions from LLM.
+        other_agents: List[Dict],
+        current_wallet: float
+    ) -> Dict:
+        """Prepare context for redistribution survey.
+
+        Calculates budget constraint: max_units = wallet / peer_incentive_cost
 
         Args:
-            prompt: Prompt describing other players and asking for redistribution
-            num_targets: Expected number of targets (length of output array)
+            prompt: Full redistribution prompt for this agent
+            other_agents: List of dicts with "agent_id" and "avatar_name"
+            current_wallet: Current wallet balance (after contribution stage)
 
         Returns:
-            tuple: (amounts_list, raw_response)
+            Context dict with agent_id, avatar_name, prompt, other_agents, and max_units
         """
-        # Call LLM
-        response = self.llm_client.call(prompt, max_tokens=500)
+        # Calculate maximum units affordable with current wallet
+        max_units = int(current_wallet / self.config.peer_incentive_cost)
 
-        # Store in memory
-        self.memory.append({
-            "type": "redistribution",
+        return {
+            "agent_id": self.agent_id,
+            "avatar_name": self.avatar_name,  # For two-stage reasoning
             "prompt": prompt,
-            "response": response,
-            "num_targets": num_targets
-        })
-
-        # Parse response
-        amounts = ResponseParser.parse_redistribution(response, num_targets)
-
-        return amounts, response
-
-    def get_memory_summary(self) -> str:
-        """Get a summary of agent's interaction history.
-
-        Returns:
-            str: Formatted memory summary
-        """
-        lines = [f"Agent {self.avatar_name} ({self.agent_id}) Memory:"]
-        lines.append("=" * 60)
-
-        for i, interaction in enumerate(self.memory):
-            lines.append(f"\nInteraction {i+1} ({interaction['type']})")
-            lines.append(f"Response: {interaction['response']}")
-
-        return "\n".join(lines)
+            "other_agents": other_agents,
+            "max_units": max_units
+        }
 
 
-def create_agents(config: PGGConfig, llm_client: LLMClient) -> List[LLMAgent]:
-    """Create a list of LLM agents for the game.
+def create_pgg_agents(config: 'PGGConfig') -> List[PGGAgent]:
+    """Create agents for EDSL-based simulation.
+
+    Uses human-friendly avatar names (Alice, Bob, Charlie, etc.)
+    instead of animal names.
 
     Args:
-        config: Game configuration (determines group_size)
-        llm_client: Shared LLM client instance
+        config: Game configuration
 
     Returns:
-        List of LLMAgent instances
+        List of PGGAgent instances
     """
     agents = []
+
+    # Human-friendly avatar names
+    AVATAR_NAMES = [
+        "Alice", "Bob", "Charlie", "Diana", "Eve",
+        "Frank", "Grace", "Hank", "Ivy", "Jack",
+        "Kate", "Liam", "Mia", "Noah", "Olivia",
+        "Peter", "Quinn", "Rachel", "Sam", "Tara"
+    ]
+
     for i in range(config.group_size):
-        agent = LLMAgent(
+        agent = PGGAgent(
             agent_id=f"agent_{i}",
             avatar_name=AVATAR_NAMES[i % len(AVATAR_NAMES)],
-            llm_client=llm_client,
             config=config
         )
         agents.append(agent)
@@ -181,29 +113,41 @@ def create_agents(config: PGGConfig, llm_client: LLMClient) -> List[LLMAgent]:
 # ===== Testing / Demo =====
 if __name__ == "__main__":
     from config import PGGConfig
-    from llm_client import LLMClient
 
     print("Testing Agent Creation")
     print("=" * 60)
 
-    # Create config and client
-    config = PGGConfig(group_size=4)
+    # Create config
+    config = PGGConfig(
+        group_size=4,
+        punishment_enabled=True,
+        peer_incentive_cost=2
+    )
 
-    # Note: This will fail without OPENAI_API_KEY, but demonstrates the structure
-    try:
-        client = LLMClient(model="gpt-4", temperature=1.0)
-        agents = create_agents(config, client)
+    # Create agents
+    agents = create_pgg_agents(config)
 
-        print(f"Created {len(agents)} agents:")
-        for agent in agents:
-            print(f"  - {agent.avatar_name} ({agent.agent_id})")
+    print(f"Created {len(agents)} agents:")
+    for agent in agents:
+        print(f"  - {agent.avatar_name} ({agent.agent_id})")
 
-        # Test a simple prompt (requires API key)
-        test_prompt = "You have 20 coins. How much do you contribute? Output a single integer:"
-        print(f"\nTest prompt: {test_prompt}")
-        amount = agents[0].get_contribution_decision(test_prompt)
-        print(f"Agent {agents[0].avatar_name} contributed: {amount}")
+    # Test context preparation
+    print("\nTest contribution context:")
+    test_prompt = "You have 20 coins. How much do you contribute?"
+    context = agents[0].prepare_contribution_context(test_prompt)
+    print(f"  agent_id: {context['agent_id']}")
+    print(f"  prompt: {context['prompt'][:50]}...")
 
-    except ValueError as e:
-        print(f"Note: {e}")
-        print("This is expected if OPENAI_API_KEY is not set.")
+    print("\nTest redistribution context:")
+    other_agents = [
+        {"agent_id": "agent_1", "avatar_name": "Bob"},
+        {"agent_id": "agent_2", "avatar_name": "Charlie"}
+    ]
+    redist_context = agents[0].prepare_redistribution_context(
+        prompt="Select players to punish:",
+        other_agents=other_agents,
+        current_wallet=15.0
+    )
+    print(f"  agent_id: {redist_context['agent_id']}")
+    print(f"  max_units: {redist_context['max_units']}")
+    print(f"  other_agents: {len(redist_context['other_agents'])} players")

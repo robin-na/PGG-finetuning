@@ -1,17 +1,18 @@
 """
-Main experiment runner for Public Goods Game LLM agent simulation.
+Main experiment runner for Public Goods Game LLM agent simulation with EDSL.
 
-This script orchestrates the complete simulation:
+This script orchestrates the complete simulation using EDSL parallel execution:
 1. Initializes configuration, environment, agents, and logger
-2. Runs the game loop through all rounds
-3. Handles chat, contribution, and redistribution stages
-4. Logs all data for analysis
+2. Runs the game loop through all rounds with two-phase structure:
+   - Phase 1: Contribution (all agents decide simultaneously)
+   - Phase 2: Redistribution (all agents decide simultaneously after seeing contributions)
+3. Logs all data for analysis
 
 Usage:
     python main.py
 
 The script includes several pre-configured experiments testing different
-parameters (framing, communication, anonymity, etc.)
+parameters (framing, punishment, rewards, etc.)
 """
 import os
 from dotenv import load_dotenv
@@ -23,11 +24,11 @@ load_dotenv()
 api_key = os.getenv('OPENAI_API_KEY')
 
 
-from config import PGGConfig, CONFIG_BASELINE, CONFIG_OPT_OUT, CONFIG_COMMUNICATION
+from config import PGGConfig, CONFIG_BASELINE, CONFIG_OPT_OUT, CONFIG_REWARDS
 from environment import PGGEnvironment, RoundState
-from agent import LLMAgent, create_agents
+from agent import create_pgg_agents
 from prompt_builder import PromptBuilder
-from llm_client import LLMClient
+from edsl_client import EDSLGameClient
 from logger import ExperimentLogger
 from typing import List, Dict
 
@@ -38,14 +39,13 @@ def run_single_game(
     logger: ExperimentLogger,
     verbose: bool = True
 ) -> None:
-    """Run one complete game with the given configuration.
+    """Run one complete game with EDSL parallel execution and two-phase structure.
 
     This is the main game loop that executes all stages of each round:
-    1. Chat stage (if communication enabled)
-    2. Contribution stage
-    3. Payoff calculation
-    4. Redistribution stage (if punishment/reward enabled)
-    5. Logging
+    1. Phase 1: Contribution (parallel EDSL execution)
+    2. Payoff calculation
+    3. Phase 2: Redistribution (parallel EDSL execution, if enabled)
+    4. Logging
 
     Args:
         config: Game configuration
@@ -61,15 +61,16 @@ def run_single_game(
         print(f"  Group size: {config.group_size}")
         print(f"  Rounds: {config.game_length}")
         print(f"  Framing: {config.contribution_framing}")
-        print(f"  Communication: {config.communication_enabled}")
         print(f"  Punishment: {config.punishment_enabled}")
         print(f"  Reward: {config.reward_enabled}")
+        if config.punishment_enabled or config.reward_enabled:
+            print(f"  Peer incentive cost: {config.peer_incentive_cost} coins")
         print(f"{'='*60}\n")
 
     # Initialize components
     env = PGGEnvironment(config)
-    llm_client = LLMClient(model=config.llm_model, temperature=config.llm_temperature)
-    agents = create_agents(config, llm_client)
+    edsl_client = EDSLGameClient(model=config.llm_model, temperature=config.llm_temperature)
+    agents = create_pgg_agents(config)
     prompt_builder = PromptBuilder(config)
 
     # Create agent name mapping
@@ -78,115 +79,114 @@ def run_single_game(
     # Game loop
     for round_num in range(1, config.game_length + 1):
         if verbose:
-            print(f"\n{'='*40}")
+            print(f"\n{'='*60}")
             print(f"Round {round_num}/{config.game_length}")
-            print(f"{'='*40}\n")
+            print(f"{'='*60}\n")
 
-        # ===== Stage 1: Chat (if enabled) =====
-        chat_messages = []
-        if config.communication_enabled:
-            if verbose:
-                print("Stage 1: Chat")
-            for agent in agents:
-                chat_prompt = prompt_builder.build_chat_prompt(
-                    agent.agent_id,
-                    agent.avatar_name,
-                    round_num,
-                    chat_messages
-                )
-
-                # Save prompt if verbose
-                if verbose:
-                    logger.save_prompt(game_id, round_num, agent.agent_id, "chat", chat_prompt)
-
-                message, raw_response = agent.get_chat_message(chat_prompt)
-
-                # Log raw response
-                logger.log_raw_response(
-                    game_id, round_num, agent.agent_id, agent.avatar_name,
-                    "chat", raw_response, message
-                )
-
-                if message:  # Only add non-empty messages
-                    chat_messages.append({
-                        "agent_id": agent.agent_id,
-                        "avatar_name": agent.avatar_name,
-                        "message": message
-                    })
-                    # Log chat message to CSV
-                    logger.log_chat_message(
-                        game_id, round_num, agent.agent_id, agent.avatar_name, message
-                    )
-                    if verbose:
-                        print(f"  {agent.avatar_name}: \"{message}\"")
-
-            if not chat_messages and verbose:
-                print("  (No messages)")
-            if verbose:
-                print()
-
-        # ===== Stage 2: Contribution =====
+        # ===== PHASE 1: CONTRIBUTION (PARALLEL EDSL EXECUTION) =====
         if verbose:
-            print("Stage 2: Contribution")
+            print("Phase 1: Contribution")
+            print("All agents decide simultaneously...\n")
 
-        contributions = {}
+        # Build contribution contexts for all agents
+        contribution_contexts = []
         for agent in agents:
-            contrib_prompt = prompt_builder.build_contribution_prompt(
+            prompt = prompt_builder.build_contribution_prompt(
                 agent.agent_id,
                 agent.avatar_name,
                 round_num,
                 env.round_history,
-                chat_messages,
-                agent_names  # Pass agent names for history formatting
+                [],  # No chat messages (communication_enabled always false)
+                agent_names
+            )
+            contribution_contexts.append(
+                agent.prepare_contribution_context(prompt)
             )
 
-            # Save prompt if verbose
-            if verbose:
-                logger.save_prompt(game_id, round_num, agent.agent_id, "contribution", contrib_prompt)
+        # Execute contributions in parallel via EDSL with two-stage reasoning
+        print(f"\n[DEBUG] Running contribution survey with {len(contribution_contexts)} agents, iterations={config.edsl_iterations}")
+        all_iterations_data = edsl_client.run_contribution_survey(
+            contribution_contexts,
+            config.endowment,
+            iterations=config.edsl_iterations
+        )
+        print(f"[DEBUG] Got {len(all_iterations_data)} iteration records")
 
-            amount, raw_response = agent.get_contribution_decision(contrib_prompt)
+        # Extract final contributions (last iteration per agent) for game logic
+        contributions = {}
+        agent_iterations = {}  # Group iterations by agent
 
-            # Handle opt-out framing conversion
-            if config.contribution_framing == "opt_out":
-                # LLM output is withdrawal amount, convert to contribution
-                amount = config.endowment - amount
+        for record in all_iterations_data:
+            agent_id = record['agent_id']
+            if agent_id not in agent_iterations:
+                agent_iterations[agent_id] = []
+            agent_iterations[agent_id].append(record)
 
-            # Validate
-            amount = env.validate_contribution(amount, agent.agent_id)
-            contributions[agent.agent_id] = amount
+        # Get last iteration for each agent
+        for agent_id, iterations in agent_iterations.items():
+            last_iteration = max(iterations, key=lambda x: x['iteration'])
+            contributions[agent_id] = last_iteration['decision']
 
-            # Log raw response
+        print(f"[DEBUG] Final contributions (last iteration): {contributions}")
+
+        # Log ALL iterations to raw_responses.csv
+        total_logged = 0
+        for record in all_iterations_data:
             logger.log_raw_response(
-                game_id, round_num, agent.agent_id, agent.avatar_name,
-                "contribution", raw_response, str(amount)
+                game_id=game_id,
+                round_num=round_num,
+                agent_id=record['agent_id'],
+                avatar_name=agent_names[record['agent_id']],
+                prompt_type=f"contribution_iter{record['iteration']}",
+                raw_response=record['reasoning'],
+                parsed_result=str(record['decision'])
             )
+            total_logged += 1
+        print(f"[DEBUG] Logged {total_logged} contribution iteration records")
 
-            if verbose:
-                print(f"  {agent.avatar_name}: {amount} coins")
+        # Handle opt-out framing conversion
+        if config.contribution_framing == "opt_out":
+            contributions = {
+                aid: config.endowment - amt
+                for aid, amt in contributions.items()
+            }
+
+        # Validate contributions
+        contributions = {
+            aid: env.validate_contribution(amt, aid)
+            for aid, amt in contributions.items()
+        }
 
         if verbose:
+            print("Contributions:")
+            for agent in agents:
+                print(f"  {agent.avatar_name}: {contributions[agent.agent_id]} coins")
             print()
 
-        # ===== Stage 3: Calculate Payoffs =====
+        # ===== Calculate Base Payoffs =====
         base_payoffs = env.calculate_payoffs(contributions)
 
         if verbose:
             total_contrib = sum(contributions.values())
             public_fund = total_contrib * config.multiplier
-            print(f"Total contributions: {total_contrib} coins")
-            print(f"Public fund (after multiplication): {public_fund} coins")
-            print(f"Per-person share: {public_fund / config.group_size} coins\n")
+            print(f"Public Fund Calculation:")
+            print(f"  Total contributions: {total_contrib} coins")
+            print(f"  After multiplication (×{config.multiplier:.2f}): {public_fund:.2f} coins")
+            print(f"  Per-person share: {public_fund / config.group_size:.2f} coins")
+            print()
 
-        # ===== Stage 4: Redistribution (if enabled) =====
+        # ===== PHASE 2: REDISTRIBUTION (PARALLEL EDSL EXECUTION) =====
         punishments = {}
         rewards = {}
 
         if config.punishment_enabled or config.reward_enabled:
             if verbose:
-                print("Stage 4: Redistribution")
+                print("Phase 2: Redistribution")
+                print("All contributions are now visible to all players.\n")
 
+            # Build redistribution contexts for all agents
+            redistribution_contexts = []
             for agent in agents:
-                # Calculate current wallet balance (after contribution stage)
                 current_wallet = base_payoffs[agent.agent_id]
 
                 # Build list of other agents
@@ -195,99 +195,111 @@ def run_single_game(
                     for a in agents if a.agent_id != agent.agent_id
                 ]
 
-                # Build prompt with budget constraint
-                redist_prompt = prompt_builder.build_redistribution_prompt(
+                # Build prompt with full visibility and budget constraint
+                prompt = prompt_builder.build_redistribution_prompt(
                     agent.agent_id,
                     agent.avatar_name,
                     round_num,
-                    contributions,
+                    contributions,  # Show all contributions
                     other_agents,
-                    current_wallet=current_wallet  # NEW: pass wallet balance
+                    current_wallet=current_wallet
                 )
 
-                # Save prompt if verbose
-                if verbose:
-                    logger.save_prompt(game_id, round_num, agent.agent_id, "redistribution", redist_prompt)
-
-                amounts_decided, raw_response = agent.get_redistribution_decision(
-                    redist_prompt,
-                    len(other_agents)
+                redistribution_contexts.append(
+                    agent.prepare_redistribution_context(
+                        prompt,
+                        other_agents,
+                        current_wallet
+                    )
                 )
 
-                # Log raw response
+            # Execute redistribution in parallel via EDSL with two-stage reasoning
+            redist_type = "punishment" if config.punishment_enabled else "reward"
+            print(f"\n[DEBUG] Running redistribution survey with {len(redistribution_contexts)} agents, type={redist_type}, iterations={config.edsl_iterations}")
+            redistribution_results, redistribution_iterations = edsl_client.run_redistribution_survey(
+                redistribution_contexts,
+                redist_type,
+                config,
+                iterations=config.edsl_iterations
+            )
+            print(f"[DEBUG] Got redistribution results: {redistribution_results}")
+            print(f"[DEBUG] Got {len(redistribution_iterations)} redistribution iteration records")
+
+            # Log ALL iterations to raw_responses.csv
+            total_redist_logged = 0
+            for record in redistribution_iterations:
+                # Format selected names as string
+                selected_str = ", ".join(record['selected_names']) if record['selected_names'] else "(none)"
+
                 logger.log_raw_response(
-                    game_id, round_num, agent.agent_id, agent.avatar_name,
-                    "redistribution", raw_response, str(amounts_decided)
+                    game_id=game_id,
+                    round_num=round_num,
+                    agent_id=record['agent_id'],
+                    avatar_name=agent_names[record['agent_id']],
+                    prompt_type=f"{redist_type}_iter{record['iteration']}",
+                    raw_response=record['reasoning'],
+                    parsed_result=selected_str
                 )
+                total_redist_logged += 1
+            print(f"[DEBUG] Logged {total_redist_logged} {redist_type} iteration records")
 
-                # Calculate total cost
-                total_cost = 0
-                if config.punishment_enabled:
-                    total_cost += sum(amounts_decided) * config.punishment_cost
-                if config.reward_enabled:
-                    total_cost += sum(amounts_decided) * config.reward_cost
+            # Assign to correct dict
+            if config.punishment_enabled:
+                punishments = redistribution_results
+                if verbose and punishments:
+                    print("Punishment actions:")
+                    for (actor_id, target_id), units in punishments.items():
+                        actor_name = agent_names[actor_id]
+                        target_name = agent_names[target_id]
+                        cost = units * config.peer_incentive_cost
+                        impact = units * config.punishment_impact
+                        print(f"  {actor_name} → {target_name}: {units} unit(s) (cost: {cost}, impact: {impact})")
 
-                # Apply proportional scaling if over budget (Solution 2)
-                was_scaled = False
-                amounts_actual = amounts_decided.copy()
+                # Log detailed redistribution info
+                for (actor_id, target_id), units in punishments.items():
+                    logger.log_redistribution_detail(
+                        game_id=game_id,
+                        round_num=round_num,
+                        actor_id=actor_id,
+                        actor_name=agent_names[actor_id],
+                        target_id=target_id,
+                        target_name=agent_names[target_id],
+                        redist_type="punishment",
+                        units_decided=units,
+                        units_actual=units,
+                        was_scaled=False,
+                        cost=units * config.peer_incentive_cost,
+                        impact=units * config.punishment_impact
+                    )
+                print(f"[DEBUG] Logged {len(punishments)} punishment details")
+            else:
+                rewards = redistribution_results
+                if verbose and rewards:
+                    print("Reward actions:")
+                    for (actor_id, target_id), units in rewards.items():
+                        actor_name = agent_names[actor_id]
+                        target_name = agent_names[target_id]
+                        cost = units * config.peer_incentive_cost
+                        impact = units * config.reward_impact
+                        print(f"  {actor_name} → {target_name}: {units} unit(s) (cost: {cost}, impact: {impact})")
 
-                if total_cost > current_wallet:
-                    if total_cost > 0:
-                        scaling_factor = current_wallet / total_cost
-                        # Scale down and floor to integers
-                        amounts_actual = [int(amt * scaling_factor) for amt in amounts_decided]
-                        was_scaled = True
-                        if verbose:
-                            print(f"  {agent.avatar_name}: Budget exceeded ({total_cost:.2f} > {current_wallet:.2f}), scaled by {scaling_factor:.3f}")
-
-                # Map amounts to target agents and log details
-                for idx, target_agent in enumerate(other_agents):
-                    units_decided = amounts_decided[idx]
-                    units_actual = amounts_actual[idx]
-
-                    if units_decided > 0 or units_actual > 0:  # Log even if scaled to 0
-                        target_id = target_agent["agent_id"]
-                        target_name = target_agent["avatar_name"]
-
-                        if config.punishment_enabled:
-                            key = (agent.agent_id, target_id)
-                            if units_actual > 0:
-                                punishments[key] = units_actual
-
-                            # Log punishment detail
-                            logger.log_redistribution_detail(
-                                game_id, round_num,
-                                agent.agent_id, agent.avatar_name,
-                                target_id, target_name,
-                                "punishment",
-                                units_decided, units_actual, was_scaled,
-                                units_actual * config.punishment_cost,
-                                units_actual * config.punishment_impact
-                            )
-
-                            if verbose and units_actual > 0:
-                                scaled_marker = " (scaled)" if was_scaled and units_decided != units_actual else ""
-                                print(f"  {agent.avatar_name} → {target_name}: {units_actual} punishment units{scaled_marker}")
-
-                        if config.reward_enabled:
-                            key = (agent.agent_id, target_id)
-                            if units_actual > 0:
-                                rewards[key] = units_actual
-
-                            # Log reward detail
-                            logger.log_redistribution_detail(
-                                game_id, round_num,
-                                agent.agent_id, agent.avatar_name,
-                                target_id, target_name,
-                                "reward",
-                                units_decided, units_actual, was_scaled,
-                                units_actual * config.reward_cost,
-                                units_actual * config.reward_impact
-                            )
-
-                            if verbose and units_actual > 0:
-                                scaled_marker = " (scaled)" if was_scaled and units_decided != units_actual else ""
-                                print(f"  {agent.avatar_name} → {target_name}: {units_actual} reward units{scaled_marker}")
+                # Log detailed redistribution info
+                for (actor_id, target_id), units in rewards.items():
+                    logger.log_redistribution_detail(
+                        game_id=game_id,
+                        round_num=round_num,
+                        actor_id=actor_id,
+                        actor_name=agent_names[actor_id],
+                        target_id=target_id,
+                        target_name=agent_names[target_id],
+                        redist_type="reward",
+                        units_decided=units,
+                        units_actual=units,
+                        was_scaled=False,
+                        cost=units * config.peer_incentive_cost,
+                        impact=units * config.reward_impact
+                    )
+                print(f"[DEBUG] Logged {len(rewards)} reward details")
 
             if not punishments and not rewards and verbose:
                 print("  (No redistribution actions)")
@@ -305,16 +317,25 @@ def run_single_game(
         round_state = env.create_round_state(
             round_num=round_num,
             contributions=contributions,
-            chat_messages=chat_messages,
+            chat_messages=[],  # No chat in EDSL version
             payoffs=final_payoffs,
             punishments=punishments,
             rewards=rewards
         )
 
+        print(f"\n[DEBUG] Created round state for round {round_num}:")
+        print(f"  Contributions: {round_state.contributions}")
+        print(f"  Payoffs: {round_state.payoffs}")
+        print(f"  Wallets: {round_state.wallets}")
+        print(f"  Punishments: {round_state.punishments}")
+        print(f"  Rewards: {round_state.rewards}")
+
         env.add_round_to_history(round_state)
 
         # ===== Log round =====
+        print(f"\n[DEBUG] Calling logger.log_round with game_id={game_id}, round={round_state.round_num}, {len(agent_names)} agents")
         logger.log_round(game_id, round_state, agent_names)
+        print(f"[DEBUG] logger.log_round completed successfully")
 
         # ===== Print round summary =====
         if verbose:
@@ -335,8 +356,8 @@ def run_single_game(
             wallet = round_state.wallets[agent.agent_id]
             print(f"  {i}. {agent.avatar_name}: {wallet:.1f} coins")
 
-        # Print LLM usage
-        llm_client.print_usage_summary()
+        # Print EDSL usage
+        edsl_client.print_usage_summary()
 
 
 def run_experiment(
@@ -380,7 +401,7 @@ def main():
     design parameters and test context sensitivity.
     """
     print("\n" + "="*70)
-    print("  Public Goods Game LLM Agent Simulation")
+    print("  Public Goods Game LLM Agent Simulation (EDSL Version)")
     print("  Testing Context Sensitivity with 14 Design Parameters")
     print("="*70)
 
@@ -388,7 +409,7 @@ def main():
     experiments = {
         "1": ("baseline", CONFIG_BASELINE, "Baseline PGG with punishment"),
         "2": ("optout_framing", CONFIG_OPT_OUT, "Test opt-out framing effect"),
-        "3": ("communication", CONFIG_COMMUNICATION, "Test communication effect"),
+        "3": ("rewards", CONFIG_REWARDS, "Test reward mechanism"),
         "4": ("custom", None, "Custom configuration (manual setup)")
     }
 
@@ -401,10 +422,10 @@ def main():
     if choice == "all":
         # Run all predefined experiments
         for key in ["1", "2", "3"]:
-            name, config, desc = experiments[key]
+            name, config, _ = experiments[key]
             run_experiment(name, config, num_games=1, verbose=True)
     elif choice in experiments:
-        name, config, desc = experiments[choice]
+        name, config, _ = experiments[choice]
         if config is None:
             print("\nCustom configuration not yet implemented. Please edit main.py to add your config.")
             return
@@ -417,12 +438,13 @@ def main():
 if __name__ == "__main__":
     # For quick testing, you can uncomment one of these:
 
-    # 1. Baseline experiment (small scale for testing)
+    # 1. Quick test (small scale for testing)
     # test_config = PGGConfig(
     #     group_size=3,
-    #     game_length=3,
+    #     game_length=2,
     #     mpcr=0.4,
-    #     punishment_enabled=True
+    #     punishment_enabled=True,
+    #     peer_incentive_cost=2
     # )
     # run_experiment("quick_test", test_config, num_games=1, verbose=True)
 
@@ -435,8 +457,8 @@ if __name__ == "__main__":
     #     game_length=5,
     #     mpcr=0.5,
     #     contribution_framing="opt_out",
-    #     communication_enabled=True,
     #     punishment_enabled=True,
-    #     peer_outcome_visibility=False  # Hidden outcomes
+    #     peer_incentive_cost=2,
+    #     punishment_impact=3
     # )
     # run_experiment("my_custom_experiment", custom_config, num_games=1)

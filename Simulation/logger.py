@@ -91,13 +91,11 @@ class ExperimentLogger:
                 "communication_enabled": self.config.communication_enabled,
                 "peer_outcome_visibility": self.config.peer_outcome_visibility,
                 "actor_anonymity": self.config.actor_anonymity,
-                # Punishment
+                # Peer Incentive Mechanisms (unified cost)
                 "punishment_enabled": self.config.punishment_enabled,
-                "punishment_cost": self.config.punishment_cost,
-                "punishment_impact": self.config.punishment_impact,
-                # Reward
                 "reward_enabled": self.config.reward_enabled,
-                "reward_cost": self.config.reward_cost,
+                "peer_incentive_cost": self.config.peer_incentive_cost,
+                "punishment_impact": self.config.punishment_impact,
                 "reward_impact": self.config.reward_impact,
                 # LLM
                 "llm_model": self.config.llm_model,
@@ -110,8 +108,12 @@ class ExperimentLogger:
 
     def _init_csv(self):
         """Initialize CSV files with headers."""
+        print(f"[DEBUG LOGGER] Initializing CSV files in {self.base_dir}")
+
         # Main game log
-        self.csv_file = open(self.base_dir / "game_log.csv", "w", newline='')
+        game_log_path = self.base_dir / "game_log.csv"
+        print(f"[DEBUG LOGGER] Opening game_log.csv at {game_log_path}")
+        self.csv_file = open(game_log_path, "w", newline='')
         self.csv_writer = csv.DictWriter(
             self.csv_file,
             fieldnames=[
@@ -133,8 +135,10 @@ class ExperimentLogger:
             ]
         )
         self.csv_writer.writeheader()
+        print(f"[DEBUG LOGGER] game_log.csv header written")
 
         # Chat messages log
+        print(f"[DEBUG LOGGER] Opening chat_messages.csv")
         self.chat_file = open(self.base_dir / "chat_messages.csv", "w", newline='')
         self.chat_writer = csv.DictWriter(
             self.chat_file,
@@ -150,8 +154,10 @@ class ExperimentLogger:
             ]
         )
         self.chat_writer.writeheader()
+        print(f"[DEBUG LOGGER] chat_messages.csv header written")
 
         # Raw LLM responses log
+        print(f"[DEBUG LOGGER] Opening raw_responses.csv")
         self.response_file = open(self.base_dir / "raw_responses.csv", "w", newline='')
         self.response_writer = csv.DictWriter(
             self.response_file,
@@ -169,8 +175,10 @@ class ExperimentLogger:
             ]
         )
         self.response_writer.writeheader()
+        print(f"[DEBUG LOGGER] raw_responses.csv header written")
 
         # Redistribution details log (NEW)
+        print(f"[DEBUG LOGGER] Opening redistribution_details.csv")
         self.redistribution_file = open(self.base_dir / "redistribution_details.csv", "w", newline='')
         self.redistribution_writer = csv.DictWriter(
             self.redistribution_file,
@@ -193,6 +201,8 @@ class ExperimentLogger:
             ]
         )
         self.redistribution_writer.writeheader()
+        print(f"[DEBUG LOGGER] redistribution_details.csv header written")
+        print(f"[DEBUG LOGGER] All CSV files initialized")
 
     def log_round(
         self,
@@ -207,6 +217,13 @@ class ExperimentLogger:
             round_state: The completed round state
             agent_names: Mapping from agent_id to avatar_name
         """
+        print(f"[DEBUG LOGGER] log_round called:")
+        print(f"  game_id: {game_id}")
+        print(f"  round_num: {round_state.round_num}")
+        print(f"  num agents: {len(round_state.contributions)}")
+        print(f"  contributions: {round_state.contributions}")
+        print(f"  payoffs: {round_state.payoffs}")
+
         # Calculate punishment/reward stats per agent
         punishments_sent = {agent_id: 0 for agent_id in round_state.contributions.keys()}
         punishments_received = {agent_id: 0 for agent_id in round_state.contributions.keys()}
@@ -224,8 +241,9 @@ class ExperimentLogger:
             rewards_received[target_id] += units
 
         # Write row for each agent
+        print(f"[DEBUG LOGGER] Writing {len(round_state.contributions)} agent rows to CSV...")
         for agent_id in round_state.contributions.keys():
-            self.csv_writer.writerow({
+            row_data = {
                 "experiment_id": self.experiment_id,
                 "config_hash": self.config_hash,
                 "game_id": game_id,
@@ -241,10 +259,14 @@ class ExperimentLogger:
                 "cumulative_wallet": round_state.wallets.get(agent_id, 0),
                 "public_fund": round_state.public_fund,
                 "timestamp": datetime.now().isoformat()
-            })
+            }
+            print(f"[DEBUG LOGGER]   Writing row for {agent_id}: {row_data}")
+            self.csv_writer.writerow(row_data)
 
         # Flush to disk
+        print(f"[DEBUG LOGGER] Flushing CSV file to disk...")
         self.csv_file.flush()
+        print(f"[DEBUG LOGGER] log_round completed")
 
     def log_chat_message(
         self,

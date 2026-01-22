@@ -265,6 +265,21 @@ def plot_feature_importance(df, save_path="analysis_outputs"):
             t_config_data = json.load(f)
             t_config = t_config_data.get('config', t_config_data)
 
+        # Handle backward compatibility for old parameter names
+        # Old experiments used 'punishment_cost' and 'reward_cost'
+        # New experiments use unified 'peer_incentive_cost'
+        if 'peer_incentive_cost' in t_config:
+            peer_incentive_cost = t_config['peer_incentive_cost']
+        elif t_config.get('punishment_enabled', False):
+            # Old experiment with punishment - use punishment_cost
+            peer_incentive_cost = t_config.get('punishment_cost', 1)
+        elif t_config.get('reward_enabled', False):
+            # Old experiment with reward - use reward_cost
+            peer_incentive_cost = t_config.get('reward_cost', 1)
+        else:
+            # No incentive mechanism
+            peer_incentive_cost = 1
+
         ml_data.append({
             'experiment_id': t_row['experiment_id'],
             # Game structure
@@ -279,12 +294,10 @@ def plot_feature_importance(df, save_path="analysis_outputs"):
             'communication': int(t_config.get('communication_enabled', False)),
             'peer_outcome_visibility': int(t_config.get('peer_outcome_visibility', True)),
             'actor_anonymity': int(t_config.get('actor_anonymity', False)),
-            # Punishment parameters
-            'punishment_cost': t_config.get('punishment_cost', 1),
+            # Peer incentive parameters (unified cost with backward compatibility)
+            'peer_incentive_cost': peer_incentive_cost,
             'punishment_impact': t_config.get('punishment_impact', 3),
-            # Reward parameters
             'reward_enabled': int(t_config.get('reward_enabled', False)),
-            'reward_cost': t_config.get('reward_cost', 1),
             'reward_impact': t_config.get('reward_impact', 1.0),
             # Outcomes
             'efficiency_control': c_row['normalized_efficiency'],
@@ -293,7 +306,8 @@ def plot_feature_importance(df, save_path="analysis_outputs"):
 
     ml_df = pd.DataFrame(ml_data)
 
-    # Full feature set (14 parameters + efficiency_control)
+    # Full feature set (13 parameters + efficiency_control)
+    # Note: Now using unified peer_incentive_cost instead of separate punishment_cost and reward_cost
     feature_cols = [
         'group_size',
         'game_length',
@@ -304,10 +318,9 @@ def plot_feature_importance(df, save_path="analysis_outputs"):
         'communication',
         'peer_outcome_visibility',
         'actor_anonymity',
-        'punishment_cost',
+        'peer_incentive_cost',
         'punishment_impact',
         'reward_enabled',
-        'reward_cost',
         'reward_impact',
         'efficiency_control'
     ]

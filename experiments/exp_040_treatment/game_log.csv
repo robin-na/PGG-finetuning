@@ -1,3 +1,0 @@
-experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
-exp_040_treatment,e842b757,exp_040_treatment_game1,1,agent_0,DOG,20,1,0,1,0,3.4000000000000004,3.4000000000000004,16.8,2026-01-02T02:22:13.458076
-exp_040_treatment,e842b757,exp_040_treatment_game1,1,agent_1,CHICKEN,15,0,1,0,1,11.73,11.73,16.8,2026-01-02T02:22:13.486167

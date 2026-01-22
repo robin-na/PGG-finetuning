@@ -1,3 +1,0 @@
-experiment_id,config_hash,game_id,round,actor_id,actor_name,target_id,target_name,type,units_decided,units_actual,was_scaled,cost,impact,timestamp
-exp_029_treatment,5e5dfdc8,exp_029_treatment_game1,1,agent_1,CHICKEN,agent_0,DOG,punishment,5,5,False,5,10,2026-01-02T02:12:39.982912
-exp_029_treatment,5e5dfdc8,exp_029_treatment_game1,1,agent_1,CHICKEN,agent_0,DOG,reward,5,5,False,10,5.25,2026-01-02T02:12:39.983131

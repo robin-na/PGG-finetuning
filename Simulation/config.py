@@ -38,11 +38,10 @@ class PGGConfig:
        - actor_anonymity: Whether punishment/reward actor IDs are hidden
 
     5. Incentive Mechanisms:
-       - punishment_enabled: Whether punishment is available
-       - punishment_cost: Cost to punisher per unit (1-4 coins)
+       - punishment_enabled: Whether punishment is available (mutually exclusive with reward)
+       - peer_incentive_cost: Unified cost per unit for punishment/reward (1-4 coins)
        - punishment_impact: Deduction to target per unit (1-4 coins)
-       - reward_enabled: Whether rewards are available
-       - reward_cost: Cost to rewarder per unit (1-4 coins)
+       - reward_enabled: Whether rewards are available (mutually exclusive with punishment)
        - reward_impact: Addition to target per unit (0.5-1.5 coins)
     """
 
@@ -64,19 +63,19 @@ class PGGConfig:
     peer_outcome_visibility: bool = True  # Show detailed peer outcomes?
     actor_anonymity: bool = False  # Hide punishment/reward actor IDs?
 
-    # ===== Punishment Mechanism =====
+    # ===== Peer Incentive Mechanisms =====
+    # Note: punishment_enabled and reward_enabled are mutually exclusive
     punishment_enabled: bool = False
-    punishment_cost: int = 1  # Cost to punisher per unit (1-4)
-    punishment_impact: int = 3  # Deduction to target per unit (1-4)
-
-    # ===== Reward Mechanism =====
     reward_enabled: bool = False
-    reward_cost: int = 1  # Cost to rewarder per unit (1-4)
-    reward_impact: float = 1.0  # Addition to target per unit (0.5-1.5)
+
+    peer_incentive_cost: int = 1  # Unified cost per unit (1-4 coins)
+    punishment_impact: int = 3  # Deduction to target per unit (1-4 coins)
+    reward_impact: float = 1.0  # Addition to target per unit (0.5-1.5 coins)
 
     # ===== LLM Settings =====
     llm_model: str = "gpt-4o"
     llm_temperature: float = 0.5
+    edsl_iterations: int = 1  # Number of iterations for EDSL surveys (reasoning refinement)
 
     @property
     def multiplier(self) -> float:
@@ -94,25 +93,47 @@ class PGGConfig:
         """Validate configuration parameters after initialization.
 
         Raises:
-            AssertionError: If any parameter is out of valid range
+            ValueError: If any parameter is out of valid range or constraints are violated
         """
         # Game structure validation
-        assert 2 <= self.group_size <= 20, f"group_size must be 2-20, got {self.group_size}"
-        assert 1 <= self.game_length <= 30, f"game_length must be 1-30, got {self.game_length}"
-        assert self.endowment > 0, f"endowment must be positive, got {self.endowment}"
+        if not (2 <= self.group_size <= 20):
+            raise ValueError(f"group_size must be 2-20, got {self.group_size}")
+        if not (1 <= self.game_length <= 30):
+            raise ValueError(f"game_length must be 1-30, got {self.game_length}")
+        if self.endowment <= 0:
+            raise ValueError(f"endowment must be positive, got {self.endowment}")
 
         # Economic parameter validation
-        assert 0.06 <= self.mpcr <= 0.7, f"mpcr must be 0.06-0.7, got {self.mpcr}"
+        if not (0.06 <= self.mpcr <= 0.7):
+            raise ValueError(f"mpcr must be 0.06-0.7, got {self.mpcr}")
 
-        # Punishment validation
+        # Mutual exclusivity: punishment and reward cannot both be enabled
+        if self.punishment_enabled and self.reward_enabled:
+            raise ValueError(
+                "punishment_enabled and reward_enabled cannot both be True. "
+                "Only one peer incentive mechanism allowed per game."
+            )
+
+        # Validate peer_incentive_cost when any incentive mechanism is enabled
+        if self.punishment_enabled or self.reward_enabled:
+            if not (1 <= self.peer_incentive_cost <= 4):
+                raise ValueError(
+                    f"peer_incentive_cost must be 1-4, got {self.peer_incentive_cost}"
+                )
+
+        # Punishment impact validation
         if self.punishment_enabled:
-            assert 1 <= self.punishment_cost <= 4, f"punishment_cost must be 1-4, got {self.punishment_cost}"
-            assert 1 <= self.punishment_impact <= 4, f"punishment_impact must be 1-4, got {self.punishment_impact}"
+            if not (1 <= self.punishment_impact <= 4):
+                raise ValueError(
+                    f"punishment_impact must be 1-4, got {self.punishment_impact}"
+                )
 
-        # Reward validation
+        # Reward impact validation
         if self.reward_enabled:
-            assert 1 <= self.reward_cost <= 4, f"reward_cost must be 1-4, got {self.reward_cost}"
-            assert 0.5 <= self.reward_impact <= 1.5, f"reward_impact must be 0.5-1.5, got {self.reward_impact}"
+            if not (0.5 <= self.reward_impact <= 1.5):
+                raise ValueError(
+                    f"reward_impact must be 0.5-1.5, got {self.reward_impact}"
+                )
 
 
 # ===== Example Configurations =====
@@ -124,7 +145,7 @@ CONFIG_BASELINE = PGGConfig(
     mpcr=0.4,
     contribution_framing="opt_in",
     punishment_enabled=True,
-    punishment_cost=2,
+    peer_incentive_cost=2,
     punishment_impact=3,
     peer_outcome_visibility=True
 )
@@ -136,7 +157,7 @@ CONFIG_OPT_OUT = PGGConfig(
     mpcr=0.4,
     contribution_framing="opt_out",  # Key difference
     punishment_enabled=True,
-    punishment_cost=2,
+    peer_incentive_cost=2,
     punishment_impact=3
 )
 
@@ -174,7 +195,7 @@ CONFIG_REWARDS = PGGConfig(
     mpcr=0.4,
     punishment_enabled=False,
     reward_enabled=True,
-    reward_cost=2,
+    peer_incentive_cost=2,
     reward_impact=1.5
 )
 

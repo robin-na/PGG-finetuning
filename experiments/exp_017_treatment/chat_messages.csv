@@ -1,6 +1,0 @@
-experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
-exp_017_treatment,efd5c4ad,exp_017_treatment_game1,1,agent_0,DOG,"Hi everyone, let's consider working together to maximize our total earnings. Cooperation can lead to better outcomes for all. What do you think?",2026-01-02T01:22:27.102541
-exp_017_treatment,efd5c4ad,exp_017_treatment_game1,1,agent_1,CHICKEN,I agree cooperation can be beneficial. How about establishing a mutual agreement to cooperate in the initial rounds and re-evaluate later based on results?,2026-01-02T01:22:28.274779
-exp_017_treatment,efd5c4ad,exp_017_treatment_game1,1,agent_2,CAT,I support the idea of cooperating. Let's commit to a cooperative strategy for the first few rounds and evaluate our progress together.,2026-01-02T01:22:29.589810
-exp_017_treatment,efd5c4ad,exp_017_treatment_game1,1,agent_3,FISH,"I agree with cooperating initially. Let's establish clear terms for our cooperation, including how we'll handle any defection, so we're prepared for any scenario.",2026-01-02T01:22:31.001102
-exp_017_treatment,efd5c4ad,exp_017_treatment_game1,1,agent_4,BIRD,"I propose we set clear terms: if anyone defects, they should compensate by cooperating for the next two rounds. This will help maintain our cooperative strategy and trust.",2026-01-02T01:22:32.093652

@@ -207,13 +207,12 @@ class PGGEnvironment:
         rewards: Dict[Tuple[str, str], int],
         current_payoffs: Dict[str, float]
     ) -> Dict[str, float]:
-        """Apply punishment and reward redistribution to payoffs.
+        """Apply punishment and reward redistribution to payoffs using unified cost.
 
         Modifies payoffs based on punishment/reward actions:
-        - Punisher pays punishment_cost per unit
-        - Target loses punishment_impact per unit
-        - Rewarder pays reward_cost per unit
-        - Target gains reward_impact per unit
+        - Actor pays peer_incentive_cost per unit (unified cost for both punishment and reward)
+        - Punishment: Target loses punishment_impact per unit
+        - Reward: Target gains reward_impact per unit
 
         Args:
             punishments: Dict of (punisher_id, target_id) -> units
@@ -228,8 +227,8 @@ class PGGEnvironment:
         # Apply punishments
         for (punisher_id, target_id), units in punishments.items():
             if units > 0:
-                # Punisher pays cost
-                cost = units * self.config.punishment_cost
+                # Punisher pays unified cost
+                cost = units * self.config.peer_incentive_cost
                 adjustments[punisher_id] -= cost
 
                 # Target loses impact
@@ -239,8 +238,8 @@ class PGGEnvironment:
         # Apply rewards
         for (rewarder_id, target_id), units in rewards.items():
             if units > 0:
-                # Rewarder pays cost
-                cost = units * self.config.reward_cost
+                # Rewarder pays unified cost
+                cost = units * self.config.peer_incentive_cost
                 adjustments[rewarder_id] -= cost
 
                 # Target gains impact

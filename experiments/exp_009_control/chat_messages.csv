@@ -1,6 +1,0 @@
-experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
-exp_009_control,1be2e05f,exp_009_control_game1,1,agent_0,DOG,"<REASONING>
-Cooperation often maximizes outcomes in repeated games. Suggest a collaborative strategy leveraging mutual benefit to reinforce trust. Coordination can prevent destructive competition.
-</R...",2026-01-02T00:39:24.756192
-exp_009_control,1be2e05f,exp_009_control_game1,1,agent_1,CHICKEN,"Let's coordinate strategies for mutual benefit. If we both choose cooperation, our combined payoff will exceed individualistic short-term gains. Are you open to a cooperative approach?",2026-01-02T00:39:26.075570
-exp_009_control,1be2e05f,exp_009_control_game1,1,agent_2,CAT,I propose we start with cooperation to build trust. This can lead to higher payoffs across rounds. Are you willing to commit to this initially?,2026-01-02T00:39:27.914706

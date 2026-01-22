@@ -1,7 +1,0 @@
-experiment_id,config_hash,game_id,round,actor_id,actor_name,target_id,target_name,type,units_decided,units_actual,was_scaled,cost,impact,timestamp
-exp_029_control,ff784423,exp_029_control_game1,1,agent_0,DOG,agent_1,CHICKEN,reward,4,4,False,8,4.2,2026-01-02T01:50:23.101538
-exp_029_control,ff784423,exp_029_control_game1,1,agent_0,DOG,agent_2,CAT,reward,4,4,False,8,4.2,2026-01-02T01:50:23.101763
-exp_029_control,ff784423,exp_029_control_game1,1,agent_1,CHICKEN,agent_0,DOG,reward,5,5,False,10,5.25,2026-01-02T01:50:25.905014
-exp_029_control,ff784423,exp_029_control_game1,1,agent_1,CHICKEN,agent_2,CAT,reward,5,5,False,10,5.25,2026-01-02T01:50:25.905075
-exp_029_control,ff784423,exp_029_control_game1,1,agent_2,CAT,agent_0,DOG,reward,1,1,False,2,1.05,2026-01-02T01:50:30.505516
-exp_029_control,ff784423,exp_029_control_game1,1,agent_2,CAT,agent_1,CHICKEN,reward,1,1,False,2,1.05,2026-01-02T01:50:30.505820

@@ -39,7 +39,8 @@ sys.path.insert(0, str(Path(__file__).parent))
 from contribution import calculate_metrics_from_experiment
 
 
-# Feature names for the 14 design parameters + baseline efficiency
+# Feature names for the 13 design parameters + baseline efficiency
+# Note: Now using unified peer_incentive_cost instead of separate punishment_cost and reward_cost
 FEATURE_NAMES = [
     'group_size',
     'game_length',
@@ -50,10 +51,9 @@ FEATURE_NAMES = [
     'peer_outcome_visibility',
     'actor_anonymity',
     'horizon_knowledge',
-    'punishment_cost',
+    'peer_incentive_cost',
     'punishment_impact',
     'reward_enabled',
-    'reward_cost',
     'reward_impact',
     'efficiency_control'
 ]
@@ -69,10 +69,9 @@ FEATURE_DISPLAY_NAMES = {
     'peer_outcome_visibility': 'Peer Visibility',
     'actor_anonymity': 'Actor Anonymity',
     'horizon_knowledge': 'Unknown Horizon',
-    'punishment_cost': 'Punishment Cost',
+    'peer_incentive_cost': 'Peer Incentive Cost',
     'punishment_impact': 'Punishment Impact',
     'reward_enabled': 'Reward Enabled',
-    'reward_cost': 'Reward Cost',
     'reward_impact': 'Reward Impact',
     'efficiency_control': 'Baseline Efficiency'
 }
@@ -146,6 +145,24 @@ def prepare_ml_dataset(
             metrics_t = calculate_metrics_from_experiment(str(treatment_dir))
             metrics_c = calculate_metrics_from_experiment(str(control_dir))
 
+            # Handle backward compatibility for old parameter names
+            # Old experiments used 'punishment_cost' and 'reward_cost'
+            # New experiments use unified 'peer_incentive_cost'
+            punishment_enabled = config_t.get('punishment_enabled', False)
+            reward_enabled = config_t.get('reward_enabled', False)
+
+            if 'peer_incentive_cost' in config_t:
+                peer_incentive_cost = config_t['peer_incentive_cost']
+            elif punishment_enabled:
+                # Old experiment with punishment - use punishment_cost
+                peer_incentive_cost = config_t.get('punishment_cost', 1)
+            elif reward_enabled:
+                # Old experiment with reward - use reward_cost
+                peer_incentive_cost = config_t.get('reward_cost', 1)
+            else:
+                # No incentive mechanism
+                peer_incentive_cost = 1
+
             # Create record with features
             record = {
                 'experiment_id': base_name,
@@ -160,11 +177,10 @@ def prepare_ml_dataset(
                 'peer_outcome_visibility': int(config_t.get('peer_outcome_visibility', True)),
                 'actor_anonymity': int(config_t.get('actor_anonymity', False)),
                 'horizon_knowledge': 1 if config_t.get('horizon_knowledge', 'known') == 'unknown' else 0,
-                # Punishment/reward parameters (continuous)
-                'punishment_cost': config_t.get('punishment_cost', 1),
+                # Peer incentive parameters (continuous) - unified cost with backward compatibility
+                'peer_incentive_cost': peer_incentive_cost,
                 'punishment_impact': config_t.get('punishment_impact', 3),
-                'reward_enabled': int(config_t.get('reward_enabled', False)),
-                'reward_cost': config_t.get('reward_cost', 1),
+                'reward_enabled': int(reward_enabled),
                 'reward_impact': config_t.get('reward_impact', 1.0),
                 # Target and baseline
                 'efficiency_control': metrics_c['normalized_efficiency'],

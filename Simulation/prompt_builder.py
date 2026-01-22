@@ -140,14 +140,14 @@ class PromptBuilder:
         if self.config.punishment_enabled:
             lines.append(
                 f"After seeing each player's contributions, players can impose deductions on each other. "
-                f"Per unit deduction, the punisher spends {coins_to_words(self.config.punishment_cost)}, "
+                f"Per unit deduction, the punisher spends {coins_to_words(self.config.peer_incentive_cost)}, "
                 f"causing the punished player to lose {coins_to_words(self.config.punishment_impact)}."
             )
 
         if self.config.reward_enabled:
             lines.append(
                 f"After seeing each player's contributions, players can reward each other. "
-                f"Per unit reward, the rewarder spends {coins_to_words(self.config.reward_cost)} and grants "
+                f"Per unit reward, the rewarder spends {coins_to_words(self.config.peer_incentive_cost)} and grants "
                 f"{coins_to_words(self.config.reward_impact)} to the rewarded player."
             )
 
@@ -296,9 +296,12 @@ class PromptBuilder:
         round_num: int,
         contributions: Dict[str, int],
         other_agents: List[Dict[str, str]],  # [{"agent_id": ..., "avatar_name": ...}]
-        current_wallet: float = None  # NEW: current wallet balance
+        current_wallet: float = None
     ) -> str:
-        """Build prompt for punishment/reward decisions.
+        """Build prompt for punishment/reward decisions (EDSL CheckBox format).
+
+        This prompt is designed for EDSL QuestionCheckBox where each selection = 1 unit.
+        The max_selections parameter enforces budget constraint.
 
         Args:
             agent_id: ID of the focal agent
@@ -306,62 +309,63 @@ class PromptBuilder:
             round_num: Current round number
             contributions: Contributions from all agents this round
             other_agents: List of other agents (dicts with agent_id and avatar_name)
-            current_wallet: Current wallet balance after contribution stage (optional)
+            current_wallet: Current wallet balance after contribution stage
 
         Returns:
-            str: Formatted redistribution prompt
+            str: Formatted redistribution prompt for CheckBox question
         """
         lines = []
 
-        lines.append("### Redistribution Stage: Decide on punishments and/or rewards")
+        lines.append("### Redistribution Stage")
+        lines.append("")
 
-        # Show contributions
-        if self.config.peer_outcome_visibility:
-            lines.append("\nContributions this round:")
-            for other in other_agents:
-                contrib = contributions.get(other["agent_id"], 0)
-                lines.append(f"- {other['avatar_name']} contributed {contrib} coins")
+        # Show ALL contributions (full visibility in Phase 2)
+        lines.append("**All contributions are now revealed:**")
+        my_contrib = contributions.get(agent_id, 0)
+        lines.append(f"- YOU ({agent_name}) contributed {my_contrib} coins")
+        for other in other_agents:
+            contrib = contributions.get(other["agent_id"], 0)
+            lines.append(f"- {other['avatar_name']} contributed {contrib} coins")
+        lines.append("")
 
-        # Explain mechanics
-        if self.config.punishment_enabled and self.config.reward_enabled:
+        # Explain mechanics with unified cost
+        if self.config.punishment_enabled:
             lines.append(
-                f"\nYou can punish or reward other players. "
-                f"Punishment: costs you {self.config.punishment_cost} coin(s) per unit, deducts {self.config.punishment_impact} coin(s) from target. "
-                f"Reward: costs you {self.config.reward_cost} coin(s) per unit, grants {self.config.reward_impact} coin(s) to target."
+                f"You can now punish other players. "
+                f"Each punishment costs you {self.config.peer_incentive_cost} coin(s) "
+                f"and deducts {self.config.punishment_impact} coin(s) from the target."
             )
-        elif self.config.punishment_enabled:
-            lines.append(
-                f"\nYou can punish other players. "
-                f"Each unit costs you {self.config.punishment_cost} coin(s) and deducts {self.config.punishment_impact} coin(s) from the target."
-            )
+            action_verb = "punish"
+            action_noun = "punishment"
         elif self.config.reward_enabled:
             lines.append(
-                f"\nYou can reward other players. "
-                f"Each unit costs you {self.config.reward_cost} coin(s) and grants {self.config.reward_impact} coin(s) to the target."
+                f"You can now reward other players. "
+                f"Each reward costs you {self.config.peer_incentive_cost} coin(s) "
+                f"and grants {self.config.reward_impact} coin(s) to the target."
             )
+            action_verb = "reward"
+            action_noun = "reward"
+        else:
+            action_verb = "select"
+            action_noun = "action"
 
-        # BUDGET CONSTRAINT (NEW)
+        # Budget constraint
         if current_wallet is not None:
+            max_actions = int(current_wallet / self.config.peer_incentive_cost)
+            lines.append("")
+            lines.append(f"**Budget:** You have {current_wallet:.2f} coins.")
             lines.append(
-                f"\n**IMPORTANT - Budget Constraint:**\n"
-                f"You currently have {current_wallet:.2f} coins in your wallet. "
-                f"You cannot spend more than this amount. "
-                f"Make sure your total spending on punishments/rewards does not exceed {current_wallet:.2f} coins."
+                f"You can {action_verb} up to {max_actions} player(s) "
+                f"(at {self.config.peer_incentive_cost} coins per {action_noun})."
             )
 
-        # Output format
-        lines.append(f"\nFor each player below, decide the number of {'punishment/reward' if self.config.punishment_enabled and self.config.reward_enabled else 'punishment' if self.config.punishment_enabled else 'reward'} units (0 if none):")
-        for other in other_agents:
-            lines.append(f"- {other['avatar_name']}")
-
+        # CheckBox selection format
         lines.append("")
-        lines.append("**Output format (required):**")
-        lines.append("<REASONING>")
-        lines.append("Your strategic thinking and justification here...")
-        lines.append("</REASONING>")
-        lines.append("<REDISTRIBUTE>")
-        lines.append(f"A JSON array of exactly {len(other_agents)} integers, e.g., [0, 2, 1, 0]")
-        lines.append("</REDISTRIBUTE>")
+        lines.append(f"**Select which players you want to {action_verb}:**")
+        lines.append("(You can select multiple players, or none)")
+        lines.append("")
+        for other in other_agents:
+            lines.append(f"☐ {other['avatar_name']}")
 
         return "\n".join(lines)
 

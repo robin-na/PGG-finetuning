@@ -1,5 +1,0 @@
-experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
-exp_009_treatment,599cb3c2,exp_009_treatment_game1,1,agent_0,DOG,"Hi everyone! To maximize our earnings, should we consider forming an alliance in the initial rounds? Cooperation could create stability and benefit us all. Thoughts?",2026-01-02T00:54:38.665100
-exp_009_treatment,599cb3c2,exp_009_treatment_game1,1,agent_1,CHICKEN,"<REASONING>
-Aligning early with other players through cooperation can foster trust and stability. However, it's important to gauge others' willingness to commit genuinely. Suggesting specific cooperat...",2026-01-02T00:54:40.405393
-exp_009_treatment,599cb3c2,exp_009_treatment_game1,1,agent_2,CAT,I support forming an alliance. Let's define clear terms for cooperation to maximize our earnings and trust. Thoughts on how we can ensure fairness and commitment?,2026-01-02T00:54:41.891523

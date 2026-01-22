@@ -92,6 +92,24 @@ def calculate_efficiency_from_log(
         config_dict = config_data.get('config', config_data)
 
     # Create PGGConfig object
+    # Handle backward compatibility for old parameter names
+    # Old experiments used 'punishment_cost' and 'reward_cost'
+    # New experiments use unified 'peer_incentive_cost'
+    punishment_enabled = config_dict.get('punishment_enabled', False)
+    reward_enabled = config_dict.get('reward_enabled', False)
+
+    if 'peer_incentive_cost' in config_dict:
+        peer_incentive_cost = config_dict['peer_incentive_cost']
+    elif punishment_enabled:
+        # Old experiment with punishment - use punishment_cost
+        peer_incentive_cost = config_dict.get('punishment_cost', 1)
+    elif reward_enabled:
+        # Old experiment with reward - use reward_cost
+        peer_incentive_cost = config_dict.get('reward_cost', 1)
+    else:
+        # No incentive mechanism
+        peer_incentive_cost = 1
+
     config = PGGConfig(
         group_size=config_dict['group_size'],
         game_length=config_dict['game_length'],
@@ -103,11 +121,10 @@ def calculate_efficiency_from_log(
         communication_enabled=config_dict.get('communication_enabled', False),
         peer_outcome_visibility=config_dict.get('peer_outcome_visibility', True),
         actor_anonymity=config_dict.get('actor_anonymity', False),
-        punishment_enabled=config_dict.get('punishment_enabled', False),
-        punishment_cost=config_dict.get('punishment_cost', 1),
+        punishment_enabled=punishment_enabled,
+        peer_incentive_cost=peer_incentive_cost,
         punishment_impact=config_dict.get('punishment_impact', 3),
-        reward_enabled=config_dict.get('reward_enabled', False),
-        reward_cost=config_dict.get('reward_cost', 1),
+        reward_enabled=reward_enabled,
         reward_impact=config_dict.get('reward_impact', 1.0),
         llm_model=config_dict.get('llm_model', 'gpt-4o'),
         llm_temperature=config_dict.get('llm_temperature', 1.0)

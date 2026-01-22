@@ -1,8 +1,0 @@
-experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
-exp_013_treatment,af431917,exp_013_treatment_game1,1,agent_0,DOG,"Let's maximize our earnings by cooperating. If we all choose the collaborative strategy, we can ensure the best payoff for everyone. Thoughts?",2026-01-02T01:17:52.057052
-exp_013_treatment,af431917,exp_013_treatment_game1,1,agent_1,CHICKEN,"<REASONING>
-Cooperating can lead to the best outcome for all if everyone commits. However, trust is needed, as deviation may provide short-term gain for defectors. Convey my willingness to cooperate, but stress the importance of on-time commitment to deter defection.
-</REASONING>
-<MESSAGE>
-I agree with collaborating for maximum joint payoff. Let's commit to this strategy to ensure mutual benefit and deter any temptation to defect. Are we all in?",2026-01-02T01:17:53.674529
-exp_013_treatment,af431917,exp_013_treatment_game1,1,agent_2,CAT,"Agreed, cooperation ensures optimal results for everyone. Let's all commit to this joint strategy and achieve the best payoff. Are we all aligned?",2026-01-02T01:17:55.111885

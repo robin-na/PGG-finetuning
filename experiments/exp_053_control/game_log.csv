@@ -1,0 +1,5 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
+exp_053_control,f3ba423a,exp_053_control_game1,1,agent_0,Alice,20,0,0,0,0,18.4,18.4,73.60000000000001,2026-01-21T23:37:30.738110
+exp_053_control,f3ba423a,exp_053_control_game1,1,agent_1,Bob,20,0,0,0,0,18.4,18.4,73.60000000000001,2026-01-21T23:37:30.738133
+exp_053_control,f3ba423a,exp_053_control_game1,1,agent_2,Charlie,20,0,0,0,0,18.4,18.4,73.60000000000001,2026-01-21T23:37:30.738146
+exp_053_control,f3ba423a,exp_053_control_game1,1,agent_3,Diana,20,0,0,0,0,18.4,18.4,73.60000000000001,2026-01-21T23:37:30.738157

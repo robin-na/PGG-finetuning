@@ -1,9 +1,0 @@
-experiment_id,config_hash,game_id,round,actor_id,actor_name,target_id,target_name,type,units_decided,units_actual,was_scaled,cost,impact,timestamp
-exp_008_treatment,979847fc,exp_008_treatment_game1,1,agent_0,DOG,agent_1,CHICKEN,punishment,1,1,False,2,3,2026-01-02T00:54:20.812050
-exp_008_treatment,979847fc,exp_008_treatment_game1,1,agent_0,DOG,agent_2,CAT,punishment,1,1,False,2,3,2026-01-02T00:54:20.812247
-exp_008_treatment,979847fc,exp_008_treatment_game1,1,agent_0,DOG,agent_3,FISH,punishment,1,1,False,2,3,2026-01-02T00:54:20.812277
-exp_008_treatment,979847fc,exp_008_treatment_game1,1,agent_0,DOG,agent_4,BIRD,punishment,1,1,False,2,3,2026-01-02T00:54:20.812296
-exp_008_treatment,979847fc,exp_008_treatment_game1,1,agent_3,FISH,agent_0,DOG,punishment,1,1,False,2,3,2026-01-02T00:54:33.355804
-exp_008_treatment,979847fc,exp_008_treatment_game1,1,agent_3,FISH,agent_1,CHICKEN,punishment,1,1,False,2,3,2026-01-02T00:54:33.355994
-exp_008_treatment,979847fc,exp_008_treatment_game1,1,agent_3,FISH,agent_2,CAT,punishment,1,1,False,2,3,2026-01-02T00:54:33.356007
-exp_008_treatment,979847fc,exp_008_treatment_game1,1,agent_3,FISH,agent_4,BIRD,punishment,1,1,False,2,3,2026-01-02T00:54:33.356016

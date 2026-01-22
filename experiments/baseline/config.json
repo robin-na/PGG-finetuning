@@ -1,0 +1,25 @@
+{
+  "experiment_id": "baseline",
+  "config_hash": "96557df7",
+  "timestamp": "2026-01-21T23:13:18.880766",
+  "config": {
+    "group_size": 4,
+    "game_length": 10,
+    "endowment": 20,
+    "horizon_knowledge": "known",
+    "mpcr": 0.4,
+    "multiplier": 1.6,
+    "contribution_type": "variable",
+    "contribution_framing": "opt_in",
+    "communication_enabled": false,
+    "peer_outcome_visibility": true,
+    "actor_anonymity": false,
+    "punishment_enabled": true,
+    "reward_enabled": false,
+    "peer_incentive_cost": 2,
+    "punishment_impact": 3,
+    "reward_impact": 1.0,
+    "llm_model": "gpt-4o",
+    "llm_temperature": 0.5
+  }
+}
