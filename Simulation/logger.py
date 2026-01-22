@@ -314,7 +314,7 @@ class ExperimentLogger:
             round_num: Round number
             agent_id: Agent identifier
             avatar_name: Agent's avatar name
-            prompt_type: Type of prompt (contribution/chat/redistribution)
+            prompt_type: Type of prompt (contribution/chat/punishment_reward)
             raw_response: The raw LLM response text
             parsed_result: The parsed/extracted value
         """
@@ -396,7 +396,7 @@ class ExperimentLogger:
             game_id: Game identifier
             round_num: Round number
             agent_id: Agent identifier
-            prompt_type: Type of prompt (e.g., "contribution", "redistribution", "chat")
+            prompt_type: Type of prompt (e.g., "contribution", "punishment_reward", "chat")
             prompt: The full prompt text
         """
         prompt_dir = self.base_dir / "prompts"

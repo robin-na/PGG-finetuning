@@ -302,11 +302,11 @@ def run_single_game(
                 print(f"[DEBUG] Logged {len(rewards)} reward details")
 
             if not punishments and not rewards and verbose:
-                print("  (No redistribution actions)")
+                print("  (No punishment/reward actions)")
             if verbose:
                 print()
 
-        # Apply redistribution to payoffs
+        # Apply punishment/reward adjustments to payoffs
         adjustments = env.apply_redistribution(punishments, rewards, base_payoffs)
         final_payoffs = {
             agent_id: base_payoffs[agent_id] + adjustments[agent_id]

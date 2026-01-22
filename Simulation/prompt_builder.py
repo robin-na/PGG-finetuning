@@ -7,7 +7,7 @@ implementing the "Agent Perception" layer that determines what LLMs see.
 Key features:
 - Scenario descriptions explaining game rules
 - Contribution prompts with framing (opt-in vs opt-out)
-- Redistribution prompts with visibility filtering
+- Punishment/reward prompts with visibility filtering
 - Chat prompts (if communication enabled)
 - Historical context from previous rounds
 """
@@ -135,7 +135,9 @@ class PromptBuilder:
         lines.append("")  # Blank line
 
         # Punishment/Reward
-        lines.append("After contribution and redistribution, you will see how much each player contributed to the public fund.")
+        lines.append(
+            "After contribution and public fund redistribution, you will see how much each player contributed to the public fund."
+        )
 
         if self.config.punishment_enabled:
             lines.append(
@@ -289,7 +291,7 @@ class PromptBuilder:
 
         return "\n".join(lines)
 
-    def build_redistribution_prompt(
+    def build_punishment_reward_prompt(
         self,
         agent_id: str,
         agent_name: str,
@@ -401,7 +403,7 @@ class PromptBuilder:
 
         # Redistribution stage
         total_contrib = sum(round_state.contributions.values())
-        lines.append(f"### Redistribution Stage")
+        lines.append("### Redistribution Stage (Public Fund Allocation)")
         lines.append(
             f"Total group contribution is {total_contrib} {pluralize(total_contrib)}, "
             f"multiplied by {self.config.multiplier} => {round_state.public_fund} {pluralize(round_state.public_fund)} "
@@ -418,6 +420,7 @@ class PromptBuilder:
 
         # Punishment/Reward feedback (anonymity-dependent)
         if self.config.punishment_enabled or self.config.reward_enabled:
+            lines.append("### Punishment/Reward Stage")
             # Calculate what this agent received
             punishments_received = []
             rewards_received = []

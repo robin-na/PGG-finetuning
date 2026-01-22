@@ -136,6 +136,37 @@ llm_model: str = "gpt-4"
 llm_temperature: float = 1.0
 ```
 
+#### Backend Selection
+
+By default, the simulation uses OpenAI. To switch providers, set `LLM_BACKEND` or enable
+auto routing with `LLM_BACKEND_STRATEGY=auto` (or `LLM_BACKEND=auto`):
+
+```bash
+# OpenAI (default)
+export OPENAI_API_KEY="your-api-key"
+
+# Auto routing (OpenAI for gpt-4/gpt-4o/gpt-3.5 prefixes, otherwise vLLM if healthy, else HF)
+export LLM_BACKEND_STRATEGY="auto"
+export OPENAI_API_KEY="your-api-key"
+export VLLM_BASE_URL="http://localhost:8000/v1"
+export HF_MODEL_ID="meta-llama/Llama-3.1-8B-Instruct"
+export HF_TOKEN="your-hf-token"
+
+# vLLM (OpenAI-compatible server)
+export LLM_BACKEND="vllm"
+export VLLM_BASE_URL="http://localhost:8000/v1"
+# Optional: VLLM_API_KEY (if your server requires it)
+
+# Hugging Face Inference API
+export LLM_BACKEND="hf"
+export HF_MODEL_ID="meta-llama/Llama-3.1-8B-Instruct"
+export HF_TOKEN="your-hf-token"
+# Optional: local PEFT adapter path (requires transformers + peft)
+export HF_PEFT_PATH="/path/to/adapter"
+```
+
+The `LLMClient` API is unchanged; you can continue using `LLMClient(model=..., temperature=...)`. For Hugging Face, `model` defaults to `HF_MODEL_ID` unless you pass one explicitly. For vLLM, `model` is forwarded to the server (e.g., the model name you started vLLM with).
+
 ## Architecture
 
 ### Module Overview
@@ -244,8 +275,74 @@ experiments/
     {experiment_name}/
         config.json          # Full configuration
         game_log.csv        # Round-by-round data
+        raw_responses.csv   # Raw LLM outputs with prompt_type labels
+        chat_messages.csv   # Per-round chat messages
+        redistribution_details.csv  # Punishment/reward action details
         prompts/            # Individual prompts (optional)
             {game_id}_r{round}_{agent_id}_{type}.txt
+```
+
+### Raw Responses Prompt Types
+
+`raw_responses.csv` includes a `prompt_type` column with values such as `chat`, `contribution`,
+and `punishment_reward`. The punishment/reward prompt type was previously logged as
+`redistribution`; update any readers that filter on `redistribution` to also accept
+`punishment_reward` when working with newer logs.
+
+### Validation Config Manifest
+
+The validation experiment configs are collected into a single manifest at:
+
+```
+data/validation_configs.json
+```
+
+Each entry uses the normalized schema below:
+
+```json
+{
+  "experiment_id": "VALIDATION_1_C",
+  "config": {
+    "group_size": 3,
+    "game_length": 16,
+    "endowment": 20,
+    "horizon_knowledge": "known",
+    "mpcr": 0.67,
+    "multiplier": 2,
+    "contribution_type": "variable",
+    "contribution_framing": "opt_in",
+    "communication_enabled": false,
+    "peer_outcome_visibility": true,
+    "actor_anonymity": true,
+    "punishment_enabled": false,
+    "punishment_cost": 1,
+    "punishment_impact": 2,
+    "reward_enabled": false,
+    "reward_cost": 1,
+    "reward_impact": 1,
+    "llm_model": "gpt-4o",
+    "llm_temperature": 1.0
+  }
+}
+```
+
+Generate or refresh the manifest with:
+
+```bash
+python scripts/export_validation_configs.py
+```
+
+Run the full validation batch directly from the manifest (each `experiment_id`
+becomes its output directory under `experiments/`):
+
+```bash
+python run_validation_experiments.py --manifest-path data/validation_configs.json
+```
+
+To reduce console output while running the batch:
+
+```bash
+python run_validation_experiments.py --manifest-path data/validation_configs.json --quiet
 ```
 
 ### CSV Format
@@ -265,6 +362,8 @@ This format matches the existing data structure from `player-rounds.csv`.
 - Using GPT-4: ~$0.045 per 1K tokens
 - Typical prompt: ~500 tokens, response: ~50 tokens
 - **Estimated cost per experiment: $2-5 USD**
+
+For open-source backends (vLLM or Hugging Face), the client does not assign any per-token cost (cost remains $0 in the usage summary).
 
 To track costs in real-time:
 ```python
