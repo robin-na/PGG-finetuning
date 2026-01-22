@@ -40,10 +40,10 @@ class PGGConfig:
     5. Incentive Mechanisms:
        - punishment_enabled: Whether punishment is available
        - punishment_cost: Cost to punisher per unit (1-4 coins)
-       - punishment_impact: Deduction to target per unit (1-4 coins)
+       - punishment_impact: Deduction to target per unit (1-11 coins)
        - reward_enabled: Whether rewards are available
        - reward_cost: Cost to rewarder per unit (1-4 coins)
-       - reward_impact: Addition to target per unit (0.5-1.5 coins)
+       - reward_impact: Addition to target per unit (0.5-5 coins)
     """
 
     # ===== Game Structure =====
@@ -67,12 +67,12 @@ class PGGConfig:
     # ===== Punishment Mechanism =====
     punishment_enabled: bool = False
     punishment_cost: int = 1  # Cost to punisher per unit (1-4)
-    punishment_impact: int = 3  # Deduction to target per unit (1-4)
+    punishment_impact: int = 3  # Deduction to target per unit (1-11)
 
     # ===== Reward Mechanism =====
     reward_enabled: bool = False
     reward_cost: int = 1  # Cost to rewarder per unit (1-4)
-    reward_impact: float = 1.0  # Addition to target per unit (0.5-1.5)
+    reward_impact: float = 1.0  # Addition to target per unit (0.5-5)
 
     # ===== LLM Settings =====
     llm_model: str = "gpt-4o"
@@ -107,12 +107,16 @@ class PGGConfig:
         # Punishment validation
         if self.punishment_enabled:
             assert 1 <= self.punishment_cost <= 4, f"punishment_cost must be 1-4, got {self.punishment_cost}"
-            assert 1 <= self.punishment_impact <= 4, f"punishment_impact must be 1-4, got {self.punishment_impact}"
+            assert 1 <= self.punishment_impact <= 11, (
+                f"punishment_impact must be 1-11, got {self.punishment_impact}"
+            )
 
         # Reward validation
         if self.reward_enabled:
             assert 1 <= self.reward_cost <= 4, f"reward_cost must be 1-4, got {self.reward_cost}"
-            assert 0.5 <= self.reward_impact <= 1.5, f"reward_impact must be 0.5-1.5, got {self.reward_impact}"
+            assert 0.5 <= self.reward_impact <= 5, (
+                f"reward_impact must be 0.5-5, got {self.reward_impact}"
+            )
 
 
 # ===== Example Configurations =====
