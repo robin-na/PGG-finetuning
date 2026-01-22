@@ -15,11 +15,11 @@
     "peer_outcome_visibility": false,
     "actor_anonymity": false,
     "punishment_enabled": false,
-    "punishment_cost": 0.15,
-    "punishment_impact": 1.33,
+    "punishment_cost": 3,
+    "punishment_impact": 4,
     "reward_enabled": true,
     "reward_cost": 3,
-    "reward_impact": 0.67,
+    "reward_impact": 2,
     "llm_model": "gpt-4o",
     "llm_temperature": 1.0
   }

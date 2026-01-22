@@ -15,7 +15,7 @@
     "peer_outcome_visibility": true,
     "actor_anonymity": true,
     "punishment_enabled": true,
-    "punishment_cost": 0.05,
+    "punishment_cost": 1,
     "punishment_impact": 2,
     "reward_enabled": false,
     "reward_cost": 1,
