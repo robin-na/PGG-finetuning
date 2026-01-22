@@ -1,14 +1,18 @@
 """
-LLM client for OpenAI API integration with retry logic.
+LLM client with auto-routing across OpenAI, vLLM, and Hugging Face backends.
 
 This module provides a wrapper around the OpenAI API with robust error handling,
-exponential backoff for rate limits, and cost tracking.
+exponential backoff for rate limits, and cost tracking. It also supports an
+auto-routing strategy that selects OpenAI for known OpenAI model prefixes, then
+falls back to vLLM or Hugging Face based on availability.
 """
 
 from dataclasses import dataclass
 import os
 import time
 from typing import Optional
+from urllib import request
+from urllib.error import URLError
 
 from openai import OpenAI, RateLimitError, APIError
 
@@ -218,11 +222,36 @@ class HFBackend(BaseLLMBackend):
         return BackendResult(text=result_text, tokens_used=0, cost_usd=0.0)
 
 
+OPENAI_MODEL_PREFIXES = ("gpt-4o", "gpt-4", "gpt-3.5", "gpt-35")
+
+
+def _is_openai_model(model: str) -> bool:
+    model_lower = model.lower()
+    return any(model_lower.startswith(prefix) for prefix in OPENAI_MODEL_PREFIXES)
+
+
+def _vllm_is_available(base_url: str, api_key: Optional[str]) -> bool:
+    base_url = base_url.rstrip("/")
+    models_url = f"{base_url}/models"
+    headers = {"Accept": "application/json"}
+    if api_key:
+        headers["Authorization"] = f"Bearer {api_key}"
+    req = request.Request(models_url, headers=headers, method="GET")
+    try:
+        with request.urlopen(req, timeout=2) as response:
+            return 200 <= response.status < 300
+    except URLError:
+        return False
+    except Exception:
+        return False
+
+
 class LLMClient:
     """Client for making LLM API calls with retry logic.
 
     This class handles:
     - Backend selection (OpenAI, vLLM, Hugging Face)
+    - Auto routing (OpenAI for known prefixes; vLLM if available; HF fallback)
     - Request execution with exponential backoff on rate limits
     - Error handling and logging
     - Token usage tracking
@@ -244,7 +273,8 @@ class LLMClient:
             model: OpenAI model name (e.g., "gpt-4", "gpt-4o", "gpt-3.5-turbo")
             temperature: Sampling temperature (0.0 = deterministic, 2.0 = very random)
             api_key: OpenAI API key (if None, reads from OPENAI_API_KEY env var)
-            backend: Backend selector ("openai", "vllm", "hf"). Defaults to LLM_BACKEND env var.
+            backend: Backend selector ("openai", "vllm", "hf", "auto"). Defaults to
+                LLM_BACKEND_STRATEGY, then LLM_BACKEND, then "openai".
             vllm_base_url: Optional override for VLLM_BASE_URL
             hf_token: Optional override for HF_TOKEN
             hf_peft_path: Optional override for HF_PEFT_PATH (local PEFT adapter)
@@ -261,18 +291,39 @@ class LLMClient:
         self.total_tokens = 0
         self.total_cost_usd = 0.0
 
-        backend_name = (backend or os.getenv("LLM_BACKEND", "openai")).lower()
+        backend_name = (
+            backend
+            or os.getenv("LLM_BACKEND_STRATEGY")
+            or os.getenv("LLM_BACKEND", "openai")
+        ).lower()
+        if backend_name == "auto":
+            backend_name = "openai" if _is_openai_model(self.model) else "vllm"
+
         if backend_name == "openai":
             self.backend = OpenAIBackend(model=self.model, temperature=self.temperature, api_key=self.api_key)
         elif backend_name == "vllm":
-            self.backend = VLLMBackend(
-                model=self.model,
-                temperature=self.temperature,
-                api_key=self.api_key,
-                base_url=vllm_base_url
-            )
+            resolved_vllm_base_url = vllm_base_url or os.getenv("VLLM_BASE_URL", "http://localhost:8000/v1")
+            vllm_available = _vllm_is_available(resolved_vllm_base_url, self.api_key or os.getenv("VLLM_API_KEY"))
+            if vllm_available:
+                self.backend = VLLMBackend(
+                    model=self.model,
+                    temperature=self.temperature,
+                    api_key=self.api_key,
+                    base_url=resolved_vllm_base_url
+                )
+            else:
+                print(
+                    "vLLM backend unavailable. Falling back to Hugging Face inference backend."
+                )
+                hf_model = None if _is_openai_model(self.model) else self.model
+                self.backend = HFBackend(
+                    model=hf_model,
+                    temperature=self.temperature,
+                    token=hf_token,
+                    peft_adapter_path=hf_peft_path
+                )
         elif backend_name == "hf":
-            hf_model = None if self.model == "gpt-4" else self.model
+            hf_model = None if _is_openai_model(self.model) else self.model
             self.backend = HFBackend(
                 model=hf_model,
                 temperature=self.temperature,
