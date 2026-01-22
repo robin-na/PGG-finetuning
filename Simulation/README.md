@@ -138,11 +138,19 @@ llm_temperature: float = 1.0
 
 #### Backend Selection
 
-By default, the simulation uses OpenAI. To switch providers, set `LLM_BACKEND`:
+By default, the simulation uses OpenAI. To switch providers, set `LLM_BACKEND` or enable
+auto routing with `LLM_BACKEND_STRATEGY=auto` (or `LLM_BACKEND=auto`):
 
 ```bash
 # OpenAI (default)
 export OPENAI_API_KEY="your-api-key"
+
+# Auto routing (OpenAI for gpt-4/gpt-4o/gpt-3.5 prefixes, otherwise vLLM if healthy, else HF)
+export LLM_BACKEND_STRATEGY="auto"
+export OPENAI_API_KEY="your-api-key"
+export VLLM_BASE_URL="http://localhost:8000/v1"
+export HF_MODEL_ID="meta-llama/Llama-3.1-8B-Instruct"
+export HF_TOKEN="your-hf-token"
 
 # vLLM (OpenAI-compatible server)
 export LLM_BACKEND="vllm"
