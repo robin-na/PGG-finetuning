@@ -314,6 +314,19 @@ Generate or refresh the manifest with:
 python scripts/export_validation_configs.py
 ```
 
+Run the full validation batch directly from the manifest (each `experiment_id`
+becomes its output directory under `experiments/`):
+
+```bash
+python run_validation_experiments.py --manifest-path data/validation_configs.json
+```
+
+To reduce console output while running the batch:
+
+```bash
+python run_validation_experiments.py --manifest-path data/validation_configs.json --quiet
+```
+
 ### CSV Format
 
 ```csv
