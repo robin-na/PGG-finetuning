@@ -1,0 +1,791 @@
+# run_simulation_ft_participant_fullhistory_debug.py
+# ==================================================
+# PARTICIPANT-VIEW simulator (full-history prompts + full debug prints)
+# - One inference per agent per stage per round (contrib first for ALL, then actions for ALL)
+# - Full transcript history is used for every prompt (per agent)
+# - No leakage during contribution: prompt ends at that agent's <CONTRIB> opening in this round
+# - ACTIONS: model now outputs an ARRAY aligned to <PEERS_CONTRIBUTIONS> order, NOT a JSON object
+#   · reward-only: array of nonnegative ints  (each index = peer in <PEERS_CONTRIBUTIONS>)
+#   · punish-only: array of nonpositive ints  (each index = peer in <PEERS_CONTRIBUTIONS>)
+#   · both:        array of signed ints       (positive = reward units, negative = punishment units)
+# - We still save CSV with dicts: data.punished, data.rewarded = {AVATAR: units}
+# - SDPA/Flash attention on CUDA when available
+# - Dedup env_df by 'name'
+# - Auto-timestamp outputs: YYMMDDHHMM appended
+# - Base-model-only mode (skip PEFT) via --use_peft False or empty adapter_path
+# - Per-call timing + full prompt and raw output logging; optional JSONL sink
+
+from __future__ import annotations
+import os, sys, json, math, re, time, random, csv, datetime, ast
+from dataclasses import dataclass, field
+from typing import Dict, List, Tuple, Any, Optional
+
+import torch
+import pandas as pd
+from transformers import AutoModelForCausalLM, AutoTokenizer, HfArgumentParser
+from peft import PeftModel
+
+# -------------------------
+# Always-flushed logging
+# -------------------------
+def log(*args, **kwargs):
+    kwargs.setdefault("flush", True)
+    print(*args, **kwargs)
+
+try:
+    sys.stdout.reconfigure(line_buffering=True)
+except Exception:
+    pass
+
+# -------------------------
+# Fast attention (SDPA/Flash) toggles
+# -------------------------
+if torch.cuda.is_available():
+    try:
+        torch.backends.cuda.matmul.allow_tf32 = True
+        torch.backends.cudnn.allow_tf32 = True
+        torch.backends.cuda.sdp_kernel(enable_flash=True, enable_mem_efficient=True, enable_math=False)
+        log("[attn] SDPA flash enabled (flash=True, mem_efficient=True, math=False)")
+    except Exception as e:
+        log("[attn] Could not enable SDPA flash:", e)
+
+# -------------------------
+# Small utils
+# -------------------------
+def _timestamp_YYMMDDHHMM() -> str:
+    return datetime.datetime.now().strftime("%y%m%d%H%M")
+
+def _with_timestamp(path: Optional[str], ts: str) -> Optional[str]:
+    if not path:
+        return None
+    d, base = os.path.split(path)
+    if not base:
+        return path
+    if "." in base:
+        stem, ext = base.rsplit(".", 1)
+        base_ts = f"{stem}_{ts}.{ext}"
+    else:
+        base_ts = f"{base}_{ts}"
+    return os.path.join(d, base_ts)
+
+# -------------------------
+# Low-level generation utils
+# -------------------------
+def _load_model(base_model: str, adapter_path: Optional[str], use_peft: bool):
+    device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
+    dtype = (
+        torch.bfloat16 if (device == "cuda" and torch.cuda.is_bf16_supported())
+        else (torch.float16 if device in ("cuda", "mps") else torch.float32)
+    )
+
+    tok = AutoTokenizer.from_pretrained(base_model, use_fast=True)
+    if tok.pad_token is None:
+        tok.pad_token = tok.eos_token
+    tok.padding_side = "left"   # left pad for decoder-only
+
+    try:
+        model = AutoModelForCausalLM.from_pretrained(
+            base_model,
+            torch_dtype=dtype,
+            low_cpu_mem_usage=True,
+            attn_implementation="sdpa",
+        )
+    except Exception:
+        model = AutoModelForCausalLM.from_pretrained(
+            base_model,
+            torch_dtype=dtype,
+            low_cpu_mem_usage=True,
+        )
+
+    if device != "cpu":
+        model = model.to(device)
+
+    if use_peft and adapter_path:
+        model = PeftModel.from_pretrained(model, adapter_path)
+        if device != "cpu":
+            model = model.to(device)
+
+    model.eval()
+    log(f"[model] device={model.device} dtype={dtype} attn_impl={getattr(model.config,'attn_implementation',None)} use_cache={getattr(model.config,'use_cache',None)} peft={use_peft and bool(adapter_path)}")
+    if str(model.device).startswith("cpu"):
+        log("[warn] model on CPU → expect slow inference")
+    return tok, model
+
+
+@torch.inference_mode()
+def _batch_generate_until(
+    tok: AutoTokenizer,
+    model: AutoModelForCausalLM,
+    prompts: List[str],
+    stop: Optional[str] = None,          # e.g., ']' for arrays
+    max_new_tokens: int = 32,
+    temperature: float = 0.0,
+    top_p: float = 1.0,
+    seed: int = 0,
+) -> List[str]:
+    """
+    Generate continuations for a batch of prompts and (optionally) cut at the first occurrence of `stop`.
+    Returns the raw generated strings (decoded new text only, not including the prompts).
+    """
+    if seed is not None:
+        torch.manual_seed(seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(seed)
+
+    inputs = tok(prompts, return_tensors="pt", padding=True, truncation=True)
+    inputs = {k: v.to(model.device) for k, v in inputs.items()}
+
+    gen_out = model.generate(
+        **inputs,
+        do_sample=temperature > 0.0,
+        temperature=temperature,
+        top_p=top_p,
+        max_new_tokens=max_new_tokens,
+        pad_token_id=tok.pad_token_id,
+        eos_token_id=tok.eos_token_id,
+        use_cache=True,
+    )
+
+    out_texts = []
+    for i in range(len(prompts)):
+        prompt_len = inputs["input_ids"][i].shape[-1]
+        gen_ids = gen_out[i][prompt_len:]
+        new_text = tok.decode(gen_ids, skip_special_tokens=True)
+        if stop:
+            cut_idx = new_text.find(stop)
+            if cut_idx != -1:
+                new_text = new_text[:cut_idx]
+        out_texts.append(new_text)
+    return out_texts
+
+
+def _first_int(s: str) -> int:
+    m = re.search(r"-?\d+", s)
+    if not m:
+        raise ValueError("No integer found")
+    return int(m.group(0))
+
+
+# --- NEW: robust array parser (first top-level [ ... ]) ---
+def _parse_first_int_array(s: str) -> Optional[List[int]]:
+    if not isinstance(s, str):
+        return None
+
+    # Find first bracketed region
+    lb = s.find("[")
+    rb = s.find("]", lb + 1) if lb != -1 else -1
+    if lb == -1 or rb == -1 or rb <= lb:
+        # try to be forgiving: maybe the caller clipped at ']'
+        if lb != -1:
+            tail = s[lb:] + "]"
+            try:
+                arr = json.loads(tail)
+                if isinstance(arr, list):
+                    return [int(x) for x in arr]
+            except Exception:
+                try:
+                    arr = ast.literal_eval(tail)
+                    if isinstance(arr, list):
+                        return [int(x) for x in arr]
+                except Exception:
+                    return None
+        return None
+
+    chunk = s[lb:rb + 1]
+
+    # Try JSON then literal_eval
+    for loader in (json.loads, ast.literal_eval):
+        try:
+            arr = loader(chunk)
+            if isinstance(arr, list):
+                return [int(x) for x in arr]
+        except Exception:
+            pass
+    return None
+
+
+# -------------------------
+# Text protocol builders
+# -------------------------
+def _system_header(env: Dict) -> str:
+    lines = []
+    lines.append("<|begin_of_text|><|start_header_id|>system<|end_header_id|>")
+    lines.append("You are playing an online public goods game (PGG).")
+    lines.append("For contributions, output ONLY a single integer at the <CONTRIB> tag (no extra text).")
+    # If chat exists, mention it but do not include chat content anywhere.
+    if env.get("CONFIG_chat", False):
+        lines.append("You can chat with other players during the round.")
+
+    # ACTIONS: arrays aligned to <PEERS_CONTRIBUTIONS>
+    if env.get("CONFIG_punishmentExists", False) and env.get("CONFIG_rewardExists", False):
+        lines.append("After contributions, decide whom to punish/reward and by how many units.")
+        lines.append("At the <PUNISHMENTS_REWARDS> tag, output ONLY an array of integers aligned to the avatar order shown in <PEERS_CONTRIBUTIONS> (positive=rewards, negative=punishments, 0=neither).")
+    elif env.get("CONFIG_punishmentExists", False):
+        lines.append("After contributions, decide whom to punish and by how many units.")
+        lines.append("At the <PUNISHMENTS> tag, output ONLY an array of integers aligned to the avatar order shown in <PEERS_CONTRIBUTIONS>, each ≤ 0 (−n means punish by n units).")
+    elif env.get("CONFIG_rewardExists", False):
+        lines.append("After contributions, decide whom to reward and by how many units.")
+        lines.append("At the <REWARDS> tag, output ONLY an array of integers aligned to the avatar order shown in <PEERS_CONTRIBUTIONS>, each ≥ 0.")
+    lines.append("<|eot_id|>")
+    return "\n".join(lines)
+
+
+def _round_open(env: Dict, r: int) -> str:
+    if env.get("CONFIG_showNRounds", False):
+        return f'<ROUND i="{r} of {env["CONFIG_numRounds"]}">'
+    return f'<ROUND i="{r}">'
+
+def _round_info_line(env: Dict) -> str:
+    endow = int(env.get("CONFIG_endowment", 0) or 0)
+    aon = bool(env.get("CONFIG_allOrNothing", False))
+    contrib_mode = f"either 0 or {endow}" if aon else f"integer from 0 to {endow}"
+    if env.get("CONFIG_defaultContribProp", False):
+        pre = (f"{endow} coins are currently in the public fund, and you will contribute the remainder of the coins "
+               f"you choose to take for yourself. Choose the amount to contribute ({contrib_mode}).")
+    else:
+        pre = (f"{endow} coins are currently in your private pocket. "
+               f"Choose the amount to contribute ({contrib_mode}).")
+    mult = env.get("CONFIG_multiplier", "Unknown")
+    return f"<ROUND_INFO> {pre} (multiplier: {mult}×). </ROUND_INFO>"
+
+def _contrib_open() -> str:
+    return "<CONTRIB>"
+
+def _contrib_close_filled(val: Any) -> str:
+    return f"<CONTRIB> {val} </CONTRIB>"
+
+def _redist_line(total_contrib: int, multiplied: float, active_players: int) -> str:
+    m_str = f"{multiplied:.1f}" if isinstance(multiplied, (int, float)) and not math.isnan(multiplied) else ""
+    # Also report redistributed_each like transcript2 does
+    per = (multiplied / active_players) if active_players > 0 else float("nan")
+    per_str = f'{per:.1f}' if isinstance(per, (int, float)) and not math.isnan(per) else "NA"
+    return f'<REDIST total_contrib="{total_contrib}" multiplied_contrib="{m_str}" active_players="{active_players}" redistributed_each="{per_str}"/>'
+
+def _peers_contributions_csv(roster: List[str], focal: str, contrib_math: Dict[str, int]) -> Tuple[str, List[str]]:
+    """Return 'AV1=val,AV2=val,...' for peers (excluding focal) in roster order + list order."""
+    peer_order = [av for av in roster if av != focal]
+    parts = [f"{av}={contrib_math.get(av, 'NA')}" for av in peer_order]
+    return ",".join(parts), peer_order
+
+def _mech_info(env: Dict) -> Optional[str]:
+    r_on = env.get("CONFIG_rewardExists", False)
+    p_on = env.get("CONFIG_punishmentExists", False)
+    if not (r_on or p_on):
+        return None
+    if r_on and p_on:
+        return (f"It will cost you, per reward unit, {env['CONFIG_rewardCost']} coins to give a reward of {env['CONFIG_rewardMagnitude']} coins. "
+                f"It will cost you, per punishment unit, {env['CONFIG_punishmentCost']} coins to impose a deduction of {env['CONFIG_punishmentMagnitude']} coins. "
+                "Choose whom to punish/reward and by how many units.")
+    if r_on:
+        return (f"It will cost you, per unit, {env['CONFIG_rewardCost']} coins to give a reward of {env['CONFIG_rewardMagnitude']} coins. "
+                "Choose whom to reward and by how many units.")
+    return (f"It will cost you, per unit, {env['CONFIG_punishmentCost']} coins to impose a deduction of {env['CONFIG_punishmentMagnitude']} coins. "
+            "Choose whom to punish and by how many units.")
+
+def _actions_tag(env: Dict) -> Optional[str]:
+    if env.get("CONFIG_punishmentExists", False) and env.get("CONFIG_rewardExists", False):
+        return "PUNISHMENTS_REWARDS"
+    if env.get("CONFIG_punishmentExists", False):
+        return "PUNISHMENTS"
+    if env.get("CONFIG_rewardExists", False):
+        return "REWARDS"
+    return None
+
+def _actions_open_array(tag: str) -> str:
+    # we open with tag and ' <<' so the model writes just the array
+    return f"<{tag}> <<"
+
+def _actions_close_filled_array(tag: str, vec: List[int]) -> str:
+    return f"{json.dumps([int(x) for x in vec])}>> </{tag}>"
+
+# Add a roster sampler (avatars always CAPITALIZED and without replacement):
+AVATAR_POOL = {
+    'chick','chicken','cow','crocodile','dog','duck','elephant','frog','gorilla',
+    'horse','monkey','moose','owl','parrot','pinguin','rabbit','sloth','snake',
+    'walrus','whale'
+}
+def sample_roster(env: pd.core.series.Series, seed: int = 0) -> list[str]:
+    import random
+    random.seed(seed)
+    pool = [a.upper() for a in AVATAR_POOL]
+    n = int(env["CONFIG_playerCount"])
+    if n > len(pool):
+        raise ValueError(f"ENV.players={n} exceeds avatar pool size={len(pool)}")
+    return random.sample(pool, k=n)
+
+# -----------------------------
+# Arguments
+# -----------------------------
+@dataclass
+class Args:
+    # model + adapter
+    base_model: str = field(default="meta-llama/Llama-3.1-8B-Instruct")
+    adapter_path: Optional[str] = field(default="out/llama31-8b-lora-pgg-ptc/checkpoint-489")
+    use_peft: bool = field(default=True)  # set False to use base model only
+
+    # data I/O
+    env_csv: str = field(default="df_analysis_val.csv")
+    rows_out_path: Optional[str] = field(default="output/participant_sim.csv")
+    transcripts_out_path: Optional[str] = field(default="output/participant_transcripts.jsonl")
+    debug_jsonl_path: Optional[str] = field(default="output/participant_debug.jsonl")
+
+    # generation params
+    temperature: float = 0.7
+    top_p: float = 0.9
+    seed: int = 0
+    contrib_max_new_tokens: int = 6
+    actions_max_new_tokens: int = 96  # arrays are short
+
+    # debug
+    debug_print: bool = True
+
+# -------------------------
+# Simulation (full history; per-agent prompts)
+# -------------------------
+def simulate_game(
+    env: pd.Series,
+    model,
+    tok,
+    temperature: float = 0.7,
+    top_p: float = 0.9,
+    seed: int = 0,
+    contrib_max_new_tokens: int = 6,
+    actions_max_new_tokens: int = 96,
+    rows_out_path: Optional[str] = None,
+    transcripts_out_path: Optional[str] = None,
+    debug_jsonl_path: Optional[str] = None,
+    debug_print: bool = True,
+) -> Tuple[pd.DataFrame, Dict[str, List[str]]]:
+
+    debug_records: List[Dict[str, Any]] = []
+
+    roster = sample_roster(env, seed=seed)
+    assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
+
+    sys_text = _system_header(env)
+
+    transcripts: Dict[str, List[str]] = {}
+    rows = []
+    game_id = env.get("name", "GAME")
+
+    for av in roster:
+        header = f"<META gameId='{game_id}' avatar='{av}'/>"
+        transcripts[av] = [sys_text, header, "# GAME STARTS"]
+
+    # CSV writer
+    csv_writer = None
+    csv_file = None
+    if rows_out_path:
+        os.makedirs(os.path.dirname(rows_out_path), exist_ok=True)
+        csv_file = open(rows_out_path, "w", newline="", encoding="utf-8")
+        csv_writer = csv.DictWriter(csv_file, fieldnames=[
+            "playerAvatar", "roundIndex", "gameId",
+            "data.contribution", "data.punished", "data.rewarded"
+        ])
+        csv_writer.writeheader()
+
+    # per-round stores
+    contrib_math: Dict[str, int] = {}
+    contrib_rec: Dict[str, Any] = {}
+
+    # Round loop
+    for r in range(1, int(env["CONFIG_numRounds"]) + 1):
+        # ---- Phase A: contributions (per agent; NO leakage) ----
+        contrib_prompts, contrib_meta = [], []
+        for av in roster:
+            transcripts[av].append(_round_open(env, r))
+            transcripts[av].append(_round_info_line(env))   # NEW: per-round reminder
+            transcripts[av].append(_contrib_open())
+            prompt = "\n".join(transcripts[av])
+            contrib_prompts.append(prompt)
+            contrib_meta.append(av)
+
+        # Log prompts if debugging
+        for av, ptxt in zip(contrib_meta, contrib_prompts):
+            if debug_print:
+                log(f"[ptc] {game_id} r={r:02d} {av} CONTRIB prompt_tokens≈{len(tok(ptxt, add_special_tokens=False)['input_ids'])}")
+                log("----- PROMPT (CONTRIB) -----"); log(ptxt)
+
+        t0 = time.perf_counter()
+        contrib_raw = _batch_generate_until(
+            tok, model, contrib_prompts,
+            stop=None,  # integer; we'll parse _first_int
+            max_new_tokens=contrib_max_new_tokens,
+            temperature=temperature, top_p=top_p, seed=seed
+        )
+        dt = time.perf_counter() - t0
+
+        contrib_math.clear(); contrib_rec.clear()
+        endow = int(env["CONFIG_endowment"])
+        for av, gen in zip(contrib_meta, contrib_raw):
+            if debug_print:
+                log(f"[ptc] {game_id} r={r:02d} {av} CONTRIB dt={dt/len(contrib_raw):.3f}s (avg per agent) out='{gen}'")
+            debug_records.append({
+                "game": game_id, "round": r, "agent": av, "phase": "contrib",
+                "dt_sec": dt/len(contrib_raw), "prompt_full": contrib_prompts[contrib_meta.index(av)],
+                "raw_output_full": gen
+            })
+            try:
+                val = _first_int(gen)
+                parsed_ok = True
+            except Exception:
+                val = 0
+                parsed_ok = False
+            if env.get("CONFIG_allOrNothing", False):
+                val = endow if val >= (endow // 2) else 0
+            else:
+                val = max(0, min(endow, val))
+            contrib_math[av] = int(val)
+            contrib_rec[av] = (float('nan') if not parsed_ok else int(val))
+            transcripts[av][-1] = _contrib_close_filled(contrib_rec[av] if parsed_ok else "NaN")
+
+        # ---- Phase B: redistribution & peers' contributions ----
+        total_contrib = sum(contrib_math.values())
+        try:
+            multiplied = float(env["CONFIG_multiplier"]) * float(total_contrib)
+        except Exception:
+            multiplied = float("nan")
+
+        active_players = len(roster)
+        for av in roster:
+            transcripts[av].append(_redist_line(total_contrib, multiplied, active_players))
+            peers_csv, peer_order = _peers_contributions_csv(roster, av, contrib_math)
+            transcripts[av].append(f"<PEERS_CONTRIBUTIONS> {peers_csv} </PEERS_CONTRIBUTIONS>")
+            # Store the peer order for this agent this round by sneaking it into a small marker line for debugging
+            transcripts[av].append(f"<!-- PEER_ORDER {json.dumps(peer_order)} -->")
+
+        # ---- Phase C: actions (per agent; after contributions are done) ----
+        reward_on = env.get("CONFIG_rewardExists", False)
+        punish_on = env.get("CONFIG_punishmentExists", False)
+        rewards_given: Dict[str, Dict[str, int]] = {av: {} for av in roster}
+        punish_given: Dict[str, Dict[str, int]] = {av: {} for av in roster}
+
+        if reward_on or punish_on:
+            actions_prompts, actions_meta, peer_orders = [], [], {}
+            tag = _actions_tag(env)
+            mech = _mech_info(env)
+
+            for av in roster:
+                # Recompute peer order from the debug marker we just wrote to transcripts[av]
+                # (or just use roster order minus self, identical here)
+                peer_order = [x for x in roster if x != av]
+                peer_orders[av] = peer_order
+
+                if mech:
+                    transcripts[av].append(f"<MECHANISM_INFO> {mech} </MECHANISM_INFO>")
+                transcripts[av].append(_actions_open_array(tag))  # e.g., "<PUNISHMENTS_REWARDS> <<"
+
+                prompt = "\n".join(transcripts[av])  # FULL history including this round's REDIST/PEERS + opening tag
+                actions_prompts.append(prompt)
+                actions_meta.append(av)
+                if debug_print:
+                    log(f"[ptc] {game_id} r={r:02d} {av} ACTIONS prompt_tokens≈{len(tok(prompt, add_special_tokens=False)['input_ids'])}")
+                    log("----- PROMPT (ACTIONS) -----"); log(prompt)
+
+            t1 = time.perf_counter()
+            # Stop at first closing bracket of the array
+            actions_raw = _batch_generate_until(
+                tok, model, actions_prompts,
+                stop="]",  # ARRAY end
+                max_new_tokens=actions_max_new_tokens,
+                temperature=temperature, top_p=top_p, seed=seed
+            )
+            dt_actions = time.perf_counter() - t1
+
+            for av, gen in zip(actions_meta, actions_raw):
+                raw = gen + "]"  # we truncated before ']', add it back for parsing
+                if debug_print:
+                    log(f"[ptc] {game_id} r={r:02d} {av} ACTIONS dt={dt_actions/len(actions_raw):.3f}s out='{raw}'")
+                debug_records.append({
+                    "game": game_id, "round": r, "agent": av, "phase": "actions",
+                    "dt_sec": dt_actions/len(actions_raw),
+                    "prompt_full": actions_prompts[actions_meta.index(av)],
+                    "raw_output_full": raw
+                })
+
+                arr = _parse_first_int_array(raw) or []
+                peer_order = peer_orders[av]
+                # Normalize length (truncate/pad)
+                if len(arr) < len(peer_order):
+                    arr = arr + [0] * (len(peer_order) - len(arr))
+                elif len(arr) > len(peer_order):
+                    arr = arr[:len(peer_order)]
+
+                # Enforce sign constraints
+                if reward_on and not punish_on:
+                    arr = [max(0, int(v)) for v in arr]
+                elif punish_on and not reward_on:
+                    arr = [min(0, int(v)) for v in arr]
+                else:
+                    arr = [int(v) for v in arr]
+
+                # Close the tag in transcript with the CLEANED array
+                transcripts[av].append(_actions_close_filled_array(tag, arr))
+
+                # Split into dicts for CSV
+                if reward_on:
+                    for j, v in enumerate(arr):
+                        if v > 0:
+                            tgt = peer_order[j]
+                            rewards_given[av][tgt] = int(v)
+                if punish_on:
+                    for j, v in enumerate(arr):
+                        if v < 0:
+                            tgt = peer_order[j]
+                            punish_given[av][tgt] = int(-v)  # store positive units in punished dict
+
+        # ---- Phase D: inbound + ROUND SUMMARY ----
+        showPunishId = env.get("CONFIG_showPunishmentId", False)
+        showRewardId = env.get("CONFIG_showRewardId", False)
+
+        inbound_reward_units = {av: 0 for av in roster}
+        inbound_punish_units = {av: 0 for av in roster}
+        for src in roster:
+            for tgt, u in rewards_given[src].items():
+                inbound_reward_units[tgt] += int(u)
+            for tgt, u in punish_given[src].items():
+                inbound_punish_units[tgt] += int(u)
+
+        num_players = int(env["CONFIG_playerCount"])
+        share = (float(multiplied) / num_players) if (isinstance(multiplied, (int, float)) and num_players > 0) else 0.0
+
+        for av in roster:
+            if showPunishId and env.get("CONFIG_punishmentExists", False):
+                punishers = {src: u for src in roster for (tgt, u) in punish_given[src].items() if tgt == av and u > 0}
+                if punishers:
+                    transcripts[av].append(f"<PUNISHED_BY json='{json.dumps(punishers, separators=(',', ':'))}'/>")
+            if showRewardId and env.get("CONFIG_rewardExists", False):
+                rewarders = {src: u for src in roster for (tgt, u) in rewards_given[src].items() if tgt == av and u > 0}
+                if rewarders:
+                    transcripts[av].append(f"<REWARDED_BY json='{json.dumps(rewarders, separators=(',', ':'))}'/>")
+
+        for av in roster:
+            f_pun_units = sum(punish_given[av].values()) if env.get("CONFIG_punishmentExists", False) else 0
+            f_rew_units = sum(rewards_given[av].values()) if env.get("CONFIG_rewardExists", False) else 0
+
+            you_dict: Dict[str, Any] = {}
+            if env.get("CONFIG_punishmentExists", False):
+                you_dict["coins_spent_on_punish"] = f_pun_units * int(env.get("CONFIG_punishmentCost", 0) or 0)
+                you_dict["coins_deducted_from_you"] = inbound_punish_units[av] * int(env.get("CONFIG_punishmentMagnitude", 0) or 0)
+            if env.get("CONFIG_rewardExists", False):
+                you_dict["coins_spent_on_reward"] = f_rew_units * int(env.get("CONFIG_rewardCost", 0) or 0)
+                you_dict["coins_rewarded_to_you"] = inbound_reward_units[av] * int(env.get("CONFIG_rewardMagnitude", 0) or 0)
+
+            endow = int(env["CONFIG_endowment"])
+            private_kept = endow - (0 if (isinstance(contrib_rec[av], float) and math.isnan(contrib_rec[av])) else int(contrib_rec[av]))
+            coins_spent_on_punish = you_dict.get("coins_spent_on_punish", 0)
+            coins_spent_on_reward = you_dict.get("coins_spent_on_reward", 0)
+            coins_deducted_from_you = you_dict.get("coins_deducted_from_you", 0)
+            coins_rewarded_to_you = you_dict.get("coins_rewarded_to_you", 0)
+            payoff = private_kept + share - coins_spent_on_punish - coins_spent_on_reward - coins_deducted_from_you + coins_rewarded_to_you
+            you_dict["payoff"] = int(payoff)
+
+            summary_obj = {f"{av} (YOU)": you_dict}
+
+            if env.get("CONFIG_showOtherSummaries", False):
+                others_block: Dict[str, Dict[str, int]] = {}
+                for other in roster:
+                    if other == av:
+                        continue
+                    ob: Dict[str, int] = {}
+                    if env.get("CONFIG_punishmentExists", False):
+                        o_pun_units = sum(punish_given[other].values())
+                        ob["coins_spent_on_punish"] = o_pun_units * int(env.get("CONFIG_punishmentCost", 0) or 0)
+                        coins_deducted_from_them = (
+                            sum(punish_given[src].get(other, 0) for src in roster) * int(env.get("CONFIG_punishmentMagnitude", 0) or 0)
+                        )
+                        ob["coins_deducted_from_them"] = coins_deducted_from_them
+                    if env.get("CONFIG_rewardExists", False):
+                        o_rew_units = sum(rewards_given[other].values())
+                        ob["coins_spent_on_reward"] = o_rew_units * int(env.get("CONFIG_rewardCost", 0) or 0)
+                        coins_rewarded_to_them = (
+                            sum(rewards_given[src].get(other, 0) for src in roster) * int(env.get("CONFIG_rewardMagnitude", 0) or 0)
+                        )
+                        ob["coins_rewarded_to_them"] = coins_rewarded_to_them
+
+                    endow = int(env["CONFIG_endowment"])
+                    private_kept_other = endow - int(contrib_math[other])
+                    spend_pun_other = ob.get("coins_spent_on_punish", 0)
+                    spend_rew_other = ob.get("coins_spent_on_reward", 0)
+                    payoff_other = (
+                        private_kept_other + share
+                        - spend_pun_other - spend_rew_other
+                        - ob.get("coins_deducted_from_them", 0) + ob.get("coins_rewarded_to_them", 0)
+                    )
+                    ob["payoff"] = int(payoff_other)
+                    others_block[other] = ob
+
+                summary_obj.update(others_block)
+
+            transcripts[av].append(
+                f"<ROUND SUMMARY json='{json.dumps(summary_obj, separators=(',', ':'))}'/>"
+            )
+            transcripts[av].append("</ROUND>")
+
+        # ---- Phase E: record CSV rows ----
+        for av in roster:
+            punished_str = json.dumps(punish_given[av], separators=(",", ":")) if env.get("CONFIG_punishmentExists", False) else None
+            rewarded_str = json.dumps(rewards_given[av], separators=(",", ":")) if env.get("CONFIG_rewardExists", False) else None
+
+            row = {
+                "playerAvatar": av,
+                "roundIndex": r,
+                "gameId": game_id,
+                "data.contribution": contrib_rec[av],
+                "data.punished": punished_str,
+                "data.rewarded": rewarded_str,
+            }
+            if csv_writer:
+                csv_writer.writerow(row)
+            rows.append(row)
+
+        if csv_file:
+            csv_file.flush()
+            os.fsync(csv_file.fileno())
+
+    if csv_file:
+        csv_file.close()
+
+    df = pd.DataFrame(rows)
+
+    # transcripts: one per agent
+    if transcripts_out_path:
+        os.makedirs(os.path.dirname(transcripts_out_path), exist_ok=True)
+        transcripts_str = {av: "\n".join(chunks) for av, chunks in transcripts.items()}
+        with open(transcripts_out_path, "w", encoding="utf-8") as f:
+            for av, text in transcripts_str.items():
+                f.write(json.dumps({"experiment": game_id, "participant": av, "text": text}, ensure_ascii=False) + "\n")
+
+    # debug JSONL
+    if debug_jsonl_path:
+        os.makedirs(os.path.dirname(debug_jsonl_path), exist_ok=True)
+        with open(debug_jsonl_path, "a", encoding="utf-8") as fdbg:
+            for rec in debug_records:
+                fdbg.write(json.dumps(rec, ensure_ascii=False) + "\n")
+
+    return df, transcripts
+
+# -------------------------
+# Orchestrate over envs
+# -------------------------
+def simulate_games(
+    env_df: pd.DataFrame,
+    base_model: str,
+    adapter_path: Optional[str],
+    use_peft: bool,
+    temperature: float,
+    top_p: float,
+    seed: int,
+    contrib_max_new_tokens: int,
+    actions_max_new_tokens: int,
+    rows_out_path: Optional[str],
+    transcripts_out_path: Optional[str],
+    debug_jsonl_path: Optional[str],
+    debug_print: bool,
+) -> Tuple[pd.DataFrame, Dict[str, Dict[str, str]], str, str, str]:
+
+    ts = _timestamp_YYMMDDHHMM()
+    rows_out_path_ts = _with_timestamp(rows_out_path, ts)
+    transcripts_out_path_ts = _with_timestamp(transcripts_out_path, ts)
+    debug_jsonl_path_ts = _with_timestamp(debug_jsonl_path, ts)
+
+    all_rows = []
+    all_transcripts = {}
+
+    tok, model = _load_model(base_model=base_model, adapter_path=adapter_path, use_peft=use_peft)
+
+    csv_writer = None
+    csv_file = None
+    if rows_out_path_ts:
+        os.makedirs(os.path.dirname(rows_out_path_ts), exist_ok=True)
+        csv_file = open(rows_out_path_ts, "w", newline="", encoding="utf-8")
+        csv_writer = csv.DictWriter(csv_file, fieldnames=[
+            "playerAvatar", "roundIndex", "gameId", "data.contribution", "data.punished", "data.rewarded"
+        ])
+        csv_writer.writeheader()
+
+    for idx, env in env_df.iterrows():
+        game_id = env.get("name", f"GAME_{idx}")
+        log(f"[ptc] starting game {game_id} (idx={idx})")
+
+        df_game, transcripts_game = simulate_game(
+            env=env,
+            model=model,
+            tok=tok,
+            temperature=temperature,
+            top_p=top_p,
+            seed=seed,
+            contrib_max_new_tokens=contrib_max_new_tokens,
+            actions_max_new_tokens=actions_max_new_tokens,
+            rows_out_path=None,
+            transcripts_out_path=None,
+            debug_jsonl_path=debug_jsonl_path_ts,
+            debug_print=debug_print,
+        )
+
+        all_rows.extend(df_game.to_dict("records"))
+        all_transcripts[env.get("name", f"GAME_{idx}")] = {av: "\n".join(t) for av, t in transcripts_game.items()}
+
+        if csv_writer:
+            for rec in df_game.to_dict("records"):
+                csv_writer.writerow(rec)
+            csv_file.flush()
+            os.fsync(csv_file.fileno())
+
+        log(f"[ptc] done game {game_id} with {len(df_game)} rows")
+
+    if csv_file:
+        csv_file.close()
+
+    if transcripts_out_path_ts:
+        os.makedirs(os.path.dirname(transcripts_out_path_ts), exist_ok=True)
+        with open(transcripts_out_path_ts, "w", encoding="utf-8") as f:
+            for gid, tdict in all_transcripts.items():
+                for av, text in tdict.items():
+                    f.write(json.dumps({"experiment": gid, "participant": av, "text": text}, ensure_ascii=False) + "\n")
+
+    return pd.DataFrame(all_rows), all_transcripts, rows_out_path_ts, transcripts_out_path_ts, debug_jsonl_path_ts
+
+# -------------------------
+# CLI entry
+# -------------------------
+@dataclass
+class CLIArgs(Args):
+    pass
+
+def main(args: CLIArgs):
+    log(args)
+    env_df = pd.read_csv(args.env_csv)
+    if "name" in env_df.columns:
+        before = len(env_df)
+        env_df = env_df.drop_duplicates(subset="name", keep="first")
+        log(f"[env] dedup by name: {before} -> {len(env_df)} rows")
+
+    df_all, transcripts_all, rows_path, trans_path, dbg_path = simulate_games(
+        env_df=env_df.iloc[:40],
+        base_model=args.base_model,
+        adapter_path=args.adapter_path,
+        use_peft=args.use_peft,
+        temperature=args.temperature,
+        top_p=args.top_p,
+        seed=args.seed,
+        contrib_max_new_tokens=args.contrib_max_new_tokens,
+        actions_max_new_tokens=args.actions_max_new_tokens,
+        rows_out_path=args.rows_out_path,
+        transcripts_out_path=args.transcripts_out_path,
+        debug_jsonl_path=args.debug_jsonl_path,
+        debug_print=args.debug_print,
+    )
+
+    log(f"[ptc] saved CSV → {rows_path}")
+    log(f"[ptc] saved transcripts JSONL → {trans_path}")
+    if dbg_path:
+        log(f"[ptc] saved raw debug JSONL → {dbg_path}")
+
+if __name__ == "__main__":
+    parser = HfArgumentParser(CLIArgs)
+    parsed, _unknown = parser.parse_args_into_dataclasses(return_remaining_strings=True)
+    cfg = parsed[0] if isinstance(parsed, (list, tuple)) else parsed
+    if _unknown:
+        log("[note] unknown args (ignored):", _unknown)
+    main(cfg)
