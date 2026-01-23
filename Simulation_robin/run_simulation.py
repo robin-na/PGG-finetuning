@@ -132,49 +132,82 @@ def _load_model(base_model: str, adapter_path: Optional[str], use_peft: bool):
     return tok, model
 
 
-def _first_int(s: str) -> int:
-    m = re.search(r"-?\d+", s)
+def _extract_answer_tagged(s: str, tag: str) -> Optional[str]:
+    if not isinstance(s, str):
+        return None
+    pattern = rf"Answer:\s*<\s*{re.escape(tag)}\s*>(.*?)</\s*{re.escape(tag)}\s*>"
+    match = re.search(pattern, s, flags=re.DOTALL)
+    if not match:
+        return None
+    return match.group(1)
+
+
+def _first_int(s: str, tag: Optional[str] = None) -> Tuple[int, bool]:
+    if not isinstance(s, str):
+        log("[parse] expected string for integer output; defaulting to 0")
+        return 0, False
+    target = s
+    if tag:
+        tagged = _extract_answer_tagged(s, tag)
+        if tagged is not None:
+            target = tagged
+    m = re.search(r"-?\d+", target)
     if not m:
-        raise ValueError("No integer found")
-    return int(m.group(0))
+        log(f"[parse] no integer found for tag={tag or 'raw'}; defaulting to 0")
+        return 0, False
+    return int(m.group(0)), True
 
 
 # --- NEW: robust array parser (first top-level [ ... ]) ---
-def _parse_first_int_array(s: str) -> Optional[List[int]]:
+def _parse_first_int_array(s: str, tag: Optional[str] = None) -> Tuple[Optional[List[int]], bool]:
     if not isinstance(s, str):
-        return None
+        log("[parse] expected string for array output; defaulting to []")
+        return None, False
+
+    target = s
+    if tag:
+        tagged = _extract_answer_tagged(s, tag)
+        if tagged is not None:
+            target = tagged
+
+    cleaned = target.strip()
+    if cleaned.startswith("<<") and ">>" in cleaned:
+        cleaned = cleaned[2:cleaned.find(">>")].strip()
 
     # Find first bracketed region
-    lb = s.find("[")
-    rb = s.find("]", lb + 1) if lb != -1 else -1
+    lb = cleaned.find("[")
+    rb = cleaned.find("]", lb + 1) if lb != -1 else -1
     if lb == -1 or rb == -1 or rb <= lb:
         # try to be forgiving: maybe the caller clipped at ']'
         if lb != -1:
-            tail = s[lb:] + "]"
+            tail = cleaned[lb:] + "]"
             try:
                 arr = json.loads(tail)
                 if isinstance(arr, list):
-                    return [int(x) for x in arr]
+                    return [int(x) for x in arr], True
             except Exception:
                 try:
                     arr = ast.literal_eval(tail)
                     if isinstance(arr, list):
-                        return [int(x) for x in arr]
+                        return [int(x) for x in arr], True
                 except Exception:
-                    return None
-        return None
+                    log(f"[parse] malformed array for tag={tag or 'raw'}; defaulting to []")
+                    return None, False
+        log(f"[parse] no array brackets found for tag={tag or 'raw'}; defaulting to []")
+        return None, False
 
-    chunk = s[lb:rb + 1]
+    chunk = cleaned[lb:rb + 1]
 
     # Try JSON then literal_eval
     for loader in (json.loads, ast.literal_eval):
         try:
             arr = loader(chunk)
             if isinstance(arr, list):
-                return [int(x) for x in arr]
+                return [int(x) for x in arr], True
         except Exception:
             pass
-    return None
+    log(f"[parse] failed to parse array for tag={tag or 'raw'}; defaulting to []")
+    return None, False
 
 
 # -------------------------
@@ -488,12 +521,7 @@ def simulate_game(
                 "dt_sec": dt/len(contrib_raw), "prompt_full": contrib_prompts[contrib_meta.index(av)],
                 "raw_output_full": gen
             })
-            try:
-                val = _first_int(gen)
-                parsed_ok = True
-            except Exception:
-                val = 0
-                parsed_ok = False
+            val, parsed_ok = _first_int(gen, tag="CONTRIB")
             if env.get("CONFIG_allOrNothing", False):
                 val = endow if val >= (endow // 2) else 0
             else:
@@ -586,7 +614,9 @@ def simulate_game(
                     "raw_output_full": raw
                 })
 
-                arr = _parse_first_int_array(raw) or []
+                arr, parsed_ok = _parse_first_int_array(raw, tag=tag)
+                if arr is None:
+                    arr = []
                 peer_order = peer_orders[av]
                 # Normalize length (truncate/pad)
                 if len(arr) < len(peer_order):
