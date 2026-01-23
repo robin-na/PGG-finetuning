@@ -89,6 +89,22 @@ def _with_timestamp_and_game(path: Optional[str], ts: str, game_id: str) -> Opti
         base_ts = f"{base}_{ts}_{safe_game}"
     return os.path.join(d, base_ts)
 
+def _safe_name(value: str) -> str:
+    return re.sub(r"[^A-Za-z0-9_.-]+", "_", str(value))
+
+def _resolve_run_dir(output_root: str, run_id: Optional[str]) -> str:
+    run_id = run_id or _timestamp_YYMMDDHHMM()
+    return os.path.join(output_root, run_id)
+
+def _relocate_output(path: Optional[str], directory: str) -> Optional[str]:
+    if not path:
+        return None
+    base = os.path.basename(path)
+    return os.path.join(directory, base) if base else directory
+
+def _per_game_dir(run_dir: str, game_id: str) -> str:
+    return os.path.join(run_dir, _safe_name(game_id))
+
 # -------------------------
 # Low-level generation utils
 # -------------------------
@@ -396,6 +412,18 @@ class Args:
 
     # data I/O
     env_csv: str = field(default="df_analysis_val.csv")
+    output_root: str = field(
+        default="output",
+        metadata={"help": "Base output directory to store run-specific folders."},
+    )
+    run_id: Optional[str] = field(
+        default=None,
+        metadata={"help": "Optional run identifier; defaults to timestamp."},
+    )
+    group_by_game: bool = field(
+        default=True,
+        metadata={"help": "If true, also write per-game outputs under run/<game_id>/."},
+    )
     rows_out_path: Optional[str] = field(default="output/participant_sim.csv")
     transcripts_out_path: Optional[str] = field(default="output/participant_transcripts.jsonl")
     debug_jsonl_path: Optional[str] = field(default="output/participant_debug.jsonl")
@@ -877,14 +905,17 @@ def simulate_games(
     debug_print: bool,
     debug_level: str,
     debug_full_jsonl_path: Optional[str],
+    output_root: str,
+    run_id: Optional[str],
+    group_by_game: bool,
     max_parallel_games: int,
 ) -> Tuple[pd.DataFrame, Dict[str, Dict[str, str]], str, str, str, Optional[str]]:
 
-    ts = _timestamp_YYMMDDHHMM()
-    rows_out_path_ts = _with_timestamp(rows_out_path, ts)
-    transcripts_out_path_ts = _with_timestamp(transcripts_out_path, ts)
-    debug_jsonl_path_ts = _with_timestamp(debug_jsonl_path, ts)
-    debug_full_jsonl_path_ts = _with_timestamp(debug_full_jsonl_path, ts)
+    run_dir = _resolve_run_dir(output_root, run_id)
+    rows_out_path_run = _relocate_output(rows_out_path, run_dir)
+    transcripts_out_path_run = _relocate_output(transcripts_out_path, run_dir)
+    debug_jsonl_path_run = _relocate_output(debug_jsonl_path, run_dir)
+    debug_full_jsonl_path_run = _relocate_output(debug_full_jsonl_path, run_dir)
 
     all_rows = []
     all_transcripts = {}
@@ -911,9 +942,9 @@ def simulate_games(
 
     csv_writer = None
     csv_file = None
-    if rows_out_path_ts:
-        os.makedirs(os.path.dirname(rows_out_path_ts), exist_ok=True)
-        csv_file = open(rows_out_path_ts, "w", newline="", encoding="utf-8")
+    if rows_out_path_run:
+        os.makedirs(os.path.dirname(rows_out_path_run), exist_ok=True)
+        csv_file = open(rows_out_path_run, "w", newline="", encoding="utf-8")
         csv_writer = csv.DictWriter(csv_file, fieldnames=[
             "playerAvatar", "roundIndex", "gameId",
             "data.contribution", "data.contribution_reasoning",
@@ -927,13 +958,12 @@ def simulate_games(
     def _run_one(idx: int, env: pd.Series, game_seed: int):
         game_id = env.get("name", f"GAME_{idx}")
         log(f"[ptc] starting game {game_id} (idx={idx})")
-        per_game_rows = _with_timestamp_and_game(rows_out_path, ts, game_id) if max_parallel_games > 1 else None
-        per_game_transcripts = (
-            _with_timestamp_and_game(transcripts_out_path, ts, game_id) if max_parallel_games > 1 else None
-        )
-        per_game_debug = _with_timestamp_and_game(debug_jsonl_path, ts, game_id) if max_parallel_games > 1 else debug_jsonl_path_ts
+        game_dir = _per_game_dir(run_dir, game_id) if group_by_game else run_dir
+        per_game_rows = _relocate_output(rows_out_path, game_dir) if group_by_game else None
+        per_game_transcripts = _relocate_output(transcripts_out_path, game_dir) if group_by_game else None
+        per_game_debug = _relocate_output(debug_jsonl_path, game_dir) if group_by_game else debug_jsonl_path_run
         per_game_full_debug = (
-            _with_timestamp_and_game(debug_full_jsonl_path, ts, game_id) if max_parallel_games > 1 else debug_full_jsonl_path_ts
+            _relocate_output(debug_full_jsonl_path, game_dir) if group_by_game else debug_full_jsonl_path_run
         )
         df_game, transcripts_game = simulate_game(
             env=env,
@@ -957,9 +987,10 @@ def simulate_games(
         log(f"[ptc] done game {game_id} with {len(df_game)} rows")
         return idx, game_id, df_game, transcripts_game, per_game_debug, per_game_full_debug
 
+    per_game_debug_paths = []
+    per_game_full_debug_paths = []
+
     if max_parallel_games > 1:
-        per_game_debug_paths = []
-        per_game_full_debug_paths = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_parallel_games) as executor:
             futures = [executor.submit(_run_one, idx, env, game_seed) for idx, env, game_seed in env_rows]
             for fut in concurrent.futures.as_completed(futures):
@@ -969,23 +1000,23 @@ def simulate_games(
                 if csv_writer:
                     for rec in df_game.to_dict("records"):
                         csv_writer.writerow(rec)
-                if per_game_debug and per_game_debug != debug_jsonl_path_ts:
+                if per_game_debug and per_game_debug != debug_jsonl_path_run:
                     per_game_debug_paths.append(per_game_debug)
-                if per_game_full_debug and per_game_full_debug != debug_full_jsonl_path_ts:
+                if per_game_full_debug and per_game_full_debug != debug_full_jsonl_path_run:
                     per_game_full_debug_paths.append(per_game_full_debug)
         if csv_file:
             csv_file.flush()
             os.fsync(csv_file.fileno())
-        if debug_jsonl_path_ts and per_game_debug_paths:
-            os.makedirs(os.path.dirname(debug_jsonl_path_ts), exist_ok=True)
-            with open(debug_jsonl_path_ts, "a", encoding="utf-8") as fdbg:
+        if debug_jsonl_path_run and per_game_debug_paths:
+            os.makedirs(os.path.dirname(debug_jsonl_path_run), exist_ok=True)
+            with open(debug_jsonl_path_run, "a", encoding="utf-8") as fdbg:
                 for per_path in per_game_debug_paths:
                     if os.path.exists(per_path):
                         with open(per_path, "r", encoding="utf-8") as per_f:
                             fdbg.write(per_f.read())
-        if debug_full_jsonl_path_ts and per_game_full_debug_paths:
-            os.makedirs(os.path.dirname(debug_full_jsonl_path_ts), exist_ok=True)
-            with open(debug_full_jsonl_path_ts, "a", encoding="utf-8") as fdbg:
+        if debug_full_jsonl_path_run and per_game_full_debug_paths:
+            os.makedirs(os.path.dirname(debug_full_jsonl_path_run), exist_ok=True)
+            with open(debug_full_jsonl_path_run, "a", encoding="utf-8") as fdbg:
                 for per_path in per_game_full_debug_paths:
                     if os.path.exists(per_path):
                         with open(per_path, "r", encoding="utf-8") as per_f:
@@ -1005,13 +1036,13 @@ def simulate_games(
                 contrib_max_new_tokens=contrib_max_new_tokens,
                 actions_max_new_tokens=actions_max_new_tokens,
                 include_reasoning=include_reasoning,
-                rows_out_path=None,
-                transcripts_out_path=None,
-                debug_jsonl_path=debug_jsonl_path_ts,
+                rows_out_path=_relocate_output(rows_out_path, _per_game_dir(run_dir, game_id)) if group_by_game else None,
+                transcripts_out_path=_relocate_output(transcripts_out_path, _per_game_dir(run_dir, game_id)) if group_by_game else None,
+                debug_jsonl_path=_relocate_output(debug_jsonl_path, _per_game_dir(run_dir, game_id)) if group_by_game else debug_jsonl_path_run,
                 debug_print=debug_print,
                 openai_async=openai_async,
                 debug_level=debug_level,
-                debug_full_jsonl_path=debug_full_jsonl_path_ts,
+                debug_full_jsonl_path=_relocate_output(debug_full_jsonl_path, _per_game_dir(run_dir, game_id)) if group_by_game else debug_full_jsonl_path_run,
                 openai_max_concurrency=openai_max_concurrency,
             )
 
@@ -1024,14 +1055,37 @@ def simulate_games(
                 csv_file.flush()
                 os.fsync(csv_file.fileno())
 
+            if group_by_game:
+                per_game_debug = _relocate_output(debug_jsonl_path, _per_game_dir(run_dir, game_id))
+                per_game_full_debug = _relocate_output(debug_full_jsonl_path, _per_game_dir(run_dir, game_id))
+                if per_game_debug and per_game_debug != debug_jsonl_path_run:
+                    per_game_debug_paths.append(per_game_debug)
+                if per_game_full_debug and per_game_full_debug != debug_full_jsonl_path_run:
+                    per_game_full_debug_paths.append(per_game_full_debug)
+
             log(f"[ptc] done game {game_id} with {len(df_game)} rows")
+
+        if debug_jsonl_path_run and per_game_debug_paths:
+            os.makedirs(os.path.dirname(debug_jsonl_path_run), exist_ok=True)
+            with open(debug_jsonl_path_run, "a", encoding="utf-8") as fdbg:
+                for per_path in per_game_debug_paths:
+                    if os.path.exists(per_path):
+                        with open(per_path, "r", encoding="utf-8") as per_f:
+                            fdbg.write(per_f.read())
+        if debug_full_jsonl_path_run and per_game_full_debug_paths:
+            os.makedirs(os.path.dirname(debug_full_jsonl_path_run), exist_ok=True)
+            with open(debug_full_jsonl_path_run, "a", encoding="utf-8") as fdbg:
+                for per_path in per_game_full_debug_paths:
+                    if os.path.exists(per_path):
+                        with open(per_path, "r", encoding="utf-8") as per_f:
+                            fdbg.write(per_f.read())
 
     if csv_file:
         csv_file.close()
 
-    if transcripts_out_path_ts:
-        os.makedirs(os.path.dirname(transcripts_out_path_ts), exist_ok=True)
-        with open(transcripts_out_path_ts, "w", encoding="utf-8") as f:
+    if transcripts_out_path_run:
+        os.makedirs(os.path.dirname(transcripts_out_path_run), exist_ok=True)
+        with open(transcripts_out_path_run, "w", encoding="utf-8") as f:
             for gid, tdict in all_transcripts.items():
                 for av, text in tdict.items():
                     f.write(json.dumps({"experiment": gid, "participant": av, "text": text}, ensure_ascii=False) + "\n")
@@ -1039,10 +1093,10 @@ def simulate_games(
     return (
         pd.DataFrame(all_rows),
         all_transcripts,
-        rows_out_path_ts,
-        transcripts_out_path_ts,
-        debug_jsonl_path_ts,
-        debug_full_jsonl_path_ts,
+        rows_out_path_run,
+        transcripts_out_path_run,
+        debug_jsonl_path_run,
+        debug_full_jsonl_path_run,
     )
 
 # -------------------------
@@ -1091,6 +1145,9 @@ def main(args: CLIArgs):
         debug_print=args.debug_print,
         debug_level=args.debug_level,
         debug_full_jsonl_path=args.debug_full_jsonl_path,
+        output_root=args.output_root,
+        run_id=args.run_id,
+        group_by_game=args.group_by_game,
         max_parallel_games=args.max_parallel_games,
     )
 
