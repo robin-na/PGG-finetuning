@@ -1,0 +1,15 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_0,Alice,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:33:35.251937
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_1,Bob,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:33:35.251962
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_2,Charlie,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:33:35.252107
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_3,Diana,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:33:35.252126
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_4,Eve,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:33:35.252333
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_5,Frank,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:33:35.252566
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_6,Grace,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:33:35.252712
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_7,Hank,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:33:35.252862
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_8,Ivy,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:33:35.252940
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_9,Jack,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:33:35.252984
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_10,Kate,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:33:35.253004
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_11,Liam,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:33:35.253021
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_12,Mia,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:33:35.253037
+exp_076_control,f5c07bc3,exp_076_control_game1,1,agent_13,Noah,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:33:35.253054

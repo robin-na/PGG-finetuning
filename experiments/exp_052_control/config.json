@@ -1,7 +1,7 @@
 {
   "experiment_id": "exp_052_control",
   "config_hash": "4e33e848",
-  "timestamp": "2026-01-21T23:34:46.982612",
+  "timestamp": "2026-01-23T07:04:45.237375",
   "config": {
     "group_size": 3,
     "game_length": 1,

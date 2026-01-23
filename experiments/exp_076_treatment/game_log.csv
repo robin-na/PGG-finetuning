@@ -1,0 +1,15 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_0,Alice,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:34:38.414309
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_1,Bob,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:34:38.414319
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_2,Charlie,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:34:38.414357
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_3,Diana,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:34:38.414374
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_4,Eve,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:34:38.414383
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_5,Frank,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:34:38.414390
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_6,Grace,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:34:38.414397
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_7,Hank,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:34:38.414404
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_8,Ivy,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:34:38.414412
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_9,Jack,20,0,0,0,0,50.4,50.4,705.6,2026-01-23T07:34:38.414418
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_10,Kate,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:34:38.414447
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_11,Liam,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:34:38.414457
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_12,Mia,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:34:38.414464
+exp_076_treatment,f5c07bc3,exp_076_treatment_game1,1,agent_13,Noah,0,0,0,0,0,70.4,70.4,705.6,2026-01-23T07:34:38.414488

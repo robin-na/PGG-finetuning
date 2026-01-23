@@ -20,7 +20,7 @@ from typing import List, Dict, Tuple, TYPE_CHECKING
 import time
 
 # Disable EDSL remote inference - use local API keys
-os.environ['EDSL_RUN_MODE'] = 'local'
+#os.environ['EDSL_RUN_MODE'] = 'local'
 
 if TYPE_CHECKING:
     from config import PGGConfig
