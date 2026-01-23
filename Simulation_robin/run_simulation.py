@@ -180,10 +180,13 @@ def _parse_first_int_array(s: str) -> Optional[List[int]]:
 # -------------------------
 # Text protocol builders
 # -------------------------
-def _system_header_lines(env: Dict) -> List[str]:
+def _system_header_lines(env: Dict, include_reasoning: bool) -> List[str]:
     lines = []
     lines.append("You are playing an online public goods game (PGG).")
-    lines.append("For contributions, output ONLY a single integer at the <CONTRIB> tag (no extra text).")
+    if include_reasoning:
+        lines.append("For contributions, respond with two lines: Reasoning: <short rationale> then Answer: <CONTRIB> 3 </CONTRIB>.")
+    else:
+        lines.append("For contributions, output ONLY a single integer at the <CONTRIB> tag (no extra text).")
     # If chat exists, mention it but do not include chat content anywhere.
     if env.get("CONFIG_chat", False):
         lines.append("You can chat with other players during the round.")
@@ -191,25 +194,31 @@ def _system_header_lines(env: Dict) -> List[str]:
     # ACTIONS: arrays aligned to <PEERS_CONTRIBUTIONS>
     if env.get("CONFIG_punishmentExists", False) and env.get("CONFIG_rewardExists", False):
         lines.append("After contributions, decide whom to punish/reward and by how many units.")
+        if include_reasoning:
+            lines.append("Respond with two lines: Reasoning: <short rationale> then Answer: <PUNISHMENTS_REWARDS> <<[...]>> </PUNISHMENTS_REWARDS>.")
         lines.append("At the <PUNISHMENTS_REWARDS> tag, output ONLY an array of integers aligned to the avatar order shown in <PEERS_CONTRIBUTIONS> (positive=rewards, negative=punishments, 0=neither).")
     elif env.get("CONFIG_punishmentExists", False):
         lines.append("After contributions, decide whom to punish and by how many units.")
+        if include_reasoning:
+            lines.append("Respond with two lines: Reasoning: <short rationale> then Answer: <PUNISHMENTS> <<[...]>> </PUNISHMENTS>.")
         lines.append("At the <PUNISHMENTS> tag, output ONLY an array of integers aligned to the avatar order shown in <PEERS_CONTRIBUTIONS>, each ≤ 0 (−n means punish by n units).")
     elif env.get("CONFIG_rewardExists", False):
         lines.append("After contributions, decide whom to reward and by how many units.")
+        if include_reasoning:
+            lines.append("Respond with two lines: Reasoning: <short rationale> then Answer: <REWARDS> <<[...]>> </REWARDS>.")
         lines.append("At the <REWARDS> tag, output ONLY an array of integers aligned to the avatar order shown in <PEERS_CONTRIBUTIONS>, each ≥ 0.")
     return lines
 
 
-def _system_header(env: Dict) -> str:
+def _system_header(env: Dict, include_reasoning: bool) -> str:
     lines = ["<|begin_of_text|><|start_header_id|>system<|end_header_id|>"]
-    lines.extend(_system_header_lines(env))
+    lines.extend(_system_header_lines(env, include_reasoning))
     lines.append("<|eot_id|>")
     return "\n".join(lines)
 
 
-def _system_header_plain(env: Dict) -> str:
-    return "\n".join(_system_header_lines(env))
+def _system_header_plain(env: Dict, include_reasoning: bool) -> str:
+    return "\n".join(_system_header_lines(env, include_reasoning))
 
 
 def _build_openai_messages(system_text: str, history_chunks: List[str]) -> List[Dict[str, str]]:
@@ -243,6 +252,26 @@ def _contrib_open() -> str:
 
 def _contrib_close_filled(val: Any) -> str:
     return f"<CONTRIB> {val} </CONTRIB>"
+
+def _format_contrib_answer(val: Any, include_reasoning: bool) -> str:
+    base = _contrib_close_filled(val)
+    return f"Answer: {base}" if include_reasoning else base
+
+def _contrib_format_line() -> str:
+    return "FORMAT: Reasoning: <short rationale> Answer: <CONTRIB> 3 </CONTRIB>"
+
+def _actions_format_line(tag: str) -> str:
+    return f"FORMAT: Reasoning: <short rationale> Answer: <{tag}> <<[...]>> </{tag}>"
+
+def _extract_reasoning(gen: str) -> str:
+    if not isinstance(gen, str):
+        return ""
+    text = gen
+    if "Reasoning:" in text:
+        text = text.split("Reasoning:", 1)[1]
+    if "Answer:" in text:
+        text = text.split("Answer:", 1)[0]
+    return text.strip()
 
 def _redist_line(total_contrib: int, multiplied: float, active_players: int) -> str:
     m_str = f"{multiplied:.1f}" if isinstance(multiplied, (int, float)) and not math.isnan(multiplied) else ""
@@ -287,6 +316,10 @@ def _actions_open_array(tag: str) -> str:
 
 def _actions_close_filled_array(tag: str, vec: List[int]) -> str:
     return f"{json.dumps([int(x) for x in vec])}>> </{tag}>"
+
+def _format_actions_answer(tag: str, vec: List[int], include_reasoning: bool) -> str:
+    base = _actions_close_filled_array(tag, vec)
+    return f"Answer: {base}" if include_reasoning else base
 
 # Add a roster sampler (avatars always CAPITALIZED and without replacement):
 AVATAR_POOL = {
@@ -339,6 +372,10 @@ class Args:
     seed: int = 0
     contrib_max_new_tokens: int = 6
     actions_max_new_tokens: int = 96  # arrays are short
+    include_reasoning: bool = field(
+        default=False,
+        metadata={"help": "If true, request a short Reasoning line followed by a strict Answer line."},
+    )
 
     # debug
     debug_print: bool = True
@@ -359,6 +396,7 @@ def simulate_game(
     seed: int = 0,
     contrib_max_new_tokens: int = 6,
     actions_max_new_tokens: int = 96,
+    include_reasoning: bool = False,
     rows_out_path: Optional[str] = None,
     transcripts_out_path: Optional[str] = None,
     debug_jsonl_path: Optional[str] = None,
@@ -372,8 +410,8 @@ def simulate_game(
     roster = sample_roster(env, seed=seed)
     assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
 
-    sys_text = _system_header(env)
-    sys_text_plain = _system_header_plain(env)
+    sys_text = _system_header(env, include_reasoning=include_reasoning)
+    sys_text_plain = _system_header_plain(env, include_reasoning=include_reasoning)
 
     transcripts: Dict[str, List[str]] = {}
     rows = []
@@ -406,7 +444,11 @@ def simulate_game(
         for av in roster:
             transcripts[av].append(_round_open(env, r))
             transcripts[av].append(_round_info_line(env))   # NEW: per-round reminder
-            transcripts[av].append(_contrib_open())
+            if include_reasoning:
+                transcripts[av].append(_contrib_format_line())
+                transcripts[av].append("Reasoning:")
+            else:
+                transcripts[av].append(_contrib_open())
             prompt = "\n".join(transcripts[av])
             contrib_prompts.append(prompt)
             contrib_meta.append(av)
@@ -458,7 +500,13 @@ def simulate_game(
                 val = max(0, min(endow, val))
             contrib_math[av] = int(val)
             contrib_rec[av] = (float('nan') if not parsed_ok else int(val))
-            transcripts[av][-1] = _contrib_close_filled(contrib_rec[av] if parsed_ok else "NaN")
+            if include_reasoning:
+                transcripts[av][-1] = f"Reasoning: {_extract_reasoning(gen)}"
+                transcripts[av].append(
+                    _format_contrib_answer(contrib_rec[av] if parsed_ok else "NaN", include_reasoning=True)
+                )
+            else:
+                transcripts[av][-1] = _contrib_close_filled(contrib_rec[av] if parsed_ok else "NaN")
 
         # ---- Phase B: redistribution & peers' contributions ----
         total_contrib = sum(contrib_math.values())
@@ -494,7 +542,11 @@ def simulate_game(
 
                 if mech:
                     transcripts[av].append(f"<MECHANISM_INFO> {mech} </MECHANISM_INFO>")
-                transcripts[av].append(_actions_open_array(tag))  # e.g., "<PUNISHMENTS_REWARDS> <<"
+                if include_reasoning:
+                    transcripts[av].append(_actions_format_line(tag))
+                    transcripts[av].append("Reasoning:")
+                else:
+                    transcripts[av].append(_actions_open_array(tag))  # e.g., "<PUNISHMENTS_REWARDS> <<"
 
                 prompt = "\n".join(transcripts[av])  # FULL history including this round's REDIST/PEERS + opening tag
                 actions_prompts.append(prompt)
@@ -551,7 +603,11 @@ def simulate_game(
                     arr = [int(v) for v in arr]
 
                 # Close the tag in transcript with the CLEANED array
-                transcripts[av].append(_actions_close_filled_array(tag, arr))
+                if include_reasoning:
+                    transcripts[av][-1] = f"Reasoning: {_extract_reasoning(gen)}"
+                    transcripts[av].append(_format_actions_answer(tag, arr, include_reasoning=True))
+                else:
+                    transcripts[av].append(_actions_close_filled_array(tag, arr))
 
                 # Split into dicts for CSV
                 if reward_on:
@@ -715,6 +771,7 @@ def simulate_games(
     seed: int,
     contrib_max_new_tokens: int,
     actions_max_new_tokens: int,
+    include_reasoning: bool,
     rows_out_path: Optional[str],
     transcripts_out_path: Optional[str],
     debug_jsonl_path: Optional[str],
@@ -780,6 +837,7 @@ def simulate_games(
             seed=game_seed,
             contrib_max_new_tokens=contrib_max_new_tokens,
             actions_max_new_tokens=actions_max_new_tokens,
+            include_reasoning=include_reasoning,
             rows_out_path=per_game_rows,
             transcripts_out_path=per_game_transcripts,
             debug_jsonl_path=per_game_debug,
@@ -821,17 +879,18 @@ def simulate_games(
             df_game, transcripts_game = simulate_game(
                 env=env,
                 client=client,
-                tok=tok,
-                temperature=temperature,
-                top_p=top_p,
-                seed=game_seed,
-                contrib_max_new_tokens=contrib_max_new_tokens,
-                actions_max_new_tokens=actions_max_new_tokens,
-                rows_out_path=None,
-                transcripts_out_path=None,
-                debug_jsonl_path=debug_jsonl_path_ts,
-                debug_print=debug_print,
-                openai_async=openai_async,
+            tok=tok,
+            temperature=temperature,
+            top_p=top_p,
+            seed=game_seed,
+            contrib_max_new_tokens=contrib_max_new_tokens,
+            actions_max_new_tokens=actions_max_new_tokens,
+            include_reasoning=include_reasoning,
+            rows_out_path=None,
+            transcripts_out_path=None,
+            debug_jsonl_path=debug_jsonl_path_ts,
+            debug_print=debug_print,
+            openai_async=openai_async,
                 openai_max_concurrency=openai_max_concurrency,
             )
 
@@ -889,6 +948,7 @@ def main(args: CLIArgs):
         seed=args.seed,
         contrib_max_new_tokens=args.contrib_max_new_tokens,
         actions_max_new_tokens=args.actions_max_new_tokens,
+        include_reasoning=args.include_reasoning,
         rows_out_path=args.rows_out_path,
         transcripts_out_path=args.transcripts_out_path,
         debug_jsonl_path=args.debug_jsonl_path,
