@@ -13,10 +13,14 @@
 # - Dedup env_df by 'name'
 # - Auto-timestamp outputs: YYMMDDHHMM appended
 # - Base-model-only mode (skip PEFT) via --use_peft False or empty adapter_path
+# - Parallelism:
+#   * --openai_async enables concurrent OpenAI requests within a round.
+#   * --max_parallel_games runs multiple environments concurrently.
+#   * Local HF models on a single GPU should not be parallelized across games.
 # - Per-call timing + full prompt and raw output logging; optional JSONL sink
 
 from __future__ import annotations
-import os, sys, json, math, re, time, random, csv, datetime, ast
+import os, sys, json, math, re, time, random, csv, datetime, ast, concurrent.futures
 from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Any, Optional
 
@@ -68,6 +72,20 @@ def _with_timestamp(path: Optional[str], ts: str) -> Optional[str]:
         base_ts = f"{stem}_{ts}.{ext}"
     else:
         base_ts = f"{base}_{ts}"
+    return os.path.join(d, base_ts)
+
+def _with_timestamp_and_game(path: Optional[str], ts: str, game_id: str) -> Optional[str]:
+    if not path:
+        return None
+    d, base = os.path.split(path)
+    if not base:
+        return path
+    safe_game = re.sub(r"[^A-Za-z0-9_.-]+", "_", str(game_id))
+    if "." in base:
+        stem, ext = base.rsplit(".", 1)
+        base_ts = f"{stem}_{ts}_{safe_game}.{ext}"
+    else:
+        base_ts = f"{base}_{ts}_{safe_game}"
     return os.path.join(d, base_ts)
 
 # -------------------------
@@ -295,6 +313,14 @@ class Args:
     openai_model: Optional[str] = field(default=None)
     openai_api_key: Optional[str] = field(default=None)
     openai_api_key_env: str = field(default="OPENAI_API_KEY")
+    openai_async: bool = field(
+        default=False,
+        metadata={"help": "If true, use asyncio.gather with a thread pool for concurrent OpenAI calls."},
+    )
+    openai_max_concurrency: int = field(
+        default=8,
+        metadata={"help": "Max concurrent OpenAI calls when --openai_async is enabled."},
+    )
 
     # model + adapter
     base_model: str = field(default="meta-llama/Llama-3.1-8B-Instruct")
@@ -316,6 +342,10 @@ class Args:
 
     # debug
     debug_print: bool = True
+    max_parallel_games: int = field(
+        default=1,
+        metadata={"help": "Run up to N environments concurrently. Use 1 for local HF GPU models."},
+    )
 
 # -------------------------
 # Simulation (full history; per-agent prompts)
@@ -333,6 +363,8 @@ def simulate_game(
     transcripts_out_path: Optional[str] = None,
     debug_jsonl_path: Optional[str] = None,
     debug_print: bool = True,
+    openai_async: bool = False,
+    openai_max_concurrency: int = 8,
 ) -> Tuple[pd.DataFrame, Dict[str, List[str]]]:
 
     debug_records: List[Dict[str, Any]] = []
@@ -399,6 +431,8 @@ def simulate_game(
             temperature=temperature,
             top_p=top_p,
             seed=seed,
+            async_openai=openai_async,
+            max_concurrency=openai_max_concurrency,
         )
         dt = time.perf_counter() - t0
 
@@ -484,6 +518,8 @@ def simulate_game(
                 temperature=temperature,
                 top_p=top_p,
                 seed=seed,
+                async_openai=openai_async,
+                max_concurrency=openai_max_concurrency,
             )
             dt_actions = time.perf_counter() - t1
 
@@ -672,6 +708,8 @@ def simulate_games(
     openai_model: Optional[str],
     openai_api_key: Optional[str],
     openai_api_key_env: str,
+    openai_async: bool,
+    openai_max_concurrency: int,
     temperature: float,
     top_p: float,
     seed: int,
@@ -681,6 +719,7 @@ def simulate_games(
     transcripts_out_path: Optional[str],
     debug_jsonl_path: Optional[str],
     debug_print: bool,
+    max_parallel_games: int,
 ) -> Tuple[pd.DataFrame, Dict[str, Dict[str, str]], str, str, str]:
 
     ts = _timestamp_YYMMDDHHMM()
@@ -695,15 +734,21 @@ def simulate_games(
     model = None
     if provider == "local":
         tok, model = _load_model(base_model=base_model, adapter_path=adapter_path, use_peft=use_peft)
+        if max_parallel_games > 1:
+            log("[warn] local HF models should not be parallelized on a single GPU; forcing --max_parallel_games=1")
+            max_parallel_games = 1
 
-    client = LLMClient(
-        provider=provider,
-        tok=tok,
-        model=model,
-        openai_model=openai_model,
-        openai_api_key=openai_api_key,
-        openai_api_key_env=openai_api_key_env,
-    )
+    def _build_client() -> LLMClient:
+        return LLMClient(
+            provider=provider,
+            tok=tok,
+            model=model,
+            openai_model=openai_model,
+            openai_api_key=openai_api_key,
+            openai_api_key_env=openai_api_key_env,
+        )
+
+    client = _build_client()
 
     csv_writer = None
     csv_file = None
@@ -715,35 +760,91 @@ def simulate_games(
         ])
         csv_writer.writeheader()
 
-    for idx, env in env_df.iterrows():
+    rng = random.Random(seed)
+    env_rows = [(idx, env, rng.randrange(0, 2**32 - 1)) for idx, env in env_df.iterrows()]
+
+    def _run_one(idx: int, env: pd.Series, game_seed: int):
         game_id = env.get("name", f"GAME_{idx}")
         log(f"[ptc] starting game {game_id} (idx={idx})")
-
+        per_game_rows = _with_timestamp_and_game(rows_out_path, ts, game_id) if max_parallel_games > 1 else None
+        per_game_transcripts = (
+            _with_timestamp_and_game(transcripts_out_path, ts, game_id) if max_parallel_games > 1 else None
+        )
+        per_game_debug = _with_timestamp_and_game(debug_jsonl_path, ts, game_id) if max_parallel_games > 1 else debug_jsonl_path_ts
         df_game, transcripts_game = simulate_game(
             env=env,
-            client=client,
+            client=_build_client() if max_parallel_games > 1 else client,
             tok=tok,
             temperature=temperature,
             top_p=top_p,
-            seed=seed,
+            seed=game_seed,
             contrib_max_new_tokens=contrib_max_new_tokens,
             actions_max_new_tokens=actions_max_new_tokens,
-            rows_out_path=None,
-            transcripts_out_path=None,
-            debug_jsonl_path=debug_jsonl_path_ts,
+            rows_out_path=per_game_rows,
+            transcripts_out_path=per_game_transcripts,
+            debug_jsonl_path=per_game_debug,
             debug_print=debug_print,
+            openai_async=openai_async,
+            openai_max_concurrency=openai_max_concurrency,
         )
+        log(f"[ptc] done game {game_id} with {len(df_game)} rows")
+        return idx, game_id, df_game, transcripts_game, per_game_debug
 
-        all_rows.extend(df_game.to_dict("records"))
-        all_transcripts[env.get("name", f"GAME_{idx}")] = {av: "\n".join(t) for av, t in transcripts_game.items()}
-
-        if csv_writer:
-            for rec in df_game.to_dict("records"):
-                csv_writer.writerow(rec)
+    if max_parallel_games > 1:
+        per_game_debug_paths = []
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_parallel_games) as executor:
+            futures = [executor.submit(_run_one, idx, env, game_seed) for idx, env, game_seed in env_rows]
+            for fut in concurrent.futures.as_completed(futures):
+                idx, game_id, df_game, transcripts_game, per_game_debug = fut.result()
+                all_rows.extend(df_game.to_dict("records"))
+                all_transcripts[game_id] = {av: "\n".join(t) for av, t in transcripts_game.items()}
+                if csv_writer:
+                    for rec in df_game.to_dict("records"):
+                        csv_writer.writerow(rec)
+                if per_game_debug and per_game_debug != debug_jsonl_path_ts:
+                    per_game_debug_paths.append(per_game_debug)
+        if csv_file:
             csv_file.flush()
             os.fsync(csv_file.fileno())
+        if debug_jsonl_path_ts and per_game_debug_paths:
+            os.makedirs(os.path.dirname(debug_jsonl_path_ts), exist_ok=True)
+            with open(debug_jsonl_path_ts, "a", encoding="utf-8") as fdbg:
+                for per_path in per_game_debug_paths:
+                    if os.path.exists(per_path):
+                        with open(per_path, "r", encoding="utf-8") as per_f:
+                            fdbg.write(per_f.read())
+    else:
+        for idx, env, game_seed in env_rows:
+            game_id = env.get("name", f"GAME_{idx}")
+            log(f"[ptc] starting game {game_id} (idx={idx})")
 
-        log(f"[ptc] done game {game_id} with {len(df_game)} rows")
+            df_game, transcripts_game = simulate_game(
+                env=env,
+                client=client,
+                tok=tok,
+                temperature=temperature,
+                top_p=top_p,
+                seed=game_seed,
+                contrib_max_new_tokens=contrib_max_new_tokens,
+                actions_max_new_tokens=actions_max_new_tokens,
+                rows_out_path=None,
+                transcripts_out_path=None,
+                debug_jsonl_path=debug_jsonl_path_ts,
+                debug_print=debug_print,
+                openai_async=openai_async,
+                openai_max_concurrency=openai_max_concurrency,
+            )
+
+            all_rows.extend(df_game.to_dict("records"))
+            all_transcripts[game_id] = {av: "\n".join(t) for av, t in transcripts_game.items()}
+
+            if csv_writer:
+                for rec in df_game.to_dict("records"):
+                    csv_writer.writerow(rec)
+                csv_file.flush()
+                os.fsync(csv_file.fileno())
+
+            log(f"[ptc] done game {game_id} with {len(df_game)} rows")
 
     if csv_file:
         csv_file.close()
@@ -781,6 +882,8 @@ def main(args: CLIArgs):
         openai_model=args.openai_model,
         openai_api_key=args.openai_api_key,
         openai_api_key_env=args.openai_api_key_env,
+        openai_async=args.openai_async,
+        openai_max_concurrency=args.openai_max_concurrency,
         temperature=args.temperature,
         top_p=args.top_p,
         seed=args.seed,
@@ -790,6 +893,7 @@ def main(args: CLIArgs):
         transcripts_out_path=args.transcripts_out_path,
         debug_jsonl_path=args.debug_jsonl_path,
         debug_print=args.debug_print,
+        max_parallel_games=args.max_parallel_games,
     )
 
     log(f"[ptc] saved CSV → {rows_path}")
