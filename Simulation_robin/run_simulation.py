@@ -25,6 +25,8 @@ import pandas as pd
 from transformers import AutoModelForCausalLM, AutoTokenizer, HfArgumentParser
 from peft import PeftModel
 
+from llm_client import LLMClient
+
 # -------------------------
 # Always-flushed logging
 # -------------------------
@@ -112,53 +114,6 @@ def _load_model(base_model: str, adapter_path: Optional[str], use_peft: bool):
     return tok, model
 
 
-@torch.inference_mode()
-def _batch_generate_until(
-    tok: AutoTokenizer,
-    model: AutoModelForCausalLM,
-    prompts: List[str],
-    stop: Optional[str] = None,          # e.g., ']' for arrays
-    max_new_tokens: int = 32,
-    temperature: float = 0.0,
-    top_p: float = 1.0,
-    seed: int = 0,
-) -> List[str]:
-    """
-    Generate continuations for a batch of prompts and (optionally) cut at the first occurrence of `stop`.
-    Returns the raw generated strings (decoded new text only, not including the prompts).
-    """
-    if seed is not None:
-        torch.manual_seed(seed)
-        if torch.cuda.is_available():
-            torch.cuda.manual_seed_all(seed)
-
-    inputs = tok(prompts, return_tensors="pt", padding=True, truncation=True)
-    inputs = {k: v.to(model.device) for k, v in inputs.items()}
-
-    gen_out = model.generate(
-        **inputs,
-        do_sample=temperature > 0.0,
-        temperature=temperature,
-        top_p=top_p,
-        max_new_tokens=max_new_tokens,
-        pad_token_id=tok.pad_token_id,
-        eos_token_id=tok.eos_token_id,
-        use_cache=True,
-    )
-
-    out_texts = []
-    for i in range(len(prompts)):
-        prompt_len = inputs["input_ids"][i].shape[-1]
-        gen_ids = gen_out[i][prompt_len:]
-        new_text = tok.decode(gen_ids, skip_special_tokens=True)
-        if stop:
-            cut_idx = new_text.find(stop)
-            if cut_idx != -1:
-                new_text = new_text[:cut_idx]
-        out_texts.append(new_text)
-    return out_texts
-
-
 def _first_int(s: str) -> int:
     m = re.search(r"-?\d+", s)
     if not m:
@@ -207,9 +162,8 @@ def _parse_first_int_array(s: str) -> Optional[List[int]]:
 # -------------------------
 # Text protocol builders
 # -------------------------
-def _system_header(env: Dict) -> str:
+def _system_header_lines(env: Dict) -> List[str]:
     lines = []
-    lines.append("<|begin_of_text|><|start_header_id|>system<|end_header_id|>")
     lines.append("You are playing an online public goods game (PGG).")
     lines.append("For contributions, output ONLY a single integer at the <CONTRIB> tag (no extra text).")
     # If chat exists, mention it but do not include chat content anywhere.
@@ -226,8 +180,26 @@ def _system_header(env: Dict) -> str:
     elif env.get("CONFIG_rewardExists", False):
         lines.append("After contributions, decide whom to reward and by how many units.")
         lines.append("At the <REWARDS> tag, output ONLY an array of integers aligned to the avatar order shown in <PEERS_CONTRIBUTIONS>, each ≥ 0.")
+    return lines
+
+
+def _system_header(env: Dict) -> str:
+    lines = ["<|begin_of_text|><|start_header_id|>system<|end_header_id|>"]
+    lines.extend(_system_header_lines(env))
     lines.append("<|eot_id|>")
     return "\n".join(lines)
+
+
+def _system_header_plain(env: Dict) -> str:
+    return "\n".join(_system_header_lines(env))
+
+
+def _build_openai_messages(system_text: str, history_chunks: List[str]) -> List[Dict[str, str]]:
+    history = "\n".join(history_chunks)
+    return [
+        {"role": "system", "content": system_text},
+        {"role": "user", "content": history},
+    ]
 
 
 def _round_open(env: Dict, r: int) -> str:
@@ -318,6 +290,12 @@ def sample_roster(env: pd.core.series.Series, seed: int = 0) -> list[str]:
 # -----------------------------
 @dataclass
 class Args:
+    # provider
+    provider: str = field(default="local")  # local | openai
+    openai_model: Optional[str] = field(default=None)
+    openai_api_key: Optional[str] = field(default=None)
+    openai_api_key_env: str = field(default="OPENAI_API_KEY")
+
     # model + adapter
     base_model: str = field(default="meta-llama/Llama-3.1-8B-Instruct")
     adapter_path: Optional[str] = field(default="out/llama31-8b-lora-pgg-ptc/checkpoint-489")
@@ -344,8 +322,8 @@ class Args:
 # -------------------------
 def simulate_game(
     env: pd.Series,
-    model,
-    tok,
+    client: LLMClient,
+    tok: Optional[AutoTokenizer],
     temperature: float = 0.7,
     top_p: float = 0.9,
     seed: int = 0,
@@ -363,6 +341,7 @@ def simulate_game(
     assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
 
     sys_text = _system_header(env)
+    sys_text_plain = _system_header_plain(env)
 
     transcripts: Dict[str, List[str]] = {}
     rows = []
@@ -391,7 +370,7 @@ def simulate_game(
     # Round loop
     for r in range(1, int(env["CONFIG_numRounds"]) + 1):
         # ---- Phase A: contributions (per agent; NO leakage) ----
-        contrib_prompts, contrib_meta = [], []
+        contrib_prompts, contrib_meta, contrib_messages = [], [], []
         for av in roster:
             transcripts[av].append(_round_open(env, r))
             transcripts[av].append(_round_info_line(env))   # NEW: per-round reminder
@@ -399,19 +378,27 @@ def simulate_game(
             prompt = "\n".join(transcripts[av])
             contrib_prompts.append(prompt)
             contrib_meta.append(av)
+            contrib_messages.append(_build_openai_messages(sys_text_plain, transcripts[av][1:]))
 
         # Log prompts if debugging
         for av, ptxt in zip(contrib_meta, contrib_prompts):
             if debug_print:
-                log(f"[ptc] {game_id} r={r:02d} {av} CONTRIB prompt_tokens≈{len(tok(ptxt, add_special_tokens=False)['input_ids'])}")
+                if tok is not None:
+                    tok_len = len(tok(ptxt, add_special_tokens=False)["input_ids"])
+                    log(f"[ptc] {game_id} r={r:02d} {av} CONTRIB prompt_tokens≈{tok_len}")
+                else:
+                    log(f"[ptc] {game_id} r={r:02d} {av} CONTRIB prompt_chars={len(ptxt)}")
                 log("----- PROMPT (CONTRIB) -----"); log(ptxt)
 
         t0 = time.perf_counter()
-        contrib_raw = _batch_generate_until(
-            tok, model, contrib_prompts,
+        contrib_raw = client.generate_batch(
+            prompts=contrib_prompts,
+            messages_list=contrib_messages,
             stop=None,  # integer; we'll parse _first_int
             max_new_tokens=contrib_max_new_tokens,
-            temperature=temperature, top_p=top_p, seed=seed
+            temperature=temperature,
+            top_p=top_p,
+            seed=seed,
         )
         dt = time.perf_counter() - t0
 
@@ -461,7 +448,7 @@ def simulate_game(
         punish_given: Dict[str, Dict[str, int]] = {av: {} for av in roster}
 
         if reward_on or punish_on:
-            actions_prompts, actions_meta, peer_orders = [], [], {}
+            actions_prompts, actions_meta, peer_orders, actions_messages = [], [], {}, []
             tag = _actions_tag(env)
             mech = _mech_info(env)
 
@@ -478,17 +465,25 @@ def simulate_game(
                 prompt = "\n".join(transcripts[av])  # FULL history including this round's REDIST/PEERS + opening tag
                 actions_prompts.append(prompt)
                 actions_meta.append(av)
+                actions_messages.append(_build_openai_messages(sys_text_plain, transcripts[av][1:]))
                 if debug_print:
-                    log(f"[ptc] {game_id} r={r:02d} {av} ACTIONS prompt_tokens≈{len(tok(prompt, add_special_tokens=False)['input_ids'])}")
+                    if tok is not None:
+                        tok_len = len(tok(prompt, add_special_tokens=False)["input_ids"])
+                        log(f"[ptc] {game_id} r={r:02d} {av} ACTIONS prompt_tokens≈{tok_len}")
+                    else:
+                        log(f"[ptc] {game_id} r={r:02d} {av} ACTIONS prompt_chars={len(prompt)}")
                     log("----- PROMPT (ACTIONS) -----"); log(prompt)
 
             t1 = time.perf_counter()
             # Stop at first closing bracket of the array
-            actions_raw = _batch_generate_until(
-                tok, model, actions_prompts,
+            actions_raw = client.generate_batch(
+                prompts=actions_prompts,
+                messages_list=actions_messages,
                 stop="]",  # ARRAY end
                 max_new_tokens=actions_max_new_tokens,
-                temperature=temperature, top_p=top_p, seed=seed
+                temperature=temperature,
+                top_p=top_p,
+                seed=seed,
             )
             dt_actions = time.perf_counter() - t1
 
@@ -670,9 +665,13 @@ def simulate_game(
 # -------------------------
 def simulate_games(
     env_df: pd.DataFrame,
+    provider: str,
     base_model: str,
     adapter_path: Optional[str],
     use_peft: bool,
+    openai_model: Optional[str],
+    openai_api_key: Optional[str],
+    openai_api_key_env: str,
     temperature: float,
     top_p: float,
     seed: int,
@@ -692,7 +691,19 @@ def simulate_games(
     all_rows = []
     all_transcripts = {}
 
-    tok, model = _load_model(base_model=base_model, adapter_path=adapter_path, use_peft=use_peft)
+    tok = None
+    model = None
+    if provider == "local":
+        tok, model = _load_model(base_model=base_model, adapter_path=adapter_path, use_peft=use_peft)
+
+    client = LLMClient(
+        provider=provider,
+        tok=tok,
+        model=model,
+        openai_model=openai_model,
+        openai_api_key=openai_api_key,
+        openai_api_key_env=openai_api_key_env,
+    )
 
     csv_writer = None
     csv_file = None
@@ -710,7 +721,7 @@ def simulate_games(
 
         df_game, transcripts_game = simulate_game(
             env=env,
-            model=model,
+            client=client,
             tok=tok,
             temperature=temperature,
             top_p=top_p,
@@ -763,9 +774,13 @@ def main(args: CLIArgs):
 
     df_all, transcripts_all, rows_path, trans_path, dbg_path = simulate_games(
         env_df=env_df.iloc[:40],
+        provider=args.provider,
         base_model=args.base_model,
         adapter_path=args.adapter_path,
         use_peft=args.use_peft,
+        openai_model=args.openai_model,
+        openai_api_key=args.openai_api_key,
+        openai_api_key_env=args.openai_api_key_env,
         temperature=args.temperature,
         top_p=args.top_p,
         seed=args.seed,
