@@ -462,17 +462,21 @@ def simulate_game(
         csv_file = open(rows_out_path, "w", newline="", encoding="utf-8")
         csv_writer = csv.DictWriter(csv_file, fieldnames=[
             "playerAvatar", "roundIndex", "gameId",
-            "data.contribution", "data.punished", "data.rewarded"
+            "data.contribution", "data.contribution_reasoning",
+            "data.punished", "data.rewarded", "data.actions_reasoning"
         ])
         csv_writer.writeheader()
 
     # per-round stores
     contrib_math: Dict[str, int] = {}
     contrib_rec: Dict[str, Any] = {}
+    contrib_reasoning: Dict[str, Optional[str]] = {}
+    actions_reasoning: Dict[str, Optional[str]] = {}
 
     # Round loop
     for r in range(1, int(env["CONFIG_numRounds"]) + 1):
         # ---- Phase A: contributions (per agent; NO leakage) ----
+        actions_reasoning.clear()
         contrib_prompts, contrib_meta, contrib_messages = [], [], []
         for av in roster:
             transcripts[av].append(_round_open(env, r))
@@ -511,7 +515,7 @@ def simulate_game(
         )
         dt = time.perf_counter() - t0
 
-        contrib_math.clear(); contrib_rec.clear()
+        contrib_math.clear(); contrib_rec.clear(); contrib_reasoning.clear()
         endow = int(env["CONFIG_endowment"])
         for av, gen in zip(contrib_meta, contrib_raw):
             if debug_print:
@@ -529,11 +533,13 @@ def simulate_game(
             contrib_math[av] = int(val)
             contrib_rec[av] = (float('nan') if not parsed_ok else int(val))
             if include_reasoning:
-                transcripts[av][-1] = f"Reasoning: {_extract_reasoning(gen)}"
+                contrib_reasoning[av] = _extract_reasoning(gen)
+                transcripts[av][-1] = f"Reasoning: {contrib_reasoning[av]}"
                 transcripts[av].append(
                     _format_contrib_answer(contrib_rec[av] if parsed_ok else "NaN", include_reasoning=True)
                 )
             else:
+                contrib_reasoning[av] = None
                 transcripts[av][-1] = _contrib_close_filled(contrib_rec[av] if parsed_ok else "NaN")
 
         # ---- Phase B: redistribution & peers' contributions ----
@@ -634,9 +640,11 @@ def simulate_game(
 
                 # Close the tag in transcript with the CLEANED array
                 if include_reasoning:
-                    transcripts[av][-1] = f"Reasoning: {_extract_reasoning(gen)}"
+                    actions_reasoning[av] = _extract_reasoning(gen)
+                    transcripts[av][-1] = f"Reasoning: {actions_reasoning[av]}"
                     transcripts[av].append(_format_actions_answer(tag, arr, include_reasoning=True))
                 else:
+                    actions_reasoning[av] = None
                     transcripts[av].append(_actions_close_filled_array(tag, arr))
 
                 # Split into dicts for CSV
@@ -749,8 +757,10 @@ def simulate_game(
                 "roundIndex": r,
                 "gameId": game_id,
                 "data.contribution": contrib_rec[av],
+                "data.contribution_reasoning": contrib_reasoning.get(av),
                 "data.punished": punished_str,
                 "data.rewarded": rewarded_str,
+                "data.actions_reasoning": actions_reasoning.get(av),
             }
             if csv_writer:
                 csv_writer.writerow(row)
@@ -843,7 +853,9 @@ def simulate_games(
         os.makedirs(os.path.dirname(rows_out_path_ts), exist_ok=True)
         csv_file = open(rows_out_path_ts, "w", newline="", encoding="utf-8")
         csv_writer = csv.DictWriter(csv_file, fieldnames=[
-            "playerAvatar", "roundIndex", "gameId", "data.contribution", "data.punished", "data.rewarded"
+            "playerAvatar", "roundIndex", "gameId",
+            "data.contribution", "data.contribution_reasoning",
+            "data.punished", "data.rewarded", "data.actions_reasoning"
         ])
         csv_writer.writeheader()
 
