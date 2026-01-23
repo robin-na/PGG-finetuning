@@ -5,6 +5,8 @@ import os
 import sys
 from typing import Any, Dict, List, Optional
 
+import asyncio
+
 import requests
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -150,22 +152,44 @@ class LLMClient:
         temperature: float,
         top_p: float,
         seed: int,
+        async_openai: bool = False,
+        max_concurrency: int = 8,
     ) -> List[str]:
         if self.provider == "openai":
             if messages_list is None:
                 raise ValueError("OpenAI provider requires messages_list.")
-            outputs = []
-            for messages in messages_list:
-                outputs.append(
-                    self._openai_chat_completion(
-                        messages=messages,
-                        max_new_tokens=max_new_tokens,
-                        temperature=temperature,
-                        top_p=top_p,
-                        stop=stop,
+            if not async_openai:
+                outputs = []
+                for messages in messages_list:
+                    outputs.append(
+                        self._openai_chat_completion(
+                            messages=messages,
+                            max_new_tokens=max_new_tokens,
+                            temperature=temperature,
+                            top_p=top_p,
+                            stop=stop,
+                        )
                     )
-                )
-            return outputs
+                return outputs
+
+            async def _run_async() -> List[str]:
+                semaphore = asyncio.Semaphore(max_concurrency)
+
+                async def _run_one(messages: List[Dict[str, str]]) -> str:
+                    async with semaphore:
+                        return await asyncio.to_thread(
+                            self._openai_chat_completion,
+                            messages=messages,
+                            max_new_tokens=max_new_tokens,
+                            temperature=temperature,
+                            top_p=top_p,
+                            stop=stop,
+                        )
+
+                tasks = [_run_one(messages) for messages in messages_list]
+                return await asyncio.gather(*tasks)
+
+            return asyncio.run(_run_async())
         if prompts is None or self.tok is None or self.model is None:
             raise ValueError("Local provider requires prompts and a loaded model/tokenizer.")
         return _batch_generate_until(
