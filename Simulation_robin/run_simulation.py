@@ -30,6 +30,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, HfArgumentParser
 from peft import PeftModel
 
 from llm_client import LLMClient
+from debug import build_debug_record, build_full_debug_record
 
 # -------------------------
 # Always-flushed logging
@@ -412,6 +413,18 @@ class Args:
 
     # debug
     debug_print: bool = True
+    debug_level: str = field(
+        default="full",
+        metadata={"help": "Debug output level: full | compact | off"},
+    )
+    debug_compact: bool = field(
+        default=False,
+        metadata={"help": "If true, store compact debug records (metadata + excerpt/hash)."},
+    )
+    debug_full_jsonl_path: Optional[str] = field(
+        default=None,
+        metadata={"help": "Optional JSONL path to store full prompts/outputs when compact logging is enabled."},
+    )
     max_parallel_games: int = field(
         default=1,
         metadata={"help": "Run up to N environments concurrently. Use 1 for local HF GPU models."},
@@ -434,11 +447,15 @@ def simulate_game(
     transcripts_out_path: Optional[str] = None,
     debug_jsonl_path: Optional[str] = None,
     debug_print: bool = True,
+    debug_level: str = "full",
+    debug_full_jsonl_path: Optional[str] = None,
     openai_async: bool = False,
     openai_max_concurrency: int = 8,
 ) -> Tuple[pd.DataFrame, Dict[str, List[str]]]:
 
     debug_records: List[Dict[str, Any]] = []
+    debug_full_records: List[Dict[str, Any]] = []
+    debug_excerpt_chars = 200
 
     roster = sample_roster(env, seed=seed)
     assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
@@ -520,11 +537,30 @@ def simulate_game(
         for av, gen in zip(contrib_meta, contrib_raw):
             if debug_print:
                 log(f"[ptc] {game_id} r={r:02d} {av} CONTRIB dt={dt/len(contrib_raw):.3f}s (avg per agent) out='{gen}'")
-            debug_records.append({
-                "game": game_id, "round": r, "agent": av, "phase": "contrib",
-                "dt_sec": dt/len(contrib_raw), "prompt_full": contrib_prompts[contrib_meta.index(av)],
-                "raw_output_full": gen
-            })
+            prompt_text = contrib_prompts[contrib_meta.index(av)]
+            dt_per_agent = dt / len(contrib_raw)
+            if debug_level != "off":
+                debug_records.append(build_debug_record(
+                    game_id=game_id,
+                    round_idx=r,
+                    agent=av,
+                    phase="contrib",
+                    dt_sec=dt_per_agent,
+                    prompt=prompt_text,
+                    raw_output=gen,
+                    debug_level=debug_level,
+                    excerpt_chars=debug_excerpt_chars,
+                ))
+            if debug_full_jsonl_path:
+                debug_full_records.append(build_full_debug_record(
+                    game_id=game_id,
+                    round_idx=r,
+                    agent=av,
+                    phase="contrib",
+                    dt_sec=dt_per_agent,
+                    prompt=prompt_text,
+                    raw_output=gen,
+                ))
             val, parsed_ok = _first_int(gen, tag="CONTRIB")
             if env.get("CONFIG_allOrNothing", False):
                 val = endow if val >= (endow // 2) else 0
@@ -613,12 +649,30 @@ def simulate_game(
                 raw = gen + "]"  # we truncated before ']', add it back for parsing
                 if debug_print:
                     log(f"[ptc] {game_id} r={r:02d} {av} ACTIONS dt={dt_actions/len(actions_raw):.3f}s out='{raw}'")
-                debug_records.append({
-                    "game": game_id, "round": r, "agent": av, "phase": "actions",
-                    "dt_sec": dt_actions/len(actions_raw),
-                    "prompt_full": actions_prompts[actions_meta.index(av)],
-                    "raw_output_full": raw
-                })
+                prompt_text = actions_prompts[actions_meta.index(av)]
+                dt_per_agent = dt_actions / len(actions_raw)
+                if debug_level != "off":
+                    debug_records.append(build_debug_record(
+                        game_id=game_id,
+                        round_idx=r,
+                        agent=av,
+                        phase="actions",
+                        dt_sec=dt_per_agent,
+                        prompt=prompt_text,
+                        raw_output=raw,
+                        debug_level=debug_level,
+                        excerpt_chars=debug_excerpt_chars,
+                    ))
+                if debug_full_jsonl_path:
+                    debug_full_records.append(build_full_debug_record(
+                        game_id=game_id,
+                        round_idx=r,
+                        agent=av,
+                        phase="actions",
+                        dt_sec=dt_per_agent,
+                        prompt=prompt_text,
+                        raw_output=raw,
+                    ))
 
                 arr, parsed_ok = _parse_first_int_array(raw, tag=tag)
                 if arr is None:
@@ -784,11 +838,16 @@ def simulate_game(
                 f.write(json.dumps({"experiment": game_id, "participant": av, "text": text}, ensure_ascii=False) + "\n")
 
     # debug JSONL
-    if debug_jsonl_path:
+    if debug_jsonl_path and debug_level != "off":
         os.makedirs(os.path.dirname(debug_jsonl_path), exist_ok=True)
         with open(debug_jsonl_path, "a", encoding="utf-8") as fdbg:
             for rec in debug_records:
                 fdbg.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    if debug_full_jsonl_path:
+        os.makedirs(os.path.dirname(debug_full_jsonl_path), exist_ok=True)
+        with open(debug_full_jsonl_path, "a", encoding="utf-8") as fdbg_full:
+            for rec in debug_full_records:
+                fdbg_full.write(json.dumps(rec, ensure_ascii=False) + "\n")
 
     return df, transcripts
 
@@ -816,13 +875,16 @@ def simulate_games(
     transcripts_out_path: Optional[str],
     debug_jsonl_path: Optional[str],
     debug_print: bool,
+    debug_level: str,
+    debug_full_jsonl_path: Optional[str],
     max_parallel_games: int,
-) -> Tuple[pd.DataFrame, Dict[str, Dict[str, str]], str, str, str]:
+) -> Tuple[pd.DataFrame, Dict[str, Dict[str, str]], str, str, str, Optional[str]]:
 
     ts = _timestamp_YYMMDDHHMM()
     rows_out_path_ts = _with_timestamp(rows_out_path, ts)
     transcripts_out_path_ts = _with_timestamp(transcripts_out_path, ts)
     debug_jsonl_path_ts = _with_timestamp(debug_jsonl_path, ts)
+    debug_full_jsonl_path_ts = _with_timestamp(debug_full_jsonl_path, ts)
 
     all_rows = []
     all_transcripts = {}
@@ -870,6 +932,9 @@ def simulate_games(
             _with_timestamp_and_game(transcripts_out_path, ts, game_id) if max_parallel_games > 1 else None
         )
         per_game_debug = _with_timestamp_and_game(debug_jsonl_path, ts, game_id) if max_parallel_games > 1 else debug_jsonl_path_ts
+        per_game_full_debug = (
+            _with_timestamp_and_game(debug_full_jsonl_path, ts, game_id) if max_parallel_games > 1 else debug_full_jsonl_path_ts
+        )
         df_game, transcripts_game = simulate_game(
             env=env,
             client=_build_client() if max_parallel_games > 1 else client,
@@ -884,18 +949,21 @@ def simulate_games(
             transcripts_out_path=per_game_transcripts,
             debug_jsonl_path=per_game_debug,
             debug_print=debug_print,
+            debug_level=debug_level,
+            debug_full_jsonl_path=per_game_full_debug,
             openai_async=openai_async,
             openai_max_concurrency=openai_max_concurrency,
         )
         log(f"[ptc] done game {game_id} with {len(df_game)} rows")
-        return idx, game_id, df_game, transcripts_game, per_game_debug
+        return idx, game_id, df_game, transcripts_game, per_game_debug, per_game_full_debug
 
     if max_parallel_games > 1:
         per_game_debug_paths = []
+        per_game_full_debug_paths = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_parallel_games) as executor:
             futures = [executor.submit(_run_one, idx, env, game_seed) for idx, env, game_seed in env_rows]
             for fut in concurrent.futures.as_completed(futures):
-                idx, game_id, df_game, transcripts_game, per_game_debug = fut.result()
+                idx, game_id, df_game, transcripts_game, per_game_debug, per_game_full_debug = fut.result()
                 all_rows.extend(df_game.to_dict("records"))
                 all_transcripts[game_id] = {av: "\n".join(t) for av, t in transcripts_game.items()}
                 if csv_writer:
@@ -903,6 +971,8 @@ def simulate_games(
                         csv_writer.writerow(rec)
                 if per_game_debug and per_game_debug != debug_jsonl_path_ts:
                     per_game_debug_paths.append(per_game_debug)
+                if per_game_full_debug and per_game_full_debug != debug_full_jsonl_path_ts:
+                    per_game_full_debug_paths.append(per_game_full_debug)
         if csv_file:
             csv_file.flush()
             os.fsync(csv_file.fileno())
@@ -910,6 +980,13 @@ def simulate_games(
             os.makedirs(os.path.dirname(debug_jsonl_path_ts), exist_ok=True)
             with open(debug_jsonl_path_ts, "a", encoding="utf-8") as fdbg:
                 for per_path in per_game_debug_paths:
+                    if os.path.exists(per_path):
+                        with open(per_path, "r", encoding="utf-8") as per_f:
+                            fdbg.write(per_f.read())
+        if debug_full_jsonl_path_ts and per_game_full_debug_paths:
+            os.makedirs(os.path.dirname(debug_full_jsonl_path_ts), exist_ok=True)
+            with open(debug_full_jsonl_path_ts, "a", encoding="utf-8") as fdbg:
+                for per_path in per_game_full_debug_paths:
                     if os.path.exists(per_path):
                         with open(per_path, "r", encoding="utf-8") as per_f:
                             fdbg.write(per_f.read())
@@ -921,18 +998,20 @@ def simulate_games(
             df_game, transcripts_game = simulate_game(
                 env=env,
                 client=client,
-            tok=tok,
-            temperature=temperature,
-            top_p=top_p,
-            seed=game_seed,
-            contrib_max_new_tokens=contrib_max_new_tokens,
-            actions_max_new_tokens=actions_max_new_tokens,
-            include_reasoning=include_reasoning,
-            rows_out_path=None,
-            transcripts_out_path=None,
-            debug_jsonl_path=debug_jsonl_path_ts,
-            debug_print=debug_print,
-            openai_async=openai_async,
+                tok=tok,
+                temperature=temperature,
+                top_p=top_p,
+                seed=game_seed,
+                contrib_max_new_tokens=contrib_max_new_tokens,
+                actions_max_new_tokens=actions_max_new_tokens,
+                include_reasoning=include_reasoning,
+                rows_out_path=None,
+                transcripts_out_path=None,
+                debug_jsonl_path=debug_jsonl_path_ts,
+                debug_print=debug_print,
+                openai_async=openai_async,
+                debug_level=debug_level,
+                debug_full_jsonl_path=debug_full_jsonl_path_ts,
                 openai_max_concurrency=openai_max_concurrency,
             )
 
@@ -957,7 +1036,14 @@ def simulate_games(
                 for av, text in tdict.items():
                     f.write(json.dumps({"experiment": gid, "participant": av, "text": text}, ensure_ascii=False) + "\n")
 
-    return pd.DataFrame(all_rows), all_transcripts, rows_out_path_ts, transcripts_out_path_ts, debug_jsonl_path_ts
+    return (
+        pd.DataFrame(all_rows),
+        all_transcripts,
+        rows_out_path_ts,
+        transcripts_out_path_ts,
+        debug_jsonl_path_ts,
+        debug_full_jsonl_path_ts,
+    )
 
 # -------------------------
 # CLI entry
@@ -968,13 +1054,21 @@ class CLIArgs(Args):
 
 def main(args: CLIArgs):
     log(args)
+    if args.debug_compact:
+        args.debug_level = "compact"
+    if args.debug_level not in {"full", "compact", "off"}:
+        log(f"[warn] unknown debug_level='{args.debug_level}', defaulting to 'full'")
+        args.debug_level = "full"
+    if args.debug_level == "off":
+        args.debug_jsonl_path = None
+        args.debug_full_jsonl_path = None
     env_df = pd.read_csv(args.env_csv)
     if "name" in env_df.columns:
         before = len(env_df)
         env_df = env_df.drop_duplicates(subset="name", keep="first")
         log(f"[env] dedup by name: {before} -> {len(env_df)} rows")
 
-    df_all, transcripts_all, rows_path, trans_path, dbg_path = simulate_games(
+    df_all, transcripts_all, rows_path, trans_path, dbg_path, dbg_full_path = simulate_games(
         env_df=env_df.iloc[:40],
         provider=args.provider,
         base_model=args.base_model,
@@ -995,6 +1089,8 @@ def main(args: CLIArgs):
         transcripts_out_path=args.transcripts_out_path,
         debug_jsonl_path=args.debug_jsonl_path,
         debug_print=args.debug_print,
+        debug_level=args.debug_level,
+        debug_full_jsonl_path=args.debug_full_jsonl_path,
         max_parallel_games=args.max_parallel_games,
     )
 
@@ -1002,6 +1098,8 @@ def main(args: CLIArgs):
     log(f"[ptc] saved transcripts JSONL → {trans_path}")
     if dbg_path:
         log(f"[ptc] saved raw debug JSONL → {dbg_path}")
+    if dbg_full_path and args.debug_level != "off":
+        log(f"[ptc] saved full debug JSONL → {dbg_full_path}")
 
 if __name__ == "__main__":
     parser = HfArgumentParser(CLIArgs)
