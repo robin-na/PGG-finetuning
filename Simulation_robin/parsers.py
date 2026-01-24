@@ -27,6 +27,8 @@ def first_int(s: str, tag: Optional[str] = None) -> Tuple[int, bool]:
         tagged = extract_answer_tagged(s, tag)
         if tagged is not None:
             target = tagged
+    if "Answer:" in target:
+        target = target.split("Answer:", 1)[1]
     m = re.search(r"-?\d+", target)
     if not m:
         log(f"[parse] no integer found for tag={tag or 'raw'}; defaulting to 0")
@@ -44,6 +46,8 @@ def parse_first_int_array(s: str, tag: Optional[str] = None) -> Tuple[Optional[L
         tagged = extract_answer_tagged(s, tag)
         if tagged is not None:
             target = tagged
+    if "Answer:" in target:
+        target = target.split("Answer:", 1)[1]
 
     cleaned = target.strip()
     if cleaned.startswith("<<") and ">>" in cleaned:
@@ -101,7 +105,9 @@ def parse_chat_message(s: str) -> Tuple[str, bool]:
         return "", False
     content = extract_tag_content(s, "CHAT")
     if content is None:
-        return "", False
+        content = s
+    if "Answer:" in content:
+        content = content.split("Answer:", 1)[1]
     msg = content.strip()
     if msg in {"", "...", "SILENT", "silence", "NONE", "none"}:
         return "", True

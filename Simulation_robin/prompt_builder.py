@@ -6,15 +6,28 @@ from typing import Dict, List, Optional, Tuple
 
 
 def system_header_lines(env: Dict, include_reasoning: bool) -> List[str]:
+    endow = int(env.get("CONFIG_endowment", 0) or 0)
+    mult = env.get("CONFIG_multiplier", "Unknown")
     lines: List[str] = []
-    lines.append("You are playing an online public goods game (PGG).")
+    aon = bool(env.get("CONFIG_allOrNothing", False))
+    contrib_mode = f"either 0 or {endow}" if aon else f"integer from 0 to {endow}"
+    lines.append(
+        "You are playing an online public goods game (PGG). Each round, you are given "
+        f"{endow} coins and need to decide how many coins to put into the shared pot "
+        f"({contrib_mode})."
+    )
+    lines.append("You will not see others' choices before you decide.")
+    lines.append(f"The pot is multiplied by {mult}× and split equally among all players.")
+    lines.append("Your round payoff is: coins you kept + your equal share of the multiplied pot.")
+    if env.get("CONFIG_punishmentExists", False) or env.get("CONFIG_rewardExists", False):
+        lines.append("After contributions are redistributed, players may punish and/or reward each other.")
     lines.append("Follow the stage instructions exactly.")
     lines.append("The required response format will be shown at the END of each prompt.")
-    lines.append("It is valid to stay silent; only speak when it helps your strategy.")
     if include_reasoning:
         lines.append("When asked for reasoning, keep it brief and strategic.")
     if env.get("CONFIG_chat", False):
-        lines.append("Chat messages, if you send one, are broadcast to the whole group.")
+        lines.append("At the start of each round, you may optionally send ONE short message to the group.")
+        lines.append("It is valid to stay silent; only speak when it helps.")
     return lines
 
 
@@ -25,27 +38,6 @@ def system_header(env: Dict, include_reasoning: bool) -> str:
 
 def system_header_plain(env: Dict, include_reasoning: bool) -> str:
     return "\n".join(system_header_lines(env, include_reasoning))
-
-
-def game_intro_lines(env: Dict) -> List[str]:
-    endow = int(env.get("CONFIG_endowment", 0) or 0)
-    mult = env.get("CONFIG_multiplier", "Unknown")
-    lines: List[str] = [
-        f"Each round, you are given {endow} coins.",
-        f"Decide how many coins to put into the shared pot (integer from 0 to {endow}).",
-        "You will not see others' choices before you decide.",
-        f"At the end of the round, the pot is multiplied by {mult}× and split equally among all players.",
-        "Your round payoff is: coins you kept + your equal share of the multiplied pot.",
-    ]
-    if env.get("CONFIG_chat", False):
-        lines.extend(
-            [
-                "Communication is enabled.",
-                "At the start of each round, you may optionally send ONE short message to the whole group.",
-                "Any message you send is shown to everyone before contributions.",
-            ]
-        )
-    return lines
 
 
 def build_openai_messages(system_text: str, history_chunks: List[str]) -> List[Dict[str, str]]:
@@ -81,43 +73,27 @@ def chat_stage_line(env: Dict) -> str:
     return "<CHAT_STAGE> Would you like to send a message to the group? You may stay silent. </CHAT_STAGE>"
 
 
-def contrib_open() -> str:
-    return "<CONTRIB>"
-
-
-def contrib_close_filled(val) -> str:
-    return f"<CONTRIB> {val} </CONTRIB>"
-
-
 def format_contrib_answer(val, include_reasoning: bool) -> str:
-    base = contrib_close_filled(val)
+    base = str(val)
     return f"Answer: {base}" if include_reasoning else base
 
 
 def contrib_format_line(include_reasoning: bool) -> str:
     if include_reasoning:
-        return "FORMAT: Reasoning: <short rationale> Answer: <CONTRIB> <<...>> </CONTRIB>"
-    return "FORMAT: <CONTRIB> <integer amount> </CONTRIB>"
+        return "FORMAT: Reasoning: <short rationale> Answer: <single integer>"
+    return "FORMAT: Output a single integer and nothing else."
 
 
 def actions_format_line(tag: str, include_reasoning: bool) -> str:
     if include_reasoning:
-        return f"FORMAT: Reasoning: <short rationale> Answer: <{tag}> <<[...]>> </{tag}>"
-    return f"FORMAT: <{tag}> <<[...]>> </{tag}>"
+        return "FORMAT: Reasoning: <short rationale> Answer: <JSON array of integers>"
+    return "FORMAT: Output a JSON array of integers and nothing else."
 
 
 def chat_format_line(include_reasoning: bool) -> str:
     if include_reasoning:
-        return "FORMAT: Reasoning: <short rationale> Answer: <CHAT> <short message or empty> </CHAT>"
-    return "FORMAT: <CHAT> <short message or empty> </CHAT>"
-
-
-def chat_open() -> str:
-    return "<CHAT>"
-
-
-def chat_close_filled(val: str) -> str:
-    return f"<CHAT> {val} </CHAT>"
+        return "FORMAT: Reasoning: <short rationale> Answer: <short message or SILENT>"
+    return "FORMAT: Output a single short message, or SILENT if you choose to stay quiet."
 
 
 def extract_reasoning(gen: str) -> str:
@@ -179,14 +155,6 @@ def actions_tag(env: Dict) -> Optional[str]:
     return None
 
 
-def actions_open_array(tag: str) -> str:
-    return f"<{tag}> <<"
-
-
-def actions_close_filled_array(tag: str, vec: List[int]) -> str:
-    return f"{json.dumps([int(x) for x in vec])}>> </{tag}>"
-
-
 def format_actions_answer(tag: str, vec: List[int], include_reasoning: bool) -> str:
-    base = actions_close_filled_array(tag, vec)
+    base = json.dumps([int(x) for x in vec])
     return f"Answer: {base}" if include_reasoning else base
