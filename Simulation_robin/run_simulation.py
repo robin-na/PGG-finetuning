@@ -308,7 +308,7 @@ def _format_contrib_answer(val: Any, include_reasoning: bool) -> str:
     return f"Answer: {base}" if include_reasoning else base
 
 def _contrib_format_line() -> str:
-    return "FORMAT: Reasoning: <short rationale> Answer: <CONTRIB> 3 </CONTRIB>"
+    return "FORMAT: Reasoning: <short rationale> Answer: <CONTRIB> <<...>> </CONTRIB>"
 
 def _actions_format_line(tag: str) -> str:
     return f"FORMAT: Reasoning: <short rationale> Answer: <{tag}> <<[...]>> </{tag}>"
@@ -432,8 +432,8 @@ class Args:
     temperature: float = 0.7
     top_p: float = 0.9
     seed: int = 0
-    contrib_max_new_tokens: int = 6
-    actions_max_new_tokens: int = 96  # arrays are short
+    contrib_max_new_tokens: int = 100
+    actions_max_new_tokens: int = 100  # arrays are short
     include_reasoning: bool = field(
         default=False,
         metadata={"help": "If true, request a short Reasoning line followed by a strict Answer line."},
