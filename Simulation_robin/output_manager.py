@@ -61,6 +61,7 @@ def _model_config(args: Any, run_ts: str) -> Dict[str, Any]:
         "include_reasoning",
         "max_parallel_games",
         "debug_print",
+        "env_csv"
     ]
     if provider != "openai":
         base_keys.extend(["base_model", "adapter_path", "use_peft"])
