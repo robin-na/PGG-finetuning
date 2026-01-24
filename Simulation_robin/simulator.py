@@ -151,7 +151,12 @@ def simulate_game(
                 chat_prompt = "\n".join(transcripts[av] + [chat_format_line(include_reasoning)])
                 chat_prompts.append(chat_prompt)
                 chat_meta.append(av)
-                chat_messages_list.append(build_openai_messages(sys_text_plain, transcripts[av]))
+                chat_messages_list.append(
+                    build_openai_messages(
+                        sys_text_plain,
+                        transcripts[av] + [chat_format_line(include_reasoning)],
+                    )
+                )
 
                 if debug_print:
                     if tok is not None:
@@ -239,7 +244,12 @@ def simulate_game(
             prompt = "\n".join(transcripts[av] + [contrib_format_line(include_reasoning)])
             contrib_prompts.append(prompt)
             contrib_meta.append(av)
-            contrib_messages.append(build_openai_messages(sys_text_plain, transcripts[av]))
+            contrib_messages.append(
+                build_openai_messages(
+                    sys_text_plain,
+                    transcripts[av] + [contrib_format_line(include_reasoning)],
+                )
+            )
 
         for av, ptxt in zip(contrib_meta, contrib_prompts):
             if debug_print:
@@ -350,7 +360,12 @@ def simulate_game(
                 prompt = "\n".join(transcripts[av] + [actions_format_line(tag, include_reasoning)])
                 actions_prompts.append(prompt)
                 actions_meta.append(av)
-                actions_messages.append(build_openai_messages(sys_text_plain, transcripts[av]))
+                actions_messages.append(
+                    build_openai_messages(
+                        sys_text_plain,
+                        transcripts[av] + [actions_format_line(tag, include_reasoning)],
+                    )
+                )
                 if debug_print:
                     if tok is not None:
                         tok_len = len(tok(prompt, add_special_tokens=False)["input_ids"])
