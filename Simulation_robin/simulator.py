@@ -14,7 +14,7 @@ import pandas as pd
 from debug import build_debug_record, build_full_debug_record
 from llm_client import LLMClient
 from output_manager import relocate_for_experiment, resolve_experiment_dir, resolve_run_ts, write_config
-from parsers import first_int, parse_chat_message, parse_first_int_array
+from parsers import first_int, parse_chat_message, parse_int_dict
 from prompt_builder import (
     actions_format_line,
     actions_tag,
@@ -147,8 +147,6 @@ def simulate_game(
             for av in roster:
                 transcripts[av].append(round_open(env, r))
                 transcripts[av].append(chat_stage_line(env))
-                if include_reasoning:
-                    transcripts[av].append("Reasoning:")
 
                 chat_prompt = "\n".join(transcripts[av] + [chat_format_line(include_reasoning)])
                 chat_prompts.append(chat_prompt)
@@ -214,11 +212,11 @@ def simulate_game(
                 chat_messages[av] = msg if parsed_ok else ""
                 if include_reasoning:
                     chat_reasoning[av] = extract_reasoning(gen)
-                    transcripts[av][-1] = f"Reasoning: {chat_reasoning[av]}"
-                    transcripts[av].append(f"Answer: {msg if msg else 'SILENT'}")
+                    transcripts[av].append(f"<Reasoning> {chat_reasoning[av]} </Reasoning>")
                 else:
                     chat_reasoning[av] = None
-                    transcripts[av].append(f"CHAT: {msg if msg else 'SILENT'}")
+                if msg:
+                    transcripts[av].append(f"<CHAT> {msg} </CHAT>")
 
             chat_lines = [f"{av}: {msg}" for av, msg in chat_messages.items() if msg]
             chat_block = (
@@ -238,8 +236,6 @@ def simulate_game(
         contrib_meta: List[str] = []
         contrib_messages: List[List[Dict[str, str]]] = []
         for av in roster:
-            if include_reasoning:
-                transcripts[av].append("Reasoning:")
             prompt = "\n".join(transcripts[av] + [contrib_format_line(include_reasoning)])
             contrib_prompts.append(prompt)
             contrib_meta.append(av)
@@ -313,11 +309,10 @@ def simulate_game(
             contrib_rec[av] = float("nan") if not parsed_ok else int(val)
             if include_reasoning:
                 contrib_reasoning[av] = extract_reasoning(gen)
-                transcripts[av][-1] = f"Reasoning: {contrib_reasoning[av]}"
-                transcripts[av].append(format_contrib_answer(contrib_rec[av] if parsed_ok else "NaN", include_reasoning=True))
+                transcripts[av].append(f"<Reasoning> {contrib_reasoning[av]} </Reasoning>")
             else:
                 contrib_reasoning[av] = None
-                transcripts[av].append(f"CONTRIB: {contrib_rec[av] if parsed_ok else 'NaN'}")
+            transcripts[av].append(format_contrib_answer(contrib_rec[av] if parsed_ok else "NaN"))
 
         total_contrib = sum(contrib_math.values())
         try:
@@ -351,8 +346,6 @@ def simulate_game(
 
                 if mech:
                     transcripts[av].append(f"<MECHANISM_INFO> {mech} </MECHANISM_INFO>")
-                if include_reasoning:
-                    transcripts[av].append("Reasoning:")
 
                 prompt = "\n".join(transcripts[av] + [actions_format_line(tag, include_reasoning)])
                 actions_prompts.append(prompt)
@@ -383,8 +376,8 @@ def simulate_game(
 
             for av, gen in zip(actions_meta, actions_raw):
                 raw = gen
-                if "[" in raw and "]" not in raw:
-                    raw = raw + "]"
+                if "{" in raw and "}" not in raw:
+                    raw = raw + "}"
                 if debug_print:
                     log(f"[ptc] {game_id} r={r:02d} {av} ACTIONS dt={dt_actions/len(actions_raw):.3f}s out='{raw}'")
                 prompt_text = actions_prompts[actions_meta.index(av)]
@@ -416,29 +409,26 @@ def simulate_game(
                         )
                     )
 
-                arr, parsed_ok = parse_first_int_array(raw, tag=tag)
-                if arr is None:
-                    arr = []
+                actions_dict, parsed_ok = parse_int_dict(raw, tag=tag)
+                if actions_dict is None:
+                    actions_dict = {}
                 peer_order = peer_orders[av]
-                if len(arr) < len(peer_order):
-                    arr = arr + [0] * (len(peer_order) - len(arr))
-                elif len(arr) > len(peer_order):
-                    arr = arr[: len(peer_order)]
+                arr = [actions_dict.get(peer, 0) for peer in peer_order]
 
                 if reward_on and not punish_on:
                     arr = [max(0, int(v)) for v in arr]
                 elif punish_on and not reward_on:
-                    arr = [min(0, int(v)) for v in arr]
+                    arr = [max(0, int(v)) for v in arr]
                 else:
                     arr = [int(v) for v in arr]
 
                 if include_reasoning:
                     actions_reasoning[av] = extract_reasoning(gen)
-                    transcripts[av][-1] = f"Reasoning: {actions_reasoning[av]}"
-                    transcripts[av].append(format_actions_answer(tag, arr, include_reasoning=True))
+                    transcripts[av].append(f"<Reasoning> {actions_reasoning[av]} </Reasoning>")
                 else:
                     actions_reasoning[av] = None
-                    transcripts[av].append(f"{tag}: {json.dumps(arr)}")
+                actions_out = {peer: int(arr[idx]) for idx, peer in enumerate(peer_order) if int(arr[idx]) != 0}
+                transcripts[av].append(format_actions_answer(tag, actions_out))
 
                 if reward_on:
                     for j, v in enumerate(arr):
@@ -447,9 +437,9 @@ def simulate_game(
                             rewards_given[av][tgt] = int(v)
                 if punish_on:
                     for j, v in enumerate(arr):
-                        if v < 0:
+                        if (reward_on and v < 0) or (not reward_on and v > 0):
                             tgt = peer_order[j]
-                            punish_given[av][tgt] = int(-v)
+                            punish_given[av][tgt] = int(abs(v))
 
         show_punish_id = env.get("CONFIG_showPunishmentId", False)
         show_reward_id = env.get("CONFIG_showRewardId", False)

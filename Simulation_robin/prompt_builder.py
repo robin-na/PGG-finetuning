@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 from typing import Dict, List, Optional, Tuple
 
 
@@ -19,12 +20,18 @@ def system_header_lines(env: Dict, include_reasoning: bool) -> List[str]:
     lines.append("You will not see others' choices before you decide.")
     lines.append(f"The pot is multiplied by {mult}× and split equally among all players.")
     lines.append("Your round payoff is: coins you kept + your equal share of the multiplied pot.")
-    if env.get("CONFIG_punishmentExists", False) or env.get("CONFIG_rewardExists", False):
-        lines.append("After contributions are redistributed, players may punish and/or reward each other.")
+    punish_on = bool(env.get("CONFIG_punishmentExists", False))
+    reward_on = bool(env.get("CONFIG_rewardExists", False))
+    if punish_on and reward_on:
+        lines.append("After contributions are redistributed, players may punish or reward each other.")
+    elif punish_on:
+        lines.append("After contributions are redistributed, players may punish each other.")
+    elif reward_on:
+        lines.append("After contributions are redistributed, players may reward each other.")
     lines.append("Follow the stage instructions exactly.")
     lines.append("The required response format will be shown at the END of each prompt.")
     if include_reasoning:
-        lines.append("When asked for reasoning, keep it brief and strategic.")
+        lines.append("When asked for reasoning, use <Reasoning>...</Reasoning> and keep it brief.")
     if env.get("CONFIG_chat", False):
         lines.append("At the start of each round, you may optionally send ONE short message to the group.")
         lines.append("It is valid to stay silent; only speak when it helps.")
@@ -73,38 +80,42 @@ def chat_stage_line(env: Dict) -> str:
     return "<CHAT_STAGE> Would you like to send a message to the group? You may stay silent. </CHAT_STAGE>"
 
 
-def format_contrib_answer(val, include_reasoning: bool) -> str:
+def format_contrib_answer(val) -> str:
     base = str(val)
-    return f"Answer: {base}" if include_reasoning else base
+    return f"<CONTRIB> {base} </CONTRIB>"
 
 
 def contrib_format_line(include_reasoning: bool) -> str:
     if include_reasoning:
-        return "FORMAT: Reasoning: <short rationale> Answer: <single integer>"
-    return "FORMAT: Output a single integer and nothing else."
+        return "FORMAT: <Reasoning>...</Reasoning> <CONTRIB> <integer> </CONTRIB>"
+    return "FORMAT: <CONTRIB> <integer> </CONTRIB>"
 
 
 def actions_format_line(tag: str, include_reasoning: bool) -> str:
+    if tag == "PUNISHMENT":
+        dict_hint = "Use a dict mapping avatar -> nonnegative punishment units; omit zeros."
+    elif tag == "REWARD":
+        dict_hint = "Use a dict mapping avatar -> nonnegative reward units; omit zeros."
+    else:
+        dict_hint = "Use a dict mapping avatar -> integer units; omit zeros. Negative=punishment, positive=reward."
     if include_reasoning:
-        return "FORMAT: Reasoning: <short rationale> Answer: <JSON array of integers>"
-    return "FORMAT: Output a JSON array of integers and nothing else."
+        return f"FORMAT: <Reasoning>...</Reasoning> <{tag}> {{dict}} </{tag}> ({dict_hint})"
+    return f"FORMAT: <{tag}> {{dict}} </{tag}> ({dict_hint})"
 
 
 def chat_format_line(include_reasoning: bool) -> str:
     if include_reasoning:
-        return "FORMAT: Reasoning: <short rationale> Answer: <short message or SILENT>"
-    return "FORMAT: Output a single short message, or SILENT if you choose to stay quiet."
+        return "FORMAT: <Reasoning>...</Reasoning> then (optional) <CHAT>...</CHAT>. If silent, omit <CHAT>."
+    return "FORMAT: Output <CHAT>...</CHAT> or empty string if silent."
 
 
 def extract_reasoning(gen: str) -> str:
     if not isinstance(gen, str):
         return ""
-    text = gen
-    if "Reasoning:" in text:
-        text = text.split("Reasoning:", 1)[1]
-    if "Answer:" in text:
-        text = text.split("Answer:", 1)[0]
-    return text.strip()
+    match = re.search(r"<\s*Reasoning\s*>(.*?)</\s*Reasoning\s*>", gen, flags=re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    return ""
 
 
 def redist_line(total_contrib: int, multiplied: float, active_players: int) -> str:
@@ -147,14 +158,14 @@ def mech_info(env: Dict) -> Optional[str]:
 
 def actions_tag(env: Dict) -> Optional[str]:
     if env.get("CONFIG_punishmentExists", False) and env.get("CONFIG_rewardExists", False):
-        return "PUNISHMENTS_REWARDS"
+        return "PUNISHMENT/REWARD"
     if env.get("CONFIG_punishmentExists", False):
-        return "PUNISHMENTS"
+        return "PUNISHMENT"
     if env.get("CONFIG_rewardExists", False):
-        return "REWARDS"
+        return "REWARD"
     return None
 
 
-def format_actions_answer(tag: str, vec: List[int], include_reasoning: bool) -> str:
-    base = json.dumps([int(x) for x in vec])
-    return f"Answer: {base}" if include_reasoning else base
+def format_actions_answer(tag: str, actions: Dict[str, int]) -> str:
+    base = json.dumps(actions, separators=(",", ":"))
+    return f"<{tag}> {base} </{tag}>"
