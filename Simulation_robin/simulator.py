@@ -16,22 +16,15 @@ from llm_client import LLMClient
 from output_manager import relocate_for_experiment, resolve_experiment_dir, resolve_run_ts, write_config
 from parsers import first_int, parse_chat_message, parse_first_int_array
 from prompt_builder import (
-    actions_close_filled_array,
     actions_format_line,
-    actions_open_array,
     actions_tag,
     build_openai_messages,
-    chat_close_filled,
     chat_format_line,
-    chat_open,
     chat_stage_line,
-    contrib_close_filled,
     contrib_format_line,
-    contrib_open,
     extract_reasoning,
     format_actions_answer,
     format_contrib_answer,
-    game_intro_lines,
     mech_info,
     peers_contributions_csv,
     redist_line,
@@ -108,11 +101,8 @@ def simulate_game(
     rows: List[Dict[str, Any]] = []
     game_id = env.get("name", "GAME")
 
-    intro_block_lines = game_intro_lines(env)
-    intro_block = ["<GAME_INFO>", *intro_block_lines, "</GAME_INFO>"]
     for av in roster:
-        header = f"<META gameId='{game_id}' avatar='{av}'/>"
-        transcripts[av] = [header, *intro_block]
+        transcripts[av] = ["# GAME STARTS"]
 
     csv_writer = None
     csv_file = None
@@ -155,19 +145,15 @@ def simulate_game(
             chat_messages_list: List[List[Dict[str, str]]] = []
 
             for av in roster:
-                if r == 1:
-                    transcripts[av].append("# GAME STARTS")
                 transcripts[av].append(round_open(env, r))
                 transcripts[av].append(chat_stage_line(env))
                 if include_reasoning:
                     transcripts[av].append("Reasoning:")
-                else:
-                    transcripts[av].append(chat_open())
 
                 chat_prompt = "\n".join(transcripts[av] + [chat_format_line(include_reasoning)])
                 chat_prompts.append(chat_prompt)
                 chat_meta.append(av)
-                chat_messages_list.append(build_openai_messages(sys_text_plain, transcripts[av][1:]))
+                chat_messages_list.append(build_openai_messages(sys_text_plain, transcripts[av]))
 
                 if debug_print:
                     if tok is not None:
@@ -224,18 +210,15 @@ def simulate_game(
                         )
                     )
 
-                if include_reasoning:
-                    chat_reasoning[av] = extract_reasoning(gen)
-                    transcripts[av][-1] = f"Reasoning: {chat_reasoning[av]}"
-                else:
-                    chat_reasoning[av] = None
-
                 msg, parsed_ok = parse_chat_message(gen)
                 chat_messages[av] = msg if parsed_ok else ""
                 if include_reasoning:
-                    transcripts[av].append(chat_close_filled(msg if msg else ""))
+                    chat_reasoning[av] = extract_reasoning(gen)
+                    transcripts[av][-1] = f"Reasoning: {chat_reasoning[av]}"
+                    transcripts[av].append(f"Answer: {msg if msg else 'SILENT'}")
                 else:
-                    transcripts[av][-1] = chat_close_filled(msg if msg else "")
+                    chat_reasoning[av] = None
+                    transcripts[av].append(f"CHAT: {msg if msg else 'SILENT'}")
 
             chat_lines = [f"{av}: {msg}" for av, msg in chat_messages.items() if msg]
             chat_block = (
@@ -248,8 +231,6 @@ def simulate_game(
                 transcripts[av].append(round_info_line(env))
         else:
             for av in roster:
-                if r == 1:
-                    transcripts[av].append("# GAME STARTS")
                 transcripts[av].append(round_open(env, r))
                 transcripts[av].append(round_info_line(env))
 
@@ -259,12 +240,10 @@ def simulate_game(
         for av in roster:
             if include_reasoning:
                 transcripts[av].append("Reasoning:")
-            else:
-                transcripts[av].append(contrib_open())
             prompt = "\n".join(transcripts[av] + [contrib_format_line(include_reasoning)])
             contrib_prompts.append(prompt)
             contrib_meta.append(av)
-            contrib_messages.append(build_openai_messages(sys_text_plain, transcripts[av][1:]))
+            contrib_messages.append(build_openai_messages(sys_text_plain, transcripts[av]))
 
         for av, ptxt in zip(contrib_meta, contrib_prompts):
             if debug_print:
@@ -338,7 +317,7 @@ def simulate_game(
                 transcripts[av].append(format_contrib_answer(contrib_rec[av] if parsed_ok else "NaN", include_reasoning=True))
             else:
                 contrib_reasoning[av] = None
-                transcripts[av][-1] = contrib_close_filled(contrib_rec[av] if parsed_ok else "NaN")
+                transcripts[av].append(f"CONTRIB: {contrib_rec[av] if parsed_ok else 'NaN'}")
 
         total_contrib = sum(contrib_math.values())
         try:
@@ -374,13 +353,11 @@ def simulate_game(
                     transcripts[av].append(f"<MECHANISM_INFO> {mech} </MECHANISM_INFO>")
                 if include_reasoning:
                     transcripts[av].append("Reasoning:")
-                else:
-                    transcripts[av].append(actions_open_array(tag))
 
                 prompt = "\n".join(transcripts[av] + [actions_format_line(tag, include_reasoning)])
                 actions_prompts.append(prompt)
                 actions_meta.append(av)
-                actions_messages.append(build_openai_messages(sys_text_plain, transcripts[av][1:]))
+                actions_messages.append(build_openai_messages(sys_text_plain, transcripts[av]))
                 if debug_print:
                     if tok is not None:
                         tok_len = len(tok(prompt, add_special_tokens=False)["input_ids"])
@@ -461,7 +438,7 @@ def simulate_game(
                     transcripts[av].append(format_actions_answer(tag, arr, include_reasoning=True))
                 else:
                     actions_reasoning[av] = None
-                    transcripts[av].append(actions_close_filled_array(tag, arr))
+                    transcripts[av].append(f"{tag}: {json.dumps(arr)}")
 
                 if reward_on:
                     for j, v in enumerate(arr):
