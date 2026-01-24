@@ -335,7 +335,6 @@ def simulate_game(
             transcripts[av].append(redist_line(total_contrib, multiplied, active_players))
             peers_csv, peer_order = peers_contributions_csv(roster, av, contrib_math)
             transcripts[av].append(f"<PEERS_CONTRIBUTIONS> {peers_csv} </PEERS_CONTRIBUTIONS>")
-            transcripts[av].append(f"<!-- PEER_ORDER {json.dumps(peer_order)} -->")
 
         reward_on = env.get("CONFIG_rewardExists", False)
         punish_on = env.get("CONFIG_punishmentExists", False)
