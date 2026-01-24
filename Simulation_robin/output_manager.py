@@ -57,6 +57,7 @@ def _model_config(args: Any, run_ts: str) -> Dict[str, Any]:
         "top_p",
         "seed",
         "contrib_max_new_tokens",
+        "chat_max_new_tokens",
         "actions_max_new_tokens",
         "include_reasoning",
         "max_parallel_games",

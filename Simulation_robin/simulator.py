@@ -14,25 +14,29 @@ import pandas as pd
 from debug import build_debug_record, build_full_debug_record
 from llm_client import LLMClient
 from output_manager import relocate_for_experiment, resolve_experiment_dir, resolve_run_ts, write_config
-from parsers import first_int, parse_first_int_array
+from parsers import first_int, parse_chat_message, parse_first_int_array
 from prompt_builder import (
     actions_close_filled_array,
     actions_format_line,
     actions_open_array,
     actions_tag,
     build_openai_messages,
+    chat_close_filled,
+    chat_format_line,
+    chat_open,
+    chat_stage_line,
     contrib_close_filled,
     contrib_format_line,
     contrib_open,
     extract_reasoning,
     format_actions_answer,
     format_contrib_answer,
+    game_intro_lines,
     mech_info,
     peers_contributions_csv,
     redist_line,
     round_info_line,
     round_open,
-    system_header,
     system_header_plain,
 )
 from utils import log
@@ -79,6 +83,7 @@ def simulate_game(
     top_p: float = 0.9,
     seed: int = 0,
     contrib_max_new_tokens: int = 6,
+    chat_max_new_tokens: int = 48,
     actions_max_new_tokens: int = 96,
     include_reasoning: bool = False,
     rows_out_path: Optional[str] = None,
@@ -97,7 +102,6 @@ def simulate_game(
     roster = sample_roster(env, seed=seed)
     assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
 
-    sys_text = system_header(env, include_reasoning=include_reasoning)
     sys_text_plain = system_header_plain(env, include_reasoning=include_reasoning)
 
     transcripts: Dict[str, List[str]] = {}
@@ -106,7 +110,8 @@ def simulate_game(
 
     for av in roster:
         header = f"<META gameId='{game_id}' avatar='{av}'/>"
-        transcripts[av] = [sys_text, header, "# GAME STARTS"]
+        intro_block = [f"<GAME_INFO> {line} </GAME_INFO>" for line in game_intro_lines(env)]
+        transcripts[av] = [header, "# GAME STARTS", *intro_block]
 
     csv_writer = None
     csv_file = None
@@ -119,6 +124,8 @@ def simulate_game(
                 "playerAvatar",
                 "roundIndex",
                 "gameId",
+                "data.chat_message",
+                "data.chat_reasoning",
                 "data.contribution",
                 "data.contribution_reasoning",
                 "data.punished",
@@ -132,21 +139,124 @@ def simulate_game(
     contrib_rec: Dict[str, Any] = {}
     contrib_reasoning: Dict[str, Optional[str]] = {}
     actions_reasoning: Dict[str, Optional[str]] = {}
+    chat_reasoning: Dict[str, Optional[str]] = {}
+    chat_messages: Dict[str, str] = {}
 
     for r in range(1, int(env["CONFIG_numRounds"]) + 1):
         actions_reasoning.clear()
+        chat_reasoning.clear()
+        chat_messages.clear()
+
+        chat_on = bool(env.get("CONFIG_chat", False))
+        if chat_on:
+            chat_prompts: List[str] = []
+            chat_meta: List[str] = []
+            chat_messages_list: List[List[Dict[str, str]]] = []
+
+            for av in roster:
+                transcripts[av].append(round_open(env, r))
+                transcripts[av].append(chat_stage_line(env))
+                if include_reasoning:
+                    transcripts[av].append("Reasoning:")
+                else:
+                    transcripts[av].append(chat_open())
+
+                chat_prompt = "\n".join(transcripts[av] + [chat_format_line(include_reasoning)])
+                chat_prompts.append(chat_prompt)
+                chat_meta.append(av)
+                chat_messages_list.append(build_openai_messages(sys_text_plain, transcripts[av][1:]))
+
+                if debug_print:
+                    if tok is not None:
+                        tok_len = len(tok(chat_prompt, add_special_tokens=False)["input_ids"])
+                        log(f"[ptc] {game_id} r={r:02d} {av} CHAT prompt_tokens≈{tok_len}")
+                    else:
+                        log(f"[ptc] {game_id} r={r:02d} {av} CHAT prompt_chars={len(chat_prompt)}")
+                    log("----- PROMPT (CHAT) -----")
+                    log(chat_prompt)
+
+            t_chat = time.perf_counter()
+            chat_raw = client.generate_batch(
+                prompts=chat_prompts,
+                messages_list=chat_messages_list,
+                stop=None,
+                max_new_tokens=chat_max_new_tokens,
+                temperature=temperature,
+                top_p=top_p,
+                seed=seed,
+                async_openai=openai_async,
+                max_concurrency=openai_max_concurrency,
+            )
+            dt_chat = time.perf_counter() - t_chat
+
+            for av, gen in zip(chat_meta, chat_raw):
+                if debug_print:
+                    log(f"[ptc] {game_id} r={r:02d} {av} CHAT dt={dt_chat/len(chat_raw):.3f}s out='{gen}'")
+                prompt_text = chat_prompts[chat_meta.index(av)]
+                dt_per_agent = dt_chat / len(chat_raw)
+                if debug_level != "off":
+                    debug_records.append(
+                        build_debug_record(
+                            game_id=game_id,
+                            round_idx=r,
+                            agent=av,
+                            phase="chat",
+                            dt_sec=dt_per_agent,
+                            prompt=prompt_text,
+                            raw_output=gen,
+                            debug_level=debug_level,
+                            excerpt_chars=debug_excerpt_chars,
+                        )
+                    )
+                if debug_full_jsonl_path:
+                    debug_full_records.append(
+                        build_full_debug_record(
+                            game_id=game_id,
+                            round_idx=r,
+                            agent=av,
+                            phase="chat",
+                            dt_sec=dt_per_agent,
+                            prompt=prompt_text,
+                            raw_output=gen,
+                        )
+                    )
+
+                if include_reasoning:
+                    chat_reasoning[av] = extract_reasoning(gen)
+                    transcripts[av][-1] = f"Reasoning: {chat_reasoning[av]}"
+                else:
+                    chat_reasoning[av] = None
+
+                msg, parsed_ok = parse_chat_message(gen)
+                chat_messages[av] = msg if parsed_ok else ""
+                if include_reasoning:
+                    transcripts[av].append(chat_close_filled(msg if msg else ""))
+                else:
+                    transcripts[av][-1] = chat_close_filled(msg if msg else "")
+
+            chat_lines = [f"{av}: {msg}" for av, msg in chat_messages.items() if msg]
+            chat_block = (
+                "<CHAT_TRANSCRIPT>\n" + "\n".join(chat_lines) + "\n</CHAT_TRANSCRIPT>"
+                if chat_lines
+                else "<CHAT_TRANSCRIPT> (no messages) </CHAT_TRANSCRIPT>"
+            )
+            for av in roster:
+                transcripts[av].append(chat_block)
+                transcripts[av].append(round_info_line(env))
+        else:
+            for av in roster:
+                transcripts[av].append(round_open(env, r))
+                transcripts[av].append(round_info_line(env))
+
         contrib_prompts: List[str] = []
         contrib_meta: List[str] = []
         contrib_messages: List[List[Dict[str, str]]] = []
         for av in roster:
-            transcripts[av].append(round_open(env, r))
-            transcripts[av].append(round_info_line(env))
             if include_reasoning:
-                transcripts[av].append(contrib_format_line())
                 transcripts[av].append("Reasoning:")
             else:
                 transcripts[av].append(contrib_open())
-            prompt = "\n".join(transcripts[av])
+            prompt = "\n".join(transcripts[av] + [contrib_format_line(include_reasoning)])
             contrib_prompts.append(prompt)
             contrib_meta.append(av)
             contrib_messages.append(build_openai_messages(sys_text_plain, transcripts[av][1:]))
@@ -258,12 +368,11 @@ def simulate_game(
                 if mech:
                     transcripts[av].append(f"<MECHANISM_INFO> {mech} </MECHANISM_INFO>")
                 if include_reasoning:
-                    transcripts[av].append(actions_format_line(tag))
                     transcripts[av].append("Reasoning:")
                 else:
                     transcripts[av].append(actions_open_array(tag))
 
-                prompt = "\n".join(transcripts[av])
+                prompt = "\n".join(transcripts[av] + [actions_format_line(tag, include_reasoning)])
                 actions_prompts.append(prompt)
                 actions_meta.append(av)
                 actions_messages.append(build_openai_messages(sys_text_plain, transcripts[av][1:]))
@@ -467,6 +576,8 @@ def simulate_game(
                 "playerAvatar": av,
                 "roundIndex": r,
                 "gameId": game_id,
+                "data.chat_message": chat_messages.get(av, "") if env.get("CONFIG_chat", False) else "",
+                "data.chat_reasoning": chat_reasoning.get(av) if env.get("CONFIG_chat", False) else None,
                 "data.contribution": contrib_rec[av],
                 "data.contribution_reasoning": contrib_reasoning.get(av),
                 "data.punished": punished_str,
@@ -564,6 +675,7 @@ def simulate_games(
             top_p=args.top_p,
             seed=game_seed,
             contrib_max_new_tokens=args.contrib_max_new_tokens,
+            chat_max_new_tokens=args.chat_max_new_tokens,
             actions_max_new_tokens=args.actions_max_new_tokens,
             include_reasoning=args.include_reasoning,
             rows_out_path=rows_path,

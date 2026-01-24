@@ -80,3 +80,29 @@ def parse_first_int_array(s: str, tag: Optional[str] = None) -> Tuple[Optional[L
             pass
     log(f"[parse] failed to parse array for tag={tag or 'raw'}; defaulting to []")
     return None, False
+
+
+def extract_tag_content(s: str, tag: str) -> Optional[str]:
+    if not isinstance(s, str):
+        return None
+    tagged = extract_answer_tagged(s, tag)
+    if tagged is not None:
+        return tagged
+    pattern = rf"<\s*{re.escape(tag)}\s*>(.*?)</\s*{re.escape(tag)}\s*>"
+    match = re.search(pattern, s, flags=re.DOTALL)
+    if not match:
+        return None
+    return match.group(1)
+
+
+def parse_chat_message(s: str) -> Tuple[str, bool]:
+    if not isinstance(s, str):
+        log("[parse] expected string for chat output; defaulting to silence")
+        return "", False
+    content = extract_tag_content(s, "CHAT")
+    if content is None:
+        return "", False
+    msg = content.strip()
+    if msg in {"", "...", "SILENT", "silence", "NONE", "none"}:
+        return "", True
+    return msg, True
