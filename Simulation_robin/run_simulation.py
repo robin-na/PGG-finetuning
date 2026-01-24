@@ -57,6 +57,7 @@ class Args:
     top_p: float = 0.9
     seed: int = 0
     contrib_max_new_tokens: int = 100
+    chat_max_new_tokens: int = 60
     actions_max_new_tokens: int = 100
     include_reasoning: bool = field(
         default=False,
