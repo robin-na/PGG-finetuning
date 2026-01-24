@@ -11,7 +11,7 @@ from utils import log
 def extract_answer_tagged(s: str, tag: str) -> Optional[str]:
     if not isinstance(s, str):
         return None
-    pattern = rf"Answer:\s*<\s*{re.escape(tag)}\s*>(.*?)</\s*{re.escape(tag)}\s*>"
+    pattern = rf"(?:Answer:\s*)?<\s*{re.escape(tag)}\s*>(.*?)</\s*{re.escape(tag)}\s*>"
     match = re.search(pattern, s, flags=re.DOTALL)
     if not match:
         return None
@@ -27,8 +27,6 @@ def first_int(s: str, tag: Optional[str] = None) -> Tuple[int, bool]:
         tagged = extract_answer_tagged(s, tag)
         if tagged is not None:
             target = tagged
-    if "Answer:" in target:
-        target = target.split("Answer:", 1)[1]
     m = re.search(r"-?\d+", target)
     if not m:
         log(f"[parse] no integer found for tag={tag or 'raw'}; defaulting to 0")
@@ -46,9 +44,6 @@ def parse_first_int_array(s: str, tag: Optional[str] = None) -> Tuple[Optional[L
         tagged = extract_answer_tagged(s, tag)
         if tagged is not None:
             target = tagged
-    if "Answer:" in target:
-        target = target.split("Answer:", 1)[1]
-
     cleaned = target.strip()
     if cleaned.startswith("<<") and ">>" in cleaned:
         cleaned = cleaned[2:cleaned.find(">>")].strip()
@@ -105,10 +100,30 @@ def parse_chat_message(s: str) -> Tuple[str, bool]:
         return "", False
     content = extract_tag_content(s, "CHAT")
     if content is None:
-        content = s
-    if "Answer:" in content:
-        content = content.split("Answer:", 1)[1]
+        return "", True
     msg = content.strip()
     if msg in {"", "...", "SILENT", "silence", "NONE", "none"}:
         return "", True
     return msg, True
+
+
+def parse_int_dict(s: str, tag: str) -> Tuple[Optional[dict], bool]:
+    if not isinstance(s, str):
+        log("[parse] expected string for dict output; defaulting to {}")
+        return None, False
+    target = s
+    tagged = extract_tag_content(s, tag)
+    if tagged is not None:
+        target = tagged
+    cleaned = target.strip()
+    if not cleaned:
+        return {}, True
+    for loader in (json.loads, ast.literal_eval):
+        try:
+            obj = loader(cleaned)
+            if isinstance(obj, dict):
+                return {str(k): int(v) for k, v in obj.items()}, True
+        except Exception:
+            continue
+    log(f"[parse] failed to parse dict for tag={tag}; defaulting to {{}}")
+    return None, False
