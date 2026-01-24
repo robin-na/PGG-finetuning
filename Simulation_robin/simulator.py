@@ -82,9 +82,9 @@ def simulate_game(
     temperature: float = 0.7,
     top_p: float = 0.9,
     seed: int = 0,
-    contrib_max_new_tokens: int = 6,
-    chat_max_new_tokens: int = 48,
-    actions_max_new_tokens: int = 96,
+    contrib_max_new_tokens: int = 12,
+    chat_max_new_tokens: int = 96,
+    actions_max_new_tokens: int = 192,
     include_reasoning: bool = False,
     rows_out_path: Optional[str] = None,
     transcripts_out_path: Optional[str] = None,
@@ -108,10 +108,11 @@ def simulate_game(
     rows: List[Dict[str, Any]] = []
     game_id = env.get("name", "GAME")
 
+    intro_block_lines = game_intro_lines(env)
+    intro_block = ["<GAME_INFO>", *intro_block_lines, "</GAME_INFO>"]
     for av in roster:
         header = f"<META gameId='{game_id}' avatar='{av}'/>"
-        intro_block = [f"<GAME_INFO> {line} </GAME_INFO>" for line in game_intro_lines(env)]
-        transcripts[av] = [header, "# GAME STARTS", *intro_block]
+        transcripts[av] = [header, *intro_block]
 
     csv_writer = None
     csv_file = None
@@ -154,6 +155,8 @@ def simulate_game(
             chat_messages_list: List[List[Dict[str, str]]] = []
 
             for av in roster:
+                if r == 1:
+                    transcripts[av].append("# GAME STARTS")
                 transcripts[av].append(round_open(env, r))
                 transcripts[av].append(chat_stage_line(env))
                 if include_reasoning:
@@ -245,6 +248,8 @@ def simulate_game(
                 transcripts[av].append(round_info_line(env))
         else:
             for av in roster:
+                if r == 1:
+                    transcripts[av].append("# GAME STARTS")
                 transcripts[av].append(round_open(env, r))
                 transcripts[av].append(round_info_line(env))
 
@@ -389,7 +394,7 @@ def simulate_game(
             actions_raw = client.generate_batch(
                 prompts=actions_prompts,
                 messages_list=actions_messages,
-                stop="]",
+                stop=None,
                 max_new_tokens=actions_max_new_tokens,
                 temperature=temperature,
                 top_p=top_p,
@@ -400,7 +405,9 @@ def simulate_game(
             dt_actions = time.perf_counter() - t1
 
             for av, gen in zip(actions_meta, actions_raw):
-                raw = gen + "]"
+                raw = gen
+                if "[" in raw and "]" not in raw:
+                    raw = raw + "]"
                 if debug_print:
                     log(f"[ptc] {game_id} r={r:02d} {av} ACTIONS dt={dt_actions/len(actions_raw):.3f}s out='{raw}'")
                 prompt_text = actions_prompts[actions_meta.index(av)]
