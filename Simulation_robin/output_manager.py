@@ -10,6 +10,27 @@ import pandas as pd
 from utils import log, relocate_output, safe_name, timestamp_yymmddhhmm
 
 
+USED_CONFIG_KEYS = {
+    "CONFIG_allOrNothing",
+    "CONFIG_chat",
+    "CONFIG_defaultContribProp",
+    "CONFIG_endowment",
+    "CONFIG_multiplier",
+    "CONFIG_numRounds",
+    "CONFIG_playerCount",
+    "CONFIG_punishmentCost",
+    "CONFIG_punishmentExists",
+    "CONFIG_punishmentMagnitude",
+    "CONFIG_rewardCost",
+    "CONFIG_rewardExists",
+    "CONFIG_rewardMagnitude",
+    "CONFIG_showNRounds",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showRewardId",
+}
+
+
 def resolve_run_ts(run_id: Optional[str]) -> str:
     return run_id or timestamp_yymmddhhmm()
 
@@ -19,16 +40,15 @@ def resolve_experiment_dir(output_root: str, experiment_name: str, run_ts: str) 
 
 
 def _config_from_env(env: pd.Series) -> Dict[str, Any]:
-    return {k: env[k] for k in env.index if str(k).startswith("CONFIG_")}
+    return {k: env[k] for k in USED_CONFIG_KEYS if k in env.index}
 
 
 def _model_config(args: Any, run_ts: str) -> Dict[str, Any]:
     args_dict = asdict(args) if is_dataclass(args) else dict(args)
-    model_keys = [
+    provider = args_dict.get("provider")
+
+    base_keys = [
         "provider",
-        "base_model",
-        "adapter_path",
-        "use_peft",
         "openai_model",
         "openai_api_key_env",
         "openai_async",
@@ -40,18 +60,13 @@ def _model_config(args: Any, run_ts: str) -> Dict[str, Any]:
         "actions_max_new_tokens",
         "include_reasoning",
         "max_parallel_games",
-        "env_csv",
-        "output_root",
-        "run_id",
-        "rows_out_path",
-        "transcripts_out_path",
-        "debug_jsonl_path",
-        "debug_full_jsonl_path",
-        "debug_level",
-        "debug_compact",
-        "group_by_game",
+        "debug_print",
+        "env_csv"
     ]
-    model_config = {k: args_dict.get(k) for k in model_keys if k in args_dict}
+    if provider != "openai":
+        base_keys.extend(["base_model", "adapter_path", "use_peft"])
+
+    model_config = {k: args_dict.get(k) for k in base_keys if k in args_dict}
     model_config["run_timestamp"] = run_ts
     return model_config
 

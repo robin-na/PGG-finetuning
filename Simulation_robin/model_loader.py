@@ -1,25 +1,24 @@
 from __future__ import annotations
 
-from typing import Optional, Tuple
-
-import torch
-from peft import PeftModel
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from typing import Any, Optional, Tuple
 
 from utils import log
 
 
-if torch.cuda.is_available():
-    try:
-        torch.backends.cuda.matmul.allow_tf32 = True
-        torch.backends.cudnn.allow_tf32 = True
-        torch.backends.cuda.sdp_kernel(enable_flash=True, enable_mem_efficient=True, enable_math=False)
-        log("[attn] SDPA flash enabled (flash=True, mem_efficient=True, math=False)")
-    except Exception as e:  # pragma: no cover - hardware dependent
-        log("[attn] Could not enable SDPA flash:", e)
+def load_model(base_model: str, adapter_path: Optional[str], use_peft: bool) -> Tuple[Any, Any]:
+    import torch
+    from peft import PeftModel
+    from transformers import AutoModelForCausalLM, AutoTokenizer
 
+    if torch.cuda.is_available():
+        try:
+            torch.backends.cuda.matmul.allow_tf32 = True
+            torch.backends.cudnn.allow_tf32 = True
+            torch.backends.cuda.sdp_kernel(enable_flash=True, enable_mem_efficient=True, enable_math=False)
+            log("[attn] SDPA flash enabled (flash=True, mem_efficient=True, math=False)")
+        except Exception as e:  # pragma: no cover - hardware dependent
+            log("[attn] Could not enable SDPA flash:", e)
 
-def load_model(base_model: str, adapter_path: Optional[str], use_peft: bool) -> Tuple[AutoTokenizer, AutoModelForCausalLM]:
     device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
     dtype = (
         torch.bfloat16

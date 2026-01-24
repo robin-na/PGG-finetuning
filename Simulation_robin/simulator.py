@@ -10,11 +10,9 @@ import time
 from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
-from transformers import AutoTokenizer
 
 from debug import build_debug_record, build_full_debug_record
 from llm_client import LLMClient
-from model_loader import load_model
 from output_manager import relocate_for_experiment, resolve_experiment_dir, resolve_run_ts, write_config
 from parsers import first_int, parse_first_int_array
 from prompt_builder import (
@@ -76,7 +74,7 @@ def sample_roster(env: pd.Series, seed: int = 0) -> List[str]:
 def simulate_game(
     env: pd.Series,
     client: LLMClient,
-    tok: Optional[AutoTokenizer],
+    tok: Optional[Any],
     temperature: float = 0.7,
     top_p: float = 0.9,
     seed: int = 0,
@@ -520,9 +518,11 @@ def simulate_games(
     output_paths: Dict[str, Dict[str, Optional[str]]] = {}
 
     provider = args.provider
-    tok = None
-    model = None
+    tok: Optional[Any] = None
+    model: Optional[Any] = None
     if provider == "local":
+        from model_loader import load_model
+
         tok, model = load_model(base_model=args.base_model, adapter_path=args.adapter_path, use_peft=args.use_peft)
         if args.max_parallel_games > 1:
             log("[warn] local HF models should not be parallelized on a single GPU; forcing --max_parallel_games=1")
