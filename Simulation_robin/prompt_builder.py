@@ -10,6 +10,7 @@ def system_header_lines(env: Dict, include_reasoning: bool) -> List[str]:
     lines.append("You are playing an online public goods game (PGG).")
     lines.append("Follow the stage instructions exactly.")
     lines.append("The required response format will be shown at the END of each prompt.")
+    lines.append("It is valid to stay silent; only speak when it helps your strategy.")
     if include_reasoning:
         lines.append("When asked for reasoning, keep it brief and strategic.")
     if env.get("CONFIG_chat", False):
@@ -77,12 +78,7 @@ def round_info_line(env: Dict) -> str:
 
 
 def chat_stage_line(env: Dict) -> str:
-    endow = int(env.get("CONFIG_endowment", 0) or 0)
-    return (
-        "<CHAT_STAGE> Before contributing, you may send ONE short message to everyone "
-        f"(or stay silent). Keep messages brief (e.g., one sentence). "
-        f"Your contribution will still be an integer from 0 to {endow}. </CHAT_STAGE>"
-    )
+    return "<CHAT_STAGE> Would you like to send a message to the group? You may stay silent. </CHAT_STAGE>"
 
 
 def contrib_open() -> str:
