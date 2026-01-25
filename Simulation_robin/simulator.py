@@ -105,6 +105,7 @@ def simulate_game(
 
     for av in roster:
         transcripts[av] = ["# GAME STARTS"]
+        transcripts[av].append(f"You will refer to each other by their avatar. Your avatar is {av}.")
 
     csv_writer = None
     csv_file = None
