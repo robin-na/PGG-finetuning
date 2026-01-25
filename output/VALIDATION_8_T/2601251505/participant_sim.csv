@@ -1,0 +1,13 @@
+playerAvatar,roundIndex,gameId,data.chat_message,data.chat_reasoning,data.contribution,data.contribution_reasoning,data.punished,data.rewarded,data.actions_reasoning
+SLOTH,1,VALIDATION_8_T,Hello everyone. Let's try and cooperate!,,10,,{},{},
+WHALE,1,VALIDATION_8_T,,,10,,{},{},
+WALRUS,1,VALIDATION_8_T,,,10,,{},{},
+DUCK,1,VALIDATION_8_T,,,10,,{},{},
+RABBIT,1,VALIDATION_8_T,,,10,,{},{},
+CHICK,1,VALIDATION_8_T,,,10,,{},{},
+SLOTH,2,VALIDATION_8_T,,,10,,{},{},
+WHALE,2,VALIDATION_8_T,,,10,,{},{},
+WALRUS,2,VALIDATION_8_T,,,10,,{},{},
+DUCK,2,VALIDATION_8_T,,,10,,{},{},
+RABBIT,2,VALIDATION_8_T,,,10,,{},{},
+CHICK,2,VALIDATION_8_T,Let's do this again!,,10,,{},{},
