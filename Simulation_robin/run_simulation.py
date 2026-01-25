@@ -10,6 +10,8 @@ from transformers import HfArgumentParser
 from simulator import simulate_games
 from utils import log
 
+from pathlib import Path
+
 
 try:
     sys.stdout.reconfigure(line_buffering=True)
@@ -36,7 +38,7 @@ class Args:
     adapter_path: Optional[str] = field(default="out/llama31-8b-lora-pgg-ptc/checkpoint-489")
     use_peft: bool = field(default=True)
 
-    env_csv: str = field(default="../data/processed_data/df_analysis_val.csv")
+    env_csv: str = field(default="data/processed_data/df_analysis_val.csv")
     output_root: str = field(
         default="output",
         metadata={"help": "Base output directory to store experiment/timestamp folders."},
@@ -53,12 +55,12 @@ class Args:
     transcripts_out_path: Optional[str] = field(default="output/participant_transcripts.jsonl")
     debug_jsonl_path: Optional[str] = field(default="output/participant_debug.jsonl")
 
-    temperature: float = 0.7
-    top_p: float = 0.9
+    temperature: float = 1.0
+    top_p: float = 1.0
     seed: int = 0
-    contrib_max_new_tokens: int = 100
-    chat_max_new_tokens: int = 96
-    actions_max_new_tokens: int = 100
+    contrib_max_new_tokens: int = 128
+    chat_max_new_tokens: int = 128
+    actions_max_new_tokens: int = 128
     include_reasoning: bool = field(
         default=False,
         metadata={"help": "If true, request a short Reasoning line followed by a strict Answer line."},
@@ -99,7 +101,7 @@ def main(args: CLIArgs):
         args.debug_jsonl_path = None
         args.debug_full_jsonl_path = None
 
-    env_df = pd.read_csv(args.env_csv)
+    env_df = pd.read_csv(Path(args.env_csv))
     if "name" in env_df.columns:
         before = len(env_df)
         env_df = env_df.drop_duplicates(subset="name", keep="first")
