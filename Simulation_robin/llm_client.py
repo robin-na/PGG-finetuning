@@ -9,15 +9,24 @@ import asyncio
 
 import requests
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, StoppingCriteria, StoppingCriteriaList
 
 
-def _apply_stop(text: str, stop: Optional[str]) -> str:
-    if stop:
-        cut_idx = text.find(stop)
-        if cut_idx != -1:
-            return text[:cut_idx]
-    return text
+def _apply_stop_sequences(text: str, stop: Optional[List[str]]) -> str:
+    if not stop:
+        return text
+    earliest_idx = None
+    earliest_seq = None
+    for seq in stop:
+        if not seq:
+            continue
+        idx = text.find(seq)
+        if idx != -1 and (earliest_idx is None or idx < earliest_idx):
+            earliest_idx = idx
+            earliest_seq = seq
+    if earliest_idx is None or earliest_seq is None:
+        return text
+    return text[: earliest_idx + len(earliest_seq)]
 
 
 def _require_openai_key(env_name: str) -> str:
@@ -37,7 +46,7 @@ def _batch_generate_until(
     tok: AutoTokenizer,
     model: AutoModelForCausalLM,
     prompts: List[str],
-    stop: Optional[str] = None,          # e.g., ']' for arrays
+    stop: Optional[List[str]] = None,  # e.g., ['</TAG>'] for XML-like outputs
     max_new_tokens: int = 32,
     temperature: float = 0.0,
     top_p: float = 1.0,
@@ -55,6 +64,26 @@ def _batch_generate_until(
     inputs = tok(prompts, return_tensors="pt", padding=True, truncation=True)
     inputs = {k: v.to(model.device) for k, v in inputs.items()}
 
+    prompt_lengths = [inputs["input_ids"][i].shape[-1] for i in range(len(prompts))]
+    stopping_criteria = None
+    if stop:
+        class _StopOnSequences(StoppingCriteria):
+            def __init__(self, tokenizer: AutoTokenizer, stop_sequences: List[str], prompt_lens: List[int]):
+                self.tokenizer = tokenizer
+                self.stop_sequences = stop_sequences
+                self.prompt_lens = prompt_lens
+
+            def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs: Any) -> bool:
+                for idx, seq in enumerate(input_ids):
+                    prompt_len = self.prompt_lens[idx]
+                    decoded = self.tokenizer.decode(seq[prompt_len:], skip_special_tokens=True)
+                    for stop_seq in self.stop_sequences:
+                        if stop_seq and stop_seq in decoded:
+                            return True
+                return False
+
+        stopping_criteria = StoppingCriteriaList([_StopOnSequences(tok, stop, prompt_lengths)])
+
     gen_out = model.generate(
         **inputs,
         do_sample=temperature > 0.0,
@@ -64,17 +93,15 @@ def _batch_generate_until(
         pad_token_id=tok.pad_token_id,
         eos_token_id=tok.eos_token_id,
         use_cache=True,
+        stopping_criteria=stopping_criteria,
     )
 
     out_texts = []
     for i in range(len(prompts)):
-        prompt_len = inputs["input_ids"][i].shape[-1]
+        prompt_len = prompt_lengths[i]
         gen_ids = gen_out[i][prompt_len:]
         new_text = tok.decode(gen_ids, skip_special_tokens=True)
-        if stop:
-            cut_idx = new_text.find(stop)
-            if cut_idx != -1:
-                new_text = new_text[:cut_idx]
+        new_text = _apply_stop_sequences(new_text, stop)
         out_texts.append(new_text)
     return out_texts
 
@@ -113,7 +140,7 @@ class LLMClient:
         max_new_tokens: int,
         temperature: float,
         top_p: float,
-        stop: Optional[str],
+        stop: Optional[List[str]],
     ) -> str:
         payload: Dict[str, Any] = {
             "model": self.openai_model,
@@ -141,13 +168,13 @@ class LLMClient:
             content = data["choices"][0]["message"]["content"]
         except Exception as exc:
             raise RuntimeError(f"Unexpected OpenAI response: {data}") from exc
-        return _apply_stop(content, stop)
+        return _apply_stop_sequences(content, stop)
 
     def generate_batch(
         self,
         prompts: Optional[List[str]],
         messages_list: Optional[List[List[Dict[str, str]]]],
-        stop: Optional[str],
+        stop: Optional[List[str]],
         max_new_tokens: int,
         temperature: float,
         top_p: float,

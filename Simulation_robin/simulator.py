@@ -183,7 +183,7 @@ def simulate_game(
             chat_raw = client.generate_batch(
                 prompts=chat_prompts,
                 messages_list=chat_messages_list,
-                stop=None,
+                stop=["</CHAT>"],
                 max_new_tokens=chat_max_new_tokens,
                 temperature=temperature,
                 top_p=top_p,
@@ -287,7 +287,7 @@ def simulate_game(
         contrib_raw = client.generate_batch(
             prompts=contrib_prompts,
             messages_list=contrib_messages,
-            stop=None,
+            stop=["</CONTRIB>"],
             max_new_tokens=contrib_max_new_tokens,
             temperature=temperature,
             top_p=top_p,
@@ -410,7 +410,7 @@ def simulate_game(
             actions_raw = client.generate_batch(
                 prompts=actions_prompts,
                 messages_list=actions_messages,
-                stop=None,
+                stop=[f"</{tag}>"],
                 max_new_tokens=actions_max_new_tokens,
                 temperature=temperature,
                 top_p=top_p,
