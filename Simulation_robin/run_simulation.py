@@ -36,7 +36,7 @@ class Args:
     adapter_path: Optional[str] = field(default="out/llama31-8b-lora-pgg-ptc/checkpoint-489")
     use_peft: bool = field(default=True)
 
-    env_csv: str = field(default="df_analysis_val.csv")
+    env_csv: str = field(default="../data/processed_data/df_analysis_val.csv")
     output_root: str = field(
         default="output",
         metadata={"help": "Base output directory to store experiment/timestamp folders."},
@@ -106,7 +106,7 @@ def main(args: CLIArgs):
         log(f"[env] dedup by name: {before} -> {len(env_df)} rows")
 
     df_all, transcripts_all, output_paths = simulate_games(
-        env_df=env_df.iloc[:40],
+        env_df=env_df,
         args=args,
     )
 
