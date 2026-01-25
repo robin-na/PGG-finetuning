@@ -87,8 +87,8 @@ def format_contrib_answer(val) -> str:
 
 def contrib_format_line(include_reasoning: bool) -> str:
     if include_reasoning:
-        return "FORMAT: <Reasoning>...</Reasoning> <CONTRIB> <integer> </CONTRIB>"
-    return "FORMAT: <CONTRIB> <integer> </CONTRIB>"
+        return "FORMAT: <Reasoning>...</Reasoning> <CONTRIB> <integer> </CONTRIB>\nYOUR RESPONSE:\n<Reasoning>"
+    return "FORMAT: <CONTRIB> <integer> </CONTRIB>\nYOUR RESPONSE:"
 
 
 def actions_format_line(tag: str, include_reasoning: bool) -> str:
@@ -99,14 +99,14 @@ def actions_format_line(tag: str, include_reasoning: bool) -> str:
     else:
         dict_hint = "Use a dict mapping avatar -> integer units; omit zeros. Negative=punishment, positive=reward."
     if include_reasoning:
-        return f"FORMAT: <Reasoning>...</Reasoning> <{tag}> {{dict}} </{tag}> ({dict_hint})"
-    return f"FORMAT: <{tag}> {{dict}} </{tag}> ({dict_hint})"
+        return f"FORMAT: <Reasoning>...</Reasoning> <{tag}> {{dict}} </{tag}> ({dict_hint})\nYOUR RESPONSE:\n<Reasoning>"
+    return f"FORMAT: <{tag}> {{dict}} </{tag}> ({dict_hint})\nYOUR RESPONSE:"
 
 
 def chat_format_line(include_reasoning: bool) -> str:
     if include_reasoning:
-        return "FORMAT: <Reasoning>...</Reasoning> then (optional) <CHAT>...</CHAT>. If silent, omit <CHAT>."
-    return "FORMAT: Output <CHAT>...</CHAT> or empty string if silent."
+        return "FORMAT: <Reasoning>...</Reasoning> then (optional) <CHAT>...</CHAT>. If silent, omit <CHAT>.\nYOUR RESPONSE:\n<Reasoning>"
+    return "FORMAT: Output <CHAT>...</CHAT> or empty string if silent.\nYOUR RESPONSE:"
 
 
 def max_tokens_reminder_line(max_tokens: int) -> str:
