@@ -96,6 +96,7 @@ def simulate_game(
     assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
 
     sys_text_plain = system_header_plain(env, include_reasoning=include_reasoning)
+    include_system_in_prompt = client.provider == "local"
 
     transcripts: Dict[str, List[str]] = {}
     rows: List[Dict[str, Any]] = []
@@ -148,7 +149,10 @@ def simulate_game(
                 transcripts[av].append(round_open(env, r))
                 transcripts[av].append(chat_stage_line(env))
 
-                chat_prompt = "\n".join(transcripts[av] + [chat_format_line(include_reasoning)])
+                chat_chunks = transcripts[av] + [chat_format_line(include_reasoning)]
+                if include_system_in_prompt:
+                    chat_chunks = [sys_text_plain] + chat_chunks
+                chat_prompt = "\n".join(chat_chunks)
                 chat_prompts.append(chat_prompt)
                 chat_meta.append(av)
                 chat_messages_list.append(
@@ -241,7 +245,10 @@ def simulate_game(
         contrib_meta: List[str] = []
         contrib_messages: List[List[Dict[str, str]]] = []
         for av in roster:
-            prompt = "\n".join(transcripts[av] + [contrib_format_line(include_reasoning)])
+            contrib_chunks = transcripts[av] + [contrib_format_line(include_reasoning)]
+            if include_system_in_prompt:
+                contrib_chunks = [sys_text_plain] + contrib_chunks
+            prompt = "\n".join(contrib_chunks)
             contrib_prompts.append(prompt)
             contrib_meta.append(av)
             contrib_messages.append(
@@ -356,7 +363,10 @@ def simulate_game(
                 if mech:
                     transcripts[av].append(f"<MECHANISM_INFO> {mech} </MECHANISM_INFO>")
 
-                prompt = "\n".join(transcripts[av] + [actions_format_line(tag, include_reasoning)])
+                actions_chunks = transcripts[av] + [actions_format_line(tag, include_reasoning)]
+                if include_system_in_prompt:
+                    actions_chunks = [sys_text_plain] + actions_chunks
+                prompt = "\n".join(actions_chunks)
                 actions_prompts.append(prompt)
                 actions_meta.append(av)
                 actions_messages.append(
