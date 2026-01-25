@@ -151,8 +151,8 @@ def simulate_game(
                 transcripts[av].append(chat_stage_line(env))
 
                 chat_chunks = transcripts[av] + [
-                    chat_format_line(include_reasoning),
                     max_tokens_reminder_line(chat_max_new_tokens),
+                    chat_format_line(include_reasoning),
                 ]
                 if include_system_in_prompt:
                     chat_chunks = [sys_text_plain] + chat_chunks
@@ -164,8 +164,8 @@ def simulate_game(
                         sys_text_plain,
                         transcripts[av]
                         + [
-                            chat_format_line(include_reasoning),
                             max_tokens_reminder_line(chat_max_new_tokens),
+                            chat_format_line(include_reasoning),
                         ],
                     )
                 )
@@ -254,8 +254,8 @@ def simulate_game(
         contrib_messages: List[List[Dict[str, str]]] = []
         for av in roster:
             contrib_chunks = transcripts[av] + [
-                contrib_format_line(include_reasoning),
                 max_tokens_reminder_line(contrib_max_new_tokens),
+                contrib_format_line(include_reasoning),
             ]
             if include_system_in_prompt:
                 contrib_chunks = [sys_text_plain] + contrib_chunks
@@ -267,8 +267,8 @@ def simulate_game(
                     sys_text_plain,
                     transcripts[av]
                     + [
-                        contrib_format_line(include_reasoning),
                         max_tokens_reminder_line(contrib_max_new_tokens),
+                        contrib_format_line(include_reasoning),
                     ],
                 )
             )
@@ -379,8 +379,8 @@ def simulate_game(
                     transcripts[av].append(f"<MECHANISM_INFO> {mech} </MECHANISM_INFO>")
 
                 actions_chunks = transcripts[av] + [
-                    actions_format_line(tag, include_reasoning),
                     max_tokens_reminder_line(actions_max_new_tokens),
+                    actions_format_line(tag, include_reasoning),
                 ]
                 if include_system_in_prompt:
                     actions_chunks = [sys_text_plain] + actions_chunks
@@ -392,8 +392,8 @@ def simulate_game(
                         sys_text_plain,
                         transcripts[av]
                         + [
-                            actions_format_line(tag, include_reasoning),
                             max_tokens_reminder_line(actions_max_new_tokens),
+                            actions_format_line(tag, include_reasoning),
                         ],
                     )
                 )
