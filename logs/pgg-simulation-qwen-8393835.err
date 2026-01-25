@@ -1,0 +1,4 @@
+/home/robinna/.conda/envs/llm_conda/lib/python3.9/contextlib.py:87: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+`torch_dtype` is deprecated! Use `dtype` instead!
+Fetching 12 files:   0%|          | 0/12 [00:00<?, ?it/s][2026-01-25T13:45:06.239] error: *** JOB 8393835 ON node3000 CANCELLED AT 2026-01-25T13:45:06 DUE to SIGNAL Terminated ***
