@@ -26,6 +26,7 @@ from prompt_builder import (
     format_actions_answer,
     format_contrib_answer,
     mech_info,
+    max_tokens_reminder_line,
     peers_contributions_csv,
     redist_line,
     round_info_line,
@@ -149,7 +150,10 @@ def simulate_game(
                 transcripts[av].append(round_open(env, r))
                 transcripts[av].append(chat_stage_line(env))
 
-                chat_chunks = transcripts[av] + [chat_format_line(include_reasoning)]
+                chat_chunks = transcripts[av] + [
+                    chat_format_line(include_reasoning),
+                    max_tokens_reminder_line(chat_max_new_tokens),
+                ]
                 if include_system_in_prompt:
                     chat_chunks = [sys_text_plain] + chat_chunks
                 chat_prompt = "\n".join(chat_chunks)
@@ -158,7 +162,11 @@ def simulate_game(
                 chat_messages_list.append(
                     build_openai_messages(
                         sys_text_plain,
-                        transcripts[av] + [chat_format_line(include_reasoning)],
+                        transcripts[av]
+                        + [
+                            chat_format_line(include_reasoning),
+                            max_tokens_reminder_line(chat_max_new_tokens),
+                        ],
                     )
                 )
 
@@ -245,7 +253,10 @@ def simulate_game(
         contrib_meta: List[str] = []
         contrib_messages: List[List[Dict[str, str]]] = []
         for av in roster:
-            contrib_chunks = transcripts[av] + [contrib_format_line(include_reasoning)]
+            contrib_chunks = transcripts[av] + [
+                contrib_format_line(include_reasoning),
+                max_tokens_reminder_line(contrib_max_new_tokens),
+            ]
             if include_system_in_prompt:
                 contrib_chunks = [sys_text_plain] + contrib_chunks
             prompt = "\n".join(contrib_chunks)
@@ -254,7 +265,11 @@ def simulate_game(
             contrib_messages.append(
                 build_openai_messages(
                     sys_text_plain,
-                    transcripts[av] + [contrib_format_line(include_reasoning)],
+                    transcripts[av]
+                    + [
+                        contrib_format_line(include_reasoning),
+                        max_tokens_reminder_line(contrib_max_new_tokens),
+                    ],
                 )
             )
 
@@ -363,7 +378,10 @@ def simulate_game(
                 if mech:
                     transcripts[av].append(f"<MECHANISM_INFO> {mech} </MECHANISM_INFO>")
 
-                actions_chunks = transcripts[av] + [actions_format_line(tag, include_reasoning)]
+                actions_chunks = transcripts[av] + [
+                    actions_format_line(tag, include_reasoning),
+                    max_tokens_reminder_line(actions_max_new_tokens),
+                ]
                 if include_system_in_prompt:
                     actions_chunks = [sys_text_plain] + actions_chunks
                 prompt = "\n".join(actions_chunks)
@@ -372,7 +390,11 @@ def simulate_game(
                 actions_messages.append(
                     build_openai_messages(
                         sys_text_plain,
-                        transcripts[av] + [actions_format_line(tag, include_reasoning)],
+                        transcripts[av]
+                        + [
+                            actions_format_line(tag, include_reasoning),
+                            max_tokens_reminder_line(actions_max_new_tokens),
+                        ],
                     )
                 )
                 if debug_print:

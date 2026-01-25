@@ -109,6 +109,10 @@ def chat_format_line(include_reasoning: bool) -> str:
     return "FORMAT: Output <CHAT>...</CHAT> or empty string if silent."
 
 
+def max_tokens_reminder_line(max_tokens: int) -> str:
+    return f"MAX_TOKENS: You may generate at most {max_tokens} tokens."
+
+
 def extract_reasoning(gen: str) -> str:
     if not isinstance(gen, str):
         return ""
