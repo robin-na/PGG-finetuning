@@ -84,15 +84,15 @@ def format_contrib_answer(val) -> str:
 def contrib_format_line(env: Dict, include_reasoning: bool) -> str:
     contrib_hint = "Set 'contribution' to the amount left in the pot (your contribution)."
     if include_reasoning:
-        reasoning_hint = "Include a short 'reasoning' string."
+        reasoning_hint = "Provide reasons for your action, keep it brief."
         fmt = '{"stage":"contribution","reasoning":<string>,"contribution":<int>}'
     else:
         reasoning_hint = "Do not include a 'reasoning' field."
         fmt = '{"stage":"contribution","contribution":<int>}'
     return (
+        f"RULES: {contrib_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        f"RULES: {contrib_hint} {reasoning_hint}\n"
         "YOUR RESPONSE:"
     )
 
@@ -108,31 +108,31 @@ def actions_format_line(tag: str, include_reasoning: bool) -> str:
             "Negative=punishment, positive=reward."
         )
     if include_reasoning:
-        reasoning_hint = "Include a short 'reasoning' string."
+        reasoning_hint = "Provide reasons for your action, keep it brief."
         fmt = '{"stage":"actions","reasoning":<string>,"actions":{...}}'
     else:
         reasoning_hint = "Do not include a 'reasoning' field."
         fmt = '{"stage":"actions","actions":{...}}'
     return (
+        f"RULES: {dict_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        f"RULES: {dict_hint} {reasoning_hint}\n"
         "YOUR RESPONSE:"
     )
 
 
 def chat_format_line(include_reasoning: bool) -> str:
     if include_reasoning:
-        reasoning_hint = "Include a short 'reasoning' string."
+        reasoning_hint = "Provide reasons for your action, keep it brief."
         fmt = '{"stage":"chat","reasoning":<string>,"chat":<string|null>}'
     else:
         reasoning_hint = "Do not include a 'reasoning' field."
         fmt = '{"stage":"chat","chat":<string|null>}'
     return (
+        "RULES: Set 'chat' to a short message, or null/empty string if silent. Speak only when it helps. "
+        f"{reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "RULES: Set 'chat' to a short message, or null/empty string if silent. It is valid to stay silent. "
-        f"{reasoning_hint}\n"
         "YOUR RESPONSE:"
     )
 

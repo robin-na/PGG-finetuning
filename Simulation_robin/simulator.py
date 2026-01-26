@@ -91,7 +91,7 @@ def simulate_game(
     debug_records: List[Dict[str, Any]] = []
     debug_full_records: List[Dict[str, Any]] = []
     debug_excerpt_chars = 200
-    stop_sequences = ["\n"]
+    stop_sequences = ["\n\n", "\r\n\r\n"]
 
     roster = sample_roster(env, seed=seed)
     assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
