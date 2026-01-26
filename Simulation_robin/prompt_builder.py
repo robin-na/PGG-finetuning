@@ -28,10 +28,10 @@ def system_header_lines(env: Dict, include_reasoning: bool) -> List[str]:
         lines.append("After contributions are redistributed, players may punish each other.")
     elif reward_on:
         lines.append("After contributions are redistributed, players may reward each other.")
-    lines.append(
-        "Always respond with ONLY one valid single-line JSON object matching the required format. "
-        "Do not add extra text before or after the JSON; stop immediately after the closing brace."
-    )
+#    lines.append(
+#        "Always respond with ONLY one valid single-line JSON object matching the required format. "
+#        "Do not add extra text before or after the JSON; stop immediately after the closing brace."
+#    )
     if env.get("CONFIG_chat", False):
         lines.append("At the start of each round, you may optionally send ONE short message to the group.")
     return lines
@@ -96,7 +96,8 @@ def contrib_format_line(env: Dict, include_reasoning: bool) -> str:
         f"RULES: {contrib_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "YOUR RESPONSE (single-line JSON only):"
+        "Do not add extra text before or after the JSON.\n"
+        "YOUR RESPONSE:"
     )
 
 
@@ -120,7 +121,8 @@ def actions_format_line(tag: str, include_reasoning: bool) -> str:
         f"RULES: {dict_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "YOUR RESPONSE (single-line JSON only):"
+        "Do not add extra text before or after the JSON.\n"
+        "YOUR RESPONSE:"
     )
 
 
@@ -136,7 +138,8 @@ def chat_format_line(include_reasoning: bool) -> str:
         f"{reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "YOUR RESPONSE (single-line JSON only):"
+        "Do not add extra text before or after the JSON.\n"
+        "YOUR RESPONSE:"
     )
 
 
