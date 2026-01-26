@@ -149,9 +149,9 @@ def simulate_game(
 
             for av in roster:
                 transcripts[av].append(round_open(env, r))
-                transcripts[av].append(chat_stage_line(env))
 
                 chat_chunks = transcripts[av] + [
+                    chat_stage_line(env),
                     max_tokens_reminder_line(chat_max_new_tokens),
                     chat_format_line(include_reasoning),
                 ]
@@ -165,6 +165,7 @@ def simulate_game(
                         sys_text_plain,
                         transcripts[av]
                         + [
+                            chat_stage_line(env),
                             max_tokens_reminder_line(chat_max_new_tokens),
                             chat_format_line(include_reasoning),
                         ],
@@ -248,28 +249,29 @@ def simulate_game(
                     transcripts[av].append(f"<Reasoning> {chat_reasoning[av]} </Reasoning>")
                 else:
                     chat_reasoning[av] = None
-                if msg:
-                    transcripts[av].append(f"<CHAT> {msg} </CHAT>")
-
-            chat_lines = [f"{av}: {msg}" for av, msg in chat_messages.items() if msg]
-            chat_block = (
-                "<CHAT_TRANSCRIPT>\n" + "\n".join(chat_lines) + "\n</CHAT_TRANSCRIPT>"
-                if chat_lines
-                else "<CHAT_TRANSCRIPT> (no messages) </CHAT_TRANSCRIPT>"
-            )
             for av in roster:
+                chat_lines: List[str] = []
+                for speaker, msg in chat_messages.items():
+                    if not msg:
+                        continue
+                    label = f"{speaker} (YOU)" if speaker == av else speaker
+                    chat_lines.append(f"{label}: {msg}")
+                chat_block = (
+                    "<CHAT_TRANSCRIPT>\n" + "\n".join(chat_lines) + "\n</CHAT_TRANSCRIPT>"
+                    if chat_lines
+                    else "<CHAT_TRANSCRIPT> (no messages) </CHAT_TRANSCRIPT>"
+                )
                 transcripts[av].append(chat_block)
-                transcripts[av].append(round_info_line(env))
         else:
             for av in roster:
                 transcripts[av].append(round_open(env, r))
-                transcripts[av].append(round_info_line(env))
 
         contrib_prompts: List[str] = []
         contrib_meta: List[str] = []
         contrib_messages: List[List[Dict[str, str]]] = []
         for av in roster:
             contrib_chunks = transcripts[av] + [
+                round_info_line(env),
                 max_tokens_reminder_line(contrib_max_new_tokens),
                 contrib_format_line(env, include_reasoning),
             ]
@@ -283,6 +285,7 @@ def simulate_game(
                     sys_text_plain,
                     transcripts[av]
                     + [
+                        round_info_line(env),
                         max_tokens_reminder_line(contrib_max_new_tokens),
                         contrib_format_line(env, include_reasoning),
                     ],
@@ -404,13 +407,15 @@ def simulate_game(
                 peer_order = [x for x in roster if x != av]
                 peer_orders[av] = peer_order
 
+                actions_chunks = list(transcripts[av])
                 if mech:
-                    transcripts[av].append(f"<MECHANISM_INFO> {mech} </MECHANISM_INFO>")
-
-                actions_chunks = transcripts[av] + [
-                    max_tokens_reminder_line(actions_max_new_tokens),
-                    actions_format_line(tag, include_reasoning),
-                ]
+                    actions_chunks.append(mech)
+                actions_chunks.extend(
+                    [
+                        max_tokens_reminder_line(actions_max_new_tokens),
+                        actions_format_line(tag, include_reasoning),
+                    ]
+                )
                 if include_system_in_prompt:
                     actions_chunks = [sys_text_plain] + actions_chunks
                 prompt = "\n".join(actions_chunks)
@@ -420,6 +425,9 @@ def simulate_game(
                     build_openai_messages(
                         sys_text_plain,
                         transcripts[av]
+                        + (
+                            [mech] if mech else []
+                        )
                         + [
                             max_tokens_reminder_line(actions_max_new_tokens),
                             actions_format_line(tag, include_reasoning),
@@ -717,7 +725,8 @@ def simulate_games(
 
     def run_one(idx: int, env: pd.Series, game_seed: int):
         game_id = env.get("name", f"GAME_{idx}")
-        log(f"[ptc] starting game {game_id} (idx={idx})")
+        if args.debug_print:
+            log(f"[ptc] starting game {game_id} (idx={idx})")
         experiment_dir = resolve_experiment_dir(args.output_root, game_id, run_ts)
         rows_path = relocate_for_experiment(args.rows_out_path, experiment_dir)
         transcripts_path = relocate_for_experiment(args.transcripts_out_path, experiment_dir)
@@ -745,7 +754,8 @@ def simulate_games(
             openai_async=args.openai_async,
             openai_max_concurrency=args.openai_max_concurrency,
         )
-        log(f"[ptc] done game {game_id} with {len(df_game)} rows")
+        if args.debug_print:
+            log(f"[ptc] done game {game_id} with {len(df_game)} rows")
         return game_id, df_game, transcripts_game, rows_path, transcripts_path, debug_path, debug_full_path, config_path
 
     if args.max_parallel_games > 1:

@@ -66,7 +66,7 @@ class Args:
         metadata={"help": "If true, request a short Reasoning line followed by a strict Answer line."},
     )
 
-    debug_print: bool = True
+    debug_print: bool = False
     debug_level: str = field(
         default="full",
         metadata={"help": "Debug output level: full | compact | off"},
@@ -91,7 +91,8 @@ class CLIArgs(Args):
 
 
 def main(args: CLIArgs):
-    log(args)
+    if args.debug_print:
+        log(args)
     if args.debug_compact:
         args.debug_level = "compact"
     if args.debug_level not in {"full", "compact", "off"}:
@@ -105,23 +106,25 @@ def main(args: CLIArgs):
     if "name" in env_df.columns:
         before = len(env_df)
         env_df = env_df.drop_duplicates(subset="name", keep="first")
-        log(f"[env] dedup by name: {before} -> {len(env_df)} rows")
+        if args.debug_print:
+            log(f"[env] dedup by name: {before} -> {len(env_df)} rows")
 
     df_all, transcripts_all, output_paths = simulate_games(
         env_df=env_df,
         args=args,
     )
 
-    log(f"[ptc] simulated rows: {len(df_all)} across {len(transcripts_all)} experiments")
-    for game_id, paths in output_paths.items():
-        log(f"[ptc] outputs for {game_id} → {paths.get('directory')}")
-        log(f"[ptc]   rows: {paths.get('rows')}")
-        log(f"[ptc]   transcripts: {paths.get('transcripts')}")
-        if paths.get("debug"):
-            log(f"[ptc]   debug: {paths.get('debug')}")
-        if paths.get("debug_full") and args.debug_level != "off":
-            log(f"[ptc]   debug_full: {paths.get('debug_full')}")
-        log(f"[ptc]   config: {paths.get('config')}")
+    if args.debug_print:
+        log(f"[ptc] simulated rows: {len(df_all)} across {len(transcripts_all)} experiments")
+        for game_id, paths in output_paths.items():
+            log(f"[ptc] outputs for {game_id} → {paths.get('directory')}")
+            log(f"[ptc]   rows: {paths.get('rows')}")
+            log(f"[ptc]   transcripts: {paths.get('transcripts')}")
+            if paths.get("debug"):
+                log(f"[ptc]   debug: {paths.get('debug')}")
+            if paths.get("debug_full") and args.debug_level != "off":
+                log(f"[ptc]   debug_full: {paths.get('debug_full')}")
+            log(f"[ptc]   config: {paths.get('config')}")
 
 
 if __name__ == "__main__":

@@ -28,7 +28,10 @@ def system_header_lines(env: Dict, include_reasoning: bool) -> List[str]:
         lines.append("After contributions are redistributed, players may punish each other.")
     elif reward_on:
         lines.append("After contributions are redistributed, players may reward each other.")
-    lines.append("Always respond with ONLY valid single-line JSON per the required format at the END of each prompt.")
+    lines.append(
+        "Always respond with ONLY one valid single-line JSON object matching the required format. "
+        "Do not add extra text before or after the JSON; stop immediately after the closing brace."
+    )
     if env.get("CONFIG_chat", False):
         lines.append("At the start of each round, you may optionally send ONE short message to the group.")
     return lines
@@ -64,16 +67,16 @@ def round_info_line(env: Dict) -> str:
     if float(env.get("CONFIG_defaultContribProp", 0.0) or 0.0) > 0.0:
         pre = (
             f"{endow} coins start in the shared pot and you can choose to take some for yourself. "
-            f"Choose how many coins to leave in the pot for contribution. Valid choice: {contrib_mode}."
+            f"How many coins would you like to leave in the pot ({contrib_mode})?"
         )
     else:
-        pre = f"You have {endow} coins in your pocket. Choose how many to contribute to the shared pot ({contrib_mode})."
+        pre = f"You have {endow} coins in your pocket. How much would you like to contribute ({contrib_mode})?"
     mult = env.get("CONFIG_multiplier", "Unknown")
-    return f"<ROUND_INFO> {pre} The pot multiplier is {mult}×. </ROUND_INFO>"
+    return f"QUESTION: {pre} The pot multiplier is {mult}×."
 
 
 def chat_stage_line(env: Dict) -> str:
-    return "<CHAT_STAGE> Would you like to send a message to the group? You may stay silent. Speak only when it helps. </CHAT_STAGE>"
+    return "QUESTION: Would you like to send a message to the group? You may stay silent. Speak only when it helps."
 
 
 def format_contrib_answer(val) -> str:
@@ -90,10 +93,11 @@ def contrib_format_line(env: Dict, include_reasoning: bool) -> str:
         reasoning_hint = ""
         fmt = '{"stage":"contribution","contribution":<int>}'
     return (
+        "QUESTION: Provide ONLY the JSON object for stage 'contribution'. Do not add extra text.\n"
         f"RULES: {contrib_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "YOUR RESPONSE:"
+        "YOUR RESPONSE (single-line JSON only):"
     )
 
 
@@ -114,10 +118,11 @@ def actions_format_line(tag: str, include_reasoning: bool) -> str:
         reasoning_hint = ""
         fmt = '{"stage":"actions","actions":{...}}'
     return (
+        "QUESTION: Provide ONLY the JSON object for stage 'actions'. Do not add extra text.\n"
         f"RULES: {dict_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "YOUR RESPONSE:"
+        "YOUR RESPONSE (single-line JSON only):"
     )
 
 
@@ -129,11 +134,12 @@ def chat_format_line(include_reasoning: bool) -> str:
         reasoning_hint = ""
         fmt = '{"stage":"chat","chat":<string|null>}'
     return (
+        "QUESTION: Provide ONLY the JSON object for stage 'chat'. Do not add extra text.\n"
         "RULES: Set 'chat' to a short message, or null/empty string if silent. "
         f"{reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "YOUR RESPONSE:"
+        "YOUR RESPONSE (single-line JSON only):"
     )
 
 
@@ -173,18 +179,22 @@ def mech_info(env: Dict) -> Optional[str]:
         return None
     if r_on and p_on:
         return (
-            f"It will cost you, per reward unit, {env['CONFIG_rewardCost']} coins to give a reward of {env['CONFIG_rewardMagnitude']} coins. "
-            f"It will cost you, per punishment unit, {env['CONFIG_punishmentCost']} coins to impose a deduction of {env['CONFIG_punishmentMagnitude']} coins. "
-            "Choose whom to punish/reward and by how many units."
+            "QUESTION: It will cost you, per reward unit, "
+            f"{env['CONFIG_rewardCost']} coins to give a reward of {env['CONFIG_rewardMagnitude']} coins. "
+            f"It will cost you, per punishment unit, {env['CONFIG_punishmentCost']} coins to impose a deduction "
+            f"of {env['CONFIG_punishmentMagnitude']} coins. "
+            "Who would you like to punish or reward, and by how many units?"
         )
     if r_on:
         return (
-            f"It will cost you, per unit, {env['CONFIG_rewardCost']} coins to give a reward of {env['CONFIG_rewardMagnitude']} coins. "
-            "Choose whom to reward and by how many units."
+            "QUESTION: It will cost you, per unit, "
+            f"{env['CONFIG_rewardCost']} coins to give a reward of {env['CONFIG_rewardMagnitude']} coins. "
+            "Who would you like to reward and by how many units?"
         )
     return (
-        f"It will cost you, per unit, {env['CONFIG_punishmentCost']} coins to impose a deduction of {env['CONFIG_punishmentMagnitude']} coins. "
-        "Choose whom to punish and by how many units."
+        "QUESTION: It will cost you, per unit, "
+        f"{env['CONFIG_punishmentCost']} coins to impose a deduction of {env['CONFIG_punishmentMagnitude']} coins. "
+        "Who would you like to punish and by how many units?"
     )
 
 
