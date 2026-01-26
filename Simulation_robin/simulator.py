@@ -14,7 +14,7 @@ import pandas as pd
 from debug import build_debug_record, build_full_debug_record
 from llm_client import LLMClient
 from output_manager import relocate_for_experiment, resolve_experiment_dir, resolve_run_ts, write_config
-from parsers import first_int, parse_chat_message, parse_int_dict
+from parsers import parse_json_response
 from prompt_builder import (
     actions_format_line,
     actions_tag,
@@ -22,7 +22,6 @@ from prompt_builder import (
     chat_format_line,
     chat_stage_line,
     contrib_format_line,
-    extract_reasoning,
     format_actions_answer,
     format_contrib_answer,
     mech_info,
@@ -184,7 +183,7 @@ def simulate_game(
             chat_raw = client.generate_batch(
                 prompts=chat_prompts,
                 messages_list=chat_messages_list,
-                stop=["</CHAT>"],
+                stop=None,
                 max_new_tokens=chat_max_new_tokens,
                 temperature=temperature,
                 top_p=top_p,
@@ -226,10 +225,25 @@ def simulate_game(
                         )
                     )
 
-                msg, parsed_ok = parse_chat_message(gen)
+                msg = ""
+                parsed_ok = False
+                payload, json_ok = parse_json_response(gen)
+                if json_ok and isinstance(payload, dict) and payload.get("stage") == "chat":
+                    raw_msg = payload.get("chat")
+                    if raw_msg is None:
+                        msg = ""
+                        parsed_ok = True
+                    elif isinstance(raw_msg, str):
+                        msg = raw_msg.strip()
+                        if msg in {"", "...", "SILENT", "silence", "NONE", "none"}:
+                            msg = ""
+                        parsed_ok = True
                 chat_messages[av] = msg if parsed_ok else ""
                 if include_reasoning:
-                    chat_reasoning[av] = extract_reasoning(gen)
+                    if json_ok and isinstance(payload, dict) and isinstance(payload.get("reasoning"), str):
+                        chat_reasoning[av] = payload.get("reasoning")
+                    else:
+                        chat_reasoning[av] = None
                     transcripts[av].append(f"<Reasoning> {chat_reasoning[av]} </Reasoning>")
                 else:
                     chat_reasoning[av] = None
@@ -256,7 +270,7 @@ def simulate_game(
         for av in roster:
             contrib_chunks = transcripts[av] + [
                 max_tokens_reminder_line(contrib_max_new_tokens),
-                contrib_format_line(include_reasoning),
+                contrib_format_line(env, include_reasoning),
             ]
             if include_system_in_prompt:
                 contrib_chunks = [sys_text_plain] + contrib_chunks
@@ -269,7 +283,7 @@ def simulate_game(
                     transcripts[av]
                     + [
                         max_tokens_reminder_line(contrib_max_new_tokens),
-                        contrib_format_line(include_reasoning),
+                        contrib_format_line(env, include_reasoning),
                     ],
                 )
             )
@@ -288,7 +302,7 @@ def simulate_game(
         contrib_raw = client.generate_batch(
             prompts=contrib_prompts,
             messages_list=contrib_messages,
-            stop=["</CONTRIB>"],
+            stop=None,
             max_new_tokens=contrib_max_new_tokens,
             temperature=temperature,
             top_p=top_p,
@@ -333,7 +347,17 @@ def simulate_game(
                         raw_output=gen,
                     )
                 )
-            val, parsed_ok = first_int(gen, tag="CONTRIB")
+            val = 0
+            parsed_ok = False
+            payload, json_ok = parse_json_response(gen)
+            if json_ok and isinstance(payload, dict) and payload.get("stage") == "contribution":
+                raw_val = payload.get("contribution")
+                if isinstance(raw_val, int):
+                    val = raw_val
+                    parsed_ok = True
+                elif isinstance(raw_val, str) and raw_val.strip().lstrip("-").isdigit():
+                    val = int(raw_val.strip())
+                    parsed_ok = True
             if env.get("CONFIG_allOrNothing", False):
                 val = endow if val >= (endow // 2) else 0
             else:
@@ -341,7 +365,10 @@ def simulate_game(
             contrib_math[av] = int(val)
             contrib_rec[av] = float("nan") if not parsed_ok else int(val)
             if include_reasoning:
-                contrib_reasoning[av] = extract_reasoning(gen)
+                if json_ok and isinstance(payload, dict) and isinstance(payload.get("reasoning"), str):
+                    contrib_reasoning[av] = payload.get("reasoning")
+                else:
+                    contrib_reasoning[av] = None
                 transcripts[av].append(f"<Reasoning> {contrib_reasoning[av]} </Reasoning>")
             else:
                 contrib_reasoning[av] = None
@@ -411,7 +438,7 @@ def simulate_game(
             actions_raw = client.generate_batch(
                 prompts=actions_prompts,
                 messages_list=actions_messages,
-                stop=[f"</{tag}>"],
+                stop=None,
                 max_new_tokens=actions_max_new_tokens,
                 temperature=temperature,
                 top_p=top_p,
@@ -423,8 +450,6 @@ def simulate_game(
 
             for av, gen in zip(actions_meta, actions_raw):
                 raw = gen
-                if "{" in raw and "}" not in raw:
-                    raw = raw + "}"
                 if debug_print:
                     log(f"[ptc] {game_id} r={r:02d} {av} ACTIONS dt={dt_actions/len(actions_raw):.3f}s out='{raw}'")
                 prompt_text = actions_prompts[actions_meta.index(av)]
@@ -456,9 +481,17 @@ def simulate_game(
                         )
                     )
 
-                actions_dict, parsed_ok = parse_int_dict(raw, tag=tag)
-                if actions_dict is None:
-                    actions_dict = {}
+                actions_dict = {}
+                parsed_ok = False
+                payload, json_ok = parse_json_response(raw)
+                if json_ok and isinstance(payload, dict) and payload.get("stage") == "actions":
+                    raw_actions = payload.get("actions")
+                    if raw_actions is None:
+                        actions_dict = {}
+                        parsed_ok = True
+                    elif isinstance(raw_actions, dict):
+                        actions_dict = raw_actions
+                        parsed_ok = True
                 peer_order = peer_orders[av]
                 arr = [actions_dict.get(peer, 0) for peer in peer_order]
 
@@ -470,7 +503,10 @@ def simulate_game(
                     arr = [int(v) for v in arr]
 
                 if include_reasoning:
-                    actions_reasoning[av] = extract_reasoning(gen)
+                    if json_ok and isinstance(payload, dict) and isinstance(payload.get("reasoning"), str):
+                        actions_reasoning[av] = payload.get("reasoning")
+                    else:
+                        actions_reasoning[av] = None
                     transcripts[av].append(f"<Reasoning> {actions_reasoning[av]} </Reasoning>")
                 else:
                     actions_reasoning[av] = None

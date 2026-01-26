@@ -28,13 +28,9 @@ def system_header_lines(env: Dict, include_reasoning: bool) -> List[str]:
         lines.append("After contributions are redistributed, players may punish each other.")
     elif reward_on:
         lines.append("After contributions are redistributed, players may reward each other.")
-    lines.append("Follow the stage instructions exactly.")
-    lines.append("The required response format will be shown at the END of each prompt.")
-    if include_reasoning:
-        lines.append("When asked for reasoning, use <Reasoning>...</Reasoning> and keep it brief.")
+    lines.append("Always respond with ONLY valid JSON per the required format at the END of each prompt.")
     if env.get("CONFIG_chat", False):
         lines.append("At the start of each round, you may optionally send ONE short message to the group.")
-        lines.append("It is valid to stay silent; only speak when it helps.")
     return lines
 
 
@@ -65,10 +61,10 @@ def round_info_line(env: Dict) -> str:
     endow = int(env.get("CONFIG_endowment", 0) or 0)
     aon = bool(env.get("CONFIG_allOrNothing", False))
     contrib_mode = f"either 0 or {endow}" if aon else f"integer from 0 to {endow}"
-    if env.get("CONFIG_defaultContribProp", False):
+    if float(env.get("CONFIG_defaultContribProp", 0.0) or 0.0) > 0.0:
         pre = (
-            f"{endow} coins start in the shared pot. Choose how many coins to take for yourself "
-            f"(your contribution is what remains). Valid choice: {contrib_mode}."
+            f"{endow} coins start in the shared pot and you can choose to take some for yourself. "
+            f"Choose how many coins to leave in the pot for contribution. Valid choice: {contrib_mode}."
         )
     else:
         pre = f"You have {endow} coins in your pocket. Choose how many to contribute to the shared pot ({contrib_mode})."
@@ -85,28 +81,45 @@ def format_contrib_answer(val) -> str:
     return f"<CONTRIB> {base} </CONTRIB>"
 
 
-def contrib_format_line(include_reasoning: bool) -> str:
-    if include_reasoning:
-        return "FORMAT: <Reasoning>...</Reasoning> <CONTRIB> <integer> </CONTRIB>\nYOUR RESPONSE:\n<Reasoning>"
-    return "FORMAT: <CONTRIB> <integer> </CONTRIB>\nYOUR RESPONSE:"
+def contrib_format_line(env: Dict, include_reasoning: bool) -> str:
+    reasoning_hint = "Include a short 'reasoning' string." if include_reasoning else "Use null for 'reasoning'."
+    contrib_hint = "Set 'contribution' to the amount left in the pot (your contribution)."
+    return (
+        "FORMAT (JSON ONLY): "
+        '{"stage":"contribution","reasoning":<string|null>,"contribution":<int>}\n'
+        f"RULES: {contrib_hint} {reasoning_hint}\n"
+        "YOUR RESPONSE:"
+    )
 
 
 def actions_format_line(tag: str, include_reasoning: bool) -> str:
     if tag == "PUNISHMENT":
-        dict_hint = "Use a dict mapping avatar -> nonnegative punishment units; omit zeros."
+        dict_hint = "Use 'actions' as a dict mapping avatar -> nonnegative punishment units; omit zeros."
     elif tag == "REWARD":
-        dict_hint = "Use a dict mapping avatar -> nonnegative reward units; omit zeros."
+        dict_hint = "Use 'actions' as a dict mapping avatar -> nonnegative reward units; omit zeros."
     else:
-        dict_hint = "Use a dict mapping avatar -> integer units; omit zeros. Negative=punishment, positive=reward."
-    if include_reasoning:
-        return f"FORMAT: <Reasoning>...</Reasoning> <{tag}> {{dict}} </{tag}> ({dict_hint})\nYOUR RESPONSE:\n<Reasoning>"
-    return f"FORMAT: <{tag}> {{dict}} </{tag}> ({dict_hint})\nYOUR RESPONSE:"
+        dict_hint = (
+            "Use 'actions' as a dict mapping avatar -> integer units; omit zeros. "
+            "Negative=punishment, positive=reward."
+        )
+    reasoning_hint = "Include a short 'reasoning' string." if include_reasoning else "Use null for 'reasoning'."
+    return (
+        "FORMAT (JSON ONLY): "
+        '{"stage":"actions","reasoning":<string|null>,"actions":{...}}\n'
+        f"RULES: {dict_hint} {reasoning_hint}\n"
+        "YOUR RESPONSE:"
+    )
 
 
 def chat_format_line(include_reasoning: bool) -> str:
-    if include_reasoning:
-        return "FORMAT: <Reasoning>...</Reasoning> then (optional) <CHAT>...</CHAT>. If silent, omit <CHAT>.\nYOUR RESPONSE:\n<Reasoning>"
-    return "FORMAT: Output <CHAT>...</CHAT> or empty string if silent.\nYOUR RESPONSE:"
+    reasoning_hint = "Include a short 'reasoning' string." if include_reasoning else "Use null for 'reasoning'."
+    return (
+        "FORMAT (JSON ONLY): "
+        '{"stage":"chat","reasoning":<string|null>,"chat":<string|null>}\n'
+        "RULES: Set 'chat' to a short message, or null/empty string if silent. It is valid to stay silent. "
+        f"{reasoning_hint}\n"
+        "YOUR RESPONSE:"
+    )
 
 
 def max_tokens_reminder_line(max_tokens: int) -> str:
