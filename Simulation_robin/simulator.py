@@ -91,6 +91,7 @@ def simulate_game(
     debug_records: List[Dict[str, Any]] = []
     debug_full_records: List[Dict[str, Any]] = []
     debug_excerpt_chars = 200
+    stop_sequences = ["\n"]
 
     roster = sample_roster(env, seed=seed)
     assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
@@ -183,7 +184,7 @@ def simulate_game(
             chat_raw = client.generate_batch(
                 prompts=chat_prompts,
                 messages_list=chat_messages_list,
-                stop=None,
+                stop=stop_sequences,
                 max_new_tokens=chat_max_new_tokens,
                 temperature=temperature,
                 top_p=top_p,
@@ -302,7 +303,7 @@ def simulate_game(
         contrib_raw = client.generate_batch(
             prompts=contrib_prompts,
             messages_list=contrib_messages,
-            stop=None,
+            stop=stop_sequences,
             max_new_tokens=contrib_max_new_tokens,
             temperature=temperature,
             top_p=top_p,
@@ -438,7 +439,7 @@ def simulate_game(
             actions_raw = client.generate_batch(
                 prompts=actions_prompts,
                 messages_list=actions_messages,
-                stop=None,
+                stop=stop_sequences,
                 max_new_tokens=actions_max_new_tokens,
                 temperature=temperature,
                 top_p=top_p,

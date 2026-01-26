@@ -28,7 +28,7 @@ def system_header_lines(env: Dict, include_reasoning: bool) -> List[str]:
         lines.append("After contributions are redistributed, players may punish each other.")
     elif reward_on:
         lines.append("After contributions are redistributed, players may reward each other.")
-    lines.append("Always respond with ONLY valid JSON per the required format at the END of each prompt.")
+    lines.append("Always respond with ONLY valid single-line JSON per the required format at the END of each prompt.")
     if env.get("CONFIG_chat", False):
         lines.append("At the start of each round, you may optionally send ONE short message to the group.")
     return lines
@@ -82,11 +82,16 @@ def format_contrib_answer(val) -> str:
 
 
 def contrib_format_line(env: Dict, include_reasoning: bool) -> str:
-    reasoning_hint = "Include a short 'reasoning' string." if include_reasoning else "Use null for 'reasoning'."
     contrib_hint = "Set 'contribution' to the amount left in the pot (your contribution)."
+    if include_reasoning:
+        reasoning_hint = "Include a short 'reasoning' string."
+        fmt = '{"stage":"contribution","reasoning":<string>,"contribution":<int>}'
+    else:
+        reasoning_hint = "Do not include a 'reasoning' field."
+        fmt = '{"stage":"contribution","contribution":<int>}'
     return (
         "FORMAT (JSON ONLY): "
-        '{"stage":"contribution","reasoning":<string|null>,"contribution":<int>}\n'
+        f"{fmt}\n"
         f"RULES: {contrib_hint} {reasoning_hint}\n"
         "YOUR RESPONSE:"
     )
@@ -102,20 +107,30 @@ def actions_format_line(tag: str, include_reasoning: bool) -> str:
             "Use 'actions' as a dict mapping avatar -> integer units; omit zeros. "
             "Negative=punishment, positive=reward."
         )
-    reasoning_hint = "Include a short 'reasoning' string." if include_reasoning else "Use null for 'reasoning'."
+    if include_reasoning:
+        reasoning_hint = "Include a short 'reasoning' string."
+        fmt = '{"stage":"actions","reasoning":<string>,"actions":{...}}'
+    else:
+        reasoning_hint = "Do not include a 'reasoning' field."
+        fmt = '{"stage":"actions","actions":{...}}'
     return (
         "FORMAT (JSON ONLY): "
-        '{"stage":"actions","reasoning":<string|null>,"actions":{...}}\n'
+        f"{fmt}\n"
         f"RULES: {dict_hint} {reasoning_hint}\n"
         "YOUR RESPONSE:"
     )
 
 
 def chat_format_line(include_reasoning: bool) -> str:
-    reasoning_hint = "Include a short 'reasoning' string." if include_reasoning else "Use null for 'reasoning'."
+    if include_reasoning:
+        reasoning_hint = "Include a short 'reasoning' string."
+        fmt = '{"stage":"chat","reasoning":<string>,"chat":<string|null>}'
+    else:
+        reasoning_hint = "Do not include a 'reasoning' field."
+        fmt = '{"stage":"chat","chat":<string|null>}'
     return (
         "FORMAT (JSON ONLY): "
-        '{"stage":"chat","reasoning":<string|null>,"chat":<string|null>}\n'
+        f"{fmt}\n"
         "RULES: Set 'chat' to a short message, or null/empty string if silent. It is valid to stay silent. "
         f"{reasoning_hint}\n"
         "YOUR RESPONSE:"
