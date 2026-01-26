@@ -73,7 +73,7 @@ def round_info_line(env: Dict) -> str:
 
 
 def chat_stage_line(env: Dict) -> str:
-    return "<CHAT_STAGE> Would you like to send a message to the group? You may stay silent. </CHAT_STAGE>"
+    return "<CHAT_STAGE> Would you like to send a message to the group? You may stay silent. Speak only when it helps. </CHAT_STAGE>"
 
 
 def format_contrib_answer(val) -> str:
@@ -87,7 +87,7 @@ def contrib_format_line(env: Dict, include_reasoning: bool) -> str:
         reasoning_hint = "Provide reasons for your action, keep it brief."
         fmt = '{"stage":"contribution","reasoning":<string>,"contribution":<int>}'
     else:
-        reasoning_hint = "Do not include a 'reasoning' field."
+        reasoning_hint = ""
         fmt = '{"stage":"contribution","contribution":<int>}'
     return (
         f"RULES: {contrib_hint} {reasoning_hint}\n"
@@ -111,7 +111,7 @@ def actions_format_line(tag: str, include_reasoning: bool) -> str:
         reasoning_hint = "Provide reasons for your action, keep it brief."
         fmt = '{"stage":"actions","reasoning":<string>,"actions":{...}}'
     else:
-        reasoning_hint = "Do not include a 'reasoning' field."
+        reasoning_hint = ""
         fmt = '{"stage":"actions","actions":{...}}'
     return (
         f"RULES: {dict_hint} {reasoning_hint}\n"
@@ -126,10 +126,10 @@ def chat_format_line(include_reasoning: bool) -> str:
         reasoning_hint = "Provide reasons for your action, keep it brief."
         fmt = '{"stage":"chat","reasoning":<string>,"chat":<string|null>}'
     else:
-        reasoning_hint = "Do not include a 'reasoning' field."
+        reasoning_hint = ""
         fmt = '{"stage":"chat","chat":<string|null>}'
     return (
-        "RULES: Set 'chat' to a short message, or null/empty string if silent. Speak only when it helps. "
+        "RULES: Set 'chat' to a short message, or null/empty string if silent. "
         f"{reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
