@@ -90,7 +90,7 @@ def simulate_game(
     debug_records: List[Dict[str, Any]] = []
     debug_full_records: List[Dict[str, Any]] = []
     debug_excerpt_chars = 200
-    stop_sequences = ["\n\n", "\r\n\r\n"]
+    stop_sequences = ["\n<", "\n\n"]
 
     roster = sample_roster(env, seed=seed)
     assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
@@ -375,7 +375,9 @@ def simulate_game(
                 transcripts[av].append(f"You thought: {contrib_reasoning[av] or ''}")
             else:
                 contrib_reasoning[av] = None
+            transcripts[av].append("<CONTRIB>")
             transcripts[av].append(format_contrib_answer(contrib_rec[av] if parsed_ok else "NaN"))
+            transcripts[av].append("</CONTRIB>")
 
         total_contrib = sum(contrib_math.values())
         try:
@@ -521,19 +523,24 @@ def simulate_game(
                 actions_out = {peer: int(arr[idx]) for idx, peer in enumerate(peer_order) if int(arr[idx]) != 0}
                 if reward_on and not punish_on:
                     reward_out = {peer: int(v) for peer, v in actions_out.items() if int(v) > 0}
+                    transcripts[av].append("<REWARD>")
                     if reward_out:
                         transcripts[av].append(f"You rewarded: {json.dumps(reward_out, separators=(',', ':'))}")
                     else:
                         transcripts[av].append("You did not reward anybody.")
+                    transcripts[av].append("</REWARD>")
                 elif punish_on and not reward_on:
                     punish_out = {peer: int(v) for peer, v in actions_out.items() if int(v) > 0}
+                    transcripts[av].append("<PUNISHMENT>")
                     if punish_out:
                         transcripts[av].append(f"You punished: {json.dumps(punish_out, separators=(',', ':'))}")
                     else:
                         transcripts[av].append("You did not punish anybody.")
+                    transcripts[av].append("</PUNISHMENT>")
                 else:
                     punish_out = {peer: int(abs(v)) for peer, v in actions_out.items() if int(v) < 0}
                     reward_out = {peer: int(v) for peer, v in actions_out.items() if int(v) > 0}
+                    transcripts[av].append("<PUNISHMENT_REWARD>")
                     if punish_out:
                         transcripts[av].append(f"You punished: {json.dumps(punish_out, separators=(',', ':'))}")
                     else:
@@ -542,6 +549,7 @@ def simulate_game(
                         transcripts[av].append(f"You rewarded: {json.dumps(reward_out, separators=(',', ':'))}")
                     else:
                         transcripts[av].append("You did not reward anybody.")
+                    transcripts[av].append("</PUNISHMENT_REWARD>")
 
                 if reward_on:
                     for j, v in enumerate(arr):
