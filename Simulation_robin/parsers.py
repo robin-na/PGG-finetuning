@@ -135,9 +135,12 @@ def parse_json_response(s: str) -> Tuple[Optional[Dict[str, Any]], bool]:
         return None, False
     cleaned = s.strip()
     if cleaned.startswith("```"):
-        cleaned = cleaned.strip("`")
+        cleaned = re.sub(r"^```[a-zA-Z0-9_-]*", "", cleaned).strip()
+        if cleaned.endswith("```"):
+            cleaned = cleaned[: -len("```")].strip()
+    decoder = json.JSONDecoder()
     try:
-        obj = json.loads(cleaned)
+        obj, end = decoder.raw_decode(cleaned)
         if isinstance(obj, dict):
             return obj, True
     except Exception:
@@ -146,10 +149,8 @@ def parse_json_response(s: str) -> Tuple[Optional[Dict[str, Any]], bool]:
         log("[parse] no JSON object found; defaulting to None")
         return None, False
     start = cleaned.find("{")
-    end = cleaned.rfind("}")
-    snippet = cleaned[start : end + 1]
     try:
-        obj = json.loads(snippet)
+        obj, end = decoder.raw_decode(cleaned[start:])
         if isinstance(obj, dict):
             return obj, True
     except Exception:
