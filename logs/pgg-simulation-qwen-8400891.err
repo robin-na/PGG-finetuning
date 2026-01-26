@@ -1,0 +1,5 @@
+/home/robinna/.conda/envs/llm_conda/lib/python3.9/contextlib.py:87: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:   8%|▊         | 1/12 [00:00<00:02,  4.60it/s]Loading checkpoint shards:  33%|███▎      | 4/12 [00:00<00:00, 13.49it/s]Loading checkpoint shards:  58%|█████▊    | 7/12 [00:00<00:00, 18.18it/s]Loading checkpoint shards: 100%|██████████| 12/12 [00:00<00:00, 24.16it/s]
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
