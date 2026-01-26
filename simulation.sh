@@ -30,5 +30,5 @@ echo "Running on $(hostname)"
 echo "Running on $(hostname)"
 nvidia-smi
 
-python Simulation_robin/run_simulation.py --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning False --env_csv Simulation_robin/df_analysis_val_19th.csv
+python Simulation_robin/run_simulation.py --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True --env_csv Simulation_robin/df_analysis_val_19th.csv
 

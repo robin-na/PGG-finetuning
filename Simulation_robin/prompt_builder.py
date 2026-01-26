@@ -93,7 +93,6 @@ def contrib_format_line(env: Dict, include_reasoning: bool) -> str:
         reasoning_hint = ""
         fmt = '{"stage":"contribution","contribution":<int>}'
     return (
-        "QUESTION: Provide ONLY the JSON object for stage 'contribution'. Do not add extra text.\n"
         f"RULES: {contrib_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
@@ -118,7 +117,6 @@ def actions_format_line(tag: str, include_reasoning: bool) -> str:
         reasoning_hint = ""
         fmt = '{"stage":"actions","actions":{...}}'
     return (
-        "QUESTION: Provide ONLY the JSON object for stage 'actions'. Do not add extra text.\n"
         f"RULES: {dict_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
@@ -134,7 +132,6 @@ def chat_format_line(include_reasoning: bool) -> str:
         reasoning_hint = ""
         fmt = '{"stage":"chat","chat":<string|null>}'
     return (
-        "QUESTION: Provide ONLY the JSON object for stage 'chat'. Do not add extra text.\n"
         "RULES: Set 'chat' to a short message, or null/empty string if silent. "
         f"{reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
