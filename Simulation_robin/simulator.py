@@ -22,7 +22,6 @@ from prompt_builder import (
     chat_format_line,
     chat_stage_line,
     contrib_format_line,
-    format_actions_answer,
     format_contrib_answer,
     mech_info,
     max_tokens_reminder_line,
@@ -246,7 +245,7 @@ def simulate_game(
                         chat_reasoning[av] = payload.get("reasoning")
                     else:
                         chat_reasoning[av] = None
-                    transcripts[av].append(f"<Reasoning> {chat_reasoning[av]} </Reasoning>")
+                    transcripts[av].append(f"You thought: {chat_reasoning[av] or ''}")
                 else:
                     chat_reasoning[av] = None
             for av in roster:
@@ -257,9 +256,9 @@ def simulate_game(
                     label = f"{speaker} (YOU)" if speaker == av else speaker
                     chat_lines.append(f"{label}: {msg}")
                 chat_block = (
-                    "<CHAT_TRANSCRIPT>\n" + "\n".join(chat_lines) + "\n</CHAT_TRANSCRIPT>"
+                    "CHAT:\n" + "\n".join(f"- {line}" for line in chat_lines)
                     if chat_lines
-                    else "<CHAT_TRANSCRIPT> (no messages) </CHAT_TRANSCRIPT>"
+                    else "CHAT: (no messages)"
                 )
                 transcripts[av].append(chat_block)
         else:
@@ -373,7 +372,7 @@ def simulate_game(
                     contrib_reasoning[av] = payload.get("reasoning")
                 else:
                     contrib_reasoning[av] = None
-                transcripts[av].append(f"<Reasoning> {contrib_reasoning[av]} </Reasoning>")
+                transcripts[av].append(f"You thought: {contrib_reasoning[av] or ''}")
             else:
                 contrib_reasoning[av] = None
             transcripts[av].append(format_contrib_answer(contrib_rec[av] if parsed_ok else "NaN"))
@@ -516,11 +515,33 @@ def simulate_game(
                         actions_reasoning[av] = payload.get("reasoning")
                     else:
                         actions_reasoning[av] = None
-                    transcripts[av].append(f"<Reasoning> {actions_reasoning[av]} </Reasoning>")
+                    transcripts[av].append(f"You thought: {actions_reasoning[av] or ''}")
                 else:
                     actions_reasoning[av] = None
                 actions_out = {peer: int(arr[idx]) for idx, peer in enumerate(peer_order) if int(arr[idx]) != 0}
-                transcripts[av].append(format_actions_answer(tag, actions_out))
+                if reward_on and not punish_on:
+                    reward_out = {peer: int(v) for peer, v in actions_out.items() if int(v) > 0}
+                    if reward_out:
+                        transcripts[av].append(f"You rewarded: {json.dumps(reward_out, separators=(',', ':'))}")
+                    else:
+                        transcripts[av].append("You did not reward anybody.")
+                elif punish_on and not reward_on:
+                    punish_out = {peer: int(v) for peer, v in actions_out.items() if int(v) > 0}
+                    if punish_out:
+                        transcripts[av].append(f"You punished: {json.dumps(punish_out, separators=(',', ':'))}")
+                    else:
+                        transcripts[av].append("You did not punish anybody.")
+                else:
+                    punish_out = {peer: int(abs(v)) for peer, v in actions_out.items() if int(v) < 0}
+                    reward_out = {peer: int(v) for peer, v in actions_out.items() if int(v) > 0}
+                    if punish_out:
+                        transcripts[av].append(f"You punished: {json.dumps(punish_out, separators=(',', ':'))}")
+                    else:
+                        transcripts[av].append("You did not punish anybody.")
+                    if reward_out:
+                        transcripts[av].append(f"You rewarded: {json.dumps(reward_out, separators=(',', ':'))}")
+                    else:
+                        transcripts[av].append("You did not reward anybody.")
 
                 if reward_on:
                     for j, v in enumerate(arr):
