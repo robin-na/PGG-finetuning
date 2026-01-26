@@ -81,7 +81,7 @@ def chat_stage_line(env: Dict) -> str:
 
 def format_contrib_answer(val) -> str:
     base = str(val)
-    return f"<CONTRIB> {base} </CONTRIB>"
+    return f"You contributed: {base}"
 
 
 def contrib_format_line(env: Dict, include_reasoning: bool) -> str:
@@ -210,4 +210,4 @@ def actions_tag(env: Dict) -> Optional[str]:
 
 def format_actions_answer(tag: str, actions: Dict[str, int]) -> str:
     base = json.dumps(actions, separators=(",", ":"))
-    return f"<{tag}> {base} </{tag}>"
+    return f"You took actions: {base}"
