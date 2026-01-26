@@ -3,7 +3,7 @@ from __future__ import annotations
 import ast
 import json
 import re
-from typing import List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from utils import log
 
@@ -126,4 +126,34 @@ def parse_int_dict(s: str, tag: str) -> Tuple[Optional[dict], bool]:
         except Exception:
             continue
     log(f"[parse] failed to parse dict for tag={tag}; defaulting to {{}}")
+    return None, False
+
+
+def parse_json_response(s: str) -> Tuple[Optional[Dict[str, Any]], bool]:
+    if not isinstance(s, str):
+        log("[parse] expected string for JSON output; defaulting to None")
+        return None, False
+    cleaned = s.strip()
+    if cleaned.startswith("```"):
+        cleaned = cleaned.strip("`")
+    try:
+        obj = json.loads(cleaned)
+        if isinstance(obj, dict):
+            return obj, True
+    except Exception:
+        pass
+    if "{" not in cleaned or "}" not in cleaned:
+        log("[parse] no JSON object found; defaulting to None")
+        return None, False
+    start = cleaned.find("{")
+    end = cleaned.rfind("}")
+    snippet = cleaned[start : end + 1]
+    try:
+        obj = json.loads(snippet)
+        if isinstance(obj, dict):
+            return obj, True
+    except Exception:
+        log("[parse] failed to parse JSON object; defaulting to None")
+        return None, False
+    log("[parse] invalid JSON output; defaulting to None")
     return None, False
