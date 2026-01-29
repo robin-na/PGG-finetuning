@@ -6,7 +6,7 @@
 #SBATCH --ntasks-per-node=1          # one task per GPU
 #SBATCH --cpus-per-task=8            # 8 CPU threads per rank/GPU
 #SBATCH --mem=64G                    # 64G is usually fine for 8B; 96G gives headroom
-#SBATCH --time=04:00:00
+#SBATCH --time=06:00:00
 #SBATCH --output=logs/%x-%j.out
 #SBATCH --error=logs/%x-%j.err
 
@@ -30,5 +30,5 @@ echo "Running on $(hostname)"
 echo "Running on $(hostname)"
 nvidia-smi
 
-python Simulation_robin/run_simulation.py --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True --env_csv Simulation_robin/df_analysis_val_19th.csv
+python Simulation_robin/run_simulation.py --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True --env_csv Simulation_robin/df_analysis_val_dedup_from_validation_13_c.csv
 
