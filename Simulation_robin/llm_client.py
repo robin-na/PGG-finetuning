@@ -62,7 +62,16 @@ def _batch_generate_until(
         if torch.cuda.is_available():
             torch.cuda.manual_seed_all(seed)
 
-    inputs = tok(prompts, return_tensors="pt", padding=True, truncation=True)
+    max_length = getattr(tok, "model_max_length", None)
+    use_truncation = max_length is not None and max_length < 1_000_000
+    tokenization_kwargs = {
+        "return_tensors": "pt",
+        "padding": True,
+        "truncation": use_truncation,
+    }
+    if use_truncation:
+        tokenization_kwargs["max_length"] = max_length
+    inputs = tok(prompts, **tokenization_kwargs)
     inputs = {k: v.to(model.device) for k, v in inputs.items()}
 
     prompt_lengths = [inputs["input_ids"][i].shape[-1] for i in range(len(prompts))]
