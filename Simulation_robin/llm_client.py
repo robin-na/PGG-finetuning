@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import warnings
 from typing import Any, Dict, List, Optional
 
 import asyncio
@@ -219,13 +220,33 @@ class LLMClient:
             return asyncio.run(_run_async())
         if prompts is None or self.tok is None or self.model is None:
             raise ValueError("Local provider requires prompts and a loaded model/tokenizer.")
-        return _batch_generate_until(
-            self.tok,
-            self.model,
-            prompts,
-            stop=stop,
-            max_new_tokens=max_new_tokens,
-            temperature=temperature,
-            top_p=top_p,
-            seed=seed,
-        )
+        chunk_size = len(prompts)
+        while True:
+            try:
+                outputs: List[str] = []
+                for start in range(0, len(prompts), chunk_size):
+                    chunk_prompts = prompts[start : start + chunk_size]
+                    outputs.extend(
+                        _batch_generate_until(
+                            self.tok,
+                            self.model,
+                            chunk_prompts,
+                            stop=stop,
+                            max_new_tokens=max_new_tokens,
+                            temperature=temperature,
+                            top_p=top_p,
+                            seed=seed,
+                        )
+                    )
+                return outputs
+            except torch.OutOfMemoryError as exc:
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+                if chunk_size <= 1:
+                    raise exc
+                reduced_size = max(1, chunk_size // 2)
+                warnings.warn(
+                    "CUDA OOM during generation with batch size "
+                    f"{chunk_size}; retrying with reduced chunk size {reduced_size}."
+                )
+                chunk_size = reduced_size
