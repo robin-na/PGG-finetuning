@@ -1,0 +1,35 @@
+CONDA_DEFAULT_ENV=llm_conda
+/home/robinna/.conda/envs/llm_conda/bin/python
+Running on node3401
+Running on node3401
+Sun Jan 25 22:47:41 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.65.06              Driver Version: 580.65.06      CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H200                    Off |   00000000:CB:00.0 Off |                    0 |
+| N/A   32C    P0             76W /  700W |       0MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[attn] SDPA flash enabled (flash=True, mem_efficient=True, math=False)
+[model] device=cuda:0 dtype=torch.bfloat16 attn_impl=None use_cache=None peft=False
+[ptc] saved config JSON → output/VALIDATION_10_T/2601252247/config.json
+[parse] no JSON object found; defaulting to None
+[parse] no JSON object found; defaulting to None
+[parse] no JSON object found; defaulting to None
+[parse] no JSON object found; defaulting to None
+[parse] no JSON object found; defaulting to None
+[parse] no JSON object found; defaulting to None
+[parse] no JSON object found; defaulting to None
+[parse] no JSON object found; defaulting to None
