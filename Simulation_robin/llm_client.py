@@ -230,6 +230,18 @@ class LLMClient:
         if prompts is None or self.tok is None or self.model is None:
             raise ValueError("Local provider requires prompts and a loaded model/tokenizer.")
         chunk_size = len(prompts)
+        env_chunk_size = os.getenv("PGG_LOCAL_GENERATION_CHUNK_SIZE")
+        if env_chunk_size:
+            try:
+                env_value = int(env_chunk_size)
+            except ValueError:
+                warnings.warn(
+                    "Ignoring invalid PGG_LOCAL_GENERATION_CHUNK_SIZE "
+                    f"value '{env_chunk_size}'; expected a positive integer."
+                )
+            else:
+                if env_value > 0:
+                    chunk_size = min(chunk_size, env_value)
         while True:
             try:
                 outputs: List[str] = []
