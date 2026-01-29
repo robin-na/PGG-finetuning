@@ -1,0 +1,18 @@
+/home/robinna/.conda/envs/llm_conda/lib/python3.9/contextlib.py:87: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:   8%|▊         | 1/12 [00:00<00:02,  4.13it/s]Loading checkpoint shards:  42%|████▏     | 5/12 [00:00<00:00, 16.24it/s]Loading checkpoint shards:  75%|███████▌  | 9/12 [00:00<00:00, 22.47it/s]Loading checkpoint shards: 100%|██████████| 12/12 [00:00<00:00, 21.30it/s]
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 12; retrying with reduced chunk size 6.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 13; retrying with reduced chunk size 6.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 12; retrying with reduced chunk size 6.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 13; retrying with reduced chunk size 6.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 10; retrying with reduced chunk size 5.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 15; retrying with reduced chunk size 7.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 16; retrying with reduced chunk size 8.
+  warnings.warn(
