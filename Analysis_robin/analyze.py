@@ -34,6 +34,7 @@ from .io_utils import load_human_rows, load_simulation_runs
 from .plotting import (
     plot_aggregate_metric_rmse,
     plot_aggregate_metric_means,
+    plot_aggregate_metric_variance,
     plot_config_metric_rmse,
     plot_metric_variance_by_config,
     plot_metric_means_by_config,
@@ -126,8 +127,8 @@ def _build_binary_config_rows_by_model(
     sim_games_by_model,
     human_games,
     metrics: Iterable[str],
-) -> List[Tuple[str, str, str, str, str, float, float]]:
-    rows: List[Tuple[str, str, str, str, str, float, float]] = []
+) -> List[Tuple[str, str, bool, str, str, str, float, float]]:
+    rows: List[Tuple[str, str, bool, str, str, str, float, float]] = []
     all_games = [item for games in sim_games_by_model.values() for item in games] + list(
         human_games
     )
@@ -164,6 +165,7 @@ def _build_binary_config_rows_by_model(
                         (
                             config_key,
                             _config_title(config_key),
+                            value,
                             _config_value_label(config_key, value),
                             metric,
                             model_key,
@@ -242,7 +244,7 @@ def main() -> None:
     sim_rows_by_model = {}
     for model_key, _, include_reasoning in model_specs:
         model_filters = dict(filter_pairs)
-        model_filters["include_reasoning"] = include_reasoning
+        model_filters["model.include_reasoning"] = include_reasoning
         sim_rows_by_model[model_key] = load_simulation_runs(
             args.output_root,
             include_all_runs=args.sim_include_all,
@@ -304,6 +306,11 @@ def main() -> None:
         "reward_rate",
         "normalized_efficiency",
     ]
+    variance_metrics = [
+        "mean_contribution_rate",
+        "punishment_rate",
+        "reward_rate",
+    ]
     alignment_rows_by_model = {}
     metric_summaries_by_model = {}
     config_metric_summaries_by_model = {}
@@ -342,12 +349,15 @@ def main() -> None:
     )
 
     variance_by_model = {
-        model_key: _variance_by_config(sim_summary, core_metrics)
-        for model_key, sim_summary in sim_game_summary_by_model.items()
+        model_key: _variance_by_config(sim_summary, variance_metrics)
+        for model_key, sim_summary in sim_player_summary_by_model.items()
     }
-    human_variance = _variance_by_config(human_game_summary, core_metrics)
+    human_variance = _variance_by_config(human_player_summary, variance_metrics)
     plot_metric_variance_by_config(
         output_dir, variance_by_model, human_variance, model_labels
+    )
+    plot_aggregate_metric_variance(
+        output_dir, variance_by_model, human_variance, model_labels, variance_metrics
     )
 
     sim_game_details_by_model = {
@@ -381,11 +391,13 @@ def main() -> None:
             for key, label, include_reasoning in model_specs
         ],
         "metrics": core_metrics,
-        "variance_metrics": core_metrics,
+        "variance_metrics": variance_metrics,
         "notes": (
             "RMSE plotted per model with bootstrap standard deviation across configs for error bars. "
             "Metric mean plots compare both simulation variants against human means "
-            "with human standard deviation error bars."
+            "with human standard deviation error bars. "
+            "Variance plots show across-player variance in each config, with aggregate means "
+            "summarized separately."
         ),
     }
     with (output_dir / "manifest.json").open("w", encoding="utf-8") as handle:

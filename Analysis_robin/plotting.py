@@ -497,7 +497,7 @@ def plot_metric_variance_by_config(
         )
         ax.set_xticks(x)
         ax.set_xticklabels(labels, rotation=45, ha="right")
-        ax.set_ylabel("Variance")
+        ax.set_ylabel("Variance across players")
         ax.set_title(metric_titles.get(metric, metric))
         ax.legend()
 
@@ -512,9 +512,83 @@ def plot_metric_variance_by_config(
     return paths
 
 
+def plot_aggregate_metric_variance(
+    output_dir: Path,
+    variance_by_model: Dict[str, Dict[str, Dict[str, float]]],
+    human_variance: Dict[str, Dict[str, float]],
+    model_labels: Dict[str, str],
+    metrics: Iterable[str],
+) -> List[Path]:
+    try:
+        import matplotlib.pyplot as plt
+    except ImportError:
+        return []
+
+    paths: List[Path] = []
+    if not variance_by_model and not human_variance:
+        return paths
+
+    metric_titles = _metric_titles()
+    metrics = [m for m in metric_titles if m in metrics]
+    if not metrics:
+        return paths
+
+    model_order = [key for key in model_labels if key in variance_by_model]
+    labels = [metric_titles[m] for m in metrics]
+    x = list(range(len(metrics)))
+    width = 0.8 / (len(model_order) + 1)
+    offsets = [
+        (i - len(model_order) / 2) * width for i in range(len(model_order) + 1)
+    ]
+    fig, ax = plt.subplots(figsize=(10, 5))
+    for offset, model_key in zip(offsets, model_order):
+        model_metrics = variance_by_model.get(model_key, {})
+        means: List[float] = []
+        for metric in metrics:
+            values = [
+                config_metrics.get(metric)
+                for config_metrics in model_metrics.values()
+                if config_metrics.get(metric) is not None
+            ]
+            means.append(sum(values) / len(values) if values else 0.0)
+        ax.bar(
+            [i + offset for i in x],
+            means,
+            width=width,
+            label=model_labels.get(model_key, model_key),
+        )
+    human_offset = offsets[-1] if offsets else 0.0
+    human_means: List[float] = []
+    for metric in metrics:
+        values = [
+            config_metrics.get(metric)
+            for config_metrics in human_variance.values()
+            if config_metrics.get(metric) is not None
+        ]
+        human_means.append(sum(values) / len(values) if values else 0.0)
+    ax.bar(
+        [i + human_offset for i in x],
+        human_means,
+        width=width,
+        label="Human mean",
+    )
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, rotation=30, ha="right")
+    ax.set_ylabel("Variance across players")
+    ax.set_title("Aggregate variance across configurations")
+    ax.legend()
+    fig.tight_layout()
+
+    output_path = output_dir / "aggregate_metric_variance.png"
+    fig.savefig(output_path)
+    plt.close(fig)
+    paths.append(output_path)
+    return paths
+
+
 def plot_metrics_by_binary_config(
     output_dir: Path,
-    rows: List[Tuple[str, str, str, str, str, float, float]],
+    rows: List[Tuple[str, str, bool, str, str, str, float, float]],
     model_labels: Dict[str, str],
 ) -> List[Path]:
     try:
@@ -528,7 +602,7 @@ def plot_metrics_by_binary_config(
 
     metric_titles = _metric_titles()
     title_to_metric = {title: key for key, title in metric_titles.items()}
-    grouped: Dict[str, List[Tuple[str, str, str, str, str, float, float]]] = {}
+    grouped: Dict[str, List[Tuple[str, str, bool, str, str, str, float, float]]] = {}
     for row in rows:
         grouped.setdefault(row[0], []).append(row)
 
@@ -538,18 +612,26 @@ def plot_metrics_by_binary_config(
     n_cols = 2
     n_rows = (len(config_keys) + n_cols - 1) // n_cols
     fig, axes = plt.subplots(n_rows, n_cols, figsize=(14, 4 * n_rows), squeeze=False)
-    model_order = [key for key in model_labels if key in {row[4] for row in rows}]
+    model_order = [key for key in model_labels if key in {row[5] for row in rows}]
     for idx, config_key in enumerate(config_keys):
         ax = axes[idx // n_cols][idx % n_cols]
         config_rows = grouped[config_key]
         config_label = config_rows[0][1]
-        metrics = [m for m in metric_titles if any(r[3] == m for r in config_rows)]
-        labels = []
-        positions = []
+        metrics = [m for m in metric_titles if any(r[4] == m for r in config_rows)]
+        value_order = [False, True]
+        value_labels = {
+            row[2]: row[3] for row in config_rows if row[2] in value_order
+        }
+        labels: List[str] = []
+        positions: List[int] = []
         pos = 0
         for metric in metrics:
-            for value_label in sorted({r[2] for r in config_rows if r[3] == metric}):
-                labels.append(f"{metric_titles.get(metric, metric)}\n{value_label}")
+            for value in value_order:
+                if not any(r[4] == metric and r[2] == value for r in config_rows):
+                    continue
+                labels.append(
+                    f"{metric_titles.get(metric, metric)}\n{value_labels.get(value, str(value))}"
+                )
                 positions.append(pos)
                 pos += 1
         if not labels:
@@ -567,15 +649,23 @@ def plot_metrics_by_binary_config(
                 if not metric:
                     sim_values.append(0.0)
                     continue
+                value = next(
+                    (
+                        v
+                        for v, v_label in value_labels.items()
+                        if v_label == value_label
+                    ),
+                    None,
+                )
                 match = next(
                     (
                         r
                         for r in config_rows
-                        if r[3] == metric and r[2] == value_label and r[4] == model_key
+                        if r[4] == metric and r[2] == value and r[5] == model_key
                     ),
                     None,
                 )
-                sim_values.append(match[5] if match else 0.0)
+                sim_values.append(match[6] if match else 0.0)
             ax.bar(
                 [i + offset for i in x],
                 sim_values,
@@ -590,11 +680,15 @@ def plot_metrics_by_binary_config(
             if not metric:
                 human_values.append(0.0)
                 continue
-            match = next(
-                (r for r in config_rows if r[3] == metric and r[2] == value_label),
+            value = next(
+                (v for v, v_label in value_labels.items() if v_label == value_label),
                 None,
             )
-            human_values.append(match[6] if match else 0.0)
+            match = next(
+                (r for r in config_rows if r[4] == metric and r[2] == value),
+                None,
+            )
+            human_values.append(match[7] if match else 0.0)
         ax.bar(
             [i + human_offset for i in x],
             human_values,
