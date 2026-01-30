@@ -27,7 +27,7 @@ from .config import (
     DEFAULT_OUTPUT_ROOT,
 )
 from .io_utils import load_human_rows, load_simulation_runs
-from .plotting import plot_config_metric_errors, plot_noise_ceiling
+from .plotting import plot_aggregate_metric_rmse, plot_config_metric_rmse
 
 
 def _timestamp() -> str:
@@ -120,8 +120,8 @@ def main() -> None:
         output_dir / "alignment_config_metric_summary.csv", config_metric_summaries
     )
 
-    plot_noise_ceiling(output_dir, alignment_rows)
-    plot_config_metric_errors(output_dir, config_metric_summaries)
+    plot_config_metric_rmse(output_dir, config_metric_summaries)
+    plot_aggregate_metric_rmse(output_dir, config_metric_summaries)
 
     manifest = {
         "timestamp": timestamp,
@@ -131,8 +131,8 @@ def main() -> None:
         "human_configs": str(args.human_configs),
         "metrics": metrics,
         "notes": (
-            "Noise ceiling plotted as ±1 SEM of human game-level means. "
-            "Config-level error plots use mean human variance as the noise ceiling."
+            "RMSE plotted with human standard deviation as the noise ceiling. "
+            "Aggregate RMSE uses bootstrap standard deviation across configs for error bars."
         ),
     }
     with (output_dir / "manifest.json").open("w", encoding="utf-8") as handle:
