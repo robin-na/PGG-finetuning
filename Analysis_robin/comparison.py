@@ -4,8 +4,8 @@ import csv
 from dataclasses import dataclass
 from math import isfinite, sqrt
 from pathlib import Path
-from statistics import mean, pstdev, pvariance
-from typing import Dict, Iterable, List
+from statistics import mean, pstdev
+from typing import Dict, Iterable, List, Tuple
 
 from .aggregation import SummaryRow
 @dataclass
@@ -14,7 +14,7 @@ class AlignmentRow:
     metric: str
     sim_mean: float
     human_mean: float
-    human_sem: float
+    human_std: float
 
 
 @dataclass
@@ -29,11 +29,10 @@ class MetricSummary:
 @dataclass
 class ConfigMetricSummary:
     config: str
+    metric: str
     rmse: float
-    mae: float
-    r2: float
     noise_ceiling: float
-    n_metrics: int
+    n_samples: int
 
 
 def _mean(values: Iterable[float]) -> float:
@@ -72,10 +71,10 @@ def _to_config_map(summaries: Dict[str, List[SummaryRow]], metric: str) -> Dict[
     return mapping
 
 
-def _sem(values: List[float]) -> float:
+def _std(values: List[float]) -> float:
     if len(values) <= 1:
         return 0.0
-    return pstdev(values) / sqrt(len(values))
+    return pstdev(values)
 
 
 def compare_configs(
@@ -101,14 +100,14 @@ def compare_configs(
                 continue
             sim_mean = _mean(sim_values)
             human_mean = _mean(human_values)
-            human_sem = _sem(human_values)
+            human_std = _std(human_values)
             alignment_rows.append(
                 AlignmentRow(
                     config=sim_config,
                     metric=metric,
                     sim_mean=sim_mean,
                     human_mean=human_mean,
-                    human_sem=human_sem,
+                    human_std=human_std,
                 )
             )
             error = sim_mean - human_mean
@@ -134,10 +133,10 @@ def write_alignment(path: Path, rows: List[AlignmentRow]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["config", "metric", "sim_mean", "human_mean", "human_sem"])
+        writer.writerow(["config", "metric", "sim_mean", "human_mean", "human_std"])
         for row in rows:
             writer.writerow(
-                [row.config, row.metric, row.sim_mean, row.human_mean, row.human_sem]
+                [row.config, row.metric, row.sim_mean, row.human_mean, row.human_std]
             )
 
 
@@ -157,7 +156,8 @@ def compare_by_config(
 ) -> List[ConfigMetricSummary]:
     sim_metric_means: Dict[str, Dict[str, float]] = {}
     human_metric_means: Dict[str, Dict[str, float]] = {}
-    human_metric_variances: Dict[str, Dict[str, float]] = {}
+    human_metric_std: Dict[str, Dict[str, float]] = {}
+    human_metric_counts: Dict[str, Dict[str, int]] = {}
 
     for metric in metrics:
         sim_map = _to_config_map(sim_summaries, metric)
@@ -166,37 +166,32 @@ def compare_by_config(
             sim_metric_means.setdefault(config_name, {})[metric] = _mean(values)
         for config_name, values in human_map.items():
             human_metric_means.setdefault(config_name, {})[metric] = _mean(values)
-            variance = pvariance(values) if len(values) > 1 else 0.0
-            human_metric_variances.setdefault(config_name, {})[metric] = variance
+            std = pstdev(values) if len(values) > 1 else 0.0
+            human_metric_std.setdefault(config_name, {})[metric] = std
+            human_metric_counts.setdefault(config_name, {})[metric] = len(values)
 
     summaries: List[ConfigMetricSummary] = []
     for config_name, sim_metrics in sim_metric_means.items():
         human_metrics = human_metric_means.get(config_name)
         if not human_metrics:
             continue
-        shared_metrics = [
-            metric for metric in metrics if metric in sim_metrics and metric in human_metrics
-        ]
-        if not shared_metrics:
-            continue
-        sim_values = [sim_metrics[metric] for metric in shared_metrics]
-        human_values = [human_metrics[metric] for metric in shared_metrics]
-        errors = [s - h for s, h in zip(sim_values, human_values)]
-        noise_values = [
-            human_metric_variances.get(config_name, {}).get(metric, 0.0)
-            for metric in shared_metrics
-        ]
-        noise_ceiling = _mean(noise_values) if noise_values else 0.0
-        summaries.append(
-            ConfigMetricSummary(
-                config=config_name,
-                rmse=_rmse(errors),
-                mae=_mae(errors),
-                r2=_r2(human_values, sim_values),
-                noise_ceiling=noise_ceiling,
-                n_metrics=len(shared_metrics),
+        for metric in metrics:
+            if metric not in sim_metrics or metric not in human_metrics:
+                continue
+            sim_value = sim_metrics[metric]
+            human_value = human_metrics[metric]
+            error = sim_value - human_value
+            noise_ceiling = human_metric_std.get(config_name, {}).get(metric, 0.0)
+            n_samples = human_metric_counts.get(config_name, {}).get(metric, 0)
+            summaries.append(
+                ConfigMetricSummary(
+                    config=config_name,
+                    metric=metric,
+                    rmse=_rmse([error]),
+                    noise_ceiling=noise_ceiling,
+                    n_samples=n_samples,
+                )
             )
-        )
     return summaries
 
 
@@ -204,8 +199,8 @@ def write_config_metric_summary(path: Path, rows: List[ConfigMetricSummary]) -> 
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["config", "rmse", "mae", "r2", "noise_ceiling", "n_metrics"])
+        writer.writerow(["config", "metric", "rmse", "noise_ceiling", "n_samples"])
         for row in rows:
             writer.writerow(
-                [row.config, row.rmse, row.mae, row.r2, row.noise_ceiling, row.n_metrics]
+                [row.config, row.metric, row.rmse, row.noise_ceiling, row.n_samples]
             )
