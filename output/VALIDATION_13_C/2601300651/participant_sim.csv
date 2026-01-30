@@ -143,6 +143,7 @@ COW,9,VALIDATION_13_C,Let's continue the cooperation! Contribution of 10 for me.
 CHICKEN,9,VALIDATION_13_C,Let's all continue to contribute 10 and reward good behaviour!,,10,,,"{""GORILLA"":20,""PINGUIN"":20}",
 PINGUIN,9,VALIDATION_13_C,Let's continue with cooperation! I'll contribute 10 again.,,10,,,"{""ELEPHANT"":30,""FROG"":30,""CHICKEN"":10,""SNAKE"":30}",
 SNAKE,9,VALIDATION_13_C,Let's keep cooperating!,,10,,,"{""PINGUIN"":30}",
+<<<<<<< HEAD,,,,,,,,,
 PARROT,10,VALIDATION_13_C,Let's continue to contribute 10. Thanks everyone for the rewards!,,10,,,"{""WALRUS"":2,""ELEPHANT"":2,""PINGUIN"":2,""SNAKE"":2}",
 DUCK,10,VALIDATION_13_C,"Let's keep the cooperation going! I'll contribute 10 again, let's all continue!",,10,,,"{""ELEPHANT"":5,""FROG"":5,""PINGUIN"":5,""SNAKE"":5}",
 CHICK,10,VALIDATION_13_C,Let's keep up the great cooperation!,,10,,,"{""ELEPHANT"":16,""FROG"":16,""PINGUIN"":16,""SNAKE"":16}",
