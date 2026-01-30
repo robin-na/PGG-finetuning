@@ -75,7 +75,12 @@ def _sorted_run_dirs(config_dir: Path) -> List[Path]:
     return [run for _, run in sorted(numeric_runs, key=lambda item: item[0])]
 
 
-def _parse_filter_value(value: str) -> Any:
+def _parse_filter_value(value: Any) -> Any:
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return None
+    value = str(value)
     lowered = value.strip().lower()
     if lowered in ("true", "false"):
         return lowered == "true"
