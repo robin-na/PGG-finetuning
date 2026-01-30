@@ -38,6 +38,7 @@ def plot_config_metric_rmse(
         return paths
 
     metric_titles = _metric_titles()
+    title_to_metric = {title: key for key, title in metric_titles.items()}
     metrics = [
         m
         for m in metric_titles
@@ -526,6 +527,7 @@ def plot_metrics_by_binary_config(
         return paths
 
     metric_titles = _metric_titles()
+    title_to_metric = {title: key for key, title in metric_titles.items()}
     grouped: Dict[str, List[Tuple[str, str, str, str, str, float, float]]] = {}
     for row in rows:
         grouped.setdefault(row[0], []).append(row)
