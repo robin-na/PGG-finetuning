@@ -617,8 +617,8 @@ def plot_aggregate_metric_variance(
     )
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=30, ha="right")
-    ax.set_ylabel("Variance across players")
-    ax.set_title("Aggregate variance across configurations")
+    ax.set_ylabel("Variance across players (within config)")
+    ax.set_title("Aggregate variance across configs (player variance)")
     ax.legend()
     fig.tight_layout()
 
