@@ -1,0 +1,15 @@
+/home/robinna/.conda/envs/llm_conda/lib/python3.9/contextlib.py:87: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:  42%|████▏     | 5/12 [00:00<00:00, 46.85it/s]Loading checkpoint shards: 100%|██████████| 12/12 [00:00<00:00, 75.84it/s]
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 12; retrying with reduced chunk size 6.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 12; retrying with reduced chunk size 6.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 13; retrying with reduced chunk size 6.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 15; retrying with reduced chunk size 7.
+  warnings.warn(
+/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 16; retrying with reduced chunk size 8.
+  warnings.warn(
+[2026-01-30T02:05:57.012] error: *** JOB 8552015 ON node3201 CANCELLED AT 2026-01-30T02:05:57 DUE TO TIME LIMIT ***
