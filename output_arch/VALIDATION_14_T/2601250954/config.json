@@ -1,0 +1,41 @@
+{
+  "experiment": "VALIDATION_14_T",
+  "run_timestamp": "2601250954",
+  "environment": {
+    "CONFIG_showNRounds": true,
+    "CONFIG_showRewardId": false,
+    "CONFIG_rewardMagnitude": 2.0,
+    "CONFIG_endowment": 20,
+    "CONFIG_multiplier": 1.8,
+    "CONFIG_numRounds": 19,
+    "CONFIG_defaultContribProp": 1,
+    "CONFIG_chat": true,
+    "CONFIG_rewardCost": 2,
+    "CONFIG_punishmentMagnitude": 3.0,
+    "CONFIG_showOtherSummaries": false,
+    "CONFIG_showPunishmentId": false,
+    "CONFIG_punishmentCost": 2,
+    "CONFIG_punishmentExists": true,
+    "CONFIG_rewardExists": true,
+    "CONFIG_allOrNothing": false,
+    "CONFIG_playerCount": 6
+  },
+  "model": {
+    "provider": "openai",
+    "openai_model": "gpt-4o",
+    "openai_api_key_env": "OPENAI_API_KEY",
+    "openai_async": true,
+    "openai_max_concurrency": 20,
+    "temperature": 1.0,
+    "top_p": 1.0,
+    "seed": 0,
+    "contrib_max_new_tokens": 128,
+    "chat_max_new_tokens": 128,
+    "actions_max_new_tokens": 128,
+    "include_reasoning": false,
+    "max_parallel_games": 2,
+    "debug_print": true,
+    "env_csv": "data/processed_data/df_analysis_val.csv",
+    "run_timestamp": "2601250954"
+  }
+}

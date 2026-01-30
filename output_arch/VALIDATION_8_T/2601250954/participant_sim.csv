@@ -1,0 +1,13 @@
+playerAvatar,roundIndex,gameId,data.chat_message,data.chat_reasoning,data.contribution,data.contribution_reasoning,data.punished,data.rewarded,data.actions_reasoning
+FROG,1,VALIDATION_8_T,Let's collaborate for the best outcome!,,20,,"{""WHALE"":1}",{},
+WHALE,1,VALIDATION_8_T,Let's work together and contribute to the pot. It benefits us all!,,15,,{},{},
+MOOSE,1,VALIDATION_8_T,"Looking forward to a fair game, let's maximize our collective earnings!",,20,,{},{},
+CROCODILE,1,VALIDATION_8_T,Let's all contribute 20 coins to maximize our payoff!,,20,,{},{},
+PINGUIN,1,VALIDATION_8_T,Let's collaborate efficiently for the best outcome!,,20,,"{""WHALE"":1}",{},
+MONKEY,1,VALIDATION_8_T,Let's work together to maximize our payoffs!,,20,,"{""WHALE"":1}",{},
+FROG,2,VALIDATION_8_T,Let's ensure everyone contributes fully this time. It's best for all of us.,,20,,{},{},
+WHALE,2,VALIDATION_8_T,"Apologies for not contributing the full 20 coins in the last round, I'll contribute fully this round. Let's aim for maximum collective gain!",,20,,{},{},
+MOOSE,2,VALIDATION_8_T,Our strategy of collaboration worked well in the last round. Let's aim for the same contributions for a great outcome!,,20,,{},{},
+CROCODILE,2,VALIDATION_8_T,Great teamwork! Let's keep contributing for the best outcome!,,20,,{},{},
+PINGUIN,2,VALIDATION_8_T,Working together is key. Let's aim high again!,,20,,{},{},
+MONKEY,2,VALIDATION_8_T,"Let's aim for full contributions again, it's beneficial for everyone!",,20,,{},{},

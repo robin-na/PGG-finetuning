@@ -1,0 +1,13 @@
+playerAvatar,roundIndex,gameId,data.chat_message,data.chat_reasoning,data.contribution,data.contribution_reasoning,data.punished,data.rewarded,data.actions_reasoning
+ELEPHANT,1,VALIDATION_8_C,,,10,,,"{""WALRUS"":1,""CHICKEN"":1}",
+WALRUS,1,VALIDATION_8_C,,,10,,,{},
+CHICKEN,1,VALIDATION_8_C,Let's try to cooperate!,,20,,,{},
+PARROT,1,VALIDATION_8_C,,,10,,,{},
+OWL,1,VALIDATION_8_C,,,10,,,{},
+CHICK,1,VALIDATION_8_C,,,20,,,{},
+ELEPHANT,2,VALIDATION_8_C,,,10,,,{},
+WALRUS,2,VALIDATION_8_C,,,10,,,{},
+CHICKEN,2,VALIDATION_8_C,,,20,,,{},
+PARROT,2,VALIDATION_8_C,Let's continue cooperating!,,10,,,{},
+OWL,2,VALIDATION_8_C,,,10,,,{},
+CHICK,2,VALIDATION_8_C,,,20,,,{},

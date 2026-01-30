@@ -1,0 +1,13 @@
+playerAvatar,roundIndex,gameId,data.chat_message,data.chat_reasoning,data.contribution,data.contribution_reasoning,data.punished,data.rewarded,data.actions_reasoning
+PARROT,1,VALIDATION_8_T,Hello everyone! I'll start by contributing 10 coins to the pot.,,10,,{},{},
+MONKEY,1,VALIDATION_8_T,Hi everyone. Let's try to contribute something to maximize the pot. I'll start with 10.,,10,,{},{},
+FROG,1,VALIDATION_8_T,"Hi everyone, let's cooperate and contribute a reasonable amount. I'll start with 10 coins.",,10,,{},{},
+ELEPHANT,1,VALIDATION_8_T,"Hello everyone, let's try to contribute something reasonable to the shared pot.",,10,,{},{},
+HORSE,1,VALIDATION_8_T,Hi everyone. I'll contribute 10 coins this round.,,10,,{},{},
+RABBIT,1,VALIDATION_8_T,"Hi everyone, let's try to cooperate and contribute something to the pot. I will contribute 10 coins.",,10,,{},{},
+PARROT,2,VALIDATION_8_T,Hello everyone! Let's keep up the good cooperation and contribute 10 coins again.,,10,,{},{},
+MONKEY,2,VALIDATION_8_T,Let's all contribute 10 again to maximize the pot.,,10,,{},{},
+FROG,2,VALIDATION_8_T,Good job everyone on contributing last round! Let's do the same this round.,,10,,{},{},
+ELEPHANT,2,VALIDATION_8_T,Let's all continue to contribute 10 coins for a good outcome.,,10,,{},{},
+HORSE,2,VALIDATION_8_T,Let's all try to contribute 10 coins again to maximize the reward.,,10,,{},{},
+RABBIT,2,VALIDATION_8_T,Let's try to repeat our cooperation from the previous round and contribute 10 coins again.,,10,,{},{},

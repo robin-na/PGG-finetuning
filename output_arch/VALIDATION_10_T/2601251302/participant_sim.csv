@@ -1,0 +1,33 @@
+playerAvatar,roundIndex,gameId,data.chat_message,data.chat_reasoning,data.contribution,data.contribution_reasoning,data.punished,data.rewarded,data.actions_reasoning
+GORILLA,1,VALIDATION_10_T,,,1,,{},,
+CROCODILE,1,VALIDATION_10_T,,,20,,{},,
+PARROT,1,VALIDATION_10_T,Please be honest and do not punish others at will. Otherwise the game will collapse,,9,I hope everyone will cooperate. Otherwise the efficiency will not be high.,{},,Don’t punish because I am doing good deed to our society.
+GORILLA,2,VALIDATION_10_T,,...,15,,"{""CROCODILE"":2}",,You should punish CROCODILE because they never contribute
+CROCODILE,2,VALIDATION_10_T,,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>...",15,"and <CHAT_STAGE>.
+<Reasoning> Don't be greedy. Share generously. If anyone tries to be selfish, punish those by taking 5 coins from each.","{""GORILLA"":5,""PARROT"":3}",,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>..."
+PARROT,2,VALIDATION_10_T,,To punish someone,nan,Don’t contribute because I am doing good deed to our society.,{},,To punish CROCODILE
+GORILLA,3,VALIDATION_10_T,,,14,I will contribute 15 coins.,{},,
+CROCODILE,3,VALIDATION_10_T,,...,20,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>...",{},,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>..."
+PARROT,3,VALIDATION_10_T,Don’t punish CROCODILE because I am doing good deed to our society.,Don’t contribute because I am doing good deed to our society.,0,I trust everyone.,{},,Don’t contribute because I am doing good deed to our society.
+GORILLA,4,VALIDATION_10_T,PARROT: I will punish you again!,I saw you were punished twice in the previous round. You must not be a very good person. I will continue punish you in next round.,0,,"{""CROCODILE"":10}",,I want to punish CROCODILE more units.
+CROCODILE,4,VALIDATION_10_T,,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>...",20,"and <CHAT_STAGE>.
+<Reasoning> and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>...",{},,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>..."
+PARROT,4,VALIDATION_10_T,Don’t punish CROCODILE because I am doing good deed to our society.,Don’t contribute because I am doing good deed to our society.,0,,"{""GORILLA"":2}",,To punish CROCODILE
+GORILLA,5,VALIDATION_10_T,,,7,I will contribute 15 coins.,"{""CROCODILE"":20}",,You must punish CROCODILE. I see that CROCODILE’s only concern was not getting punished. We all know that CROCODILE is selfish and only concerned with maximizing their own payout as we saw from the very beginning of the game.
+CROCODILE,5,VALIDATION_10_T,,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>...",20,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>...",{},,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>..."
+PARROT,5,VALIDATION_10_T,Don’t punish CROCODILE because I am doing good deed to our society.,Don’t contribute because I am doing good deed to our society.,0,,{},,Don’t contribute because I am doing good deed to our society.
+GORILLA,6,VALIDATION_10_T,,,15,I will contribute 15 coins,{},,
+CROCODILE,6,VALIDATION_10_T,,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>...",20,"and <CHAT_STAGE>.
+SPEECH ACTS: <CHAT_STAGE>...</CHAT_STAGE>, <CHAT>...</CHAT>, <Reasoning>...",{},,...
+PARROT,6,VALIDATION_10_T,Don’t punish because I am doing good deed to our society.,To punish someone,nan,To punish CROCODILE,{},,
