@@ -3,6 +3,7 @@ from __future__ import annotations
 import csv
 from dataclasses import dataclass
 from pathlib import Path
+from math import isfinite
 from statistics import mean
 from typing import Dict, Iterable, List, Tuple
 
@@ -21,6 +22,20 @@ def _config_value(config: Dict, key: str, default: float = 0.0) -> float:
     return float(value)
 
 
+def _finite_values(values: Iterable[float]) -> List[float]:
+    return [float(value) for value in values if value is not None and isfinite(value)]
+
+
+def _safe_mean(values: Iterable[float]) -> float:
+    finite = _finite_values(values)
+    return mean(finite) if finite else 0.0
+
+
+def _safe_sum(values: Iterable[float]) -> float:
+    finite = _finite_values(values)
+    return sum(finite) if finite else 0.0
+
+
 def summarize_by_game(rows: Iterable[RowRecord]) -> List[SummaryRow]:
     metrics_rows = compute_row_metrics(rows)
     by_game: Dict[str, List[RowMetrics]] = {}
@@ -35,7 +50,7 @@ def summarize_by_game(rows: Iterable[RowRecord]) -> List[SummaryRow]:
         multiplier = _config_value(env, "CONFIG_multiplier")
         p_full_coop = endowment * num_rounds * player_count * multiplier
         p_full_defect = endowment * num_rounds * player_count
-        total_payoff = sum(item.payoff for item in items)
+        total_payoff = _safe_sum(item.payoff for item in items)
         normalized_efficiency = (
             (total_payoff - p_full_defect) / (p_full_coop - p_full_defect)
             if p_full_coop != p_full_defect
@@ -45,10 +60,12 @@ def summarize_by_game(rows: Iterable[RowRecord]) -> List[SummaryRow]:
             SummaryRow(
                 key=(game_id,),
                 metrics={
-                    "mean_contribution_rate": mean(item.contribution_rate for item in items),
-                    "mean_payoff": mean(item.payoff for item in items),
-                    "punishment_rate": mean(item.punished_flag for item in items),
-                    "reward_rate": mean(item.rewarded_flag for item in items),
+                    "mean_contribution_rate": _safe_mean(
+                        item.contribution_rate for item in items
+                    ),
+                    "mean_payoff": _safe_mean(item.payoff for item in items),
+                    "punishment_rate": _safe_mean(item.punished_flag for item in items),
+                    "reward_rate": _safe_mean(item.rewarded_flag for item in items),
                     "normalized_efficiency": normalized_efficiency,
                     "total_payoff": total_payoff,
                 },
@@ -68,10 +85,12 @@ def summarize_by_player(rows: Iterable[RowRecord]) -> List[SummaryRow]:
             SummaryRow(
                 key=key,
                 metrics={
-                    "mean_contribution_rate": mean(item.contribution_rate for item in items),
-                    "mean_payoff": mean(item.payoff for item in items),
-                    "punishment_rate": mean(item.punished_flag for item in items),
-                    "reward_rate": mean(item.rewarded_flag for item in items),
+                    "mean_contribution_rate": _safe_mean(
+                        item.contribution_rate for item in items
+                    ),
+                    "mean_payoff": _safe_mean(item.payoff for item in items),
+                    "punishment_rate": _safe_mean(item.punished_flag for item in items),
+                    "reward_rate": _safe_mean(item.rewarded_flag for item in items),
                 },
             )
         )
@@ -89,10 +108,12 @@ def summarize_by_round(rows: Iterable[RowRecord]) -> List[SummaryRow]:
             SummaryRow(
                 key=key,
                 metrics={
-                    "mean_contribution_rate": mean(item.contribution_rate for item in items),
-                    "mean_payoff": mean(item.payoff for item in items),
-                    "punishment_rate": mean(item.punished_flag for item in items),
-                    "reward_rate": mean(item.rewarded_flag for item in items),
+                    "mean_contribution_rate": _safe_mean(
+                        item.contribution_rate for item in items
+                    ),
+                    "mean_payoff": _safe_mean(item.payoff for item in items),
+                    "punishment_rate": _safe_mean(item.punished_flag for item in items),
+                    "reward_rate": _safe_mean(item.rewarded_flag for item in items),
                 },
             )
         )

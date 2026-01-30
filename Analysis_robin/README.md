@@ -15,9 +15,10 @@ human validation data.
   - Punishment rate
   - Reward rate
   - Payoffs (per-row and averaged)
-- Compares simulation vs human behavior by configuration pairing (e.g.
-  `VALIDATION_10_C` vs `VALIDATION_10_T`), reporting RMSE/MAE/R² and plotting the
-  human noise ceiling (±1 SD of human game-level means).
+- Compares simulation vs human behavior within the same configuration (e.g.
+  `VALIDATION_10_C` compares to `VALIDATION_10_C` in the human data), reporting
+  RMSE/MAE/R² and plotting the human noise ceiling (±1 SEM of human game-level
+  means).
 
 ## Running the analysis
 From the repo root:
@@ -39,6 +40,8 @@ python -m Analysis_robin.analyze \
 ## Outputs
 Each run writes to `analysis_output_Robin/<timestamp>/` and includes:
 - Per-config CSV summaries for simulation and human data (game/player/round).
-- `alignment_game_summary.csv` and `alignment_metric_summary.csv`.
-- Noise ceiling plots (when `matplotlib` is available).
+- `alignment_game_summary.csv`, `alignment_metric_summary.csv`, and
+  `alignment_config_metric_summary.csv`.
+- Noise ceiling plots and configuration-level error plots (when `matplotlib`
+  is available).
 - `manifest.json` describing the analysis inputs and metrics.
