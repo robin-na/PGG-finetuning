@@ -13,7 +13,13 @@ from .aggregation import (
     write_player_summary,
     write_round_summary,
 )
-from .comparison import compare_configs, write_alignment, write_metric_summary
+from .comparison import (
+    compare_by_config,
+    compare_configs,
+    write_alignment,
+    write_config_metric_summary,
+    write_metric_summary,
+)
 from .config import (
     DEFAULT_ANALYSIS_OUTPUT_ROOT,
     DEFAULT_HUMAN_CONFIG_CSV,
@@ -21,7 +27,7 @@ from .config import (
     DEFAULT_OUTPUT_ROOT,
 )
 from .io_utils import load_human_rows, load_simulation_runs
-from .plotting import plot_noise_ceiling
+from .plotting import plot_config_metric_errors, plot_noise_ceiling
 
 
 def _timestamp() -> str:
@@ -104,11 +110,18 @@ def main() -> None:
     alignment_rows, metric_summaries = compare_configs(
         sim_game_summary, human_game_summary, metrics
     )
+    config_metric_summaries = compare_by_config(
+        sim_game_summary, human_game_summary, metrics
+    )
 
     write_alignment(output_dir / "alignment_game_summary.csv", alignment_rows)
     write_metric_summary(output_dir / "alignment_metric_summary.csv", metric_summaries)
+    write_config_metric_summary(
+        output_dir / "alignment_config_metric_summary.csv", config_metric_summaries
+    )
 
     plot_noise_ceiling(output_dir, alignment_rows)
+    plot_config_metric_errors(output_dir, config_metric_summaries)
 
     manifest = {
         "timestamp": timestamp,
@@ -117,7 +130,10 @@ def main() -> None:
         "human_rounds": str(args.human_rounds),
         "human_configs": str(args.human_configs),
         "metrics": metrics,
-        "notes": "Noise ceiling plotted as ±1 SD of human config-level means.",
+        "notes": (
+            "Noise ceiling plotted as ±1 SEM of human game-level means. "
+            "Config-level error plots use mean human variance as the noise ceiling."
+        ),
     }
     with (output_dir / "manifest.json").open("w", encoding="utf-8") as handle:
         json.dump(manifest, handle, indent=2)
