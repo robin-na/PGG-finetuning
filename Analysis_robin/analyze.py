@@ -27,7 +27,6 @@ from .plotting import plot_noise_ceiling
 def _timestamp() -> str:
     return datetime.now().strftime("%y%m%d%H%M")
 
-
 def main() -> None:
     parser = argparse.ArgumentParser(description="Analyze PGG simulation vs human data")
     parser.add_argument(
