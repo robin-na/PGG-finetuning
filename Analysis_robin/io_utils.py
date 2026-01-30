@@ -4,7 +4,7 @@ import csv
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Mapping, Optional
+from typing import Any, Dict, Iterable, List, Mapping, Optional, Tuple
 import ast
 
 
@@ -64,41 +64,108 @@ def _latest_run_dir(config_dir: Path) -> Optional[Path]:
         return None
     return max(numeric_runs, key=lambda item: item[0])[1]
 
+def _sorted_run_dirs(config_dir: Path) -> List[Path]:
+    run_dirs = [p for p in config_dir.iterdir() if p.is_dir()]
+    numeric_runs: List[Tuple[int, Path]] = []
+    for run_dir in run_dirs:
+        try:
+            numeric_runs.append((int(run_dir.name), run_dir))
+        except ValueError:
+            continue
+    return [run for _, run in sorted(numeric_runs, key=lambda item: item[0])]
 
-def load_simulation_runs(output_root: Path) -> Dict[str, List[RowRecord]]:
+
+def _parse_filter_value(value: str) -> Any:
+    lowered = value.strip().lower()
+    if lowered in ("true", "false"):
+        return lowered == "true"
+    if lowered in ("none", "null"):
+        return None
+    try:
+        if "." in value:
+            return float(value)
+        return int(value)
+    except ValueError:
+        return value
+
+
+def _resolve_path(payload: Mapping[str, Any], path: str) -> Any:
+    current: Any = payload
+    for part in path.split("."):
+        if not isinstance(current, Mapping) or part not in current:
+            return None
+        current = current[part]
+    return current
+
+
+def _matches_filters(payload: Mapping[str, Any], filters: Mapping[str, Any]) -> bool:
+    for key, expected in filters.items():
+        actual = _resolve_path(payload, key)
+        if isinstance(expected, bool):
+            if bool(actual) is not expected:
+                return False
+        elif expected is None:
+            if actual is not None:
+                return False
+        elif isinstance(expected, (int, float)):
+            try:
+                if float(actual) != float(expected):
+                    return False
+            except (TypeError, ValueError):
+                return False
+        else:
+            if str(actual) != str(expected):
+                return False
+    return True
+
+
+def load_simulation_runs(
+    output_root: Path,
+    include_all_runs: bool = False,
+    config_filters: Optional[Mapping[str, str]] = None,
+) -> Dict[str, List[RowRecord]]:
     configs: Dict[str, List[RowRecord]] = {}
     if not output_root.exists():
         return configs
+    parsed_filters = {
+        key: _parse_filter_value(value) for key, value in (config_filters or {}).items()
+    }
     for config_dir in sorted(output_root.iterdir()):
         if not config_dir.is_dir():
             continue
         if not config_dir.name.startswith("VALIDATION_"):
             continue
-        latest = _latest_run_dir(config_dir)
-        if not latest:
+        run_dirs = _sorted_run_dirs(config_dir)
+        if not run_dirs:
             continue
-        config_path = latest / "config.json"
-        participants_path = latest / "participant_sim.csv"
-        if not config_path.exists() or not participants_path.exists():
-            continue
-        with config_path.open(encoding="utf-8") as handle:
-            config_payload = json.load(handle)
-        environment = config_payload.get("environment", {})
-        config = GameConfig(name=config_dir.name, environment=environment)
-        rows: List[RowRecord] = []
-        for row in _read_csv_rows(participants_path):
-            rows.append(
-                RowRecord(
-                    game_id=row.get("gameId", ""),
-                    player_id=row.get("playerAvatar", ""),
-                    round_index=int(float(row.get("roundIndex") or 0)),
-                    contribution=float(row.get("data.contribution") or 0.0),
-                    punished=_safe_parse_dict(row.get("data.punished", "")),
-                    rewarded=_safe_parse_dict(row.get("data.rewarded", "")),
-                    config=config,
+        if not include_all_runs:
+            latest = run_dirs[-1]
+            run_dirs = [latest]
+        for run_dir in run_dirs:
+            config_path = run_dir / "config.json"
+            participants_path = run_dir / "participant_sim.csv"
+            if not config_path.exists() or not participants_path.exists():
+                continue
+            with config_path.open(encoding="utf-8") as handle:
+                config_payload = json.load(handle)
+            if parsed_filters and not _matches_filters(config_payload, parsed_filters):
+                continue
+            environment = config_payload.get("environment", {})
+            config = GameConfig(name=config_dir.name, environment=environment)
+            rows = configs.setdefault(config_dir.name, [])
+            run_prefix = f"{run_dir.name}-" if include_all_runs else ""
+            for row in _read_csv_rows(participants_path):
+                rows.append(
+                    RowRecord(
+                        game_id=f"{run_prefix}{row.get('gameId', '')}",
+                        player_id=row.get("playerAvatar", ""),
+                        round_index=int(float(row.get("roundIndex") or 0)),
+                        contribution=float(row.get("data.contribution") or 0.0),
+                        punished=_safe_parse_dict(row.get("data.punished", "")),
+                        rewarded=_safe_parse_dict(row.get("data.rewarded", "")),
+                        config=config,
+                    )
                 )
-            )
-        configs[config_dir.name] = rows
     return configs
 
 

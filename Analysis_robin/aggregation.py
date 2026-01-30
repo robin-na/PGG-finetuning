@@ -7,13 +7,20 @@ from math import isfinite
 from statistics import mean
 from typing import Dict, Iterable, List, Tuple
 
-from .io_utils import RowRecord
+from .io_utils import GameConfig, RowRecord
 from .metrics import RowMetrics, compute_row_metrics
 
 
 @dataclass
 class SummaryRow:
     key: Tuple
+    metrics: Dict[str, float]
+
+
+@dataclass
+class GameSummary:
+    game_id: str
+    config: GameConfig
     metrics: Dict[str, float]
 
 
@@ -37,13 +44,19 @@ def _safe_sum(values: Iterable[float]) -> float:
 
 
 def summarize_by_game(rows: Iterable[RowRecord]) -> List[SummaryRow]:
+    summaries = summarize_by_game_with_config(rows)
+    return [SummaryRow(key=(item.game_id,), metrics=item.metrics) for item in summaries]
+
+
+def summarize_by_game_with_config(rows: Iterable[RowRecord]) -> List[GameSummary]:
     metrics_rows = compute_row_metrics(rows)
     by_game: Dict[str, List[RowMetrics]] = {}
     for item in metrics_rows:
         by_game.setdefault(item.row.game_id, []).append(item)
-    summaries: List[SummaryRow] = []
+    summaries: List[GameSummary] = []
     for game_id, items in by_game.items():
-        env = items[0].row.config.environment
+        config = items[0].row.config
+        env = config.environment
         endowment = _config_value(env, "CONFIG_endowment")
         num_rounds = _config_value(env, "CONFIG_numRounds")
         player_count = _config_value(env, "CONFIG_playerCount")
@@ -57,8 +70,9 @@ def summarize_by_game(rows: Iterable[RowRecord]) -> List[SummaryRow]:
             else 0.0
         )
         summaries.append(
-            SummaryRow(
-                key=(game_id,),
+            GameSummary(
+                game_id=game_id,
+                config=config,
                 metrics={
                     "mean_contribution_rate": _safe_mean(
                         item.contribution_rate for item in items
