@@ -27,7 +27,11 @@ from .config import (
     DEFAULT_OUTPUT_ROOT,
 )
 from .io_utils import load_human_rows, load_simulation_runs
-from .plotting import plot_aggregate_metric_rmse, plot_config_metric_rmse
+from .plotting import (
+    plot_aggregate_metric_rmse,
+    plot_config_metric_rmse,
+    plot_metric_means_by_config,
+)
 
 
 def _timestamp() -> str:
@@ -102,7 +106,6 @@ def main() -> None:
 
     metrics = [
         "mean_contribution_rate",
-        "mean_payoff",
         "punishment_rate",
         "reward_rate",
         "normalized_efficiency",
@@ -122,6 +125,7 @@ def main() -> None:
 
     plot_config_metric_rmse(output_dir, config_metric_summaries)
     plot_aggregate_metric_rmse(output_dir, config_metric_summaries)
+    plot_metric_means_by_config(output_dir, alignment_rows)
 
     manifest = {
         "timestamp": timestamp,
@@ -132,7 +136,8 @@ def main() -> None:
         "metrics": metrics,
         "notes": (
             "RMSE plotted with human standard deviation as the noise ceiling. "
-            "Aggregate RMSE uses bootstrap standard deviation across configs for error bars."
+            "Aggregate RMSE uses bootstrap standard deviation across configs for error bars. "
+            "Metric mean plots compare simulation vs human means with human std error bars."
         ),
     }
     with (output_dir / "manifest.json").open("w", encoding="utf-8") as handle:
