@@ -1,0 +1,6 @@
+metric,rmse,mae,r2,n_pairs
+mean_contribution_rate,nan,nan,nan,40
+mean_payoff,nan,nan,nan,40
+punishment_rate,0.45034396664221055,0.3199021580031304,-22.134152322497822,40
+reward_rate,0.5492281701129662,0.3921170028870322,-18.277609084234086,40
+normalized_efficiency,nan,nan,nan,40
