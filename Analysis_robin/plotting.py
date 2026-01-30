@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Dict, List, Tuple
 
-from .comparison import ConfigMetricSummary
+from .comparison import AlignmentRow, ConfigMetricSummary
 
 
 def _simplify_label(config_name: str) -> str:
@@ -16,7 +16,6 @@ def _metric_titles() -> Dict[str, str]:
     return {
         "mean_contribution_rate": "Contribution rate",
         "normalized_efficiency": "Normalized efficiency",
-        "mean_payoff": "Payoff",
         "punishment_rate": "Punishment rate",
         "reward_rate": "Reward rate",
     }
@@ -57,8 +56,15 @@ def plot_config_metric_rmse(
         rmse_values = [row.rmse for row in metric_rows]
         noise = [row.noise_ceiling for row in metric_rows]
         x = list(range(len(labels)))
-        ax.bar(x, rmse_values, yerr=noise, capsize=3, label="RMSE (±1 human std)")
-        ax.set_xticks(x)
+        width = 0.35
+        ax.bar(x, rmse_values, width=width, label="RMSE")
+        ax.bar(
+            [i + width for i in x],
+            noise,
+            width=width,
+            label="Noise ceiling (human std)",
+        )
+        ax.set_xticks([i + width / 2 for i in x])
         ax.set_xticklabels(labels, rotation=45, ha="right")
         ax.set_ylabel("RMSE")
         ax.set_title(metric_titles.get(metric, metric))
@@ -152,6 +158,70 @@ def plot_aggregate_metric_rmse(
     fig.tight_layout()
 
     output_path = output_dir / "aggregate_rmse_by_metric.png"
+    fig.savefig(output_path)
+    plt.close(fig)
+    paths.append(output_path)
+    return paths
+
+
+def plot_metric_means_by_config(
+    output_dir: Path, alignment_rows: List[AlignmentRow]
+) -> List[Path]:
+    try:
+        import matplotlib.pyplot as plt
+    except ImportError:
+        return []
+
+    paths: List[Path] = []
+    if not alignment_rows:
+        return paths
+
+    metric_titles = _metric_titles()
+    metrics = [m for m in metric_titles if any(row.metric == m for row in alignment_rows)]
+    if not metrics:
+        return paths
+
+    rows_by_metric = {
+        metric: sorted(
+            [row for row in alignment_rows if row.metric == metric],
+            key=lambda row: row.config,
+        )
+        for metric in metrics
+    }
+
+    n_cols = 2
+    n_rows = (len(metrics) + n_cols - 1) // n_cols
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(14, 4 * n_rows), squeeze=False)
+
+    for idx, metric in enumerate(metrics):
+        ax = axes[idx // n_cols][idx % n_cols]
+        metric_rows = rows_by_metric[metric]
+        labels = [_simplify_label(row.config) for row in metric_rows]
+        sim_means = [row.sim_mean for row in metric_rows]
+        human_means = [row.human_mean for row in metric_rows]
+        human_std = [row.human_std for row in metric_rows]
+        x = list(range(len(labels)))
+        width = 0.35
+        ax.bar(x, sim_means, width=width, label="Simulation mean")
+        ax.bar(
+            [i + width for i in x],
+            human_means,
+            width=width,
+            yerr=human_std,
+            capsize=3,
+            label="Human mean (±1 std)",
+        )
+        ax.set_xticks([i + width / 2 for i in x])
+        ax.set_xticklabels(labels, rotation=45, ha="right")
+        ax.set_ylabel("Mean value")
+        ax.set_title(metric_titles.get(metric, metric))
+        ax.legend()
+
+    for idx in range(len(metrics), n_rows * n_cols):
+        fig.delaxes(axes[idx // n_cols][idx % n_cols])
+
+    fig.tight_layout()
+    output_path = output_dir / "metric_means_by_config.png"
     fig.savefig(output_path)
     plt.close(fig)
     paths.append(output_path)
