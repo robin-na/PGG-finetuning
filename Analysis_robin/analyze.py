@@ -6,8 +6,10 @@ import re
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
+import random
 
 from .aggregation import (
+    GameSummary,
     SummaryRow,
     summarize_by_game,
     summarize_by_game_with_config,
@@ -36,6 +38,7 @@ from .plotting import (
     plot_aggregate_metric_means,
     plot_aggregate_metric_variance,
     plot_config_metric_rmse,
+    plot_metric_variance_across_configs,
     plot_metric_variance_by_config,
     plot_metric_means_by_config,
     plot_metrics_by_binary_config,
@@ -123,6 +126,45 @@ def _collect_binary_keys(game_details) -> List[str]:
     return [key for key, vals in sorted(values.items()) if len(vals) == 2]
 
 
+def _bootstrap_mean(
+    values: List[float], n_boot: int = 2000, seed: int = 7
+) -> Tuple[float, float]:
+    if not values:
+        return 0.0, 0.0
+    rng = random.Random(seed)
+    n = len(values)
+    bootstrap: List[float] = []
+    for _ in range(n_boot):
+        sample = [values[rng.randrange(n)] for _ in range(n)]
+        bootstrap.append(sum(sample) / n)
+    mean_value = sum(values) / n
+    mean_boot = sum(bootstrap) / n_boot
+    variance = sum((value - mean_boot) ** 2 for value in bootstrap) / n_boot
+    return mean_value, variance**0.5
+
+
+def _config_metric_means_with_env(
+    game_details: Iterable[GameSummary], metrics: Iterable[str]
+) -> Dict[str, Dict[str, object]]:
+    by_config: Dict[str, List[GameSummary]] = {}
+    env_by_config: Dict[str, Dict[str, object]] = {}
+    for item in game_details:
+        by_config.setdefault(item.config.name, []).append(item)
+        env_by_config.setdefault(item.config.name, item.config.environment)
+    config_stats: Dict[str, Dict[str, object]] = {}
+    for config_name, items in by_config.items():
+        metric_means: Dict[str, float] = {}
+        for metric in metrics:
+            values = [item.metrics.get(metric) for item in items if item.metrics.get(metric) is not None]
+            if values:
+                metric_means[metric] = sum(values) / len(values)
+        config_stats[config_name] = {
+            "environment": env_by_config.get(config_name, {}),
+            "metrics": metric_means,
+        }
+    return config_stats
+
+
 def _build_binary_config_rows_by_model(
     sim_games_by_model,
     human_games,
@@ -133,34 +175,52 @@ def _build_binary_config_rows_by_model(
         human_games
     )
     binary_keys = _collect_binary_keys(all_games)
+    sim_config_stats_by_model = {
+        model_key: _config_metric_means_with_env(games, metrics)
+        for model_key, games in sim_games_by_model.items()
+    }
+    human_config_stats = _config_metric_means_with_env(human_games, metrics)
+
     for config_key in binary_keys:
         for metric in metrics:
             for value in (False, True):
                 human_values = []
-                for item in human_games:
+                for stats in human_config_stats.values():
                     ok, binary = _binarize_value(
-                        config_key, item.config.environment.get(config_key)
+                        config_key, stats["environment"].get(config_key)
                     )
                     if ok and binary == value:
-                        metric_value = item.metrics.get(metric)
+                        metric_value = stats["metrics"].get(metric)
                         if metric_value is not None:
                             human_values.append(metric_value)
                 if not human_values:
                     continue
-                human_mean = sum(human_values) / len(human_values)
-                for model_key, sim_games in sim_games_by_model.items():
+                human_mean, human_err = _bootstrap_mean(human_values)
+                rows.append(
+                    (
+                        config_key,
+                        _config_title(config_key),
+                        value,
+                        _config_value_label(config_key, value),
+                        metric,
+                        "human",
+                        human_mean,
+                        human_err,
+                    )
+                )
+                for model_key, config_stats in sim_config_stats_by_model.items():
                     sim_values = []
-                    for item in sim_games:
+                    for stats in config_stats.values():
                         ok, binary = _binarize_value(
-                            config_key, item.config.environment.get(config_key)
+                            config_key, stats["environment"].get(config_key)
                         )
                         if ok and binary == value:
-                            metric_value = item.metrics.get(metric)
+                            metric_value = stats["metrics"].get(metric)
                             if metric_value is not None:
                                 sim_values.append(metric_value)
                     if not sim_values:
                         continue
-                    sim_mean = sum(sim_values) / len(sim_values)
+                    sim_mean, sim_err = _bootstrap_mean(sim_values)
                     rows.append(
                         (
                             config_key,
@@ -170,10 +230,58 @@ def _build_binary_config_rows_by_model(
                             metric,
                             model_key,
                             sim_mean,
-                            human_mean,
+                            sim_err,
                         )
                     )
     return rows
+
+
+def _config_metric_means(
+    summaries: Dict[str, List[SummaryRow]],
+    metrics: Iterable[str],
+) -> Dict[str, Dict[str, float]]:
+    config_means: Dict[str, Dict[str, float]] = {}
+    for config_name, rows in summaries.items():
+        for metric in metrics:
+            values = [row.metrics.get(metric) for row in rows if row.metrics.get(metric) is not None]
+            if values:
+                config_means.setdefault(config_name, {})[metric] = sum(values) / len(values)
+    return config_means
+
+
+def _bootstrap_variance(
+    values: List[float], n_boot: int = 2000, seed: int = 7
+) -> Tuple[float, float]:
+    if not values:
+        return 0.0, 0.0
+    rng = random.Random(seed)
+    n = len(values)
+    mean_value = sum(values) / n
+    variance = sum((value - mean_value) ** 2 for value in values) / n
+    bootstrap: List[float] = []
+    for _ in range(n_boot):
+        sample = [values[rng.randrange(n)] for _ in range(n)]
+        sample_mean = sum(sample) / n
+        sample_variance = sum((value - sample_mean) ** 2 for value in sample) / n
+        bootstrap.append(sample_variance)
+    mean_boot = sum(bootstrap) / n_boot
+    variance_boot = sum((value - mean_boot) ** 2 for value in bootstrap) / n_boot
+    return variance, variance_boot**0.5
+
+
+def _variance_across_configs(
+    config_metric_means: Dict[str, Dict[str, float]],
+    metrics: Iterable[str],
+) -> Dict[str, Tuple[float, float]]:
+    variance_by_metric: Dict[str, Tuple[float, float]] = {}
+    for metric in metrics:
+        values = [
+            metrics_map.get(metric)
+            for metrics_map in config_metric_means.values()
+            if metrics_map.get(metric) is not None
+        ]
+        variance_by_metric[metric] = _bootstrap_variance(values)
+    return variance_by_metric
 
 
 def _variance_by_config(
@@ -311,6 +419,12 @@ def main() -> None:
         "punishment_rate",
         "reward_rate",
     ]
+    config_variance_metrics = [
+        "mean_contribution_rate",
+        "punishment_rate",
+        "reward_rate",
+        "normalized_efficiency",
+    ]
     alignment_rows_by_model = {}
     metric_summaries_by_model = {}
     config_metric_summaries_by_model = {}
@@ -378,6 +492,28 @@ def main() -> None:
     )
     plot_metrics_by_binary_config(output_dir, binary_rows, model_labels)
 
+    config_metric_means_by_model = {
+        model_key: _config_metric_means(sim_summary, config_variance_metrics)
+        for model_key, sim_summary in sim_game_summary_by_model.items()
+    }
+    human_config_metric_means = _config_metric_means(
+        human_game_summary, config_variance_metrics
+    )
+    variance_across_configs_by_model = {
+        model_key: _variance_across_configs(config_means, config_variance_metrics)
+        for model_key, config_means in config_metric_means_by_model.items()
+    }
+    human_variance_across_configs = _variance_across_configs(
+        human_config_metric_means, config_variance_metrics
+    )
+    plot_metric_variance_across_configs(
+        output_dir,
+        variance_across_configs_by_model,
+        human_variance_across_configs,
+        model_labels,
+        config_variance_metrics,
+    )
+
     manifest = {
         "timestamp": timestamp,
         "output_root": str(args.output_root),
@@ -395,9 +531,10 @@ def main() -> None:
         "notes": (
             "RMSE plotted per model with bootstrap standard deviation across configs for error bars. "
             "Metric mean plots compare both simulation variants against human means "
-            "with human standard deviation error bars. "
+            "with bootstrap standard deviation across configs for error bars. "
             "Variance plots show across-player variance in each config, with aggregate means "
-            "summarized separately."
+            "summarized separately using bootstrap standard deviation across configs. "
+            "Additional variance plots report variance across configurations."
         ),
     }
     with (output_dir / "manifest.json").open("w", encoding="utf-8") as handle:

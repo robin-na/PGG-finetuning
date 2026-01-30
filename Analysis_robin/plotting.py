@@ -140,6 +140,45 @@ def _bootstrap_rmse(
     return mean_rmse, variance**0.5
 
 
+def _bootstrap_mean(
+    values: List[float], n_boot: int = 2000, seed: int = 7
+) -> Tuple[float, float]:
+    if not values:
+        return 0.0, 0.0
+    import random
+
+    rng = random.Random(seed)
+    n = len(values)
+    bootstrap: List[float] = []
+    for _ in range(n_boot):
+        sample = [values[rng.randrange(n)] for _ in range(n)]
+        bootstrap.append(sum(sample) / n)
+    mean_value = sum(values) / n
+    mean_boot = sum(bootstrap) / n_boot
+    variance = sum((value - mean_boot) ** 2 for value in bootstrap) / n_boot
+    return mean_value, variance**0.5
+
+
+def _bootstrap_rms(
+    values: List[float], n_boot: int = 2000, seed: int = 7
+) -> Tuple[float, float]:
+    if not values:
+        return 0.0, 0.0
+    import random
+
+    rng = random.Random(seed)
+    n = len(values)
+    squared = [value * value for value in values]
+    bootstrap: List[float] = []
+    for _ in range(n_boot):
+        sample = [squared[rng.randrange(n)] for _ in range(n)]
+        bootstrap.append((sum(sample) / n) ** 0.5)
+    rms_value = (sum(squared) / n) ** 0.5
+    mean_boot = sum(bootstrap) / n_boot
+    variance = sum((value - mean_boot) ** 2 for value in bootstrap) / n_boot
+    return rms_value, variance**0.5
+
+
 def plot_aggregate_metric_rmse(
     output_dir: Path,
     rows_by_model: Dict[str, List[ConfigMetricSummary]],
@@ -194,6 +233,7 @@ def plot_aggregate_metric_rmse(
         )
     noise_offset = offsets[-1] if offsets else 0.0
     noise_values: List[float] = []
+    noise_errors: List[float] = []
     for metric in metrics:
         noise_samples: List[float] = []
         for rows in rows_by_model.values():
@@ -203,15 +243,18 @@ def plot_aggregate_metric_rmse(
             if noise_samples:
                 break
         if noise_samples:
-            noise_values.append(
-                (sum(value ** 2 for value in noise_samples) / len(noise_samples)) ** 0.5
-            )
+            noise_mean, noise_err = _bootstrap_rms(noise_samples)
+            noise_values.append(noise_mean)
+            noise_errors.append(noise_err)
         else:
             noise_values.append(0.0)
+            noise_errors.append(0.0)
     ax.bar(
         [i + noise_offset for i in x],
         noise_values,
         width=width,
+        yerr=noise_errors,
+        capsize=4,
         label="Noise ceiling (human std)",
     )
     ax.set_xticks(x)
@@ -361,14 +404,9 @@ def plot_aggregate_metric_means(
         stds: List[float] = []
         for metric in metrics:
             values = [row.sim_mean for row in rows if row.metric == metric]
-            if values:
-                mean_value = sum(values) / len(values)
-                variance = sum((value - mean_value) ** 2 for value in values) / len(values)
-                means.append(mean_value)
-                stds.append(variance**0.5)
-            else:
-                means.append(0.0)
-                stds.append(0.0)
+            mean_value, std_value = _bootstrap_mean(values)
+            means.append(mean_value)
+            stds.append(std_value)
         ax.bar(
             [i + offset for i in x],
             means,
@@ -387,14 +425,9 @@ def plot_aggregate_metric_means(
             for row in rows
             if row.metric == metric
         ]
-        if values:
-            mean_value = sum(values) / len(values)
-            variance = sum((value - mean_value) ** 2 for value in values) / len(values)
-            human_means.append(mean_value)
-            human_std.append(variance**0.5)
-        else:
-            human_means.append(0.0)
-            human_std.append(0.0)
+        mean_value, std_value = _bootstrap_mean(values)
+        human_means.append(mean_value)
+        human_std.append(std_value)
     ax.bar(
         [i + human_offset for i in x],
         human_means,
@@ -544,42 +577,126 @@ def plot_aggregate_metric_variance(
     for offset, model_key in zip(offsets, model_order):
         model_metrics = variance_by_model.get(model_key, {})
         means: List[float] = []
+        errors: List[float] = []
         for metric in metrics:
             values = [
                 config_metrics.get(metric)
                 for config_metrics in model_metrics.values()
                 if config_metrics.get(metric) is not None
             ]
-            means.append(sum(values) / len(values) if values else 0.0)
+            mean_value, std_value = _bootstrap_mean(values)
+            means.append(mean_value)
+            errors.append(std_value)
         ax.bar(
             [i + offset for i in x],
             means,
             width=width,
+            yerr=errors,
+            capsize=4,
             label=model_labels.get(model_key, model_key),
         )
     human_offset = offsets[-1] if offsets else 0.0
     human_means: List[float] = []
+    human_errors: List[float] = []
     for metric in metrics:
         values = [
             config_metrics.get(metric)
             for config_metrics in human_variance.values()
             if config_metrics.get(metric) is not None
         ]
-        human_means.append(sum(values) / len(values) if values else 0.0)
+        mean_value, std_value = _bootstrap_mean(values)
+        human_means.append(mean_value)
+        human_errors.append(std_value)
     ax.bar(
         [i + human_offset for i in x],
         human_means,
         width=width,
+        yerr=human_errors,
+        capsize=4,
         label="Human mean",
     )
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=30, ha="right")
-    ax.set_ylabel("Variance across players")
-    ax.set_title("Aggregate variance across configurations")
+    ax.set_ylabel("Variance across players (within config)")
+    ax.set_title("Aggregate variance across configs (player variance)")
     ax.legend()
     fig.tight_layout()
 
     output_path = output_dir / "aggregate_metric_variance.png"
+    fig.savefig(output_path)
+    plt.close(fig)
+    paths.append(output_path)
+    return paths
+
+
+def plot_metric_variance_across_configs(
+    output_dir: Path,
+    variance_by_model: Dict[str, Dict[str, Tuple[float, float]]],
+    human_variance: Dict[str, Tuple[float, float]],
+    model_labels: Dict[str, str],
+    metrics: Iterable[str],
+) -> List[Path]:
+    try:
+        import matplotlib.pyplot as plt
+    except ImportError:
+        return []
+
+    paths: List[Path] = []
+    if not variance_by_model and not human_variance:
+        return paths
+
+    metric_titles = _metric_titles()
+    metrics = [m for m in metric_titles if m in metrics]
+    if not metrics:
+        return paths
+
+    model_order = [key for key in model_labels if key in variance_by_model]
+    labels = [metric_titles[m] for m in metrics]
+    x = list(range(len(metrics)))
+    width = 0.8 / (len(model_order) + 1)
+    offsets = [
+        (i - len(model_order) / 2) * width for i in range(len(model_order) + 1)
+    ]
+    fig, ax = plt.subplots(figsize=(10, 5))
+    for offset, model_key in zip(offsets, model_order):
+        values: List[float] = []
+        errors: List[float] = []
+        metric_variances = variance_by_model.get(model_key, {})
+        for metric in metrics:
+            value, error = metric_variances.get(metric, (0.0, 0.0))
+            values.append(value)
+            errors.append(error)
+        ax.bar(
+            [i + offset for i in x],
+            values,
+            width=width,
+            yerr=errors,
+            capsize=4,
+            label=model_labels.get(model_key, model_key),
+        )
+    human_offset = offsets[-1] if offsets else 0.0
+    human_values: List[float] = []
+    human_errors: List[float] = []
+    for metric in metrics:
+        value, error = human_variance.get(metric, (0.0, 0.0))
+        human_values.append(value)
+        human_errors.append(error)
+    ax.bar(
+        [i + human_offset for i in x],
+        human_values,
+        width=width,
+        yerr=human_errors,
+        capsize=4,
+        label="Human",
+    )
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, rotation=30, ha="right")
+    ax.set_ylabel("Variance across configurations")
+    ax.set_title("Variance across configurations (config means)")
+    ax.legend()
+    fig.tight_layout()
+
+    output_path = output_dir / "metric_variance_across_configs.png"
     fig.savefig(output_path)
     plt.close(fig)
     paths.append(output_path)
@@ -613,6 +730,9 @@ def plot_metrics_by_binary_config(
     n_rows = (len(config_keys) + n_cols - 1) // n_cols
     fig, axes = plt.subplots(n_rows, n_cols, figsize=(14, 4 * n_rows), squeeze=False)
     model_order = [key for key in model_labels if key in {row[5] for row in rows}]
+    display_labels = dict(model_labels)
+    display_labels["human"] = "Human"
+    source_order = model_order + ["human"]
     for idx, config_key in enumerate(config_keys):
         ax = axes[idx // n_cols][idx % n_cols]
         config_rows = grouped[config_key]
@@ -637,17 +757,19 @@ def plot_metrics_by_binary_config(
         if not labels:
             continue
         x = positions
-        width = 0.8 / (len(model_order) + 1)
+        width = 0.8 / len(source_order)
         offsets = [
-            (i - len(model_order) / 2) * width for i in range(len(model_order) + 1)
+            (i - (len(source_order) - 1) / 2) * width for i in range(len(source_order))
         ]
-        for offset, model_key in zip(offsets, model_order):
+        for offset, source_key in zip(offsets, source_order):
             sim_values = []
+            sim_errors = []
             for label in labels:
                 metric_label, value_label = label.split("\n", 1)
                 metric = title_to_metric.get(metric_label)
                 if not metric:
                     sim_values.append(0.0)
+                    sim_errors.append(0.0)
                     continue
                 value = next(
                     (
@@ -661,43 +783,23 @@ def plot_metrics_by_binary_config(
                     (
                         r
                         for r in config_rows
-                        if r[4] == metric and r[2] == value and r[5] == model_key
+                        if r[4] == metric and r[2] == value and r[5] == source_key
                     ),
                     None,
                 )
                 sim_values.append(match[6] if match else 0.0)
+                sim_errors.append(match[7] if match else 0.0)
             ax.bar(
                 [i + offset for i in x],
                 sim_values,
                 width=width,
-                label=model_labels.get(model_key, model_key),
+                yerr=sim_errors,
+                capsize=3,
+                label=display_labels.get(source_key, source_key),
             )
-        human_offset = offsets[-1] if offsets else 0.0
-        human_values = []
-        for label in labels:
-            metric_label, value_label = label.split("\n", 1)
-            metric = title_to_metric.get(metric_label)
-            if not metric:
-                human_values.append(0.0)
-                continue
-            value = next(
-                (v for v, v_label in value_labels.items() if v_label == value_label),
-                None,
-            )
-            match = next(
-                (r for r in config_rows if r[4] == metric and r[2] == value),
-                None,
-            )
-            human_values.append(match[7] if match else 0.0)
-        ax.bar(
-            [i + human_offset for i in x],
-            human_values,
-            width=width,
-            label="Human mean",
-        )
         ax.set_xticks(x)
         ax.set_xticklabels(labels, rotation=30, ha="right")
-        ax.set_ylabel("Mean value")
+        ax.set_ylabel("Mean across configs")
         ax.set_title(config_label)
         ax.legend()
 
