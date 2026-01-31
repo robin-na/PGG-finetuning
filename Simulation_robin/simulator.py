@@ -86,6 +86,8 @@ def simulate_game(
     debug_full_jsonl_path: Optional[str] = None,
     openai_async: bool = False,
     openai_max_concurrency: int = 8,
+    persona: Optional[str] = None,
+    persona_pool: Optional[str] = None,
 ) -> Tuple[pd.DataFrame, Dict[str, List[str]]]:
     debug_records: List[Dict[str, Any]] = []
     debug_full_records: List[Dict[str, Any]] = []
@@ -98,12 +100,62 @@ def simulate_game(
     sys_text_plain = system_header_plain(env, include_reasoning=include_reasoning)
     include_system_in_prompt = client.provider == "local"
 
+    persona_transcripts: List[Dict[str, Optional[str]]] = []
+    rng = random.Random(seed)
+    if persona == "random_full_transcript":
+        if not persona_pool:
+            raise ValueError("persona_pool must be set when persona='random_full_transcript'")
+        if not os.path.exists(persona_pool):
+            raise FileNotFoundError(f"persona_pool file not found: {persona_pool}")
+        with open(persona_pool, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    record = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if record.get("game_finished") is True:
+                    text = record.get("text")
+                    if isinstance(text, str) and text.strip():
+                        persona_transcripts.append(
+                            {
+                                "participant": record.get("participant"),
+                                "text": text.strip(),
+                            }
+                        )
+        if not persona_transcripts:
+            raise ValueError(f"No finished-game transcripts found in persona_pool: {persona_pool}")
+
     transcripts: Dict[str, List[str]] = {}
+    persona_ids: Dict[str, Optional[str]] = {}
     rows: List[Dict[str, Any]] = []
     game_id = env.get("name", "GAME")
 
     for av in roster:
-        transcripts[av] = ["# GAME STARTS"]
+        transcripts[av] = []
+        if persona == "random_full_transcript" and persona_transcripts:
+            persona_record = rng.choice(persona_transcripts)
+            persona_text = persona_record.get("text", "")
+            persona_ids[av] = persona_record.get("participant")
+            transcripts[av].extend(
+                [
+                    "# YOUR PERSONA",
+                    (
+                        "Below is a transcript of how you have been playing a different PGG in the past, "
+                        "which defines your personality. Be aware of this personality as you make decisions. "
+                        "Recall that you're probably playing games with different people from the past, and "
+                        "that the exact rules of this game could differ from the ones you've played before."
+                    ),
+                    "<TRANSCRIPT STARTS>",
+                    persona_text,
+                    "<TRANSCRIPT ENDS>",
+                ]
+            )
+        else:
+            persona_ids[av] = None
+        transcripts[av].append("# GAME STARTS")
         transcripts[av].append(f"You will refer to each other by their avatar. Your avatar is {av}.")
 
     csv_writer = None
@@ -115,6 +167,7 @@ def simulate_game(
             csv_file,
             fieldnames=[
                 "playerAvatar",
+                "persona",
                 "roundIndex",
                 "gameId",
                 "data.chat_message",
@@ -669,6 +722,7 @@ def simulate_game(
 
             row = {
                 "playerAvatar": av,
+                "persona": persona_ids.get(av),
                 "roundIndex": r,
                 "gameId": game_id,
                 "data.chat_message": chat_messages.get(av, "") if env.get("CONFIG_chat", False) else "",
@@ -782,6 +836,8 @@ def simulate_games(
             debug_full_jsonl_path=debug_full_path,
             openai_async=args.openai_async,
             openai_max_concurrency=args.openai_max_concurrency,
+            persona=args.persona,
+            persona_pool=args.persona_pool,
         )
         if args.debug_print:
             log(f"[ptc] done game {game_id} with {len(df_game)} rows")

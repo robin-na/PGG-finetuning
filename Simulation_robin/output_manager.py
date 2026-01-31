@@ -60,6 +60,8 @@ def _model_config(args: Any, run_ts: str) -> Dict[str, Any]:
         "chat_max_new_tokens",
         "actions_max_new_tokens",
         "include_reasoning",
+        "persona",
+        "persona_pool",
         "max_parallel_games",
         "debug_print",
         "env_csv"
