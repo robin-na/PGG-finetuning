@@ -1,23 +1,9 @@
+import argparse
 import json
 import math
 import ast
 import re
 import pandas as pd
-
-# --------------------------------------------------------------------------------------------------
-# Load the same source data you use elsewhere. If you already have DataFrames in memory, you can
-# comment these three lines and pass the DataFrames directly at the bottom call.
-# --------------------------------------------------------------------------------------------------
-df_rounds_learn = pd.read_csv("data/raw_data/learning_wave/player-rounds.csv")
-df_rounds_val = pd.read_csv("data/raw_data/validation_wave/player-rounds.csv")
-df_players_learn = pd.read_csv("data/raw_data/learning_wave/players.csv")
-df_players_val = pd.read_csv("data/raw_data/validation_wave/players.csv")
-df_demographic_learn = pd.read_csv("data/raw_data/learning_wave/player-inputs.csv")
-df_demographic_val = pd.read_csv("data/raw_data/validation_wave/player-inputs.csv")
-df_analysis_learn = pd.read_csv("data/processed_data/df_analysis_learn.csv")
-df_analysis_val = pd.read_csv("data/processed_data/df_analysis_val.csv")
-df_chats_learn = pd.read_csv("data/raw_data/learning_wave/games.csv")
-df_chats_val = pd.read_csv("data/raw_data/validation_wave/games.csv")
 
 # --------------------------------------------------------------------------------------------------
 # Helper Functions (verbatim-compatible with your existing style; included here to be self-contained)
@@ -55,6 +41,9 @@ def format_num(x):
         else:
             return str(x)
     return str(x)
+
+def format_contrib_answer(val) -> str:
+    return f"You contributed: {val}"
 
 
 def _parse_chat_messages(msg_str: str):
@@ -209,15 +198,6 @@ def _is_nan(x):
 def _avatars(df_players: pd.DataFrame):
     return build_avatar_map(df_players)
 
-def _peer_order(round_slice: pd.DataFrame, focal_pid, avatars: dict):
-    """Stable peer order (by playerId ascending), returns avatar names excluding the focal."""
-    peers = []
-    for _, ro in round_slice.sort_values("playerId").iterrows():
-        if ro["playerId"] == focal_pid:
-            continue
-        peers.append(avatars.get(str(ro["playerId"]), f"Player {ro['playerId']}"))
-    return peers
-
 def _compact_outcomes(round_slice, focal_pid, avatars):
     """DOG=20,PARROT=NA,... (others only)"""
     tokens = []
@@ -295,7 +275,7 @@ def _others_summary(round_slice, avatars, punishment_exists, punishment_cost, re
     return out
 
 
-# --- your existing helpers are assumed to exist: _is_nan, _avatars, _peer_order, _compact_outcomes,
+# --- your existing helpers are assumed to exist: _is_nan, _avatars, _compact_outcomes,
 #     _sparse_rewards_punishments, parse_dict, format_num  ---
 
 def generate_participant_transcript_chat(
@@ -348,37 +328,22 @@ def generate_participant_transcript_chat(
 
             # ------------------ SYSTEM (add a chat note if enabled) ------------------
             sys_lines = []
-            sys_lines.append("<|begin_of_text|><|start_header_id|>system<|end_header_id|>")
-            sys_lines.append("You are playing an online Public Goods Game (PGG).")
-            sys_lines.append("Each round you have a fixed endowment of coins. You choose how many coins to contribute to a shared public fund.")
-            sys_lines.append("After everyone has decided, all contributions are added up and multiplied by the round's multiplier.")
-            sys_lines.append("The multiplied total is divided equally among all active players as the round payoff.")
-            sys_lines.append("You keep whatever you did not contribute in your private pocket, plus your share from the public fund, minus any costs you pay.")
+            sys_lines.append(
+                "You are playing an online public goods game (PGG). Each round, you are given "
+                f"{cfg['endowment']} coins and need to decide how many coins to put into the shared pot "
+                f"({'either 0 or ' + str(cfg['endowment']) if cfg['all_or_nothing'] else 'integer from 0 to ' + str(cfg['endowment'])})."
+            )
+            sys_lines.append("You will not see others' choices before you decide.")
+            sys_lines.append(f"The pot is multiplied by {cfg['multiplier']}× and split equally among all players.")
+            sys_lines.append("Your round payoff is: coins you kept + your equal share of the multiplied pot.")
             if cfg["reward_exists"] and cfg["punishment_exists"]:
-                sys_lines.append("Each round includes a peer feedback stage after contributions where you can either reward or punish other players by assigning units to them.")
-            elif cfg["reward_exists"]:
-                sys_lines.append("Each round includes a peer feedback stage after contributions where you can reward other players by assigning units to them.")
+                sys_lines.append("After contributions are redistributed, players may punish or reward each other.")
             elif cfg["punishment_exists"]:
-                sys_lines.append("Each round includes a peer feedback stage after contributions where you can punish other players by assigning units to them.")
-
-            # NEW: mention chat only when enabled
+                sys_lines.append("After contributions are redistributed, players may punish each other.")
+            elif cfg["reward_exists"]:
+                sys_lines.append("After contributions are redistributed, players may reward each other.")
             if cfg["chat"]:
-                sys_lines.append("You can chat with other players during the round. Chat messages appear as <CHAT> {AVATAR: text}.")
-
-            sys_lines.append("")
-            sys_lines.append("For each round:")
-            sys_lines.append("1) Decide how much to contribute at the <CONTRIB> tag — output ONLY a single integer (no text).")
-            if cfg["reward_exists"] and cfg["punishment_exists"]:
-                sys_lines.append("2) Decide whom to punish/reward and how many units at the <PUNISHMENTS_REWARDS> tag — output ONLY an array of integers (no text).")
-                sys_lines.append("   The array order MUST match the avatar order shown in <PEERS_CONTRIBUTIONS> for that round.")
-                sys_lines.append("   Negative = punish (-n means punish by n units), positive = reward (n means reward by n units), 0 = neither.")
-            elif cfg["reward_exists"]:
-                sys_lines.append("2) Decide whom to reward and how many units at the <REWARDS> tag — output ONLY an array of integers (no text), each ≥ 0.")
-                sys_lines.append("   The array order MUST match the avatar order shown in <PEERS_CONTRIBUTIONS> for that round.")
-            elif cfg["punishment_exists"]:
-                sys_lines.append("2) Decide whom to punish and how many units at the <PUNISHMENTS> tag — output ONLY an array of integers (no text), each ≤ 0 (-n means punish by n units).")
-                sys_lines.append("   The array order MUST match the avatar order shown in <PEERS_CONTRIBUTIONS> for that round.")
-            sys_lines.append("<|eot_id|>")
+                sys_lines.append("At the start of each round, you may optionally send ONE short message to the group.")
             sys_text = "\n".join(sys_lines)
 
             for pid in players:
@@ -388,6 +353,7 @@ def generate_participant_transcript_chat(
                     continue
 
                 focal_avatar = avatars.get(str(pid), f"Player {pid}")
+                game_finished = True
 
                 for idx, rid in enumerate(rounds_order, start=1):
                     fr = pslice[pslice["roundId"] == rid]
@@ -397,6 +363,7 @@ def generate_participant_transcript_chat(
 
                     if _is_nan(row.get("data.roundPayoff")):
                         lines.append(f'<EXIT round="{idx}"/>')
+                        game_finished = False
                         break
 
                     # Open round tag
@@ -428,7 +395,9 @@ def generate_participant_transcript_chat(
 
                     # ----- CONTRIB decision -----
                     contrib_val = row.get("data.contribution", 0)
-                    lines.append(f"<CONTRIB> <<{format_num(contrib_val)}>> </CONTRIB>")
+                    lines.append("<CONTRIB>")
+                    lines.append(format_contrib_answer(format_num(contrib_val)))
+                    lines.append("</CONTRIB>")
 
                     # ----- Redistribution stats -----
                     rs = gdf[gdf["roundId"] == rid]
@@ -487,32 +456,37 @@ def generate_participant_transcript_chat(
                             )
                             lines.append(f"<MECHANISM_INFO> {mech_info} </MECHANISM_INFO>")
 
-                        # ----- Actions -> fixed-order array matching PEERS_CONTRIBUTIONS -----
+                        # ----- Actions -> sparse dict outputs -----
                         rewards_sparse, punishs_sparse = _sparse_rewards_punishments(
                             focal_row=row, round_slice=rs, focal_pid=pid, avatars=avatars,
                             rewards_on=cfg["reward_exists"], punish_on=cfg["punishment_exists"]
                         )
 
-                        peer_order = _peer_order(rs, pid, avatars)
-                        signed_vec = [0] * len(peer_order)
-
-                        for av, u in (rewards_sparse or {}).items():
-                            if av in peer_order and u:
-                                j = peer_order.index(av)
-                                signed_vec[j] += int(u)
-                        for av, u in (punishs_sparse or {}).items():
-                            if av in peer_order and u:
-                                j = peer_order.index(av)
-                                signed_vec[j] -= int(u)
-
                         if cfg["reward_exists"] and not cfg["punishment_exists"]:
-                            signed_vec = [max(0, v) for v in signed_vec]
-                            lines.append(f"<REWARDS> <<{json.dumps(signed_vec)}>> </REWARDS>")
+                            lines.append("<REWARD>")
+                            if rewards_sparse:
+                                lines.append(f"You rewarded: {json.dumps(rewards_sparse, separators=(',', ':'))}")
+                            else:
+                                lines.append("You did not reward anybody.")
+                            lines.append("</REWARD>")
                         elif cfg["punishment_exists"] and not cfg["reward_exists"]:
-                            signed_vec = [min(0, v) for v in signed_vec]
-                            lines.append(f"<PUNISHMENTS> <<{json.dumps(signed_vec)}>> </PUNISHMENTS>")
+                            lines.append("<PUNISHMENT>")
+                            if punishs_sparse:
+                                lines.append(f"You punished: {json.dumps(punishs_sparse, separators=(',', ':'))}")
+                            else:
+                                lines.append("You did not punish anybody.")
+                            lines.append("</PUNISHMENT>")
                         else:
-                            lines.append(f"<PUNISHMENTS_REWARDS> <<{json.dumps(signed_vec)}>> </PUNISHMENTS_REWARDS>")
+                            lines.append("<PUNISHMENT_REWARD>")
+                            if punishs_sparse:
+                                lines.append(f"You punished: {json.dumps(punishs_sparse, separators=(',', ':'))}")
+                            else:
+                                lines.append("You did not punish anybody.")
+                            if rewards_sparse:
+                                lines.append(f"You rewarded: {json.dumps(rewards_sparse, separators=(',', ':'))}")
+                            else:
+                                lines.append("You did not reward anybody.")
+                            lines.append("</PUNISHMENT_REWARD>")
 
                     # ----- Optional inbound identifiers -----
                     if cfg["punishment_exists"] and cfg["showPunishmentId"]:
@@ -571,17 +545,61 @@ def generate_participant_transcript_chat(
 
                 lines.append("# GAME COMPLETE")
                 text = "\n".join(lines)
-                fout.write(json.dumps({"experiment": game_id, "participant": str(pid), "text": text}, ensure_ascii=False) + "\n")
+                fout.write(
+                    json.dumps(
+                        {
+                            "experiment": game_id,
+                            "participant": str(pid),
+                            "game_finished": game_finished,
+                            "text": text,
+                        },
+                        ensure_ascii=False,
+                    )
+                    + "\n"
+                )
                 out_lines += 1
 
     print(f"Wrote {out_lines} transcripts to {out_path}")
     return out_path
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Generate participant transcripts from PGG data.")
+    parser.add_argument(
+        "--rounds-csv",
+        default="data/raw_data/learning_wave/player-rounds.csv",
+        help="Path to player-rounds.csv.",
+    )
+    parser.add_argument(
+        "--players-csv",
+        default="data/raw_data/learning_wave/players.csv",
+        help="Path to players.csv.",
+    )
+    parser.add_argument(
+        "--analysis-csv",
+        default="data/processed_data/df_analysis_learn.csv",
+        help="Path to df_analysis CSV.",
+    )
+    parser.add_argument(
+        "--chats-csv",
+        default="data/raw_data/learning_wave/games.csv",
+        help="Path to games.csv with chat messages.",
+    )
+    parser.add_argument(
+        "--out-path",
+        default="prompts_learn_chat.jsonl",
+        help="Output JSONL path for generated transcripts.",
+    )
+    args = parser.parse_args()
+
+    df_rounds = pd.read_csv(args.rounds_csv)
+    df_players = pd.read_csv(args.players_csv)
+    df_analysis = pd.read_csv(args.analysis_csv)
+    df_chats = pd.read_csv(args.chats_csv)
+
     _ = generate_participant_transcript_chat(
-        df_rounds=df_rounds_learn,
-        df_players=df_players_learn,
-        df_analysis=df_analysis_learn,
-        df_chats=df_chats_learn,
-        out_path="prompts_learn_chat.jsonl"
+        df_rounds=df_rounds,
+        df_players=df_players,
+        df_analysis=df_analysis,
+        df_chats=df_chats,
+        out_path=args.out_path,
     )
