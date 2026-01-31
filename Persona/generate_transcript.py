@@ -586,7 +586,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--out-path",
-        default="prompts_learn_chat.jsonl",
+        default="Persona/transcripts_learn.jsonl",
         help="Output JSONL path for generated transcripts.",
     )
     args = parser.parse_args()
