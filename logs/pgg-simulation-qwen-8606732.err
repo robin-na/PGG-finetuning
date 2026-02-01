@@ -1,0 +1,4 @@
+/home/robinna/.conda/envs/llm_conda/lib/python3.9/contextlib.py:87: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
+  self.gen = func(*args, **kwds)
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:   8%|▊         | 1/12 [00:00<00:02,  5.25it/s]Loading checkpoint shards:  42%|████▏     | 5/12 [00:00<00:00, 17.96it/s]Loading checkpoint shards:  75%|███████▌  | 9/12 [00:00<00:00, 23.35it/s]Loading checkpoint shards: 100%|██████████| 12/12 [00:00<00:00, 23.14it/s]
