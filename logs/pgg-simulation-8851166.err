@@ -1,0 +1,49 @@
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading checkpoint shards:   0%|          | 0/5 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 5/5 [00:00<00:00, 95.46it/s]
+Detected kernel version 4.18.0, which is below the recommended minimum of 5.5.0; this can cause the process to hang. It is recommended to upgrade the kernel to the minimum version or higher.
+  0%|          | 0/69 [00:00<?, ?it/s]  1%|▏         | 1/69 [00:12<14:24, 12.72s/it]Traceback (most recent call last):
+  File "/orcd/home/002/robinna/PGG-finetuning/Finetuning/train_persona_type_sft.py", line 191, in <module>
+    main()
+  File "/orcd/home/002/robinna/PGG-finetuning/Finetuning/train_persona_type_sft.py", line 186, in main
+    trainer.train()
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/trainer.py", line 2328, in train
+    return inner_training_loop(
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/trainer.py", line 2672, in _inner_training_loop
+    tr_loss_step = self.training_step(model, inputs, num_items_in_batch)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/trainer.py", line 4009, in training_step
+    loss = self.compute_loss(model, inputs, num_items_in_batch=num_items_in_batch)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/trainer.py", line 4099, in compute_loss
+    outputs = model(**inputs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 193, in forward
+    outputs = self.parallel_apply(replicas, inputs, module_kwargs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/nn/parallel/data_parallel.py", line 212, in parallel_apply
+    return parallel_apply(
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/nn/parallel/parallel_apply.py", line 126, in parallel_apply
+    output.reraise()
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/_utils.py", line 733, in reraise
+    raise exception
+torch.OutOfMemoryError: Caught OutOfMemoryError in replica 0 on device 0.
+Original Traceback (most recent call last):
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/nn/parallel/parallel_apply.py", line 96, in _worker
+    output = module(*input, **kwargs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/utils/generic.py", line 940, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 498, in forward
+    loss = self.loss_function(logits=logits, labels=labels, vocab_size=self.config.vocab_size, **kwargs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/loss/loss_utils.py", line 67, in ForCausalLMLoss
+    loss = fixed_cross_entropy(logits, shift_labels, num_items_in_batch, ignore_index, **kwargs)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/loss/loss_utils.py", line 36, in fixed_cross_entropy
+    loss = nn.functional.cross_entropy(source, target, ignore_index=ignore_index, reduction=reduction)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/torch/nn/functional.py", line 3494, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 4.64 GiB. GPU 0 has a total capacity of 139.80 GiB of which 1.00 GiB is free. Including non-PyTorch memory, this process has 138.79 GiB memory in use. Of the allocated memory 136.45 GiB is allocated by PyTorch, and 1.28 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+  1%|▏         | 1/69 [00:15<18:00, 15.88s/it]
