@@ -88,6 +88,7 @@ def simulate_game(
     openai_max_concurrency: int = 8,
     persona: Optional[str] = None,
     persona_pool: Optional[str] = None,
+    persona_summary_pool: Optional[str] = None,
 ) -> Tuple[pd.DataFrame, Dict[str, List[str]]]:
     debug_records: List[Dict[str, Any]] = []
     debug_full_records: List[Dict[str, Any]] = []
@@ -101,13 +102,34 @@ def simulate_game(
     include_system_in_prompt = client.provider == "local"
 
     persona_transcripts: List[Dict[str, Optional[str]]] = []
+    persona_tag: Optional[str] = None
+    persona_intro: Optional[str] = None
     rng = random.Random(seed)
-    if persona == "random_full_transcript":
-        if not persona_pool:
-            raise ValueError("persona_pool must be set when persona='random_full_transcript'")
-        if not os.path.exists(persona_pool):
-            raise FileNotFoundError(f"persona_pool file not found: {persona_pool}")
-        with open(persona_pool, "r", encoding="utf-8") as f:
+    if persona in {"random_full_transcript", "random_summary"}:
+        if persona == "random_full_transcript":
+            pool_path = persona_pool
+            persona_tag = "TRANSCRIPT"
+            persona_intro = (
+                "Below is a transcript of how you have been playing a different PGG in the past, "
+                "which defines your personality. Be aware of this personality as you make decisions. "
+                "Recall that you're probably playing games with different people from the past, and "
+                "that the exact rules of this game could differ from the ones you've played before."
+            )
+        else:
+            pool_path = persona_summary_pool
+            persona_tag = "SUMMARY"
+            persona_intro = (
+                "Below is a summary of how you have been playing a different PGG in the past, "
+                "which defines your personality. Be aware of this personality as you make decisions. "
+                "Recall that you're probably playing games with different people from the past, and "
+                "that the exact rules of this game could differ from the ones you've played before."
+            )
+
+        if not pool_path:
+            raise ValueError(f"persona pool path must be set when persona='{persona}'")
+        if not os.path.exists(pool_path):
+            raise FileNotFoundError(f"persona pool file not found: {pool_path}")
+        with open(pool_path, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
                 if not line:
@@ -126,7 +148,7 @@ def simulate_game(
                             }
                         )
         if not persona_transcripts:
-            raise ValueError(f"No finished-game transcripts found in persona_pool: {persona_pool}")
+            raise ValueError(f"No finished-game transcripts found in persona pool: {pool_path}")
 
     transcripts: Dict[str, List[str]] = {}
     persona_ids: Dict[str, Optional[str]] = {}
@@ -135,22 +157,17 @@ def simulate_game(
 
     for av in roster:
         transcripts[av] = []
-        if persona == "random_full_transcript" and persona_transcripts:
+        if persona in {"random_full_transcript", "random_summary"} and persona_transcripts:
             persona_record = rng.choice(persona_transcripts)
             persona_text = persona_record.get("text", "")
             persona_ids[av] = persona_record.get("participant")
             transcripts[av].extend(
                 [
                     "# YOUR PERSONA",
-                    (
-                        "Below is a transcript of how you have been playing a different PGG in the past, "
-                        "which defines your personality. Be aware of this personality as you make decisions. "
-                        "Recall that you're probably playing games with different people from the past, and "
-                        "that the exact rules of this game could differ from the ones you've played before."
-                    ),
-                    "<TRANSCRIPT STARTS>",
+                    persona_intro or "",
+                    f"<{persona_tag} STARTS>",
                     persona_text,
-                    "<TRANSCRIPT ENDS>",
+                    f"<{persona_tag} ENDS>",
                 ]
             )
         else:
@@ -838,6 +855,7 @@ def simulate_games(
             openai_max_concurrency=args.openai_max_concurrency,
             persona=args.persona,
             persona_pool=args.persona_pool,
+            persona_summary_pool=getattr(args, "persona_summary_pool", None),
         )
         if args.debug_print:
             log(f"[ptc] done game {game_id} with {len(df_game)} rows")

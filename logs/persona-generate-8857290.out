@@ -1,0 +1,27 @@
+CONDA_DEFAULT_ENV=llm_conda
+/home/robinna/.conda/envs/llm_conda/bin/python
+Running on node3200
+Running on node3200
+Fri Feb  6 09:14:46 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.105.08             Driver Version: 580.105.08     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H200                    On  |   00000000:19:00.0 Off |                    0 |
+| N/A   44C    P0             83W /  700W |       0MiB / 143771MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[data] total_rows=470 dedup_rows=40 dropped=430 kept=40
+[output] inputs: Persona/LLM_mapped/Qwen/Qwen3-8B/persona_type_inputs.jsonl
+[output] outputs: Persona/LLM_mapped/Qwen/Qwen3-8B/persona_type_outputs.jsonl
