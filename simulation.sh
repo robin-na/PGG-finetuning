@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=pgg-simulation-qwen
+#SBATCH --job-name=pgg-simulation
 #SBATCH --partition=mit_normal_gpu
 #SBATCH --nodes=1
 #SBATCH --gres=gpu:h200:1
@@ -30,7 +30,7 @@ echo "Running on $(hostname)"
 echo "Running on $(hostname)"
 nvidia-smi
 
-python Simulation_robin/run_simulation.py --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True --env_csv Simulation_robin/df_analysis_val_dedup_from_validation_13_c.csv \
-    --persona random_full_transcript --output_root output_persona
+python Simulation_robin/run_simulation.py --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True \
+    --persona random_summary --output_root output_persona_summary --env_csv Simulation_robin/df_analysis_val_dedup_from14T.csv \
 
 
