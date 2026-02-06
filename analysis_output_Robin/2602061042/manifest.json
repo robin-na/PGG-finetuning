@@ -1,0 +1,61 @@
+{
+  "timestamp": "2602061042",
+  "analysis_output_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/analysis_output_Robin",
+  "human_rounds": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/raw_data/validation_wave/player-rounds.csv",
+  "human_configs": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_val.csv",
+  "sim_include_all": false,
+  "sim_filters": {},
+  "models": [
+    {
+      "key": "no_reasoning",
+      "label": "no reasoning, no persona",
+      "output_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/output",
+      "include_reasoning": false,
+      "included": true
+    },
+    {
+      "key": "reasoning",
+      "label": "reasoning, no persona",
+      "output_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/output",
+      "include_reasoning": true,
+      "included": true
+    },
+    {
+      "key": "persona_full",
+      "label": "reasoning, randomly sampled full transcript as persona",
+      "output_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/output_persona",
+      "include_reasoning": true,
+      "included": true
+    },
+    {
+      "key": "persona_summary",
+      "label": "reasoning, randomly sampled LLM summary as persona",
+      "output_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/output_persona_summary",
+      "include_reasoning": true,
+      "included": true
+    },
+    {
+      "key": "persona_summary_finetuned",
+      "label": "reasoning, optimized LLM summary as persona",
+      "output_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/output_persona_summary_finetuned",
+      "include_reasoning": true,
+      "included": false
+    }
+  ],
+  "metrics": [
+    "mean_contribution_rate",
+    "punishment_rate",
+    "reward_rate",
+    "normalized_efficiency"
+  ],
+  "variance_metrics": [
+    "mean_contribution_rate",
+    "punishment_rate",
+    "reward_rate"
+  ],
+  "outputs": [
+    "aggregate_rmse_by_metric.png",
+    "aggregate_metric_means.png",
+    "aggregate_metric_variance.png"
+  ]
+}

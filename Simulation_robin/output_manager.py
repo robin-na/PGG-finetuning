@@ -62,6 +62,7 @@ def _model_config(args: Any, run_ts: str) -> Dict[str, Any]:
         "include_reasoning",
         "persona",
         "persona_pool",
+        "persona_summary_pool",
         "max_parallel_games",
         "debug_print",
         "env_csv"

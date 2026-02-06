@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/orcd/home/002/robinna/PGG-finetuning/Finetuning/train_persona_type_sft.py", line 252, in <module>
+    main()
+  File "/orcd/home/002/robinna/PGG-finetuning/Finetuning/train_persona_type_sft.py", line 134, in main
+    quant_config = BitsAndBytesConfig(
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/utils/quantization_config.py", line 510, in __init__
+    self.post_init()
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/site-packages/transformers/utils/quantization_config.py", line 568, in post_init
+    if self.load_in_4bit and not version.parse(importlib.metadata.version("bitsandbytes")) >= version.parse(
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/importlib/metadata.py", line 569, in version
+    return distribution(distribution_name).version
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/importlib/metadata.py", line 542, in distribution
+    return Distribution.from_name(distribution_name)
+  File "/home/robinna/.conda/envs/llm_conda/lib/python3.9/importlib/metadata.py", line 196, in from_name
+    raise PackageNotFoundError(name)
+importlib.metadata.PackageNotFoundError: bitsandbytes
