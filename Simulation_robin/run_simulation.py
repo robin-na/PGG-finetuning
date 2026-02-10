@@ -67,7 +67,11 @@ class Args:
     )
     persona: Optional[str] = field(
         default=None,
-        metadata={"help": "Optional persona mode (e.g., random_full_transcript, random_summary)."},
+        metadata={"help": "Optional persona mode (e.g., random_full_transcript, random_summary, finetuned_summary)."},
+    )
+    person: Optional[str] = field(
+        default=None,
+        metadata={"help": "Alias for --persona (backwards compatibility)."},
     )
     persona_pool: str = field(
         default="Persona/transcripts_learn.jsonl",
@@ -76,6 +80,10 @@ class Args:
     persona_summary_pool: str = field(
         default="Persona/summary_gpt51_learn.jsonl",
         metadata={"help": "JSONL file containing persona summary entries."},
+    )
+    persona_finetuned_pool: str = field(
+        default="Persona/LLM_mapped/Qwen/Qwen3-8B/persona_type_outputs.jsonl",
+        metadata={"help": "JSONL file containing fine-tuned persona outputs keyed by CONFIG_treatmentName."},
     )
 
     debug_print: bool = False
@@ -103,6 +111,9 @@ class CLIArgs(Args):
 
 
 def main(args: CLIArgs):
+    # Backwards-compat: some scripts used --person instead of --persona.
+    if getattr(args, "person", None) and not getattr(args, "persona", None):
+        args.persona = args.person
     if args.debug_print:
         log(args)
     if args.debug_compact:

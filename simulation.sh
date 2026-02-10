@@ -31,5 +31,5 @@ echo "Running on $(hostname)"
 nvidia-smi
 
 python Simulation_robin/run_simulation.py --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True \
-    --persona finetuned_summary --output_root output_persona_summary_finetuned
+    --persona finetuned_summary --output_root output_persona_summary_finetuned --env_csv Simulation_robin/df_analysis_val_dedup_from9C.csv \
 

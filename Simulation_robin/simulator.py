@@ -89,6 +89,7 @@ def simulate_game(
     persona: Optional[str] = None,
     persona_pool: Optional[str] = None,
     persona_summary_pool: Optional[str] = None,
+    persona_finetuned_pool: Optional[str] = None,
 ) -> Tuple[pd.DataFrame, Dict[str, List[str]]]:
     debug_records: List[Dict[str, Any]] = []
     debug_full_records: List[Dict[str, Any]] = []
@@ -98,10 +99,13 @@ def simulate_game(
     roster = sample_roster(env, seed=seed)
     assert len(roster) == env["CONFIG_playerCount"], "Roster length must match ENV.players"
 
+    game_id = env.get("name", "GAME")
+
     sys_text_plain = system_header_plain(env, include_reasoning=include_reasoning)
     include_system_in_prompt = client.provider == "local"
 
     persona_transcripts: List[Dict[str, Optional[str]]] = []
+    finetuned_personas_by_avatar: Dict[str, Dict[str, Optional[str]]] = {}
     persona_tag: Optional[str] = None
     persona_intro: Optional[str] = None
     rng = random.Random(seed)
@@ -149,15 +153,108 @@ def simulate_game(
                         )
         if not persona_transcripts:
             raise ValueError(f"No finished-game transcripts found in persona pool: {pool_path}")
+    elif persona == "finetuned_summary":
+        pool_path = persona_finetuned_pool
+        persona_tag = "GUIDE"
+        persona_intro = (
+            "Below is a guide of how you are likely to play this game according to your personality. "
+            "Be aware of this personality as you make decisions."
+        )
+
+        if not pool_path:
+            raise ValueError("persona_finetuned_pool must be set when persona='finetuned_summary'")
+        if not os.path.exists(pool_path):
+            raise FileNotFoundError(f"persona pool file not found: {pool_path}")
+
+        match: Optional[Dict[str, Any]] = None
+        with open(pool_path, "r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    record = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if record.get("CONFIG_treatmentName") == game_id:
+                    match = record
+                    break
+        if not match:
+            raise ValueError(
+                f"No finetuned persona record found for CONFIG_treatmentName='{game_id}' in {pool_path}"
+            )
+
+        gen = match.get("generation")
+        if isinstance(gen, str):
+            gen_text = gen.strip()
+            gen_obj = None
+            # Some generations are truncated/missing closers; try a few lightweight repairs.
+            for candidate in [gen_text, gen_text + "]}", gen_text + '"}]}' ]:
+                try:
+                    gen_obj = json.loads(candidate)
+                    break
+                except json.JSONDecodeError:
+                    continue
+            if gen_obj is None:
+                raise ValueError(f"Failed to parse finetuned generation JSON for treatment '{game_id}'")
+        elif isinstance(gen, dict):
+            gen_obj = gen
+        else:
+            raise ValueError(
+                f"Unsupported generation type for treatment '{game_id}': {type(gen).__name__} (expected str or dict)"
+            )
+
+        types = gen_obj.get("types")
+        if not isinstance(types, list):
+            raise ValueError(f"generation.types must be a list for treatment '{game_id}', got {type(types).__name__}")
+
+        finetuned_personas: List[Dict[str, Optional[str]]] = []
+        for t in types:
+            if not isinstance(t, dict):
+                continue
+            tid = t.get("id")
+            text = t.get("text")
+            if isinstance(text, str) and text.strip():
+                finetuned_personas.append({"participant": str(tid) if tid is not None else None, "text": text.strip()})
+
+        def _type_sort_key(item: Dict[str, Optional[str]]):
+            pid = item.get("participant") or ""
+            if pid.startswith("type_"):
+                try:
+                    return (int(pid.split("_")[-1]), pid)
+                except Exception:
+                    return (10**9, pid)
+            return (10**9, pid)
+
+        finetuned_personas.sort(key=_type_sort_key)
+        if not finetuned_personas:
+            raise ValueError(f"No persona types found in finetuned generation for treatment '{game_id}'")
+
+        # Allocate type_1..type_N across agents; if missing types, duplicate from existing.
+        for i, av in enumerate(roster):
+            rec = finetuned_personas[i] if i < len(finetuned_personas) else rng.choice(finetuned_personas)
+            finetuned_personas_by_avatar[av] = rec
 
     transcripts: Dict[str, List[str]] = {}
     persona_ids: Dict[str, Optional[str]] = {}
     rows: List[Dict[str, Any]] = []
-    game_id = env.get("name", "GAME")
 
     for av in roster:
         transcripts[av] = []
-        if persona in {"random_full_transcript", "random_summary"} and persona_transcripts:
+        if persona == "finetuned_summary" and finetuned_personas_by_avatar.get(av):
+            persona_record = finetuned_personas_by_avatar[av]
+            persona_text = persona_record.get("text", "") or ""
+            persona_ids[av] = persona_record.get("participant")
+            transcripts[av].extend(
+                [
+                    "# YOUR PERSONA",
+                    persona_intro or "",
+                    f"<{persona_tag} STARTS>",
+                    persona_text,
+                    f"<{persona_tag} ENDS>",
+                ]
+            )
+        elif persona in {"random_full_transcript", "random_summary"} and persona_transcripts:
             persona_record = rng.choice(persona_transcripts)
             persona_text = persona_record.get("text", "")
             persona_ids[av] = persona_record.get("participant")
@@ -856,6 +953,7 @@ def simulate_games(
             persona=args.persona,
             persona_pool=args.persona_pool,
             persona_summary_pool=getattr(args, "persona_summary_pool", None),
+            persona_finetuned_pool=getattr(args, "persona_finetuned_pool", None),
         )
         if args.debug_print:
             log(f"[ptc] done game {game_id} with {len(df_game)} rows")
