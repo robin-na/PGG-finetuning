@@ -1,7 +1,0 @@
-game_id,player_id,mean_contribution_rate,mean_payoff,punishment_rate,reward_rate
-VALIDATION_12_T,CROCODILE,1.0,74.0,0.0,0.0
-VALIDATION_12_T,PARROT,1.0,74.0,0.0,0.0
-VALIDATION_12_T,DUCK,1.0,74.0,0.0,0.0
-VALIDATION_12_T,WHALE,1.0,74.0,0.0,0.0
-VALIDATION_12_T,DOG,1.0,74.0,0.0,0.0
-VALIDATION_12_T,RABBIT,1.0,74.0,0.0,0.0

@@ -1,0 +1,26 @@
+{
+  "experiment_id": "exp_004_treatment",
+  "config_hash": "f3e1fdad",
+  "timestamp": "2026-01-01T23:45:53.506017",
+  "config": {
+    "group_size": 17,
+    "game_length": 1,
+    "endowment": 20,
+    "horizon_knowledge": "unknown",
+    "mpcr": 0.08,
+    "multiplier": 1.36,
+    "contribution_type": "variable",
+    "contribution_framing": "opt_in",
+    "communication_enabled": false,
+    "peer_outcome_visibility": false,
+    "actor_anonymity": false,
+    "punishment_enabled": true,
+    "punishment_cost": 1,
+    "punishment_impact": 1,
+    "reward_enabled": true,
+    "reward_cost": 3,
+    "reward_impact": 0.91,
+    "llm_model": "gpt-4o",
+    "llm_temperature": 1.0
+  }
+}

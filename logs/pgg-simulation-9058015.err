@@ -1,14 +1,0 @@
-/home/robinna/.conda/envs/llm_conda/lib/python3.9/contextlib.py:87: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
-  self.gen = func(*args, **kwds)
-`torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:   8%|▊         | 1/12 [00:00<00:05,  1.87it/s]Loading checkpoint shards:  17%|█▋        | 2/12 [00:00<00:02,  3.49it/s]Loading checkpoint shards:  25%|██▌       | 3/12 [00:00<00:01,  4.82it/s]Loading checkpoint shards:  33%|███▎      | 4/12 [00:00<00:01,  5.87it/s]Loading checkpoint shards:  42%|████▏     | 5/12 [00:00<00:01,  6.68it/s]Loading checkpoint shards:  50%|█████     | 6/12 [00:01<00:00,  7.29it/s]Loading checkpoint shards:  58%|█████▊    | 7/12 [00:01<00:00,  7.74it/s]Loading checkpoint shards:  67%|██████▋   | 8/12 [00:01<00:00,  8.00it/s]Loading checkpoint shards:  75%|███████▌  | 9/12 [00:01<00:00,  8.20it/s]Loading checkpoint shards:  83%|████████▎ | 10/12 [00:01<00:00,  8.38it/s]Loading checkpoint shards:  92%|█████████▏| 11/12 [00:01<00:00,  8.47it/s]Loading checkpoint shards: 100%|██████████| 12/12 [00:01<00:00,  7.13it/s]
-/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 10; retrying with reduced chunk size 5.
-  warnings.warn(
-/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 15; retrying with reduced chunk size 7.
-  warnings.warn(
-/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 16; retrying with reduced chunk size 8.
-  warnings.warn(
-/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 8; retrying with reduced chunk size 4.
-  warnings.warn(
-/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 16; retrying with reduced chunk size 8.
-  warnings.warn(

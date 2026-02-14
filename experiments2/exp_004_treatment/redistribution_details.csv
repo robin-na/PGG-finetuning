@@ -1,0 +1,15 @@
+experiment_id,config_hash,game_id,round,actor_id,actor_name,target_id,target_name,type,units_decided,units_actual,was_scaled,cost,impact,timestamp
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_0,DOG,agent_1,CHICKEN,punishment,3,3,False,6,9,2026-01-02T00:47:08.923610
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_0,DOG,agent_4,BIRD,punishment,3,3,False,6,9,2026-01-02T00:47:08.923929
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_1,CHICKEN,agent_0,DOG,punishment,3,3,False,6,9,2026-01-02T00:47:14.428539
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_1,CHICKEN,agent_4,BIRD,punishment,3,3,False,6,9,2026-01-02T00:47:14.428643
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_2,CAT,agent_0,DOG,punishment,1,1,False,2,3,2026-01-02T00:47:19.572378
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_2,CAT,agent_1,CHICKEN,punishment,1,1,False,2,3,2026-01-02T00:47:19.572896
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_3,FISH,agent_0,DOG,punishment,1,1,False,2,3,2026-01-02T00:47:22.847325
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_3,FISH,agent_1,CHICKEN,punishment,1,1,False,2,3,2026-01-02T00:47:22.847395
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_3,FISH,agent_4,BIRD,punishment,1,1,False,2,3,2026-01-02T00:47:22.847426
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_4,BIRD,agent_0,DOG,punishment,3,3,False,6,9,2026-01-02T00:47:27.252150
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_4,BIRD,agent_1,CHICKEN,punishment,3,3,False,6,9,2026-01-02T00:47:27.252592
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_5,RABBIT,agent_0,DOG,punishment,1,1,False,2,3,2026-01-02T00:47:29.897172
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_5,RABBIT,agent_1,CHICKEN,punishment,1,1,False,2,3,2026-01-02T00:47:29.897240
+exp_004_treatment,33e20b02,exp_004_treatment_game1,1,agent_5,RABBIT,agent_4,BIRD,punishment,1,1,False,2,3,2026-01-02T00:47:29.897272

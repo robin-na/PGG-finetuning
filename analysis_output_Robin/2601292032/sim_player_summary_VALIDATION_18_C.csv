@@ -1,5 +1,0 @@
-game_id,player_id,mean_contribution_rate,mean_payoff,punishment_rate,reward_rate
-VALIDATION_18_C,ELEPHANT,1.0,50.0,0.0,0.0
-VALIDATION_18_C,FROG,1.0,50.0,0.0,0.0
-VALIDATION_18_C,DUCK,1.0,50.0,0.0,0.0
-VALIDATION_18_C,RABBIT,1.0,50.0,0.0,0.0

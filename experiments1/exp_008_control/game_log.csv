@@ -1,0 +1,17 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
+exp_008_control,f3386237,exp_008_control_game1,1,agent_0,DOG,0,0,0,83,25,-68.9,-68.9,921.6,2026-01-01T23:39:14.102992
+exp_008_control,f3386237,exp_008_control_game1,1,agent_1,CHICKEN,20,0,0,80,7,-96.94,-96.94,921.6,2026-01-01T23:39:14.103107
+exp_008_control,f3386237,exp_008_control_game1,1,agent_2,CAT,20,0,0,83,782,501.56,501.56,921.6,2026-01-01T23:39:14.103120
+exp_008_control,f3386237,exp_008_control_game1,1,agent_3,FISH,20,0,0,80,162,23.96,23.96,921.6,2026-01-01T23:39:14.103131
+exp_008_control,f3386237,exp_008_control_game1,1,agent_4,BIRD,0,0,0,80,246,109.47999999999999,109.47999999999999,921.6,2026-01-01T23:39:14.103143
+exp_008_control,f3386237,exp_008_control_game1,1,agent_5,RABBIT,0,0,0,80,4,-79.28,-79.28,921.6,2026-01-01T23:39:14.103155
+exp_008_control,f3386237,exp_008_control_game1,1,agent_6,TURTLE,20,0,0,83,0,-108.4,-108.4,921.6,2026-01-01T23:39:14.103167
+exp_008_control,f3386237,exp_008_control_game1,1,agent_7,HAMSTER,0,0,0,103,0,-128.4,-128.4,921.6,2026-01-01T23:39:14.103178
+exp_008_control,f3386237,exp_008_control_game1,1,agent_8,FROG,0,0,0,80,0,-82.4,-82.4,921.6,2026-01-01T23:39:14.103188
+exp_008_control,f3386237,exp_008_control_game1,1,agent_9,MOUSE,20,0,0,81,0,-104.4,-104.4,921.6,2026-01-01T23:39:14.103198
+exp_008_control,f3386237,exp_008_control_game1,1,agent_10,SNAKE,20,0,0,103,0,-148.4,-148.4,921.6,2026-01-01T23:39:14.103208
+exp_008_control,f3386237,exp_008_control_game1,1,agent_11,BEAR,20,0,0,103,0,-148.4,-148.4,921.6,2026-01-01T23:39:14.103218
+exp_008_control,f3386237,exp_008_control_game1,1,agent_12,LION,0,0,0,103,0,-128.4,-128.4,921.6,2026-01-01T23:39:14.103228
+exp_008_control,f3386237,exp_008_control_game1,1,agent_13,TIGER,20,0,0,0,0,57.6,57.6,921.6,2026-01-01T23:39:14.103238
+exp_008_control,f3386237,exp_008_control_game1,1,agent_14,ELEPHANT,0,0,0,3,0,71.6,71.6,921.6,2026-01-01T23:39:14.103248
+exp_008_control,f3386237,exp_008_control_game1,1,agent_15,MONKEY,20,0,0,81,0,-104.4,-104.4,921.6,2026-01-01T23:39:14.103258

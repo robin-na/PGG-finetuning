@@ -1,0 +1,142 @@
+[
+  {
+    "cluster_id": 0,
+    "size": 343,
+    "title": "Norm / End / High",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "game",
+      "norm",
+      "end",
+      "high",
+      "payoff",
+      "low",
+      "rule",
+      "contribute",
+      "communication",
+      "fully",
+      "social",
+      "cooperator"
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "size": 281,
+    "title": "High / Payoff / Payoffs",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "high",
+      "payoff",
+      "game",
+      "payoffs",
+      "end",
+      "riding",
+      "free riding",
+      "contributing",
+      "willing",
+      "low",
+      "contribute",
+      "moderate"
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "size": 304,
+    "title": "Punishment / Punished / Norm",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "norm",
+      "low",
+      "high",
+      "punish",
+      "willing",
+      "game",
+      "contributors",
+      "punishers",
+      "pattern",
+      "contribute"
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "size": 168,
+    "title": "Punishment / Norm / High",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "norm",
+      "high",
+      "punished",
+      "low",
+      "punish",
+      "contributors",
+      "punishing",
+      "payoff",
+      "contribute",
+      "fully",
+      "enforcement"
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "size": 297,
+    "title": "Punishment / Norm / Punished",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "norm",
+      "punished",
+      "game",
+      "low",
+      "unknown",
+      "communication",
+      "chat",
+      "non",
+      "punish",
+      "high",
+      "use"
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "size": 218,
+    "title": "Punishment / Low / Payoff",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "low",
+      "payoff",
+      "game",
+      "social",
+      "end",
+      "high",
+      "free rider",
+      "rider",
+      "non",
+      "contribute",
+      "contributing"
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "size": 265,
+    "title": "Punishment / High / Norm",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "high",
+      "game",
+      "norm",
+      "low",
+      "social",
+      "communication",
+      "chat",
+      "end",
+      "contribute",
+      "payoff",
+      "contributing"
+    ]
+  }
+]

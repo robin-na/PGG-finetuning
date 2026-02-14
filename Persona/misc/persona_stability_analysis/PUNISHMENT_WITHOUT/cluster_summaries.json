@@ -1,0 +1,142 @@
+[
+  {
+    "cluster_id": 0,
+    "size": 247,
+    "title": "Payoffs / Riding / Free Riding",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "payoffs",
+      "riding",
+      "free riding",
+      "willing",
+      "game",
+      "contributing",
+      "end",
+      "low",
+      "contribute",
+      "moderate",
+      "defection",
+      "conditional"
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "size": 254,
+    "title": "Reward / Rewards / Rewarding",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "rewarded",
+      "use",
+      "low",
+      "spending",
+      "willing",
+      "game",
+      "end",
+      "contributors",
+      "spend"
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "size": 336,
+    "title": "Reward / Rewards / Rewarding",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "norm",
+      "use",
+      "game",
+      "low",
+      "rewarded",
+      "mechanism",
+      "end",
+      "unknown",
+      "communication"
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "size": 290,
+    "title": "Reward / Communication / Social",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "game",
+      "communication",
+      "social",
+      "low",
+      "chat",
+      "norm",
+      "contribute",
+      "end",
+      "rewards",
+      "contributing",
+      "coordination"
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "size": 349,
+    "title": "Norm / End / Low",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "game",
+      "norm",
+      "end",
+      "low",
+      "communication",
+      "fully",
+      "rule",
+      "contribute",
+      "cooperator",
+      "social",
+      "efficiency",
+      "strategy"
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "size": 215,
+    "title": "Reward / Rewards / Rewarding",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "low",
+      "game",
+      "use",
+      "contribute",
+      "rewarded",
+      "social",
+      "does",
+      "non",
+      "contributors"
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "size": 188,
+    "title": "End / Low / Contributing",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "game",
+      "end",
+      "low",
+      "contributing",
+      "contribute",
+      "rider",
+      "free rider",
+      "payoffs",
+      "riding",
+      "free riding",
+      "social",
+      "non"
+    ]
+  }
+]

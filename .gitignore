@@ -1,1 +1,34 @@
+# Environment & secrets
+.env
+.claude
+.edsl_model_archive.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+myenv/
+
+# OS files
+.DS_Store
+
+# Logs
+logs/
+myenv/*
+
+# Output data
+output/
+output_test/
+output_nopersona/
+output_persona/
+output_persona_summary/
+output_persona_summary_finetuned/
+output_arch/
+analysis_output_Robin/
+analysis_outputs/
+
+# Finetuning artifacts
 Finetuning/out_persona_types_lora
+
+# Temp files
+*.html

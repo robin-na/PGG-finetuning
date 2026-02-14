@@ -1,0 +1,4 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
+exp_029_control,ff784423,exp_029_control_game1,1,agent_0,DOG,Let's collaborate to ensure everyone benefits. Agreeing to a fair strategy where we each get an equal share could maximize our total payoff. Thoughts?,2026-01-02T01:50:06.244244
+exp_029_control,ff784423,exp_029_control_game1,1,agent_1,CHICKEN,"Agreed, a fair share strategy sounds beneficial. Let's outline how we equally split the payoff. Transparency will be key to ensuring everyone follows through.",2026-01-02T01:50:07.678537
+exp_029_control,ff784423,exp_029_control_game1,1,agent_2,CAT,"I concur with a transparent, equal share strategy. Let's define the exact distribution mechanism and accountability to reinforce our commitment to this collective benefit.",2026-01-02T01:50:09.316028

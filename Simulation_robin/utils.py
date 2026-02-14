@@ -1,31 +1,14 @@
 from __future__ import annotations
 
 import datetime
-import errno
 import os
 import re
-import sys
 from typing import Optional
-
-
-def _redirect_std_streams() -> None:
-    try:
-        devnull = open(os.devnull, "w")
-    except OSError:
-        return
-    sys.stdout = devnull
-    sys.stderr = devnull
 
 
 def log(*args, **kwargs):
     kwargs.setdefault("flush", True)
-    try:
-        print(*args, **kwargs)
-    except OSError as exc:
-        if exc.errno in (errno.ESTALE, errno.EBADF):
-            _redirect_std_streams()
-            return
-        raise
+    print(*args, **kwargs)
 
 
 def timestamp_yymmddhhmm() -> str:

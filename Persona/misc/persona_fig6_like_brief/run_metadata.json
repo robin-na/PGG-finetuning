@@ -1,0 +1,46 @@
+{
+  "input_path": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/summary_gpt51_learn.jsonl",
+  "rows_total": 3912,
+  "rows_used": 3691,
+  "only_finished": true,
+  "embedding": {
+    "method": "openai",
+    "model": "text-embedding-3-large",
+    "dimensions": 1536,
+    "batch_size": 200,
+    "cache_path": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_fig6_like/embeddings_text-embedding-3-large_1536.npy"
+  },
+  "title_backend": "openai",
+  "title_model": "gpt-4o-mini",
+  "title_max_codes_per_cluster": 20,
+  "title_max_chars_per_code": 220,
+  "title_strategy": "auto",
+  "title_context_token_budget": 90000,
+  "title_refine_global": true,
+  "weight_col": null,
+  "non_negligible_threshold": 0.001,
+  "non_negligible_count": 3691,
+  "umap_params": {
+    "n_components": 2,
+    "n_neighbors": 738,
+    "min_dist": 0.5,
+    "metric": "cosine",
+    "random_state": 42
+  },
+  "clustering_params": {
+    "method": "KMeans",
+    "n_clusters": 23,
+    "random_state": 42,
+    "n_init": 20
+  },
+  "outputs": {
+    "persona_umap_points_csv": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_fig6_like/persona_umap_points.csv",
+    "persona_clusters_csv": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_fig6_like/persona_clusters.csv",
+    "cluster_summaries_json": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_fig6_like/cluster_summaries.json",
+    "cluster_summaries_txt": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_fig6_like/cluster_summaries.txt",
+    "cluster_samples_json": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_fig6_like/cluster_samples.json",
+    "persona_umap_clusters_png": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_fig6_like/persona_umap_clusters.png",
+    "cluster_title_prompt_txt": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_fig6_like/cluster_title_prompt.txt",
+    "cluster_title_response_txt": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_fig6_like/cluster_title_response.txt"
+  }
+}

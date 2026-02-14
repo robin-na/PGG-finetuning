@@ -1,0 +1,27 @@
+{
+  "analysis": "Step1 Shared-Space (Original)",
+  "tag": "REWARD",
+  "k_with": 6,
+  "k_without": 7,
+  "n_with": 1815,
+  "n_without": 1876,
+  "alignment_map": {
+    "0": 5,
+    "1": 1,
+    "2": 2,
+    "3": 3,
+    "4": 0,
+    "5": 6
+  },
+  "alignment_score": 0.9321677664303322,
+  "quality_metrics_with": {
+    "silhouette_score": 0.41849184036254883,
+    "calinski_harabasz_score": 1946.0533447265625,
+    "davies_bouldin_score": 0.7298776778457055
+  },
+  "quality_metrics_without": {
+    "silhouette_score": 0.4525707960128784,
+    "calinski_harabasz_score": 2753.883056640625,
+    "davies_bouldin_score": 0.7445483698061669
+  }
+}

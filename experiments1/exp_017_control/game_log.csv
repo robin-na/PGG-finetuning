@@ -1,0 +1,8 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
+exp_017_control,932961f4,exp_017_control_game1,1,agent_0,DOG,0,0,0,20,100,127.6,127.6,67.2,2026-01-01T23:42:41.514314
+exp_017_control,932961f4,exp_017_control_game1,1,agent_1,CHICKEN,0,0,0,61,24,-59.279999999999994,-59.279999999999994,67.2,2026-01-01T23:42:41.514612
+exp_017_control,932961f4,exp_017_control_game1,1,agent_2,CAT,20,0,0,41,3,-68.26,-68.26,67.2,2026-01-01T23:42:41.514648
+exp_017_control,932961f4,exp_017_control_game1,1,agent_3,FISH,0,0,0,23,2,-13.64,-13.64,67.2,2026-01-01T23:42:41.514674
+exp_017_control,932961f4,exp_017_control_game1,1,agent_4,BIRD,0,0,0,20,76,94.47999999999999,94.47999999999999,67.2,2026-01-01T23:42:41.514697
+exp_017_control,932961f4,exp_017_control_game1,1,agent_5,RABBIT,0,0,0,20,0,-10.399999999999999,-10.399999999999999,67.2,2026-01-01T23:42:41.514723
+exp_017_control,932961f4,exp_017_control_game1,1,agent_6,TURTLE,0,0,0,20,0,-10.399999999999999,-10.399999999999999,67.2,2026-01-01T23:42:41.514750

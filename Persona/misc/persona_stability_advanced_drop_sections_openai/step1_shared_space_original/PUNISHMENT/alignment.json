@@ -1,0 +1,27 @@
+{
+  "analysis": "Step1 Shared-Space (Original)",
+  "tag": "PUNISHMENT",
+  "k_with": 6,
+  "k_without": 7,
+  "n_with": 1812,
+  "n_without": 1879,
+  "alignment_map": {
+    "0": 1,
+    "1": 2,
+    "2": 5,
+    "3": 4,
+    "4": 6,
+    "5": 0
+  },
+  "alignment_score": 1.0447961653384785,
+  "quality_metrics_with": {
+    "silhouette_score": 0.43986064195632935,
+    "calinski_harabasz_score": 2272.772705078125,
+    "davies_bouldin_score": 0.7051422797767944
+  },
+  "quality_metrics_without": {
+    "silhouette_score": 0.40876567363739014,
+    "calinski_harabasz_score": 2173.789306640625,
+    "davies_bouldin_score": 0.7934746007800694
+  }
+}

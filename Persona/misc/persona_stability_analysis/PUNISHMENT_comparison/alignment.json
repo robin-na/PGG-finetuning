@@ -1,0 +1,26 @@
+{
+  "tag": "PUNISHMENT",
+  "k_with": 6,
+  "k_without": 7,
+  "n_with": 1812,
+  "n_without": 1879,
+  "alignment_map": {
+    "0": 0,
+    "1": 2,
+    "2": 4,
+    "3": 5,
+    "4": 3,
+    "5": 6
+  },
+  "alignment_score": 0.6931610355619523,
+  "quality_metrics_with": {
+    "silhouette_score": 0.40648627281188965,
+    "calinski_harabasz_score": 1861.3525390625,
+    "davies_bouldin_score": 0.785823929728033
+  },
+  "quality_metrics_without": {
+    "silhouette_score": 0.3860865831375122,
+    "calinski_harabasz_score": 1865.5462646484375,
+    "davies_bouldin_score": 0.7955402862821002
+  }
+}

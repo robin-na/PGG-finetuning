@@ -1,0 +1,16 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_0,DOG,10,27,366,27,366,-593.02,-593.02,1084.2,2026-01-01T23:51:15.126416
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_1,CHICKEN,7,30,196,30,196,-338.52,-338.52,1084.2,2026-01-01T23:51:15.126627
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_2,CAT,7,47,254,47,254,-496.4200000000001,-496.4200000000001,1084.2,2026-01-01T23:51:15.126647
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_3,FISH,10,167,68,167,68,-691.12,-691.12,1084.2,2026-01-01T23:51:15.126666
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_4,BIRD,7,30,58,30,58,-124.62,-124.62,1084.2,2026-01-01T23:51:15.126680
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_5,RABBIT,10,37,40,37,40,-127.72,-127.72,1084.2,2026-01-01T23:51:15.126693
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_6,TURTLE,10,64,20,64,20,-204.72,-204.72,1084.2,2026-01-01T23:51:15.126705
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_7,HAMSTER,7,47,14,47,14,-124.41999999999999,-124.41999999999999,1084.2,2026-01-01T23:51:15.126717
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_8,FROG,10,68,10,68,10,-205.22,-205.22,1084.2,2026-01-01T23:51:15.126732
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_9,MOUSE,7,328,7,328,7,-1237.57,-1237.57,1084.2,2026-01-01T23:51:15.126743
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_10,SNAKE,10,23,10,23,10,-25.22,-25.22,1084.2,2026-01-01T23:51:15.126756
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_11,BEAR,7,23,7,23,7,-17.569999999999993,-17.569999999999993,1084.2,2026-01-01T23:51:15.126768
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_12,LION,10,37,10,37,10,-81.22,-81.22,1084.2,2026-01-01T23:51:15.126781
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_13,TIGER,20,20,13,20,13,-27.870000000000005,-27.870000000000005,1084.2,2026-01-01T23:51:15.126793
+exp_009_treatment,f1ee1e5f,exp_009_treatment_game1,1,agent_14,ELEPHANT,7,125,0,125,0,-414.72,-414.72,1084.2,2026-01-01T23:51:15.126807
