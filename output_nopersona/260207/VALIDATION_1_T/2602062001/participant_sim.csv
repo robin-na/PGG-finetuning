@@ -1,0 +1,49 @@
+playerAvatar,persona,roundIndex,gameId,data.chat_message,data.chat_reasoning,data.contribution,data.contribution_reasoning,data.punished,data.rewarded,data.actions_reasoning
+CHICK,,1,VALIDATION_1_T,,,10,I will contribute 10 coins to see if others contribute as well.,{},,"Everyone contributed half their coins, so no punishment is warranted."
+WHALE,,1,VALIDATION_1_T,,,10,I will contribute 10 coins. It encourages cooperation without the risk of being completely exploited.,{},,"Everyone contributed equally. No one needs to be punished, but I'm going to encourage this behavior by not punishing anyone."
+OWL,,1,VALIDATION_1_T,,,10,"Since this is the first round and there is no history, I will contribute 10 coins to see how others behave.",{},,Everyone contributed equally. No punishment needed.
+CHICK,,2,VALIDATION_1_T,,,10,"Everyone contributed last round. I'll keep contributing half to see if this continues, ensuring a good outcome for all.",{},,Everyone is cooperating. No need to punish.
+WHALE,,2,VALIDATION_1_T,,,10,"Since everyone cooperated last round, I'll keep contributing 10 to maintain that.",{},,"Everyone is cooperating, no need to punish."
+OWL,,2,VALIDATION_1_T,,,10,"Since round 1 was successful, I will stay with contributing 10 coins.",{},,Everyone is contributing equally so no punishment.
+CHICK,,3,VALIDATION_1_T,,,10,Continued cooperation seems stable. I'll maintain my contribution to encourage this.,{},,Continued cooperation; no punishment necessary.
+WHALE,,3,VALIDATION_1_T,,,10,"Continuing cooperative behavior, contributing half again.",{},,"Everyone is cooperating, no need to punish."
+OWL,,3,VALIDATION_1_T,,,10,"Since round 1 and 2 were successful, continue contributing 10 coins.",{},,Everyone is contributing equally so no punishment.
+CHICK,,4,VALIDATION_1_T,,,10,Continued cooperation is best for all.,{},,Continued cooperation; no need to punish.
+WHALE,,4,VALIDATION_1_T,,,10,"Consistent cooperation exists, maintain it.",{},,"Consistent cooperation exists, no need to punish."
+OWL,,4,VALIDATION_1_T,,,10,"Since round 1-3 were successful, stay with contributing 10 coins.",{},,Everyone is contributing equally so no punishment.
+CHICK,,5,VALIDATION_1_T,,,10,Continued cooperation is observed. I'll maintain my contribution to maximize the overall payoff.,{},,Continued cooperation; no punishment is needed.
+WHALE,,5,VALIDATION_1_T,,,10,"Consistent cooperation exists, maintain it.",{},,"Consistent cooperation exists, no need to punish."
+OWL,,5,VALIDATION_1_T,,,10,"Since round 1-4 were successful, stay with contributing 10 coins.",{},,Everyone is contributing equally so no punishment.
+CHICK,,6,VALIDATION_1_T,,,10,Everyone has been contributing half their coins for the last five rounds. Continuing to contribute 10 ensures a good outcome for all.,{},,Continued cooperation; no punishment is needed.
+WHALE,,6,VALIDATION_1_T,,,10,"Consistent cooperation exists, maintain it.",{},,"Consistent cooperation exists, no need to punish."
+OWL,,6,VALIDATION_1_T,,,10,"Since round 1-5 were successful, stay with contributing 10 coins.",{},,Everyone is contributing equally so no punishment.
+CHICK,,7,VALIDATION_1_T,,,10,Continued cooperation is observed. I'll maintain my contribution to maximize the overall payoff.,{},,Continued cooperation; no need to punish.
+WHALE,,7,VALIDATION_1_T,,,10,"Consistent cooperation exists, maintain it.",{},,"Consistent cooperation exists, no need to punish."
+OWL,,7,VALIDATION_1_T,,,10,"Since round 1-6 were successful, stay with contributing 10 coins.",{},,Everyone is contributing equally so no punishment.
+CHICK,,8,VALIDATION_1_T,,,10,Continued cooperation is observed. I'll maintain my contribution to maximize the overall payoff.,{},,Continued cooperation; no punishment is needed.
+WHALE,,8,VALIDATION_1_T,,,10,"Consistent cooperation exists, maintain it.",{},,"Consistent cooperation exists, no need to punish."
+OWL,,8,VALIDATION_1_T,,,10,"Since round 1-7 were successful, stay with contributing 10 coins.",{},,"No one has defected, so no need to punish."
+CHICK,,9,VALIDATION_1_T,,,10,I will contribute 10 coins to ensure everyone benefits.,{},,Continued cooperation; no need to punish.
+WHALE,,9,VALIDATION_1_T,,,10,Maintaining cooperation is best.,{},,"Consistent cooperation exists, no need to punish."
+OWL,,9,VALIDATION_1_T,,,10,"Since round 1-8 were successful, stay with contributing 10 coins.",{},,"No one has defected, stay with contributing 10 coins."
+CHICK,,10,VALIDATION_1_T,,,10,I will contribute 10 coins to ensure everyone benefits.,{},,Continued cooperation; no need to punish.
+WHALE,,10,VALIDATION_1_T,,,10,Maintaining cooperation is best.,{},,"Consistent cooperation exists, no need to punish."
+OWL,,10,VALIDATION_1_T,,,10,"Since round 1-9 were successful, stay with contributing 10 coins.",{},,"No one has defected, stay with contributing 10 coins."
+CHICK,,11,VALIDATION_1_T,,,10,I will contribute 10 coins to ensure everyone benefits.,{},,Continued cooperation; no need to punish.
+WHALE,,11,VALIDATION_1_T,,,10,Maintaining cooperation is best.,{},,"Consistent cooperation exists, no need to punish."
+OWL,,11,VALIDATION_1_T,,,10,Since round 1-10 were successful stay with contributing 10 coins.,{},,"No one has defected, stay with contributing 10 coins."
+CHICK,,12,VALIDATION_1_T,,,10,I will contribute 10 coins to ensure everyone benefits.,{},,Continued cooperation; no need to punish.
+WHALE,,12,VALIDATION_1_T,,,10,Maintaining cooperation is best.,{},,"Consistent cooperation exists, no need to punish."
+OWL,,12,VALIDATION_1_T,,,10,Since round 1-11 were successful stay with contributing 10 coins.,{},,"No one has defected, stay with contributing 10 coins."
+CHICK,,13,VALIDATION_1_T,,,10,I will contribute 10 coins to ensure everyone benefits.,{},,Continued cooperation; no need to punish.
+WHALE,,13,VALIDATION_1_T,,,10,Maintaining cooperation is best.,{},,"Consistent cooperation exists, no need to punish."
+OWL,,13,VALIDATION_1_T,,,10,Since round 1-12 were successful stay with contributing 10 coins.,{},,"No one has defected, stay with contributing 10 coins."
+CHICK,,14,VALIDATION_1_T,,,10,I will contribute 10 coins to ensure everyone benefits.,{},,Continued cooperation; no need to punish.
+WHALE,,14,VALIDATION_1_T,,,10,Maintaining cooperation is best.,{},,"Consistent cooperation exists, no need to punish."
+OWL,,14,VALIDATION_1_T,,,10,Since round 1-13 were successful stay with contributing 10 coins.,{},,"No one has defected, stay with contributing 10 coins."
+CHICK,,15,VALIDATION_1_T,,,10,I will contribute 10 coins to ensure everyone benefits.,{},,Continued cooperation; no need to punish.
+WHALE,,15,VALIDATION_1_T,,,10,Maintaining cooperation is best.,{},,"Consistent cooperation exists, no need to punish."
+OWL,,15,VALIDATION_1_T,,,10,Since round 1-14 were successful stay with contributing 10 coins.,{},,Since round 1-15 were successful stay with contributing 10 coins. No one has defected so no punishment
+CHICK,,16,VALIDATION_1_T,,,10,I will contribute 10 coins to ensure everyone benefits. Continuous cooperation has yielded positive results.,{},,Continued cooperation; no need to punish.
+WHALE,,16,VALIDATION_1_T,,,10,Maintaining cooperation is best.,{},,"Consistent cooperation exists, no need to punish."
+OWL,,16,VALIDATION_1_T,,,10,Since round 1-15 were successful stay with contributing 10 coins.,{},,No one defected so no punishment.
