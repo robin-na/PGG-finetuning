@@ -1,0 +1,302 @@
+[
+  {
+    "cluster_id": 0,
+    "size": 134,
+    "title": "Unconditional full contributors who consistently give maximum amounts regardless of others' behavior",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "punished",
+      "rewards",
+      "low",
+      "punish",
+      "players",
+      "use",
+      "game",
+      "contribute",
+      "punishers",
+      "payoff"
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "size": 175,
+    "title": "Moderate contributors who adjust giving based on group behavior and personal incentives",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "game",
+      "end",
+      "communication",
+      "payoff",
+      "low",
+      "contribute",
+      "social",
+      "chat",
+      "payoffs",
+      "contributing",
+      "rounds",
+      "riding"
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "size": 315,
+    "title": "Stable high contributors who always allocate full endowments without adjusting to others' actions",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "punished",
+      "low",
+      "contributors",
+      "punish",
+      "rewards",
+      "use",
+      "payoff",
+      "enforcement",
+      "sanctions",
+      "contribute"
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "size": 179,
+    "title": "Strict full cooperators who consistently contribute maximum amounts without deviation or hesitation",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "rule",
+      "payoff",
+      "game",
+      "payoffs",
+      "end",
+      "cooperator",
+      "contribute",
+      "low",
+      "fully",
+      "exploitation",
+      "efficiency",
+      "unknown"
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "size": 255,
+    "title": "Conditional contributors who alternate between full cooperation and free-riding based on group dynamics",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "payoff",
+      "low",
+      "willing",
+      "rewarded",
+      "contribute",
+      "use",
+      "game",
+      "rewarders",
+      "end"
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "size": 258,
+    "title": "High contributors who predominantly cooperate but occasionally experiment with defection for strategic reasons",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "rewards",
+      "low",
+      "game",
+      "punished",
+      "use",
+      "punish",
+      "end",
+      "payoff",
+      "contributors",
+      "non"
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "size": 240,
+    "title": "Moderate contributors who maintain fixed levels while occasionally responding to group norms and behaviors",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "punishment",
+      "rewards",
+      "rewarding",
+      "low",
+      "contributors",
+      "rewarded",
+      "use",
+      "payoff",
+      "game",
+      "appear",
+      "does"
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "size": 222,
+    "title": "Volatile conditional cooperators who frequently switch between full cooperation and free-riding strategies",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "payoff",
+      "game",
+      "end",
+      "riding",
+      "free riding",
+      "willing",
+      "contributing",
+      "payoffs",
+      "low",
+      "contribute",
+      "moderate",
+      "zero"
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "size": 212,
+    "title": "Near-unconditional high contributors who consistently maximize contributions while occasionally deviating",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "game",
+      "communication",
+      "end",
+      "low",
+      "social",
+      "contribute",
+      "fully",
+      "strategy",
+      "coordination",
+      "payoff",
+      "defection",
+      "explicitly"
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "size": 397,
+    "title": "Unwavering full cooperators who always contribute maximum amounts without adjusting to group dynamics",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "game",
+      "low",
+      "unknown",
+      "communication",
+      "reward",
+      "chat",
+      "use",
+      "non",
+      "punish",
+      "end"
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "size": 317,
+    "title": "Stable high contributors who consistently give full endowments regardless of others' contributions or behavior",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "communication",
+      "chat",
+      "game",
+      "low",
+      "use",
+      "punishment",
+      "end",
+      "unknown",
+      "explicitly"
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "size": 203,
+    "title": "Pure free-riders who consistently withhold contributions, relying on others for public goods",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "punishment",
+      "rewards",
+      "payoff",
+      "rider",
+      "free rider",
+      "social",
+      "non",
+      "low",
+      "game",
+      "strategy",
+      "does"
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "size": 164,
+    "title": "Conditional free-riders who occasionally contribute but primarily focus on maximizing personal payoffs",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "payoff",
+      "payoffs",
+      "low",
+      "contributing",
+      "game",
+      "contribute",
+      "end",
+      "riding",
+      "free riding",
+      "outcomes",
+      "social",
+      "pattern"
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "size": 296,
+    "title": "High contributors who alternate between full cooperation and moderate free-riding based on group dynamics",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "punishment",
+      "rewards",
+      "low",
+      "chat",
+      "game",
+      "communication",
+      "social",
+      "end",
+      "use",
+      "payoff",
+      "non"
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "size": 324,
+    "title": "Moderate contributors who anchor on fixed levels while occasionally responding to group norms and behaviors",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "low",
+      "punish",
+      "contributors",
+      "reward",
+      "willing",
+      "sanctions",
+      "punishers",
+      "contribute",
+      "pattern",
+      "appear"
+    ]
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "cluster_id": 0,
+    "size": 243,
+    "title": "Reward / Social / Payoff",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "social",
+      "payoff",
+      "game",
+      "non",
+      "end",
+      "punished",
+      "contribute",
+      "riding",
+      "free riding",
+      "use",
+      "contributing"
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "size": 359,
+    "title": "Reward / Rewards / Contributors",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "contributors",
+      "payoff",
+      "use",
+      "game",
+      "contribute",
+      "end",
+      "punished",
+      "punish",
+      "fully",
+      "does"
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "size": 91,
+    "title": "Reward / Rewards / Punished",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "punished",
+      "players",
+      "punish",
+      "game",
+      "contributors",
+      "use",
+      "rewarded",
+      "contribute",
+      "payoff",
+      "pattern"
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "size": 398,
+    "title": "Reward / Communication / Chat",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "game",
+      "communication",
+      "chat",
+      "unknown",
+      "use",
+      "non",
+      "end",
+      "contribute",
+      "fully",
+      "payoff",
+      "punished"
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "size": 405,
+    "title": "Reward / Contributors / Punished",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "contributors",
+      "punished",
+      "willing",
+      "contribute",
+      "pattern",
+      "payoff",
+      "punish",
+      "game",
+      "rewards",
+      "instead",
+      "riding"
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "size": 316,
+    "title": "Reward / Chat / Communication",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "game",
+      "chat",
+      "communication",
+      "use",
+      "end",
+      "rewards",
+      "social",
+      "non",
+      "explicitly",
+      "punished",
+      "payoff"
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_0,DOG,Let's cooperate for maximum total earnings. Agreeing on a balanced score ensures we all benefit equally. Thoughts?,2026-01-02T01:41:33.734942
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_1,CHICKEN,"I agree with cooperating for mutual benefit. Let's clarify what a balanced score means for everyone, so we can all adhere to it. How do we define our shared target?",2026-01-02T01:41:35.437169
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_2,CAT,"A balanced score means equally sharing potential rewards. If each player maintains fair distribution, we'll achieve max cumulative payouts. Are we in agreement on splitting rewards equally for mutual gain?",2026-01-02T01:41:36.704886
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_3,FISH,Let's commit to a clear target like 1/3 each or specify exact points we aim for. This ensures we're on the same page and can trust each player's commitment to equality.,2026-01-02T01:41:38.137317

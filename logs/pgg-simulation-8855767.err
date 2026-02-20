@@ -1,20 +1,0 @@
-/home/robinna/.conda/envs/llm_conda/lib/python3.9/contextlib.py:87: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
-  self.gen = func(*args, **kwds)
-`torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:   8%|▊         | 1/12 [00:00<00:01,  7.70it/s]Loading checkpoint shards: 100%|██████████| 12/12 [00:00<00:00, 53.62it/s]
-/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 12; retrying with reduced chunk size 6.
-  warnings.warn(
-/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/llm_client.py:269: UserWarning: CUDA OOM during generation with batch size 13; retrying with reduced chunk size 6.
-  warnings.warn(
-Traceback (most recent call last):
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/run_simulation.py", line 148, in <module>
-    main(cfg)
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/run_simulation.py", line 124, in main
-    df_all, transcripts_all, output_paths = simulate_games(
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/simulator.py", line 881, in simulate_games
-    game_id, df_game, transcripts_game, rows_path, transcripts_path, debug_path, debug_full_path, config_path = run_one(
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/simulator.py", line 837, in run_one
-    df_game, transcripts_game = simulate_game(
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/simulator.py", line 759, in simulate_game
-    os.fsync(csv_file.fileno())
-OSError: [Errno 116] Stale file handle

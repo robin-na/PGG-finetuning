@@ -1,4 +1,0 @@
-/home/robinna/.conda/envs/llm_conda/lib/python3.9/contextlib.py:87: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
-  self.gen = func(*args, **kwds)
-`torch_dtype` is deprecated! Use `dtype` instead!
-Fetching 30 files:   0%|          | 0/30 [00:00<?, ?it/s]Fetching 30 files:   3%|▎         | 1/30 [02:10<1:02:59, 130.33s/it]Fetching 30 files:  10%|█         | 3/30 [02:34<19:12, 42.68s/it]   

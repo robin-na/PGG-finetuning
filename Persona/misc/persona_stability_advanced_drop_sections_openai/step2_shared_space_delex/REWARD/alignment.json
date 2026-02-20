@@ -1,0 +1,27 @@
+{
+  "analysis": "Step2 Shared-Space (Delexicalized)",
+  "tag": "REWARD",
+  "k_with": 6,
+  "k_without": 7,
+  "n_with": 1815,
+  "n_without": 1876,
+  "alignment_map": {
+    "0": 5,
+    "1": 4,
+    "2": 2,
+    "3": 0,
+    "4": 6,
+    "5": 3
+  },
+  "alignment_score": 0.48953606983691084,
+  "quality_metrics_with": {
+    "silhouette_score": 0.39535850286483765,
+    "calinski_harabasz_score": 2227.023681640625,
+    "davies_bouldin_score": 0.8373763232274252
+  },
+  "quality_metrics_without": {
+    "silhouette_score": 0.4164086580276489,
+    "calinski_harabasz_score": 2462.980712890625,
+    "davies_bouldin_score": 0.7756516731162945
+  }
+}

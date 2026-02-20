@@ -1,0 +1,362 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 222,
+    "cluster_title": "Diverse Strategies in Cooperative Contributions",
+    "cluster_intro": "This cluster showcases a range of cooperative behaviors, from high contributors to strategic free-riders. Players exhibit varying degrees of flexibility in their contributions, often adjusting based on group dynamics and perceived payoffs. Their approaches highlight the complexity of cooperation in group settings.",
+    "summary_source": "openai",
+    "top_terms": [
+      "contributions",
+      "cooperation",
+      "group",
+      "contribution",
+      "cooperative",
+      "high",
+      "free",
+      "payoff"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> The player is a moderately prosocial but self-oriented conditional cooperator with high volatility. They do not anchor on a single contribution level; instead, they frequently shift between very low and very high contributions. They clearly understand that contr...",
+      "<CONTRIBUTION> The player follows a highly asymmetric “all‑or‑nothing free rider” pattern. Across the game, they overwhelmingly choose zero contribution, punctuated by a small number of rounds where they give the full endowment. This creates a bimodal profile: either full coop...",
+      "<CONTRIBUTION> This player is a “conditional high contributor with opportunistic dips.” They clearly understand that contributing is socially efficient: they repeatedly make large contributions, often at or near the maximum, and do so both when others are highly cooperative an...",
+      "<CONTRIBUTION> This player is a moderately cooperative, strategically flexible contributor who oscillates between full cooperation, partial cooperation, and free-riding. Across the game, they regularly use the full range of possible contributions (0, 10, 20), with 10 and 20 ap...",
+      "<CONTRIBUTION> Type label: Opportunistic conditional cooperator with oscillating free-riding. The player mixes medium and high contributions with frequent complete free-riding. They do not settle into a stable level; instead, they alternate between giving nothing, giving about..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 212,
+    "cluster_title": "Unwavering Contributors in Cooperative Settings",
+    "cluster_intro": "This group of players consistently demonstrates high levels of cooperation, often contributing their entire endowment without deviation. Their behavior reflects a strong commitment to group norms and a belief in the importance of collective contribution, even in the face of free-riding by others. They prioritize cooperation as a fundamental principle, showcasing stability and resilience in their contributions.",
+    "summary_source": "openai",
+    "top_terms": [
+      "group",
+      "contribution",
+      "cooperative",
+      "cooperation",
+      "contributions",
+      "norm",
+      "game",
+      "player"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a highly stable, near-unconditional high contributor. They overwhelmingly choose the maximum possible contribution and maintain this choice across almost the entire game, with a single, isolated deviation where they keep their full endowment for t...",
+      "<CONTRIBUTION> This player is a strongly pro-social, high-contribution cooperator with occasional, targeted free-riding tests. Their default is to contribute the full endowment whenever the group appears broadly cooperative, and they maintain this pattern even when a few other...",
+      "<CONTRIBUTION> This player is a generally high, near-unconditional cooperator with a brief early experiment in free-riding and a short mid-game absence, but no evidence of systematic opportunism. They overwhelmingly choose to contribute fully to the public good even when other...",
+      "<CONTRIBUTION> This player is a consistent, unconditional full cooperator. They always contribute their entire endowment, never deviating even when others free‑ride or when group contributions drop. Their behavior suggests they view full contribution as the obvious or correct...",
+      "<CONTRIBUTION> This player is a high, mostly unconditional cooperator with occasional strategic free-riding. They overwhelmingly choose to contribute the maximum, showing a strong default toward supporting the group even when others intermittently defect. Their contribution pa..."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 164,
+    "cluster_title": "The Dynamics of Selective Cooperation",
+    "cluster_intro": "This cluster reveals a pattern of individuals who primarily engage in free-riding while occasionally experimenting with cooperation. Their behavior is characterized by strategic decision-making, often prioritizing personal payoff over group contributions. These players exhibit a tendency to revert to minimal or no contributions, indicating a conditional approach to cooperation.",
+    "summary_source": "openai",
+    "top_terms": [
+      "contributions",
+      "group",
+      "cooperation",
+      "contribution",
+      "free",
+      "cooperative",
+      "player",
+      "payoff"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a selective, alternating cooperator–free rider who mixes full contributions with full withholding rather than choosing a stable pattern. They do not display a consistent unconditional norm of always giving or always keeping; instead they switch be...",
+      "<CONTRIBUTION> This player is a predominantly free-riding, payoff-maximizing type who occasionally experiments with cooperation but quickly reverts to exploiting others’ contributions. They consistently choose the individually dominant action whenever it clearly increases pers...",
+      "<CONTRIBUTION> This player starts as a full cooperator but shifts to full defection once they observe persistent free-riding by others. They do not mix strategies within a round; they choose the extreme options available. Their behavior indicates conditional cooperation: they...",
+      "<CONTRIBUTION> The player is a self-aware, opportunistic free-rider who occasionally cooperates to maintain group goodwill. They understand that contributing maximally is socially expected and can yield group gains, but they prioritize their own payoff whenever they see room t...",
+      "<CONTRIBUTION> This player is a predominantly free-riding, opportunistic conditional cooperator who occasionally experiments with full contribution. Across the game, they choose only the extreme options allowed (all or nothing) and end up favoring zero contribution much more o..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 175,
+    "cluster_title": "Cooperative Contributors with Opportunistic Tendencies",
+    "cluster_intro": "This cluster features individuals who primarily engage in cooperative behaviors while occasionally exhibiting opportunistic free-riding. They often align with group norms of high contribution but may deviate when they perceive opportunities for personal gain. Their behavior reflects a balance between social cooperation and self-interest, leading to varied contribution patterns.",
+    "summary_source": "openai",
+    "top_terms": [
+      "group",
+      "contribution",
+      "contributions",
+      "cooperative",
+      "cooperation",
+      "high",
+      "game",
+      "free"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a primarily cooperative, mildly opportunistic contributor who generally follows the group norm of full contribution but occasionally free-rides when it seems unlikely to be noticed or sanctioned. They overwhelmingly choose the maximal contribution...",
+      "<CONTRIBUTION> This player is a “sociable conditional cooperator with opportunistic free‑riding.” They do not follow a single stable rule but alternate between full contribution and full defection, with a slight tilt toward contributing. They readily contribute when group coop...",
+      "<CONTRIBUTION> This player is a self-interested, opportunistic conditional cooperator with a mild social-sensitivity constraint. They know contributing nothing is individually profitable and use this often, but occasionally align with the group, especially when directly called...",
+      "<CONTRIBUTION> This player is a mostly-cooperative but opportunistic contributor with some playful free-riding and mild inconsistency. They start out by free-riding when others are contributing generously, taking advantage of the group’s initial cooperativeness. After those ea...",
+      "<CONTRIBUTION> This player is a mostly-cooperative, chatty conditional cooperator with intermittent free-riding. Early on, they alternate between contributing nothing and contributing fully, rather than settling immediately into a stable pattern. As the game progresses and hig..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 179,
+    "cluster_title": "Unwavering Commitment to Cooperation",
+    "cluster_intro": "This cluster represents individuals who consistently prioritize group contributions over personal gain. Their behavior is characterized by a steadfast commitment to full cooperation, regardless of the actions of others or potential benefits from free-riding. These players exhibit a strong internal norm to contribute, demonstrating remarkable stability in their cooperative choices.",
+    "summary_source": "openai",
+    "top_terms": [
+      "contribution",
+      "cooperation",
+      "group",
+      "behavior",
+      "contributions",
+      "cooperative",
+      "player",
+      "free"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a very high, near-unconditional cooperator. Their default is to contribute the full endowment and they maintain this behavior almost the entire game. They briefly experiment with free-riding exactly once, then immediately revert to full contributi...",
+      "<CONTRIBUTION> This player is a *rigid full cooperator*. They always contribute their entire endowment and never adjust, regardless of others’ behavior or payoff fluctuations. Their contributions are maximally stable and show no volatility or contingent response to free-riding...",
+      "<CONTRIBUTION> The player is a strict, unwavering full cooperator. They always allocate their entire endowment to the public fund, regardless of changes in group behavior, fluctuations in others’ average contributions, or variations in their own payoff. Their contribution patt...",
+      "<CONTRIBUTION> This player is a predominantly unconditional high contributor with occasional, deliberate deviations. Their default is to give the maximum possible amount and they sustain this pattern through essentially the entire game, despite observing repeated under-contrib...",
+      "<CONTRIBUTION> This player is an extremely stable high contributor who effectively treats full contribution as a default rule. They consistently allocate their entire endowment to the public fund across almost all decisions, with a single, isolated deviation to a still-high co..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 317,
+    "cluster_title": "Unconditional Contributors in Cooperative Settings",
+    "cluster_intro": "This group is characterized by individuals who consistently contribute their full endowment to public goods, regardless of others' behaviors or potential rewards. Their stable and unwavering commitment to cooperation highlights a strong intrinsic motivation to support group efficiency and collective well-being.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "group",
+      "contribution",
+      "cooperative",
+      "rewards",
+      "cooperation",
+      "contributions",
+      "behavior"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a stable, unconditional high contributor. They consistently allocate their full endowment to the public fund every round, regardless of how much others give, whether cooperation is high or low, and whether they are personally being rewarded. They...",
+      "<CONTRIBUTION> This player is a steadfast unconditional cooperator. They consistently allocate their entire endowment to the public fund in every situation, regardless of others’ behavior or the recent payoff environment. Their contribution pattern is extremely stable and show...",
+      "<CONTRIBUTION> This player is a strongly cooperative, near-unconditional full contributor. They consistently give their entire endowment to the public account whenever the rest of the group is also fully contributing. They maintain this pattern for almost all rounds, including...",
+      "<CONTRIBUTION> This player is a steadfast high contributor. They almost always give the full endowment, with a single very small deviation, and maintain this pattern even when others free-ride heavily and returns are clearly low. Their strategy is essentially unconditional: th...",
+      "<CONTRIBUTION> This player is a persistent high contributor with a late, brief phase of partial free-riding. For most of the game, they reliably give the full endowment to the public good, even when others contribute much less and their own payoffs drop. This indicates a stron..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 203,
+    "cluster_title": "Patterns of Self-Interested Free-Riding",
+    "cluster_intro": "This cluster highlights behaviors of individuals who consistently prioritize personal gain over group contributions. They exhibit a stable pattern of minimal to no cooperation, often free-riding on the efforts of others while occasionally making token contributions. Their strategies reflect a clear understanding of the dynamics of group cooperation, yet they choose to maximize their own payoffs.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "contribution",
+      "cooperation",
+      "behavior",
+      "free",
+      "group",
+      "contributions"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> The player is a strict, stable free-rider. They consistently contribute nothing in every decision, regardless of others’ behavior, the average contribution level, or changes in group size. Their strategy does not exhibit exploration or adjustment; it is a fixed...",
+      "<CONTRIBUTION> The player is a persistent low contributor who free-rides on the group while avoiding the absolute minimum often enough to reduce overtly “provocative” behavior. Their default choice is a very small contribution, typically at the extreme low end relative to the...",
+      "<CONTRIBUTION> This player is a stable, uncompromising free rider. They always keep their entire endowment and never contribute to the public good. Their behavior is highly consistent and shows no signs of experimentation or conditional cooperation. They appear to understand t...",
+      "<CONTRIBUTION> This player fits a “profit-focused opportunistic cooperator” type. They understand early that contributing is individually costly given the low multiplier and generally aim to maximize their own payoff, not group efficiency. They alternate between zero, low, and...",
+      "<CONTRIBUTION> This player fits a “calculating conditional cooperator / opportunistic freerider” profile. They repeatedly switch between full contribution and zero, rarely choosing intermediate amounts. Their behavior suggests they understand that individual contributions are..."
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "cluster_size": 296,
+    "cluster_title": "Patterns of Conditional Cooperation and Free-Riding",
+    "cluster_intro": "This cluster reveals diverse behaviors in contribution patterns, highlighting a mix of cooperation and free-riding among individuals. Many participants exhibit conditional cooperation, adjusting their contributions based on group dynamics and perceived norms. This variability suggests a complex interplay between personal incentives and collective expectations.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "group",
+      "contribution",
+      "cooperation",
+      "contributions",
+      "cooperative",
+      "behavior"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a generally high contributor who alternates between full cooperation and moderate free-riding. They often give the entire endowment or half of it, rarely contributing very little. Their pattern suggests conditional cooperation: they appear more wi...",
+      "<CONTRIBUTION> The player fits a “confused-but-corrective conditional cooperator” type. Early behavior shows a mix of very high and very low contributions, which aligns poorly with the surrounding group norm and suggests misunderstanding of the interface rather than deliberate...",
+      "<CONTRIBUTION> This player fits a “conditional, talk-cooperative but payoff-conscious” type. They do not follow a simple high- or low-contribution rule; instead they vary contributions widely and appear responsive to both group behavior and chat. They sometimes fully free-ride...",
+      "<CONTRIBUTION> This player is a generally high contributor with selective, sometimes sharp deviations. They usually give the full endowment when group behavior looks cooperative or when norms are being affirmed in chat. They occasionally under-contribute or free-ride when othe...",
+      "<CONTRIBUTION> This player is a highly inconsistent contributor who treats contribution choices as a way to express moral positions and opposition to group behavior, not as a way to maximize payoff. They sometimes match the group’s full-contribution norm, but they also repeate..."
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "cluster_size": 397,
+    "cluster_title": "Unwavering Commitment to Group Contribution",
+    "cluster_intro": "This cluster represents individuals who consistently prioritize full cooperation in group settings. Their behavior is characterized by a steadfast commitment to contributing the maximum amount, regardless of others' actions or external pressures. These players demonstrate a strong belief in the importance of group efficiency and norms, maintaining their contributions even in challenging circumstances.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "group",
+      "norm",
+      "contribution",
+      "behavior",
+      "reward",
+      "cooperation",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a strict, unwavering full cooperator. They always contribute the maximum available amount, never deviating, regardless of others’ behavior, conflict in the group, or stage of the game. Their contributions are not conditional on others’ fairness or...",
+      "<CONTRIBUTION> This player is a strict, unwavering full cooperator under these payoff conditions. Once they see that the group norm is to contribute the maximum, they consistently mirror that, always choosing the full endowment rather than free-riding. Their behavior does not...",
+      "<CONTRIBUTION> This player is a near-unconditional high contributor with one late defection. They almost always choose the cooperative, payoff-maximizing action even when personally attacked, showing strong preference for maintaining group efficiency over retaliating or free-r...",
+      "<CONTRIBUTION> This player is a fully stable, unconditional full contributor within the binary choice constraint. They always select the maximum possible contribution and never deviate, regardless of prior payoffs, others’ deviations, or conflict in chat. Their contribution pa...",
+      "<CONTRIBUTION> This player is a strong, near-unconditional max contributor. They consistently choose the full cooperative option almost every round and endorse “everyone max” as the clear group norm. They show no gradual decay in contributions as the game progresses and appear..."
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "cluster_size": 258,
+    "cluster_title": "Unconditional Cooperation in Group Dynamics",
+    "cluster_intro": "This cluster highlights individuals who consistently exhibit high levels of cooperation, often contributing the maximum possible to group efforts. Their behavior remains stable even in the face of free-riding or deviations from others, suggesting a strong internalization of cooperative norms. These players prioritize group welfare over personal gain, demonstrating a commitment to collective success.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "group",
+      "contribution",
+      "cooperation",
+      "norm",
+      "behavior",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is primarily a high, almost unconditional cooperator who occasionally experiments with defection. For the overwhelming majority of the game, they contribute the maximum possible amount regardless of whether others do the same. Their cooperation is on...",
+      "<CONTRIBUTION> This player is a strongly cooperative high contributor with one brief deviation. They consistently choose the full endowment contribution in nearly all rounds, including late in the game, even after multiple episodes of others free-riding. Their pattern indicate...",
+      "<CONTRIBUTION> This player is a highly cooperative, near-always-full contributor with a single late-game deviation. They almost always contribute their entire endowment to the public fund, including in early uncertainty, mid-game when others defect, and late-game when many are...",
+      "<CONTRIBUTION> This player is a strong, persistent high contributor who overwhelmingly chooses to contribute the full endowment. They contribute fully in most rounds and only occasionally keep everything for themselves. These few zero-contribution choices do not appear to be r...",
+      "<CONTRIBUTION> This player is a very high, near-unconditional cooperator. They routinely give the full endowment, with only minor deviations at the very beginning and very end. Their behavior is stable across most of the game and does not react strongly to others’ minor deviat..."
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "cluster_size": 255,
+    "cluster_title": "Cooperative Behavior in Contribution Dynamics",
+    "cluster_intro": "This cluster highlights a range of contribution behaviors, from high cooperation to opportunistic free-riding. Players exhibit varying degrees of flexibility in their contributions, often influenced by the actions of others and the potential rewards. Understanding these dynamics can inform strategies for enhancing group cooperation.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "contributions",
+      "cooperation",
+      "contribution",
+      "high",
+      "cooperative",
+      "group",
+      "rewards"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is primarily a free-rider with occasional, short-lived switches to full contribution. Their baseline is to keep their entire endowment and live off others’ contributions, even when most others contribute. They only ever use the extreme options availa...",
+      "<CONTRIBUTION> This player is a highly unstable, opportunistic contributor who oscillates between full cooperation and full free-riding, with some intermediate giving only early on. They clearly understand that others are generally cooperative and that the multiplier makes con...",
+      "<CONTRIBUTION> This player is a payoff‑oriented conditional cooperator with opportunistic free‑riding. They understand that cooperation is profitable in this environment (the public return per contributed coin exceeds 1), but they do not internalize a strong fairness or recipr...",
+      "<CONTRIBUTION> This player is a generally high contributor with selective deviations. They treat full contribution as the default and return to it repeatedly, even after episodes of taking the entire endowment. Their pattern indicates that they value a high public fund and are...",
+      "<CONTRIBUTION> This player is a generally high contributor who occasionally shades down contributions rather than dramatically defecting. They alternate between full and moderately reduced contributions, but never contribute nothing and rarely contribute less than about half t..."
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "cluster_size": 240,
+    "cluster_title": "Patterns of Cooperative Contribution Behavior",
+    "cluster_intro": "This cluster highlights diverse strategies of contribution among individuals, ranging from stable high contributors to flexible, opportunistic givers. Participants exhibit varying degrees of cooperation, often influenced by the behavior of others, yet many maintain a consistent commitment to contributing significantly. The interplay of reward and punishment dynamics shapes their contributions, reflecting a blend of altruism and self-interest.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "punishment",
+      "contribution",
+      "cooperation",
+      "high",
+      "contributions",
+      "rewards",
+      "behavior"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a perfectly stable, moderate contributor. They always contribute exactly half of their endowment and never adjust this level despite substantial variation in others’ behavior, total contributions, and final payoffs. Their strategy is simple and ru...",
+      "<CONTRIBUTION> This player is a flexible, opportunistic contributor who mixes medium cooperation with episodes of near-complete free-riding. They alternate between contributing roughly half of their endowment and contributing almost nothing, with occasional token amounts. Thei...",
+      "<CONTRIBUTION> This player is a generally high contributor who occasionally shades down contributions in a controlled, non-drifting way. They usually match or nearly match the full endowment and only reduce their own contribution by a moderate amount rather than defecting outr...",
+      "<CONTRIBUTION> This player is a highly cooperative, near-unconditional high contributor who only modestly shades down contributions later in the game. For most of the game, they contribute the full endowment, regardless of variation in others’ behavior, including when some gro...",
+      "<CONTRIBUTION> This player is a strict full contributor. They always allocate their entire endowment to the public fund, with no experimentation or adjustment in response to others’ behavior. Their cooperation is unconditional and persists despite visible free-riding by some g..."
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "cluster_size": 315,
+    "cluster_title": "Unconditional High Contributors in Cooperative Settings",
+    "cluster_intro": "This group of players consistently demonstrates a strong commitment to cooperation, always contributing their entire endowment to the public fund. Their behavior remains stable and unwavering, regardless of the actions of others or the overall contribution climate. They embody a norm of full cooperation, showing little to no evidence of conditionality in their contributions.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "contribution",
+      "norm",
+      "reward",
+      "behavior",
+      "cooperation",
+      "player",
+      "high"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a strict, unconditional full contributor. They always give the entire endowment to the public fund and never deviate, even as others fluctuate and as their own relative payoff is persistently lower than that of several group members. There is no e...",
+      "<CONTRIBUTION> This player is a high, steady contributor who anchors close to full cooperation. They frequently give the entire endowment and otherwise hover modestly below the group average only when the general contribution climate looks weaker. They do not appear to conditi...",
+      "<CONTRIBUTION> This player is a strong, almost rigid high contributor who repeatedly gives the full endowment to the public good in most rounds. Their default norm is “always cooperate fully” rather than “match the group” or “best respond to incentives,” even though the margin...",
+      "<CONTRIBUTION> This player is a stable, unconditional full cooperator. They always contribute their entire endowment, regardless of how others behave, even when some group members give very little or clearly free‑ride. They do not adjust downward in response to low contributio...",
+      "<CONTRIBUTION> This player is an almost unconditionally full cooperator. They consistently contribute their entire endowment to the public fund, with a single, minimal deviation very late in the game. Their contribution pattern is extremely stable and shows no meaningful condi..."
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "cluster_size": 324,
+    "cluster_title": "Conditional Cooperation and Contribution Patterns",
+    "cluster_intro": "This cluster highlights a range of contributors who exhibit varying degrees of cooperation based on group dynamics and personal strategies. Players often oscillate between high and low contributions, demonstrating flexibility in response to the behavior of others. Their patterns suggest a complex interplay between individual incentives and group norms.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "contributions",
+      "contribution",
+      "high",
+      "player",
+      "norm",
+      "group",
+      "low"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is a “stubborn moderate cooperator.” They almost always contribute the same intermediate amount, with only one brief deviation downward and one brief deviation upward. Their default is to give a consistent, non-maximal share that is below what many o...",
+      "<CONTRIBUTION> This player is a generally high contributor with moderate downward flexibility. They usually give more than or close to the group average, often at or near full contribution, but occasionally cut back substantially. Their baseline seems to be a “cooperative but...",
+      "<CONTRIBUTION> This player is a generally high contributor who experiments with partial free-riding but does not fully defect. They start with full contributions and repeatedly return to full provision even after periods of contributing less, which suggests an internal norm fa...",
+      "<CONTRIBUTION> This player is a flexible, payoff‑attentive conditional cooperator with mild opportunistic tendencies. They are willing to move between full contribution, partial contribution, and zero contribution rather than follow a fixed rule. Early in the game they shift f...",
+      "<CONTRIBUTION> This player is a strategically flexible, conditionally cooperative low–to‑medium contributor who alternates between free‑riding and substantial giving. Early on, the player contributes substantially less than the group average while still participating in the pu..."
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "cluster_size": 134,
+    "cluster_title": "Cooperative Behavior in Group Dynamics",
+    "cluster_intro": "This cluster highlights a range of cooperative behaviors among players, from high contributors to opportunistic free-riders. Players exhibit varying degrees of stability in their contributions, oscillating between cooperation and defection. Understanding these patterns can inform strategies for enhancing group cooperation.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "contribution",
+      "contributions",
+      "player",
+      "high",
+      "group",
+      "cooperation"
+    ],
+    "sample_examples": [
+      "<CONTRIBUTION> This player is an unstable, opportunistic free-rider with intermittent cooperation. They alternate between full contribution and full defection rather than choosing intermediate levels (which are not available here), and they do not settle into a consistent coop...",
+      "<CONTRIBUTION> This player is a predominantly self-interested free-rider with opportunistic and somewhat erratic cooperation. They consistently favor taking the full private endowment when others are contributing, and they never appear to follow a stable reciprocity rule. They...",
+      "<CONTRIBUTION> This player is mostly a high contributor who aligns with the group’s cooperation norm but intermittently deviates to free-ride or to send a signal. Across the game, they choose the maximum contribution in the majority of rounds and seem comfortable with the effi...",
+      "<CONTRIBUTION> This player alternates between full cooperation and full free-riding, never choosing intermediate contributions (which are not available here). The pattern is unstable and oscillatory rather than converging on one mode. They repeatedly free-ride when others are...",
+      "<CONTRIBUTION> This player is a moderate, somewhat noisy conditional cooperator with a persistent pro-cooperation bias. They use both full free-riding and full contribution, never intermediate levels (by design), but overall they contribute more often than they defect. Early o..."
+    ]
+  }
+]

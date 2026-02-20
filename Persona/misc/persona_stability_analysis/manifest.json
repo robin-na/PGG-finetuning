@@ -1,0 +1,98 @@
+{
+  "config": {
+    "input_path": "summary_gpt51_learn.jsonl",
+    "split_tags": [
+      "PUNISHMENT",
+      "REWARD",
+      "COMMUNICATION"
+    ],
+    "base_n_clusters": 15,
+    "adaptive_k": true,
+    "min_samples_per_cluster": 15,
+    "embedding_backend": "openai",
+    "title_backend": "openai",
+    "title_use_extended": true,
+    "random_state": 42
+  },
+  "results_summary": {
+    "PUNISHMENT": {
+      "tag": "PUNISHMENT",
+      "k_with": 6,
+      "k_without": 7,
+      "n_with": 1812,
+      "n_without": 1879,
+      "alignment_map": {
+        "0": 0,
+        "1": 2,
+        "2": 4,
+        "3": 5,
+        "4": 3,
+        "5": 6
+      },
+      "alignment_score": 0.6931610355619523,
+      "quality_metrics_with": {
+        "silhouette_score": 0.40648627281188965,
+        "calinski_harabasz_score": 1861.3525390625,
+        "davies_bouldin_score": 0.785823929728033
+      },
+      "quality_metrics_without": {
+        "silhouette_score": 0.3860865831375122,
+        "calinski_harabasz_score": 1865.5462646484375,
+        "davies_bouldin_score": 0.7955402862821002
+      }
+    },
+    "REWARD": {
+      "tag": "REWARD",
+      "k_with": 6,
+      "k_without": 7,
+      "n_with": 1815,
+      "n_without": 1876,
+      "alignment_map": {
+        "0": 5,
+        "1": 4,
+        "2": 0,
+        "3": 6,
+        "4": 2,
+        "5": 1
+      },
+      "alignment_score": 0.17221586895087015,
+      "quality_metrics_with": {
+        "silhouette_score": 0.3803881108760834,
+        "calinski_harabasz_score": 1642.7962646484375,
+        "davies_bouldin_score": 0.8019534789275599
+      },
+      "quality_metrics_without": {
+        "silhouette_score": 0.4005562365055084,
+        "calinski_harabasz_score": 1960.5281982421875,
+        "davies_bouldin_score": 0.7593053401622828
+      }
+    },
+    "COMMUNICATION": {
+      "tag": "COMMUNICATION",
+      "k_with": 7,
+      "k_without": 6,
+      "n_with": 1870,
+      "n_without": 1821,
+      "alignment_map": {
+        "0": 1,
+        "1": 4,
+        "2": 5,
+        "3": 2,
+        "4": 0,
+        "6": 3
+      },
+      "alignment_score": 0.4225330219088372,
+      "quality_metrics_with": {
+        "silhouette_score": 0.37168416380882263,
+        "calinski_harabasz_score": 1885.294677734375,
+        "davies_bouldin_score": 0.8562553342540946
+      },
+      "quality_metrics_without": {
+        "silhouette_score": 0.39154675602912903,
+        "calinski_harabasz_score": 1982.672119140625,
+        "davies_bouldin_score": 0.8607853524942618
+      }
+    }
+  },
+  "timestamp": "2026-02-13T00:30:42.492101"
+}

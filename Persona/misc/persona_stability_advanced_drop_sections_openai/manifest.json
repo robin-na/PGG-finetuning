@@ -1,0 +1,51 @@
+{
+  "config": {
+    "input_path": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/summary_gpt51_learn.jsonl",
+    "existing_dir": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_analysis",
+    "output_dir": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai",
+    "split_tags": [
+      "PUNISHMENT",
+      "REWARD",
+      "COMMUNICATION"
+    ],
+    "base_n_clusters": 15,
+    "adaptive_k": true,
+    "min_samples_per_cluster": 15,
+    "random_state": 42,
+    "original_embedding_backend": "cached_openai",
+    "original_embedding_cache_path": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/test_extended_titles/embeddings_text-embedding-3-large_1536.npy",
+    "embedding_model": "text-embedding-3-large",
+    "embedding_dimensions": 1536,
+    "embedding_batch_size": 200,
+    "delex_embedding_backend": "openai",
+    "delex_embedding_cache_path": null,
+    "delex_mode": "drop_sections",
+    "mechanism_tags": [
+      "PUNISHMENT",
+      "REWARD",
+      "COMMUNICATION"
+    ],
+    "mechanism_word_pattern": "\\b(punishment|punish|punished|punishing|reward|rewards|rewarded|rewarding|communication|communicate|chat|chats|message|messages|sanction|sanctions)\\b",
+    "umap_min_dist": 0.5,
+    "umap_metric": "cosine",
+    "tfidf_max_features": 1536,
+    "tfidf_ngram_min": 1,
+    "tfidf_ngram_max": 2,
+    "tfidf_min_df": 2,
+    "tfidf_max_df": 0.95,
+    "bootstrap_iters": 100
+  },
+  "rows_used": 3691,
+  "outputs": {
+    "step0_existing_enhanced_png": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai/step0_existing_enhanced.png",
+    "step1_dir": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai/step1_shared_space_original",
+    "step2_dir": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai/step2_shared_space_delex",
+    "step12_compare_png": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai/step12_compare.png",
+    "bootstrap_step1_csv": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai/step1_shared_space_original/bootstrap_step1_original_summary.csv",
+    "bootstrap_step2_csv": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai/step2_shared_space_delex/bootstrap_step2_delex_summary.csv",
+    "bootstrap_step1_png": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai/step1_shared_space_original/bootstrap_step1_original_ci.png",
+    "bootstrap_step2_png": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai/step2_shared_space_delex/bootstrap_step2_delex_ci.png",
+    "bootstrap_compare_png": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_drop_sections_openai/step3_bootstrap_mean_compare.png"
+  },
+  "timestamp": "2026-02-13T10:49:01.210501"
+}

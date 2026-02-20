@@ -1,0 +1,10 @@
+experiment_id,config_hash,game_id,round,actor_id,actor_name,target_id,target_name,type,units_decided,units_actual,was_scaled,cost,impact,timestamp
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_0,DOG,agent_1,CHICKEN,reward,12,12,False,12,11.399999999999999,2026-01-02T01:41:54.929788
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_0,DOG,agent_2,CAT,reward,12,12,False,12,11.399999999999999,2026-01-02T01:41:54.929914
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_0,DOG,agent_3,FISH,reward,10,10,False,10,9.5,2026-01-02T01:41:54.929946
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_1,CHICKEN,agent_0,DOG,reward,5,5,False,5,4.75,2026-01-02T01:41:59.341315
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_1,CHICKEN,agent_2,CAT,reward,1,1,False,1,0.95,2026-01-02T01:41:59.341417
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_2,CAT,agent_0,DOG,reward,10,10,False,10,9.5,2026-01-02T01:42:04.556738
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_2,CAT,agent_1,CHICKEN,reward,10,10,False,10,9.5,2026-01-02T01:42:04.557740
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_3,FISH,agent_0,DOG,reward,10,10,False,10,9.5,2026-01-02T01:42:09.369239
+exp_022_control,3c4f3c09,exp_022_control_game1,1,agent_3,FISH,agent_1,CHICKEN,reward,20,20,False,20,19.0,2026-01-02T01:42:09.369316

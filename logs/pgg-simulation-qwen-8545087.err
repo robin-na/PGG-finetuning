@@ -1,6 +1,0 @@
-[2026-01-29T12:20:56.327] error: NVML: Failed to get Compute running process count(3): Not Supported
-`torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:   8%|▊         | 1/12 [00:04<00:46,  4.20s/it]Loading checkpoint shards:  17%|█▋        | 2/12 [00:07<00:36,  3.70s/it][2026-01-29T12:21:26.245] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T12:21:26.245] error: NVML: Failed to get Compute running process count(3): Not Supported
-Loading checkpoint shards:  25%|██▌       | 3/12 [00:11<00:32,  3.63s/it]Loading checkpoint shards:  33%|███▎      | 4/12 [00:14<00:29,  3.67s/it]Loading checkpoint shards:  42%|████▏     | 5/12 [00:18<00:25,  3.60s/it]Loading checkpoint shards:  50%|█████     | 6/12 [00:22<00:22,  3.68s/it]/var/spool/slurmd/job8545087/slurm_script: line 33: 336968 Killed                  python Simulation_robin/run_simulation.py --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True --env_csv Simulation_robin/df_analysis_val_dedup_from_validation_11_c.csv
-[2026-01-29T12:21:45.497] error: Detected 1 oom_kill event in StepId=8545087.batch. Some of the step tasks have been OOM Killed.

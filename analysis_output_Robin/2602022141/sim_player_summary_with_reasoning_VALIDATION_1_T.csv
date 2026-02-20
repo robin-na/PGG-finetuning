@@ -1,4 +1,0 @@
-game_id,player_id,mean_contribution_rate,mean_payoff,punishment_rate,reward_rate
-2601311619-VALIDATION_1_T,DUCK,0.721875,30.75,0.6875,0.0
-2601311619-VALIDATION_1_T,CHICK,1.0,37.0,1.0,0.0
-2601311619-VALIDATION_1_T,FROG,0.125,15.125,1.0,0.0

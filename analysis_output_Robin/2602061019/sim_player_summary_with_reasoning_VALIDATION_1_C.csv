@@ -1,4 +1,0 @@
-game_id,player_id,mean_contribution_rate,mean_payoff,punishment_rate,reward_rate
-2602052146-VALIDATION_1_C,COW,0.8125,36.25,0.0,0.0
-2602052146-VALIDATION_1_C,ELEPHANT,0.90625,38.125,0.0,0.0
-2602052146-VALIDATION_1_C,OWL,0.5,30.0,0.0,0.0

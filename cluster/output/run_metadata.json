@@ -1,0 +1,29 @@
+{
+  "input_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/summary_gpt51_learn.jsonl",
+  "output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/Cluster/output/summary_gpt51_learn_clustered.jsonl",
+  "rows_used": 3691,
+  "text_column": "text",
+  "only_finished": true,
+  "embedding_backend": "openai",
+  "embedding_model": "text-embedding-3-large",
+  "embedding_dimensions": 1536,
+  "umap_params": {
+    "min_dist": 0.5,
+    "metric": "cosine",
+    "neighbors_ratio": 0.2,
+    "random_state": 42
+  },
+  "clustering_params": {
+    "method": "kmeans",
+    "n_clusters": 15,
+    "auto_k": false,
+    "random_state": 42,
+    "n_init": 20
+  },
+  "summary_backend": "openai",
+  "summary_model": "gpt-4o-mini",
+  "outputs": {
+    "cluster_catalog_json": "/Users/kehangzh/Desktop/PGG-finetuning/Cluster/output/cluster_catalog.json",
+    "umap_points_csv": "/Users/kehangzh/Desktop/PGG-finetuning/Cluster/output/umap_points.csv"
+  }
+}

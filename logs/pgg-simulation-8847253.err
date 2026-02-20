@@ -1,20 +1,0 @@
-/home/robinna/.conda/envs/llm_conda/lib/python3.9/contextlib.py:87: FutureWarning: `torch.backends.cuda.sdp_kernel()` is deprecated. In the future, this context manager will be removed. Please see `torch.nn.attention.sdpa_kernel()` for the new context manager, with updated signature.
-  self.gen = func(*args, **kwds)
-`torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:   8%|▊         | 1/12 [00:00<00:07,  1.38it/s]Loading checkpoint shards:  17%|█▋        | 2/12 [00:00<00:03,  2.54it/s]Loading checkpoint shards:  25%|██▌       | 3/12 [00:00<00:02,  3.79it/s]Loading checkpoint shards:  33%|███▎      | 4/12 [00:01<00:01,  4.91it/s]Loading checkpoint shards:  42%|████▏     | 5/12 [00:01<00:01,  5.88it/s]Loading checkpoint shards:  50%|█████     | 6/12 [00:01<00:00,  6.64it/s]Loading checkpoint shards:  58%|█████▊    | 7/12 [00:01<00:00,  7.24it/s]Loading checkpoint shards:  67%|██████▋   | 8/12 [00:01<00:00,  7.70it/s]Loading checkpoint shards:  75%|███████▌  | 9/12 [00:01<00:00,  6.10it/s]Loading checkpoint shards:  83%|████████▎ | 10/12 [00:01<00:00,  6.76it/s]Loading checkpoint shards:  92%|█████████▏| 11/12 [00:02<00:00,  7.33it/s]Loading checkpoint shards: 100%|██████████| 12/12 [00:02<00:00,  5.92it/s]
-Traceback (most recent call last):
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/run_simulation.py", line 148, in <module>
-    main(cfg)
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/run_simulation.py", line 124, in main
-    df_all, transcripts_all, output_paths = simulate_games(
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/simulator.py", line 881, in simulate_games
-    game_id, df_game, transcripts_game, rows_path, transcripts_path, debug_path, debug_full_path, config_path = run_one(
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/simulator.py", line 835, in run_one
-    config_path = write_config(experiment_dir, env, args, run_ts)
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/output_manager.py", line 90, in write_config
-    log(f"[ptc] saved config JSON → {config_path}")
-  File "/orcd/home/002/robinna/PGG-finetuning/Simulation_robin/utils.py", line 11, in log
-    print(*args, **kwargs)
-OSError: [Errno 116] Stale file handle
-Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
-OSError: [Errno 116] Stale file handle

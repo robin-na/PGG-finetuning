@@ -1,0 +1,122 @@
+[
+  {
+    "cluster_id": 0,
+    "size": 247,
+    "title": "Rewarding / Payoff / Low",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "rewarding",
+      "payoff",
+      "low",
+      "game",
+      "willing",
+      "end",
+      "spending",
+      "rewarded",
+      "instead",
+      "contribute",
+      "pattern",
+      "contributors"
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "size": 394,
+    "title": "Punishment / Punished / Low",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "low",
+      "punish",
+      "contributors",
+      "game",
+      "enforcement",
+      "payoff",
+      "end",
+      "non",
+      "sanctions",
+      "unknown"
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "size": 283,
+    "title": "Punishment / Low / Punished",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "low",
+      "punished",
+      "punish",
+      "contributors",
+      "sanctions",
+      "payoff",
+      "contribute",
+      "players",
+      "pattern",
+      "willing",
+      "punishers"
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "size": 265,
+    "title": "Punishment / Low / Communication",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "low",
+      "game",
+      "communication",
+      "chat",
+      "end",
+      "social",
+      "payoff",
+      "contribute",
+      "non",
+      "norms",
+      "willing"
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "size": 373,
+    "title": "Low / Communication / Payoff",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "game",
+      "low",
+      "communication",
+      "payoff",
+      "chat",
+      "rewarding",
+      "end",
+      "contribute",
+      "unknown",
+      "social",
+      "fully",
+      "punishment"
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "size": 253,
+    "title": "Payoff / Low / Rewarding",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "payoff",
+      "low",
+      "game",
+      "rewarding",
+      "contribute",
+      "social",
+      "contributing",
+      "end",
+      "pattern",
+      "non",
+      "does",
+      "riding"
+    ]
+  }
+]

@@ -1,14 +1,0 @@
-[2026-01-29T16:53:05.795] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T16:53:35.063] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T16:53:35.090] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T16:54:05.063] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T16:54:05.141] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T16:54:35.063] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T16:54:35.088] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T16:55:05.063] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T16:55:05.063] error: NVML: Failed to get Compute running process count(3): Not Supported
-`torch_dtype` is deprecated! Use `dtype` instead!
-Loading checkpoint shards:   0%|          | 0/12 [00:00<?, ?it/s]Loading checkpoint shards:   8%|▊         | 1/12 [00:03<00:40,  3.65s/it]Loading checkpoint shards:  17%|█▋        | 2/12 [00:06<00:34,  3.42s/it]Loading checkpoint shards:  25%|██▌       | 3/12 [00:10<00:31,  3.45s/it]Loading checkpoint shards:  33%|███▎      | 4/12 [00:13<00:26,  3.34s/it]Loading checkpoint shards:  42%|████▏     | 5/12 [00:16<00:23,  3.36s/it][2026-01-29T16:55:35.062] error: NVML: Failed to get Compute running process count(3): Not Supported
-[2026-01-29T16:55:35.063] error: NVML: Failed to get Compute running process count(3): Not Supported
-Loading checkpoint shards:  50%|█████     | 6/12 [00:20<00:20,  3.40s/it]/var/spool/slurmd/job8549595/slurm_script: line 33: 505795 Killed                  python Simulation_robin/run_simulation.py --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True --env_csv Simulation_robin/df_analysis_val_dedup_from_validation_13_c.csv
-[2026-01-29T16:55:43.296] error: Detected 1 oom_kill event in StepId=8549595.batch. Some of the step tasks have been OOM Killed.

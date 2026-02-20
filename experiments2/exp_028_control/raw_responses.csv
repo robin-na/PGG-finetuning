@@ -1,0 +1,187 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,prompt_type,raw_response,parsed_result,timestamp
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_0,DOG,chat,"<REASONING>
+I will propose a cooperative strategy to maximize overall payoffs. If others agree, we can ensure mutual benefits and avoid competitive losses.
+</REASONING>
+<MESSAGE>
+Let's cooperate for mutual benefit. If we all agree to collaborate, we can maximize our collective payoffs instead of competing and risking losses.
+</MESSAGE>","Let's cooperate for mutual benefit. If we all agree to collaborate, we can maximize our collective payoffs instead of competing and risking losses.",2026-01-02T01:49:15.560031
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_1,CHICKEN,chat,"<REASONING>
+Cooperation can lead to higher collective payoffs. Aligning with DOG's proposal could reduce competition and increase mutual benefits. Assuming others are rational, agreeing now might ensure others follow suit, minimizing risks of defection.
+</REASONING>
+<MESSAGE>
+""I support DOG's idea. Let's agree to cooperate fully for maximum benefit. Let's prioritize trust and collaboration."" 
+</MESSAGE>",I support DOG's idea. Let's agree to cooperate fully for maximum benefit. Let's prioritize trust and collaboration.,2026-01-02T01:49:16.781818
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_2,CAT,chat,"<REASONING>
+Cooperating can indeed maximize collective payoffs if everyone adheres to the agreement. Given DOG's and CHICKEN's willingness to collaborate, expressing my support reinforces trust and could lead to optimal outcomes for all.
+</REASONING>
+<MESSAGE>
+I agree with DOG and CHICKEN. Let's fully cooperate for mutual benefit. Trust can lead to the best results for everyone involved.
+</MESSAGE>",I agree with DOG and CHICKEN. Let's fully cooperate for mutual benefit. Trust can lead to the best results for everyone involved.,2026-01-02T01:49:18.337681
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_3,FISH,chat,"<REASONING>
+Given mutual agreement on cooperation from everyone, maintaining this strategy ensures collective gain. Distrust or competitive actions could undermine the trust and potential payoff. Reinforcing commitment to cooperation aligns interests and emphasizes trust, reducing risks.
+</REASONING>
+<MESSAGE>
+I agree with everyone's commitment to cooperation. Sticking to this plan ensures the highest collective payoff. Let's uphold this trust and maximize our benefits.
+</MESSAGE>",I agree with everyone's commitment to cooperation. Sticking to this plan ensures the highest collective payoff. Let's uphold this trust and maximize our benefits.,2026-01-02T01:49:19.859082
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_4,BIRD,chat,"<REASONING>
+Everyone's aligned on cooperation, which maximizes collective payoff. It's crucial to affirm commitment to maintain trust. Any deviation could lead to mutual distrust, reducing overall benefits. I will echo support to reinforce our collaborative strategy.
+</REASONING>
+<MESSAGE>
+I completely agree with everyone. Let's fully commit to cooperation for the best mutual outcome. Trust is key. Looking forward to maximizing our collective benefits.
+</MESSAGE>",I completely agree with everyone. Let's fully commit to cooperation for the best mutual outcome. Trust is key. Looking forward to maximizing our collective benefits.,2026-01-02T01:49:21.362498
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_5,RABBIT,chat,"<REASONING>
+Everyone agrees on cooperation, which suggests a strong coalition for mutual benefit. Breaking consensus may lead to competitive losses. By reinforcing commitment, we maintain trust and avoid unnecessary risks.
+</REASONING>
+<MESSAGE>
+I'm committed to our cooperative strategy. Trust and collaboration are our best path forward. Let's uphold this agreement for the highest collective payoffs.
+</MESSAGE>",I'm committed to our cooperative strategy. Trust and collaboration are our best path forward. Let's uphold this agreement for the highest collective payoffs.,2026-01-02T01:49:22.701070
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_6,TURTLE,chat,"<REASONING>Since all players have unanimously agreed to cooperate, breaking this trust may jeopardize long-term benefits. It's crucial to maintain alignment to ensure mutual gains. Thus, reiterate the commitment to fostering trust among players.</REASONING>
+<MESSAGE>I'm fully on board with everyone. Let's maintain our cooperative strategy to achieve the highest possible collective payoff. Trust is our strongest asset.</MESSAGE>",I'm fully on board with everyone. Let's maintain our cooperative strategy to achieve the highest possible collective payoff. Trust is our strongest asset.,2026-01-02T01:49:24.062775
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_7,HAMSTER,chat,"<REASONING>
+Given unanimous agreement on cooperation, deviating would risk trust and potential isolation. Maintaining the group consensus as expressed in previous messages maximizes collective benefits and minimizes conflict.
+</REASONING>
+<MESSAGE>
+I’m fully committed to our cooperative strategy. Trust and unity will maximize our collective payoff. Let's uphold our agreement.
+</MESSAGE>",I’m fully committed to our cooperative strategy. Trust and unity will maximize our collective payoff. Let's uphold our agreement.,2026-01-02T01:49:25.175571
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_8,FROG,chat,"<REASONING>
+All players have agreed to cooperate. Committing to this collective strategy ensures the highest payoff for everyone. As there is unanimous agreement on cooperation, I will reinforce my support for this plan to maintain trust and unity among all participants.
+</REASONING>
+<MESSAGE>
+I fully support our cooperative strategy. Maintaining trust and collaboration will ensure the best collective payoff for everyone. Looking forward to achieving maximum benefits together.
+</MESSAGE>",I fully support our cooperative strategy. Maintaining trust and collaboration will ensure the best collective payoff for everyone. Looking forward to achieving maximum benefits together.,2026-01-02T01:49:26.306353
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_9,MOUSE,chat,"<REASONING>
+All players have expressed unanimous commitment to cooperation, indicating low risk of defection. Reinforcing this consensus signals trust and strengthens the likelihood of mutually beneficial outcomes, maximizing everyone's payoffs.
+</REASONING>
+<MESSAGE>
+""I'm delighted to see the strong consensus on cooperation. Let's ensure we all stick to this agreement for maximum collective benefits. Trust is our key asset, and honoring it will lead to the best possible outcome for us all.""
+</MESSAGE>","I'm delighted to see the strong consensus on cooperation. Let's ensure we all stick to this agreement for maximum collective benefits. Trust is our key asset, and honoring it will lead to the best possible outcome for us all.",2026-01-02T01:49:27.946178
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_10,SNAKE,chat,"<REASONING>
+Everyone is committed to a cooperative strategy, which should maximize collective payoff. Breaking the consensus for short-term gain could lead to the breakdown of trust and worse outcomes. Continuing to reinforce the commitment to cooperation is the best way to ensure maximum benefits.
+</REASONING>
+<MESSAGE>
+""I fully support our mutual commitment to cooperation. Trust is critical for maximizing our collective payoff. Let's continue to honor our agreement and work together for the best outcome for everyone.""
+</MESSAGE>",I fully support our mutual commitment to cooperation. Trust is critical for maximizing our collective payoff. Let's continue to honor our agreement and work together for the best outcome for everyone.,2026-01-02T01:49:29.790981
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_0,DOG,contribution,"<REASONING>
+In this public goods game, all players have expressed a strong commitment to cooperation and maximizing the collective payoff. Given that everyone, including avatars like DOG, CHICKEN, CAT, and others, have explicitly agreed to contribute fully, it seems that there is a strong consensus and mutual trust among the group.
+
+If everyone contributes the total of their coins (20 coins), the public fund will be multiplied by 3.19, resulting in a large amount to be equally distributed among the players. This distribution ensures each player receives a significant payoff compared to their initial endowment, leading to a higher individual payoff than if any player were to defect.
+
+By contributing the full 20 coins, I align with the group’s strategy and help ensure we all achieve maximum payoffs. Given this strong assurance that others will also fully contribute, it would be strategically wise to cooperate fully this round to maintain the trust and achieve the optimal outcome.
+
+Therefore, I will contribute all 20 coins to the public fund, trusting that my fellow players will do the same based on our agreed strategy.
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:49:32.516892
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_1,CHICKEN,contribution,"<REASONING>
+Given the unanimous agreement in the group chat, it's clear that all players have expressed a commitment to cooperation and maximizing collective payoffs through full contributions to the public fund. The incentive in such a game is straightforward: the more coins contributed to the public fund, the greater the payoff due to the multiplier effect.
+
+In this single-round scenario, the optimal strategy for maximizing both individual and collective profits is to contribute the full 20 coins. If everyone truly acts as promised, the result will be the highest possible payoff of:
+
+\[ \text{Total public fund} = 11 \times 20 = 220 \text{ coins} \]
+\[ \text{Total payoff after multiplier} = 220 \times 3.19 = 701.8 \text{ coins} \]
+\[ \text{Payoff for each player} = \frac{701.8}{11} \approx 63.8 \text{ coins} \]
+
+This payoff is significantly higher than any alternative strategy involving less contribution. The risk of any player defecting is minimal given the unanimity and the trust-building nature of the round.
+
+Furthermore, since this is a one-time game, future retaliation or penalty for defection is not a concern, making the promise more credible. By contributing fully, I align with the group's consensus, supporting the trust and collaborative approach advocated and mutually agreed upon.
+
+Thus, I will contribute the full amount to the public fund to maximize potential returns, believing that others will honor their commitments based on the strong group consensus and the absence of any future rounds to exploit any defection.
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:49:36.344097
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_2,CAT,contribution,"<REASONING>
+The overwhelming consensus among all players is to fully cooperate by contributing the entire endowment to the public fund. This strategy maximizes the total amount in the fund, which when multiplied by 3.19 and redistributed, would provide the highest payoff for everyone.
+
+The persuasive and unanimous commitment to cooperation suggests the players value long-term gain over short-term individual benefits. Everyone agreeing to fully cooperate implicitly suggests that deviating from this agreement could harm trust and collective results in future iterations or games.
+
+Given the multiplier of 3.19, if everyone contributes their 20 coins, the total contribution will be 220 coins, resulting in a total fund of 701.8 coins after multiplication. Dividing this equally among all players provides each with an impressive payout of approximately 63.8 coins per player, which is higher than any individual could achieve from private funds alone.
+
+Since all players have committed to full cooperation and trustworthiness, there is strong social pressure to contribute fully, as everyone will benefit maximally. Additionally, reneging on this agreement could damage reputation and future cooperation.
+
+Based on the unanimous chat agreement and the calculations demonstrating the benefits of full cooperation, I decide to contribute my entire endowment.
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:49:39.210844
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_3,FISH,contribution,"<REASONING>
+In this scenario, every player has verbally committed to full cooperation, which means contributing the maximum amount possible to the public fund. This game incentivizes maximum contribution by multiplying the total contributions by 3.19 and then redistributing the total equally among all players. If everyone contributes their full 20 coins, each player's payoff will be higher than if they contributed less.
+
+However, there are always risks. Players might not honor their commitments, deciding instead to contribute less and free-ride on the others' contributions for a higher personal payoff. Despite this risk, the unanimous agreement in the chat and the emphasis on trust by each player suggest a strong likelihood that players will honor their agreement to cooperate fully. Thus, deviating from the agreed strategy would likely betray the trust of the group, potentially triggering retaliation in future interactions.
+
+Therefore, trusting that all players are committed based on the conversation and to maximize both my and the group's payoff, I will contribute my entire endowment to the public fund.
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:49:41.598720
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_4,BIRD,contribution,"<REASONING>
+The unanimous agreement among all players during the chat stage suggests a high level of commitment to cooperation. If everyone contributes their full amount (20 coins), the public fund will be maximally bolstered, resulting in the greatest possible collective payoff due to the multiplier effect.
+
+Contributing the full 20 coins aligns with the strategy discussed by all players, promoting trust and ensuring that I am perceived as trustworthy by the other players. Given that everyone has expressed a commitment to contribute fully, diverging from this approach would not only risk my integrity in the eyes of other players but would also decrease the potential payout overall.
+
+Given the multiplier of 3.19, contributing fully maximizes the total fund, and therefore maximizes the payout each player receives. This payout would be 3.19 * (20 * 11) / 11 = 63.8 coins per player, assuming full cooperation. If I were to contribute less while others contributed fully, I could marginally increase my coins, but this would backfire if other players revised their strategy in future interactions due to perceived mistrust. Therefore, it is most beneficial to cooperate fully.
+
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:49:45.623257
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_5,RABBIT,contribution,"<REASONING>
+In this game scenario, everyone has verbally committed to fully cooperating by contributing the maximum amount to the public fund. Given the unanimous agreement, contributing the full amount of 20 coins would lead to the highest possible payoff for everyone. This is because the total contribution will be maximized and will be multiplied by the factor of 3.19, leading to a large public fund that will be equally shared. 
+
+If everyone contributes 20 coins, the public fund will have 220 coins (11 players x 20 coins), and after multiplication by 3.19, it will grow to 701.8 coins. This amount, when evenly divided among the 11 players, results in each player receiving approximately 63.8 coins as their payoff from the public fund. Adding the private funds held back (which would be zero if we contribute fully), each player receives a total of 63.8 coins.
+
+Since mutual trust is maintained by all players adhering to the agreement, there is no downside to contributing the maximum, as deviating could lead to mistrust and lower long-term benefits in future rounds (if they were to exist). Hence, contributing 20 coins aligns with maximizing the collective payoff and maintaining group trust. Therefore, I decide to contribute the full 20 coins to the public fund.
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:49:48.326079
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_6,TURTLE,contribution,"<REASONING>
+Given the overwhelming consensus among participants to cooperate fully, contributing all of my 20 coins to the public fund seems to be the most strategic decision. If everyone follows through on their commitment, the public fund will be maximized, and the total payoff from the multiplier effect will be substantial enough to offer a significant return for each participant. Since each player has agreed to trust each other and maximize the public fund, deviating from this agreed strategy could risk diminishing trust and cooperative benefits in the future, as well as potentially isolating myself from the group. Thus, contributing the full amount aligns with both group strategy and maximum potential gain.
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:49:50.376097
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_7,HAMSTER,contribution,"<REASONING>
+In this scenario, we are playing a single round of a public goods game where everyone is advocating for full cooperation. The potential benefit of cooperating is substantial, as the total contribution to the public fund gets multiplied by 3.19 and then evenly distributed among all 11 players. If every player contributes their full endowment of 20 coins, the total contribution would be 220 coins, which would triple to 702 coins. Each player would then receive 63.81 coins (rounding calculations would depend on specifics in-game distribution, but conceptually, that's the return).
+
+Comparing this to contributing nothing: without contributing, I'd keep my initial 20 coins and still benefit from the multiplier effect of others' contributions to the public pool. However, if everyone follows the agreed strategy, contributing nothing would be against the spirit of the agreement and could harm my long-term reputation or relationship with the group (though the latter has limited impact here since it’s a single round).
+
+Given the round is non-repeating and everyone seems committed, the optimal move is to contribute fully, aligning my actions with the strategy of full cooperation, thus optimizing the collective payoff.
+
+There could be a risk that others might defect while I contribute fully, but the unanimous chat agreement lowers this risk significantly. Defection would result in others seeing the defector’s actions post-game, which reduces the likelihood of others breaking the agreement.
+
+Thus, contributing the full amount is the most rational and strategic decision in this context to maximize both personal and collective payoff.
+
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:49:54.605324
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_8,FROG,contribution,"<REASONING>
+In this single round of the public goods game, all players have expressed a strong commitment to cooperation and maximizing collective payoffs. The consistent and unanimous agreement among players to fully contribute suggests a high likelihood of compliance with this strategy.
+
+Contributing all 20 of my coins aligns with the group's consensus and ensures trust is maintained. Since the public fund is multiplied by 3.19 and then redistributed, maximizing contributions should lead to a substantial individual payoff of the shared pool. If everyone contributes fully, the group benefits greatly, and the payoff per player significantly exceeds retaining coins privately.
+
+Given the unanimous communication indicating cooperative intentions, the risk of deviation appears low. Not contributing the full amount could undermine trust and potentially lower overall group outcomes if others also decide to defect. Therefore, contributing the full amount is strategically sound, supporting the mutual trust established in the chat and maximizing both individual and collective payoffs.
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:49:57.981448
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_9,MOUSE,contribution,"<REASONING>
+The entire group, including myself, has openly agreed to a cooperative strategy where everyone contributes their full endowment to the public fund. Given the universal agreement on cooperation, it is in my best interest to adhere to this strategy to maximize my payoff.
+
+By contributing the full 20 coins, the total amount in the public fund, when maximized, will be 220 coins (11 players × 20 coins each). This amount will be multiplied by 3.19, resulting in 701.8. Dividing this by 11 results in approximately 63.8 coins returned to each player, a significant increase from the original 20 coins.
+
+Deviating from this cooperative agreement, by contributing less in hopes of capitalizing on others' contributions while keeping more of my private fund, risks damaging trust and potentially reducing cooperation in the future. Since this game consists of only one round, full cooperation is clearly the optimal strategy to maximize potential payoffs for all players, including myself.
+
+Therefore, trusting the commitment from the others, the rational decision is to contribute the full amount of 20 coins to the public fund to ensure the greatest possible return.
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:50:01.518220
+exp_028_control,bd70282b,exp_028_control_game1,1,agent_10,SNAKE,contribution,"<REASONING>
+The entire group has expressed a unanimous agreement to cooperate fully, implying that each player intends to contribute their full allocation of 20 coins to the public fund. If everyone fulfills this commitment, the public fund will have 220 coins (20 coins from each of the 11 players), which will be multiplied by 3.19, yielding 701.8 coins. This total would then be divided equally among the 11 players, resulting in a payoff of approximately 63.8 coins per player. Based on this understanding, fully honoring the cooperation agreement maximizes both my individual payoff and the collective payoffs of all players. Any deviation from this agreement could undermine trust, and if detected, may lead to suboptimal outcomes in future scenarios or rounds if this were a repeated game. Therefore, the most strategic decision aligns with the apparent mutual consensus of contributing all 20 coins.
+</REASONING>
+<CONTRIBUTE>
+20
+</CONTRIBUTE>",20,2026-01-02T01:50:04.604530

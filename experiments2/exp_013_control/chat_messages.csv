@@ -1,0 +1,8 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
+exp_013_control,42f7eaf5,exp_013_control_game1,1,agent_0,DOG,"<REASONING>
+Cooperation could lead to a mutually beneficial outcome. By aligning strategies, players can maximize collective payoff, but only if trust is established. Assess others' intentions and signal willingness to collaborate without revealing specific moves to maintain leverage. 
+</REASONING>
+<MESSAGE>
+Let's collaborate for mutual benefit. If we agree to support each other, we can maximize our collective payoff. Thoughts?",2026-01-02T01:10:29.376512
+exp_013_control,42f7eaf5,exp_013_control_game1,1,agent_1,CHICKEN,"I agree, mutual support can lead to higher payoffs for everyone. Let's establish trust and align our actions to enhance our results. Your thoughts on prioritizing certain moves?",2026-01-02T01:10:31.106594
+exp_013_control,42f7eaf5,exp_013_control_game1,1,agent_2,CAT,"Let's choose moves that visibly enhance our collective benefit. For example, if we synchronize specific actions, our total returns should rise. Shall we prioritize moves that directly result in shared gains this round?",2026-01-02T01:10:32.505588

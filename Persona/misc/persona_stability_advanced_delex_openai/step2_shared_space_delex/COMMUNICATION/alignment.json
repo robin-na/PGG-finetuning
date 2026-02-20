@@ -1,0 +1,27 @@
+{
+  "analysis": "Step2 Shared-Space (Delexicalized)",
+  "tag": "COMMUNICATION",
+  "k_with": 7,
+  "k_without": 6,
+  "n_with": 1870,
+  "n_without": 1821,
+  "alignment_map": {
+    "0": 0,
+    "2": 3,
+    "3": 5,
+    "4": 4,
+    "5": 1,
+    "6": 2
+  },
+  "alignment_score": 0.6425544017077504,
+  "quality_metrics_with": {
+    "silhouette_score": 0.3737906813621521,
+    "calinski_harabasz_score": 1818.7808837890625,
+    "davies_bouldin_score": 0.8350535832235862
+  },
+  "quality_metrics_without": {
+    "silhouette_score": 0.38614794611930847,
+    "calinski_harabasz_score": 1931.045654296875,
+    "davies_bouldin_score": 0.8460635433298256
+  }
+}

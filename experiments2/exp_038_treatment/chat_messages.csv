@@ -1,0 +1,4 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
+exp_038_treatment,9309579b,exp_038_treatment_game1,1,agent_0,DOG,"Let's work together to maximize our payoffs. By cooperating, we can ensure that everyone benefits more in the long-term. Thoughts?",2026-01-02T02:20:28.767847
+exp_038_treatment,9309579b,exp_038_treatment_game1,1,agent_1,CHICKEN,I agree with cooperating for mutual benefit. Let’s set a plan to maximize our collective payoffs consistently over time.,2026-01-02T02:20:30.714271
+exp_038_treatment,9309579b,exp_038_treatment_game1,1,agent_2,CAT,"I agree with cooperating. Let's establish a stable agreement where each round, we make moves beneficial to all, ensuring consistent mutual benefit.",2026-01-02T02:20:33.376969

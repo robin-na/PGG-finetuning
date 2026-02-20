@@ -1,0 +1,122 @@
+[
+  {
+    "cluster_id": 0,
+    "size": 315,
+    "title": "End / Riding / Free Riding",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "game",
+      "end",
+      "riding",
+      "free riding",
+      "contributing",
+      "payoffs",
+      "low",
+      "contribute",
+      "willing",
+      "defection",
+      "instead",
+      "moderate"
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "size": 250,
+    "title": "Reward / Rewards / Punishment",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "punishment",
+      "rule",
+      "game",
+      "end",
+      "norm",
+      "cooperator",
+      "fully",
+      "does",
+      "contribute",
+      "unknown"
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "size": 349,
+    "title": "Punishment / Norm / Reward",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "norm",
+      "reward",
+      "punished",
+      "low",
+      "contributors",
+      "punish",
+      "rewards",
+      "use",
+      "sanctions",
+      "enforcement",
+      "non"
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "size": 326,
+    "title": "Reward / Rewards / Rewarding",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "low",
+      "rewarded",
+      "use",
+      "game",
+      "contributors",
+      "willing",
+      "norm",
+      "punishment",
+      "end"
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "size": 326,
+    "title": "Punishment / Punished / Low",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "low",
+      "norm",
+      "punish",
+      "contributors",
+      "game",
+      "willing",
+      "contribute",
+      "punishers",
+      "sanctions",
+      "reward"
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "size": 255,
+    "title": "Reward / Punishment / Rewards",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "punishment",
+      "rewards",
+      "low",
+      "game",
+      "rewarding",
+      "contribute",
+      "non",
+      "does",
+      "end",
+      "use",
+      "social"
+    ]
+  }
+]

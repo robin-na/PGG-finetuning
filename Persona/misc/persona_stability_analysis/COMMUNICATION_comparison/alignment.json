@@ -1,0 +1,26 @@
+{
+  "tag": "COMMUNICATION",
+  "k_with": 7,
+  "k_without": 6,
+  "n_with": 1870,
+  "n_without": 1821,
+  "alignment_map": {
+    "0": 1,
+    "1": 4,
+    "2": 5,
+    "3": 2,
+    "4": 0,
+    "6": 3
+  },
+  "alignment_score": 0.4225330219088372,
+  "quality_metrics_with": {
+    "silhouette_score": 0.37168416380882263,
+    "calinski_harabasz_score": 1885.294677734375,
+    "davies_bouldin_score": 0.8562553342540946
+  },
+  "quality_metrics_without": {
+    "silhouette_score": 0.39154675602912903,
+    "calinski_harabasz_score": 1982.672119140625,
+    "davies_bouldin_score": 0.8607853524942618
+  }
+}

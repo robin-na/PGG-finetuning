@@ -1,0 +1,4 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,message,timestamp
+exp_038_control,b2340489,exp_038_control_game1,1,agent_0,DOG,Hi everyone! How about we cooperate this round to maximize our collective earnings? We can adapt based on outcomes in future rounds. Thoughts?,2026-01-02T01:55:26.015426
+exp_038_control,b2340489,exp_038_control_game1,1,agent_1,CHICKEN,"Agreed, but let's outline a clear plan. For example, all choose Strategy A this round, then evaluate based on outcomes. This will help us hold each other accountable.",2026-01-02T01:55:27.470410
+exp_038_control,b2340489,exp_038_control_game1,1,agent_2,CAT,"I support choosing Strategy A this round to create trust. Post-results, we can analyze and adjust.",2026-01-02T01:55:28.574582

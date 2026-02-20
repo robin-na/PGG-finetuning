@@ -1,0 +1,10 @@
+experiment_id,config_hash,game_id,round,agent_id,avatar_name,contribution,punishments_sent,punishments_received,rewards_sent,rewards_received,round_payoff,cumulative_wallet,public_fund,timestamp
+exp_007_treatment,93c933cd,exp_007_treatment_game1,1,agent_0,DOG,20,12,17,12,17,15.619999999999997,15.619999999999997,502.2,2026-01-02T00:54:02.434674
+exp_007_treatment,93c933cd,exp_007_treatment_game1,1,agent_1,CHICKEN,20,4,19,4,19,48.54,48.54,502.2,2026-01-02T00:54:02.434708
+exp_007_treatment,93c933cd,exp_007_treatment_game1,1,agent_2,CAT,20,9,11,9,11,24.859999999999996,24.859999999999996,502.2,2026-01-02T00:54:02.434721
+exp_007_treatment,93c933cd,exp_007_treatment_game1,1,agent_3,FISH,20,11,9,11,9,15.939999999999998,15.939999999999998,502.2,2026-01-02T00:54:02.434733
+exp_007_treatment,93c933cd,exp_007_treatment_game1,1,agent_4,BIRD,20,11,10,11,10,16.4,16.4,502.2,2026-01-02T00:54:02.434745
+exp_007_treatment,93c933cd,exp_007_treatment_game1,1,agent_5,RABBIT,20,9,5,9,5,22.099999999999994,22.099999999999994,502.2,2026-01-02T00:54:02.434755
+exp_007_treatment,93c933cd,exp_007_treatment_game1,1,agent_6,TURTLE,20,11,3,11,3,13.18,13.18,502.2,2026-01-02T00:54:02.434770
+exp_007_treatment,93c933cd,exp_007_treatment_game1,1,agent_7,HAMSTER,20,12,7,12,7,11.019999999999996,11.019999999999996,502.2,2026-01-02T00:54:02.434782
+exp_007_treatment,93c933cd,exp_007_treatment_game1,1,agent_8,FROG,20,4,2,4,2,40.72,40.72,502.2,2026-01-02T00:54:02.434795

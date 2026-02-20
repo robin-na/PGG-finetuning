@@ -1,0 +1,462 @@
+[
+  {
+    "cluster_id": 0,
+    "size": 182,
+    "title": "**Unconditional High Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "chat",
+      "game",
+      "communication",
+      "low",
+      "use",
+      "social",
+      "end",
+      "explicitly",
+      "payoff"
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "size": 170,
+    "title": "**Conditional High Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "low",
+      "punish",
+      "willing",
+      "contributors",
+      "contribute",
+      "game",
+      "pattern",
+      "sanctions",
+      "punishers",
+      "appear"
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "size": 157,
+    "title": "**Inconsistent Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "punishment",
+      "rewards",
+      "low",
+      "social",
+      "chat",
+      "game",
+      "communication",
+      "payoff",
+      "end",
+      "contribute",
+      "norms"
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "size": 156,
+    "title": "**Strict Full Cooperators**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "low",
+      "punish",
+      "contributors",
+      "reward",
+      "enforcement",
+      "payoff",
+      "contribute",
+      "fully",
+      "sanctions",
+      "strong"
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "size": 144,
+    "title": "**Moderate Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "payoff",
+      "payoffs",
+      "contributing",
+      "willing",
+      "riding",
+      "free riding",
+      "contribute",
+      "low",
+      "moderate",
+      "risk",
+      "instead",
+      "higher"
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "size": 118,
+    "title": "**High Contributors with Deviations**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "punished",
+      "rewards",
+      "low",
+      "punish",
+      "players",
+      "game",
+      "use",
+      "contributors",
+      "contribute",
+      "payoff"
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "size": 231,
+    "title": "**Stable Full Cooperators**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "unknown",
+      "punished",
+      "game",
+      "low",
+      "communication",
+      "chat",
+      "non",
+      "use",
+      "reward",
+      "fully",
+      "punish"
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "size": 129,
+    "title": "**Consistent High Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "game",
+      "end",
+      "communication",
+      "end game",
+      "rule",
+      "round",
+      "strategy",
+      "fully",
+      "low",
+      "final",
+      "contribute",
+      "payoff"
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "size": 176,
+    "title": "**Near-Unconditional Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "punishment",
+      "rewards",
+      "rewarding",
+      "low",
+      "contributors",
+      "payoff",
+      "use",
+      "does",
+      "game",
+      "rewarded",
+      "appear"
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "size": 159,
+    "title": "**Flexible Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "payoff",
+      "low",
+      "rewarded",
+      "contribute",
+      "rewarders",
+      "willing",
+      "payoffs",
+      "use",
+      "contributors"
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "size": 213,
+    "title": "**Stable High Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "game",
+      "low",
+      "punished",
+      "rewards",
+      "use",
+      "punish",
+      "end",
+      "chat",
+      "non",
+      "contribute"
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "size": 168,
+    "title": "**Unconditional Free-Riders**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "rider",
+      "free rider",
+      "rewards",
+      "payoff",
+      "non",
+      "social",
+      "low",
+      "strategy",
+      "game",
+      "does"
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "size": 188,
+    "title": "**Steadfast Full Cooperators**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "punishment",
+      "communication",
+      "low",
+      "chat",
+      "use",
+      "game",
+      "unknown",
+      "rewarding",
+      "payoff",
+      "social"
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "size": 144,
+    "title": "**Conditional Cooperative Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "game",
+      "communication",
+      "payoff",
+      "end",
+      "social",
+      "low",
+      "contribute",
+      "chat",
+      "payoffs",
+      "riding",
+      "self",
+      "free riding"
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "size": 182,
+    "title": "**Moderate and Stable Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "rewards",
+      "punished",
+      "low",
+      "contributors",
+      "punish",
+      "use",
+      "sanctions",
+      "enforcement",
+      "appear",
+      "punishing"
+    ]
+  },
+  {
+    "cluster_id": 15,
+    "size": 179,
+    "title": "**Moderate Conditional Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "punished",
+      "low",
+      "rewards",
+      "contributors",
+      "punish",
+      "sanctions",
+      "willing",
+      "use",
+      "payoff",
+      "punishers"
+    ]
+  },
+  {
+    "cluster_id": 16,
+    "size": 134,
+    "title": "**Opportunistic Free-Riders**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "payoff",
+      "game",
+      "low",
+      "payoffs",
+      "contributing",
+      "end",
+      "contribute",
+      "riding",
+      "free riding",
+      "outcomes",
+      "social",
+      "pattern"
+    ]
+  },
+  {
+    "cluster_id": 17,
+    "size": 164,
+    "title": "**High Contributors with Variability**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "punishment",
+      "rewards",
+      "low",
+      "chat",
+      "communication",
+      "game",
+      "use",
+      "end",
+      "social",
+      "non",
+      "payoff"
+    ]
+  },
+  {
+    "cluster_id": 18,
+    "size": 149,
+    "title": "**Stable High Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "communication",
+      "game",
+      "social",
+      "low",
+      "contribute",
+      "coordination",
+      "light",
+      "payoff",
+      "maximum",
+      "explicitly",
+      "chat",
+      "end"
+    ]
+  },
+  {
+    "cluster_id": 19,
+    "size": 89,
+    "title": "**Rigid Full Cooperators**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "payoff",
+      "rule",
+      "payoffs",
+      "cooperator",
+      "outcomes",
+      "exploitation",
+      "relative",
+      "regardless",
+      "game",
+      "fully",
+      "unknown",
+      "contribute"
+    ]
+  },
+  {
+    "cluster_id": 20,
+    "size": 169,
+    "title": "**Strict Full Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "punished",
+      "low",
+      "game",
+      "contributors",
+      "punish",
+      "use",
+      "unknown",
+      "non",
+      "enforcement",
+      "end"
+    ]
+  },
+  {
+    "cluster_id": 21,
+    "size": 102,
+    "title": "**Volatile Conditional Contributors**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "end",
+      "game",
+      "payoff",
+      "end game",
+      "riding",
+      "free riding",
+      "defection",
+      "final",
+      "horizon",
+      "contributing",
+      "rounds",
+      "zero"
+    ]
+  },
+  {
+    "cluster_id": 22,
+    "size": 188,
+    "title": "**Conditional Contributors with Free-Riding**",
+    "title_source": "openai-chatgpt-summary",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "rewarded",
+      "game",
+      "payoff",
+      "low",
+      "end",
+      "willing",
+      "use",
+      "instead",
+      "spending"
+    ]
+  }
+]

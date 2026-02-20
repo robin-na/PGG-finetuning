@@ -1,0 +1,142 @@
+[
+  {
+    "cluster_id": 0,
+    "size": 274,
+    "title": "Punishment / Punished / Unknown",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "unknown",
+      "low",
+      "game",
+      "reward",
+      "use",
+      "non",
+      "punish",
+      "high",
+      "fully",
+      "contribute"
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "size": 291,
+    "title": "Reward / High / Rewards",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "high",
+      "game",
+      "rewards",
+      "low",
+      "end",
+      "payoff",
+      "contribute",
+      "social",
+      "contributing",
+      "willing",
+      "instead"
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "size": 252,
+    "title": "Punishment / Reward / Punished",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "punished",
+      "low",
+      "high",
+      "game",
+      "use",
+      "punish",
+      "end",
+      "non",
+      "suggests",
+      "payoff"
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "size": 340,
+    "title": "Reward / Rewards / Rewarding",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "high",
+      "low",
+      "game",
+      "use",
+      "unknown",
+      "payoff",
+      "punishment",
+      "end",
+      "social"
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "size": 223,
+    "title": "Reward / Punishment / Social",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "reward",
+      "punishment",
+      "social",
+      "low",
+      "game",
+      "payoff",
+      "high",
+      "end",
+      "rewards",
+      "non",
+      "free rider",
+      "rider"
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "size": 235,
+    "title": "High / End / Low",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "game",
+      "high",
+      "end",
+      "low",
+      "social",
+      "contribute",
+      "payoff",
+      "strategy",
+      "fully",
+      "cooperator",
+      "contributing",
+      "efficiency"
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "size": 255,
+    "title": "Punishment / Reward / Punished",
+    "title_source": "keyword-heuristic",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "punished",
+      "low",
+      "punish",
+      "high",
+      "game",
+      "use",
+      "punishing",
+      "end",
+      "contributors",
+      "enforcement"
+    ]
+  }
+]

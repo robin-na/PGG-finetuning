@@ -1,0 +1,26 @@
+{
+  "tag": "REWARD",
+  "k_with": 6,
+  "k_without": 7,
+  "n_with": 1815,
+  "n_without": 1876,
+  "alignment_map": {
+    "0": 5,
+    "1": 4,
+    "2": 0,
+    "3": 6,
+    "4": 2,
+    "5": 1
+  },
+  "alignment_score": 0.17221586895087015,
+  "quality_metrics_with": {
+    "silhouette_score": 0.3803881108760834,
+    "calinski_harabasz_score": 1642.7962646484375,
+    "davies_bouldin_score": 0.8019534789275599
+  },
+  "quality_metrics_without": {
+    "silhouette_score": 0.4005562365055084,
+    "calinski_harabasz_score": 1960.5281982421875,
+    "davies_bouldin_score": 0.7593053401622828
+  }
+}
