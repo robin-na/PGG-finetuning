@@ -1,0 +1,362 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 56,
+    "cluster_title": "Understanding Responses to Punishment",
+    "cluster_intro": "This cluster highlights individuals who have never experienced punishment, resulting in an unknown behavioral response to being sanctioned. Their lack of direct interaction with punishers limits insights into potential reactions such as forgiveness, retaliation, or compliance. Consequently, any inferences about their attitudes toward punishment remain speculative.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punished",
+      "unknown",
+      "punishment",
+      "response",
+      "punishers",
+      "low",
+      "retaliation",
+      "evidence"
+    ],
+    "sample_examples": [
+      "They are never punished by others, so their behavioral response to being sanctioned is unknown. There is no evidence of retaliation, accommodation, or verbal reaction to punishment because it never occurs. Their one act of punishing does not provoke any visible interaction dir...",
+      "They are never punished in the transcript, so their direct response to being targeted is unknown. Consequently, their attitudes toward identifiable punishers, in terms of forgiveness, retaliation, or compliance when personally punished, cannot be inferred. However, from the fa...",
+      "They are never directly punished in the transcript. As a result, their response to being punished is unknown. They also never verbally address punishment events directed at others, so their evaluative stance toward punishers is low-confidence: at most, their refusal to punish...",
+      "They are never punished in the observed interaction, so their behavioral response to being sanctioned is unknown. There is no evidence of anticipatory adjustment specifically aimed at avoiding punishment, nor of any retaliatory tendencies. If punished in the future, it is uncl...",
+      "They are never punished by others, so their direct behavioral response to being targeted is unknown. They also never punish anyone, so there is no opportunity to observe reactions from others to them as a punisher, nor any follow-up communication from them about punishment eve..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 64,
+    "cluster_title": "Understanding Responses to Punishment",
+    "cluster_intro": "This cluster highlights individuals who have never experienced punishment, leaving their reactions to such situations largely unknown. Their lack of engagement with identifiable punishers suggests a non-retaliatory and low-expressive response style. Consequently, any predictions about their behavior in response to sanctions remain speculative.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punished",
+      "unknown",
+      "punishers",
+      "punishment",
+      "response",
+      "identifiable",
+      "retaliate",
+      "evidence"
+    ],
+    "sample_examples": [
+      "They are never punished in this game, so their direct response to being sanctioned is unknown. Because punishers are identifiable and one player uses substantial punishment on others, the fact that this player never joins in or mirrors those punishments suggests they do not al...",
+      "They are never punished by others in this game, so their direct behavioral response to being targeted by identifiable punishers is unknown. They never have to decide whether to forgive, retaliate, or comply in response to personal sanctions, and they never reference punishment...",
+      "They are never punished by others in the transcript, so their response is unknown. Their potential for compliance, retaliation, or forgiveness when targeted by punishment is therefore unknown.",
+      "They are never punished, so their behavioral and emotional response to being sanctioned is unknown. They also do not verbally react to punishers targeting others, even when large, costly punishments occur and become a salient topic in chat. They neither criticize nor praise pu...",
+      "The player is never punished, so their direct behavioral or emotional response to identified punishers is unknown. They nonetheless observe repeated punishment patterns in the group without commenting or adjusting their own strategy in any obvious, punishment-driven way, sugge..."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 47,
+    "cluster_title": "Understanding Unpunished Behavior Patterns",
+    "cluster_intro": "This group exhibits a consistent pattern of non-punishment, leading to an absence of observable responses to potential sanctions. Their cooperative nature and lack of direct confrontation suggest that if faced with punishment, their reactions remain speculative and uncertain. Insights into their behavior highlight a tendency towards compliance or confusion rather than retaliation.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punished",
+      "punishment",
+      "unknown",
+      "contributions",
+      "response",
+      "low",
+      "direct",
+      "confidence"
+    ],
+    "sample_examples": [
+      "They are never punished by others, so direct behavioral responses to punishment cannot be observed. Consequently, their likelihood of retaliating, complying, or forgiving when targeted is unknown. Based on their overall cooperative and non-confrontational style, one might susp...",
+      "They are never punished in the observed game, so their direct response to being punished is unknown. There is no data on whether they would retaliate, comply, or adjust behavior following personal punishment. However, given their overall profile—stable contribution, limited us...",
+      "They are never punished, so direct responses cannot be inferred. It is unknown how they respond emotionally or strategically to being sanctioned, whether they would increase contributions in compliance, retaliate, or simply ignore. Given their already cooperative contributions...",
+      "They are never punished in the observed interactions, so their behavioral response to being punished is unknown. There is no evidence of anticipatory fear of punishment driving their cooperation: they initially contribute less than many others while remaining unpunished, and l...",
+      "They are never punished, so their direct response to being sanctioned is unknown. Because they never punish anyone themselves, there is no observed retaliation dynamic. Their stable non-use of punishment, even after seeing others punish, weakly suggests they are unlikely to re..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 41,
+    "cluster_title": "Responses to Punishment Remain Unexplored",
+    "cluster_intro": "This group of players has never experienced punishment, leaving their reactions to such situations largely unknown. Without direct evidence of their responses, including compliance or retaliation, it is difficult to predict their behavior in future interactions. Their lack of engagement with identifiable punishers further complicates understanding their potential dynamics.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punished",
+      "punishment",
+      "unknown",
+      "response",
+      "player",
+      "player punished",
+      "identifiable",
+      "low"
+    ],
+    "sample_examples": [
+      "This player is never punished during the game, so their direct behavioral response to identifiable punishers is unknown. There is no evidence of pre-emptive adaptation to avoid punishment; their contribution level is unchanging from the start and does not react to others’ sanc...",
+      "The player is never observed being punished, so there is no direct evidence of their reaction to receiving sanctions, nor of any retaliation, forgiveness, or compliance dynamics in response to identified punishers. All inferences about their response to being punished are unkn...",
+      "This is unknown, as the player is never punished. There is no behavioral evidence on whether they would respond with forgiveness, compliance, or retaliation when sanctioners are identifiable.",
+      "The player is never punished in the observed interaction. Their responses to being sanctioned, including whether they would reduce contributions, retaliate, or comply with perceived norms, are unknown.",
+      "This player is never punished, so their reactions to being sanctioned are unknown. We do not observe any preemptive defensive changes (such as reducing contributions or starting to punish) in response to seeing punishment used in the group, suggesting that others’ use of punis..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 54,
+    "cluster_title": "Understanding Responses to Punishment Dynamics",
+    "cluster_intro": "This cluster highlights individuals who have never experienced punishment, leaving their reactions to such situations largely speculative. Their consistent high contributions and non-punitive behavior suggest a cooperative stance, with no evidence of retaliation or compliance. Observations indicate a lack of engagement with punishment mechanisms, reflecting a stable social dynamic within the group.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "response",
+      "unknown",
+      "direct",
+      "low",
+      "punish"
+    ],
+    "sample_examples": [
+      "They are never punished by others, so their direct behavioral response to being sanctioned is unknown. However, they witness at least one instance of another player spending to punish a low contributor, and they neither copy that behavior nor escalate punishment. They also do...",
+      "They are never targeted with punishment, so there is no direct evidence of how they respond to being punished. Their own absence of punishment toward others, even after seeing someone use it heavily, suggests they are unlikely to retaliate or to engage in counter-punishment. T...",
+      "They are never punished in this game, so direct reactions to being targeted are unknown. Given their consistent high contributions and absence of any sanctions against them, they have no occasion to show whether they would respond with forgiveness, retaliation, or compliance....",
+      "They are never directly punished in the transcript, so their explicit response when personally targeted is unknown. They do not experience any payoff deductions from others’ punishment, so there is no observed scope for retaliation or compliance behavior. Their behavior after...",
+      "They are never directly punished in this game, so their behavioral response to being punished is unknown. Because they do not punish anyone at any point, including heavy punishers, we do not see retaliatory punishment. Their continued high contribution in an environment where..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 63,
+    "cluster_title": "Responses to Punishment Without Retaliation",
+    "cluster_intro": "This cluster highlights individuals who, when faced with punishment, do not engage in retaliatory behaviors or express visible anger. Instead, they often maintain their contribution levels and adopt a non-confrontational stance, sometimes framing their experiences humorously. Their reactions suggest a tendency towards forgiveness and a focus on cooperation rather than conflict.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "contributions",
+      "response",
+      "non",
+      "behavior",
+      "contribution"
+    ],
+    "sample_examples": [
+      "They are punished once and do not change their pattern of rejecting punishment as a tool. There is no observable retaliatory punishment toward whoever targeted them, nor a visible shift in their general social stance (they neither start punishing nor start selectively rewardin...",
+      "They are punished at least once and can see that punishment is possible and that punishers are identifiable. After being punished, they do not shift into using punishment themselves, and they do not clearly retaliate (no onset of punishment behavior, no dramatic drop to minima...",
+      "They are punished at least once, and punishers are identifiable in this environment; however, we do not see them retaliate through punishment afterward. There is no observed shift toward higher contributions that can be clearly attributed to the punishment, nor any move to tar...",
+      "When they are punished, they do not respond with counter‑punishment at any point, even after repeated sanctions. They accept deductions without attempting to “teach a lesson” or retaliate, indicating a forgiving or at least non‑vengeful stance. Their reaction occurs instead th...",
+      "They are punished several times. Their immediate reactions in chat are brief and non-escalatory: a single expression of wordless frustration and a generally humorous, social tone afterward. They do not openly confront or call out any specific punisher by name, even though puni..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 53,
+    "cluster_title": "Responses to Punishment in Cooperative Settings",
+    "cluster_intro": "Individuals in cooperative environments exhibit varied responses to punishment for free-riding. While some adjust their behavior temporarily to align with group norms, others show little to no change, often reverting to non-contributory actions. This highlights a spectrum of compliance and resistance to social pressure within group dynamics.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "behavior",
+      "free",
+      "norm",
+      "contribution",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "They are repeatedly punished for free-riding, sometimes quite heavily. Their behavioral adjustment to being punished is partial and short-lived. After experiencing punishment, they often switch to full contribution for at least the subsequent round, indicating some responsiven...",
+      "They are punished once and lose a noticeable amount but do not mention it in chat and do not retaliate. They also do not clearly “learn” in a way that aligns with the punisher’s likely goal: after being punished for free-riding, they later defect again in similar social config...",
+      "When they are punished, they do not change their contribution pattern in a sustained cooperative direction. After receiving a concentrated set of deductions, they continue to alternate but revert quickly to non-contribution, and they are punished again later without durable be...",
+      "They are punished multiple times over the game, including some substantial deductions, but they never acknowledge this directly in chat, never complain about being punished, and never ask who did it. They show no sign of retaliatory punishment toward likely punishers, and do n...",
+      "When punished, they do not change their contribution behavior toward greater cooperation; they continue to free-ride consistently. They also do not comment on being personally punished, show no overt emotional reaction, and do not attempt to confront or persuade punishers. The..."
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "cluster_size": 72,
+    "cluster_title": "Resilient Cooperation in Punitive Environments",
+    "cluster_intro": "This persona cluster demonstrates a remarkable resilience to punishment, maintaining cooperative behavior despite repeated sanctions. Individuals do not retaliate or adjust their contributions downward, instead continuing to engage fully with the group. Their responses suggest a focus on collective cooperation rather than personal grievances.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "behavior",
+      "contributions",
+      "cooperative",
+      "non",
+      "punisher"
+    ],
+    "sample_examples": [
+      "They are punished multiple times by identifiable others but show no direct retaliation and no visible behavioral concession. They continue to contribute fully and continue to speak cooperatively after being punished. They do not confront or call out the punishers in chat, nor...",
+      "They are punished once by another player but do not change their contribution pattern afterward; they continue to contribute fully in subsequent rounds. They also do not retaliate against the punisher, despite being able to identify them. Instead, they direct all later punishm...",
+      "They are punished once and do not display any observable retaliation or change in cooperative stance toward the group. After being sanctioned, they continue to contribute fully in subsequent opportunities where cooperation is salient. They do not punish back the likely punishe...",
+      "They are punished several times but never respond with observable retaliation or with a shift toward more self-protective or punitive behavior. After being punished, they continue to cooperate at similar or even higher levels and continue to avoid punishment entirely. There is...",
+      "When they are punished, they do not respond with counter-punishment or lasting withdrawal of cooperation. Their contribution pattern after being punished returns to their prior moderate level rather than shifting to systematic free-riding or escalation. This indicates a relati..."
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "cluster_size": 61,
+    "cluster_title": "Responses to Punishment: A Complex Landscape",
+    "cluster_intro": "Individuals exhibit varied and unpredictable responses to punishment, often oscillating between compliance and defiance. Their behavior does not follow a clear pattern of retaliation or submission, indicating a nuanced relationship with punitive measures. This complexity suggests that punishment may not consistently drive individuals toward increased cooperation or retaliatory actions.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "contribution",
+      "contributions",
+      "behavior",
+      "response",
+      "non"
+    ],
+    "sample_examples": [
+      "When they are punished, their subsequent behavior does not show a simple, consistent compliance response such as “I was punished, so I permanently raise my contributions” or “I was punished, so I stop punishing.” After receiving a sanction, they later choose both high and low...",
+      "When they themselves are punished, they do not display a clear, consistent pattern of retaliation or compliance. After being fined, they sometimes continue to contribute fully, sometimes switch to free‑riding, and sometimes also begin or increase their own punishment of others...",
+      "When punished, the player does not display a clear, consistent shift toward either appeasement or counter-retaliation. They sometimes continue to free-ride after being punished and sometimes continue to cooperate after being targeted, indicating that punishment does not reliab...",
+      "When they defect once after a long record of cooperation and then receive a very large punishment, their behavioral response is compliant and conciliatory rather than hostile. They do not reduce contributions in anger; instead, they immediately return to full contributions in...",
+      "When they are punished, they visibly react but do not clearly become more cooperative toward the punisher. Their single explicit reaction is a sarcastic or dry “thank” directed at those who deducted from them, indicating they notice and resent being targeted. There is no clear..."
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "cluster_size": 70,
+    "cluster_title": "Resilient Cooperation in the Face of Punishment",
+    "cluster_intro": "Individuals in this group exhibit a remarkable resilience to punishment, maintaining their cooperative behavior regardless of negative sanctions. They do not retaliate or adjust their contributions after being punished, suggesting a strong commitment to group norms and collaboration.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "behavior",
+      "cooperative",
+      "punisher",
+      "non",
+      "continue"
+    ],
+    "sample_examples": [
+      "When they are directly and heavily punished late in the game, they neither retaliate nor reduce their contribution. They do not punish the identifiable punisher, even though the mechanism and identities are transparent, and even though retaliation would be financially impactfu...",
+      "They are punished at least once, but do not comment on it, do not reduce their contribution, and do not visibly retaliate. Their behavior toward others after being punished remains cooperative and norm‑oriented; they continue to fully contribute and keep punishing defectors ra...",
+      "When they are punished, they do not change their contribution level, do not start punishing others indiscriminately, and do not engage in visible retaliation against likely punishers. Their cooperative behavior remains fully stable after being sanctioned. This suggests either...",
+      "When they receive punishment, they do not respond with visible retaliation, strategic adjustment, or withdrawal of cooperation. After being punished, they continue to choose full contributions and still refrain from using the punishment mechanism against anyone. This implies a...",
+      "When they themselves are punished, they do not change any aspect of their observable behavior: they continue fully contributing and continue to abstain from using the punishment or reward mechanisms. This suggests they do not respond to punishment with either compliance (no ad..."
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "cluster_size": 45,
+    "cluster_title": "Non-Retaliatory Cooperation in Punitive Contexts",
+    "cluster_intro": "This persona cluster exhibits a consistent pattern of non-retaliation in response to punishment. Players maintain high levels of cooperation and do not adjust their contributions or engage in punitive behaviors against those who penalize them. Their behavior suggests a strong commitment to cooperative strategies, regardless of external sanctions.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punisher",
+      "cooperative",
+      "behavior",
+      "punishers",
+      "contribution",
+      "continue"
+    ],
+    "sample_examples": [
+      "When another player repeatedly punishes them, they do not retaliate, they do not significantly increase their contribution to align with the punisher’s implicit demand, and they do not shift into a punitive stance toward anyone else. Their contribution pattern remains essentia...",
+      "The player is punished once and shows no observable behavioral change in either contribution or sanctioning choices afterward. They neither reduce their own cooperation nor begin using punishment or reward against the punisher (identity of the punisher is unknown from the tran...",
+      "When another player imposes a deduction on them, they do not alter any aspect of their observable behavior: they continue contributing fully and continue to abstain from both punishment and reward. They do not retaliate against the punisher, nor do they shift toward self-prote...",
+      "The player is occasionally punished by others but does not alter their own contribution level or visibly retaliate against punishers solely for having punished them. They never reduce their contribution below the maximum, even after being targeted. When a punisher also maintai...",
+      "This player is punished at least once by someone else, but they do not respond with counter‑punishment or a discernible shift toward spite. They maintain their high contribution and continue to spend heavily on rewards in the same cooperative, group‑focused pattern as before...."
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "cluster_size": 57,
+    "cluster_title": "Resilient Cooperation in Punitive Environments",
+    "cluster_intro": "This group of players demonstrates a remarkable resilience in the face of punishment, maintaining high levels of cooperation despite experiencing sanctions. Rather than retaliating or reducing their contributions, they often respond with increased cooperation or remain steadfast in their contributions. Their behavior suggests a commitment to group norms and a focus on collective well-being over individual grievances.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "contributions",
+      "does",
+      "contribution",
+      "cooperation",
+      "non"
+    ],
+    "sample_examples": [
+      "The player is punished multiple times. Their behavioral response is not to disengage or switch to opportunistic low contributions; instead, after being punished they continue to contribute at high levels in subsequent rounds when cooperation around them looks viable. This indi...",
+      "When punished, this player does not retaliate via punishment and does not reduce cooperation; in fact, their contribution slightly increases afterward. This indicates they do not respond to being targeted with hostility or spite. Whether they interpret punishment as a normativ...",
+      "The player is punished on one occasion by another participant. Their subsequent behavior shows no clear appeasement toward the punisher (they do not visibly shift to protect themselves from further sanctions) and no clear retaliatory targeting of that specific individual. They...",
+      "The player is occasionally punished but does not visibly retaliate against specific punishers, despite punishers being identifiable. They maintain their pattern of full contribution and do not alter their punishment or reward behavior in any clear way following sanctions on th...",
+      "When punished, this player does not retaliate, does not escalate, and does not attempt to identify and target likely punishers with sanctions. They never use the punishment mechanism at all, even after multiple instances of being punished. This indicates a high level of non-re..."
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "cluster_size": 52,
+    "cluster_title": "Resistance to Punishment in Cooperative Settings",
+    "cluster_intro": "This persona exhibits a complex response to repeated punishment, often maintaining a mix of cooperative and uncooperative behaviors. Despite facing sanctions, they do not consistently comply with social norms or increase contributions, indicating a low sensitivity to punitive measures.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "contributions",
+      "low",
+      "sanctions",
+      "does",
+      "player"
+    ],
+    "sample_examples": [
+      "The player is repeatedly punished across the game and appears to notice and react to this, but not in a simple or purely compliant way. They do not consistently respond to being punished by increasing contributions; in some subsequent decisions they continue to contribute at h...",
+      "This player frequently receives punishment from others, both when they contribute and when they do not. Their observable responses suggest neither straightforward deterrence nor pure retaliation. They do not reliably respond to being punished by shifting to more compliant, saf...",
+      "This player receives punishment on multiple occasions from various others. Their behavioral response does not indicate compliance or accommodation: after being punished, they do not reliably shift toward the punisher’s apparent norm (for example, they do not consistently move...",
+      "When they are punished, this player does not reliably respond with appeasement or clear compliance. They continue to mix cooperative and uncooperative contributions after being sanctioned and often maintain or even escalate their own use of punishment. There is no obvious evid...",
+      "This player is repeatedly punished across the game, often when they free-ride while others contribute more. Despite this, they do not reliably “comply” by switching into sustained cooperation after being punished. Sometimes they contribute fully after having been punished; at..."
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "cluster_size": 53,
+    "cluster_title": "Responses to Punishment in Cooperative Settings",
+    "cluster_intro": "This cluster highlights players who experience punishment without clear patterns of retaliation or compliance. Their responses to being punished are varied and context-dependent, often resulting in mixed contributions rather than a straightforward shift toward cooperation or defection. These behaviors suggest a complex relationship with punishment that resists simple categorization.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "contributions",
+      "contribution",
+      "low",
+      "response",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "When punished, this player does not clearly retaliate. They are punished multiple times, sometimes while they are fully cooperating and sometimes while they are free-riding, but there is no visible pattern of counter-punishment aimed at prior punishers. Their subsequent punish...",
+      "They experience substantial punishment across the game but do not clearly retaliate against specific identified punishers, nor do they shift toward stable cooperation to appease them. When punished, their subsequent contributions generally remain low or revert to defection aft...",
+      "The player receives nontrivial punishment in several rounds, including ones where they themselves deviate from full contribution. Their observable reaction is mixed: on the one hand, they do not engage in overt verbal retaliation against specific punishers and do not name or a...",
+      "When punished—often harshly and repeatedly by one identifiable partner—the player does not respond with compliance (i.e., sustained higher contributions) and does not retaliate through punishment. At most, there are isolated instances where they temporarily increase contributi...",
+      "When punished, this player does not reliably respond with either systematic retaliation or clear compliance. In some instances, being punished coincides with them reducing contributions or shifting target choices in punishment, but the direction of causality is ambiguous: they..."
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "cluster_size": 59,
+    "cluster_title": "Resilient Non-Retaliators in Punishment Scenarios",
+    "cluster_intro": "This persona cluster highlights individuals who exhibit resilience in the face of punishment, choosing not to retaliate against identifiable punishers. Instead of collapsing into defection or aggressive responses, they often adjust their contributions positively, viewing punishment as feedback rather than a deterrent. Their behavior reflects a commitment to cooperation, even when faced with repeated sanctions.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "punished",
+      "punishers",
+      "contributions",
+      "contribution",
+      "does",
+      "behavior",
+      "response"
+    ],
+    "sample_examples": [
+      "The player is repeatedly punished but never retaliates via the punishment mechanism, even though punishers are identifiable and punishment recurs across different contribution choices. They also do not reliably “comply” with an implied norm from punishers: sometimes they respo...",
+      "When punished, this player does not retaliate directly and does not adopt a clearly submissive stance either. Following punishment, they do not spend resources to punish the likely punisher, despite punishers being identifiable. This indicates a non-retaliatory orientation: th...",
+      "This player is resilient and non-retaliatory when punished. After being sanctioned early while personally free-riding, they increase their cooperation and do not attempt to punish back or engage in counter-sanctions, even though punishers are identifiable. This indicates that...",
+      "When punished, this player adjusts but does not collapse into persistent defection or aggressive retaliation. They appear to interpret punishment as feedback and incorporate it into their strategy. Their very first experience of being punished while behaving cooperatively is f...",
+      "When punished, this player does not immediately collapse into persistent defection, nor do they automatically retaliate through punishment. They initially continue to contribute cooperatively even under substantial negative sanctions, suggesting either a cooperative identity,..."
+    ]
+  }
+]

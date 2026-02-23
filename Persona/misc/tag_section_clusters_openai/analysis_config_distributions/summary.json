@@ -1,0 +1,13 @@
+{
+  "n_cluster_files": 8,
+  "n_rows_all_clusters": 14468,
+  "n_rows_merged": 14468,
+  "n_unmatched_experiments": 0,
+  "analysis_dir": "Persona/misc/tag_section_clusters_openai/analysis_config_distributions",
+  "outputs": [
+    "Persona/misc/tag_section_clusters_openai/analysis_config_distributions/cluster_sizes_by_tag.csv",
+    "Persona/misc/tag_section_clusters_openai/analysis_config_distributions/cluster_config_distribution_long.csv",
+    "Persona/misc/tag_section_clusters_openai/analysis_config_distributions/cluster_config_mode_by_column.csv",
+    "Persona/misc/tag_section_clusters_openai/analysis_config_distributions/cluster_config_mode_wide.csv"
+  ]
+}

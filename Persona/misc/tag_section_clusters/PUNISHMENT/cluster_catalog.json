@@ -1,0 +1,362 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 142,
+    "cluster_title": "Punishment / Use / Non",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, use, non, use punishment, low.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "use",
+      "non",
+      "use punishment",
+      "low",
+      "free",
+      "despite",
+      "clear"
+    ],
+    "sample_examples": [
+      "They never use punishment despite the tool being powerful and relatively cost‑effective. This holds even when some peers contribute noticeably less or when defectors are clearly earning higher payoffs. Their nonuse appears systematic rather than situational: even in environmen...",
+      "They never spend on punishment despite repeated opportunities, even when there are clear, repeated low contributors to target and when others around them are actively punishing. This suggests a strong reluctance to incur personal cost for retribution or deterrence. They do not...",
+      "The player never uses punishment, despite multiple salient opportunities (clear low contributors, vocal “dark side” talk, and evident free-riding). This consistent non-use suggests either a strong reluctance to incur costs to harm others or a belief that punishment is ineffici...",
+      "The player never uses punishment, despite repeated opportunities and a clear target in a consistently low-contributing peer. They also observe that others are willing to punish, including instances where low contributors receive deductions, but they do not join in or imitate t...",
+      "They never use punishment, despite repeated exposure to clear deviations from full cooperation by some group members and multiple examples of others deploying punishment against low contributors. Their baseline is strong cooperation without any enforcement behavior. This sugge..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 113,
+    "cluster_title": "Punishment / Non / Use",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, non, use, use punishment, low.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "non",
+      "use",
+      "use punishment",
+      "low",
+      "norm",
+      "free",
+      "sanctions"
+    ],
+    "sample_examples": [
+      "The player never uses the punishment option, despite having multiple opportunities and facing both low-contributing peers and personal deductions imposed by others. They consistently refrain from spending on sanctions even when there are clear “targets” (e.g., low contributors...",
+      "They never use the punishment mechanism, despite having multiple opportunities and clear visibility of others’ deviations and of at least one player engaging in costly, strong punishment. Their restraint holds even when some players contribute less than the group norm and when...",
+      "They never use punishment, despite extensive opportunities and despite clear examples of others punishing both defectors and sometimes cooperators. They refrain from punishing chronic low contributors as well as people who punish or talk negatively about the game. This indicat...",
+      "They never use punishment, despite having clear opportunities and a cost-effective punishment technology. They also experience punishment themselves after free-riding but do not reciprocate or counter-punish. This implies a strong reluctance to spend on negative sanctions, eve...",
+      "This player never uses punishment, even when at least one group member persistently contributes far less than the others and is also sometimes rewarded by others or only lightly punished. They also refrain from punishing moderate under-contributors in later rounds. Given that..."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 115,
+    "cluster_title": "Punishment / Non / Punishing",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, non, punishing, use, low.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "non",
+      "punishing",
+      "use",
+      "low",
+      "norm",
+      "free",
+      "enforcement"
+    ],
+    "sample_examples": [
+      "They never use punishment at all, despite repeated and salient opportunities and despite the presence of clear low contributors and a powerful, high-leverage punishment technology. They also see other players frequently using punishment (in particular against a chronically low...",
+      "This player never uses punishment, despite repeated opportunities and clear variation in others’ contribution levels, including occasional low contributions by peers and visible use of punishment by others. Their inaction persists regardless of whether some players contribute...",
+      "The player never spends on punishment despite repeated opportunities and despite being punished themselves, sometimes heavily. This strongly indicates a non-punitive, non-retaliatory style. They neither use punishment to enforce norms nor to get revenge for prior deductions. T...",
+      "They never use the punishment mechanism despite frequent and occasionally severe opportunities and even when punishment would be relatively efficient and clearly target low contributors or a punisher of them. Their willingness to spend on punishment appears effectively zero. T...",
+      "The player never uses punishment, even when there is a clear and repeated free-rider and when some others impose costly deductions. This consistent abstention indicates either a principled aversion to harming others, a belief that punishment is not their role, or a judgment th..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 123,
+    "cluster_title": "Punishment / Use / Non",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, use, non, use punishment, norm.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "use",
+      "non",
+      "use punishment",
+      "norm",
+      "low",
+      "punitive",
+      "contributors"
+    ],
+    "sample_examples": [
+      "They never use the punishment option, even when others undercontribute or when a large, hard-to-justify punishment is imposed by another player. They also never experiment with small, symbolic punishment. This pattern suggests a strong reluctance to incur personal cost to sanc...",
+      "They never punish at any point, despite multiple strong triggers: persistent zero contributors are openly identified, group members repeatedly call for punishment, and many others engage in intense, even extreme sanctioning. Their consistent abstention suggests they are either...",
+      "They never use punishment, even when low contributors and some norm-enforcement behavior by others are apparent. This strongly suggests either a principled reluctance to pay for sanctions, a preference to avoid confrontation, or a belief that punishment is not worth the cost i...",
+      "They do not use punishment at all, despite having clear information about others’ contributions and visible examples of others spending on punishment. This indicates a low willingness to incur personal cost to sanction behavior, even when some players contribute much less than...",
+      "They refrain completely from using punishment, even when there are clear low contributors relative to the leading cooperators and when others do enact punishment. This indicates a strong reluctance to engage in costly sanctioning, consistent with a “non-punitive cooperator” or..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 112,
+    "cluster_title": "Punishment / Free / Non",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, free, non, norm, low.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "free",
+      "non",
+      "norm",
+      "low",
+      "cost",
+      "punish",
+      "punishing"
+    ],
+    "sample_examples": [
+      "This player never uses punishment despite ample opportunities and a relatively efficient punishment technology. They refrain from punishing both persistent low contributors and those who impose heavy sanctions on others. This suggests a strong aversion to costly sanctions, whe...",
+      "They never spend any coins on punishment despite repeatedly suffering extremely heavy deductions and being insulted by several others. This strongly suggests they reject the use of punitive tools in this environment on principle. Their chat contributions reinforce this: they c...",
+      "The player never uses punishment at any point, despite being exposed repeatedly to others’ contributions that range from zero to maximum. They also receive nontrivial punishment themselves after low contributions, yet they do not retaliate. This consistent non-use of punishmen...",
+      "They never use the punishment mechanism in any round, even when doing so could credibly enforce cooperation or retaliate for heavy sanctions against them. This indicates a strong reluctance to spend personal resources to harm others, even in cases of clear free‑riding or perso...",
+      "They never spend any coins on punishment, despite many opportunities and strong social cues encouraging it. They see clear cases of players contributing nothing for multiple rounds, and they see others spending large amounts to punish these low contributors, often coordinated..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 121,
+    "cluster_title": "Punishment / Non / Use",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, non, use, low, norm.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "non",
+      "use",
+      "low",
+      "norm",
+      "punishing",
+      "sanctions",
+      "use punishment"
+    ],
+    "sample_examples": [
+      "They never use punishment, despite having multiple opportunities and a clear pattern that one specific partner targets them with costly sanctions. This indicates a very high threshold for imposing costs on others and a strong reluctance to spend personal resources for either d...",
+      "They never use the punishment mechanism, despite multiple opportunities and despite punishment being observable and sometimes used by others. They refrain from punishing even when others contribute less than the previous cooperative norm and even when low contributors are puni...",
+      "This player almost never uses the punishment option and spends nothing on it in the great majority of rounds. When they do punish, they spend a large amount in one instance, despite not being a strong cooperator themselves. This rare, high-intensity use is not clearly targeted...",
+      "They show zero willingness to use costly punishment, despite clear opportunities and identifiable targets ranging from low to very low contributors. They refrain from punishing even when some players contribute notably less than the group norm, and they also refrain from punis...",
+      "This player never uses punishment, even when they are clearly singled out and repeatedly targeted with costly sanctions while contributing less than the others. Their consistent refusal to punish holds across situations of both alignment (all contribute equally) and misalignme..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 119,
+    "cluster_title": "Punishment / Non / Use",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, non, use, low, norm.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "non",
+      "use",
+      "low",
+      "norm",
+      "use punishment",
+      "free",
+      "enforcement"
+    ],
+    "sample_examples": [
+      "The player never uses the punishment option at any point and appears to ignore social prompts to participate in sanctioning. This is a stable feature of their behavior: they refrain from punishment both when others under-contribute and when they themselves become a central tar...",
+      "This player never uses the punishment mechanism, despite multiple opportunities and despite being a repeated target of costly sanctions themselves. They absorb substantial deductions without retaliating or attempting to discipline low contributors, suggesting a strong reluctan...",
+      "The player never uses the punishment option, even when confronted with peers who contribute very little or when they themselves are repeatedly and heavily sanctioned. This uniform refusal to spend on punishment holds in cooperative, mixed, and low-contribution environments, an...",
+      "The player never uses the punishment mechanism, despite multiple opportunities and despite sometimes facing peers who contribute noticeably less than others and being personally targeted by punishment on some occasions. This consistent non-use indicates a strong reluctance to...",
+      "They almost never use the punishment mechanism, despite experiencing repeated free-riding by specific others and having clear information about who contributes what. Across the game they pay to punish only once, and that single use of punishment coincides with a round where th..."
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "cluster_size": 91,
+    "cluster_title": "Punishment / Low / Punish",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, low, punish, norm, use.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "low",
+      "punish",
+      "norm",
+      "use",
+      "player",
+      "contributors",
+      "use punishment"
+    ],
+    "sample_examples": [
+      "This player uses punishment very sparingly and in a targeted, reactive way. Across the game they almost never spend on punishment, activating it only on rare occasions. When they do choose to punish, it coincides with clear deviations from their usual cooperative pattern, sugg...",
+      "Most of the time they do not use punishment, even when it is available and when others defect. Their baseline is “no punishment.” However, they are willing to punish in a highly selective and very costly way when there is both (a) noticeable under-contribution in the group and...",
+      "They make relatively infrequent use of punishment and, when they do punish, it is light and isolated rather than part of a systematic enforcement strategy. There is no clear pattern of punishing low contributors versus high contributors; their punishment choices do not obvious...",
+      "They are willing but selective punishers. For the majority of the game they refrain from using punishment at all, despite repeated free‑riding from specific others and explicit group chatter that endorses penalizing non‑contributors. Their default is non‑punitive: they do not...",
+      "They almost never use punishment and clearly prefer positive incentives. Across the game, they impose a deduction only once, directed at a chronic low contributor. That punishment appears selective and norm-enforcing rather than retaliatory: it targets a player whose cooperati..."
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "cluster_size": 122,
+    "cluster_title": "Punishment / Punish / Norm",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, punish, norm, group, low.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "punish",
+      "norm",
+      "group",
+      "low",
+      "use",
+      "free",
+      "player"
+    ],
+    "sample_examples": [
+      "They are highly restrained in using punishment. For most of the game, they either do not punish or, when punishment is clearly directed by the group at supposed defectors, they do not visibly join in beyond a single small expenditure. They never publicly advocate for punishmen...",
+      "They almost never punish. The one clear instance is targeted at a player who contributes substantially less than the established full-cooperation norm while re-entering the game; the punishment is minimal in absolute cost and appears selective and norm-based rather than spitef...",
+      "They almost never punish; across the entire interaction they impose punishment exactly once. That single act is selective and aimed at a clear low contributor relative to the rest of the active group, suggesting a norm‑enforcing motive rather than indiscriminate hostility. The...",
+      "The player is highly reluctant to punish and uses it sparingly and selectively. They employ punishment only once, and only against a clear, repeated free-rider whose contributions are dramatically below group norms, even when most others cooperate. This indicates a threshold-b...",
+      "They are generally reluctant to punish, but they do employ targeted, low-intensity punishment against persistent non-contributors who are publicly discussed in chat as problematic. When group members highlight specific free-riders, they join the sanctioning effort with a singl..."
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "cluster_size": 114,
+    "cluster_title": "Punishment / Punish / Norm",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, punish, norm, low, use.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "punish",
+      "norm",
+      "low",
+      "use",
+      "contributors",
+      "free",
+      "group"
+    ],
+    "sample_examples": [
+      "This player uses punishment sparingly, selectively, and almost exclusively in a norm-enforcing, pro-social way. When they do punish, they target clear relative low contributors rather than high contributors or cooperators. The amount they spend on punishment is modest compared...",
+      "They almost never use punishment and appear reluctant to spend on it despite many opportunities and clear free‑riding. The one time they do punish, it targets a salient, repeat non‑contributor who has openly disparaged the game. This suggests that their threshold for punishmen...",
+      "The player is generally reluctant to use punishment and does so only once, in a targeted way, against a clear, persistent non‑contributor. This selectivity indicates that their threshold for punishing is high and likely tied to obvious, repeated violations of a cooperative nor...",
+      "The player is willing to use costly punishment and targets a single, relatively low contributor. They do not punish multiple low contributors, indicating selectivity rather than indiscriminate sanctioning. The choice to punish is consistent with enforcing a cooperative or fair...",
+      "They almost never use punishment. Across the game they invoke it only once, targeting the most salient chronic defector rather than minor deviations. This solitary act looks like a principled sanction of a clear free-rider rather than ongoing retaliation or spite. After that e..."
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "cluster_size": 119,
+    "cluster_title": "Punishment / Punish / Norm",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, punish, norm, player, free.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "punish",
+      "norm",
+      "player",
+      "free",
+      "group",
+      "low",
+      "contributors"
+    ],
+    "sample_examples": [
+      "They are an extremely willing and heavy user of costly punishment. From early on they advocate punishing any non‑max contributor and publicly encourage others to do the same. They self‑report large intended punishments and, given their consistently reduced payoffs relative to...",
+      "They use punishment exactly once, targeting a clear, repeated free-rider. This occurs when that peer has been taking the benefit of group contributions while contributing nothing. The player does not punish other low contributors before or after, nor do they punish ambiguous c...",
+      "They are highly willing to punish, but in a focused and norm-enforcing way rather than broadly. They only target the most blatant and consistent free-rider, who repeatedly fails to contribute. When they do punish, they spend a relatively large amount on that single target, acc...",
+      "They are a selective, low-frequency punisher whose threshold is repeated or salient norm violation by a specific individual. They are willing to pay to punish the persistent under-contributor early on, signaling dissatisfaction with free-riding behavior. Later, they verbally e...",
+      "They are an extremely willing and heavy user of punishment. From the start, they single out undercontributors, repeatedly target Sloth, and also hit other clear low contributors when group cooperation first falters. They favor large, concentrated punishment on the main free ri..."
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "cluster_size": 104,
+    "cluster_title": "Punishment / Punish / Low",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, punish, low, norm, use.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "punish",
+      "low",
+      "norm",
+      "use",
+      "contributors",
+      "contribution",
+      "free"
+    ],
+    "sample_examples": [
+      "The player uses punishment sparingly and selectively. They mostly refrain from punishing, even when others contribute less than they do, implying that they do not have a strong, automatic drive to sanction all norm violators. When they do spend on punishment, it appears target...",
+      "The player is a frequent and relatively heavy user of punishment, willing to incur substantial personal costs to sanction others across many stages of the game. Punishment is not confined to clear, extreme free‑riders: they also punish in contexts where others appear highly co...",
+      "They are willing to use costly punishment and escalate it over time, even when it reduces their own payoffs substantially. Early on, they use punishment sparingly and at low intensity; later, they significantly increase total punishment expenditure. This progression is consist...",
+      "The player sometimes engages in costly punishment, but not every time others defect, and not in a consistent tit‑for‑tat pattern. They punish in multiple nonadjacent rounds and spend nontrivial amounts when they do, indicating a willingness to incur personal cost to sanction o...",
+      "This player is a very heavy, aggressive user of punishment, often spending a large share of their available payoff to reduce others’ earnings. They are not narrowly targeting clear free-riders; instead they frequently punish multiple peers heavily, including those who are cont..."
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "cluster_size": 127,
+    "cluster_title": "Punishment / Punish / Norm",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, punish, norm, contributors, low.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "punish",
+      "norm",
+      "contributors",
+      "low",
+      "player",
+      "contribution",
+      "group"
+    ],
+    "sample_examples": [
+      "Punishment is central to this player’s identity and strategy. They are extremely willing to spend large amounts on punishment, even when it is personally very costly and clearly lowers their own payoff substantially. Their punishments are initially directed at clear free rider...",
+      "This player is a frequent, costly, and norm-based punisher. They initially refrain from punishing when contributions are high and aligned with their max-cooperation standard; once clear free-riders or partial contributors emerge, they begin spending substantial resources to pu...",
+      "The player actively uses costly punishment and appears to be a consistent “altruistic enforcer.” They punish only when others’ contributions are below the group’s implicit norm of full cooperation, and they abstain from punishment when everyone contributes fully. Their pattern...",
+      "They are a frequent and often heavy punisher. They reliably target low or zero contributors and do not appear to punish cooperators; punishment is selective and norm‑based rather than random. They sometimes spend substantial amounts to sanction free riders, at times at levels...",
+      "They are a selective, low-intensity punisher focused on clear non-contributors. They are willing to spend on punishment multiple times but only in small units and only against players who repeatedly give nothing or near-nothing. Their choices are consistent with second-order c..."
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "cluster_size": 148,
+    "cluster_title": "Punishment / Punish / Contributors",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, punish, contributors, norm, low.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "punish",
+      "contributors",
+      "norm",
+      "low",
+      "contribution",
+      "high",
+      "player"
+    ],
+    "sample_examples": [
+      "This player uses punishment actively but very selectively, focusing almost exclusively on a single target. They are clearly willing to incur personal costs to reduce another’s payoff, and they escalate the intensity over time. The target is not the lowest contributor in the gr...",
+      "They are a heavy, proactive punisher with a clear taste for norm enforcement and retribution. From early in the game they declare that they punish anyone who does not contribute the maximum and follow through with substantial expenditures on punishment across many rounds. Thei...",
+      "This player is a highly active, norm‑enforcing punisher who is willing to spend substantial resources to sanction others. They use punishment intermittently at first and then increasingly heavily over time, especially in the later part of the game. They show a clear focus on e...",
+      "They are a selective but recurring punisher of low contributors. They do not punish in every instance of free-riding, but they use the mechanism multiple times across the game, reliably in contexts where at least one identifiable peer contributes less than the cooperative norm...",
+      "They are an actively punitive, norm-enforcing type who repeatedly spends sizeable amounts to punish low contributors and suspected bots or free-riders. They target those who repeatedly contribute nothing or very little, focusing primarily on a few persistent low contributors;..."
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "cluster_size": 142,
+    "cluster_title": "Punishment / Punish / Norm",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, punish, norm, low, contributors.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "punish",
+      "norm",
+      "low",
+      "contributors",
+      "group",
+      "high",
+      "contribution"
+    ],
+    "sample_examples": [
+      "The player is willing to use costly punishment selectively. They do not punish every deviation, but they do sometimes pay to impose deductions. Given that punishment is costly and relatively powerful, their occasional use suggests they value norm enforcement or retaliation eno...",
+      "The player is a moderately to highly active punisher and is willing to pay nontrivial costs to sanction others. Their punishment is selective rather than random: they spend when others clearly deviate from the maximum-contribution norm or behave in ways that undermine group ef...",
+      "They are a moderately heavy, payoff‑sacrificing punisher who uses costly sanctions repeatedly against low contributors or norm violators. They spend a substantial amount of their own payoff to impose deductions across many rounds, including when group cooperation is already hi...",
+      "This player is an active and relatively persistent punisher. They spend on punishment in many rounds, and the costliness of the mechanism does not deter them from repeated use. The timing and context of their sanctions indicate that they primarily target low contributors and p...",
+      "The player is a frequent and relatively heavy user of costly punishment. They expend punishment in many rounds, and in some cases devote a nontrivial share of their resources to sanctioning others. This indicates a high willingness to incur personal costs to shape group behavi..."
+    ]
+  }
+]

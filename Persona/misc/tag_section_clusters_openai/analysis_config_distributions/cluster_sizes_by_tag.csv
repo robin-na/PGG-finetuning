@@ -1,0 +1,121 @@
+tag_folder,cluster_id,cluster_title,cluster_n
+COMMUNICATION,0,Engaging Social Dynamics in Cooperative Settings,91
+COMMUNICATION,1,Cooperative Norms and Group Dynamics,110
+COMMUNICATION,2,Engaging Cooperation in Group Settings,139
+COMMUNICATION,3,Playful Social Engagement in Group Dynamics,101
+COMMUNICATION,4,Cooperative Communication in Group Dynamics,115
+COMMUNICATION,5,Sociable Players Embrace Lighthearted Cooperation,105
+COMMUNICATION,6,Affiliative Communicators in Cooperative Settings,129
+COMMUNICATION,7,Cooperative Communication in Group Dynamics,131
+COMMUNICATION,8,Cooperative Communication in Social Settings,100
+COMMUNICATION,9,Sparsely Communicative Yet Cooperative Personas,114
+COMMUNICATION,10,Minimal Communicators in Group Dynamics,86
+COMMUNICATION,11,Low-Engagement Cooperative Players,121
+COMMUNICATION,12,Silent Observers in Social Dynamics,122
+COMMUNICATION,13,Silent Cooperators in Group Dynamics,144
+COMMUNICATION,14,Silent Observers in Communication Dynamics,126
+CONTRIBUTION,0,Moderate Contributors in Cooperative Settings,228
+CONTRIBUTION,1,Volatile Contributors: Patterns of Cooperation,304
+CONTRIBUTION,2,Patterns of Opportunistic Contribution Behavior,234
+CONTRIBUTION,3,Patterns of Unconditional Free-Riding Behavior,142
+CONTRIBUTION,4,High Contributors with Conditional Flexibility,292
+CONTRIBUTION,5,Dynamic Contributors in Cooperative Settings,292
+CONTRIBUTION,6,Cooperative Contributors with Occasional Deviations,266
+CONTRIBUTION,7,High Contributors in Cooperative Settings,237
+CONTRIBUTION,8,High Contributors with Strategic Defections,206
+CONTRIBUTION,9,Unconditional High Contributors in Group Settings,262
+CONTRIBUTION,10,Unconditional High Contributors in Cooperative Settings,255
+CONTRIBUTION,11,Unwavering Commitment to Group Contribution,228
+CONTRIBUTION,12,Unwavering Full Cooperation in Groups,215
+CONTRIBUTION,13,Unwavering Full Cooperation in Groups,223
+CONTRIBUTION,14,Unconditional Full Cooperation in Group Settings,307
+PUNISHMENT,0,The Reluctance to Punish in Groups,129
+PUNISHMENT,1,The Reluctant Non-Punisher,110
+PUNISHMENT,2,Non-Punitive Behavior in Group Dynamics,142
+PUNISHMENT,3,The Reluctant Non-Punisher Profile,113
+PUNISHMENT,4,Reluctance to Use Punishment Mechanisms,179
+PUNISHMENT,5,Reluctance to Use Punishment in Groups,166
+PUNISHMENT,6,Selective Punishment in Cooperative Settings,84
+PUNISHMENT,7,Selective Punishment in Group Dynamics,103
+PUNISHMENT,8,Selective Punishment in Cooperative Settings,94
+PUNISHMENT,9,Selective Punishment in Cooperative Settings,121
+PUNISHMENT,10,Selective Punishment in Cooperative Groups,92
+PUNISHMENT,11,Selective Punishment in Group Dynamics,108
+PUNISHMENT,12,The Dynamics of Costly Punishment,101
+PUNISHMENT,13,Costly Punishers: Enforcing Contribution Norms,152
+PUNISHMENT,14,The Dynamics of Costly Punishment,118
+RESPONSE_TO_END_GAME,0,Consistent Cooperation Until the End,108
+RESPONSE_TO_END_GAME,1,Consistent Cooperation in Final Game Rounds,131
+RESPONSE_TO_END_GAME,2,Consistent Cooperation Through Final Rounds,165
+RESPONSE_TO_END_GAME,3,Cooperative Strategies in Late Game Rounds,124
+RESPONSE_TO_END_GAME,4,End-Game Cooperation Patterns in Players,123
+RESPONSE_TO_END_GAME,5,Consistent Cooperation Until the Final Round,137
+RESPONSE_TO_END_GAME,6,Consistent Cooperation in Final Rounds,137
+RESPONSE_TO_END_GAME,7,End-Game Behavior in Finite Games,128
+RESPONSE_TO_END_GAME,8,Consistent Cooperation Until the Final Round,96
+RESPONSE_TO_END_GAME,9,Cooperative Behavior Near Game End,153
+RESPONSE_TO_END_GAME,10,Consistent Cooperation Until the Final Round,134
+RESPONSE_TO_END_GAME,11,End-Game Defection Patterns in Players,130
+RESPONSE_TO_END_GAME,12,End-Game Behavior in Contribution Dynamics,96
+RESPONSE_TO_END_GAME,13,End-Game Behavior in Cooperative Games,100
+RESPONSE_TO_END_GAME,14,Consistent Cooperation Through Final Rounds,124
+RESPONSE_TO_OTHERS_OUTCOME,0,Monitoring Contributions and Enforcing Fairness,115
+RESPONSE_TO_OTHERS_OUTCOME,1,Behavioral Patterns in Contribution and Punishment,127
+RESPONSE_TO_OTHERS_OUTCOME,2,Observant Players in Cooperative Dynamics,107
+RESPONSE_TO_OTHERS_OUTCOME,3,Observing Contributions and Group Dynamics,106
+RESPONSE_TO_OTHERS_OUTCOME,4,Monitoring Contributions for Group Success,126
+RESPONSE_TO_OTHERS_OUTCOME,5,Behavioral Patterns in Cooperative Groups,107
+RESPONSE_TO_OTHERS_OUTCOME,6,Passive Observers in Cooperative Environments,141
+RESPONSE_TO_OTHERS_OUTCOME,7,Behavioral Detachment in Cooperative Dynamics,145
+RESPONSE_TO_OTHERS_OUTCOME,8,Cooperative Players and Reward Dynamics,133
+RESPONSE_TO_OTHERS_OUTCOME,9,Indifferent Players in Cooperative Settings,118
+RESPONSE_TO_OTHERS_OUTCOME,10,Adaptive Players in Cooperative Environments,138
+RESPONSE_TO_OTHERS_OUTCOME,11,Observing Without Reacting: A Behavioral Analysis,128
+RESPONSE_TO_OTHERS_OUTCOME,12,Stable Cooperation Amid Payoff Disparities,99
+RESPONSE_TO_OTHERS_OUTCOME,13,Opportunistic Players in Contribution Dynamics,119
+RESPONSE_TO_OTHERS_OUTCOME,14,Indifferent Players in Reward Dynamics,116
+RESPONSE_TO_PUNISHER,0,Understanding Responses to Punishment,56
+RESPONSE_TO_PUNISHER,1,Understanding Responses to Punishment,64
+RESPONSE_TO_PUNISHER,2,Understanding Unpunished Behavior Patterns,47
+RESPONSE_TO_PUNISHER,3,Responses to Punishment Remain Unexplored,41
+RESPONSE_TO_PUNISHER,4,Understanding Responses to Punishment Dynamics,54
+RESPONSE_TO_PUNISHER,5,Responses to Punishment Without Retaliation,63
+RESPONSE_TO_PUNISHER,6,Responses to Punishment in Cooperative Settings,53
+RESPONSE_TO_PUNISHER,7,Resilient Cooperation in Punitive Environments,72
+RESPONSE_TO_PUNISHER,8,Responses to Punishment: A Complex Landscape,61
+RESPONSE_TO_PUNISHER,9,Resilient Cooperation in the Face of Punishment,70
+RESPONSE_TO_PUNISHER,10,Non-Retaliatory Cooperation in Punitive Contexts,45
+RESPONSE_TO_PUNISHER,11,Resilient Cooperation in Punitive Environments,57
+RESPONSE_TO_PUNISHER,12,Resistance to Punishment in Cooperative Settings,52
+RESPONSE_TO_PUNISHER,13,Responses to Punishment in Cooperative Settings,53
+RESPONSE_TO_PUNISHER,14,Resilient Non-Retaliators in Punishment Scenarios,59
+RESPONSE_TO_REWARDER,0,Understanding Unrewarded Behavior Patterns,85
+RESPONSE_TO_REWARDER,1,Understanding Unrewarded Player Behavior,35
+RESPONSE_TO_REWARDER,2,Patterns of Non-Reciprocal Reward Behavior,57
+RESPONSE_TO_REWARDER,3,Unresponsive Reward Recipients in Group Dynamics,62
+RESPONSE_TO_REWARDER,4,Patterns of Implicit Reciprocity in Rewards,39
+RESPONSE_TO_REWARDER,5,Lack of Reciprocity in Reward Dynamics,63
+RESPONSE_TO_REWARDER,6,Stable Cooperation Despite Received Rewards,50
+RESPONSE_TO_REWARDER,7,Dynamics of Reward and Reciprocity,33
+RESPONSE_TO_REWARDER,8,Unreciprocated Rewards in Cooperative Behavior,71
+RESPONSE_TO_REWARDER,9,Understanding Cooperative Reward Behavior,60
+RESPONSE_TO_REWARDER,10,Understanding Non-Reciprocal Reward Behavior,54
+RESPONSE_TO_REWARDER,11,Patterns of Non-Reciprocal Reward Behavior,75
+RESPONSE_TO_REWARDER,12,Patterns of Non-Reciprocal Reward Behavior,51
+RESPONSE_TO_REWARDER,13,Cooperative Players and Reward Dynamics,70
+RESPONSE_TO_REWARDER,14,Cooperative Behavior in Reward Dynamics,53
+REWARD,0,The Generous Rewarder Persona,157
+REWARD,1,Selective Rewarding Behavior in Cooperative Settings,119
+REWARD,2,Selective Rewarding in Cooperative Contexts,117
+REWARD,3,Generous Rewarders in Cooperative Settings,120
+REWARD,4,Conservative Reward Users in Gameplay,52
+REWARD,5,Non-Rewarding Cooperators in Group Dynamics,160
+REWARD,6,Selective Rewarding to Foster Cooperation,122
+REWARD,7,Reluctance to Use Reward Mechanisms,93
+REWARD,8,Sparing Use of Rewards in Cooperative Settings,96
+REWARD,9,Reluctance to Reward Cooperative Behavior,115
+REWARD,10,The Reluctant Non-Rewarder Persona,100
+REWARD,11,Avoiding Rewards in Cooperative Environments,112
+REWARD,12,Reluctance to Reward Cooperative Behavior,162
+REWARD,13,Reluctance to Reward in Cooperative Settings,130
+REWARD,14,Reluctance to Use Reward Mechanisms,160

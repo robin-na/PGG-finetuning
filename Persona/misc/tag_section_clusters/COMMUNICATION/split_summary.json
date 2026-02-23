@@ -1,0 +1,21 @@
+{
+  "tag": "COMMUNICATION",
+  "split_name": "Communication Style Profiles",
+  "split_intro": "Clusters built from <COMMUNICATION> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 1821,
+    "empty_tag": 0,
+    "dropped_unknown": 136,
+    "kept": 1734
+  },
+  "rows_for_clustering": 1734,
+  "paths": {
+    "section_input_jsonl": "Persona/misc/tag_section_clusters/COMMUNICATION/communication_sections_input.jsonl",
+    "clustered_jsonl": "Persona/misc/tag_section_clusters/COMMUNICATION/communication_clustered.jsonl",
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters/COMMUNICATION/cluster_catalog.json",
+    "run_metadata_json": "Persona/misc/tag_section_clusters/COMMUNICATION/run_metadata.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters/COMMUNICATION/umap_points.csv"
+  },
+  "status": "ok"
+}

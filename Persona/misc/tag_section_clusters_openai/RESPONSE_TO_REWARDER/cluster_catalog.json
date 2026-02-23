@@ -1,0 +1,362 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 85,
+    "cluster_title": "Understanding Unrewarded Behavior Patterns",
+    "cluster_intro": "This group exhibits a consistent lack of reward reception, leading to an absence of observable responses to positive reinforcement. Their behavior suggests a potential disconnection from reciprocal interactions and alliance formation, leaving their reactions to rewards largely speculative.",
+    "summary_source": "openai",
+    "top_terms": [
+      "rewarded",
+      "unknown",
+      "rewards",
+      "reward",
+      "response",
+      "rewarders",
+      "evidence",
+      "reciprocate"
+    ],
+    "sample_examples": [
+      "They are never rewarded by others, so their direct response to being rewarded is unknown. Because they do not reward anyone themselves and do not discuss rewards in chat, there is no indirect evidence of how they would react to positive reinforcement—reciprocity, alliance-buil...",
+      "They are never rewarded, so responses cannot be directly observed. It is unknown whether they would reciprocate rewards, adjust contributions upward, or direct rewards back to benefactors in future rounds. Given their lack of reward use even when others are generous, it is unc...",
+      "They are never rewarded, so direct reciprocity toward a known rewarder cannot be observed. Consequently, their willingness to return favors, form implicit alliances with rewarders, or increase cooperation after being rewarded remains unknown. There is also no evidence that the...",
+      "They receive no rewards, so their direct behavioral response to being rewarded is unknown. There is no evidence of reciprocal reward or of forming implicit cooperative “clubs” through mutual bonuses. Given their general avoidance of both punishment and reward despite seeing ot...",
+      "They are never rewarded, so their direct reaction is unknown. They observe some players spending on rewards, but this does not lead them to join in or reciprocate the rewarding behavior. There is no sign that the presence of rewarders encourages them to form alliances or to be..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 35,
+    "cluster_title": "Understanding Unrewarded Player Behavior",
+    "cluster_intro": "This cluster highlights players who consistently do not receive rewards from others, leaving their responses to potential rewards largely unobserved. Their lack of engagement with reward dynamics raises questions about reciprocity, alliance formation, and behavioral adjustments in response to rewards. As a result, their tendencies in social interactions remain ambiguous and unexplored.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "unknown",
+      "response",
+      "rewarders",
+      "player",
+      "reciprocity"
+    ],
+    "sample_examples": [
+      "They never receive rewards from others in this game, so their direct response to being rewarded is unknown. Because they consistently refrain from using reward on anyone, including players who are frequently rewarding others, it is uncertain whether they would respond with rec...",
+      "This player is never rewarded, so their direct reactions to identifiable rewarders are unknown. They do not adjust their contributions in response to the general presence of rewards in the environment; their behavior remains unchanged while others use rewards multiple times. T...",
+      "This is unknown, as the player is never rewarded. There is no evidence on whether they would reciprocate materially, shift contributions, or treat rewarders differently in future interactions.",
+      "The player receives no rewards. Their propensity for reciprocating rewards, forming cooperative partnerships with generous peers, or shifting subsequent contributions in response to being rewarded is unknown.",
+      "This player receives no rewards at any point, so their reaction to identifiable rewarders cannot be inferred. Their tendencies for reciprocating rewards, forming alliances, or increasing cooperation in response to being rewarded are unknown."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 57,
+    "cluster_title": "Patterns of Non-Reciprocal Reward Behavior",
+    "cluster_intro": "This cluster highlights individuals who receive rewards frequently but show little to no acknowledgment or reciprocation. Their behavior suggests a lack of responsiveness to social cues related to gratitude and alliance-building, resulting in a consistent pattern of non-reciprocal interactions.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "rewarders",
+      "reciprocity",
+      "gratitude",
+      "behavior",
+      "contributions"
+    ],
+    "sample_examples": [
+      "They receive rewards multiple times from others but do not reciprocate materially and do not comment on being rewarded. They do not target their rewarders with reward in later rounds, and they do not shift into a stable full-cooperator stance in apparent gratitude. This sugges...",
+      "They receive rewards multiple times but never respond publicly, either with thanks, reciprocal reward, or visible behavioral alignment toward the rewarders. Their cooperation choices after being rewarded are inconsistent: sometimes they continue to contribute, sometimes they d...",
+      "They receive rewards multiple times from others, including when they are free-riding as well as when they are contributing, but they never mention these gifts in chat and never reciprocate with rewards of their own. They do not visibly adjust their contribution pattern in a wa...",
+      "When they receive rewards, they do not change their reward behavior toward the giver (or toward anyone else), nor do they start rewarding after being targeted. They also do not use contributions to signal gratitude or alliance in any obvious way after being rewarded; their con...",
+      "They receive rewards multiple times but never reciprocate with rewards or with explicit verbal thanks. They also do not adjust their reward behavior from “never reward” to “sometimes reward” in response to being rewarded, suggesting a low propensity for direct reciprocity via..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 62,
+    "cluster_title": "Unresponsive Reward Recipients in Group Dynamics",
+    "cluster_intro": "This persona cluster reveals individuals who receive rewards without any visible acknowledgment or behavioral change. Despite being rewarded multiple times, they do not express gratitude or engage in reciprocal rewarding, maintaining their existing contribution patterns. Their lack of response suggests a disconnect between receiving rewards and altering social or cooperative behaviors.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "behavior",
+      "rewarders",
+      "chat",
+      "gratitude",
+      "reciprocity"
+    ],
+    "sample_examples": [
+      "They do receive rewards at several points but never comment on them explicitly in chat and do not respond with visible reciprocity toward specific rewarders. There is no clear behavioral evidence that being rewarded makes them more likely to contribute in subsequent rounds, no...",
+      "They receive at least one reward but do not acknowledge it in chat or adjust their behavior in any visibly new way. Their contribution and punishment patterns continue unchanged. There is no sign of reciprocal rewarding or explicit gratitude. This suggests that being rewarded...",
+      "They receive a reward in the first round while having contributed substantially less than the group norm. They do not comment on this, do not express gratitude, and do not attempt to reciprocate by rewarding back. Their later cooperative behavior aligns with group norms but is...",
+      "They are rewarded in several rounds by others (exact givers not fully listed here), but they never mention this in chat and never reciprocate with rewards. They do not publicly thank or acknowledge rewarders, nor do they adjust their own contribution behavior in response—thoug...",
+      "They receive rewards in many rounds but never explicitly acknowledge or thank specific rewarders in chat. They also do not shift their behavior in response to being rewarded—there is no increase in communication, no movement toward using the reward mechanism themselves, and no..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 39,
+    "cluster_title": "Patterns of Implicit Reciprocity in Rewards",
+    "cluster_intro": "This cluster highlights individuals who receive rewards without explicitly acknowledging or reciprocating to specific rewarders. Their behavior suggests a general alignment with cooperative norms, yet lacks direct verbal gratitude or targeted reciprocity. The absence of clear, identifiable responses raises questions about the nature of their engagement in reward dynamics.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewarded",
+      "rewards",
+      "reciprocity",
+      "group",
+      "rewarders",
+      "rewarding",
+      "behavior"
+    ],
+    "sample_examples": [
+      "They are rewarded by others in some rounds, but because they never speak, never reward those specific players in an obviously tightly coupled way, and show no direct behavioral shift tied to who rewarded them, their explicit response is unknown. There is no clear evidence of d...",
+      "They receive rewards a number of times, especially when they themselves continue not to contribute. They do not explicitly thank any specific rewarder by name, but they do respond in a way that broadly aligns with those players’ cooperative messaging: they echo calls for every...",
+      "They receive rewards at least once, but they do not explicitly acknowledge or reciprocate to specific rewarders in chat, nor do they respond by changing their own reward behavior. Their contributions remain full both before and after being rewarded, suggesting their cooperativ...",
+      "They receive rewards multiple times and respond by continuing to contribute fully and to participate positively in group chat. They do not explicitly thank specific rewarders, but they acknowledge and reciprocate the cooperative norm at the group level (e.g., endorsing that th...",
+      "When rewarded, they do not explicitly thank specific individuals, but they do continue to behave in ways that are consistent with reciprocating and sustaining a cooperative alliance: they keep contributing maximally, keep using rewards themselves, and align rhetorically with o..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 63,
+    "cluster_title": "Lack of Reciprocity in Reward Dynamics",
+    "cluster_intro": "This persona cluster exhibits a consistent pattern of receiving rewards without any reciprocal behavior. Despite being rewarded multiple times, individuals do not alter their contribution levels or engage in mutual reward exchanges. This suggests a strong tendency towards self-interest and a lack of gratitude-driven responses.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "rewarders",
+      "reciprocity",
+      "contributions",
+      "response",
+      "behavior"
+    ],
+    "sample_examples": [
+      "They receive rewards several times from specific co-players, but they never reciprocate with rewards of their own and they do not alter their contribution behavior, which is already at the maximum. There is no observable attempt to form a mutual-reward alliance or to different...",
+      "They receive rewards multiple times, including sizable amounts, yet show no observable behavioral shift toward contributing and offer no explicit thanks or reciprocal actions. They neither begin to reward their benefactors systematically, nor alter their own contributions in t...",
+      "They do receive a reward from another player but do not reciprocate materially. Despite the rewarder being identifiable and the mechanism allowing them to respond, they choose not to send reward back or to reward similar cooperators. This suggests that they do not practice dir...",
+      "They do receive a reward at one point but do not reciprocate to anyone afterward. This shows no observable gratitude behavior and no attempt to form dyadic alliances via mutual rewarding. They neither start rewarding in general nor reward the specific benefactor (identity is k...",
+      "They receive rewards at some points from others, but they never reciprocate with rewards of their own, either to those specific individuals or in general. They do not appear to change their contribution pattern in any obvious way following being rewarded; their contributions c..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 50,
+    "cluster_title": "Stable Cooperation Despite Received Rewards",
+    "cluster_intro": "Individuals in this cluster consistently exhibit high levels of cooperation, regardless of receiving rewards from others. Their behavior remains unchanged, as they do not engage in reciprocal rewarding or alter their contribution patterns. This suggests that external rewards do not significantly influence their cooperative strategies.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "does",
+      "rewarders",
+      "reciprocity",
+      "rewarding",
+      "behavior"
+    ],
+    "sample_examples": [
+      "They receive rewards on a few occasions from others who also appear highly cooperative. Their subsequent behavior does not change discernibly: they continue to contribute at similar or slightly varying cooperative levels and still never adopt rewarding themselves. There is no...",
+      "The player is rewarded on a couple of occasions but does not alter their enforcement behavior (they still never reward or punish) and does not acknowledge the rewarders in chat. Their contribution pattern remains broadly similar to what it was before rewards appeared, suggesti...",
+      "They receive modest rewards in several instances but never reciprocate toward any identifiable rewarder. There is no evidence of direct reciprocity (rewarding someone who previously rewarded them) or indirect reciprocity (rewarding others who generously reward third parties)....",
+      "They receive very little direct reward, and when they do, they do not respond with visible reciprocal reward back to the same individual, nor with a clear change in their contribution that can be tied uniquely to that benefactor. This suggests that they do not use reward as a...",
+      "When they receive rewards, they do not change their contribution pattern (which is already maximally cooperative) and do not reciprocate via reward, even toward those who have rewarded them. This lack of behavioral change suggests that being rewarded does not alter their under..."
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "cluster_size": 33,
+    "cluster_title": "Dynamics of Reward and Reciprocity",
+    "cluster_intro": "This cluster highlights diverse behaviors surrounding the receipt and acknowledgment of rewards within a group context. While some individuals express gratitude and engage in reciprocal exchanges, others maintain a more understated approach, focusing on contributions without explicit acknowledgment. Overall, the patterns reveal varying degrees of social sensitivity and engagement with reward dynamics.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewarded",
+      "rewards",
+      "reciprocity",
+      "group",
+      "rewarding",
+      "specific",
+      "rewarders"
+    ],
+    "sample_examples": [
+      "They are occasionally rewarded by others; when this happens, they do not respond in chat, but their behavior is consistent with appreciating and aligning with other rewarders. They continue to contribute fully and, in some cases, direct rewards toward players who themselves in...",
+      "They receive repeated rewards across the game from several others. There is no evidence that they try to reciprocate directly to specific rewarders (for example, they do not clearly single them out with rewards in return). Nor do they explicitly thank rewarders in chat. Instea...",
+      "They are rewarded multiple times by others, but they never explicitly acknowledge or reciprocate to specific rewarders in chat. Behaviorally, they continue high contributions and continue to reward others throughout, including players who reward them and many who do not. Their...",
+      "They are explicitly grateful and reinforcing toward those who reward them; when they receive rewards, they immediately thank the giver by name in chat, sometimes more than once. This suggests a strong tendency toward social reciprocity at the communication level, even though t...",
+      "When other players reward or support them, they respond with banter and mild appreciation rather than explicit gratitude or reciprocal monetary behavior. They acknowledge social gestures (like people calling them “wolf daddy,” welcoming them when they contribute, or apologizin..."
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "cluster_size": 71,
+    "cluster_title": "Unreciprocated Rewards in Cooperative Behavior",
+    "cluster_intro": "This persona cluster reveals individuals who receive rewards from others without altering their own contribution patterns. Despite being recognized positively, they do not engage in reciprocal rewarding or adjust their behavior in response. Their consistent high level of cooperation suggests a detachment from the dynamics of reward exchange.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "contribution",
+      "behavior",
+      "rewarding",
+      "does",
+      "rewarders"
+    ],
+    "sample_examples": [
+      "They are rewarded a few times by other players despite not using the reward mechanism themselves. After receiving rewards, they do not change their pattern in any clearly affiliative or reciprocal way: they do not begin rewarding, they do not unambiguously increase contributio...",
+      "They receive reward in several rounds from at least some group members. Despite this, they never respond by rewarding those individuals back or by otherwise engaging in targeted reciprocal behavior. They continue their own contribution pattern largely independent of who reward...",
+      "When they are rewarded, they continue to interact with those rewarders in ways that do not clearly reflect stable gratitude or reciprocity. They occasionally receive positive transfers from others yet do not consistently reward those same individuals later, nor do they reliabl...",
+      "When they eventually receive a reward from another player, they do not change their contribution behavior, nor do they begin rewarding others. There is no observable reciprocity toward the specific rewarder and no shift toward more cooperative play after being positively recog...",
+      "They receive rewards in multiple rounds from others but do not show systematic reciprocal rewarding to those same individuals. They neither escalate into a clear “reward alliance” nor retaliate by withholding rewards from non-rewarders in any patterned way. Their response to b..."
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "cluster_size": 60,
+    "cluster_title": "Understanding Cooperative Reward Behavior",
+    "cluster_intro": "This persona cluster highlights individuals who exhibit consistent cooperative behavior regardless of the rewards they receive. While they acknowledge rewards, their responses lack systematic reciprocity towards specific individuals. Instead, their actions reflect a broader commitment to cooperation rather than direct reward exchanges.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewarded",
+      "rewards",
+      "reciprocity",
+      "cooperative",
+      "rewarding",
+      "rewarders",
+      "behavior"
+    ],
+    "sample_examples": [
+      "When rewarded, they do not clearly change their subsequent behavior toward the specific rewarder in any systematic way. They sometimes receive rewards in cooperative contexts and continue contributing at medium‑high levels thereafter, but there is no strong indication that the...",
+      "They receive rewards from others multiple times but do not specifically repay any one player in a clear tit-for-tat fashion. Their reward decisions track cooperative behavior rather than the identities of those who previously rewarded them, so any reciprocity is indirect and e...",
+      "They receive small rewards from others but do not noticeably alter their own strategy afterward: their contribution behavior remains fully cooperative (as it already was), and there is no clear pattern of reciprocal reward directed specifically back to the same individuals, at...",
+      "They receive rewards from others with no visible shift away from their prior strategy: they continue to contribute highly and to reward others generously. There is no obvious case of targeted reciprocal rewarding of specific benefactors beyond what is already aligned with cont...",
+      "The player does receive rewards from others on more than one occasion, and rewarders are identifiable to them. After being rewarded, they does not respond with clear, systematic reciprocal transfers back to those same individuals (there is no evidence of them paying out reward..."
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "cluster_size": 54,
+    "cluster_title": "Understanding Non-Reciprocal Reward Behavior",
+    "cluster_intro": "This cluster highlights individuals who receive rewards without altering their contribution patterns or engaging in reciprocal rewarding. Despite being rewarded, they maintain consistent cooperative behavior and do not initiate targeted reciprocity. Their actions suggest a focus on cooperation rather than a direct exchange of rewards.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewarded",
+      "rewards",
+      "reciprocity",
+      "does",
+      "cooperative",
+      "behavior",
+      "rewarders"
+    ],
+    "sample_examples": [
+      "The player is rewarded once by a peer and receives the transfer passively, without altering their visible behavioral pattern. They keep contributing fully and do not start rewarding in return, suggesting they do not reciprocate in-kind within the observed window. This may indi...",
+      "The player receives small amounts of reward on a few occasions, from different sources, but their own reward behavior does not show clear, targeted reciprocity toward those specific individuals. They neither escalate into mutual reward cycles nor dramatically change their cont...",
+      "The player is rewarded once and maintains their existing behavior without discernible change. Since they already cooperate fully before and after, there is no room to observe increased effort; instead, their continued high contribution suggests that positive reinforcement is a...",
+      "The player receives occasional rewards from others but does not alter their own contributions or their pattern of punishment and reward in any clear reciprocal way. They neither start selectively rewarding identifiable rewarders nor relax punishment toward persistent defectors...",
+      "The player receives at least one reward and does not respond with explicit reciprocal rewarding. They also do not noticeably alter their punishment behavior toward their rewarder, nor do they shift into either strict cooperation or strict defection immediately tied to being re..."
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "cluster_size": 75,
+    "cluster_title": "Patterns of Non-Reciprocal Reward Behavior",
+    "cluster_intro": "This persona cluster highlights individuals who consistently receive rewards without reciprocating. Despite being rewarded multiple times, they do not alter their contribution patterns or engage in mutual reward relationships. Their behavior suggests a tendency to free-ride on the contributions of others.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "rewarders",
+      "does",
+      "reciprocity",
+      "contribution",
+      "player"
+    ],
+    "sample_examples": [
+      "The player receives rewards from others but does not respond in kind, either by rewarding those who rewarded them or by expanding their use of the reward mechanism more generally. They maintain the same behavioral pattern—full contribution and no incentive use—after being rewa...",
+      "This player is rewarded multiple times yet never clearly reciprocates to those rewarders. They do not start rewarding after being rewarded, nor do they visibly direct rare rewards specifically back toward prior benefactors. They also do not increase their own contributions in...",
+      "The player occasionally receives small amounts of reward from others, but never reciprocates toward those individuals or toward any rewarder in general. When they are rewarded, their subsequent contributions do not change in a way that suggests gratitude-based reciprocity or a...",
+      "The player receives some reward from others but never reciprocates with reward of their own. They do not respond to being rewarded by changing their use of the reward mechanism (it remains unused) or by visibly forming a mutual-reward relationship. Any subsequent changes in th...",
+      "This player is repeatedly rewarded by others, including episodes of very large positive transfers, yet they never respond with reciprocal rewards. They also do not visibly alter their own contribution pattern in a way that clearly favors those who rewarded them; their contribu..."
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "cluster_size": 51,
+    "cluster_title": "Patterns of Non-Reciprocal Reward Behavior",
+    "cluster_intro": "This cluster highlights players who receive rewards but do not engage in reciprocal rewarding behaviors. Despite being rewarded, their contribution patterns remain unchanged, indicating a lack of targeted gratitude or direct reciprocity. Their actions suggest a focus on consistent contribution rather than responding to individual rewarders.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "does",
+      "behavior",
+      "contribution",
+      "rewarders",
+      "reciprocity"
+    ],
+    "sample_examples": [
+      "The player receives very little reward across the game and only modestly later on. They do not reliably repay those who reward them; there is no clear emergence of reciprocating pairs. Their own reward pattern does not pivot toward those who have rewarded them, nor do they mai...",
+      "This player is intermittently rewarded by others, yet they do not develop any clear pattern of direct reciprocity toward those who reward them. When they are the recipient of reward, they do not reliably channel subsequent reward back to those same individuals, nor do they con...",
+      "When rewarded, this player does not reciprocate with direct rewards of their own. They do, however, often maintain or resume high contributions after receiving rewards, which may incidentally benefit the rewarders and the group at large. This suggests that while they do not pr...",
+      "When rewarded, this player does not engage in explicit reciprocal rewarding or targeted positive responses. Their behavior does not change in the direction of using the reward mechanism themselves, and they do not appear to selectively favor or punish particular individuals ba...",
+      "The player is rewarded at least once and can see that they have been rewarded, but they never themselves reward anyone, including after receiving this benefit. Their subsequent behavior shows no clear shift toward using the reward mechanism in response. This implies that they..."
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "cluster_size": 70,
+    "cluster_title": "Cooperative Players and Reward Dynamics",
+    "cluster_intro": "This persona cluster highlights individuals who consistently receive rewards while maintaining high levels of cooperation. They interpret rewards as social feedback rather than triggers for direct reciprocity, often rewarding a broad range of peers. Their behavior suggests a strong commitment to cooperative norms, regardless of the rewards they receive.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewarded",
+      "rewards",
+      "cooperative",
+      "reciprocity",
+      "rewarding",
+      "rewarders",
+      "player"
+    ],
+    "sample_examples": [
+      "The player reliably notices and responds when others direct reward toward them. When they receive substantial reward, they subsequently maintain or increase their cooperative stance rather than exploiting the trust. They also show a tendency to direct rewards toward individual...",
+      "When they receive rewards from others, they do not visibly focus on direct, one-to-one repayment. Instead, their pattern is broad and inclusive: they continue to reward multiple others, including some who have not rewarded them. This suggests that they interpret being rewarded...",
+      "They receive rewards multiple times but show no obvious reciprocal targeting of those specific rewarders; their outgoing rewards are not clearly aligned with who has previously rewarded them. Their allocation decisions seem driven more by others’ contribution patterns or by th...",
+      "They do not visibly condition their contributions on receiving rewards; they continue to contribute fully regardless. However, they do tend to reward many of the same players who behave cooperatively and who also reward them, consistent with a pattern of positive reciprocity a...",
+      "The player is rewarded by others on multiple occasions, including times when they are contributing highly and when their contributions fluctuate. They do not appear to systematically reciprocate only to those who rewarded them; their reward giving is not tightly aligned with p..."
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "cluster_size": 53,
+    "cluster_title": "Cooperative Behavior in Reward Dynamics",
+    "cluster_intro": "This cluster highlights players who maintain high levels of cooperation regardless of receiving rewards. Their responses to being rewarded are often indirect, showing no clear patterns of reciprocation toward specific individuals. Instead, they continue to contribute maximally, indicating a stable cooperative baseline that is not heavily influenced by external rewards.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "rewarded",
+      "rewards",
+      "cooperative",
+      "reciprocity",
+      "rewarders",
+      "rewarding",
+      "behavior"
+    ],
+    "sample_examples": [
+      "When rewarded, this player does not show a clear, consistent pattern of reciprocation toward specific rewarders. They do not automatically reward back, nor do they clearly ramp up contributions solely because someone rewarded them. However, they sometimes show higher contribut...",
+      "When the player is rewarded by others, they do not change their own contribution pattern, which already sits at the cooperative maximum. However, they later direct rewards toward several individuals who have previously rewarded them while also contributing strongly, consistent...",
+      "This player is repeatedly rewarded by several others but does not systematically reciprocate reward back to those specific individuals in any obvious pattern. Their reactions to being rewarded are indirect: they sometimes later reward players who are also generally cooperative...",
+      "This player is repeatedly rewarded by others, often substantially, yet their pattern of contributions and rewarding does not visibly change in a strategic, tit‑for‑tat manner. They neither single out particular rewarders for special reciprocal treatment nor withhold rewards fr...",
+      "They frequently receive rewards from others but do not condition their strategy on this. They do not increase or decrease contributions in response (already at maximum), and they almost never reciprocate rewards to those who reward them. There is no observable pattern of allia..."
+    ]
+  }
+]

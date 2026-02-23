@@ -1,0 +1,21 @@
+{
+  "tag": "PUNISHMENT",
+  "split_name": "Punishment Behavior Profiles",
+  "split_intro": "Clusters built from <PUNISHMENT> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 1879,
+    "empty_tag": 0,
+    "dropped_unknown": 0,
+    "kept": 1812
+  },
+  "rows_for_clustering": 1812,
+  "paths": {
+    "section_input_jsonl": "Persona/misc/tag_section_clusters_openai/PUNISHMENT/punishment_sections_input.jsonl",
+    "clustered_jsonl": "Persona/misc/tag_section_clusters_openai/PUNISHMENT/punishment_clustered.jsonl",
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters_openai/PUNISHMENT/cluster_catalog.json",
+    "run_metadata_json": "Persona/misc/tag_section_clusters_openai/PUNISHMENT/run_metadata.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters_openai/PUNISHMENT/umap_points.csv"
+  },
+  "status": "ok"
+}

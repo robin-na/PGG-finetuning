@@ -1,0 +1,21 @@
+{
+  "tag": "CONTRIBUTION",
+  "split_name": "Contribution Strategy Profiles",
+  "split_intro": "Clusters built from <CONTRIBUTION> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 0,
+    "empty_tag": 0,
+    "dropped_unknown": 0,
+    "kept": 3691
+  },
+  "rows_for_clustering": 3691,
+  "paths": {
+    "section_input_jsonl": "Persona/misc/tag_section_clusters_openai/CONTRIBUTION/contribution_sections_input.jsonl",
+    "clustered_jsonl": "Persona/misc/tag_section_clusters_openai/CONTRIBUTION/contribution_clustered.jsonl",
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters_openai/CONTRIBUTION/cluster_catalog.json",
+    "run_metadata_json": "Persona/misc/tag_section_clusters_openai/CONTRIBUTION/run_metadata.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters_openai/CONTRIBUTION/umap_points.csv"
+  },
+  "status": "ok"
+}

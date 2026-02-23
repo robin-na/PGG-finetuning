@@ -1,0 +1,61 @@
+playerAvatar,persona,roundIndex,gameId,data.chat_message,data.chat_reasoning,data.contribution,data.contribution_reasoning,data.punished,data.rewarded,data.actions_reasoning
+CROCODILE,C2ihfLukrHyzuF79E,1,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,Everyone contributed fully; no punishment is necessary.
+SLOTH,Gay4GDRfgahAxe3BZ,1,48_T,,,20,I'll start by contributing everything since I'm generally cooperative.,{},,"Everyone contributed fully, no need to punish."
+MONKEY,XDXwuGqMNRex4h7Eh,1,48_T,,,20,"I will contribute fully, as I always do. This aligns with my established pattern of being a strong, unconditional cooperator.",{},,"Everyone contributed fully, so no punishment is needed. This aligns with my norm-enforcement punishment strategy."
+CHICKEN,yK9TacEn7Wm7nJkoz,1,48_T,,,20,I'll start by contributing everything to see how others respond. I'm testing the waters for cooperation.,{},,"Everyone contributed fully, so no punishment is necessary."
+CROCODILE,C2ihfLukrHyzuF79E,2,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,2,48_T,,,20,"Everyone contributed last round, so I'll continue to contribute fully.",{},,"Everyone is cooperating, no need to punish."
+MONKEY,XDXwuGqMNRex4h7Eh,2,48_T,,,20,"I will continue to contribute fully. Cooperation is high, so there's no need for punishment or deviation from my established strategy.",{},,"Everyone is fully cooperating, so no punishment is necessary."
+CHICKEN,yK9TacEn7Wm7nJkoz,2,48_T,,,20,Everyone contributed fully last round. I'll continue cooperating.,{},,"Everyone continues to cooperate, so no punishment needed."
+CROCODILE,C2ihfLukrHyzuF79E,3,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,3,48_T,,,20,"Everyone has cooperated, so I will do the same.",{},,"Everyone is cooperating, no need to punish."
+MONKEY,XDXwuGqMNRex4h7Eh,3,48_T,,,20,"I will contribute fully, maintaining my consistent cooperative strategy. No punishment is needed as everyone is cooperating.",{},,"Everyone is fully cooperating, so no punishment is needed."
+CHICKEN,yK9TacEn7Wm7nJkoz,3,48_T,,,20,"Everyone has been cooperating, so I'll continue to do so.",{},,"Everyone is cooperating, so no punishment is needed."
+CROCODILE,C2ihfLukrHyzuF79E,4,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,4,48_T,,,20,"Everyone's been cooperating so far, I'll continue to contribute fully.",{},,"Everyone's cooperating, so no need to punish."
+MONKEY,XDXwuGqMNRex4h7Eh,4,48_T,,,20,"I will contribute fully and maintain the cooperative standard. This aligns with my established strategy, and there is no reason to deviate now.",{},,"Everyone is fully cooperating, so no punishment is needed."
+CHICKEN,yK9TacEn7Wm7nJkoz,4,48_T,,,20,"Everyone continues to cooperate, so I'll continue cooperating.",{},,"Everyone is cooperating, so no punishment is needed."
+CROCODILE,C2ihfLukrHyzuF79E,5,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,5,48_T,,,20,"Everyone is still cooperating, I will as well.",{},,"Everyone's cooperating, so no need to punish."
+MONKEY,XDXwuGqMNRex4h7Eh,5,48_T,,,20,"I will contribute fully and maintain the cooperative standard. This aligns with my established strategy, and there is no reason to deviate now.",{},,"Everyone is fully cooperating, so no punishment is needed."
+CHICKEN,yK9TacEn7Wm7nJkoz,5,48_T,,,20,I'll keep contributing fully since everyone has been cooperating.,{},,"Everyone is cooperating, so no punishment is needed."
+CROCODILE,C2ihfLukrHyzuF79E,6,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,6,48_T,,,20,"Everyone's been cooperating so far, I'll continue to contribute fully.",{},,"Everyone's been cooperating, so no need to punish."
+MONKEY,XDXwuGqMNRex4h7Eh,6,48_T,,,20,"I will contribute fully, continuing my consistent cooperation.",{},,"Everyone is fully cooperating, so no punishment is needed."
+CHICKEN,yK9TacEn7Wm7nJkoz,6,48_T,,,20,I'll keep contributing since everyone has been cooperative and I want to maintain the group norm.,{},,"Everyone is cooperating, so no punishment is needed."
+CROCODILE,C2ihfLukrHyzuF79E,7,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,7,48_T,,,20,"Everyone is cooperating, I will as well.",{},,"Everyone's been cooperating, so no need to punish."
+MONKEY,XDXwuGqMNRex4h7Eh,7,48_T,,,20,"I will contribute fully, continuing my consistent cooperation.",{},,"Everyone is fully cooperating, so no punishment is needed."
+CHICKEN,yK9TacEn7Wm7nJkoz,7,48_T,,,20,I'll keep contributing since the cooperative pattern is strong.,{},,"Everyone is cooperating, so no punishment is needed."
+CROCODILE,C2ihfLukrHyzuF79E,8,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,8,48_T,,,20,"Everyone is cooperating, I will as well.",{},,"Everyone's been cooperating, so no need to punish."
+MONKEY,XDXwuGqMNRex4h7Eh,8,48_T,,,20,"I will contribute fully, continuing my consistent cooperation.",{},,"Everyone is fully cooperating, so no punishment is needed."
+CHICKEN,yK9TacEn7Wm7nJkoz,8,48_T,,,20,I'll keep contributing since the cooperative pattern is strong.,{},,No one has defected. No punishment needed.
+CROCODILE,C2ihfLukrHyzuF79E,9,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,9,48_T,,,20,"Everyone is still cooperating, I will as well.",{},,"Everyone's been cooperating, so no need to punish. I seldom punish."
+MONKEY,XDXwuGqMNRex4h7Eh,9,48_T,,,20,"I will contribute fully, continuing my consistent cooperation.",{},,No one is defecting.
+CHICKEN,yK9TacEn7Wm7nJkoz,9,48_T,,,20,I'll keep contributing since the cooperative pattern is strong.,{},,No one has defected. No punishment needed.
+CROCODILE,C2ihfLukrHyzuF79E,10,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,10,48_T,,,20,"Everyone is still cooperating, I will as well.",{},,"Everyone's been cooperating, so no need to punish. I seldom punish."
+MONKEY,XDXwuGqMNRex4h7Eh,10,48_T,,,20,"I will contribute fully, continuing my consistent cooperation.",{},,No one is defecting.
+CHICKEN,yK9TacEn7Wm7nJkoz,10,48_T,,,20,I'll keep contributing since the cooperative pattern is strong.,{},,No one has defected. No punishment needed.
+CROCODILE,C2ihfLukrHyzuF79E,11,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,11,48_T,,,20,"Everyone is still cooperating, I will as well.",{},,"Everyone's been cooperating, so no need to punish. I seldom punish."
+MONKEY,XDXwuGqMNRex4h7Eh,11,48_T,,,20,"I will contribute fully, continuing my consistent cooperation.",{},,No one is defecting.
+CHICKEN,yK9TacEn7Wm7nJkoz,11,48_T,,,20,I'll keep contributing since the cooperative pattern is strong.,{},,No one has defected. No punishment needed.
+CROCODILE,C2ihfLukrHyzuF79E,12,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,12,48_T,,,20,"Everyone is still cooperating, I will as well.",{},,Everyone's been cooperating and I almost never punish.
+MONKEY,XDXwuGqMNRex4h7Eh,12,48_T,,,20,"I will contribute fully, continuing my consistent cooperation.",{},,No one is defecting.
+CHICKEN,yK9TacEn7Wm7nJkoz,12,48_T,,,20,I'll keep contributing since the cooperative pattern is strong.,{},,"No one has defected. No punishment needed, maintain cooperative environment."
+CROCODILE,C2ihfLukrHyzuF79E,13,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,13,48_T,,,20,"Everyone is still cooperating, I will as well.",{},,Everyone's been cooperating and I almost never punish.
+MONKEY,XDXwuGqMNRex4h7Eh,13,48_T,,,20,"I will contribute fully, continuing my consistent cooperation.",{},,No one is defecting.
+CHICKEN,yK9TacEn7Wm7nJkoz,13,48_T,,,20,I'll keep contributing since the cooperative pattern is strong.,{},,"No one has defected. No punishment needed, maintain cooperative environment."
+CROCODILE,C2ihfLukrHyzuF79E,14,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,"Everyone is contributing fully, so no punishment is necessary."
+SLOTH,Gay4GDRfgahAxe3BZ,14,48_T,,,20,"Everyone is still cooperating, I will as well.",{},,Everyone's been cooperating and I almost never punish.
+MONKEY,XDXwuGqMNRex4h7Eh,14,48_T,,,20,"I will contribute fully, continuing my consistent cooperation.",{},,No one is defecting.
+CHICKEN,yK9TacEn7Wm7nJkoz,14,48_T,,,20,I'll keep contributing since the cooperative pattern is strong. No need to change now that we're almost at the end.,{},,"No one has defected. No need for punishment at this stage, maintain the established cooperative pattern."
+CROCODILE,C2ihfLukrHyzuF79E,15,48_T,,,20,"I always contribute fully to the pot, expecting others to do so as well",{},,Everyone has been fully cooperative throughout the game. No punishment is necessary.
+SLOTH,Gay4GDRfgahAxe3BZ,15,48_T,,,20,"It's the last round, but I always cooperate, so I will contribute fully.",{},,"Everyone has cooperated, as usual. I never punish."
+MONKEY,XDXwuGqMNRex4h7Eh,15,48_T,,,20,"I will contribute fully, continuing my consistent cooperation. This is my standard behavior.",{},,No one defected and cooperation was stable. No punishment is needed.
+CHICKEN,yK9TacEn7Wm7nJkoz,15,48_T,,,20,"I'll keep contributing for a consistent pattern, and because everyone else is cooperating. No reason to defect at the end.",{},,Everyone cooperated. No need for punishment.

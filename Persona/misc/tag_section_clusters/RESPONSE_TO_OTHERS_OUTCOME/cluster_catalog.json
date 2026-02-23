@@ -1,0 +1,362 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 142,
+    "cluster_title": "Reward / Contributions / High",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, contributions, high, payoffs, rewards.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "contributions",
+      "high",
+      "payoffs",
+      "rewards",
+      "player",
+      "contribution",
+      "group"
+    ],
+    "sample_examples": [
+      "The player pays clear attention to others’ contributions and payoffs and reacts strongly to the general pattern of high cooperation and high mutual rewarding around them. When peers are cooperative and some act as strong rewarders, they tend to respond with large reward spendi...",
+      "The player pays implicit attention to others’ contributions and end-of-round payoffs but does not respond in a punitive or retaliatory way. When others defect or free-ride, they do not reduce their contributions and do not have access to punishment; their observable response i...",
+      "The player is sensitive to others’ contribution and reward behaviors and adjusts in a nuanced, non-retaliatory way. When others free-ride while the group remains cooperative, the player is willing to temporarily exploit that situation but does not escalate into a permanent bre...",
+      "The player observes substantial variation in others’ spending on rewards and in their resulting payoffs, yet they do not visibly adjust through either rewarding or significant withdrawal of contributions. High spenders on rewards see their payoffs reduced; some players frequen...",
+      "They attend to both others’ contributions and their net outcomes, including how much others spend on reward. Their behavior suggests they infer types from these outcomes: they continue to cooperate with and often reward those who both contribute substantially and do not exploi..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 126,
+    "cluster_title": "Reward / Payoffs / Contributions",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, payoffs, contributions, rewards, high.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "payoffs",
+      "contributions",
+      "rewards",
+      "high",
+      "player",
+      "payoff",
+      "behavior"
+    ],
+    "sample_examples": [
+      "They are behaviorally insensitive to others’ payoffs, reward expenditures, or received rewards. Large variations in others’ costs and returns do not lead to any observable shift in either cooperation or reward decisions. They do not appear to “reward the rewarders,” “support t...",
+      "This player shows no behavioral response to others’ payoff patterns or reward expenditures. They do not change their contribution when some players incur very large costs to reward others, when low contributors receive substantial net benefits, or when reward activity fluctuat...",
+      "The player observably adapts their contributions in light of others’ behavior and outcomes, but in a way consistent with private payoff maximization rather than norm enforcement. When others sacrifice heavily on rewards or contributions, the player does not increase their own...",
+      "This player appears relatively insensitive to others’ payoff patterns and reward expenditures. They maintain high contributions even when some players invest heavily in rewards or free ride on contributions, and they do not adjust their own reward behavior in response to seein...",
+      "They observe substantial variation in others’ contributions, payoffs, and reward expenditures, including extreme cases where some players sacrifice heavily to reward others. Despite this, they do not emulate high-cost rewarding, do not reward those who incur such costs, and do..."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 111,
+    "cluster_title": "Punishment / Reward / Payoffs",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, reward, payoffs, contribution, low.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "payoffs",
+      "contribution",
+      "low",
+      "contributions",
+      "payoff",
+      "sanctioning"
+    ],
+    "sample_examples": [
+      "They repeatedly observe that some players contribute less while earning higher payoffs and sometimes also face heavy punishment from others. Despite this clear evidence of free-riding, payoff inequality, and active sanctioning norms in the group, they neither adjust their own...",
+      "They observe a group where several players often contribute close to the maximum and sometimes spend on rewards, while one player regularly devotes substantial resources to punishing them. Despite this, they do not visibly condition their behavior on others’ payoffs, spending,...",
+      "This player observes substantial information each round: others’ contributions, payoffs, and costs spent on punishment and reward. Yet they display no behavioral adjustment in response. They do not increase contributions when others contribute very high amounts and group payof...",
+      "They observe that some players consistently contribute high amounts and sometimes sacrifice payoff through punishment or reward, while others contribute less and are occasionally heavily punished, yet they remain behaviorally detached from these dynamics. They do not move to s...",
+      "They consistently see others’ outcomes, including payoff differences driven by varying contributions and by some players’ use of punishment and reward. They do not mimic the enforcers’ behavior, nor do they react visibly to shifting payoff ranks: even when defectors earn more,..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 130,
+    "cluster_title": "Reward / Contributions / Rewards",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, contributions, rewards, high, group.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "contributions",
+      "rewards",
+      "high",
+      "group",
+      "payoffs",
+      "contribution",
+      "outcomes"
+    ],
+    "sample_examples": [
+      "The player clearly reads and cognitively processes the outcome structure and others’ behaviors. Their one substantive content message about cooperation demonstrates understanding that unilateral contribution is exploitable and that the social optimum requires universal buy-in....",
+      "They observe that others differ in contributions and in their willingness to spend on punishment and reward, including some low contributors and some active sanctioners and rewarders. Despite this, they maintain a non-interventionist stance: they do not join in punishing those...",
+      "The player observes that others often contribute less yet still earn competitive or even higher payoffs, and that some peers spend on both punishment and reward. They do not adjust their own contributions downward in response to free-riding, nor upward in reaction to others’ g...",
+      "The player observes heterogeneous contributions, some low relative to the group, as well as others’ willingness to spend on both punishment and reward, including patterns that do not straightforwardly line up with contribution levels. Despite this, they neither adjust their co...",
+      "This player observes that most peers contribute at relatively high levels, some spend on punishment or rewards, and overall payoffs are solid. Their only clear behavioral adjustment in light of these outcomes is a modest downward shift in their own contribution when it becomes..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 126,
+    "cluster_title": "Contributions / Payoffs / High",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around contributions, payoffs, player, high, group.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "contributions",
+      "payoffs",
+      "player",
+      "high",
+      "group",
+      "outcomes",
+      "payoff",
+      "cooperation"
+    ],
+    "sample_examples": [
+      "The player consistently responds to others’ high contributions and relatively lower payoffs by positioning themselves to benefit from those contributions rather than aligning with them. When others earn less than the player while contributing more, the player does not move tow...",
+      "The player is highly sensitive to others’ contribution patterns and associated payoffs and adjusts in ways that preserve or improve their relative advantage. When they see others contributing while they do not, and this yields them superior earnings, they readily continue to c...",
+      "They consistently observe that others cooperate fully and receive identical payoffs, yet they neither adjust their own contributions nor change their use of punishment or reward. This implies satisfaction or at least acceptance of equal, high-payoff outcomes, with no signs of...",
+      "The player appears largely insensitive, in behavioral terms, to the distribution of outcomes and to others’ payoffs. They repeatedly see that others who contribute heavily earn less per round than themselves, yet they do not adjust toward fairness; instead, they continue explo...",
+      "They observe others’ outcomes (the interface shows everyone’s payoffs and contributions), but they never comment on them. Their behavioral response to others’ outcomes is indirect and purely through changing their own contributions. When the rest of the group keeps contributin..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 116,
+    "cluster_title": "Punishment / Payoffs / Outcomes",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, payoffs, outcomes, contributions, behavior.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "payoffs",
+      "outcomes",
+      "contributions",
+      "behavior",
+      "players",
+      "high",
+      "payoff"
+    ],
+    "sample_examples": [
+      "They observe variations in others’ contributions and outcomes, including a case where a lower contributor is heavily punished and where one player spends a moderate amount on punishment. They do not comment on these events, adjust their cooperation to reward or protect victims...",
+      "The player appears sensitive to the overall conflict and payoff landscape rather than to specific individual outcomes. They continue to play and sometimes cooperate even as other players burn large amounts of coins on punishment and drive their own and others’ payoffs very low...",
+      "They observe that some players spend heavily on punishment and others receive large deductions, yet they do not react verbally or via punishment. Instead, they frequently respond via rewards—often to those they may see as cooperative, supportive, or unfairly targeted. They do...",
+      "They observe others’ outcomes (including extreme punishment costs and large negative payoffs) but do not adjust their own sanctioning or contribution behavior in response. They neither join the heavy‑punishment norm nor try to offset it; they do not, for instance, reward heavi...",
+      "The player is consistently exposed to detailed information about others’ payoffs, as well as the magnitudes of punishment and reward costs and deductions, but they react only in limited, structured ways. They do not appear to copy the extreme behaviors of heavy punishers, nor..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 123,
+    "cluster_title": "Punishment / Reward / Contributions",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, reward, contributions, contribution, payoffs.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "reward",
+      "contributions",
+      "contribution",
+      "payoffs",
+      "high",
+      "group",
+      "player"
+    ],
+    "sample_examples": [
+      "They see others’ contribution changes and payoff outcomes (including when some players under-contribute and are punished or when certain players spend heavily to punish), yet they do not visibly react in chat or via changes in their own punishment behavior. Their contributions...",
+      "This player pays steady attention to others’ contribution levels and apparent payoff patterns and adapts their own behavior at the aggregate level rather than tracking individuals in detail. Early in the game, seeing that others often contribute less than full but that there i...",
+      "The player observes others’ payoffs and punishment patterns but reacts in a complex, nonmonotonic way. They sometimes respond to widespread low contributions and heavy sanctioning by continuing to cooperate, absorbing personal losses while others fight; at other times, in simi...",
+      "This player observes others repeatedly spending heavily to punish and sometimes driving their own or others’ payoffs very low, yet they continue to pursue primarily self-interested contributions and rarely join the enforcement efforts. High costs borne by others for norm enfor...",
+      "They clearly monitor others’ contributions and the resulting payoffs and sanctioning patterns, adjusting behavior in a nuanced way. When they see a broad base of cooperation, they are more likely to contribute and to direct rewards to key cooperators or vocal pro-cooperation p..."
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "cluster_size": 149,
+    "cluster_title": "Payoff / Payoffs / Free",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around payoff, payoffs, free, cooperation, outcomes.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "payoff",
+      "payoffs",
+      "free",
+      "cooperation",
+      "outcomes",
+      "contributions",
+      "cooperative",
+      "player"
+    ],
+    "sample_examples": [
+      "This player’s contribution pattern suggests they either accept or largely ignore payoff asymmetries created by free-riding. As some peers systematically earn higher payoffs by not contributing, the player does not adjust their own behavior to restore payoff equality. They neit...",
+      "This player consistently responds to others’ outcomes by maintaining their own free-riding strategy, regardless of how payoff patterns evolve. They observe that cooperative players earn less than they do and that they themselves repeatedly obtain higher payoffs by not contribu...",
+      "This player does not use others’ realized payoffs as a cue to change behavior. Even when it becomes clear that non-contributors earn higher individual payoffs than contributors, the player does not shift toward self-protection or reciprocity and instead maintains full cooperat...",
+      "The player shows no behavioral reaction to others’ differing payoffs; their contribution rule remains unchanged as some group members repeatedly earn more by contributing nothing. Despite clear, repeated instances where non-contributors are rewarded with higher individual payo...",
+      "The player clearly attends to others’ outcomes, at least implicitly, as shown by their behavior aligning with changes in the payoff structure between contributors and non-contributors. When free riders are earning more than cooperators, the player is willing to join the free r..."
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "cluster_size": 119,
+    "cluster_title": "Contributions / Payoffs / High",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around contributions, payoffs, high, player, group.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "contributions",
+      "payoffs",
+      "high",
+      "player",
+      "group",
+      "outcomes",
+      "contribution",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "The player pays close attention to others’ contributions and resulting payoffs and appears sensitive to the relationship between effort and reward. When high contributors earn moderate or even slightly lower payoffs than some moderate contributors, the focal player intervenes,...",
+      "This player closely observes others’ contributions and the punishment structure, and appears sensitive to the collective payoff environment, but they do not track or match individual payoffs in a fine-grained way. They are willing to continue cooperating even while seeing some...",
+      "They consistently observe that others’ contributions, payoffs, and sanctioning behaviors are identical to their own: full contributions, no spending on punishment or reward, and equal earnings. They make no visible behavioral adjustment in response; they simply match the coope...",
+      "The player plainly observes others’ contribution and payoff patterns but does not verbally comment on specific individuals’ costs or rewards. There is no explicit evidence of them tracking particular players’ histories or publicly reacting to who is spending heavily on rewards...",
+      "They appear to monitor others’ contributions and, indirectly, how the group’s behavior affects payoffs, but there is no sign that they systematically track or respond to who spends on rewards or who earns more or less. They never comment on specific players’ payoffs, nor on th..."
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "cluster_size": 138,
+    "cluster_title": "Punishment / Payoffs / High",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, payoffs, high, outcomes, contribution.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "payoffs",
+      "high",
+      "outcomes",
+      "contribution",
+      "contributions",
+      "group",
+      "player"
+    ],
+    "sample_examples": [
+      "They observe others’ outcomes—including deviations from full contribution, use of punishment against a low contributor, and later punishment against themselves—but there is no behavioral sign that they adjust their strategy based on these observations. They do not reward or pu...",
+      "They consistently observe others’ payoffs and punishment patterns but remain behaviorally steady: full contribution and almost no punishment, regardless of how earnings or sanctions are distributed. Visible punishment of others does not induce them to change their own cooperat...",
+      "They consistently maintain their strategy regardless of the distribution of others’ payoffs, punishment expenditures, or deductions. When another player uses costly punishment to hit a low contributor, they do not respond by adjusting contributions or joining in punishment. Wh...",
+      "This player is highly responsive to the broader pattern of others’ contributions, payoffs, and sanctioning, but in a coarse, affect-driven rather than fine-tuned way. They appear to infer “climate” from others’ outcomes: when others’ contributions and payouts reveal a relative...",
+      "This player observes detailed end-of-round outcomes, including others’ payoffs, punishment expenditures, and received deductions, yet their subsequent behavior does not seem systematically guided by these outcomes. They do not clearly reward players who sacrifice payoff to enf..."
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "cluster_size": 134,
+    "cluster_title": "Punishment / High / Payoffs",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, high, payoffs, player, contribution.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "high",
+      "payoffs",
+      "player",
+      "contribution",
+      "contributions",
+      "group",
+      "outcomes"
+    ],
+    "sample_examples": [
+      "They clearly notice that others are spending substantial amounts on both punishment and reward, and they explicitly question the logic of paying to deduct others. They acknowledge that the game is long and tedious, commenting on duration and the mechanical nature of repeated c...",
+      "This player appears attentive to the alignment between contributions and resulting payoffs. When the group fully cooperates and payoffs are equal and high, they refrain from sanctioning and maintain full contributions, suggesting satisfaction with mutual gains and no desire to...",
+      "The player attends to both contributions and payoffs and adapts in a way consistent with outcome-based fairness concerns. When the low contributor ends up with relatively high payoffs despite contributing less, the player is more likely to punish in that context later, implyin...",
+      "This player appears largely payoff-focused and stoic in response to others’ outcomes. They see others repeatedly sacrifice resources to punish them, lowering those others’ payoffs relative to the no-punishment baseline, yet they do not adjust by counter-punishing or matching t...",
+      "The player pays close attention to who ends up with high or low payoffs and how these payoffs arise. They respond to others’ outcomes primarily through the lens of contribution behavior rather than via envy or profit-maximizing strategies. High payoffs that are accompanied by..."
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "cluster_size": 105,
+    "cluster_title": "Group / Contributions / Payoffs",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around group, contributions, payoffs, payoff, outcomes.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "group",
+      "contributions",
+      "payoffs",
+      "payoff",
+      "outcomes",
+      "cooperation",
+      "player",
+      "high"
+    ],
+    "sample_examples": [
+      "The player sees all payoffs and contribution patterns and appears to internalize that some players are repeatedly contributing very little while others appeal for high trust and full contributions. Their own behavior shifts in ways consistent with quietly exploiting cooperativ...",
+      "They clearly monitor others’ contributions and resulting payoffs and use that information to comment on behavior and incentives. Early on, they respond to the fact that some players earn higher payoffs by contributing nothing, and they reframe this in terms of how those player...",
+      "They clearly observe others’ outcomes and contributions (as shown by their behavioral adjustments) but do not verbalize any reaction to specific players’ earnings or contribution choices. Their early free-riding coincides with others’ high giving, which they exploit; afterward...",
+      "This player is clearly attentive to others’ contributions and resulting outcomes. They comment on the presence of zero contributors and show awareness that a small subset of players is systematically free-riding. They interpret low contributions as intentional behavior rather...",
+      "The player is observably sensitive to the payoff structure and to the effect of group cooperation on earnings, as shown by their consistent high contributions during long stretches when the group is cooperative and payoffs are high. However, there is no direct verbal reaction..."
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "cluster_size": 94,
+    "cluster_title": "Group / Contributions / Outcomes",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around group, contributions, outcomes, payoffs, cooperative.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "group",
+      "contributions",
+      "outcomes",
+      "payoffs",
+      "cooperative",
+      "payoff",
+      "player",
+      "behavior"
+    ],
+    "sample_examples": [
+      "They pay enough attention to notice others’ presence and absence and to see that everyone is profiting from the cooperative scheme, which they describe positively. They do not publicly react to others’ differential payoffs when small contribution deviations occur, nor to large...",
+      "They appear attentive to others’ contribution behavior and infer types from outcomes and patterns across rounds. They note which avatars repeatedly undercontribute and label them as not understanding the payoff logic, possibly bots, or overly cautious/greedy. They also make in...",
+      "They are attentive to others’ contribution histories and to patterns of free‑riding versus generosity. They publicly track who they see as non‑contributors and voice suspicion about them, sometimes aligning with others’ calls to “target” low contributors if a mechanism becomes...",
+      "The player monitors others’ contributions and seems attuned to who is benefiting from free-riding versus who is cooperating. Early on, they explicitly mark low contributors as greedy and talk about wanting mechanisms to remove or punish them, revealing sensitivity to payoff as...",
+      "They track outcomes and others’ behaviors closely enough to identify persistent low contributors as “freeloaders” and to recognize when some players are getting high payoffs without contributing much. This triggers explicit expressions of frustration and talk of switching to z..."
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "cluster_size": 104,
+    "cluster_title": "Punishment / Outcomes / Payoffs",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, outcomes, payoffs, group, contributions.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "outcomes",
+      "payoffs",
+      "group",
+      "contributions",
+      "low",
+      "high",
+      "contribution"
+    ],
+    "sample_examples": [
+      "They monitor others’ behavior in detail, particularly who contributes nothing and how often. Their chat explicitly references specific players’ ongoing non-contribution and aligns with others calling for punishment, showing that they integrate observed outcomes into both talk...",
+      "They pay attention to others’ contributions and apparently track who repeatedly contributes nothing versus who cooperates. Their chat comments show awareness that more people are starting to contribute and that some players’ behavior is inconsistent with their cooperative rhet...",
+      "They pay attention to others’ contribution histories and to public discussion about who is giving or not, and they adapt their punishment choices accordingly, but they show little interest in the detailed payoff consequences for each player beyond identifying sanction targets....",
+      "They observe and respond to others’ outcomes mainly through the lens of contribution and punishment patterns, not through explicit commentary on payoffs. Their choice of targets aligns with players who routinely earn high payoffs from free-riding, and they contribute to drivin...",
+      "They closely track others’ contributions and punishment histories, adjusting their targets as patterns emerge. They continue punishing chronic free‑riders even after those players suffer very large accumulated deductions from the wider group, suggesting that they are not easil..."
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "cluster_size": 108,
+    "cluster_title": "Punishment / Group / Outcomes",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around punishment, group, outcomes, player, payoff.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "punishment",
+      "group",
+      "outcomes",
+      "player",
+      "payoff",
+      "behavior",
+      "payoffs",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "They occasionally comment on the structure and feel of the game rather than directly on others’ payoffs or sanctioning choices. They explicitly question game length and later frame the game as stupid and tedious, indicating that time and effort costs loom large in their evalua...",
+      "They pay attention to the structure of outcomes and use that information to shape their incentives. They understand that universal contribution maximizes group returns and explicitly communicate the payoff logic to others. They notice the presence of holdouts and refer to the...",
+      "They show awareness of the group’s outcome patterns, commenting when contributions improve or deteriorate and urging joint action when total contributions fall. They react positively when more players contribute fully, praising the group’s performance and expressing hope. When...",
+      "They pay attention to others’ contributions and outcomes and periodically comment on the group’s overall performance. They clearly understand that universal contribution increases total group payoff and that non-contributors personally gain at the expense of cooperators; they...",
+      "They clearly track outcomes: they note the group average, observe improvement over time, and react to how well “everyone” is doing in aggregate. They are aware that some individuals consistently withhold contributions and that others invest heavily in punishing these players,..."
+    ]
+  }
+]

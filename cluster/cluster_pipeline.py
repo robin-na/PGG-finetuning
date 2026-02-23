@@ -25,9 +25,33 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS, TfidfVectorizer
 from sklearn.metrics import silhouette_score
-from umap import UMAP
+try:
+    from umap import UMAP
+    HAVE_UMAP = True
+except Exception:  # pragma: no cover
+    HAVE_UMAP = False
+
+    class UMAP:  # type: ignore[override]
+        """Minimal UMAP-compatible fallback backed by PCA when umap-learn is unavailable."""
+
+        def __init__(
+            self,
+            n_components: int = 2,
+            n_neighbors: int = 15,
+            min_dist: float = 0.1,
+            metric: str = "euclidean",
+            random_state: int = 42,
+            **_: Any,
+        ) -> None:
+            self.n_components = n_components
+            self.random_state = random_state
+
+        def fit_transform(self, X: np.ndarray) -> np.ndarray:
+            pca = PCA(n_components=self.n_components, random_state=self.random_state)
+            return pca.fit_transform(X)
 
 try:
     from dotenv import load_dotenv
@@ -190,6 +214,8 @@ def build_embeddings(df: pd.DataFrame, cfg: ClusterConfig) -> np.ndarray:
 
 def fit_umap(X: np.ndarray, cfg: ClusterConfig) -> np.ndarray:
     n_neighbors = max(2, int(len(X) * cfg.umap_neighbors_ratio))
+    if not HAVE_UMAP:
+        print("[umap] umap-learn unavailable; using PCA fallback for 2D projection.")
     reducer = UMAP(
         n_components=2,
         n_neighbors=n_neighbors,

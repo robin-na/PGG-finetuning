@@ -1,0 +1,29 @@
+{
+  "input_jsonl": "Persona/misc/tag_section_clusters_openai/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+  "output_jsonl": "Persona/misc/tag_section_clusters_openai/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered.jsonl",
+  "rows_used": 1825,
+  "text_column": "text",
+  "only_finished": false,
+  "embedding_backend": "openai",
+  "embedding_model": "text-embedding-3-large",
+  "embedding_dimensions": 1536,
+  "umap_params": {
+    "min_dist": 0.5,
+    "metric": "cosine",
+    "neighbors_ratio": 0.2,
+    "random_state": 42
+  },
+  "clustering_params": {
+    "method": "kmeans",
+    "n_clusters": 15,
+    "auto_k": false,
+    "random_state": 42,
+    "n_init": 20
+  },
+  "summary_backend": "openai",
+  "summary_model": "gpt-4o-mini",
+  "outputs": {
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters_openai/RESPONSE_TO_OTHERS_OUTCOME/cluster_catalog.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters_openai/RESPONSE_TO_OTHERS_OUTCOME/umap_points.csv"
+  }
+}

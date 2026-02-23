@@ -1,0 +1,362 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 121,
+    "cluster_title": "Reward / Rewards / Rewarding",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarding, cooperative, use.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "cooperative",
+      "use",
+      "cooperation",
+      "behavior",
+      "payoff"
+    ],
+    "sample_examples": [
+      "This player is an extremely heavy and frequent user of rewards, often spending substantial amounts on rewarding others, sometimes to the point of severely reducing their own payoff. They use rewards even in rounds where they contribute nothing themselves, indicating that their...",
+      "This player frequently and consistently uses the reward mechanism, often at a nontrivial personal cost. They do not restrict rewards to a single episode: reward spending appears in most rounds, including mid-game and late-game, which suggests a stable preference for reinforcin...",
+      "This player is an active and persistent rewarder. They spend on rewards in almost every round, including when it is personally costly and not obviously profitable in terms of immediate net payoff. They appear to use rewards primarily to support and encourage cooperators rather...",
+      "They are a frequent and relatively heavy user of reward, often spending a substantial portion of their payoff to benefit others. They use reward in a broadly pro-social way that targets cooperators rather than defectors, indicating an intention to reinforce high contributions....",
+      "The player is an active and persistent rewarder, spending a meaningful portion of their payoff on rewarding others in almost every round. They nearly always use the reward mechanism, and never escalate to zero-reward abstention as a protest or cost-saving reaction. Rewarding i..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 147,
+    "cluster_title": "Reward / Rewards / Rewarding",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarding, use, high.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "use",
+      "high",
+      "group",
+      "cooperative",
+      "contributors"
+    ],
+    "sample_examples": [
+      "They make substantial use of the reward mechanism, repeatedly spending significant amounts of their own payoff to reward others, and never receiving visible rewards themselves. They are willing to sacrifice a large share of their earnings in some rounds to transfer value to pe...",
+      "They use reward frequently, consistently, and in a highly selective way, even at significant personal cost. They clearly treat reward as their preferred norm-enforcement and encouragement tool. They never “spray” rewards randomly; instead, they target distinct individuals acro...",
+      "They are an intensive and systematic user of rewards, clearly willing to spend substantial personal resources to reinforce others’ behavior. They reward many different players across the game, often those who are contributing fully or showing cooperative intent in chat, and th...",
+      "They use rewards moderately and selectively, with an apparent emphasis on recognizing cooperative or supportive behavior rather than building strict, payoff‑maximizing incentives. For most of the game they refrain from rewarding despite contribution differences, which suggests...",
+      "They are quite willing to spend on reward, including making sizable multi-person reward allocations that significantly reduce their own payoff. They reward high contributors and especially vocal cooperators, apparently to reinforce pro-social behavior and maintain morale. Thei..."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 133,
+    "cluster_title": "Reward / Rewards / Rewarding",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarding, use, cooperative.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "use",
+      "cooperative",
+      "cooperation",
+      "behavior",
+      "high"
+    ],
+    "sample_examples": [
+      "They are willing but selective in using the reward mechanism. They rarely spend on rewards overall, and when they do, they spend modest amounts rather than systematically reinforcing all cooperators. Their use of rewards coincides with periods where others are contributing rel...",
+      "The player uses the reward mechanism actively but selectively. They sometimes spend nontrivial amounts on reward and sometimes spend nothing. This shows that they are willing to incur personal costs to influence others, not purely to maximize immediate payoff. Their reward spe...",
+      "They are a light and selective rewarder. They only spend on rewards in a few rounds, and the amounts are modest relative to what some peers spend. When they do reward, it coincides with phases where many others also contribute fully, suggesting they use reward as a positive re...",
+      "They are willing to spend on rewards and do so selectively rather than uniformly. They never reward defectors; rewards are only directed to players who contribute to the public fund. They use rewards for two main purposes: to recognize consistent cooperators and to reinforce o...",
+      "They show a limited but nonzero willingness to reward others. When they do reward, they target clear high contributors rather than non-contributors, which indicates a straightforward “reward cooperation” heuristic rather than strategic manipulation. Their reward use is sparse..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 114,
+    "cluster_title": "Reward / Rewards / Rewarding",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarding, behavior, use.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "behavior",
+      "use",
+      "cost",
+      "high",
+      "mechanism"
+    ],
+    "sample_examples": [
+      "They never spend any of their own coins on rewarding others, even when they personally receive rewards and even when others exhibit very high cooperative behavior. This consistent non-use of the reward mechanism indicates a strong reluctance to pay personal costs for social en...",
+      "They never spend to reward others, even though several players repeatedly contribute fully and some engage in intense pro-social efforts. They do not reward high contributors or those who try to coordinate cooperation, nor do they reward their punishers or anyone who might be...",
+      "The player never spends on rewards at any point, despite reward being economically efficient and despite other players regularly using it. They nevertheless receive positive rewards from others multiple times. This indicates that they benefit from the reward system but do not...",
+      "The player never spends on rewards despite repeated opportunities and despite receiving rewards themselves in multiple rounds. This is stable and unconditional: they do not reward high contributors, do not reciprocate to those who seem supportive, and do not attempt to strateg...",
+      "This player never spends on rewards in any round, despite the presence of clearly identifiable, often generous contributors and repeated opportunities to reinforce them. Their willingness to incur any personal cost to shape others’ behavior appears effectively zero in this env..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 122,
+    "cluster_title": "Reward / Rewards / Use",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, use, rewarding, behavior.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "use",
+      "rewarding",
+      "behavior",
+      "cooperation",
+      "cooperative",
+      "high"
+    ],
+    "sample_examples": [
+      "The player uses rewards sparingly and selectively. They are willing to spend on rewards but do so infrequently, suggesting that they reserve rewarding for specific situations rather than routine reinforcement. Their first use of rewards occurs in a context where cooperation is...",
+      "This player is willing to spend on rewards, but in a highly irregular, situation-dependent way. They are clearly not a pure payoff maximizer with respect to the reward mechanism, because they sometimes spend nontrivial amounts to transfer benefits to others or possibly to them...",
+      "They show a clear and repeated willingness to reward, using it more often than punishment. They reward only high contributors in periods where cooperation is high and stable, which implies a conditional positive reinforcement strategy focused on cooperators rather than on bord...",
+      "They are clearly willing to spend own resources to reward others, and they do so in a discriminating, contribution-contingent way. They selectively reward some of the highest contributors while ignoring medium or low contributors, consistent with a strategic reinforcement moti...",
+      "This player uses reward sparingly and selectively. Across the game they sometimes pay to reward others but never at large scales, and they do not mirror the extreme “altruistic rewarder” types present in the group. When they do reward, recipients tend to be players who are vis..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 111,
+    "cluster_title": "Reward / Rewards / Use",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, use, players, contributors.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "use",
+      "players",
+      "contributors",
+      "high",
+      "cooperative",
+      "behavior"
+    ],
+    "sample_examples": [
+      "The player is clearly willing to reward and does so in a pattern consistent with “pro‑social reinforcement.” They direct rewards to those who contribute at or near full levels and who appear to sustain group welfare. They do not reward moderate or low contributors, even when t...",
+      "They are an extremely active rewarder and use rewards broadly and generously throughout the game, often at substantial personal cost. Rewarding is not narrowly targeted; they reward both consistent high contributors and, at times, players whose contributions are low or ambiguo...",
+      "The player is notably generous with rewards and uses them in a differentiated, contingent way. Early on, they are willing to spend substantial resources to reward nearly everyone who cooperates close to the maximum, signaling a strong preference for recognizing and reinforcing...",
+      "They are willing to spend nontrivial amounts on rewards, and they do so in a targeted and context-sensitive manner. Early on, they reward high contributors, which is consistent with a desire to reinforce cooperative behavior or signal approval. They also, at one point, reward...",
+      "The player also uses rewards, but in a scattered, idiosyncratic way. Early on, they reward several fully cooperative peers even while under‑contributing themselves, which is inconsistent with purely selfish profit maximization but consistent with cheap “tipping” behavior to sp..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 109,
+    "cluster_title": "Reward / Rewards / Rewarding",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarding, use, high.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "use",
+      "high",
+      "behavior",
+      "mechanism",
+      "contributors"
+    ],
+    "sample_examples": [
+      "The player shows limited, somewhat puzzling use of the reward mechanism. On one occasion they spend a substantial amount of their own payoff to distribute rewards, even when rewards are cost-neutral at the margin. This suggests an attempt to actively encourage cooperation or e...",
+      "This player never uses the reward mechanism, despite rarely, if ever, being in a position where others’ behavior would not qualify as rewardable under a cooperative norm. They receive rewards in some rounds, which signals that at least one other group member is willing to pay...",
+      "They never use the reward mechanism at any point. They do not reward high contributors or those who punish defectors, and they do not attempt to cultivate goodwill or offset hostility toward themselves by positively reinforcing others. This suggests that they place extremely l...",
+      "This player almost never spends on rewards and only uses the reward mechanism once, and even then at a modest level. Given that they themselves repeatedly receive rewards from others, their continued non-use of rewards suggests they do not treat rewarding as a necessary tool f...",
+      "This player almost never spends on rewards and is effectively a non-rewarder. In nearly all rounds they pay nothing to influence others via the reward mechanism, even when there are clear high contributors and clear low contributors in the group and even though rewarders are v..."
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "cluster_size": 109,
+    "cluster_title": "Reward / Rewards / Rewarding",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarding, use, behavior.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "use",
+      "behavior",
+      "cooperation",
+      "despite",
+      "mechanism"
+    ],
+    "sample_examples": [
+      "The player never spends any coins on rewarding others, even when others contribute maximally and overall cooperation is very high. This shows a strong reluctance to invest personal resources into social enforcement or positive reciprocity when the reward mechanism is one-to-on...",
+      "They never spend any resources on rewarding others, despite repeated opportunities and despite others’ visible heavy use of rewards, including generous rewarders who benefit them. This indicates a strong reluctance to incur personal cost for positive reciprocity, even when a s...",
+      "They never spend on rewards at any point, even though rewarding is sometimes used extensively by others. This suggests a strong reluctance to incur any direct cost for social signaling or norm reinforcement. They do not selectively reward high contributors, consistent helpers,...",
+      "The player never spends any resources to reward others, despite having multiple opportunities and many instances where others contribute highly or reward extensively. This consistent non-use of reward suggests a strong reluctance to incur personal cost for social enforcement o...",
+      "This player never spends any resources on rewarding others, despite having many opportunities and seeing others use reward mechanisms extensively. The consistent refusal to reward holds across situations with high and low contributions by others, including cases where some pla..."
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "cluster_size": 133,
+    "cluster_title": "Reward / Rewards / Rewarding",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarding, use, behavior.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "use",
+      "behavior",
+      "cooperation",
+      "high",
+      "mechanism"
+    ],
+    "sample_examples": [
+      "This player never uses rewards, even when others contribute more than they do and when prosocial reward behavior is clearly present in the group. They do not invest to encourage high contributors, nor do they attempt to strategically reinforce allies or cultivate reciprocity....",
+      "They never spend any resources to reward others, despite repeatedly encountering high contributors and even receiving rewards themselves in some rounds. Their baseline choice is to refrain from using the reward mechanism entirely. This is not because they are being ignored by...",
+      "They never use the reward option at any point, despite repeatedly receiving positive rewards from others when they contribute fully. Their refusal to spend even minimally on rewarding suggest that they either regard rewarding as a waste of private coins or place very low weigh...",
+      "They also never use the reward option, even when many others contribute fully and some players clearly bear high costs to enforce cooperation. This suggests they do not invest in positive sanctions or explicit reciprocity via the reward mechanism. The pattern indicates a narro...",
+      "They never reward anyone, even when others contribute fully and sustain high levels of cooperation. This indicates no inclination to positively reinforce pro-social behavior, no visible gratitude toward high contributors, and no strategic use of rewards to shape future behavio..."
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "cluster_size": 107,
+    "cluster_title": "Reward / Rewards / Punishment",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, punishment, use, high.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "punishment",
+      "use",
+      "high",
+      "player",
+      "behavior",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "They almost never spend on reward, but they do make a single, modest use of it, targeting two consistently cooperative players with a small positive transfer. This occurs immediately after they verbally question punishment, suggesting a weak preference for positive reinforceme...",
+      "They very rarely reward and do so only once, in a way that runs against the immediate punitive norm: they grant a small reward to a player who has been heavily punished and is socially targeted. This indicates a limited but meaningful willingness to use positive incentives, po...",
+      "This player is willing to incur a small cost to reward a very low contributor who ends up with a high payoff. The reward is minimal and singular, suggesting that they are exploratory or selective rather than strongly committed to a broad rewarding strategy. Because the recipie...",
+      "They are willing but very sparing in using rewards. They reward a couple of high contributors once, seemingly to acknowledge and reinforce cooperative behavior when the group’s norm first becomes less clear. Their reward pattern is selective and small compared to their heavy p...",
+      "This player is willing to reward, but in a restrained, targeted, and sometimes strategically ambiguous way. They reward when others contribute at high or improving levels or when they appear aligned with this player’s emerging coalition or norm preferences. They occasionally r..."
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "cluster_size": 137,
+    "cluster_title": "Reward / Rewards / Use",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, use, cooperation, high.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "use",
+      "cooperation",
+      "high",
+      "rewarding",
+      "behavior",
+      "positive"
+    ],
+    "sample_examples": [
+      "They never use rewards, even though several others actively reward high contributors. They do not reciprocate those prosocial signals, and they do not selectively reinforce any partner’s behavior. This suggests that they either place low value on norm-reinforcement via positiv...",
+      "They never spend any coins on reward, even when others clearly cooperate and even when they themselves receive rewards from others multiple times. Their willingness to reward is therefore either zero or extremely low in this environment. They do accept and acknowledge cooperat...",
+      "They never spend any coins on rewarding others, even when others’ contributions are high or align with the norm they promote. They do receive rewards from others but do not reciprocate. This indicates that, in this environment, they treat the reward mechanism as personally cos...",
+      "They never spend on reward, even when some players reliably contribute fully and others visibly use positive incentives as social signals. This is not due to lack of opportunity: there are many rounds where they could cheaply reward high contributors or those who rewarded them...",
+      "They never spend any coins on rewarding others, even when several players very clearly and repeatedly contribute fully and some players are visibly trying to organize full cooperation. This indicates either low willingness to pay for positive reinforcement or a narrow payoff f..."
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "cluster_size": 111,
+    "cluster_title": "Reward / Rewards / Rewarding",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarding, cooperation, high.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarding",
+      "cooperation",
+      "high",
+      "use",
+      "order",
+      "behavior"
+    ],
+    "sample_examples": [
+      "The player never uses reward, even though they are surrounded by many high contributors and repeatedly see others investing heavily in rewards. They do receive rewards multiple times but do not reciprocate by rewarding anyone in return. This indicates that gratitude, if presen...",
+      "They never give rewards, even in periods of near-universal high cooperation when rewarding could be used to reinforce others. This holds both before and after they themselves receive rewards. They do not reciprocate reward, and they do not selectively reward high or especially...",
+      "They never spend on reward, at any point, despite reward being net-beneficial to the recipient and commonly used by others. They also receive substantial reward across many rounds from others, yet this does not induce them to reciprocate or join the reward norm. Their behavior...",
+      "This player never spends any resources on rewards. Across all situations—high or low group cooperation, presence or absence of defectors, early or late in the game—they consistently choose not to use the reward mechanism. At the same time, they steadily receive nontrivial posi...",
+      "They likewise never reward anyone, despite being in a highly cooperative group where positive reciprocity would be easy and socially supported. They receive rewards from others multiple times but do not reciprocate or build on that behavior. There is no explicit statement of w..."
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "cluster_size": 144,
+    "cluster_title": "Reward / Rewards / High",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, high, rewarding, use.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "high",
+      "rewarding",
+      "use",
+      "cooperation",
+      "cooperative",
+      "behavior"
+    ],
+    "sample_examples": [
+      "They never use rewards, despite the mechanism being clearly explained and despite visible examples of others using positive rewards. They do not reward either high contributors who match their own behavior or players who reward them. This indicates that they do not engage in e...",
+      "They never reward anyone, even when some players clearly and consistently contribute more than others and sometimes incur personal costs policing the group. They also receive small rewards from others but do not reciprocate. This indicates they are not inclined to spend their...",
+      "They never spend on rewards, even though they routinely observe others investing in positive incentives. This includes frequent cases where other players reward high contributors. Their abstention is consistent across both cooperative and more defect‑prone environments, sugges...",
+      "The player also never uses positive reward, even though they observe several others repeatedly spending resources to reward high contributors. They see that generous rewarding is common and sometimes quite costly, yet they do not emulate this. This indicates that, although the...",
+      "They do not use reward at any point, even though most others frequently contribute highly and sometimes reward peers. They receive rewards in several periods but never reciprocate in kind, at least not via the formal reward mechanism. This suggests that gratitude, if present,..."
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "cluster_size": 120,
+    "cluster_title": "Reward / Rewards / Punishment",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, punishment, high, positive.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "punishment",
+      "high",
+      "positive",
+      "rewarding",
+      "use",
+      "cooperation"
+    ],
+    "sample_examples": [
+      "They essentially do not use rewards as an instrument. Across many opportunities with identifiable high contributors and norm-promoting players, they almost never spend to reward others. The very few instances in which they receive rewards from others do not trigger reciprocal...",
+      "They never use the reward option despite frequent high contributions from many others. This suggests that they either undervalue positive reinforcement compared to punishment or view it as unnecessary given that cooperation is already relatively high. It is also possible they...",
+      "This player never uses the reward mechanism despite repeated high contributions by many cooperators. They do not provide positive reinforcement to aligned partners, even when the cost-effectiveness of reward is symmetric to punishment. This consistent absence implies that they...",
+      "They never reward anyone throughout the game, despite having many opportunities and clear examples of sustained high cooperation by others. This shows a one-sided enforcement approach: they rely exclusively on negative sanctions rather than positive reinforcement. The absence...",
+      "They never reward anyone, despite multiple opportunities and the presence of clear high contributors. This strongly suggests that they do not use positive incentives to reinforce good behavior and instead rely purely on negative sanctions. The asymmetry between zero reward and..."
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "cluster_size": 97,
+    "cluster_title": "Reward / Rewards / High",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, high, positive, behavior.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "high",
+      "positive",
+      "behavior",
+      "punishment",
+      "cooperation",
+      "use"
+    ],
+    "sample_examples": [
+      "They never use the reward option despite being a consistent high contributor and observing other players who also contribute fully and sometimes spend heavily to punish. This indicates a preference to conserve resources rather than spend extra to positively reinforce cooperati...",
+      "They never use the reward option despite frequent opportunities and the same cost-effectiveness as punishment. This asymmetry implies that they prioritize negative reciprocity and norm enforcement over positive reinforcement. They do not appear motivated to build alliances via...",
+      "They never reward anyone, despite recurrent high contributions by many players and occasional prosocial or coordinating chat messages by others. The reward technology is symmetric to punishment in cost-effectiveness, yet they consistently ignore it. This suggests that their no...",
+      "They never reward any player despite having repeated opportunities. This holds even when many others are consistently contributing at high levels and some players spend heavily to punish free-riders. Their lack of rewarding indicates a clear asymmetry: they are willing to inve...",
+      "They never reward anyone in the entire game despite many players consistently contributing fully. They even forgo cheap opportunities to reinforce cooperators, despite clearly attending to others’ contributions and outcomes. This indicates a strong asymmetry: they are willing..."
+    ]
+  }
+]

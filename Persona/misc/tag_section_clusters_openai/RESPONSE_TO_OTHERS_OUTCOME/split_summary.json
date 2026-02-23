@@ -1,0 +1,21 @@
+{
+  "tag": "RESPONSE_TO_OTHERS_OUTCOME",
+  "split_name": "Outcome-Reaction Profiles",
+  "split_intro": "Clusters built from <RESPONSE_TO_OTHERS_OUTCOME> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 1866,
+    "empty_tag": 0,
+    "dropped_unknown": 0,
+    "kept": 1825
+  },
+  "rows_for_clustering": 1825,
+  "paths": {
+    "section_input_jsonl": "Persona/misc/tag_section_clusters_openai/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+    "clustered_jsonl": "Persona/misc/tag_section_clusters_openai/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered.jsonl",
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters_openai/RESPONSE_TO_OTHERS_OUTCOME/cluster_catalog.json",
+    "run_metadata_json": "Persona/misc/tag_section_clusters_openai/RESPONSE_TO_OTHERS_OUTCOME/run_metadata.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters_openai/RESPONSE_TO_OTHERS_OUTCOME/umap_points.csv"
+  },
+  "status": "ok"
+}

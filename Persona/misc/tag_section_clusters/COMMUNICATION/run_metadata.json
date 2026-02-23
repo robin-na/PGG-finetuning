@@ -1,0 +1,29 @@
+{
+  "input_jsonl": "Persona/misc/tag_section_clusters/COMMUNICATION/communication_sections_input.jsonl",
+  "output_jsonl": "Persona/misc/tag_section_clusters/COMMUNICATION/communication_clustered.jsonl",
+  "rows_used": 1734,
+  "text_column": "text",
+  "only_finished": false,
+  "embedding_backend": "tfidf",
+  "embedding_model": "tfidf",
+  "embedding_dimensions": 1536,
+  "umap_params": {
+    "min_dist": 0.5,
+    "metric": "cosine",
+    "neighbors_ratio": 0.2,
+    "random_state": 42
+  },
+  "clustering_params": {
+    "method": "kmeans",
+    "n_clusters": 15,
+    "auto_k": false,
+    "random_state": 42,
+    "n_init": 20
+  },
+  "summary_backend": "keywords",
+  "summary_model": null,
+  "outputs": {
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters/COMMUNICATION/cluster_catalog.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters/COMMUNICATION/umap_points.csv"
+  }
+}

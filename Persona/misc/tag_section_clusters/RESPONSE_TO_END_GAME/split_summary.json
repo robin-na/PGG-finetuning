@@ -1,0 +1,21 @@
+{
+  "tag": "RESPONSE_TO_END_GAME",
+  "split_name": "End-Game Response Profiles",
+  "split_intro": "Clusters built from <RESPONSE_TO_END_GAME> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 1805,
+    "empty_tag": 0,
+    "dropped_unknown": 0,
+    "kept": 1886
+  },
+  "rows_for_clustering": 1886,
+  "paths": {
+    "section_input_jsonl": "Persona/misc/tag_section_clusters/RESPONSE_TO_END_GAME/response_to_end_game_sections_input.jsonl",
+    "clustered_jsonl": "Persona/misc/tag_section_clusters/RESPONSE_TO_END_GAME/response_to_end_game_clustered.jsonl",
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters/RESPONSE_TO_END_GAME/cluster_catalog.json",
+    "run_metadata_json": "Persona/misc/tag_section_clusters/RESPONSE_TO_END_GAME/run_metadata.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters/RESPONSE_TO_END_GAME/umap_points.csv"
+  },
+  "status": "ok"
+}

@@ -67,7 +67,9 @@ class Args:
     )
     persona: Optional[str] = field(
         default=None,
-        metadata={"help": "Optional persona mode (e.g., random_full_transcript, random_summary)."},
+        metadata={
+            "help": "Optional persona mode (random_full_transcript, random_summary, matched_full_transcript, matched_summary)."
+        },
     )
     persona_pool: str = field(
         default="Persona/transcripts_learn.jsonl",

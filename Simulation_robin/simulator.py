@@ -105,8 +105,12 @@ def simulate_game(
     persona_tag: Optional[str] = None
     persona_intro: Optional[str] = None
     rng = random.Random(seed)
-    if persona in {"random_full_transcript", "random_summary"}:
-        if persona == "random_full_transcript":
+    matched_mode = persona in {"matched_full_transcript", "matched_summary"}
+    random_mode = persona in {"random_full_transcript", "random_summary"}
+    persona_by_avatar: Optional[Dict[str, Dict[str, Optional[str]]]] = None
+
+    if matched_mode or random_mode:
+        if persona in {"random_full_transcript", "matched_full_transcript"}:
             pool_path = persona_pool
             persona_tag = "TRANSCRIPT"
             persona_intro = (
@@ -129,6 +133,13 @@ def simulate_game(
             raise ValueError(f"persona pool path must be set when persona='{persona}'")
         if not os.path.exists(pool_path):
             raise FileNotFoundError(f"persona pool file not found: {pool_path}")
+
+        target_game_id = ""
+        if matched_mode:
+            target_game_id = str(env.get("gameId") or "").strip()
+            if not target_game_id:
+                raise ValueError("matched persona mode requires env['gameId'] to be set")
+
         with open(pool_path, "r", encoding="utf-8") as f:
             for line in f:
                 line = line.strip()
@@ -138,17 +149,26 @@ def simulate_game(
                     record = json.loads(line)
                 except json.JSONDecodeError:
                     continue
-                if record.get("game_finished") is True:
-                    text = record.get("text")
-                    if isinstance(text, str) and text.strip():
-                        persona_transcripts.append(
-                            {
-                                "participant": record.get("participant"),
-                                "text": text.strip(),
-                            }
-                        )
+                if record.get("game_finished") is not True:
+                    continue
+                if matched_mode and str(record.get("experiment")) != target_game_id:
+                    continue
+                text = record.get("text")
+                if isinstance(text, str) and text.strip():
+                    persona_transcripts.append({"participant": record.get("participant"), "text": text.strip()})
+
         if not persona_transcripts:
-            raise ValueError(f"No finished-game transcripts found in persona pool: {pool_path}")
+            scope = f"experiment={target_game_id}" if matched_mode else "pool"
+            raise ValueError(f"No finished-game persona records found in {scope}: {pool_path}")
+
+        if matched_mode:
+            persona_transcripts = sorted(persona_transcripts, key=lambda r: str(r.get("participant") or ""))
+            n = int(env["CONFIG_playerCount"])
+            if len(persona_transcripts) != n:
+                raise ValueError(
+                    f"matched persona mode expects exactly {n} persona records for gameId={env.get('gameId')}; got {len(persona_transcripts)}"
+                )
+            persona_by_avatar = {av: persona_transcripts[i] for i, av in enumerate(roster)}
 
     transcripts: Dict[str, List[str]] = {}
     persona_ids: Dict[str, Optional[str]] = {}
@@ -157,7 +177,20 @@ def simulate_game(
 
     for av in roster:
         transcripts[av] = []
-        if persona in {"random_full_transcript", "random_summary"} and persona_transcripts:
+        if persona_by_avatar is not None:
+            persona_record = persona_by_avatar[av]
+            persona_text = persona_record.get("text", "")
+            persona_ids[av] = persona_record.get("participant")
+            transcripts[av].extend(
+                [
+                    "# YOUR PERSONA",
+                    persona_intro or "",
+                    f"<{persona_tag} STARTS>",
+                    persona_text,
+                    f"<{persona_tag} ENDS>",
+                ]
+            )
+        elif random_mode and persona_transcripts:
             persona_record = rng.choice(persona_transcripts)
             persona_text = persona_record.get("text", "")
             persona_ids[av] = persona_record.get("participant")

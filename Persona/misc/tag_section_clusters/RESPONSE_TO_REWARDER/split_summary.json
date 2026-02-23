@@ -1,0 +1,21 @@
+{
+  "tag": "RESPONSE_TO_REWARDER",
+  "split_name": "Response-to-Rewarder Profiles",
+  "split_intro": "Clusters built from <RESPONSE_TO_REWARDER> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 2774,
+    "empty_tag": 0,
+    "dropped_unknown": 59,
+    "kept": 858
+  },
+  "rows_for_clustering": 858,
+  "paths": {
+    "section_input_jsonl": "Persona/misc/tag_section_clusters/RESPONSE_TO_REWARDER/response_to_rewarder_sections_input.jsonl",
+    "clustered_jsonl": "Persona/misc/tag_section_clusters/RESPONSE_TO_REWARDER/response_to_rewarder_clustered.jsonl",
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters/RESPONSE_TO_REWARDER/cluster_catalog.json",
+    "run_metadata_json": "Persona/misc/tag_section_clusters/RESPONSE_TO_REWARDER/run_metadata.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters/RESPONSE_TO_REWARDER/umap_points.csv"
+  },
+  "status": "ok"
+}

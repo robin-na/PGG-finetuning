@@ -1,0 +1,362 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 115,
+    "cluster_title": "Monitoring Contributions and Enforcing Fairness",
+    "cluster_intro": "This group of players is highly observant of others' contribution behaviors and outcomes, focusing on patterns of non-contribution and the resulting sanctions. They adapt their punishment strategies based on perceived fairness, often targeting those who exploit the system while maintaining their own contribution levels. Their actions reflect a strong commitment to group norms and a desire to uphold collective responsibility.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "high",
+      "contribution",
+      "payoffs",
+      "player",
+      "contributions",
+      "low",
+      "outcomes"
+    ],
+    "sample_examples": [
+      "They monitor others’ behavior in detail, particularly who contributes nothing and how often. Their chat explicitly references specific players’ ongoing non-contribution and aligns with others calling for punishment, showing that they integrate observed outcomes into both talk...",
+      "They pay attention to others’ contribution histories and to public discussion about who is giving or not, and they adapt their punishment choices accordingly, but they show little interest in the detailed payoff consequences for each player beyond identifying sanction targets....",
+      "They observe and respond to others’ outcomes mainly through the lens of contribution and punishment patterns, not through explicit commentary on payoffs. Their choice of targets aligns with players who routinely earn high payoffs from free-riding, and they contribute to drivin...",
+      "They closely track others’ contributions and punishment histories, adjusting their targets as patterns emerge. They continue punishing chronic free‑riders even after those players suffer very large accumulated deductions from the wider group, suggesting that they are not easil...",
+      "They are attentive to others’ outcomes, especially extreme ones, and appear to derive some satisfaction from seeing heavily punished defectors suffer large negative or very low payoffs. When a chronically non-contributing player experiences a severe net loss, they respond with..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 127,
+    "cluster_title": "Behavioral Patterns in Contribution and Punishment",
+    "cluster_intro": "This persona cluster reveals players who are highly observant of others' contributions and the resulting payoffs within a group. They exhibit a strong sensitivity to perceived fairness, often reacting to discrepancies in effort and reward through punishment. Their behavior is driven by a desire to maintain equity and discourage free-riding, reflecting a complex interplay between cooperation and sanctioning.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "payoffs",
+      "player",
+      "high",
+      "contributions",
+      "contribution",
+      "group",
+      "low"
+    ],
+    "sample_examples": [
+      "The player pays close attention to others’ contributions and resulting payoffs and appears sensitive to the relationship between effort and reward. When high contributors earn moderate or even slightly lower payoffs than some moderate contributors, the focal player intervenes,...",
+      "This player is highly responsive to the broader pattern of others’ contributions, payoffs, and sanctioning, but in a coarse, affect-driven rather than fine-tuned way. They appear to infer “climate” from others’ outcomes: when others’ contributions and payouts reveal a relative...",
+      "This player closely uses the punishment stage to respond to how others are doing, but not in a way that clearly supports reciprocity or joint welfare. They frequently direct punishment toward players who earn high payoffs or who avoid punishment themselves, regardless of those...",
+      "This player closely observes others’ contributions and the punishment structure, and appears sensitive to the collective payoff environment, but they do not track or match individual payoffs in a fine-grained way. They are willing to continue cooperating even while seeing some...",
+      "The player clearly attends to others’ contribution and outcome information and adjusts whom they target based on observed free-riding. They repeatedly focus on individuals whose payoffs are high despite low or zero contributions, and they continue to sanction them as long as t..."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 107,
+    "cluster_title": "Observant Players in Cooperative Dynamics",
+    "cluster_intro": "This group of players demonstrates a keen awareness of others' contributions and outcomes, actively tracking performance and behavioral patterns. They engage in discussions about group dynamics, often commenting on the implications of non-cooperation and the effectiveness of punishment. Their responses reflect a blend of strategic thinking and social cohesion, as they navigate the complexities of group behavior.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "group",
+      "outcomes",
+      "player",
+      "payoff",
+      "behavior",
+      "players",
+      "payoffs"
+    ],
+    "sample_examples": [
+      "They pay attention to others’ contributions and outcomes and periodically comment on the group’s overall performance. They clearly understand that universal contribution increases total group payoff and that non-contributors personally gain at the expense of cooperators; they...",
+      "They pay attention to others’ contributions and apparently track who repeatedly contributes nothing versus who cooperates. Their chat comments show awareness that more people are starting to contribute and that some players’ behavior is inconsistent with their cooperative rhet...",
+      "They clearly track outcomes: they note the group average, observe improvement over time, and react to how well “everyone” is doing in aggregate. They are aware that some individuals consistently withhold contributions and that others invest heavily in punishing these players,...",
+      "They appear attentive to others’ outcomes and willing to comment on them, especially when those outcomes are extreme. They notice and remark when someone accumulates a dramatically negative payoff after repeated punishment, reacting with detached amusement rather than sympathy...",
+      "They appear attentive to others’ contributions and the resulting outcomes, and they adjust behavior in a targeted way. After observing that some players contribute very highly, they later channel rewards precisely toward several of these top contributors, indicating they integ..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 106,
+    "cluster_title": "Observing Contributions and Group Dynamics",
+    "cluster_intro": "This cluster highlights players who closely monitor contributions, punishments, and rewards within their group. They tend to respond selectively to observed behaviors rather than directly engaging in punitive actions or mirroring others' strategies. Their focus remains on maintaining their own cooperative contributions, even in the face of complex group dynamics.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "contributions",
+      "outcomes",
+      "reward",
+      "payoffs",
+      "group",
+      "high",
+      "contribution"
+    ],
+    "sample_examples": [
+      "They occasionally comment on the structure and feel of the game rather than directly on others’ payoffs or sanctioning choices. They explicitly question game length and later frame the game as stupid and tedious, indicating that time and effort costs loom large in their evalua...",
+      "They observe that some players spend heavily on punishment and others receive large deductions, yet they do not react verbally or via punishment. Instead, they frequently respond via rewards—often to those they may see as cooperative, supportive, or unfairly targeted. They do...",
+      "The player pays attention to both contributions and resulting payoffs but reacts mainly to observed contribution levels rather than to who is gaining or losing more money. They reward high contributors even when those players are already earning strong payoffs, indicating that...",
+      "The player closely observes others’ contributions and how payoffs are affected by punishment and reward, and they appear responsive to persistent patterns rather than to single outcomes. When one group member repeatedly contributes nothing yet continues to earn high payoffs, e...",
+      "They clearly attend to others’ outcomes: they respond to who is contributing, who is being punished, and who is being rewarded. They never exploit observing others’ punishment costs to attack or pile on; instead, they occasionally act in the opposite direction, rewarding someo..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 126,
+    "cluster_title": "Monitoring Contributions for Group Success",
+    "cluster_intro": "Individuals in this cluster exhibit a keen awareness of others' contributions and the resulting payoffs, adjusting their own behavior accordingly. They actively comment on and critique free-riding, emphasizing the importance of cooperation for maximizing group outcomes. Their focus on social dynamics and fairness drives them to advocate for collective action and accountability.",
+    "summary_source": "openai",
+    "top_terms": [
+      "group",
+      "contributions",
+      "reward",
+      "outcomes",
+      "payoffs",
+      "free",
+      "contribution",
+      "behavior"
+    ],
+    "sample_examples": [
+      "They clearly monitor others’ contributions and the resulting payoffs and sanctioning patterns, adjusting behavior in a nuanced way. When they see a broad base of cooperation, they are more likely to contribute and to direct rewards to key cooperators or vocal pro-cooperation p...",
+      "They pay attention to the structure of outcomes and use that information to shape their incentives. They understand that universal contribution maximizes group returns and explicitly communicate the payoff logic to others. They notice the presence of holdouts and refer to the...",
+      "They show awareness of the group’s outcome patterns, commenting when contributions improve or deteriorate and urging joint action when total contributions fall. They react positively when more players contribute fully, praising the group’s performance and expressing hope. When...",
+      "They clearly monitor others’ behaviors and outcomes, drawing social and strategic conclusions from them. They notice persistent free-riders and label that behavior negatively, indicating that they track not just contributions but also patterns across time and interpret them as...",
+      "They track others’ contribution patterns and likely infer types based on repeated low or high contributions. They comment on players who reliably avoid contributing or “play it safe,” implicitly categorizing them as overly risk-averse or parasitic. They show some alignment wit..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 107,
+    "cluster_title": "Behavioral Patterns in Cooperative Groups",
+    "cluster_intro": "This cluster highlights players who maintain a steady approach to contributions and sanctions, largely unaffected by the extreme behaviors of others. They exhibit a high tolerance for inequality and punishment dynamics, often choosing not to engage in costly moralistic actions. Their strategies reflect a focus on overall group behavior rather than individual payoffs.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "contributions",
+      "reward",
+      "high",
+      "payoffs",
+      "contribution",
+      "group",
+      "player"
+    ],
+    "sample_examples": [
+      "They observe a group where several players often contribute close to the maximum and sometimes spend on rewards, while one player regularly devotes substantial resources to punishing them. Despite this, they do not visibly condition their behavior on others’ payoffs, spending,...",
+      "This player pays steady attention to others’ contribution levels and apparent payoff patterns and adapts their own behavior at the aggregate level rather than tracking individuals in detail. Early in the game, seeing that others often contribute less than full but that there i...",
+      "The player observes others’ payoffs and punishment patterns but reacts in a complex, nonmonotonic way. They sometimes respond to widespread low contributions and heavy sanctioning by continuing to cooperate, absorbing personal losses while others fight; at other times, in simi...",
+      "This player observes others repeatedly spending heavily to punish and sometimes driving their own or others’ payoffs very low, yet they continue to pursue primarily self-interested contributions and rarely join the enforcement efforts. High costs borne by others for norm enfor...",
+      "The player appears sensitive to the overall conflict and payoff landscape rather than to specific individual outcomes. They continue to play and sometimes cooperate even as other players burn large amounts of coins on punishment and drive their own and others’ payoffs very low..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 141,
+    "cluster_title": "Passive Observers in Cooperative Environments",
+    "cluster_intro": "This group of individuals demonstrates a keen awareness of others' contributions and payoffs within cooperative settings. Despite recognizing disparities in contributions and outcomes, they maintain a generally passive approach, refraining from punitive or rewarding actions. Their behavior reflects a commitment to cooperation, even in the face of potential exploitation.",
+    "summary_source": "openai",
+    "top_terms": [
+      "contributions",
+      "group",
+      "payoffs",
+      "outcomes",
+      "behavior",
+      "free",
+      "payoff",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "They pay enough attention to notice others’ presence and absence and to see that everyone is profiting from the cooperative scheme, which they describe positively. They do not publicly react to others’ differential payoffs when small contribution deviations occur, nor to large...",
+      "They appear attentive to others’ contributions and final payoffs, as their own contribution changes in a direction consistent with reacting to the observed cooperative environment and payoff structure. However, they choose not to intervene via punishment or reward even when ot...",
+      "The player plainly observes others’ contribution and payoff patterns but does not verbally comment on specific individuals’ costs or rewards. There is no explicit evidence of them tracking particular players’ histories or publicly reacting to who is spending heavily on rewards...",
+      "They see detailed information about others’ contributions, rewards, and payoffs, but they never comment on specific individuals’ earnings, reward spending, or free-riding behavior. They do not publicly praise heavy contributors or heavy rewarders, nor do they condemn defectors...",
+      "They appear to monitor others’ contributions and, indirectly, how the group’s behavior affects payoffs, but there is no sign that they systematically track or respond to who spends on rewards or who earns more or less. They never comment on specific players’ payoffs, nor on th..."
+    ]
+  },
+  {
+    "cluster_id": 7,
+    "cluster_size": 145,
+    "cluster_title": "Behavioral Detachment in Cooperative Dynamics",
+    "cluster_intro": "This cluster highlights individuals who observe varying contributions and outcomes within a cooperative environment but remain largely unaffected in their own behavior. Despite witnessing punishment and reward dynamics, they do not adjust their strategies or engage with the actions of others. Their consistent contributions and lack of reaction suggest a stable, non-interventionist approach to group dynamics.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "outcomes",
+      "payoffs",
+      "reward",
+      "contributions",
+      "contribution",
+      "high",
+      "payoff"
+    ],
+    "sample_examples": [
+      "They repeatedly observe that some players contribute less while earning higher payoffs and sometimes also face heavy punishment from others. Despite this clear evidence of free-riding, payoff inequality, and active sanctioning norms in the group, they neither adjust their own...",
+      "They observe that some players consistently contribute high amounts and sometimes sacrifice payoff through punishment or reward, while others contribute less and are occasionally heavily punished, yet they remain behaviorally detached from these dynamics. They do not move to s...",
+      "They consistently see others’ outcomes, including payoff differences driven by varying contributions and by some players’ use of punishment and reward. They do not mimic the enforcers’ behavior, nor do they react visibly to shifting payoff ranks: even when defectors earn more,...",
+      "They observe variations in others’ contributions and outcomes, including a case where a lower contributor is heavily punished and where one player spends a moderate amount on punishment. They do not comment on these events, adjust their cooperation to reward or protect victims...",
+      "They observe others’ outcomes—including deviations from full contribution, use of punishment against a low contributor, and later punishment against themselves—but there is no behavioral sign that they adjust their strategy based on these observations. They do not reward or pu..."
+    ]
+  },
+  {
+    "cluster_id": 8,
+    "cluster_size": 133,
+    "cluster_title": "Cooperative Players and Reward Dynamics",
+    "cluster_intro": "This group of players demonstrates a keen awareness of others' contributions and reward behaviors, adjusting their own actions based on the overall cooperative climate. They prioritize collective success and respond to group dynamics without resorting to punitive measures, fostering a supportive environment. Their behavior reflects a nuanced understanding of cooperation, where high contributions are met with increased reward spending.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "contributions",
+      "high",
+      "payoffs",
+      "group",
+      "player",
+      "rewards",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "The player pays clear attention to others’ contributions and payoffs and reacts strongly to the general pattern of high cooperation and high mutual rewarding around them. When peers are cooperative and some act as strong rewarders, they tend to respond with large reward spendi...",
+      "The player pays implicit attention to others’ contributions and end-of-round payoffs but does not respond in a punitive or retaliatory way. When others defect or free-ride, they do not reduce their contributions and do not have access to punishment; their observable response i...",
+      "The player is sensitive to others’ contribution and reward behaviors and adjusts in a nuanced, non-retaliatory way. When others free-ride while the group remains cooperative, the player is willing to temporarily exploit that situation but does not escalate into a permanent bre...",
+      "This player appears sensitive to the overall cooperative structure of the group but not in a punitive or retaliatory sense. When others’ contributions are high and many players are giving up a lot of income to reward, they maintain or increase their own reward spending rather...",
+      "This player pays attention to others’ contributions, payoffs, and reward expenditures and adjusts behavior in nuanced ways. They appear especially sensitive to extreme reward spending by a small subset of peers: when someone spends heavily to reward them, they respond with inc..."
+    ]
+  },
+  {
+    "cluster_id": 9,
+    "cluster_size": 118,
+    "cluster_title": "Indifferent Players in Cooperative Settings",
+    "cluster_intro": "This group exhibits a notable lack of responsiveness to the contributions and behaviors of others in cooperative environments. Despite observing significant variations in payoffs, punishment, and rewards, their own strategies remain unchanged, indicating a low sensitivity to social dynamics and outcomes.",
+    "summary_source": "openai",
+    "top_terms": [
+      "punishment",
+      "payoffs",
+      "reward",
+      "contributions",
+      "payoff",
+      "behavior",
+      "low",
+      "outcomes"
+    ],
+    "sample_examples": [
+      "This player observes substantial information each round: others’ contributions, payoffs, and costs spent on punishment and reward. Yet they display no behavioral adjustment in response. They do not increase contributions when others contribute very high amounts and group payof...",
+      "They consistently maintain their strategy regardless of the distribution of others’ payoffs, punishment expenditures, or deductions. When another player uses costly punishment to hit a low contributor, they do not respond by adjusting contributions or joining in punishment. Wh...",
+      "This player observes detailed end-of-round outcomes, including others’ payoffs, punishment expenditures, and received deductions, yet their subsequent behavior does not seem systematically guided by these outcomes. They do not clearly reward players who sacrifice payoff to enf...",
+      "They appear largely indifferent to others’ payoffs, punishment expenditures, and reward flows. While other participants openly discuss the logic of contributing, the impact of holdouts, and the reasons for punishment, this player stays silent about all of it. They do not comme...",
+      "The player’s behavior is strikingly inertial with respect to others’ outcomes. They observe that a particular peer free-rides repeatedly and is sometimes lightly punished or rewarded by others, but they never alter their own contributions or sanctioning behavior in response. L..."
+    ]
+  },
+  {
+    "cluster_id": 10,
+    "cluster_size": 138,
+    "cluster_title": "Adaptive Players in Cooperative Environments",
+    "cluster_intro": "These players exhibit a keen awareness of the dynamics between contributions and payoffs within their group. They adjust their behavior based on observed outcomes, oscillating between cooperation and opportunism depending on the payoff structure. Their actions reflect a strategic approach to maximizing personal gain while navigating the complexities of group cooperation.",
+    "summary_source": "openai",
+    "top_terms": [
+      "contributions",
+      "payoffs",
+      "group",
+      "payoff",
+      "high",
+      "free",
+      "outcomes",
+      "player"
+    ],
+    "sample_examples": [
+      "The player clearly attends to others’ outcomes, at least implicitly, as shown by their behavior aligning with changes in the payoff structure between contributors and non-contributors. When free riders are earning more than cooperators, the player is willing to join the free r...",
+      "The player observes that free-riders can earn higher payoffs when many others contribute, and they are willing to occupy both roles at different times: sometimes sharing the fate of cooperators, sometimes sharing the gains of defectors. This indicates that they accept payoff i...",
+      "The player closely tracks how outcomes differ between contributors and non-contributors and adjusts behavior in response. When free riders obtain higher payoffs than contributors and are not sanctioned, the player aligns with the better-paid group rather than continuing to acc...",
+      "The player clearly reads and cognitively processes the outcome structure and others’ behaviors. Their one substantive content message about cooperation demonstrates understanding that unilateral contribution is exploitable and that the social optimum requires universal buy-in....",
+      "They attend to both others’ contributions and their net outcomes, including how much others spend on reward. Their behavior suggests they infer types from these outcomes: they continue to cooperate with and often reward those who both contribute substantially and do not exploi..."
+    ]
+  },
+  {
+    "cluster_id": 11,
+    "cluster_size": 128,
+    "cluster_title": "Observing Without Reacting: A Behavioral Analysis",
+    "cluster_intro": "This cluster highlights individuals who keenly observe the contributions and reward behaviors of their peers without altering their own strategies. Despite recognizing disparities in payoffs and the costs incurred by others, they maintain a consistent approach, showing little to no behavioral adjustment. Their detachment suggests a focus on personal contribution rather than responding to the dynamics of reward and punishment in the group.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "contributions",
+      "payoffs",
+      "high",
+      "rewards",
+      "payoff",
+      "free",
+      "contribution"
+    ],
+    "sample_examples": [
+      "The player observes that some peers systematically earn more by contributing nothing, yet they do not alter their own behavior to reduce this advantage. There is no mechanism for explicit punishment or reward in this environment, so reactions must be inferred from contribution...",
+      "The player observes substantial variation in others’ spending on rewards and in their resulting payoffs, yet they do not visibly adjust through either rewarding or significant withdrawal of contributions. High spenders on rewards see their payoffs reduced; some players frequen...",
+      "The player observes substantial variation in others’ payoffs across rounds: sometimes others earn less when they shoulder cooperative costs, sometimes they earn more when they free-ride on the player’s contributions, and sometimes everyone earns the same when all defect. Despi...",
+      "They observe substantial variation in others’ contributions, payoffs, and reward expenditures, including extreme cases where some players sacrifice heavily to reward others. Despite this, they do not emulate high-cost rewarding, do not reward those who incur such costs, and do...",
+      "They observe dramatic patterns in others’ reward spending and payoffs, including players who burn substantial resources to reward various peers and those who end up with very low or even negative round payoffs as a result. Despite this, the focal player does not imitate, compl..."
+    ]
+  },
+  {
+    "cluster_id": 12,
+    "cluster_size": 99,
+    "cluster_title": "Stable Cooperation Amid Payoff Disparities",
+    "cluster_intro": "This persona exemplifies a steadfast commitment to cooperation, remaining unaffected by the varying payoffs of peers. Despite observing free-riders benefiting from their lack of contribution, they maintain their own contribution levels without adjustment. Their behavior reflects a deliberate choice to prioritize cooperation over competitive responses.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "payoffs",
+      "contribution",
+      "outcomes",
+      "payoff",
+      "contributions",
+      "cooperation",
+      "player"
+    ],
+    "sample_examples": [
+      "This player’s contribution pattern suggests they either accept or largely ignore payoff asymmetries created by free-riding. As some peers systematically earn higher payoffs by not contributing, the player does not adjust their own behavior to restore payoff equality. They neit...",
+      "This player does not use others’ realized payoffs as a cue to change behavior. Even when it becomes clear that non-contributors earn higher individual payoffs than contributors, the player does not shift toward self-protection or reciprocity and instead maintains full cooperat...",
+      "The player shows no behavioral reaction to others’ differing payoffs; their contribution rule remains unchanged as some group members repeatedly earn more by contributing nothing. Despite clear, repeated instances where non-contributors are rewarded with higher individual payo...",
+      "The player shows no behavioral response to variation in others’ payoffs; their contribution choice remains unchanged despite clear and repeated evidence that free-riders earn strictly higher payoffs than contributors. They do not use others’ earnings as a signal to adjust thei...",
+      "This player appears strikingly insensitive, in behavioral terms, to others’ payoff outcomes and to the emerging payoff distribution between cooperators and defectors. As they observe that free-riders and low contributors repeatedly earn more than them, they make no observable..."
+    ]
+  },
+  {
+    "cluster_id": 13,
+    "cluster_size": 119,
+    "cluster_title": "Opportunistic Players in Contribution Dynamics",
+    "cluster_intro": "This persona cluster highlights individuals who strategically navigate group dynamics by prioritizing their own payoffs over collective contributions. They exhibit a keen awareness of others' behaviors and outcomes, often opting to free-ride when it benefits them, rather than engaging in reciprocal actions. Their focus remains on maximizing personal gain, even in the face of inequitable contribution patterns.",
+    "summary_source": "openai",
+    "top_terms": [
+      "payoffs",
+      "contributions",
+      "player",
+      "payoff",
+      "high",
+      "outcomes",
+      "group",
+      "free"
+    ],
+    "sample_examples": [
+      "The player consistently responds to others’ high contributions and relatively lower payoffs by positioning themselves to benefit from those contributions rather than aligning with them. When others earn less than the player while contributing more, the player does not move tow...",
+      "The player is highly sensitive to others’ contribution patterns and associated payoffs and adjusts in ways that preserve or improve their relative advantage. When they see others contributing while they do not, and this yields them superior earnings, they readily continue to c...",
+      "The player appears highly reactive to others’ contribution patterns and resulting payoffs, but the direction of adaptation is mostly opportunistic free-riding rather than reciprocity. When others bear the cost of contribution and end up with lower payoffs than the player, the...",
+      "They observe large and sometimes extreme uses of the reward mechanism by others (including players who sacrifice substantial payoffs to reward certain targets), yet they do not imitate this behavior or systematically adjust their contributions in line with it. Their contributi...",
+      "Direct verbal reactions to specific payoff outcomes or contribution levels are largely absent. The player does not comment on who is “losing” or “gaining” more, does not praise cooperators, and does not explicitly criticize freeloaders (including themselves). However, their be..."
+    ]
+  },
+  {
+    "cluster_id": 14,
+    "cluster_size": 116,
+    "cluster_title": "Indifferent Players in Reward Dynamics",
+    "cluster_intro": "This group of players exhibits a consistent pattern of indifference towards the contributions and reward behaviors of others. Despite observing significant variations in others' payoffs and expenditures, they maintain their own strategies focused on maximizing personal gain without adapting to social dynamics. Their behavior reflects a stable commitment to free-riding, regardless of the cooperative efforts around them.",
+    "summary_source": "openai",
+    "top_terms": [
+      "reward",
+      "contributions",
+      "payoffs",
+      "rewards",
+      "high",
+      "payoff",
+      "player",
+      "low"
+    ],
+    "sample_examples": [
+      "This player consistently responds to others’ outcomes by maintaining their own free-riding strategy, regardless of how payoff patterns evolve. They observe that cooperative players earn less than they do and that they themselves repeatedly obtain higher payoffs by not contribu...",
+      "They clearly notice that others are spending substantial amounts on both punishment and reward, and they explicitly question the logic of paying to deduct others. They acknowledge that the game is long and tedious, commenting on duration and the mechanical nature of repeated c...",
+      "This player shows no behavioral response to others’ payoff patterns or reward expenditures. They do not change their contribution when some players incur very large costs to reward others, when low contributors receive substantial net benefits, or when reward activity fluctuat...",
+      "The player observably adapts their contributions in light of others’ behavior and outcomes, but in a way consistent with private payoff maximization rather than norm enforcement. When others sacrifice heavily on rewards or contributions, the player does not increase their own...",
+      "This player appears relatively insensitive to others’ payoff patterns and reward expenditures. They maintain high contributions even when some players invest heavily in rewards or free ride on contributions, and they do not adjust their own reward behavior in response to seein..."
+    ]
+  }
+]

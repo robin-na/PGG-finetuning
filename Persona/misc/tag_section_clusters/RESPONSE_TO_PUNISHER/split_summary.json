@@ -1,0 +1,21 @@
+{
+  "tag": "RESPONSE_TO_PUNISHER",
+  "split_name": "Response-to-Punisher Profiles",
+  "split_intro": "Clusters built from <RESPONSE_TO_PUNISHER> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 2771,
+    "empty_tag": 0,
+    "dropped_unknown": 73,
+    "kept": 847
+  },
+  "rows_for_clustering": 847,
+  "paths": {
+    "section_input_jsonl": "Persona/misc/tag_section_clusters/RESPONSE_TO_PUNISHER/response_to_punisher_sections_input.jsonl",
+    "clustered_jsonl": "Persona/misc/tag_section_clusters/RESPONSE_TO_PUNISHER/response_to_punisher_clustered.jsonl",
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters/RESPONSE_TO_PUNISHER/cluster_catalog.json",
+    "run_metadata_json": "Persona/misc/tag_section_clusters/RESPONSE_TO_PUNISHER/run_metadata.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters/RESPONSE_TO_PUNISHER/umap_points.csv"
+  },
+  "status": "ok"
+}

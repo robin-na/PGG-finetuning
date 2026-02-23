@@ -1,0 +1,21 @@
+{
+  "tag": "REWARD",
+  "split_name": "Reward Behavior Profiles",
+  "split_intro": "Clusters built from <REWARD> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 1876,
+    "empty_tag": 0,
+    "dropped_unknown": 0,
+    "kept": 1815
+  },
+  "rows_for_clustering": 1815,
+  "paths": {
+    "section_input_jsonl": "Persona/misc/tag_section_clusters/REWARD/reward_sections_input.jsonl",
+    "clustered_jsonl": "Persona/misc/tag_section_clusters/REWARD/reward_clustered.jsonl",
+    "cluster_catalog_json": "Persona/misc/tag_section_clusters/REWARD/cluster_catalog.json",
+    "run_metadata_json": "Persona/misc/tag_section_clusters/REWARD/run_metadata.json",
+    "umap_points_csv": "Persona/misc/tag_section_clusters/REWARD/umap_points.csv"
+  },
+  "status": "ok"
+}
