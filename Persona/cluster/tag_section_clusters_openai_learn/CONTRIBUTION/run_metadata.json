@@ -1,0 +1,406 @@
+{
+  "input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_sections_input.jsonl",
+  "output_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered.jsonl",
+  "rows_used": 3691,
+  "text_column": "text",
+  "only_finished": false,
+  "embedding_backend": "openai",
+  "embedding_model": "text-embedding-3-large",
+  "embedding_dimensions": 1536,
+  "umap_params": {
+    "min_dist": 0.5,
+    "metric": "cosine",
+    "neighbors_ratio": 0.2,
+    "random_state": 42
+  },
+  "clustering_params": {
+    "method": "kmeans+split_merge",
+    "cluster_space": "embedding",
+    "n_clusters": 7,
+    "auto_k": false,
+    "random_state": 42,
+    "n_init": 20,
+    "min_clusters": 6,
+    "max_clusters": 25,
+    "merge_similarity_threshold": 0.94,
+    "target_overlap_rate": 0.12,
+    "point_overlap_margin": 0.03,
+    "split_cluster_min_size": 60,
+    "max_split_merge_iters": 20,
+    "split_merge_events": [
+      {
+        "op": "merge",
+        "kept_cluster": 10,
+        "dropped_cluster": 12,
+        "centroid_cosine_similarity": 0.9905886650085449,
+        "iter": 1
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 2,
+        "dropped_cluster": 10,
+        "centroid_cosine_similarity": 0.9892657995223999,
+        "iter": 1
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 2,
+        "dropped_cluster": 12,
+        "centroid_cosine_similarity": 0.9898804426193237,
+        "iter": 1
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 2,
+        "dropped_cluster": 10,
+        "centroid_cosine_similarity": 0.9892850518226624,
+        "iter": 1
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 1,
+        "dropped_cluster": 3,
+        "centroid_cosine_similarity": 0.9898338913917542,
+        "iter": 1
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 1,
+        "dropped_cluster": 7,
+        "centroid_cosine_similarity": 0.9897863268852234,
+        "iter": 1
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 2,
+        "dropped_cluster": 3,
+        "centroid_cosine_similarity": 0.9836452007293701,
+        "iter": 1
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 1,
+        "dropped_cluster": 4,
+        "centroid_cosine_similarity": 0.9838911890983582,
+        "iter": 1
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 1
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 1
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 2
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 2
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 3
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 3
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 4
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 4
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 5
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 5
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 6
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 6
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 7
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 7
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 8
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 8
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 9
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 9
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 10
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 10
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 11
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 11
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 12
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 12
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 13
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 13
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 14
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 14
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 15
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 15
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 16
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 16
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 17
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 17
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 18
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 18
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 19
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 19
+      },
+      {
+        "op": "merge",
+        "kept_cluster": 3,
+        "dropped_cluster": 6,
+        "centroid_cosine_similarity": 0.9840521812438965,
+        "iter": 20
+      },
+      {
+        "op": "split",
+        "source_cluster": 5,
+        "source_size": 635,
+        "source_ambiguity": 0.9811023622047244,
+        "source_dispersion": 0.05055457353591919,
+        "iter": 20
+      }
+    ],
+    "label_mapping_pre_to_post_umap_order": {
+      "6": 0,
+      "3": 1,
+      "1": 2,
+      "4": 3,
+      "2": 4,
+      "0": 5,
+      "5": 6
+    },
+    "final_overlap_rate": 0.9295583852614467,
+    "final_max_centroid_similarity": 0.9840521812438965
+  },
+  "summary_backend": "keywords",
+  "summary_model": null,
+  "outputs": {
+    "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/cluster_catalog.json",
+    "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/umap_points.csv"
+  }
+}

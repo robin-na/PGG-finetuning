@@ -1,0 +1,170 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 65,
+    "cluster_title": "Rewarded / Unknown / Rewards",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around rewarded, unknown, rewards, reward, rewarders.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "rewarded",
+      "unknown",
+      "rewards",
+      "reward",
+      "rewarders",
+      "response",
+      "player",
+      "player rewarded"
+    ],
+    "sample_examples": [
+      "This player is never rewarded, so their direct reactions to identifiable rewarders are unknown. They do not adjust their contributions in response to the general presence of rewards in the environment; their behavior remains unchanged while others use rewards multiple times. T...",
+      "Unknown. The focal player is never rewarded by others in this transcript, so their behavioral or strategic response to receiving rewards—whether they would reciprocate, increase contributions, or form implicit alliances—cannot be inferred.",
+      "This is unknown, as the player is never rewarded. There is no evidence on whether they would reciprocate materially, shift contributions, or treat rewarders differently in future interactions.",
+      "The player receives no rewards. Their propensity for reciprocating rewards, forming cooperative partnerships with generous peers, or shifting subsequent contributions in response to being rewarded is unknown.",
+      "Unknown. The player is never rewarded, so there is no behavior showing gratitude, reciprocity, or alliance formation toward identifiable rewarders. Their own non-rewarding behavior gives no clear evidence of whether they would reciprocate if rewarded; their response tendencies..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 117,
+    "cluster_title": "Rewarded / Unknown / Rewards",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around rewarded, unknown, rewards, rewarders, response.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "rewarded",
+      "unknown",
+      "rewards",
+      "rewarders",
+      "response",
+      "reward",
+      "reciprocity",
+      "alliance"
+    ],
+    "sample_examples": [
+      "They never receive rewards from others in this game, so their direct response to being rewarded is unknown. Because they consistently refrain from using reward on anyone, including players who are frequently rewarding others, it is uncertain whether they would respond with rec...",
+      "They are never rewarded by others, so their direct response to being rewarded is unknown. Because they do not reward anyone themselves and do not discuss rewards in chat, there is no indirect evidence of how they would react to positive reinforcement—reciprocity, alliance-buil...",
+      "They are never rewarded, so responses cannot be directly observed. It is unknown whether they would reciprocate rewards, adjust contributions upward, or direct rewards back to benefactors in future rounds. Given their lack of reward use even when others are generous, it is unc...",
+      "They are never rewarded, so direct reciprocity toward a known rewarder cannot be observed. Consequently, their willingness to return favors, form implicit alliances with rewarders, or increase cooperation after being rewarded remains unknown. There is also no evidence that the...",
+      "They receive no rewards, so their direct behavioral response to being rewarded is unknown. There is no evidence of reciprocal reward or of forming implicit cooperative “clubs” through mutual bonuses. Given their general avoidance of both punishment and reward despite seeing ot..."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 139,
+    "cluster_title": "Reward / Rewarded / Rewards",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewarded, rewards, reciprocity, cooperative.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewarded",
+      "rewards",
+      "reciprocity",
+      "cooperative",
+      "rewarders",
+      "rewarding",
+      "group"
+    ],
+    "sample_examples": [
+      "They are rewarded by others in some rounds, but because they never speak, never reward those specific players in an obviously tightly coupled way, and show no direct behavioral shift tied to who rewarded them, their explicit response is unknown. There is no clear evidence of d...",
+      "They are occasionally rewarded by others; when this happens, they do not respond in chat, but their behavior is consistent with appreciating and aligning with other rewarders. They continue to contribute fully and, in some cases, direct rewards toward players who themselves in...",
+      "They receive repeated rewards across the game from several others. There is no evidence that they try to reciprocate directly to specific rewarders (for example, they do not clearly single them out with rewards in return). Nor do they explicitly thank rewarders in chat. Instea...",
+      "They receive rewards a number of times, especially when they themselves continue not to contribute. They do not explicitly thank any specific rewarder by name, but they do respond in a way that broadly aligns with those players’ cooperative messaging: they echo calls for every...",
+      "They are rewarded multiple times by others, but they never explicitly acknowledge or reciprocate to specific rewarders in chat. Behaviorally, they continue high contributions and continue to reward others throughout, including players who reward them and many who do not. Their..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 157,
+    "cluster_title": "Reward / Rewards / Rewarded",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarded, behavior, rewarders.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "behavior",
+      "rewarders",
+      "does",
+      "reciprocity",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "They receive rewards on a few occasions from others who also appear highly cooperative. Their subsequent behavior does not change discernibly: they continue to contribute at similar or slightly varying cooperative levels and still never adopt rewarding themselves. There is no...",
+      "They do receive rewards at several points but never comment on them explicitly in chat and do not respond with visible reciprocity toward specific rewarders. There is no clear behavioral evidence that being rewarded makes them more likely to contribute in subsequent rounds, no...",
+      "The player is rewarded on a couple of occasions but does not alter their enforcement behavior (they still never reward or punish) and does not acknowledge the rewarders in chat. Their contribution pattern remains broadly similar to what it was before rewards appeared, suggesti...",
+      "The player is rewarded once by a peer and receives the transfer passively, without altering their visible behavioral pattern. They keep contributing fully and do not start rewarding in return, suggesting they do not reciprocate in-kind within the observed window. This may indi...",
+      "When they eventually receive a reward from another player, they do not change their contribution behavior, nor do they begin rewarding others. There is no observable reciprocity toward the specific rewarder and no shift toward more cooperative play after being positively recog..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 154,
+    "cluster_title": "Reward / Rewards / Rewarded",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarded, rewarders, reciprocity.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "rewarders",
+      "reciprocity",
+      "behavior",
+      "contribution",
+      "gratitude"
+    ],
+    "sample_examples": [
+      "They receive rewards several times from specific co-players, but they never reciprocate with rewards of their own and they do not alter their contribution behavior, which is already at the maximum. There is no observable attempt to form a mutual-reward alliance or to different...",
+      "They are rewarded a few times by other players despite not using the reward mechanism themselves. After receiving rewards, they do not change their pattern in any clearly affiliative or reciprocal way: they do not begin rewarding, they do not unambiguously increase contributio...",
+      "They receive rewards multiple times from others but do not reciprocate materially and do not comment on being rewarded. They do not target their rewarders with reward in later rounds, and they do not shift into a stable full-cooperator stance in apparent gratitude. This sugges...",
+      "They receive rewards multiple times but never respond publicly, either with thanks, reciprocal reward, or visible behavioral alignment toward the rewarders. Their cooperation choices after being rewarded are inconsistent: sometimes they continue to contribute, sometimes they d...",
+      "They receive rewards multiple times from others, including when they are free-riding as well as when they are contributing, but they never mention these gifts in chat and never reciprocate with rewards of their own. They do not visibly adjust their contribution pattern in a wa..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 129,
+    "cluster_title": "Reward / Rewarded / Rewards",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewarded, rewards, cooperative, reciprocity.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewarded",
+      "rewards",
+      "cooperative",
+      "reciprocity",
+      "rewarding",
+      "rewarders",
+      "behavior"
+    ],
+    "sample_examples": [
+      "The player reliably notices and responds when others direct reward toward them. When they receive substantial reward, they subsequently maintain or increase their cooperative stance rather than exploiting the trust. They also show a tendency to direct rewards toward individual...",
+      "When they receive rewards from others, they do not visibly focus on direct, one-to-one repayment. Instead, their pattern is broad and inclusive: they continue to reward multiple others, including some who have not rewarded them. This suggests that they interpret being rewarded...",
+      "When the player is rewarded by others, they do not change their own contribution pattern, which already sits at the cooperative maximum. However, they later direct rewards toward several individuals who have previously rewarded them while also contributing strongly, consistent...",
+      "This player is repeatedly rewarded by several others but does not systematically reciprocate reward back to those specific individuals in any obvious pattern. Their reactions to being rewarded are indirect: they sometimes later reward players who are also generally cooperative...",
+      "This player is repeatedly rewarded by others, often substantially, yet their pattern of contributions and rewarding does not visibly change in a strategic, tit‑for‑tat manner. They neither single out particular rewarders for special reciprocal treatment nor withhold rewards fr..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 156,
+    "cluster_title": "Reward / Rewards / Rewarded",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around reward, rewards, rewarded, does, rewarders.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "reward",
+      "rewards",
+      "rewarded",
+      "does",
+      "rewarders",
+      "reciprocity",
+      "contribution",
+      "behavior"
+    ],
+    "sample_examples": [
+      "The player receives rewards from others but does not respond in kind, either by rewarding those who rewarded them or by expanding their use of the reward mechanism more generally. They maintain the same behavioral pattern—full contribution and no incentive use—after being rewa...",
+      "This player is rewarded multiple times yet never clearly reciprocates to those rewarders. They do not start rewarding after being rewarded, nor do they visibly direct rare rewards specifically back toward prior benefactors. They also do not increase their own contributions in...",
+      "The player occasionally receives small amounts of reward from others, but never reciprocates toward those individuals or toward any rewarder in general. When they are rewarded, their subsequent contributions do not change in a way that suggests gratitude-based reciprocity or a...",
+      "The player receives some reward from others but never reciprocates with reward of their own. They do not respond to being rewarded by changing their use of the reward mechanism (it remains unused) or by visibly forming a mutual-reward relationship. Any subsequent changes in th...",
+      "This player is repeatedly rewarded by others, including episodes of very large positive transfers, yet they never respond with reciprocal rewards. They also do not visibly alter their own contribution pattern in a way that clearly favors those who rewarded them; their contribu..."
+    ]
+  }
+]

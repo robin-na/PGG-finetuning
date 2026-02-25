@@ -1,0 +1,219 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 155,
+    "cluster_title": "Silent Participants in Communication Dynamics",
+    "cluster_intro": "This cluster encompasses personas characterized by a lack of observable chat content, making their communication styles and engagement strategies difficult to assess. Their behavioral patterns suggest a reliance on non-verbal cues and actions, leaving their tone and responsiveness largely unknown. This absence of direct interaction may indicate a preference for observation over participation in discussions.",
+    "summary_source": "openai-polished-pass-1",
+    "top_terms": [
+      "unknown",
+      "chat",
+      "chat content",
+      "content",
+      "unknown chat",
+      "communication",
+      "style",
+      "tone"
+    ],
+    "sample_examples": [
+      "Unknown. There is no chat content in the transcript, so their tone, persuasion attempts, and responsiveness in communication cannot be inferred. It is unknown whether they prefer engagement or avoidance in verbal or textual interaction.",
+      "Unknown. There is no observable chat content from the focal player in the transcript, so their tone, coordination attempts, and responsiveness in communication cannot be inferred.",
+      "Unknown. No chat content is provided, so their tone, explicit coordination attempts, and responsiveness in messaging cannot be inferred. Any persuasive or engagement style in communication is unknown.",
+      "Unknown; there is no chat content in the transcript. The player’s communication style, tone, use of persuasion, or responsiveness in text is therefore unknown. Any inferences about verbal or written coordination strategies or interpersonal tone would be speculative and are not...",
+      "Unknown. There is no observable chat content or explicit communication from or to this player in the transcript, so their tone, persuasion style, and direct responsiveness in conversation are not inferable. Their coordination style must therefore be inferred solely from contri...",
+      "unknown (no chat content is provided, so tone, persuasion style, and responsiveness in communication are not observable).",
+      "Unknown. The transcript does not show any chat content, so tone, persuasion style, and responsiveness in communication are unobservable. Any claims about verbal coordination or affect are unknown.",
+      "Unknown. There is no chat content in the transcript, so their tone, attempts at verbal coordination, persuasion, or responsiveness in communication cannot be inferred.",
+      "Unknown. No chat content is provided, so their tone, direct persuasion attempts, and responsiveness in text channels are not observable. Their behavioral pattern (strong, sometimes costly reactions to others) suggests they might be expressive or confrontational if they did com...",
+      "Unknown. There is no observable chat behavior in the transcript, so their tone, persuasion attempts, and responsiveness in communication cannot be inferred. It is also unknown whether their steadfast cooperation is accompanied by any verbal norm-appeals or if they remain silent.",
+      "Unknown; no chat content is provided. Their social stance must be inferred from actions only.",
+      "Unknown; no chat content is available. Their style of action implies that if they do communicate, they likely emphasize norms and expectations around high contributions and express disapproval of low contributors through behavior rather than through positive reinforcement. Con..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 367,
+    "cluster_title": "Silent Observers in Social Dynamics",
+    "cluster_intro": "This cluster encompasses personas who exhibit minimal to no communication in social settings. Their behavior reflects a preference for observation over participation, often leading to a disengaged presence in group interactions. These individuals do not initiate or respond to discussions, indicating a low-engagement approach to social dynamics.",
+    "summary_source": "openai-polished-pass-1",
+    "top_terms": [
+      "social",
+      "chat",
+      "low",
+      "communication",
+      "non",
+      "style",
+      "messages",
+      "unknown"
+    ],
+    "sample_examples": [
+      "The player does not speak at all in the chat. They neither initiate coordination nor respond to others’ messages, including direct calls for group action or end-game plans. This indicates a strongly silent/observing communication style: they pay attention (as shown by prompt,...",
+      "The player’s communication is extremely sparse and front‑loaded. Early on, they join the initial pro-cooperation norm with a short, approving confirmation that they are also contributing the maximum. After that, they fall completely silent for the remainder of the interaction,...",
+      "They never speak in the chat. This is consistent across all stages, including early coordination, mid-game, and after the first appearance of defection. They do not publicly endorse norms, request strategies, or react verbally to jokes or to punishment events. This silence sug...",
+      "The player does not send any chat messages. They remain completely silent throughout, even when others actively discuss strategies, propose coordination, or react to the payoff structure. This silence suggests an avoidant or disengaged communication style in this context: they...",
+      "The player never sends chat messages in this transcript. Their communication style is therefore “silent observer”: they read others’ coordination attempts and reactions but do not verbally engage, persuade, or negotiate. This indicates either a preference for low social engage...",
+      "They do not use the chat at all, despite others attempting to coordinate and discuss strategies. This persistent silence suggests a low-engagement, observational style: they prefer to watch what others do and respond via contributions rather than via talk. They do not attempt...",
+      "They never speak in the chat, despite a very active conversation among others. This consistent silence suggests a low-communication, observational style: they watch others’ talk and behavior but do not try to lead, persuade, or coordinate directly. They therefore do not use ve...",
+      "They are entirely silent in the chat. They do not participate in coordination efforts, do not defend themselves when mischaracterized, and do not comment on punishment campaigns or others’ behavior. This suggests an avoidant or low‑engagement communication style: they cooperat...",
+      "The player never speaks in chat. They do not join coordination attempts, do not publicly pressure free‑riders, and do not respond to others’ comments about contributors or punishment targets. Their style is entirely action-based rather than verbal. This suggests a low-communic...",
+      "They do not send any chat messages throughout the game. They observe an active discussion about contribution coordination, free-riders, and punishment targets but remain silent. This indicates a low-communication, non-leadership style: they neither guide others, clarify mechan...",
+      "They do not speak in the chat at all. They ignore direct social pressure, explicit naming, and coordinated calls for sanctions, offering no defense, apology, justification, or explanation. This silence suggests a strongly disengaged or non-communicative style: they neither att...",
+      "They do not send any chat messages. They show no overt attempts at coordination, persuasion, or social signaling. Their style is entirely silent and observational, with no explicit support or criticism of others’ proposals, no expressions of approval/disapproval, and no visibl..."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 270,
+    "cluster_title": "Quietly Cooperative Social Participants",
+    "cluster_intro": "This cluster encompasses personas who engage in group dynamics with a low-key, cooperative approach. They communicate infrequently and in a non-confrontational manner, often aligning with established norms without taking the lead. Their interactions are characterized by brief, polite responses that reflect a social awareness rather than a strategic focus.",
+    "summary_source": "openai-polished-pass-1",
+    "top_terms": [
+      "group",
+      "low",
+      "cooperative",
+      "social",
+      "player",
+      "chat",
+      "communication",
+      "norm"
+    ],
+    "sample_examples": [
+      "The player communicates very little and only engages once the group has already established a norm and called attention to their behavior. They respond briefly and directly when someone questions their contribution, using a short reassurance that implicitly acknowledges group...",
+      "This player communicates rarely and succinctly. Their tone is polite, low-key, and non-confrontational. They do not initiate strong coordination drives or reprimands; instead, they acknowledge others’ proposals in a mild, somewhat cautious way. Their single explicit response t...",
+      "Their communication style is brief and low-volume but cooperative. They greet the group at the start, endorse a high-contribution strategy proposed by another player, and explicitly agree to a collective plan of maximal giving. Later, after discovering that the return factor i...",
+      "The player communicates rarely but in a socially engaged, non-hostile way. They participate minimally in chat compared to others, speaking only a few times. When they do speak, they show awareness of others’ behavior and of the contribution records, and they directly address a...",
+      "The player’s tone is relaxed, mildly humorous, and de‑escalating. When another player becomes critical of non‑contributors, they respond by downplaying the seriousness of the situation and framing it as “just a game,” signaling low appetite for social conflict and moralizing....",
+      "They communicate sparingly, with a light, somewhat playful tone rather than strategic seriousness. Early on, they greet others and make a role-appropriate joke, suggesting they are socially aware and comfortable with light banter. When another player asks about the downside of...",
+      "The player communicates rarely but purposefully. Their tone is polite and neutral; they greet others and later make a single, clear, explanatory remark about the logic of mutual cooperation, which aligns with their cooperative play. They do not scold, threaten, or moralize; in...",
+      "This player’s communication is minimal, polite, and socially oriented rather than strategic. They offer a brief greeting at the start, explicitly state that they are a human participant when prompted, and later answer a casual, off-topic question about having eaten. They do no...",
+      "The player communicates sparingly and with low emotional intensity. They participate in the initial greetings, but do not attempt to lead or structure the group’s behavior through argument or instruction. Their one explicit stance on identity—openly labeling themselves as an A...",
+      "The player’s communication is sparse, light, and socially oriented rather than instrumental. They join initial greetings briefly, then mostly stay quiet while others coordinate and persuade. When they do speak, they engage playfully with ongoing banter (affectionate noises, jo...",
+      "The player is largely silent and minimally engaged. They only speak a few times, typically with very short, laconic messages. They do not attempt to organize the group, propose strategies, or justify their deviations from the agreed‑upon norm. They also do not respond directly...",
+      "The player is minimally communicative and socially low-key. They only speak once, replying with a direct factual answer to a simple, almost playful arithmetic prompt from another player. The tone is neutral and cooperative: they engage just enough to respond correctly, without..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 233,
+    "cluster_title": "Minimalist Communicators in Group Dynamics",
+    "cluster_intro": "This cluster encompasses personas who engage in communication with minimal frequency and depth, often adhering to group norms without actively shaping them. Their contributions are typically brief and neutral, focusing on basic social interactions rather than strategic discussions. They exhibit a tendency to align with cooperative expectations while remaining largely passive in the conversation.",
+    "summary_source": "openai-polished-pass-1",
+    "top_terms": [
+      "low",
+      "group",
+      "chat",
+      "social",
+      "communication",
+      "norm",
+      "punishment",
+      "contribution"
+    ],
+    "sample_examples": [
+      "They communicate very little and only once, briefly aligning with the emerging cooperation norm by explicitly announcing their intention to contribute the maximum. After that, they are silent, even while other players argue, moralize, and insult one another. They do not defend...",
+      "They communicate minimally and with a light, humorous tone. They participate in social banter rather than strategic coordination, making a joke about another player’s exit rather than discussing contribution levels or punishment norms. They do not propose explicit strategies,...",
+      "Their communication is minimal, affiliative, and compliant with group norms. They speak very little compared with others and do not initiate strategy discussions or attempt to lead coordination. When another player proposes a cooperative norm tied to punishment, they give a br...",
+      "They communicate sparingly but not completely passively. Early on, they respond affirmatively to a suggestion that full contributions maximize group payoffs, signaling understanding and nominal agreement with cooperative strategy. Later, when accused of not contributing, they...",
+      "They speak very little in the chat and only once initiate a direct question about real‑money stakes. Their tone is neutral and practical rather than emotional or moralizing; they do not scold, praise, or attempt to coordinate group norms. They neither support nor contest the d...",
+      "They communicate sparsely and with low social investment, engaging only a few times across the entire interaction. Early on they greet the group in a neutral, minimal way, showing basic politeness but not strong enthusiasm. They ask an information-seeking question about game l...",
+      "They speak very little in the chat and do not initiate or shape group norms. Their only clear communicative act is a brief, neutral greeting, without follow-up or engagement in the strategic or moral discussions about cooperation and punishment that others have. They do not ar...",
+      "They communicate minimally and instrumentally. Their tone is neutral and brief; they greet others and ask a factual question about game length, but they do not engage in persuasion, moralizing, or coalition-building. They do not comment on who should contribute, do not endorse...",
+      "They communicate sparsely and in a light, almost flippant tone. Their only proactive group-facing message is a joke about being drunk, which does not attempt to coordinate behavior, build norms, or discuss the game structure. They do not answer others’ questions about rules or...",
+      "They speak very little and avoid strategic talk about contributions or sanctions. Their early chat focuses on interface issues and a brief social response about not being drunk, with no attempts to coordinate contribution or sanction norms. They neither publicly praise nor cri...",
+      "They communicate sparsely, mostly about interface and meta-game aspects rather than strategy. Early on, they comment on not seeing UI elements and ask whether the all-or-nothing contribution constraint is correct, showing some initial confusion but also a basic desire to under...",
+      "They speak rarely but with clear, purposeful intent. When they do communicate, they focus on clarification and norm enforcement rather than social banter. Early on, they comment that others are “catching on,” which reflects attention to group learning and a mildly optimistic r..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 267,
+    "cluster_title": "Subtle Contributors in Cooperative Settings",
+    "cluster_intro": "This cluster highlights personas who engage in group dynamics with a subtle, cooperative demeanor. Their communication is minimal yet affirming, often reinforcing established norms without taking a leading role. They prioritize harmony and alignment over confrontation, contributing to a supportive group atmosphere.",
+    "summary_source": "openai-polished-pass-1",
+    "top_terms": [
+      "group",
+      "cooperative",
+      "low",
+      "norm",
+      "coordination",
+      "communication",
+      "engage",
+      "style"
+    ],
+    "sample_examples": [
+      "Their communication is sparse but socially attuned. They respond politely to greetings and acknowledge successful coordination with a brief, positive signal. Their tone is friendly and light; they use a small expressive cue (a simple emotive symbol) once cooperation stabilizes...",
+      "Their tone is generally calm, moralistic, and disapproving of cruelty rather than of low contributions. Early on, they align verbally with the group’s cooperative strategy, but they do not join in hostile or dehumanizing language. As the dominant coalition turns aggressively p...",
+      "They communicate rarely but in a cooperative, affirming tone. When another player proposes maximum contributions as a strategy, they explicitly agree, reinforcing the cooperative norm. Later, they make a brief reflective comment expressing appreciation for a smooth, fully coop...",
+      "Their communication is sparse, responsive, and affiliative. They agree early to the “max every time” proposal with a very brief confirmation and offer a light, friendly reaction to a joke. They do not initiate strategic discussions, do not comment on others’ specific contribut...",
+      "Their communication is minimal, agreeable, and responsive rather than initiating. They engage only a few times, and each time they align with others’ cooperative suggestions with brief affirmations, rather than proposing their own schemes or confronting low contributors. There...",
+      "Their communication is brief, pragmatic, and cooperative. They engage in group chat but do not attempt to lead or enforce norms aggressively. Their tone is calm and informational rather than emotional or confrontational. They ask clarifying questions about the game’s payoff st...",
+      "Their communication is sparse but prosocial, informational, and coordination-oriented. They greet others, briefly help clarify a rule, and later articulate the core efficiency logic of mutual contribution in a straightforward, non-accusatory way. They do not complain about def...",
+      "Their communication style is brief, affiliative, and norm-conforming. Early on, they affirm cooperative norms and signal alignment with those calling for high contributions. They respond occasionally to group comments but do not initiate strategy discussion or attempt to lead...",
+      "Their communication style is brief, upbeat, and oriented toward promoting cooperation rather than arguing about norms. They initiate early coordination with a clear pro-cooperation message, framing high contribution as obviously beneficial. Later, when cooperation is re-establ...",
+      "Their communication is minimal, brief, and affiliative. They join in light social alignment (short affirmations to cooperative plans) but do not initiate strategies, call out defectors, or direct others’ behavior. They respond to others’ cooperative framing with simple agreeme...",
+      "They communicate sparingly compared to the more vocal players, and mostly in a light, affiliative tone rather than as a strategist or moralizer. They acknowledge positive group outcomes and shared identity, and they readily respond when directly addressed or when a social prom...",
+      "They speak rarely but when they do, they are calm, analytical, and group‑oriented. Early on, they publicly endorse the norm that full contributions are the rational way to maximize returns, appealing to shared economic logic rather than emotion or threats. Later, when a persis..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 389,
+    "cluster_title": "Engaged Social Coordinators",
+    "cluster_intro": "This cluster features personas who actively foster group dynamics through friendly and playful communication. They prioritize cooperation and coordination, often using light humor to create an inclusive atmosphere. Their approach is characterized by proactive engagement and a commitment to shared norms.",
+    "summary_source": "openai-polished-pass-1",
+    "top_terms": [
+      "group",
+      "cooperative",
+      "social",
+      "norm",
+      "game",
+      "light",
+      "chat",
+      "coordination"
+    ],
+    "sample_examples": [
+      "Their tone is friendly, polite, and deferential. They initiate a greeting once they notice the chat and respond in a socially appropriate, upbeat way, fitting a cooperative social style rather than a hostile or confrontational one. They later express explicit apologies and sel...",
+      "Their tone is friendly, brief, and cooperative. They engage early with a simple greeting and then use the chat primarily to support coordination around full contributions. They explicitly endorse the “everyone contributes everything” strategy and later clarify how the decision...",
+      "Their communication style is friendly, informal, and socially engaged. They initiate conversation, respond to others, and use light humor and small typos/playful corrections, indicating comfort in the social environment. They do not appear hostile or confrontational; even when...",
+      "They communicate briefly, with a light, casual tone. Early on, they explicitly propose a simple cooperation norm (“max every time?”) rather than waiting to see what others do, indicating a proactive but low-pressure approach to coordination. They show situational awareness (re...",
+      "They communicate sparsely but in a friendly and lightly humorous way. They agree early with a suggestion to always contribute the maximum, helping to establish a simple cooperative norm. Their messages reference game interface details and shared experience, indicating engageme...",
+      "The player engages in light, somewhat sarcastic conversation and is socially responsive rather than withdrawn. Early on, they verbally endorse the group proposal to all contribute fully and accept the cooperative norm set by others. Their tone ranges from casual and humorous t...",
+      "They communicate in a friendly, upbeat, and group‑oriented tone, using light humor and inclusive language. Early on, they greet others and later repeatedly encourage everyone to contribute fully, using clear, normative appeals and simple slogans. They actively try to coordinat...",
+      "Tone is light, playful, and affiliative. The player engages early and consistently with the social side of the game, asking where others are from, joking about age, and participating in banter. They present themselves with a humorous, slightly self‑aware style rather than focu...",
+      "This player is highly engaged, sociable, and uses chat both to coordinate on contributions and to participate in light‑hearted social banter. Their tone is generally friendly, humorous, and inclusive, with occasional mild teasing that remains non‑hostile. They frequently initi...",
+      "They present as sociable, playful, and lightly ironic, rather than purely instrumental. They greet the group early, join in the light-hearted tone, and use casual, informal phrasing that fits the social banter rather than focusing exclusively on payoff calculations. They occas...",
+      "The player is highly talkative, socially playful, and actively engaged in coordination. Their tone mixes light humor and flirtatious/bantering comments with explicit, sometimes stern, norm enforcement. They strongly promote the norm of contributing the maximum, echoing and amp...",
+      "The player’s communication style is highly social, playful, and engaged, with light attempts at coordination but little technical or payoff-based persuasion. They readily join the group’s banter, responding to greetings, sharing a (claimed) country, joking about age, food, and..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 189,
+    "cluster_title": "Assertive Norm Enforcers in Group Dynamics",
+    "cluster_intro": "This cluster features personas who actively promote group cohesion and high contribution through assertive communication. They often adopt a moralizing tone, emphasizing the importance of cooperation while calling out non-compliance. Their engagement style is direct and sometimes confrontational, aiming to rally others towards a shared goal.",
+    "summary_source": "openai-polished-pass-1",
+    "top_terms": [
+      "group",
+      "norm",
+      "cooperative",
+      "cooperation",
+      "coordination",
+      "social",
+      "player",
+      "low"
+    ],
+    "sample_examples": [
+      "They use chat actively and assertively to coordinate behavior, set norms, and rally others to full contribution and heavy punishment. Their tone is often domineering, mocking, and moralizing: they label non-compliers and critics as “morons,” “greedy,” or otherwise inferior, an...",
+      "The player’s tone is aggressive, mocking, and alliance‑oriented. They quickly align with early pro‑max voices and publicly declare their own maxing to signal in‑group membership. They actively endorse and amplify others’ calls to punish non‑max contributors, using derisive lab...",
+      "The player is highly engaged, norm-enforcing, and often abrasive. They promote full contribution from the start and use chat to reinforce a “we’re all in this together against the outside requester” narrative. Their persuasion style is blunt and contemptuous toward perceived d...",
+      "Their tone is intense, judgmental, and often openly hostile toward perceived free‑riders and “hypocrites.” They quickly align themselves with others who argue for maximum contributions and join in building a hardline coalition around that standard. They use chat to coordinate...",
+      "Their tone is moralizing but not overtly abusive; they criticize others’ behavior as “bullying” and “disgusting,” but avoid name-calling beyond reactive barbs when provoked. They explicitly frame their actions as guided by “morals,” and indicate they would rather personally lo...",
+      "This player is talkative at the start and tries to coordinate a group strategy around maximal contribution. Their tone is casual, upbeat, and somewhat excitable. They frame cooperation in terms of potentially large mutual payoffs and explicitly attempt to mobilize the group to...",
+      "Their tone is generally friendly, lightly humorous, and socially engaging. They initiate early greetings and quickly move to coordination, explicitly proposing universal maximum contribution and linking it to higher earnings. They also immediately endorse and normalize the use...",
+      "They communicate actively, with a sociable and light tone. They greet others, ask clarifying questions about the mechanism, and answer others’ procedural questions. They openly discuss the strategic structure of the game, including the downside of contributing and the fact tha...",
+      "Their tone is norm-enforcing but not hostile, using light humor or softening signals (such as friendly punctuation) when calling out non-contributors. They actively engage in chat, referencing specific players who are not cooperating and aligning with others who want high cont...",
+      "They communicate sparsely but purposefully, with a cooperative, constructive, and mildly humorous tone. Early on, they encourage coordinated high contributions and frame the situation in terms of “making the total go up” and “same deal,” which signals an intention to build a s...",
+      "Their tone is blunt, directive, and at times aggressive. Early on they offer a practical clarification to help others understand the interface, which indicates some concern for coordination and group efficiency. They also make at least one offhand geopolitical remark that appe...",
+      "They are active, engaged, and often take on a norm-enforcing, slightly exasperated tone. Early on, they help coordinate by explaining that universal full contribution is the way “to win” and by reminding others that low contributions are visible. They single out the low contri..."
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "tag": "PUNISHMENT",
+  "split_name": "Punishment Strategy Profiles",
+  "split_intro": "Clusters built from <PUNISHMENT> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 1875,
+    "empty_tag": 0,
+    "dropped_unknown": 0,
+    "kept": 1816
+  },
+  "rows_for_clustering": 1816,
+  "paths": {
+    "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_sections_input.jsonl",
+    "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered.jsonl",
+    "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/cluster_catalog.json",
+    "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/run_metadata.json",
+    "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/umap_points.csv",
+    "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered_polished.jsonl",
+    "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/cluster_catalog_polished.json",
+    "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/cluster_catalog_polish_report.json"
+  },
+  "status": "ok",
+  "polish_status": "ok"
+}

@@ -1,0 +1,25 @@
+{
+  "tag": "RESPONSE_TO_OTHERS_OUTCOME",
+  "split_name": "Response to Others' Outcome Profiles",
+  "split_intro": "Clusters built from <RESPONSE_TO_OTHERS_OUTCOME> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 1866,
+    "empty_tag": 0,
+    "dropped_unknown": 0,
+    "kept": 1825
+  },
+  "rows_for_clustering": 1825,
+  "paths": {
+    "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+    "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered.jsonl",
+    "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/cluster_catalog.json",
+    "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/run_metadata.json",
+    "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/umap_points.csv",
+    "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered_polished.jsonl",
+    "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/cluster_catalog_polished.json",
+    "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/cluster_catalog_polish_report.json"
+  },
+  "status": "ok",
+  "polish_status": "ok"
+}

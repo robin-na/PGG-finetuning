@@ -1,0 +1,25 @@
+{
+  "tag": "CONTRIBUTION",
+  "split_name": "Contribution Strategy Profiles",
+  "split_intro": "Clusters built from <CONTRIBUTION> section text only.",
+  "stats": {
+    "rows_considered": 3691,
+    "missing_tag": 0,
+    "empty_tag": 0,
+    "dropped_unknown": 0,
+    "kept": 3691
+  },
+  "rows_for_clustering": 3691,
+  "paths": {
+    "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_sections_input.jsonl",
+    "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered.jsonl",
+    "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/cluster_catalog.json",
+    "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/run_metadata.json",
+    "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/umap_points.csv",
+    "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered_polished.jsonl",
+    "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/cluster_catalog_polished.json",
+    "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/cluster_catalog_polish_report.json"
+  },
+  "status": "ok",
+  "polish_status": "ok"
+}

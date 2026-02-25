@@ -1,0 +1,270 @@
+{
+  "config": {
+    "input_jsonl": "Persona/summary_gpt51_learn.jsonl",
+    "output_dir": "Persona/cluster/tag_section_clusters_openai_learn",
+    "text_column": "text",
+    "tags": [
+      "CONTRIBUTION",
+      "PUNISHMENT",
+      "REWARD",
+      "COMMUNICATION",
+      "RESPONSE_TO_PUNISHER",
+      "RESPONSE_TO_REWARDER",
+      "RESPONSE_TO_OTHERS_OUTCOME",
+      "RESPONSE_TO_END_GAME"
+    ],
+    "only_finished": true,
+    "drop_unknown": false,
+    "unknown_mode": "coerce_to_closest_or_drop",
+    "embedding_backend": "openai",
+    "embedding_model": "text-embedding-3-large",
+    "embedding_dimensions": 1536,
+    "embedding_batch_size": 200,
+    "umap_min_dist": 0.5,
+    "umap_metric": "cosine",
+    "umap_neighbors_ratio": 0.2,
+    "n_clusters": 15,
+    "auto_k": false,
+    "k_min": 6,
+    "k_max": 25,
+    "random_state": 42,
+    "cluster_space": "embedding",
+    "enable_split_merge": true,
+    "max_split_merge_iters": 20,
+    "min_clusters": 6,
+    "max_clusters": 25,
+    "merge_similarity_threshold": 0.94,
+    "target_overlap_rate": 0.12,
+    "point_overlap_margin": 0.03,
+    "split_cluster_min_size": 60,
+    "summary_backend": "keywords",
+    "summary_model": null,
+    "summary_temperature": 0.0,
+    "summary_max_examples": 20,
+    "summary_max_chars_per_example": 280,
+    "polish_with_llm": true,
+    "polish_model": "gpt-4o-mini",
+    "polish_temperature": 0.0,
+    "polish_max_examples": 12,
+    "polish_max_chars_per_example": 280,
+    "polish_max_retries": 5,
+    "polish_retry_seconds": 1.0,
+    "polish_max_passes": 3,
+    "polish_max_title_similarity": 0.88,
+    "polish_max_intro_similarity": 0.92,
+    "polish_max_combined_similarity": 0.84,
+    "polish_strict_overlap_check": true,
+    "skip_existing": false
+  },
+  "global_stats": {
+    "rows_total": 3912,
+    "rows_after_finished_filter": 3691,
+    "rows_missing_text": 0,
+    "unknown_tag_tokens": {
+      "R": 1
+    }
+  },
+  "tag_results": {
+    "CONTRIBUTION": {
+      "tag": "CONTRIBUTION",
+      "split_name": "Contribution Strategy Profiles",
+      "split_intro": "Clusters built from <CONTRIBUTION> section text only.",
+      "stats": {
+        "rows_considered": 3691,
+        "missing_tag": 0,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 3691
+      },
+      "rows_for_clustering": 3691,
+      "paths": {
+        "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_sections_input.jsonl",
+        "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered.jsonl",
+        "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/cluster_catalog.json",
+        "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/run_metadata.json",
+        "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/umap_points.csv",
+        "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered_polished.jsonl",
+        "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/cluster_catalog_polished.json",
+        "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/cluster_catalog_polish_report.json"
+      },
+      "status": "ok",
+      "polish_status": "ok"
+    },
+    "PUNISHMENT": {
+      "tag": "PUNISHMENT",
+      "split_name": "Punishment Strategy Profiles",
+      "split_intro": "Clusters built from <PUNISHMENT> section text only.",
+      "stats": {
+        "rows_considered": 3691,
+        "missing_tag": 1875,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 1816
+      },
+      "rows_for_clustering": 1816,
+      "paths": {
+        "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_sections_input.jsonl",
+        "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered.jsonl",
+        "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/cluster_catalog.json",
+        "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/run_metadata.json",
+        "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/umap_points.csv",
+        "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered_polished.jsonl",
+        "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/cluster_catalog_polished.json",
+        "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/cluster_catalog_polish_report.json"
+      },
+      "status": "ok",
+      "polish_status": "ok"
+    },
+    "REWARD": {
+      "tag": "REWARD",
+      "split_name": "Reward Strategy Profiles",
+      "split_intro": "Clusters built from <REWARD> section text only.",
+      "stats": {
+        "rows_considered": 3691,
+        "missing_tag": 1875,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 1816
+      },
+      "rows_for_clustering": 1816,
+      "paths": {
+        "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_sections_input.jsonl",
+        "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_clustered.jsonl",
+        "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/cluster_catalog.json",
+        "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/run_metadata.json",
+        "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/umap_points.csv",
+        "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_clustered_polished.jsonl",
+        "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/cluster_catalog_polished.json",
+        "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/cluster_catalog_polish_report.json"
+      },
+      "status": "ok",
+      "polish_status": "ok"
+    },
+    "COMMUNICATION": {
+      "tag": "COMMUNICATION",
+      "split_name": "Communication Style Profiles",
+      "split_intro": "Clusters built from <COMMUNICATION> section text only.",
+      "stats": {
+        "rows_considered": 3691,
+        "missing_tag": 1821,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 1870
+      },
+      "rows_for_clustering": 1870,
+      "paths": {
+        "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_sections_input.jsonl",
+        "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_clustered.jsonl",
+        "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/cluster_catalog.json",
+        "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/run_metadata.json",
+        "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/umap_points.csv",
+        "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_clustered_polished.jsonl",
+        "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/cluster_catalog_polished.json",
+        "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/cluster_catalog_polish_report.json"
+      },
+      "status": "ok",
+      "polish_status": "ok"
+    },
+    "RESPONSE_TO_PUNISHER": {
+      "tag": "RESPONSE_TO_PUNISHER",
+      "split_name": "Response to Punisher Profiles",
+      "split_intro": "Clusters built from <RESPONSE_TO_PUNISHER> section text only.",
+      "stats": {
+        "rows_considered": 3691,
+        "missing_tag": 2771,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 920
+      },
+      "rows_for_clustering": 920,
+      "paths": {
+        "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_sections_input.jsonl",
+        "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_clustered.jsonl",
+        "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/cluster_catalog.json",
+        "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/run_metadata.json",
+        "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/umap_points.csv",
+        "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_clustered_polished.jsonl",
+        "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/cluster_catalog_polished.json",
+        "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/cluster_catalog_polish_report.json"
+      },
+      "status": "ok",
+      "polish_status": "ok"
+    },
+    "RESPONSE_TO_REWARDER": {
+      "tag": "RESPONSE_TO_REWARDER",
+      "split_name": "Response to Rewarder Profiles",
+      "split_intro": "Clusters built from <RESPONSE_TO_REWARDER> section text only.",
+      "stats": {
+        "rows_considered": 3691,
+        "missing_tag": 2774,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 917
+      },
+      "rows_for_clustering": 917,
+      "paths": {
+        "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_sections_input.jsonl",
+        "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_clustered.jsonl",
+        "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/cluster_catalog.json",
+        "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/run_metadata.json",
+        "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/umap_points.csv",
+        "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_clustered_polished.jsonl",
+        "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/cluster_catalog_polished.json",
+        "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/cluster_catalog_polish_report.json"
+      },
+      "status": "ok",
+      "polish_status": "ok"
+    },
+    "RESPONSE_TO_OTHERS_OUTCOME": {
+      "tag": "RESPONSE_TO_OTHERS_OUTCOME",
+      "split_name": "Response to Others' Outcome Profiles",
+      "split_intro": "Clusters built from <RESPONSE_TO_OTHERS_OUTCOME> section text only.",
+      "stats": {
+        "rows_considered": 3691,
+        "missing_tag": 1866,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 1825
+      },
+      "rows_for_clustering": 1825,
+      "paths": {
+        "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+        "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered.jsonl",
+        "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/cluster_catalog.json",
+        "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/run_metadata.json",
+        "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/umap_points.csv",
+        "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered_polished.jsonl",
+        "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/cluster_catalog_polished.json",
+        "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/cluster_catalog_polish_report.json"
+      },
+      "status": "ok",
+      "polish_status": "ok"
+    },
+    "RESPONSE_TO_END_GAME": {
+      "tag": "RESPONSE_TO_END_GAME",
+      "split_name": "End-Game Response Profiles",
+      "split_intro": "Clusters built from <RESPONSE_TO_END_GAME> section text only.",
+      "stats": {
+        "rows_considered": 3691,
+        "missing_tag": 1805,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 1886
+      },
+      "rows_for_clustering": 1886,
+      "paths": {
+        "section_input_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_sections_input.jsonl",
+        "clustered_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_clustered.jsonl",
+        "cluster_catalog_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/cluster_catalog.json",
+        "run_metadata_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/run_metadata.json",
+        "umap_points_csv": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/umap_points.csv",
+        "clustered_polished_jsonl": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_clustered_polished.jsonl",
+        "cluster_catalog_polished_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/cluster_catalog_polished.json",
+        "cluster_catalog_polish_report_json": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/cluster_catalog_polish_report.json"
+      },
+      "status": "ok",
+      "polish_status": "ok"
+    }
+  },
+  "timestamp": "2026-02-24T03:44:28+00:00"
+}

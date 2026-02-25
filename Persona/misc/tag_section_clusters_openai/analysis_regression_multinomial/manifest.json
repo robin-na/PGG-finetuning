@@ -1,0 +1,327 @@
+{
+  "cluster_root": "Persona/misc/tag_section_clusters_openai",
+  "config_csv": "data/processed_data/df_analysis_learn.csv",
+  "output_dir": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial",
+  "n_rows_total": 14468,
+  "n_unmatched_rows": 0,
+  "features_requested": [
+    "CONFIG_chat",
+    "CONFIG_punishmentExists",
+    "CONFIG_showRewardId",
+    "CONFIG_rewardMagnitude",
+    "CONFIG_punishmentMagnitude",
+    "CONFIG_showNRounds",
+    "CONFIG_endowment",
+    "CONFIG_showPunishmentId",
+    "CONFIG_rewardExists",
+    "CONFIG_MPCR",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_numRounds",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_playerCount"
+  ],
+  "tags": {
+    "COMMUNICATION": {
+      "status": "ok",
+      "n_rows": 1734,
+      "n_clusters": 15,
+      "n_features_used": 13,
+      "features_used": [
+        "CONFIG_punishmentExists",
+        "CONFIG_showRewardId",
+        "CONFIG_rewardMagnitude",
+        "CONFIG_punishmentMagnitude",
+        "CONFIG_showNRounds",
+        "CONFIG_showPunishmentId",
+        "CONFIG_rewardExists",
+        "CONFIG_MPCR",
+        "CONFIG_showOtherSummaries",
+        "CONFIG_numRounds",
+        "CONFIG_allOrNothing",
+        "CONFIG_defaultContribProp",
+        "CONFIG_playerCount"
+      ],
+      "metrics": {
+        "tag": "COMMUNICATION",
+        "n_rows": 1734,
+        "n_clusters": 15,
+        "n_features_used": 13,
+        "cv_splits": 5,
+        "cv_accuracy_mean": 0.1274558144958438,
+        "cv_log_loss_mean": 2.6106766921934375,
+        "train_accuracy": 0.16551326412918108,
+        "train_log_loss": 2.4965935312901983
+      },
+      "outputs": {
+        "coef_heatmap_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/COMMUNICATION/coef_heatmap.png",
+        "feature_marginal_effects_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/COMMUNICATION/feature_marginal_effects.png",
+        "mpcr_marginal_predicted_distribution_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/COMMUNICATION/mpcr_marginal_predicted_distribution.png",
+        "feature_effects_csv": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/COMMUNICATION/feature_effects.csv"
+      }
+    },
+    "CONTRIBUTION": {
+      "status": "ok",
+      "n_rows": 3691,
+      "n_clusters": 15,
+      "n_features_used": 14,
+      "features_used": [
+        "CONFIG_chat",
+        "CONFIG_punishmentExists",
+        "CONFIG_showRewardId",
+        "CONFIG_rewardMagnitude",
+        "CONFIG_punishmentMagnitude",
+        "CONFIG_showNRounds",
+        "CONFIG_showPunishmentId",
+        "CONFIG_rewardExists",
+        "CONFIG_MPCR",
+        "CONFIG_showOtherSummaries",
+        "CONFIG_numRounds",
+        "CONFIG_allOrNothing",
+        "CONFIG_defaultContribProp",
+        "CONFIG_playerCount"
+      ],
+      "metrics": {
+        "tag": "CONTRIBUTION",
+        "n_rows": 3691,
+        "n_clusters": 15,
+        "n_features_used": 14,
+        "cv_splits": 5,
+        "cv_accuracy_mean": 0.19398329977887058,
+        "cv_log_loss_mean": 2.422285617189945,
+        "train_accuracy": 0.2145759956651314,
+        "train_log_loss": 2.3695974301861646
+      },
+      "outputs": {
+        "coef_heatmap_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/CONTRIBUTION/coef_heatmap.png",
+        "feature_marginal_effects_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/CONTRIBUTION/feature_marginal_effects.png",
+        "mpcr_marginal_predicted_distribution_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/CONTRIBUTION/mpcr_marginal_predicted_distribution.png",
+        "feature_effects_csv": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/CONTRIBUTION/feature_effects.csv"
+      }
+    },
+    "PUNISHMENT": {
+      "status": "ok",
+      "n_rows": 1812,
+      "n_clusters": 15,
+      "n_features_used": 13,
+      "features_used": [
+        "CONFIG_chat",
+        "CONFIG_showRewardId",
+        "CONFIG_rewardMagnitude",
+        "CONFIG_punishmentMagnitude",
+        "CONFIG_showNRounds",
+        "CONFIG_showPunishmentId",
+        "CONFIG_rewardExists",
+        "CONFIG_MPCR",
+        "CONFIG_showOtherSummaries",
+        "CONFIG_numRounds",
+        "CONFIG_allOrNothing",
+        "CONFIG_defaultContribProp",
+        "CONFIG_playerCount"
+      ],
+      "metrics": {
+        "tag": "PUNISHMENT",
+        "n_rows": 1812,
+        "n_clusters": 15,
+        "n_features_used": 13,
+        "cv_splits": 5,
+        "cv_accuracy_mean": 0.1699663637885637,
+        "cv_log_loss_mean": 2.487975941103623,
+        "train_accuracy": 0.2108167770419426,
+        "train_log_loss": 2.387522896520707
+      },
+      "outputs": {
+        "coef_heatmap_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/PUNISHMENT/coef_heatmap.png",
+        "feature_marginal_effects_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/PUNISHMENT/feature_marginal_effects.png",
+        "mpcr_marginal_predicted_distribution_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/PUNISHMENT/mpcr_marginal_predicted_distribution.png",
+        "feature_effects_csv": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/PUNISHMENT/feature_effects.csv"
+      }
+    },
+    "RESPONSE_TO_END_GAME": {
+      "status": "ok",
+      "n_rows": 1886,
+      "n_clusters": 15,
+      "n_features_used": 13,
+      "features_used": [
+        "CONFIG_chat",
+        "CONFIG_punishmentExists",
+        "CONFIG_showRewardId",
+        "CONFIG_rewardMagnitude",
+        "CONFIG_punishmentMagnitude",
+        "CONFIG_showPunishmentId",
+        "CONFIG_rewardExists",
+        "CONFIG_MPCR",
+        "CONFIG_showOtherSummaries",
+        "CONFIG_numRounds",
+        "CONFIG_allOrNothing",
+        "CONFIG_defaultContribProp",
+        "CONFIG_playerCount"
+      ],
+      "metrics": {
+        "tag": "RESPONSE_TO_END_GAME",
+        "n_rows": 1886,
+        "n_clusters": 15,
+        "n_features_used": 13,
+        "cv_splits": 5,
+        "cv_accuracy_mean": 0.17815670919119198,
+        "cv_log_loss_mean": 2.4915660646152027,
+        "train_accuracy": 0.21580063626723223,
+        "train_log_loss": 2.3811959376598755
+      },
+      "outputs": {
+        "coef_heatmap_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_END_GAME/coef_heatmap.png",
+        "feature_marginal_effects_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_END_GAME/feature_marginal_effects.png",
+        "mpcr_marginal_predicted_distribution_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_END_GAME/mpcr_marginal_predicted_distribution.png",
+        "feature_effects_csv": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_END_GAME/feature_effects.csv"
+      }
+    },
+    "RESPONSE_TO_OTHERS_OUTCOME": {
+      "status": "ok",
+      "n_rows": 1825,
+      "n_clusters": 15,
+      "n_features_used": 13,
+      "features_used": [
+        "CONFIG_chat",
+        "CONFIG_punishmentExists",
+        "CONFIG_showRewardId",
+        "CONFIG_rewardMagnitude",
+        "CONFIG_punishmentMagnitude",
+        "CONFIG_showNRounds",
+        "CONFIG_showPunishmentId",
+        "CONFIG_rewardExists",
+        "CONFIG_MPCR",
+        "CONFIG_numRounds",
+        "CONFIG_allOrNothing",
+        "CONFIG_defaultContribProp",
+        "CONFIG_playerCount"
+      ],
+      "metrics": {
+        "tag": "RESPONSE_TO_OTHERS_OUTCOME",
+        "n_rows": 1825,
+        "n_clusters": 15,
+        "n_features_used": 13,
+        "cv_splits": 5,
+        "cv_accuracy_mean": 0.3052054794520548,
+        "cv_log_loss_mean": 1.8769637793511724,
+        "train_accuracy": 0.34356164383561644,
+        "train_log_loss": 1.7795562648998888
+      },
+      "outputs": {
+        "coef_heatmap_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_OTHERS_OUTCOME/coef_heatmap.png",
+        "feature_marginal_effects_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_OTHERS_OUTCOME/feature_marginal_effects.png",
+        "mpcr_marginal_predicted_distribution_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_OTHERS_OUTCOME/mpcr_marginal_predicted_distribution.png",
+        "feature_effects_csv": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_OTHERS_OUTCOME/feature_effects.csv"
+      }
+    },
+    "RESPONSE_TO_PUNISHER": {
+      "status": "ok",
+      "n_rows": 847,
+      "n_clusters": 15,
+      "n_features_used": 11,
+      "features_used": [
+        "CONFIG_chat",
+        "CONFIG_rewardMagnitude",
+        "CONFIG_punishmentMagnitude",
+        "CONFIG_showNRounds",
+        "CONFIG_rewardExists",
+        "CONFIG_MPCR",
+        "CONFIG_showOtherSummaries",
+        "CONFIG_numRounds",
+        "CONFIG_allOrNothing",
+        "CONFIG_defaultContribProp",
+        "CONFIG_playerCount"
+      ],
+      "metrics": {
+        "tag": "RESPONSE_TO_PUNISHER",
+        "n_rows": 847,
+        "n_clusters": 15,
+        "n_features_used": 11,
+        "cv_splits": 5,
+        "cv_accuracy_mean": 0.1522589627567003,
+        "cv_log_loss_mean": 2.5497439959603776,
+        "train_accuracy": 0.2384887839433294,
+        "train_log_loss": 2.321426429343556
+      },
+      "outputs": {
+        "coef_heatmap_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_PUNISHER/coef_heatmap.png",
+        "feature_marginal_effects_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_PUNISHER/feature_marginal_effects.png",
+        "mpcr_marginal_predicted_distribution_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_PUNISHER/mpcr_marginal_predicted_distribution.png",
+        "feature_effects_csv": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_PUNISHER/feature_effects.csv"
+      }
+    },
+    "RESPONSE_TO_REWARDER": {
+      "status": "ok",
+      "n_rows": 858,
+      "n_clusters": 15,
+      "n_features_used": 11,
+      "features_used": [
+        "CONFIG_chat",
+        "CONFIG_punishmentExists",
+        "CONFIG_rewardMagnitude",
+        "CONFIG_punishmentMagnitude",
+        "CONFIG_showNRounds",
+        "CONFIG_MPCR",
+        "CONFIG_showOtherSummaries",
+        "CONFIG_numRounds",
+        "CONFIG_allOrNothing",
+        "CONFIG_defaultContribProp",
+        "CONFIG_playerCount"
+      ],
+      "metrics": {
+        "tag": "RESPONSE_TO_REWARDER",
+        "n_rows": 858,
+        "n_clusters": 15,
+        "n_features_used": 11,
+        "cv_splits": 5,
+        "cv_accuracy_mean": 0.251733986128111,
+        "cv_log_loss_mean": 2.3152015661453973,
+        "train_accuracy": 0.2948717948717949,
+        "train_log_loss": 2.1219796314919916
+      },
+      "outputs": {
+        "coef_heatmap_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_REWARDER/coef_heatmap.png",
+        "feature_marginal_effects_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_REWARDER/feature_marginal_effects.png",
+        "mpcr_marginal_predicted_distribution_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_REWARDER/mpcr_marginal_predicted_distribution.png",
+        "feature_effects_csv": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/RESPONSE_TO_REWARDER/feature_effects.csv"
+      }
+    },
+    "REWARD": {
+      "status": "ok",
+      "n_rows": 1815,
+      "n_clusters": 15,
+      "n_features_used": 13,
+      "features_used": [
+        "CONFIG_chat",
+        "CONFIG_punishmentExists",
+        "CONFIG_showRewardId",
+        "CONFIG_rewardMagnitude",
+        "CONFIG_punishmentMagnitude",
+        "CONFIG_showNRounds",
+        "CONFIG_showPunishmentId",
+        "CONFIG_MPCR",
+        "CONFIG_showOtherSummaries",
+        "CONFIG_numRounds",
+        "CONFIG_allOrNothing",
+        "CONFIG_defaultContribProp",
+        "CONFIG_playerCount"
+      ],
+      "metrics": {
+        "tag": "REWARD",
+        "n_rows": 1815,
+        "n_clusters": 15,
+        "n_features_used": 13,
+        "cv_splits": 5,
+        "cv_accuracy_mean": 0.20495867768595044,
+        "cv_log_loss_mean": 2.3642726883307006,
+        "train_accuracy": 0.23911845730027548,
+        "train_log_loss": 2.2617174685431807
+      },
+      "outputs": {
+        "coef_heatmap_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/REWARD/coef_heatmap.png",
+        "feature_marginal_effects_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/REWARD/feature_marginal_effects.png",
+        "mpcr_marginal_predicted_distribution_png": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/REWARD/mpcr_marginal_predicted_distribution.png",
+        "feature_effects_csv": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/REWARD/feature_effects.csv"
+      }
+    }
+  }
+}

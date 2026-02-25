@@ -1,0 +1,170 @@
+[
+  {
+    "cluster_id": 0,
+    "cluster_size": 350,
+    "cluster_title": "End / End / Cooperation",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around end, game, end game, cooperation, round.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "end",
+      "game",
+      "end game",
+      "cooperation",
+      "round",
+      "rounds",
+      "horizon",
+      "final"
+    ],
+    "sample_examples": [
+      "Awareness of the game horizon does not meaningfully erode this player’s cooperation. Across the late portion of the game, including the final rounds, they continue to contribute the maximum amount. There is no visible “end-game unraveling” where they reduce contributions as th...",
+      "Despite full knowledge of the finite horizon, this player does not display a classic end-game decay in cooperation. They sustain maximal contributions through the final phase, including the last few rounds and the very last decision, with no observable reduction. There is no e...",
+      "This player shows no classic end-game unraveling. Contributions remain at their established baseline through the final phase, including the very last round, with no visible decay, escalation, or switching to exploitation even when they know the game is about to end. They do no...",
+      "The player shows no visible end-game effect. Their strategy remains unchanged when the game is near completion: they keep contributing fully even when the remaining number of rounds is small and when many others either maintain cooperative behavior or drop/oscillate. There is...",
+      "The player shows no end-game defection or decay in cooperation. Their contribution level remains at the maximum until and including the final round, despite having full knowledge of the round horizon. They do not exhibit the commonly observed pattern of gradually lowering cont..."
+    ]
+  },
+  {
+    "cluster_id": 1,
+    "cluster_size": 340,
+    "cluster_title": "End / End / Cooperation",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around end, game, end game, cooperation, final.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "end",
+      "game",
+      "end game",
+      "cooperation",
+      "final",
+      "contributions",
+      "rounds",
+      "round"
+    ],
+    "sample_examples": [
+      "The player appears aware that the game has a finite horizon, but they do not exhibit a simple linear decay or a pure “end-spurt” of defection. In the final portion of the game, they continue to vary their contributions, sometimes contributing very little and sometimes at moder...",
+      "The player shows clear horizon awareness: their behavior in the final stretch does not collapse into pure defection but becomes more jagged and exploratory. In late rounds, they alternate between high and low giving rather than steadily ramping down cooperation. This indicates...",
+      "The player shows clear awareness of the finite horizon and uses the late game to experiment and occasionally exploit, rather than following a simple end-game collapse. Near the final stretch, they continue to alternate between mid-level contributions, free-riding, and full con...",
+      "The player clearly exhibits horizon awareness and an end-game effect. For the majority of the game, they maintain full cooperation, even when others’ contributions vary and when free-riding is evident. This persistence implies that the eventual drop in contributions is not dri...",
+      "The player shows awareness of the finite horizon but does not strongly unravel their cooperation near the end. In the final phase of the game they continue to make substantial contributions, sometimes at the maximum level and sometimes at a medium–high level, without any clear..."
+    ]
+  },
+  {
+    "cluster_id": 2,
+    "cluster_size": 346,
+    "cluster_title": "End / Round / End",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around end, game, round, end game, rounds.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "end",
+      "game",
+      "round",
+      "end game",
+      "rounds",
+      "horizon",
+      "final",
+      "cooperation"
+    ],
+    "sample_examples": [
+      "They show no visible end-game defection. Even when other players reduce contributions late in the game and they are materially exploited, they continue to contribute fully both immediately afterward and in the final round. The looming end of the game, visible in the interface,...",
+      "There is no observable end-game decay in cooperation. They maintain maximal contributions through the final rounds, including after others begin to reduce contributions. They behave as if the shadow of the future does not change their rule: the same cooperative strategy holds...",
+      "They show no end-game decay in cooperation. Even when others reduce contributions near the end and when there is clear horizon information, they continue to contribute fully. After a late deviation where they do use punishment, they immediately return to full cooperation in th...",
+      "They show no visible end-game defection or decay in cooperation. Their contributions remain at or near maximum through the final rounds, unaffected by the shrinking horizon. There is a tiny, isolated deviation from full contribution late in the game, but they immediately rever...",
+      "There is no clear end-game unraveling in their contribution behavior. They continue to give fully up to and including the final round after briefly experimenting with lower contributions earlier. Their reward behavior near the end remains active in some rounds and zero in othe..."
+    ]
+  },
+  {
+    "cluster_id": 3,
+    "cluster_size": 160,
+    "cluster_title": "End / Round / Final",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around end, game, round, final, end game.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "end",
+      "game",
+      "round",
+      "final",
+      "end game",
+      "rounds",
+      "cooperative",
+      "cooperation"
+    ],
+    "sample_examples": [
+      "They show clear awareness of the game horizon through their behavior, not through explicit statements. For most of the game, their strategy remains stable despite changing others’ behavior, which suggests they are not simply following a naive “cooperate until the very end” heu...",
+      "Awareness of the game horizon is observable indirectly: they know there is a final round but do not change their behavioral pattern as the end approaches. They maintain full contributions until the last round and continue to use reward at the very end rather than hoarding payo...",
+      "They show clear awareness of the game horizon; they refer explicitly to the possibility that the current situation is the end and offer closing remarks about everyone’s performance. Despite this awareness, there is no end-game unraveling in their behavior: they maintain full c...",
+      "They show some awareness of the game’s finite horizon but do not exhibit a dramatic end-game collapse in contribution. Their final-round choice is to cooperate fully, consistent with their alternating pattern rather than a pure backward-induction defection strategy. There is n...",
+      "The player is aware of the horizon and changes behavior near the end. In the very last round—explicitly identified as such—they fully match the group’s cooperative norm after a long history of under‑contribution. Immediately before the final round, they still deviate from the..."
+    ]
+  },
+  {
+    "cluster_id": 4,
+    "cluster_size": 273,
+    "cluster_title": "End / End / Horizon",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around game, end, end game, horizon, contributions.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "game",
+      "end",
+      "end game",
+      "horizon",
+      "contributions",
+      "final",
+      "cooperation",
+      "round"
+    ],
+    "sample_examples": [
+      "The player shows awareness of the finite horizon: near the end, their contributions decline after periods of higher cooperation. Instead of ramping up giving to “leave on a good note,” they move toward lower contributions again, consistent with standard end‑game defection logi...",
+      "The player shows no classical end-game defection pattern. Instead of ramping down cooperation near the final rounds, they continue to mix mid-range and maximal contributions, including very high giving at the very end despite prior negative treatment. This suggests that horizo...",
+      "There is no classic end-game unraveling in their contributions: they keep contributing fully through the final rounds, including the last one, despite awareness of remaining rounds and despite a hostile environment. Their lone zero contribution occurs in the back half of the g...",
+      "Awareness of the finite horizon does not produce a simple monotonic decay in cooperation. Instead, the player continues their pattern of alternating between mid-range contributions and very low contributions through the later part of the game. Even very late, they sometimes co...",
+      "The player shows strong horizon awareness in the sense that they know the game length, but there is no observable end-game defection. Their contribution level remains essentially unchanged as the final rounds approach and even in the very last round. They neither ramp up coope..."
+    ]
+  },
+  {
+    "cluster_id": 5,
+    "cluster_size": 219,
+    "cluster_title": "End / Cooperation / Round",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around game, end, cooperation, round, final.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "game",
+      "end",
+      "cooperation",
+      "round",
+      "final",
+      "end game",
+      "rounds",
+      "cooperative"
+    ],
+    "sample_examples": [
+      "The player shows clear awareness of the finite horizon. Their contribution pattern does not shift into sustained cooperation at the end; instead, they largely maintain their default of zero contribution through the final stretch and do not exhibit a last‑round “gift” or attemp...",
+      "The player is aware of the finite horizon and shows a classic end-game shift toward non-cooperation. In the final stretch, they increasingly default to zero contributions, even while others commonly continue to contribute positively. This pattern indicates that as the number o...",
+      "The player is clearly aware of the game horizon and behaves in line with a backward-induction style intuition. As the end of the game approaches, they increasingly favor defection over cooperation, even when others continue to contribute substantially. In the final stretch, th...",
+      "The player shows clear awareness of the finite horizon and behaves consistently with end-game defection. In the final portion of the game, they converge to a stable pattern of contributing nothing, even when others continue to contribute generously. There is no last-round “gif...",
+      "The player shows no end-game shift because their baseline behavior is already full defection. They begin with zero contributions and maintain this level through the final decision. As a result, there is no visible decay or escalation in cooperation tied to the known time horiz..."
+    ]
+  },
+  {
+    "cluster_id": 6,
+    "cluster_size": 198,
+    "cluster_title": "End / Punishment / Round",
+    "cluster_intro": "This cluster groups personas with related strategy patterns around end, game, punishment, round, rounds.",
+    "summary_source": "keywords",
+    "top_terms": [
+      "end",
+      "game",
+      "punishment",
+      "round",
+      "rounds",
+      "final",
+      "end game",
+      "cooperation"
+    ],
+    "sample_examples": [
+      "There is no visible end-game unraveling in their contributions: they continue to contribute the maximum in all late rounds, including the final one, with no sign of decay. They do not switch to free riding when the horizon nears, despite others openly discussing end-game punis...",
+      "They remain fully cooperative to the final round and do not reduce contributions as the horizon approaches. End-game awareness appears mainly in their punishment planning, not in their contribution strategy. Near the end, they explicitly reference the remaining round(s) to coo...",
+      "Awareness of the finite horizon is present at least implicitly, as the group references remaining rounds and contemplates a final‑round punishment coordination. This player does not reduce contributions near the end; they maintain max contributions through the final round and...",
+      "The player shows no end-game unraveling. They maintain full contributions right through the final rounds and continue to support strong punishment of defectors, including at the very end when there is no future interaction to influence. Their cooperative and punitive strategie...",
+      "They show no visible end‑game decay in cooperation. They continue to contribute the maximum up to the final round and do not adjust their behavior as the remaining number of rounds shrinks, even when others intermittently reduce their contributions. Their punishment spending r..."
+    ]
+  }
+]
