@@ -32,3 +32,6 @@ Finetuning/out_persona_types_lora
 
 # Temp files
 *.html
+
+# Local notebooks
+script-sloan-engaging/remote_server_scripts.ipynb
