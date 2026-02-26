@@ -1,0 +1,193 @@
+{
+  "run_id": "20260226_154341Z",
+  "timestamp_utc": "2026-02-26T15:43:41.598706+00:00",
+  "args": {
+    "learning_wave_root": "Persona/archetype_retrieval/learning_wave",
+    "demographics_csv": "demographics/demographics_numeric_learn.csv",
+    "environment_csv": "data/processed_data/df_analysis_learn.csv",
+    "output_root": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3",
+    "tags": [
+      "COMMUNICATION",
+      "CONTRIBUTION",
+      "PUNISHMENT",
+      "RESPONSE_TO_END_GAME",
+      "RESPONSE_TO_OTHERS_OUTCOME",
+      "RESPONSE_TO_PUNISHER",
+      "RESPONSE_TO_REWARDER",
+      "REWARD"
+    ],
+    "models": [
+      "elastic_net",
+      "mlp"
+    ],
+    "cv_splits": 5,
+    "top_k": 5,
+    "random_state": 42,
+    "mlp_max_iter": 20,
+    "mlp_hidden_layers": [
+      32
+    ],
+    "max_rows_per_tag": 1000,
+    "skip_full_fit": true
+  },
+  "feature_table_stats": {
+    "demographics_rows_raw": 3715,
+    "demographics_rows_dedup": 3715,
+    "environment_rows_raw": 366,
+    "environment_rows_dedup": 366,
+    "demographic_feature_count": 13,
+    "environment_feature_count": 19
+  },
+  "feature_columns": [
+    "age",
+    "age_missing",
+    "gender_code",
+    "gender_man",
+    "gender_woman",
+    "gender_non_binary",
+    "gender_unknown",
+    "education_code",
+    "education_high_school",
+    "education_bachelor",
+    "education_master",
+    "education_other",
+    "education_unknown",
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_showNRounds",
+    "CONFIG_endowment",
+    "CONFIG_multiplier",
+    "CONFIG_MPCR",
+    "CONFIG_allOrNothing",
+    "CONFIG_chat",
+    "CONFIG_punishmentExists",
+    "CONFIG_punishmentCost",
+    "CONFIG_punishmentMagnitude",
+    "CONFIG_punishmentTech",
+    "CONFIG_rewardExists",
+    "CONFIG_rewardCost",
+    "CONFIG_rewardMagnitude",
+    "CONFIG_rewardTech",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showRewardId"
+  ],
+  "tag_results": {
+    "COMMUNICATION": {
+      "status": "ok",
+      "rows": 1000,
+      "unique_games": 180,
+      "embedding_dim": 1536,
+      "files": {
+        "cv_fold_metrics_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/COMMUNICATION/cv_fold_metrics.csv",
+        "cv_summary_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/COMMUNICATION/cv_summary.csv",
+        "bank_embeddings_npy": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/COMMUNICATION/bank_embeddings.npy",
+        "bank_metadata_jsonl": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/COMMUNICATION/bank_metadata.jsonl",
+        "data_stats_json": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/COMMUNICATION/data_stats.json"
+      },
+      "full_fit_records": []
+    },
+    "CONTRIBUTION": {
+      "status": "ok",
+      "rows": 1000,
+      "unique_games": 327,
+      "embedding_dim": 1536,
+      "files": {
+        "cv_fold_metrics_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/CONTRIBUTION/cv_fold_metrics.csv",
+        "cv_summary_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/CONTRIBUTION/cv_summary.csv",
+        "bank_embeddings_npy": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/CONTRIBUTION/bank_embeddings.npy",
+        "bank_metadata_jsonl": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/CONTRIBUTION/bank_metadata.jsonl",
+        "data_stats_json": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/CONTRIBUTION/data_stats.json"
+      },
+      "full_fit_records": []
+    },
+    "PUNISHMENT": {
+      "status": "ok",
+      "rows": 1000,
+      "unique_games": 178,
+      "embedding_dim": 1536,
+      "files": {
+        "cv_fold_metrics_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/PUNISHMENT/cv_fold_metrics.csv",
+        "cv_summary_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/PUNISHMENT/cv_summary.csv",
+        "bank_embeddings_npy": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/PUNISHMENT/bank_embeddings.npy",
+        "bank_metadata_jsonl": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/PUNISHMENT/bank_metadata.jsonl",
+        "data_stats_json": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/PUNISHMENT/data_stats.json"
+      },
+      "full_fit_records": []
+    },
+    "RESPONSE_TO_END_GAME": {
+      "status": "ok",
+      "rows": 1000,
+      "unique_games": 185,
+      "embedding_dim": 1536,
+      "files": {
+        "cv_fold_metrics_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_END_GAME/cv_fold_metrics.csv",
+        "cv_summary_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_END_GAME/cv_summary.csv",
+        "bank_embeddings_npy": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_END_GAME/bank_embeddings.npy",
+        "bank_metadata_jsonl": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_END_GAME/bank_metadata.jsonl",
+        "data_stats_json": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_END_GAME/data_stats.json"
+      },
+      "full_fit_records": []
+    },
+    "RESPONSE_TO_OTHERS_OUTCOME": {
+      "status": "ok",
+      "rows": 1000,
+      "unique_games": 176,
+      "embedding_dim": 1536,
+      "files": {
+        "cv_fold_metrics_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_OTHERS_OUTCOME/cv_fold_metrics.csv",
+        "cv_summary_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_OTHERS_OUTCOME/cv_summary.csv",
+        "bank_embeddings_npy": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_OTHERS_OUTCOME/bank_embeddings.npy",
+        "bank_metadata_jsonl": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_OTHERS_OUTCOME/bank_metadata.jsonl",
+        "data_stats_json": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_OTHERS_OUTCOME/data_stats.json"
+      },
+      "full_fit_records": []
+    },
+    "RESPONSE_TO_PUNISHER": {
+      "status": "ok",
+      "rows": 920,
+      "unique_games": 92,
+      "embedding_dim": 1536,
+      "files": {
+        "cv_fold_metrics_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_PUNISHER/cv_fold_metrics.csv",
+        "cv_summary_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_PUNISHER/cv_summary.csv",
+        "bank_embeddings_npy": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_PUNISHER/bank_embeddings.npy",
+        "bank_metadata_jsonl": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_PUNISHER/bank_metadata.jsonl",
+        "data_stats_json": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_PUNISHER/data_stats.json"
+      },
+      "full_fit_records": []
+    },
+    "RESPONSE_TO_REWARDER": {
+      "status": "ok",
+      "rows": 917,
+      "unique_games": 93,
+      "embedding_dim": 1536,
+      "files": {
+        "cv_fold_metrics_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_REWARDER/cv_fold_metrics.csv",
+        "cv_summary_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_REWARDER/cv_summary.csv",
+        "bank_embeddings_npy": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_REWARDER/bank_embeddings.npy",
+        "bank_metadata_jsonl": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_REWARDER/bank_metadata.jsonl",
+        "data_stats_json": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/RESPONSE_TO_REWARDER/data_stats.json"
+      },
+      "full_fit_records": []
+    },
+    "REWARD": {
+      "status": "ok",
+      "rows": 1000,
+      "unique_games": 179,
+      "embedding_dim": 1536,
+      "files": {
+        "cv_fold_metrics_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/REWARD/cv_fold_metrics.csv",
+        "cv_summary_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/REWARD/cv_summary.csv",
+        "bank_embeddings_npy": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/REWARD/bank_embeddings.npy",
+        "bank_metadata_jsonl": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/REWARD/bank_metadata.jsonl",
+        "data_stats_json": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/REWARD/data_stats.json"
+      },
+      "full_fit_records": []
+    }
+  },
+  "errors": [],
+  "files": {
+    "cv_summary_all_tags_csv": "Persona/archetype_retrieval/model_runs_enet_mlp_fast3/run_20260226_154341Z/cv_summary_all_tags.csv"
+  }
+}

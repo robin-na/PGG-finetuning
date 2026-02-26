@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-02-26T19:17:07.337022+00:00",
+  "run_dir": "Persona/archetype_retrieval/model_runs_learning_for_validation/run_20260226_191506Z",
+  "validation_wave_root": "Persona/archetype_retrieval/validation_wave",
+  "demographics_csv": "demographics/demographics_numeric_val.csv",
+  "environment_csv": "data/processed_data/df_analysis_val.csv",
+  "tags": [
+    "COMMUNICATION",
+    "CONTRIBUTION",
+    "PUNISHMENT",
+    "RESPONSE_TO_END_GAME",
+    "RESPONSE_TO_OTHERS_OUTCOME",
+    "RESPONSE_TO_PUNISHER",
+    "RESPONSE_TO_REWARDER",
+    "REWARD"
+  ],
+  "models_override": null,
+  "top_k": 5,
+  "files": {
+    "validation_metrics_all_tags_csv": "Persona/archetype_retrieval/model_runs_learning_for_validation/run_20260226_191506Z/validation_eval/validation_metrics_all_tags.csv",
+    "validation_metrics_summary_by_model_csv": "Persona/archetype_retrieval/model_runs_learning_for_validation/run_20260226_191506Z/validation_eval/validation_metrics_summary_by_model.csv"
+  },
+  "errors": []
+}

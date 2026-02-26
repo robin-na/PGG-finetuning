@@ -1,0 +1,11 @@
+{
+  "sections_file": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+  "embedding_file": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/embeddings_text-embedding-3-large_1536.npy",
+  "rows_raw": 1825,
+  "rows_after_activation_filter": 120,
+  "dropped_inactive_rows": 0,
+  "missing_demographics_rows": 10,
+  "missing_environment_rows": 0,
+  "unique_games": 77,
+  "embedding_dim": 1536
+}

@@ -1,0 +1,20 @@
+{
+  "tag": "RESPONSE_TO_OTHERS_OUTCOME",
+  "status": "ok",
+  "rows_for_embedding": 2196,
+  "stats": {
+    "rows_considered": 3617,
+    "missing_tag": 1421,
+    "empty_tag": 0,
+    "dropped_unknown": 0,
+    "kept": 2196
+  },
+  "paths": {
+    "section_input_jsonl": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+    "embeddings_npy": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_OTHERS_OUTCOME/embeddings_text-embedding-3-large_1536.npy"
+  },
+  "embedding_shape": [
+    2196,
+    1536
+  ]
+}

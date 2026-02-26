@@ -1,0 +1,11 @@
+{
+  "validation_sections_file": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_PUNISHER/response_to_punisher_sections_input.jsonl",
+  "validation_embedding_file": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_PUNISHER/embeddings_text-embedding-3-large_1536.npy",
+  "rows_raw": 844,
+  "rows_after_activation_filter": 844,
+  "dropped_inactive_rows": 0,
+  "missing_demographics_rows": 1,
+  "missing_environment_rows": 0,
+  "unique_games": 114,
+  "embedding_dim": 1536
+}

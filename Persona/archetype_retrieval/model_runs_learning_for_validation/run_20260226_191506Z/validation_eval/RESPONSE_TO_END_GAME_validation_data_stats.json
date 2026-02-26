@@ -1,0 +1,11 @@
+{
+  "validation_sections_file": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_END_GAME/response_to_end_game_sections_input.jsonl",
+  "validation_embedding_file": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_END_GAME/embeddings_text-embedding-3-large_1536.npy",
+  "rows_raw": 2261,
+  "rows_after_activation_filter": 2261,
+  "dropped_inactive_rows": 0,
+  "missing_demographics_rows": 1,
+  "missing_environment_rows": 0,
+  "unique_games": 326,
+  "embedding_dim": 1536
+}

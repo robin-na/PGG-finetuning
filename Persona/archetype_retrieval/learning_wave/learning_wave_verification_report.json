@@ -1,0 +1,640 @@
+{
+  "timestamp_utc": "2026-02-26T14:55:52.866609+00:00",
+  "source_root": "Persona/cluster/tag_section_clusters_openai_learn",
+  "dest_root": "Persona/archetype_retrieval/learning_wave",
+  "verify_only": false,
+  "allow_mismatch": false,
+  "overwrite": false,
+  "dry_run": false,
+  "tags": [
+    "COMMUNICATION",
+    "CONTRIBUTION",
+    "PUNISHMENT",
+    "RESPONSE_TO_END_GAME",
+    "RESPONSE_TO_OTHERS_OUTCOME",
+    "RESPONSE_TO_PUNISHER",
+    "RESPONSE_TO_REWARDER",
+    "REWARD"
+  ],
+  "results": {
+    "COMMUNICATION": {
+      "tag_dir": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION",
+      "status": "ok",
+      "errors": [],
+      "embedding_file": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/embeddings_text-embedding-3-large_1536.npy",
+      "embedding_vectors": 1870,
+      "jsonl_checks": [
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_clustered.jsonl",
+          "rows_total": 1870,
+          "game_finished_true": 1870,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1870,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_clustered_polished.jsonl",
+          "rows_total": 1870,
+          "game_finished_true": 1870,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1870,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_sections_input.jsonl",
+          "rows_total": 1870,
+          "game_finished_true": 1870,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1870,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        }
+      ],
+      "move_candidates": [
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/embeddings_text-embedding-3-large_1536.npy",
+          "dst": "Persona/archetype_retrieval/learning_wave/COMMUNICATION/embeddings_text-embedding-3-large_1536.npy"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_clustered.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/COMMUNICATION/communication_clustered.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_clustered_polished.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/COMMUNICATION/communication_clustered_polished.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_sections_input.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/COMMUNICATION/communication_sections_input.jsonl"
+        }
+      ]
+    },
+    "CONTRIBUTION": {
+      "tag_dir": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION",
+      "status": "ok",
+      "errors": [],
+      "embedding_file": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/embeddings_text-embedding-3-large_1536.npy",
+      "embedding_vectors": 3691,
+      "jsonl_checks": [
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered.jsonl",
+          "rows_total": 3691,
+          "game_finished_true": 3691,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 3691,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered_polished.jsonl",
+          "rows_total": 3691,
+          "game_finished_true": 3691,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 3691,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_sections_input.jsonl",
+          "rows_total": 3691,
+          "game_finished_true": 3691,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 3691,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        }
+      ],
+      "move_candidates": [
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/embeddings_text-embedding-3-large_1536.npy",
+          "dst": "Persona/archetype_retrieval/learning_wave/CONTRIBUTION/embeddings_text-embedding-3-large_1536.npy"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/CONTRIBUTION/contribution_clustered.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered_polished.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/CONTRIBUTION/contribution_clustered_polished.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_sections_input.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/CONTRIBUTION/contribution_sections_input.jsonl"
+        }
+      ]
+    },
+    "PUNISHMENT": {
+      "tag_dir": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT",
+      "status": "ok",
+      "errors": [],
+      "embedding_file": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/embeddings_text-embedding-3-large_1536.npy",
+      "embedding_vectors": 1816,
+      "jsonl_checks": [
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered.jsonl",
+          "rows_total": 1816,
+          "game_finished_true": 1816,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1816,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered_polished.jsonl",
+          "rows_total": 1816,
+          "game_finished_true": 1816,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1816,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_sections_input.jsonl",
+          "rows_total": 1816,
+          "game_finished_true": 1816,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1816,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        }
+      ],
+      "move_candidates": [
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/embeddings_text-embedding-3-large_1536.npy",
+          "dst": "Persona/archetype_retrieval/learning_wave/PUNISHMENT/embeddings_text-embedding-3-large_1536.npy"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/PUNISHMENT/punishment_clustered.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered_polished.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/PUNISHMENT/punishment_clustered_polished.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_sections_input.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/PUNISHMENT/punishment_sections_input.jsonl"
+        }
+      ]
+    },
+    "RESPONSE_TO_END_GAME": {
+      "tag_dir": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME",
+      "status": "ok",
+      "errors": [],
+      "embedding_file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/embeddings_text-embedding-3-large_1536.npy",
+      "embedding_vectors": 1886,
+      "jsonl_checks": [
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_clustered.jsonl",
+          "rows_total": 1886,
+          "game_finished_true": 1886,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1886,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_clustered_polished.jsonl",
+          "rows_total": 1886,
+          "game_finished_true": 1886,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1886,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_sections_input.jsonl",
+          "rows_total": 1886,
+          "game_finished_true": 1886,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1886,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        }
+      ],
+      "move_candidates": [
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/embeddings_text-embedding-3-large_1536.npy",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_END_GAME/embeddings_text-embedding-3-large_1536.npy"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_clustered.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_END_GAME/response_to_end_game_clustered.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_clustered_polished.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_END_GAME/response_to_end_game_clustered_polished.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_sections_input.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_END_GAME/response_to_end_game_sections_input.jsonl"
+        }
+      ]
+    },
+    "RESPONSE_TO_OTHERS_OUTCOME": {
+      "tag_dir": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME",
+      "status": "ok",
+      "errors": [],
+      "embedding_file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/embeddings_text-embedding-3-large_1536.npy",
+      "embedding_vectors": 1825,
+      "jsonl_checks": [
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered.jsonl",
+          "rows_total": 1825,
+          "game_finished_true": 1825,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1825,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered_polished.jsonl",
+          "rows_total": 1825,
+          "game_finished_true": 1825,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1825,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+          "rows_total": 1825,
+          "game_finished_true": 1825,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1825,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        }
+      ],
+      "move_candidates": [
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/embeddings_text-embedding-3-large_1536.npy",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/embeddings_text-embedding-3-large_1536.npy"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered_polished.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered_polished.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl"
+        }
+      ]
+    },
+    "RESPONSE_TO_PUNISHER": {
+      "tag_dir": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER",
+      "status": "ok",
+      "errors": [],
+      "embedding_file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/embeddings_text-embedding-3-large_1536.npy",
+      "embedding_vectors": 920,
+      "jsonl_checks": [
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_clustered.jsonl",
+          "rows_total": 920,
+          "game_finished_true": 920,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 920,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_clustered_polished.jsonl",
+          "rows_total": 920,
+          "game_finished_true": 920,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 920,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_sections_input.jsonl",
+          "rows_total": 920,
+          "game_finished_true": 920,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 920,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        }
+      ],
+      "move_candidates": [
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/embeddings_text-embedding-3-large_1536.npy",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_PUNISHER/embeddings_text-embedding-3-large_1536.npy"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_clustered.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_PUNISHER/response_to_punisher_clustered.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_clustered_polished.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_PUNISHER/response_to_punisher_clustered_polished.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_sections_input.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_PUNISHER/response_to_punisher_sections_input.jsonl"
+        }
+      ]
+    },
+    "RESPONSE_TO_REWARDER": {
+      "tag_dir": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER",
+      "status": "ok",
+      "errors": [],
+      "embedding_file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/embeddings_text-embedding-3-large_1536.npy",
+      "embedding_vectors": 917,
+      "jsonl_checks": [
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_clustered.jsonl",
+          "rows_total": 917,
+          "game_finished_true": 917,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 917,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_clustered_polished.jsonl",
+          "rows_total": 917,
+          "game_finished_true": 917,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 917,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_sections_input.jsonl",
+          "rows_total": 917,
+          "game_finished_true": 917,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 917,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        }
+      ],
+      "move_candidates": [
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/embeddings_text-embedding-3-large_1536.npy",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_REWARDER/embeddings_text-embedding-3-large_1536.npy"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_clustered.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_REWARDER/response_to_rewarder_clustered.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_clustered_polished.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_REWARDER/response_to_rewarder_clustered_polished.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_sections_input.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_REWARDER/response_to_rewarder_sections_input.jsonl"
+        }
+      ]
+    },
+    "REWARD": {
+      "tag_dir": "Persona/cluster/tag_section_clusters_openai_learn/REWARD",
+      "status": "ok",
+      "errors": [],
+      "embedding_file": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/embeddings_text-embedding-3-large_1536.npy",
+      "embedding_vectors": 1816,
+      "jsonl_checks": [
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_clustered.jsonl",
+          "rows_total": 1816,
+          "game_finished_true": 1816,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1816,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_clustered_polished.jsonl",
+          "rows_total": 1816,
+          "game_finished_true": 1816,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1816,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        },
+        {
+          "file": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_sections_input.jsonl",
+          "rows_total": 1816,
+          "game_finished_true": 1816,
+          "game_finished_false": 0,
+          "game_finished_other": 0,
+          "rows_with_bool_game_finished": 1816,
+          "match_vectors_vs_bool_rows": true,
+          "match_vectors_vs_total_rows": true
+        }
+      ],
+      "move_candidates": [
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/embeddings_text-embedding-3-large_1536.npy",
+          "dst": "Persona/archetype_retrieval/learning_wave/REWARD/embeddings_text-embedding-3-large_1536.npy"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_clustered.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/REWARD/reward_clustered.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_clustered_polished.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/REWARD/reward_clustered_polished.jsonl"
+        },
+        {
+          "src": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_sections_input.jsonl",
+          "dst": "Persona/archetype_retrieval/learning_wave/REWARD/reward_sections_input.jsonl"
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "moved_files": [
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/embeddings_text-embedding-3-large_1536.npy",
+      "dst": "Persona/archetype_retrieval/learning_wave/COMMUNICATION/embeddings_text-embedding-3-large_1536.npy",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_clustered.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/COMMUNICATION/communication_clustered.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_clustered_polished.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/COMMUNICATION/communication_clustered_polished.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/COMMUNICATION/communication_sections_input.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/COMMUNICATION/communication_sections_input.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/embeddings_text-embedding-3-large_1536.npy",
+      "dst": "Persona/archetype_retrieval/learning_wave/CONTRIBUTION/embeddings_text-embedding-3-large_1536.npy",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/CONTRIBUTION/contribution_clustered.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_clustered_polished.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/CONTRIBUTION/contribution_clustered_polished.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/contribution_sections_input.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/CONTRIBUTION/contribution_sections_input.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/embeddings_text-embedding-3-large_1536.npy",
+      "dst": "Persona/archetype_retrieval/learning_wave/PUNISHMENT/embeddings_text-embedding-3-large_1536.npy",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/PUNISHMENT/punishment_clustered.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_clustered_polished.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/PUNISHMENT/punishment_clustered_polished.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/PUNISHMENT/punishment_sections_input.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/PUNISHMENT/punishment_sections_input.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/embeddings_text-embedding-3-large_1536.npy",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_END_GAME/embeddings_text-embedding-3-large_1536.npy",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_clustered.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_END_GAME/response_to_end_game_clustered.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_clustered_polished.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_END_GAME/response_to_end_game_clustered_polished.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_END_GAME/response_to_end_game_sections_input.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_END_GAME/response_to_end_game_sections_input.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/embeddings_text-embedding-3-large_1536.npy",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/embeddings_text-embedding-3-large_1536.npy",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered_polished.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_clustered_polished.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/embeddings_text-embedding-3-large_1536.npy",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_PUNISHER/embeddings_text-embedding-3-large_1536.npy",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_clustered.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_PUNISHER/response_to_punisher_clustered.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_clustered_polished.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_PUNISHER/response_to_punisher_clustered_polished.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_PUNISHER/response_to_punisher_sections_input.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_PUNISHER/response_to_punisher_sections_input.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/embeddings_text-embedding-3-large_1536.npy",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_REWARDER/embeddings_text-embedding-3-large_1536.npy",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_clustered.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_REWARDER/response_to_rewarder_clustered.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_clustered_polished.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_REWARDER/response_to_rewarder_clustered_polished.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/RESPONSE_TO_REWARDER/response_to_rewarder_sections_input.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/RESPONSE_TO_REWARDER/response_to_rewarder_sections_input.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/embeddings_text-embedding-3-large_1536.npy",
+      "dst": "Persona/archetype_retrieval/learning_wave/REWARD/embeddings_text-embedding-3-large_1536.npy",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_clustered.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/REWARD/reward_clustered.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_clustered_polished.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/REWARD/reward_clustered_polished.jsonl",
+      "status": "moved"
+    },
+    {
+      "src": "Persona/cluster/tag_section_clusters_openai_learn/REWARD/reward_sections_input.jsonl",
+      "dst": "Persona/archetype_retrieval/learning_wave/REWARD/reward_sections_input.jsonl",
+      "status": "moved"
+    }
+  ]
+}

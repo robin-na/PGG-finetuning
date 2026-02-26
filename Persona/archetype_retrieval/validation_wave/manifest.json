@@ -1,0 +1,195 @@
+{
+  "config": {
+    "input_jsonl": "Persona/summary_gpt51_val.jsonl",
+    "output_dir": "Persona/archetype_retrieval/validation_wave",
+    "text_column": "text",
+    "tags": [
+      "CONTRIBUTION",
+      "PUNISHMENT",
+      "REWARD",
+      "COMMUNICATION",
+      "RESPONSE_TO_PUNISHER",
+      "RESPONSE_TO_REWARDER",
+      "RESPONSE_TO_OTHERS_OUTCOME",
+      "RESPONSE_TO_END_GAME"
+    ],
+    "only_finished": true,
+    "drop_unknown": true,
+    "unknown_mode": "startswith",
+    "embedding_backend": "openai",
+    "embedding_model": "text-embedding-3-large",
+    "embedding_dimensions": 1536,
+    "embedding_batch_size": 200,
+    "embedding_max_retries": 5,
+    "embedding_retry_seconds": 1.0
+  },
+  "global_stats": {
+    "rows_total": 4042,
+    "rows_after_finished_filter": 3617,
+    "rows_missing_text": 0
+  },
+  "tag_results": {
+    "CONTRIBUTION": {
+      "tag": "CONTRIBUTION",
+      "status": "ok",
+      "rows_for_embedding": 3617,
+      "stats": {
+        "rows_considered": 3617,
+        "missing_tag": 0,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 3617
+      },
+      "paths": {
+        "section_input_jsonl": "Persona/archetype_retrieval/validation_wave/CONTRIBUTION/contribution_sections_input.jsonl",
+        "embeddings_npy": "Persona/archetype_retrieval/validation_wave/CONTRIBUTION/embeddings_text-embedding-3-large_1536.npy"
+      },
+      "embedding_shape": [
+        3617,
+        1536
+      ]
+    },
+    "PUNISHMENT": {
+      "tag": "PUNISHMENT",
+      "status": "ok",
+      "rows_for_embedding": 1757,
+      "stats": {
+        "rows_considered": 3617,
+        "missing_tag": 1860,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 1757
+      },
+      "paths": {
+        "section_input_jsonl": "Persona/archetype_retrieval/validation_wave/PUNISHMENT/punishment_sections_input.jsonl",
+        "embeddings_npy": "Persona/archetype_retrieval/validation_wave/PUNISHMENT/embeddings_text-embedding-3-large_1536.npy"
+      },
+      "embedding_shape": [
+        1757,
+        1536
+      ]
+    },
+    "REWARD": {
+      "tag": "REWARD",
+      "status": "ok",
+      "rows_for_embedding": 1921,
+      "stats": {
+        "rows_considered": 3617,
+        "missing_tag": 1696,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 1921
+      },
+      "paths": {
+        "section_input_jsonl": "Persona/archetype_retrieval/validation_wave/REWARD/reward_sections_input.jsonl",
+        "embeddings_npy": "Persona/archetype_retrieval/validation_wave/REWARD/embeddings_text-embedding-3-large_1536.npy"
+      },
+      "embedding_shape": [
+        1921,
+        1536
+      ]
+    },
+    "COMMUNICATION": {
+      "tag": "COMMUNICATION",
+      "status": "ok",
+      "rows_for_embedding": 1879,
+      "stats": {
+        "rows_considered": 3617,
+        "missing_tag": 1509,
+        "empty_tag": 0,
+        "dropped_unknown": 229,
+        "kept": 1879
+      },
+      "paths": {
+        "section_input_jsonl": "Persona/archetype_retrieval/validation_wave/COMMUNICATION/communication_sections_input.jsonl",
+        "embeddings_npy": "Persona/archetype_retrieval/validation_wave/COMMUNICATION/embeddings_text-embedding-3-large_1536.npy"
+      },
+      "embedding_shape": [
+        1879,
+        1536
+      ]
+    },
+    "RESPONSE_TO_PUNISHER": {
+      "tag": "RESPONSE_TO_PUNISHER",
+      "status": "ok",
+      "rows_for_embedding": 844,
+      "stats": {
+        "rows_considered": 3617,
+        "missing_tag": 2714,
+        "empty_tag": 0,
+        "dropped_unknown": 59,
+        "kept": 844
+      },
+      "paths": {
+        "section_input_jsonl": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_PUNISHER/response_to_punisher_sections_input.jsonl",
+        "embeddings_npy": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_PUNISHER/embeddings_text-embedding-3-large_1536.npy"
+      },
+      "embedding_shape": [
+        844,
+        1536
+      ]
+    },
+    "RESPONSE_TO_REWARDER": {
+      "tag": "RESPONSE_TO_REWARDER",
+      "status": "ok",
+      "rows_for_embedding": 721,
+      "stats": {
+        "rows_considered": 3617,
+        "missing_tag": 2867,
+        "empty_tag": 0,
+        "dropped_unknown": 29,
+        "kept": 721
+      },
+      "paths": {
+        "section_input_jsonl": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_REWARDER/response_to_rewarder_sections_input.jsonl",
+        "embeddings_npy": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_REWARDER/embeddings_text-embedding-3-large_1536.npy"
+      },
+      "embedding_shape": [
+        721,
+        1536
+      ]
+    },
+    "RESPONSE_TO_OTHERS_OUTCOME": {
+      "tag": "RESPONSE_TO_OTHERS_OUTCOME",
+      "status": "ok",
+      "rows_for_embedding": 2196,
+      "stats": {
+        "rows_considered": 3617,
+        "missing_tag": 1421,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 2196
+      },
+      "paths": {
+        "section_input_jsonl": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_OTHERS_OUTCOME/response_to_others_outcome_sections_input.jsonl",
+        "embeddings_npy": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_OTHERS_OUTCOME/embeddings_text-embedding-3-large_1536.npy"
+      },
+      "embedding_shape": [
+        2196,
+        1536
+      ]
+    },
+    "RESPONSE_TO_END_GAME": {
+      "tag": "RESPONSE_TO_END_GAME",
+      "status": "ok",
+      "rows_for_embedding": 2261,
+      "stats": {
+        "rows_considered": 3617,
+        "missing_tag": 1356,
+        "empty_tag": 0,
+        "dropped_unknown": 0,
+        "kept": 2261
+      },
+      "paths": {
+        "section_input_jsonl": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_END_GAME/response_to_end_game_sections_input.jsonl",
+        "embeddings_npy": "Persona/archetype_retrieval/validation_wave/RESPONSE_TO_END_GAME/embeddings_text-embedding-3-large_1536.npy"
+      },
+      "embedding_shape": [
+        2261,
+        1536
+      ]
+    }
+  },
+  "timestamp_utc": "2026-02-26T19:02:43.155997+00:00",
+  "errors": []
+}

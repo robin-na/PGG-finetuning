@@ -1,0 +1,11 @@
+{
+  "validation_sections_file": "Persona/archetype_retrieval/validation_wave/REWARD/reward_sections_input.jsonl",
+  "validation_embedding_file": "Persona/archetype_retrieval/validation_wave/REWARD/embeddings_text-embedding-3-large_1536.npy",
+  "rows_raw": 1921,
+  "rows_after_activation_filter": 1921,
+  "dropped_inactive_rows": 0,
+  "missing_demographics_rows": 3,
+  "missing_environment_rows": 0,
+  "unique_games": 252,
+  "embedding_dim": 1536
+}
