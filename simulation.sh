@@ -30,10 +30,6 @@ echo "Running on $(hostname)"
 echo "Running on $(hostname)"
 nvidia-smi
 
-python Simulation_robin/run_simulation.py \
-  --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True \
-  --env_csv benchmark/df_analysis_learn_noChat_lowPlayers_lowRounds_showNRounds_noReward_noId.csv \
-  --persona random_summary \
-  --persona_summary_pool benchmark/summary_gpt51_learn_noChat_lowPlayers_lowRounds_showNRounds_noReward_noId.jsonl \
-  --output_root output_persona_summary_noChat_lowPlayers_lowRounds_showNRounds_noReward_noId
+python Micro_behavior_eval/run_micro_behavior_eval.py \
+  --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True
 

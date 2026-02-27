@@ -74,6 +74,14 @@ class Args:
         default=False,
         metadata={"help": "If true, request a short reasoning field in JSON outputs."},
     )
+    persona: Optional[str] = field(
+        default=None,
+        metadata={"help": "Optional persona mode: matched_summary | random_summary"},
+    )
+    persona_summary_pool: str = field(
+        default="Persona/summary_gpt51_val.jsonl",
+        metadata={"help": "JSONL file containing persona summary entries."},
+    )
     max_parallel_games: int = field(
         default=1,
         metadata={"help": "Reserved for future use; current implementation runs sequentially."},

@@ -6,8 +6,11 @@ import os
 import re
 import time
 import ast
+import csv
+import random
+from datetime import datetime, timezone
 from dataclasses import asdict, dataclass, is_dataclass
-from typing import Any, Dict, List, Mapping, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, List, Mapping, Optional, Sequence, Tuple
 
 import pandas as pd
 
@@ -122,6 +125,80 @@ class GameContext:
     round_to_rows: Dict[int, pd.DataFrame]
     chats_by_round_phase: Dict[int, Dict[str, List[Tuple[str, str]]]]
     demographics_by_player: Dict[str, str]
+
+
+@dataclass
+class PersonaSummaryPool:
+    all_records: List[Dict[str, str]]
+    by_game_player: Dict[str, Dict[str, Dict[str, str]]]
+
+
+SUMMARY_PERSONA_INTRO = (
+    "Below is a summary of how you have been playing a different PGG in the past, "
+    "which defines your personality. Be aware of this personality as you make decisions. "
+    "Recall that you're probably playing games with different people from the past, and "
+    "that the exact rules of this game could differ from the ones you've played before."
+)
+
+
+def _load_persona_summary_pool(path: str) -> PersonaSummaryPool:
+    if not path:
+        raise ValueError("persona_summary_pool path must be set when persona mode is enabled")
+    if not os.path.exists(path):
+        raise FileNotFoundError(f"persona summary pool file not found: {path}")
+    all_records: List[Dict[str, str]] = []
+    by_game_player: Dict[str, Dict[str, Dict[str, str]]] = {}
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            raw = line.strip()
+            if not raw:
+                continue
+            try:
+                rec = json.loads(raw)
+            except json.JSONDecodeError:
+                continue
+            if rec.get("game_finished") is not True:
+                continue
+            text = rec.get("text")
+            if not isinstance(text, str) or not text.strip():
+                continue
+            participant = str(rec.get("participant") or "").strip()
+            experiment = str(rec.get("experiment") or "").strip()
+            entry = {
+                "participant": participant,
+                "experiment": experiment,
+                "text": text.strip(),
+            }
+            all_records.append(entry)
+            if participant and experiment:
+                game_map = by_game_player.setdefault(experiment, {})
+                if participant not in game_map:
+                    game_map[participant] = entry
+    if not all_records:
+        raise ValueError(f"No finished-game persona summary records found in {path}")
+    return PersonaSummaryPool(all_records=all_records, by_game_player=by_game_player)
+
+
+def _assign_summary_personas(
+    ctx: GameContext,
+    mode: str,
+    seed: int,
+    pool: PersonaSummaryPool,
+) -> Dict[str, Dict[str, str]]:
+    if mode == "matched_summary":
+        game_map = pool.by_game_player.get(ctx.game_id, {})
+        missing = [pid for pid in ctx.player_ids if pid not in game_map]
+        if missing:
+            sample_missing = ", ".join(missing[:5])
+            raise ValueError(
+                f"matched_summary missing persona summaries for gameId={ctx.game_id}, "
+                f"missing_playerIds={sample_missing}, total_missing={len(missing)}"
+            )
+        return {pid: game_map[pid] for pid in ctx.player_ids}
+
+    rng = random.Random(f"{seed}|{ctx.game_id}|random_summary")
+    records = pool.all_records
+    return {pid: records[rng.randrange(len(records))] for pid in ctx.player_ids}
 
 
 def _parse_chat_messages(msg_str: Any) -> List[Dict[str, Any]]:
@@ -931,10 +1008,45 @@ def evaluate_game(
     client: LLMClient,
     tok: Optional[Any],
     args: Any,
+    persona_summary_pool: Optional[PersonaSummaryPool],
     debug_records: List[Dict[str, Any]],
     debug_full_records: List[Dict[str, Any]],
+    on_round_rows: Optional[Callable[[List[Dict[str, Any]]], None]] = None,
 ) -> Tuple[List[Dict[str, Any]], Dict[str, List[str]]]:
-    transcripts: Dict[str, List[str]] = {pid: ["# GAME STARTS"] for pid in ctx.player_ids}
+    transcripts: Dict[str, List[str]] = {}
+    persona_mode = str(getattr(args, "persona", None) or "").strip()
+    assigned_personas: Dict[str, Dict[str, str]] = {}
+    if persona_mode:
+        if persona_mode not in {"matched_summary", "random_summary"}:
+            raise ValueError(
+                f"Unsupported persona mode '{persona_mode}'. Allowed values: matched_summary, random_summary."
+            )
+        if persona_summary_pool is None:
+            raise ValueError("persona_summary_pool must be loaded when persona mode is enabled.")
+        assigned_personas = _assign_summary_personas(
+            ctx=ctx,
+            mode=persona_mode,
+            seed=int(getattr(args, "seed", 0)),
+            pool=persona_summary_pool,
+        )
+
+    for pid in ctx.player_ids:
+        lines: List[str] = []
+        if persona_mode:
+            persona_record = assigned_personas.get(pid)
+            if persona_record and persona_record.get("text"):
+                lines.extend(
+                    [
+                        "# YOUR PERSONA",
+                        SUMMARY_PERSONA_INTRO,
+                        "<SUMMARY STARTS>",
+                        persona_record["text"],
+                        "<SUMMARY ENDS>",
+                    ]
+                )
+        lines.append("# GAME STARTS")
+        transcripts[pid] = lines
+
     active_history: Dict[str, bool] = {pid: True for pid in ctx.player_ids}
     rows: List[Dict[str, Any]] = []
     for round_idx in ctx.rounds:
@@ -951,7 +1063,10 @@ def evaluate_game(
                 debug_full_records=debug_full_records,
             )
             round_slice = ctx.round_to_rows.get(round_idx, pd.DataFrame())
-            rows.extend(build_eval_rows(ctx, round_idx, predictions, round_slice, args))
+            round_rows = build_eval_rows(ctx, round_idx, predictions, round_slice, args)
+            rows.extend(round_rows)
+            if on_round_rows is not None and round_rows:
+                on_round_rows(round_rows)
         append_observed_round(ctx, transcripts, active_history, round_idx)
     for pid in ctx.player_ids:
         transcripts[pid].append("# GAME COMPLETE")
@@ -966,10 +1081,49 @@ def _serialize_args(args: Any) -> Dict[str, Any]:
     return dict(args)
 
 
+def _model_config(args: Any, run_ts: str) -> Dict[str, Any]:
+    args_dict = _serialize_args(args)
+    provider = args_dict.get("provider")
+    base_keys = [
+        "provider",
+        "openai_model",
+        "openai_api_key_env",
+        "openai_async",
+        "openai_max_concurrency",
+        "temperature",
+        "top_p",
+        "seed",
+        "contrib_max_new_tokens",
+        "actions_max_new_tokens",
+        "include_reasoning",
+        "persona",
+        "persona_summary_pool",
+        "start_round",
+        "game_ids",
+        "max_games",
+        "skip_no_actual",
+        "max_parallel_games",
+        "debug_level",
+        "debug_compact",
+    ]
+    if provider != "openai":
+        base_keys.extend(["base_model", "adapter_path", "use_peft"])
+    model_payload = {k: args_dict.get(k) for k in base_keys if k in args_dict}
+    model_payload["run_timestamp"] = run_ts
+    return model_payload
+
+
+def _write_config_json(config_path: str, payload: Dict[str, Any]) -> None:
+    with open(config_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+
 def run_micro_behavior_eval(args: Any) -> Tuple[pd.DataFrame, Dict[str, Optional[str]]]:
     run_ts = getattr(args, "run_id", None) or timestamp_yymmddhhmm()
     run_dir = os.path.join(args.output_root, run_ts)
     os.makedirs(run_dir, exist_ok=True)
+    config_path = os.path.join(run_dir, "config.json")
 
     if args.debug_compact:
         args.debug_level = "compact"
@@ -1006,8 +1160,58 @@ def run_micro_behavior_eval(args: Any) -> Tuple[pd.DataFrame, Dict[str, Optional
     if not contexts:
         raise ValueError("No games selected for evaluation.")
 
+    args_payload = _serialize_args(args)
+    if args_payload.get("openai_api_key") is not None:
+        args_payload["openai_api_key"] = "***redacted***"
+
+    config_payload = {
+        "run_timestamp": run_ts,
+        "status": "running",
+        "created_at_utc": datetime.now(timezone.utc).isoformat(),
+        "inputs": {
+            "rounds_csv": args.rounds_csv,
+            "analysis_csv": args.analysis_csv,
+            "demographics_csv": args.demographics_csv,
+            "players_csv": args.players_csv,
+            "games_csv": args.games_csv,
+        },
+        "selection": {
+            "num_games": len(contexts),
+            "game_ids": [c.game_id for c in contexts],
+            "requested_game_ids": args.game_ids,
+            "start_round": int(args.start_round),
+            "skip_no_actual": bool(args.skip_no_actual),
+        },
+        "model": _model_config(args, run_ts),
+        "args": args_payload,
+        "outputs": {
+            "directory": run_dir,
+            "rows": rows_out_path,
+            "transcripts": transcripts_out_path,
+            "debug": debug_jsonl_path,
+            "debug_full": debug_full_jsonl_path,
+        },
+    }
+    _write_config_json(config_path, config_payload)
+
     if args.max_parallel_games and int(args.max_parallel_games) > 1:
         log("[warn] max_parallel_games is currently not used in this pipeline; running sequentially.")
+
+    persona_mode = str(getattr(args, "persona", None) or "").strip()
+    if persona_mode and persona_mode not in {"matched_summary", "random_summary"}:
+        raise ValueError(
+            f"Unsupported persona mode '{persona_mode}'. Allowed values: matched_summary, random_summary."
+        )
+    persona_summary_pool: Optional[PersonaSummaryPool] = None
+    if persona_mode in {"matched_summary", "random_summary"}:
+        persona_summary_pool = _load_persona_summary_pool(getattr(args, "persona_summary_pool", ""))
+        if args.debug_print:
+            log(
+                "[micro] loaded persona summaries:",
+                len(persona_summary_pool.all_records),
+                "from",
+                getattr(args, "persona_summary_pool", ""),
+            )
 
     tok: Optional[Any] = None
     model: Optional[Any] = None
@@ -1024,40 +1228,67 @@ def run_micro_behavior_eval(args: Any) -> Tuple[pd.DataFrame, Dict[str, Optional
     )
 
     all_rows: List[Dict[str, Any]] = []
-    all_transcripts: Dict[str, Dict[str, List[str]]] = {}
     debug_records: List[Dict[str, Any]] = []
     debug_full_records: List[Dict[str, Any]] = []
 
-    for idx, ctx in enumerate(contexts, start=1):
-        if args.debug_print:
-            log(f"[micro] start game {ctx.game_id} ({idx}/{len(contexts)})")
-        rows, transcripts = evaluate_game(
-            ctx=ctx,
-            client=client,
-            tok=tok,
-            args=args,
-            debug_records=debug_records,
-            debug_full_records=debug_full_records,
-        )
-        all_rows.extend(rows)
-        all_transcripts[ctx.game_id] = transcripts
-        if args.debug_print:
-            log(f"[micro] done game {ctx.game_id} -> {len(rows)} eval rows")
-
-    df_out = pd.DataFrame(all_rows)
     os.makedirs(os.path.dirname(rows_out_path), exist_ok=True)
-    df_out.to_csv(rows_out_path, index=False)
+    rows_file = open(rows_out_path, "w", newline="", encoding="utf-8")
+    rows_writer: Optional[csv.DictWriter] = None
 
+    transcripts_file = None
     if transcripts_out_path:
         os.makedirs(os.path.dirname(transcripts_out_path), exist_ok=True)
-        with open(transcripts_out_path, "w", encoding="utf-8") as f:
-            for ctx in contexts:
-                transcripts = all_transcripts.get(ctx.game_id, {})
+        transcripts_file = open(transcripts_out_path, "w", encoding="utf-8")
+
+    debug_file = None
+    if debug_jsonl_path and args.debug_level != "off":
+        os.makedirs(os.path.dirname(debug_jsonl_path), exist_ok=True)
+        debug_file = open(debug_jsonl_path, "w", encoding="utf-8")
+
+    debug_full_file = None
+    if debug_full_jsonl_path:
+        os.makedirs(os.path.dirname(debug_full_jsonl_path), exist_ok=True)
+        debug_full_file = open(debug_full_jsonl_path, "w", encoding="utf-8")
+
+    def _flush_file(handle):
+        handle.flush()
+        os.fsync(handle.fileno())
+
+    def _write_rows_chunk(chunk: List[Dict[str, Any]]):
+        nonlocal rows_writer
+        if not chunk:
+            return
+        if rows_writer is None:
+            rows_writer = csv.DictWriter(rows_file, fieldnames=list(chunk[0].keys()))
+            rows_writer.writeheader()
+        for row in chunk:
+            rows_writer.writerow(row)
+        _flush_file(rows_file)
+
+    try:
+        for idx, ctx in enumerate(contexts, start=1):
+            debug_records.clear()
+            debug_full_records.clear()
+            if args.debug_print:
+                log(f"[micro] start game {ctx.game_id} ({idx}/{len(contexts)})")
+            rows, transcripts = evaluate_game(
+                ctx=ctx,
+                client=client,
+                tok=tok,
+                args=args,
+                persona_summary_pool=persona_summary_pool,
+                debug_records=debug_records,
+                debug_full_records=debug_full_records,
+                on_round_rows=_write_rows_chunk,
+            )
+            all_rows.extend(rows)
+
+            if transcripts_file is not None:
                 for pid in ctx.player_ids:
                     sys_text = system_header_plain(ctx.env, ctx.demographics_by_player.get(pid, ""), args.include_reasoning)
                     body = "\n".join(transcripts.get(pid, ["# GAME STARTS", "# GAME COMPLETE"]))
                     text = f"{sys_text}\n{body}"
-                    f.write(
+                    transcripts_file.write(
                         json.dumps(
                             {
                                 "experiment": ctx.game_id,
@@ -1068,45 +1299,38 @@ def run_micro_behavior_eval(args: Any) -> Tuple[pd.DataFrame, Dict[str, Optional
                         )
                         + "\n"
                     )
+                _flush_file(transcripts_file)
 
-    if debug_jsonl_path and args.debug_level != "off":
-        os.makedirs(os.path.dirname(debug_jsonl_path), exist_ok=True)
-        with open(debug_jsonl_path, "w", encoding="utf-8") as f:
-            for rec in debug_records:
-                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
-    if debug_full_jsonl_path:
-        os.makedirs(os.path.dirname(debug_full_jsonl_path), exist_ok=True)
-        with open(debug_full_jsonl_path, "w", encoding="utf-8") as f:
-            for rec in debug_full_records:
-                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+            if debug_file is not None and debug_records:
+                for rec in debug_records:
+                    debug_file.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                _flush_file(debug_file)
 
-    config_payload = {
-        "run_timestamp": run_ts,
-        "inputs": {
-            "rounds_csv": args.rounds_csv,
-            "analysis_csv": args.analysis_csv,
-            "demographics_csv": args.demographics_csv,
-            "players_csv": args.players_csv,
-            "games_csv": args.games_csv,
-        },
-        "selection": {
-            "num_games": len(contexts),
-            "game_ids": [c.game_id for c in contexts],
-            "start_round": int(args.start_round),
-            "skip_no_actual": bool(args.skip_no_actual),
-        },
-        "args": _serialize_args(args),
-        "outputs": {
-            "rows": rows_out_path,
-            "transcripts": transcripts_out_path,
-            "debug": debug_jsonl_path,
-            "debug_full": debug_full_jsonl_path,
-        },
+            if debug_full_file is not None and debug_full_records:
+                for rec in debug_full_records:
+                    debug_full_file.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                _flush_file(debug_full_file)
+
+            if args.debug_print:
+                log(f"[micro] done game {ctx.game_id} -> {len(rows)} eval rows")
+    finally:
+        rows_file.close()
+        if transcripts_file is not None:
+            transcripts_file.close()
+        if debug_file is not None:
+            debug_file.close()
+        if debug_full_file is not None:
+            debug_full_file.close()
+
+    df_out = pd.DataFrame(all_rows)
+
+    config_payload["status"] = "completed"
+    config_payload["completed_at_utc"] = datetime.now(timezone.utc).isoformat()
+    config_payload["summary"] = {
+        "num_rows": int(len(all_rows)),
+        "num_games": int(len(contexts)),
     }
-    config_path = os.path.join(run_dir, "config.json")
-    with open(config_path, "w", encoding="utf-8") as f:
-        json.dump(config_payload, f, ensure_ascii=False, indent=2)
-        f.write("\n")
+    _write_config_json(config_path, config_payload)
 
     if args.debug_print:
         log(f"[micro] wrote rows -> {rows_out_path}")

@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-02-26T21:25:35.000139",
+  "input_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/output/2602262019/micro_behavior_eval.csv",
+  "output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check",
+  "filters": {
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true
+  },
+  "row_counts": {
+    "pre_filter": 98,
+    "post_filter": 98,
+    "dropped": 0
+  },
+  "malformed_dict_parse_counts": {
+    "predicted_punished_pid": 0,
+    "predicted_rewarded_pid": 0,
+    "actual_punished_pid": 0,
+    "actual_rewarded_pid": 0
+  },
+  "malformed_dict_rows": 0,
+  "generated_files": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/row_level_scored.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/metrics_overall.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/metrics_by_round.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/metrics_by_game.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/contribution_error_histogram.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/pred_vs_actual_contribution_scatter.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/contribution_mae_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/contribution_bias_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/action_exact_match_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/target_f1_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/target_hit_any_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/action_metrics_by_game.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/contribution_mae_by_game.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/heatmap_game_round_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/heatmap_game_round_contribution_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/relocated_default_check/analysis_manifest.json"
+  ],
+  "args": {
+    "eval_csv": null,
+    "run_id": "2602262019",
+    "analysis_root": "Micro_behavior_eval/analysis_results",
+    "analysis_run_id": "relocated_default_check",
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true,
+    "dpi": 160,
+    "debug_print": true
+  },
+  "metrics_columns": [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "action_exact_match",
+    "target_set_exact",
+    "target_precision",
+    "target_recall",
+    "target_f1",
+    "target_jaccard",
+    "target_hit_any",
+    "unit_mae_on_overlap",
+    "unit_exact_on_overlap_rate",
+    "actual_any_action_rate",
+    "pred_any_action_rate",
+    "actual_any_punish_rate",
+    "pred_any_punish_rate",
+    "actual_any_reward_rate",
+    "pred_any_reward_rate"
+  ]
+}
