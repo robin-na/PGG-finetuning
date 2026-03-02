@@ -1,0 +1,22 @@
+{
+  "combined": {
+    "actions": 49485,
+    "games": 463,
+    "players": 3656,
+    "rounds": 6421
+  },
+  "criteria": "condition_2_every_player_has_at_least_one_demographic_info",
+  "learning_wave": {
+    "actions": 26979,
+    "games": 214,
+    "players": 2002,
+    "rounds": 3017
+  },
+  "output_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data",
+  "validation_wave": {
+    "actions": 22506,
+    "games": 249,
+    "players": 1654,
+    "rounds": 3404
+  }
+}

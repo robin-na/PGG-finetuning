@@ -1,0 +1,11 @@
+Unnamed: 0.1,Unnamed: 0,_id,name,timeoutType,timeoutInSeconds,timeoutStrategy,timeoutBots,extendCount,createdAt,archivedAt
+1.0,1,BXZawzEdGZeA2QfZa,15min_ignore,lobby,900,ignore,,,2023-04-19T20:10:02Z,
+3.0,3,KB9sjNKzbHHaCDASL,15min_ignore,lobby,900,ignore,,,2023-04-07T06:30:03Z,
+4.0,0,ptwJTMWjpn9aGhdKr,15min_fail,lobby,900,fail,,,2024-05-13T05:59:24Z,2024-05-14T18:14:15Z
+5.0,1,KRXs6Gr2GFiS2gJ8L,15min_ignore,lobby,900,ignore,,,2024-05-14T18:14:12Z,
+7.0,3,JvPQ5hkbN8ZHP7kgE,15min_ignore,lobby,900,ignore,,,2024-05-14T18:13:56Z,
+9.0,5,HfyMzE4vr9XgmTHyf,15min_ignore,lobby,900,ignore,,,2024-05-14T18:14:38Z,
+,0,nyDszKnmzaqv4Fhc6,15min_fail,lobby,900,fail,,,2024-07-08T13:38:00Z,2024-07-19T13:18:23Z
+,2,652gYE6hBaiWDt6hA,15min_fail,lobby,900,fail,,,2024-07-08T13:37:00Z,2024-07-19T13:18:15Z
+,4,gik9GcBHHQFLbGXwE,15min_fail,lobby,900,fail,,,2024-07-08T13:38:54Z,2024-07-19T13:18:39Z
+,5,PcYuywzt9YzsHeCqS,15min_ignore,lobby,900,ignore,,,2024-07-19T13:18:57Z,
