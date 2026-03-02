@@ -31,5 +31,7 @@ echo "Running on $(hostname)"
 nvidia-smi
 
 python Micro_behavior_eval/run_micro_behavior_eval.py \
-  --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True
+  --provider local --base_model google/gemma-3-27b-it --use_peft False --include_reasoning True \
+  --persona matched_summary \
+  --persona_summary_pool Persona/archetype_retrieval/validation_wave/synthetic_persona_ridge_val.jsonl
 

@@ -23,9 +23,20 @@ python Micro_behavior_eval/analysis/run_analysis.py \
   --analysis_run_id my_analysis_run
 ```
 
+Compare multiple eval runs:
+
+```bash
+python Micro_behavior_eval/analysis/run_analysis.py \
+  --compare_run_ids 2602262019,2602270203,2602270212 \
+  --compare_labels "no persona,oracle persona,retrieved persona" \
+  --analysis_run_id compare_last_three
+```
+
 ## CLI Arguments
 - `--eval_csv`: explicit input CSV path (required unless `--run_id` provided)
 - `--run_id`: resolves `Micro_behavior_eval/output/<run_id>/micro_behavior_eval.csv`
+- `--compare_run_ids`: comma-separated run IDs for multi-run comparison mode
+- `--compare_labels`: optional comma-separated labels aligned to `--compare_run_ids`
 - `--analysis_root`: output root (default `Micro_behavior_eval/analysis_results`)
 - `--analysis_run_id`: output folder name (default timestamp)
 - `--min_round`: optional lower round filter
@@ -37,12 +48,33 @@ python Micro_behavior_eval/analysis/run_analysis.py \
 ## Output Structure
 Under `Micro_behavior_eval/analysis_results/<analysis_run_id>/`:
 
-- `metrics_overall.csv`
-- `metrics_by_round.csv`
-- `metrics_by_game.csv`
-- `row_level_scored.csv`
-- plot PNGs
-- `analysis_manifest.json`
+- Single-run mode:
+  - `metrics_overall.csv`
+  - `metrics_by_round.csv`
+  - `metrics_by_game.csv`
+  - `row_level_scored.csv`
+  - plot PNGs
+  - `analysis_manifest.json`
+- Comparison mode:
+  - `comparison_overall.csv`
+  - `comparison_by_round.csv`
+  - `comparison_by_game.csv`
+  - `comparison_overall_errorbars.csv` (mean/SE/95% CI by run and metric)
+  - `comparison_by_round_errorbars.csv` (mean/SE/95% CI by run-round and metric)
+  - `comparison_significance.csv` (pairwise run differences, z-test p-values + BH-adjusted p-values)
+  - `comparison_summary.md` (human-readable interpretation with plot guide + significance summary)
+  - comparison plot PNGs
+  - `analysis_manifest.json`
+
+Error bars in comparison plots:
+- Bars and lines now use mean ± 95% CI (`1.96 * SE`) computed from row-level scored data.
+- Plot titles include direction cues (`↑ better` or `↓ better`).
+- Run colors are assigned once per comparison run and reused consistently across all comparison figures (scales to >3 runs).
+
+Significance in comparison mode:
+- `comparison_significance.csv` runs pairwise two-sided z-tests on run-level mean differences.
+- Includes raw `p_value` and Benjamini-Hochberg adjusted `p_value_bh`.
+- Prefer `significant_bh_0_05` for multi-comparison interpretation.
 
 ## Metric Definitions
 Contribution metrics:

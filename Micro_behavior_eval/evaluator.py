@@ -190,11 +190,12 @@ def _assign_summary_personas(
         missing = [pid for pid in ctx.player_ids if pid not in game_map]
         if missing:
             sample_missing = ", ".join(missing[:5])
-            raise ValueError(
-                f"matched_summary missing persona summaries for gameId={ctx.game_id}, "
-                f"missing_playerIds={sample_missing}, total_missing={len(missing)}"
+            log(
+                f"[warn] matched_summary missing persona summaries for gameId={ctx.game_id}, "
+                f"missing_playerIds={sample_missing}, total_missing={len(missing)}; "
+                "continuing without persona for missing players."
             )
-        return {pid: game_map[pid] for pid in ctx.player_ids}
+        return {pid: game_map[pid] for pid in ctx.player_ids if pid in game_map}
 
     rng = random.Random(f"{seed}|{ctx.game_id}|random_summary")
     records = pool.all_records

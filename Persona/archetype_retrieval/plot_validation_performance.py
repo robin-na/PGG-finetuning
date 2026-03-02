@@ -174,6 +174,39 @@ def _bootstrap_std(
     return float(np.std(means, ddof=0))
 
 
+def add_better_arrow(ax: plt.Axes, higher_is_better: bool) -> None:
+    x = 1.02
+    y_low = 0.08
+    y_high = 0.92
+    if higher_is_better:
+        xy = (x, y_high)
+        xytext = (x, y_low)
+        text_rotation = 90
+    else:
+        xy = (x, y_low)
+        xytext = (x, y_high)
+        text_rotation = -90
+
+    ax.annotate(
+        "",
+        xy=xy,
+        xytext=xytext,
+        xycoords=ax.transAxes,
+        textcoords=ax.transAxes,
+        arrowprops={"arrowstyle": "-|>", "linewidth": 1.6, "color": "black"},
+        annotation_clip=False,
+    )
+    ax.text(
+        x + 0.035,
+        0.5,
+        "better",
+        rotation=text_rotation,
+        va="center",
+        ha="center",
+        transform=ax.transAxes,
+    )
+
+
 def add_model_error_bars(
     combined: pd.DataFrame,
     run_dir: Path,
@@ -265,6 +298,7 @@ def plot_grouped_bar(
     ylabel: str,
     title: str,
     out_path: Path,
+    higher_is_better: bool,
     top_k: int,
 ) -> None:
     pivot = df.pivot(index="tag", columns="model", values=metric).sort_index()
@@ -273,7 +307,7 @@ def plot_grouped_bar(
     x = np.arange(len(tags), dtype=float)
     width = 0.8 / max(1, len(models))
 
-    plt.figure(figsize=(15, 6))
+    fig, ax = plt.subplots(figsize=(15, 6))
     for i, model in enumerate(models):
         vals = pivot[model].to_numpy()
         if metric_std and metric_std in df.columns:
@@ -281,7 +315,7 @@ def plot_grouped_bar(
             yerr = err_pivot[model].to_numpy()
         else:
             yerr = None
-        plt.bar(
+        ax.bar(
             x + (i - (len(models) - 1) / 2) * width,
             vals,
             width=width,
@@ -289,13 +323,14 @@ def plot_grouped_bar(
             yerr=yerr,
             capsize=2 if yerr is not None else 0,
         )
-    plt.xticks(x, tags, rotation=35, ha="right")
-    plt.ylabel(ylabel)
-    plt.title(title.replace("{k}", str(top_k)))
-    plt.legend(ncol=min(6, len(models)), frameon=False)
-    plt.tight_layout()
-    plt.savefig(out_path, dpi=180)
-    plt.close()
+    ax.set_xticks(x, tags, rotation=35, ha="right")
+    ax.set_ylabel(ylabel)
+    ax.set_title(title.replace("{k}", str(top_k)))
+    ax.legend(ncol=min(6, len(models)), frameon=False)
+    add_better_arrow(ax, higher_is_better=higher_is_better)
+    fig.tight_layout(rect=[0, 0, 0.96, 1])
+    fig.savefig(out_path, dpi=180)
+    plt.close(fig)
 
 
 def plot_aggregate(
@@ -332,6 +367,7 @@ def plot_aggregate(
     axes[0].set_xticks(x, models, rotation=30, ha="right")
     axes[0].set_ylabel("Mean Regret (lower better)")
     axes[0].set_title("Across Tags: Regret (error bars=tag std)")
+    add_better_arrow(axes[0], higher_is_better=False)
 
     axes[1].bar(
         x,
@@ -342,8 +378,9 @@ def plot_aggregate(
     axes[1].set_xticks(x, models, rotation=30, ha="right")
     axes[1].set_ylabel(f"Mean {hitk_col} (higher better)")
     axes[1].set_title("Across Tags: Hit@K (error bars=tag std)")
+    add_better_arrow(axes[1], higher_is_better=True)
 
-    fig.tight_layout()
+    fig.tight_layout(rect=[0, 0, 0.96, 1])
     fig.savefig(out_path, dpi=180)
     plt.close(fig)
 
@@ -453,6 +490,7 @@ def main() -> int:
         ylabel="Mean Regret (lower better)",
         title="Per Tag: Retrieval Regret (includes random baseline)",
         out_path=fig1,
+        higher_is_better=False,
         top_k=top_k,
     )
 
@@ -464,6 +502,7 @@ def main() -> int:
         ylabel=f"{hitk_col} (higher better)",
         title="Per Tag: Hit@{k} (includes random baseline)",
         out_path=fig2,
+        higher_is_better=True,
         top_k=top_k,
     )
 

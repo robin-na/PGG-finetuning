@@ -12,6 +12,40 @@ import numpy as np
 import pandas as pd
 
 
+def _annotate_better_direction(ax: plt.Axes, direction: str | None) -> None:
+    if direction not in {"up", "down"}:
+        return
+    x = 0.985
+    y_lo = 0.15
+    y_hi = 0.85
+    if direction == "up":
+        ax.annotate(
+            "",
+            xy=(x, y_hi),
+            xytext=(x, y_lo),
+            xycoords="axes fraction",
+            arrowprops=dict(arrowstyle="-|>", lw=1.8, color="black"),
+        )
+    else:
+        ax.annotate(
+            "",
+            xy=(x, y_lo),
+            xytext=(x, y_hi),
+            xycoords="axes fraction",
+            arrowprops=dict(arrowstyle="-|>", lw=1.8, color="black"),
+        )
+    ax.text(
+        x + 0.02,
+        0.5,
+        "better",
+        transform=ax.transAxes,
+        rotation=90,
+        va="center",
+        ha="left",
+        fontsize=9,
+    )
+
+
 def _save_fig(fig: plt.Figure, out_path: Path, dpi: int) -> str:
     out_path.parent.mkdir(parents=True, exist_ok=True)
     fig.tight_layout()
@@ -20,7 +54,16 @@ def _save_fig(fig: plt.Figure, out_path: Path, dpi: int) -> str:
     return str(out_path)
 
 
-def _plot_line(df: pd.DataFrame, x: str, y: str, title: str, ylabel: str, out_path: Path, dpi: int) -> str | None:
+def _plot_line(
+    df: pd.DataFrame,
+    x: str,
+    y: str,
+    title: str,
+    ylabel: str,
+    out_path: Path,
+    dpi: int,
+    direction: str | None = None,
+) -> str | None:
     data = df[[x, y]].dropna()
     if data.empty:
         return None
@@ -30,10 +73,20 @@ def _plot_line(df: pd.DataFrame, x: str, y: str, title: str, ylabel: str, out_pa
     ax.set_xlabel("Round")
     ax.set_ylabel(ylabel)
     ax.grid(alpha=0.3)
+    _annotate_better_direction(ax, direction)
     return _save_fig(fig, out_path, dpi)
 
 
-def _plot_bar(df: pd.DataFrame, x: str, y: str, title: str, ylabel: str, out_path: Path, dpi: int) -> str | None:
+def _plot_bar(
+    df: pd.DataFrame,
+    x: str,
+    y: str,
+    title: str,
+    ylabel: str,
+    out_path: Path,
+    dpi: int,
+    direction: str | None = None,
+) -> str | None:
     data = df[[x, y]].dropna()
     if data.empty:
         return None
@@ -45,6 +98,7 @@ def _plot_bar(df: pd.DataFrame, x: str, y: str, title: str, ylabel: str, out_pat
     ax.set_ylabel(ylabel)
     ax.tick_params(axis="x", rotation=45)
     ax.grid(axis="y", alpha=0.3)
+    _annotate_better_direction(ax, direction)
     return _save_fig(fig, out_path, dpi)
 
 
@@ -55,6 +109,7 @@ def _plot_heatmap(
     ylabel: str,
     out_path: Path,
     dpi: int,
+    direction: str | None = None,
 ) -> str | None:
     if pivot.empty:
         return None
@@ -71,6 +126,7 @@ def _plot_heatmap(
     ax.set_xticklabels([str(x) for x in pivot.columns], rotation=45, ha="right")
     ax.set_yticklabels([str(x) for x in pivot.index])
     fig.colorbar(im, ax=ax, fraction=0.025, pad=0.02)
+    _annotate_better_direction(ax, direction)
     return _save_fig(fig, out_path, dpi)
 
 
@@ -88,8 +144,8 @@ def generate_all_plots(
     if not contrib_err.empty:
         fig, ax = plt.subplots(figsize=(7, 4))
         ax.hist(contrib_err, bins=min(40, max(10, int(np.sqrt(len(contrib_err))))))
-        ax.set_title("Contribution Error Histogram")
-        ax.set_xlabel("Predicted - Actual")
+        ax.set_title("Contribution Error Histogram (|error| ↓ better)")
+        ax.set_xlabel("Predicted - Actual (closer to 0 is better)")
         ax.set_ylabel("Count")
         ax.grid(alpha=0.3)
         saved = _save_fig(fig, output_dir / "contribution_error_histogram.png", dpi)
@@ -102,7 +158,7 @@ def generate_all_plots(
         mn = min(scatter_df["actual_contribution"].min(), scatter_df["predicted_contribution"].min())
         mx = max(scatter_df["actual_contribution"].max(), scatter_df["predicted_contribution"].max())
         ax.plot([mn, mx], [mn, mx], linestyle="--", linewidth=1)
-        ax.set_title("Predicted vs Actual Contribution")
+        ax.set_title("Predicted vs Actual Contribution (closer to diagonal ↑ better)")
         ax.set_xlabel("Actual")
         ax.set_ylabel("Predicted")
         ax.grid(alpha=0.3)
@@ -110,13 +166,19 @@ def generate_all_plots(
         generated.append(saved)
 
     line_specs = [
-        ("contrib_mae", "Contribution MAE by Round", "MAE", "contribution_mae_by_round.png"),
-        ("contrib_bias", "Contribution Bias by Round", "Bias (Predicted - Actual)", "contribution_bias_by_round.png"),
-        ("action_exact_match", "Action Exact Match by Round", "Rate", "action_exact_match_by_round.png"),
-        ("target_f1", "Target F1 by Round", "F1", "target_f1_by_round.png"),
-        ("target_hit_any", "Target Hit-Any by Round", "Rate", "target_hit_any_by_round.png"),
+        ("contrib_mae", "Contribution MAE by Round", "MAE", "contribution_mae_by_round.png", "down"),
+        (
+            "contrib_bias",
+            "Contribution Bias by Round",
+            "Bias (Predicted - Actual)",
+            "contribution_bias_by_round.png",
+            None,
+        ),
+        ("action_exact_match", "Action Exact Match by Round", "Rate", "action_exact_match_by_round.png", "up"),
+        ("target_f1", "Target F1 by Round", "F1", "target_f1_by_round.png", "up"),
+        ("target_hit_any", "Target Hit-Any by Round", "Rate", "target_hit_any_by_round.png", "up"),
     ]
-    for metric_col, title, ylabel, file_name in line_specs:
+    for metric_col, title, ylabel, file_name, direction in line_specs:
         saved = _plot_line(
             metrics_by_round,
             x="roundIndex",
@@ -125,6 +187,7 @@ def generate_all_plots(
             ylabel=ylabel,
             out_path=output_dir / file_name,
             dpi=dpi,
+            direction=direction,
         )
         if saved:
             generated.append(saved)
@@ -144,6 +207,7 @@ def generate_all_plots(
         ax.set_xticklabels(game_action["gameId"].astype(str), rotation=45, ha="right")
         ax.legend()
         ax.grid(axis="y", alpha=0.3)
+        _annotate_better_direction(ax, "up")
         saved = _save_fig(fig, output_dir / "action_metrics_by_game.png", dpi)
         generated.append(saved)
 
@@ -155,6 +219,7 @@ def generate_all_plots(
         ylabel="MAE",
         out_path=output_dir / "contribution_mae_by_game.png",
         dpi=dpi,
+        direction="down",
     )
     if saved:
         generated.append(saved)
@@ -171,6 +236,7 @@ def generate_all_plots(
         ylabel="Game",
         out_path=output_dir / "heatmap_game_round_target_f1.png",
         dpi=dpi,
+        direction="up",
     )
     if saved:
         generated.append(saved)
@@ -187,6 +253,7 @@ def generate_all_plots(
         ylabel="Game",
         out_path=output_dir / "heatmap_game_round_contribution_mae.png",
         dpi=dpi,
+        direction="down",
     )
     if saved:
         generated.append(saved)
