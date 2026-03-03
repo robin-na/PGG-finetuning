@@ -1,6 +1,6 @@
 {
-  "input_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/summary_gpt51_learn.jsonl",
-  "output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/Cluster/output/summary_gpt51_learn_clustered.jsonl",
+  "input_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/archetype_oracle_gpt51_learn.jsonl",
+  "output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/Cluster/output/archetype_oracle_gpt51_learn_clustered.jsonl",
   "rows_used": 3691,
   "text_column": "text",
   "only_finished": true,

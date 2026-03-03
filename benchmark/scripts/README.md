@@ -13,7 +13,7 @@ They write only to `outputs/benchmark` and `reports/benchmark` (not `outputs/def
     - `benchmark/data_ood_splits/<factor>/<direction>` -> `benchmark_ood/<factor>/<direction>`
 - `build_union_archetype_summary_pool.py`
   - Creates merged learn+val archetype summary pool.
-  - Default output: `outputs/benchmark/cache/archetype/summary_gpt51_learn_val_union_finished.jsonl`
+  - Default output: `outputs/benchmark/cache/archetype/archetype_oracle_gpt51_learn_val_union_finished.jsonl`
 - `run_split_pipeline.py`
   - Runs micro eval and/or archetype train/validate for one split root.
   - Supports `--stages index` to only refresh split pointers without running new jobs.

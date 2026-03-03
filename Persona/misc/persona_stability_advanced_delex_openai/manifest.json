@@ -1,6 +1,6 @@
 {
   "config": {
-    "input_path": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/summary_gpt51_learn.jsonl",
+    "input_path": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/archetype_oracle_gpt51_learn.jsonl",
     "existing_dir": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_analysis",
     "output_dir": "/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_advanced_delex_openai",
     "split_tags": [

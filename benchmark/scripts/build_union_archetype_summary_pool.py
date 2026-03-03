@@ -67,18 +67,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--learn-jsonl",
         type=Path,
-        default=Path("Persona/summary_gpt51_learn.jsonl"),
+        default=Path("Persona/archetype_oracle_gpt51_learn.jsonl"),
     )
     parser.add_argument(
         "--val-jsonl",
         type=Path,
-        default=Path("Persona/summary_gpt51_val.jsonl"),
+        default=Path("Persona/archetype_oracle_gpt51_val.jsonl"),
     )
     parser.add_argument(
         "--output-jsonl",
         type=Path,
         default=Path(
-            "outputs/benchmark/cache/archetype/summary_gpt51_learn_val_union_finished.jsonl"
+            "outputs/benchmark/cache/archetype/archetype_oracle_gpt51_learn_val_union_finished.jsonl"
         ),
     )
     parser.add_argument(

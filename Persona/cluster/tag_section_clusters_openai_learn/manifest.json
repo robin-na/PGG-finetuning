@@ -1,6 +1,6 @@
 {
   "config": {
-    "input_jsonl": "Persona/summary_gpt51_learn.jsonl",
+    "input_jsonl": "Persona/archetype_oracle_gpt51_learn.jsonl",
     "output_dir": "Persona/cluster/tag_section_clusters_openai_learn",
     "text_column": "text",
     "tags": [

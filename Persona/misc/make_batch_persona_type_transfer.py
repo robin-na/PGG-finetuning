@@ -194,8 +194,8 @@ def main():
     parser.add_argument("--model", default="gpt-5.1")
     parser.add_argument(
         "--summaries",
-        default="/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Persona/summary_gpt51_learn.jsonl",
-        help="Path to summary_gpt51_learn.jsonl.",
+        default="/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Persona/archetype_oracle_gpt51_learn.jsonl",
+        help="Path to archetype_oracle_gpt51_learn.jsonl.",
     )
     parser.add_argument(
         "--learn-config",

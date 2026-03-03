@@ -2,7 +2,7 @@
 """
 Generate synthetic validation-wave persona summaries using trained ridge models.
 
-Output format matches Persona/summary_gpt51_val.jsonl rows:
+Output format matches Persona/archetype_oracle_gpt51_val.jsonl rows:
 - experiment
 - participant
 - game_finished
@@ -205,7 +205,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--oracle-summary-jsonl",
         type=Path,
-        default=Path("Persona/summary_gpt51_val.jsonl"),
+        default=Path("Persona/archetype_oracle_gpt51_val.jsonl"),
         help="Used to transfer game_finished values by (gameId/playerId).",
     )
     parser.add_argument("--model", default="ridge")

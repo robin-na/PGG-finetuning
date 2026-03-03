@@ -101,7 +101,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--summary",
-        default="/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Persona/summary_gpt51_learn.jsonl",
+        default="/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Persona/archetype_oracle_gpt51_learn.jsonl",
     )
     parser.add_argument(
         "--config",

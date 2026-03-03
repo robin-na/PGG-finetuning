@@ -10,7 +10,7 @@ Default behavior keeps only finished players, reduces `N` accordingly, and uses 
 
 ```bash
 python Finetuning/build_persona_type_dataset.py \
-  --summary Persona/summary_gpt51_learn.jsonl \
+  --summary Persona/archetype_oracle_gpt51_learn.jsonl \
   --config data/processed_data/df_analysis_learn.csv \
   --output-dir Finetuning/data
 ```

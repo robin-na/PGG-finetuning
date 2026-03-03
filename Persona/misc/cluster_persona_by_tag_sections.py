@@ -27,7 +27,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 
-DEFAULT_INPUT = Path("Persona/summary_gpt51_learn.jsonl")
+DEFAULT_INPUT = Path("Persona/archetype_oracle_gpt51_learn.jsonl")
 DEFAULT_OUTPUT_DIR = Path("Persona/misc/tag_section_clusters")
 DEFAULT_TAGS = [
     "CONTRIBUTION",

@@ -76,7 +76,7 @@ class Args:
         metadata={"help": "JSONL file containing persona transcript entries."},
     )
     persona_summary_pool: str = field(
-        default="Persona/summary_gpt51_learn.jsonl",
+        default="Persona/archetype_oracle_gpt51_learn.jsonl",
         metadata={"help": "JSONL file containing persona summary entries."},
     )
 

@@ -50,7 +50,7 @@ from cluster_persona_fig6_like import (
 
 load_dotenv()
 
-DEFAULT_INPUT = Path("/Users/kehangzh/Desktop/PGG-finetuning/Persona/summary_gpt51_learn.jsonl")
+DEFAULT_INPUT = Path("/Users/kehangzh/Desktop/PGG-finetuning/Persona/archetype_oracle_gpt51_learn.jsonl")
 DEFAULT_OUTPUT_DIR = Path("/Users/kehangzh/Desktop/PGG-finetuning/Persona/persona_stability_analysis")
 
 

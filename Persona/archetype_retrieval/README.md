@@ -18,7 +18,7 @@ This folder contains a D+E-to-archetype retrieval pipeline:
 
 - `retrieval_common.py`: shared schema/rule utilities.
 - `validation_wave/build_validation_wave.py`:
-  - Extracts per-tag sections from `Persona/summary_gpt51_val.jsonl`.
+  - Extracts per-tag sections from `Persona/archetype_oracle_gpt51_val.jsonl`.
   - Writes per-tag `*_sections_input.jsonl`.
   - Builds and saves per-tag embeddings (`openai` by default).
 

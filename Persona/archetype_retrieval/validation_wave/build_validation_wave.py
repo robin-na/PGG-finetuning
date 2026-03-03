@@ -3,7 +3,7 @@
 Build validation-wave tag sections and embeddings.
 
 Inputs:
-- Persona/summary_gpt51_val.jsonl
+- Persona/archetype_oracle_gpt51_val.jsonl
 
 Outputs (per tag):
 - <tag>_sections_input.jsonl
@@ -28,7 +28,7 @@ if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
 
-DEFAULT_INPUT = Path("Persona/summary_gpt51_val.jsonl")
+DEFAULT_INPUT = Path("Persona/archetype_oracle_gpt51_val.jsonl")
 DEFAULT_OUTPUT_DIR = Path("Persona/archetype_retrieval/validation_wave")
 DEFAULT_TAGS = [
     "CONTRIBUTION",

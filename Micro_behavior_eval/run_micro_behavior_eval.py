@@ -100,7 +100,7 @@ class Args:
         metadata={"help": "Optional archetype mode: matched_summary | random_summary"},
     )
     archetype_summary_pool: str = field(
-        default="Persona/summary_gpt51_val.jsonl",
+        default="Persona/archetype_oracle_gpt51_val.jsonl",
         metadata={"help": "JSONL file containing archetype summary entries."},
     )
     persona: Optional[str] = field(
@@ -200,7 +200,7 @@ def _normalize_archetype_args(args: Args) -> None:
         )
     if not archetype_pool:
         archetype_pool = persona_pool
-    args.archetype_summary_pool = archetype_pool or "Persona/summary_gpt51_val.jsonl"
+    args.archetype_summary_pool = archetype_pool or "Persona/archetype_oracle_gpt51_val.jsonl"
     args.persona = None
     args.persona_summary_pool = None
 

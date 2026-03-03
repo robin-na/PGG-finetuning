@@ -1,0 +1,29 @@
+{
+  "inputs": {
+    "demographics_learn": "demographics/demographics_numeric_learn.csv",
+    "demographics_val": "demographics/demographics_numeric_val.csv",
+    "oracle_learn": "Persona/archetype_oracle_gpt51_learn.jsonl",
+    "oracle_val": "Persona/archetype_oracle_gpt51_val.jsonl"
+  },
+  "outputs": {
+    "demographics_consolidated_csv": "non-PGG_generalization/data/PGG/demographics_numeric_learn_val_consolidated.csv",
+    "oracle_consolidated_jsonl": "non-PGG_generalization/data/PGG/archetype_oracle_gpt51_learn_val_union_finished.jsonl"
+  },
+  "row_counts": {
+    "demographics_learning_wave": 3715,
+    "demographics_validation_wave": 3639,
+    "demographics_consolidated": 7354,
+    "oracle_learning_wave": 3912,
+    "oracle_validation_wave": 4042,
+    "oracle_consolidated_total": 7954,
+    "oracle_consolidated_unique": 7954,
+    "oracle_duplicates_dropped": 0
+  },
+  "notes": {
+    "oracle_extra_field": "_wave",
+    "oracle_dedupe_key": [
+      "experiment",
+      "participant"
+    ]
+  }
+}

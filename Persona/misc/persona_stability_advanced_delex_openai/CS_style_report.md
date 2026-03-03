@@ -19,7 +19,7 @@
 ---
 
 ## 2. Data and Setting
-- 数据：`summary_gpt51_learn.jsonl`
+- 数据：`archetype_oracle_gpt51_learn.jsonl`
 - 使用样本：`n=3691`（`game_finished=True`）
 - split 标签：`PUNISHMENT`, `REWARD`, `COMMUNICATION`
 - split 规模（旧实验同本次）：

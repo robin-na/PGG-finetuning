@@ -215,7 +215,7 @@ def infer_micro_variant_name(archetype_mode: str, archetype_pool: Path) -> str:
     pool_resolved = archetype_pool.resolve()
     pool_text = str(pool_resolved).lower()
     oracle_candidates = {
-        str((REPO_ROOT / "Persona" / "summary_gpt51_val.jsonl").resolve()).lower(),
+        str((REPO_ROOT / "Persona" / "archetype_oracle_gpt51_val.jsonl").resolve()).lower(),
         str(
             (
                 REPO_ROOT
@@ -223,7 +223,7 @@ def infer_micro_variant_name(archetype_mode: str, archetype_pool: Path) -> str:
                 / "benchmark"
                 / "cache"
                 / "archetype"
-                / "summary_gpt51_learn_val_union_finished.jsonl"
+                / "archetype_oracle_gpt51_learn_val_union_finished.jsonl"
             ).resolve()
         ).lower(),
     }
@@ -372,7 +372,7 @@ def parse_args() -> argparse.Namespace:
         dest="archetype_summary_pool",
         type=Path,
         default=Path(
-            "outputs/benchmark/cache/archetype/summary_gpt51_learn_val_union_finished.jsonl"
+            "outputs/benchmark/cache/archetype/archetype_oracle_gpt51_learn_val_union_finished.jsonl"
         ),
         help="Archetype summary pool JSONL used when archetype mode is enabled.",
     )

@@ -35,7 +35,7 @@
     "include_reasoning": true,
     "persona": "random_summary",
     "persona_pool": "Persona/transcripts_learn.jsonl",
-    "persona_summary_pool": "benchmark/summary_gpt51_learn_noChat_lowPlayers_lowRounds_showNRounds_noReward_noId.jsonl",
+    "persona_summary_pool": "benchmark/archetype_oracle_gpt51_learn_noChat_lowPlayers_lowRounds_showNRounds_noReward_noId.jsonl",
     "max_parallel_games": 1,
     "debug_print": false,
     "env_csv": "benchmark/df_analysis_learn_noChat_lowPlayers_lowRounds_showNRounds_noReward_noId.csv",

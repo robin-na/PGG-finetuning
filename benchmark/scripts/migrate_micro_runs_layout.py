@@ -39,7 +39,7 @@ def classify_variant(config: Dict[str, Any]) -> str:
         return "random_archetype"
     if mode == "matched_summary":
         oracle_candidates = {
-            str((REPO_ROOT / "Persona" / "summary_gpt51_val.jsonl").resolve()).lower(),
+            str((REPO_ROOT / "Persona" / "archetype_oracle_gpt51_val.jsonl").resolve()).lower(),
             str(
                 (
                     REPO_ROOT
@@ -47,10 +47,10 @@ def classify_variant(config: Dict[str, Any]) -> str:
                     / "benchmark"
                     / "cache"
                     / "archetype"
-                    / "summary_gpt51_learn_val_union_finished.jsonl"
+                    / "archetype_oracle_gpt51_learn_val_union_finished.jsonl"
                 ).resolve()
             ).lower(),
-            "persona/summary_gpt51_val.jsonl",
+            "persona/archetype_oracle_gpt51_val.jsonl",
         }
         if pool_lower in oracle_candidates:
             return "oracle_archetype"

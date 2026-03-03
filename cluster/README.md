@@ -4,7 +4,7 @@ This folder contains a clean, standalone pipeline to cluster persona-style JSONL
 
 ## What this pipeline does
 
-Given one input JSONL file (for example `summary_gpt51_learn.jsonl`), it will:
+Given one input JSONL file (for example `archetype_oracle_gpt51_learn.jsonl`), it will:
 
 1. Read all rows and normalize the text field.
 2. Build embeddings (default: OpenAI `text-embedding-3-large`).
@@ -52,8 +52,8 @@ Run from the repository root:
 
 ```bash
 python3 cluster/cluster_pipeline.py \
-  --input-jsonl Persona/summary_gpt51_learn.jsonl \
-  --output-jsonl cluster/output/summary_gpt51_learn_clustered.jsonl \
+  --input-jsonl Persona/archetype_oracle_gpt51_learn.jsonl \
+  --output-jsonl cluster/output/archetype_oracle_gpt51_learn_clustered.jsonl \
   --cluster-space embedding \
   --summary-backend keywords
 ```
@@ -63,21 +63,21 @@ python3 cluster/cluster_pipeline.py \
 This wrapper reads persona JSONL with inline section tags (e.g., `<CONTRIBUTION> ...`),
 splits per tag, and runs clustering for all tags.
 
-Learn (from `Persona/summary_gpt51_learn.jsonl`):
+Learn (from `Persona/archetype_oracle_gpt51_learn.jsonl`):
 
 ```bash
 python3 cluster/run_tag_section_clustering.py \
-  --input-jsonl Persona/summary_gpt51_learn.jsonl \
+  --input-jsonl Persona/archetype_oracle_gpt51_learn.jsonl \
   --output-root Persona/misc/tag_section_clusters_openai_learn \
   --cluster-space embedding \
   --summary-backend keywords
 ```
 
-Validation (from `Persona/summary_gpt51_val.jsonl`):
+Validation (from `Persona/archetype_oracle_gpt51_val.jsonl`):
 
 ```bash
 python3 cluster/run_tag_section_clustering.py \
-  --input-jsonl Persona/summary_gpt51_val.jsonl \
+  --input-jsonl Persona/archetype_oracle_gpt51_val.jsonl \
   --output-root Persona/misc/tag_section_clusters_openai_val \
   --cluster-space embedding \
   --summary-backend keywords
@@ -87,7 +87,7 @@ Validation with integrated LLM polishing + overlap guard:
 
 ```bash
 python3 cluster/run_tag_section_clustering.py \
-  --input-jsonl Persona/summary_gpt51_val.jsonl \
+  --input-jsonl Persona/archetype_oracle_gpt51_val.jsonl \
   --output-root Persona/misc/tag_section_clusters_openai_val \
   --cluster-space embedding \
   --summary-backend keywords \

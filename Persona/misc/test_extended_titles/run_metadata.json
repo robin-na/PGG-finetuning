@@ -1,5 +1,5 @@
 {
-  "input_path": "summary_gpt51_learn.jsonl",
+  "input_path": "archetype_oracle_gpt51_learn.jsonl",
   "rows_total": 3912,
   "rows_used": 3691,
   "only_finished": true,

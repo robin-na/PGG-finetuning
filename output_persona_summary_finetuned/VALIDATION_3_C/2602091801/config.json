@@ -35,7 +35,7 @@
     "include_reasoning": true,
     "persona": "finetuned_summary",
     "persona_pool": "Persona/transcripts_learn.jsonl",
-    "persona_summary_pool": "Persona/summary_gpt51_learn.jsonl",
+    "persona_summary_pool": "Persona/archetype_oracle_gpt51_learn.jsonl",
     "persona_finetuned_pool": "Persona/LLM_mapped/Qwen/Qwen3-8B/persona_type_outputs.jsonl",
     "max_parallel_games": 1,
     "debug_print": false,

@@ -1,6 +1,6 @@
 {
   "config": {
-    "input_path": "summary_gpt51_learn.jsonl",
+    "input_path": "archetype_oracle_gpt51_learn.jsonl",
     "split_tags": [
       "PUNISHMENT",
       "REWARD",

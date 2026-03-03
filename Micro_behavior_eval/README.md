@@ -34,7 +34,7 @@ If `--data_root` is set, default CSV inputs are auto-resolved as:
   - same provider/model controls (`local` or `openai`)
 - Optional archetype conditioning:
   - `--archetype matched_summary` or `--archetype random_summary`
-  - default summary pool: `Persona/summary_gpt51_val.jsonl`
+  - default summary pool: `Persona/archetype_oracle_gpt51_val.jsonl`
   - archetype text is prepended as `# YOUR ARCHETYPE` with `<SUMMARY STARTS> ... <SUMMARY ENDS>`
 
 ## Run
@@ -62,7 +62,7 @@ python Micro_behavior_eval/run_micro_behavior_eval.py \
 
 python Micro_behavior_eval/run_micro_behavior_eval.py \
   --archetype matched_summary \
-  --archetype_summary_pool Persona/summary_gpt51_val.jsonl
+  --archetype_summary_pool Persona/archetype_oracle_gpt51_val.jsonl
 ```
 
 Benchmark split example via `--data_root`:
@@ -72,7 +72,7 @@ python Micro_behavior_eval/run_micro_behavior_eval.py \
   --data_root benchmark/data_ood_splits/all_or_nothing/false_to_true \
   --wave validation_wave \
   --archetype matched_summary \
-  --archetype_summary_pool outputs/benchmark/cache/archetype/summary_gpt51_learn_val_union_finished.jsonl \
+  --archetype_summary_pool outputs/benchmark/cache/archetype/archetype_oracle_gpt51_learn_val_union_finished.jsonl \
   --output_root outputs/benchmark/runs/benchmark_ood/all_or_nothing/false_to_true/micro_behavior_eval/oracle_archetype
 ```
 
@@ -80,7 +80,7 @@ Four-way archetype comparison setup:
 
 - `no archetype`: omit `--archetype`
 - `random archetype`: `--archetype random_summary --archetype_summary_pool <pool_jsonl>`
-- `oracle archetype`: `--archetype matched_summary --archetype_summary_pool Persona/summary_gpt51_val.jsonl`
+- `oracle archetype`: `--archetype matched_summary --archetype_summary_pool Persona/archetype_oracle_gpt51_val.jsonl`
 - `retrieved archetype`: `--archetype matched_summary --archetype_summary_pool <retrieved_jsonl>`
 
 ## Output

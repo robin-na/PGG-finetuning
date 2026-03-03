@@ -1,6 +1,6 @@
 {
   "config": {
-    "input_jsonl": "Persona/summary_gpt51_val.jsonl",
+    "input_jsonl": "Persona/archetype_oracle_gpt51_val.jsonl",
     "output_dir": "Persona/archetype_retrieval/validation_wave",
     "text_column": "text",
     "tags": [

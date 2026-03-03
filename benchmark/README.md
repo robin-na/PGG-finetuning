@@ -76,14 +76,14 @@ Default outputs:
 - `outputs/benchmark/runs/<split-relative-path>/micro_behavior_eval/<variant>/<run_id>`
 - `outputs/benchmark/runs/<split-relative-path>/archetype_retrieval/model_runs`
 - `outputs/benchmark/runs/<split-relative-path>/run_index.json`
-- `outputs/benchmark/cache/archetype/summary_gpt51_learn_val_union_finished.jsonl`
+- `outputs/benchmark/cache/archetype/archetype_oracle_gpt51_learn_val_union_finished.jsonl`
 
 Micro eval wiring uses:
 - `Micro_behavior_eval/run_micro_behavior_eval.py --data_root <split-root> --wave validation_wave`
 - Archetype options:
   - `--archetype-mode none`
   - `--archetype-mode random_summary --archetype-summary-pool <pool_jsonl>`
-  - `--archetype-mode matched_summary --archetype-summary-pool Persona/summary_gpt51_val.jsonl` (oracle)
+  - `--archetype-mode matched_summary --archetype-summary-pool Persona/archetype_oracle_gpt51_val.jsonl` (oracle)
   - `--archetype-mode matched_summary --archetype-summary-pool <retrieved_jsonl>` (retrieved)
 
 `run_index.json` tracks the latest pointers for that split:
