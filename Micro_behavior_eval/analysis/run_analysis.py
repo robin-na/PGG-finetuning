@@ -54,6 +54,7 @@ METRIC_DIRECTION = {
 class AnalysisArgs:
     eval_csv: Optional[str]
     run_id: Optional[str]
+    eval_root: str
     compare_run_ids: Optional[str]
     compare_labels: Optional[str]
     analysis_root: str
@@ -75,15 +76,15 @@ def _split_csv_arg(value: Optional[str]) -> List[str]:
     return [x.strip() for x in str(value).split(",") if x.strip()]
 
 
-def _resolve_run_eval_csv(run_id: str) -> Path:
-    return (PROJECT_ROOT / "Micro_behavior_eval" / "output" / run_id / "micro_behavior_eval.csv").resolve()
+def _resolve_run_eval_csv(run_id: str, eval_root: str) -> Path:
+    return (Path(eval_root).resolve() / run_id / "micro_behavior_eval.csv").resolve()
 
 
-def _resolve_input_eval_csv(eval_csv: Optional[str], run_id: Optional[str]) -> Path:
+def _resolve_input_eval_csv(eval_csv: Optional[str], run_id: Optional[str], eval_root: str) -> Path:
     if eval_csv:
         return Path(eval_csv).resolve()
     if run_id:
-        return _resolve_run_eval_csv(run_id)
+        return _resolve_run_eval_csv(run_id, eval_root=eval_root)
     raise ValueError("Provide --eval_csv or --run_id.")
 
 
@@ -95,13 +96,21 @@ def _is_subpath(path: Path, root: Path) -> bool:
         return False
 
 
-def _ensure_output_safety(out_dir: Path) -> None:
-    forbidden_root = (PROJECT_ROOT / "Micro_behavior_eval" / "output").resolve()
-    if _is_subpath(out_dir.resolve(), forbidden_root):
-        raise ValueError(
-            f"Unsafe analysis output path: {out_dir}. "
-            f"Analysis output must not be under {forbidden_root}."
-        )
+def _ensure_output_safety(out_dir: Path, eval_root: Optional[Path] = None) -> None:
+    forbidden_roots = [
+        (PROJECT_ROOT / "Micro_behavior_eval" / "output").resolve(),  # legacy location
+        (PROJECT_ROOT / "outputs" / "default" / "runs" / "source_default" / "micro_behavior_eval").resolve(),
+    ]
+    if eval_root is not None:
+        forbidden_roots.append(eval_root.resolve())
+
+    out_resolved = out_dir.resolve()
+    for forbidden_root in forbidden_roots:
+        if _is_subpath(out_resolved, forbidden_root):
+            raise ValueError(
+                f"Unsafe analysis output path: {out_dir}. "
+                f"Analysis output must not be under {forbidden_root}."
+            )
 
 
 def _prepare_scored(
@@ -578,7 +587,7 @@ def _build_run_color_map(run_order: List[str]) -> Dict[str, Any]:
 
 
 def _run_single_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, Any]:
-    input_csv = _resolve_input_eval_csv(args.eval_csv, args.run_id)
+    input_csv = _resolve_input_eval_csv(args.eval_csv, args.run_id, args.eval_root)
     scored_df, filter_summary, parse_summary = _prepare_scored(
         input_csv=input_csv,
         min_round=args.min_round,
@@ -642,6 +651,7 @@ def _run_single_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, Any]
         "args": {
             "eval_csv": args.eval_csv,
             "run_id": args.run_id,
+            "eval_root": args.eval_root,
             "analysis_root": args.analysis_root,
             "analysis_run_id": output_dir.name,
             "min_round": args.min_round,
@@ -692,7 +702,7 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
     run_summaries: List[Dict[str, Any]] = []
 
     for run_id, run_label in zip(run_ids, labels):
-        input_csv = _resolve_run_eval_csv(run_id)
+        input_csv = _resolve_run_eval_csv(run_id, eval_root=args.eval_root)
         scored_df, filter_summary, parse_summary = _prepare_scored(
             input_csv=input_csv,
             min_round=args.min_round,
@@ -829,6 +839,7 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
             "compare_run_ids": run_ids,
             "compare_labels": labels,
             "run_colors": run_color_map,
+            "eval_root": args.eval_root,
             "analysis_root": args.analysis_root,
             "analysis_run_id": output_dir.name,
             "min_round": args.min_round,
@@ -869,7 +880,7 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
 def run_analysis(args: AnalysisArgs) -> Dict[str, Any]:
     analysis_run_id = args.analysis_run_id or _timestamp_id()
     output_dir = Path(args.analysis_root).resolve() / analysis_run_id
-    _ensure_output_safety(output_dir)
+    _ensure_output_safety(output_dir, eval_root=Path(args.eval_root))
     output_dir.mkdir(parents=True, exist_ok=True)
 
     compare_run_ids = _split_csv_arg(args.compare_run_ids)
@@ -887,7 +898,13 @@ def build_parser() -> argparse.ArgumentParser:
         "--run_id",
         type=str,
         default=None,
-        help="Run id under Micro_behavior_eval/output/<run_id>/micro_behavior_eval.csv",
+        help="Run id under --eval_root/<run_id>/micro_behavior_eval.csv",
+    )
+    parser.add_argument(
+        "--eval_root",
+        type=str,
+        default="outputs/default/runs/source_default/micro_behavior_eval",
+        help="Root directory that contains micro eval run folders.",
     )
     parser.add_argument(
         "--compare_run_ids",
@@ -904,7 +921,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--analysis_root",
         type=str,
-        default="Micro_behavior_eval/analysis_results",
+        default="reports/default/micro_behavior",
         help="Root directory for analysis artifacts.",
     )
     parser.add_argument("--analysis_run_id", type=str, default=None, help="Output analysis run id (default: timestamp).")
@@ -932,6 +949,7 @@ def parse_cli_args(argv: Optional[list[str]] = None) -> AnalysisArgs:
     return AnalysisArgs(
         eval_csv=ns.eval_csv,
         run_id=ns.run_id,
+        eval_root=ns.eval_root,
         compare_run_ids=ns.compare_run_ids,
         compare_labels=ns.compare_labels,
         analysis_root=ns.analysis_root,

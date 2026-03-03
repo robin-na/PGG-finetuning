@@ -27,6 +27,12 @@ output_arch/
 analysis_output_Robin/
 analysis_outputs/
 
+# Benchmark generated outputs (large / reproducible)
+outputs/benchmark/runs/
+outputs/benchmark/logs/
+outputs/benchmark/cache/
+outputs/default/runs/source_default/micro_behavior_eval/*/*/micro_behavior_debug.jsonl
+
 # Finetuning artifacts
 Finetuning/out_persona_types_lora
 

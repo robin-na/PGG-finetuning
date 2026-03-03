@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import os
 import sys
 from dataclasses import dataclass, field
@@ -17,6 +18,13 @@ if REPO_ROOT not in sys.path:
 
 from evaluator import run_micro_behavior_eval  # noqa: E402
 from utils import log  # noqa: E402
+
+
+DEFAULT_ROUNDS_CSV = "data/raw_data/validation_wave/player-rounds.csv"
+DEFAULT_ANALYSIS_CSV = "data/processed_data/df_analysis_val.csv"
+DEFAULT_DEMOGRAPHICS_CSV = "demographics/demographics_numeric_val.csv"
+DEFAULT_PLAYERS_CSV = "data/raw_data/validation_wave/players.csv"
+DEFAULT_GAMES_CSV = "data/raw_data/validation_wave/games.csv"
 
 
 @dataclass
@@ -38,13 +46,26 @@ class Args:
     adapter_path: Optional[str] = field(default="out/llama31-8b-lora-pgg-ptc/checkpoint-489")
     use_peft: bool = field(default=True)
 
-    rounds_csv: str = field(default="data/raw_data/validation_wave/player-rounds.csv")
-    analysis_csv: str = field(default="data/processed_data/df_analysis_val.csv")
-    demographics_csv: str = field(default="demographics/demographics_numeric_val.csv")
-    players_csv: str = field(default="data/raw_data/validation_wave/players.csv")
-    games_csv: str = field(default="data/raw_data/validation_wave/games.csv")
+    data_root: Optional[str] = field(
+        default=None,
+        metadata={
+            "help": (
+                "Optional dataset root containing raw_data/ processed_data/ demographics/. "
+                "If set, default CSV inputs are auto-resolved from this root."
+            )
+        },
+    )
+    wave: str = field(
+        default="validation_wave",
+        metadata={"help": "Wave used for raw_data path and *_val/*_learn file selection."},
+    )
+    rounds_csv: str = field(default=DEFAULT_ROUNDS_CSV)
+    analysis_csv: str = field(default=DEFAULT_ANALYSIS_CSV)
+    demographics_csv: str = field(default=DEFAULT_DEMOGRAPHICS_CSV)
+    players_csv: str = field(default=DEFAULT_PLAYERS_CSV)
+    games_csv: str = field(default=DEFAULT_GAMES_CSV)
 
-    output_root: str = field(default="Micro_behavior_eval/output")
+    output_root: str = field(default="outputs/default/runs/source_default/micro_behavior_eval")
     run_id: Optional[str] = field(default=None)
     rows_out_path: str = field(default="output/micro_behavior_eval.csv")
     transcripts_out_path: Optional[str] = field(default="output/history_transcripts.jsonl")
@@ -74,13 +95,21 @@ class Args:
         default=False,
         metadata={"help": "If true, request a short reasoning field in JSON outputs."},
     )
+    archetype: Optional[str] = field(
+        default=None,
+        metadata={"help": "Optional archetype mode: matched_summary | random_summary"},
+    )
+    archetype_summary_pool: str = field(
+        default="Persona/summary_gpt51_val.jsonl",
+        metadata={"help": "JSONL file containing archetype summary entries."},
+    )
     persona: Optional[str] = field(
         default=None,
-        metadata={"help": "Optional persona mode: matched_summary | random_summary"},
+        metadata={"help": argparse.SUPPRESS},
     )
-    persona_summary_pool: str = field(
-        default="Persona/summary_gpt51_val.jsonl",
-        metadata={"help": "JSONL file containing persona summary entries."},
+    persona_summary_pool: Optional[str] = field(
+        default=None,
+        metadata={"help": argparse.SUPPRESS},
     )
     max_parallel_games: int = field(
         default=1,
@@ -99,6 +128,8 @@ class Args:
 
 
 def main(args: Args):
+    _normalize_archetype_args(args)
+    _apply_data_root_paths(args)
     _, output_paths = run_micro_behavior_eval(args)
     if args.debug_print:
         log(f"[micro] outputs directory -> {output_paths.get('directory')}")
@@ -106,6 +137,72 @@ def main(args: Args):
         log(f"[micro] transcripts -> {output_paths.get('transcripts')}")
         log(f"[micro] debug -> {output_paths.get('debug')}")
         log(f"[micro] config -> {output_paths.get('config')}")
+
+
+def _apply_data_root_paths(args: Args) -> None:
+    data_root = str(getattr(args, "data_root", "") or "").strip()
+    if not data_root:
+        return
+
+    wave = str(getattr(args, "wave", "validation_wave") or "validation_wave").strip()
+    if wave not in {"validation_wave", "learning_wave"}:
+        raise ValueError(
+            f"Unsupported --wave '{wave}'. Allowed values: validation_wave, learning_wave."
+        )
+
+    root = data_root
+    analysis_name = "df_analysis_val.csv" if wave == "validation_wave" else "df_analysis_learn.csv"
+    demographics_name = (
+        "demographics_numeric_val.csv"
+        if wave == "validation_wave"
+        else "demographics_numeric_learn.csv"
+    )
+
+    derived = {
+        "rounds_csv": os.path.join(root, "raw_data", wave, "player-rounds.csv"),
+        "analysis_csv": os.path.join(root, "processed_data", analysis_name),
+        "demographics_csv": os.path.join(root, "demographics", demographics_name),
+        "players_csv": os.path.join(root, "raw_data", wave, "players.csv"),
+        "games_csv": os.path.join(root, "raw_data", wave, "games.csv"),
+    }
+
+    default_values = {
+        "rounds_csv": DEFAULT_ROUNDS_CSV,
+        "analysis_csv": DEFAULT_ANALYSIS_CSV,
+        "demographics_csv": DEFAULT_DEMOGRAPHICS_CSV,
+        "players_csv": DEFAULT_PLAYERS_CSV,
+        "games_csv": DEFAULT_GAMES_CSV,
+    }
+
+    # Respect explicit CSV overrides; auto-fill only when still on the built-in defaults (or blank).
+    for key, path in derived.items():
+        current = str(getattr(args, key, "") or "").strip()
+        if (not current) or (current == default_values[key]):
+            setattr(args, key, path)
+
+
+def _normalize_archetype_args(args: Args) -> None:
+    archetype_mode = str(getattr(args, "archetype", "") or "").strip()
+    persona_mode = str(getattr(args, "persona", "") or "").strip()
+    if archetype_mode and persona_mode and archetype_mode != persona_mode:
+        raise ValueError(
+            "Conflicting values for --archetype and deprecated --persona."
+        )
+    if not archetype_mode:
+        archetype_mode = persona_mode
+    args.archetype = archetype_mode or None
+
+    archetype_pool = str(getattr(args, "archetype_summary_pool", "") or "").strip()
+    persona_pool = str(getattr(args, "persona_summary_pool", "") or "").strip()
+    if archetype_pool and persona_pool and archetype_pool != persona_pool:
+        raise ValueError(
+            "Conflicting values for --archetype_summary_pool and deprecated --persona_summary_pool."
+        )
+    if not archetype_pool:
+        archetype_pool = persona_pool
+    args.archetype_summary_pool = archetype_pool or "Persona/summary_gpt51_val.jsonl"
+    args.persona = None
+    args.persona_summary_pool = None
 
 
 if __name__ == "__main__":

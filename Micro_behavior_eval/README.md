@@ -6,11 +6,21 @@ It predicts each player's behavior in round `T` from game history through `T-1`,
 
 ## Defaults
 
+- `--data_root`: unset (optional convenience root)
+- `--wave`: `validation_wave`
+- `--output_root`: `outputs/default/runs/source_default/micro_behavior_eval`
 - `--rounds_csv`: `data/raw_data/validation_wave/player-rounds.csv`
 - `--analysis_csv`: `data/processed_data/df_analysis_val.csv`
 - `--demographics_csv`: `demographics/demographics_numeric_val.csv`
 - `--players_csv`: `data/raw_data/validation_wave/players.csv`
 - `--games_csv`: `data/raw_data/validation_wave/games.csv`
+
+If `--data_root` is set, default CSV inputs are auto-resolved as:
+- `raw_data/<wave>/player-rounds.csv`
+- `raw_data/<wave>/players.csv`
+- `raw_data/<wave>/games.csv`
+- `processed_data/df_analysis_val.csv` or `df_analysis_learn.csv` (based on `--wave`)
+- `demographics/demographics_numeric_val.csv` or `demographics_numeric_learn.csv` (based on `--wave`)
 
 ## Prompt/Context behavior
 
@@ -22,10 +32,10 @@ It predicts each player's behavior in round `T` from game history through `T-1`,
   - contribution / actions stages only (no round-`T` chat prediction)
   - optional reasoning via `--include_reasoning`
   - same provider/model controls (`local` or `openai`)
-- Optional persona conditioning:
-  - `--persona matched_summary` or `--persona random_summary`
+- Optional archetype conditioning:
+  - `--archetype matched_summary` or `--archetype random_summary`
   - default summary pool: `Persona/summary_gpt51_val.jsonl`
-  - persona text is prepended as `# YOUR PERSONA` with `<SUMMARY STARTS> ... <SUMMARY ENDS>`
+  - archetype text is prepended as `# YOUR ARCHETYPE` with `<SUMMARY STARTS> ... <SUMMARY ENDS>`
 
 ## Run
 
@@ -51,13 +61,31 @@ python Micro_behavior_eval/run_micro_behavior_eval.py \
   --max_games 2
 
 python Micro_behavior_eval/run_micro_behavior_eval.py \
-  --persona matched_summary \
-  --persona_summary_pool Persona/summary_gpt51_val.jsonl
+  --archetype matched_summary \
+  --archetype_summary_pool Persona/summary_gpt51_val.jsonl
 ```
+
+Benchmark split example via `--data_root`:
+
+```bash
+python Micro_behavior_eval/run_micro_behavior_eval.py \
+  --data_root benchmark/data_ood_splits/all_or_nothing/false_to_true \
+  --wave validation_wave \
+  --archetype matched_summary \
+  --archetype_summary_pool outputs/benchmark/cache/archetype/summary_gpt51_learn_val_union_finished.jsonl \
+  --output_root outputs/benchmark/runs/benchmark_ood/all_or_nothing/false_to_true/micro_behavior_eval/oracle_archetype
+```
+
+Four-way archetype comparison setup:
+
+- `no archetype`: omit `--archetype`
+- `random archetype`: `--archetype random_summary --archetype_summary_pool <pool_jsonl>`
+- `oracle archetype`: `--archetype matched_summary --archetype_summary_pool Persona/summary_gpt51_val.jsonl`
+- `retrieved archetype`: `--archetype matched_summary --archetype_summary_pool <retrieved_jsonl>`
 
 ## Output
 
-Each run writes a timestamped folder under `Micro_behavior_eval/output/<run_id_or_timestamp>/` with:
+Each run writes a timestamped folder under `outputs/default/runs/source_default/micro_behavior_eval/<run_id_or_timestamp>/` with:
 
 - `micro_behavior_eval.csv`: prediction/eval rows
 - `history_transcripts.jsonl`: transcript-form histories used by the pipeline
@@ -75,3 +103,27 @@ The CSV includes:
 - predicted contribution, punishment/reward dictionaries
 - actual round-`T` behavior from data
 - parsing flags and simple contribution error (`contribution_abs_error`)
+
+## Analysis
+
+Run analysis on a produced run:
+
+```bash
+python Micro_behavior_eval/analysis/run_analysis.py \
+  --run_id <run_id>
+```
+
+For benchmark outputs, point to the benchmark eval root:
+
+```bash
+python Micro_behavior_eval/analysis/run_analysis.py \
+  --eval_root outputs/benchmark/runs/benchmark_ood/all_or_nothing/false_to_true/micro_behavior_eval \
+  --run_id oracle_archetype/<run_id>
+```
+
+Default analysis output root:
+- `reports/default/micro_behavior/<analysis_run_id>/`
+
+For original `data/` runs, use:
+- `--eval_root outputs/default/runs/source_default/micro_behavior_eval`
+- `--analysis_root reports/default/micro_behavior`

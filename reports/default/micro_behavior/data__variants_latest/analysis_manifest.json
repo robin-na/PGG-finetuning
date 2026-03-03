@@ -1,0 +1,139 @@
+{
+  "mode": "comparison",
+  "timestamp": "2026-03-02T17:19:39.203992",
+  "output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest",
+  "filters": {
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true
+  },
+  "comparison_runs": [
+    {
+      "run_id": "no_archetype/2602262019",
+      "run_label": "no archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/default/runs/source_default/micro_behavior_eval/no_archetype/2602262019/micro_behavior_eval.csv",
+      "pre_filter_rows": 2810,
+      "post_filter_rows": 2810,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      }
+    },
+    {
+      "run_id": "random_archetype/2602270902",
+      "run_label": "random archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/default/runs/source_default/micro_behavior_eval/random_archetype/2602270902/micro_behavior_eval.csv",
+      "pre_filter_rows": 5134,
+      "post_filter_rows": 5134,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      }
+    },
+    {
+      "run_id": "oracle_archetype/2602270203",
+      "run_label": "oracle archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/default/runs/source_default/micro_behavior_eval/oracle_archetype/2602270203/micro_behavior_eval.csv",
+      "pre_filter_rows": 4873,
+      "post_filter_rows": 4873,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      }
+    },
+    {
+      "run_id": "retrieved_archetype/2602270212",
+      "run_label": "retrieved archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/default/runs/source_default/micro_behavior_eval/retrieved_archetype/2602270212/micro_behavior_eval.csv",
+      "pre_filter_rows": 5158,
+      "post_filter_rows": 5158,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      }
+    }
+  ],
+  "generated_files": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_overall.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_by_round.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_by_game.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_overall_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_by_round_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_significance.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_summary.md",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_action_exact_match.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_target_hit_any.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_by_round_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_by_round_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/analysis_manifest.json"
+  ],
+  "args": {
+    "compare_run_ids": [
+      "no_archetype/2602262019",
+      "random_archetype/2602270902",
+      "oracle_archetype/2602270203",
+      "retrieved_archetype/2602270212"
+    ],
+    "compare_labels": [
+      "no archetype",
+      "random archetype",
+      "oracle archetype",
+      "retrieved archetype"
+    ],
+    "run_colors": {
+      "no archetype": "#1f77b4",
+      "random archetype": "#ff7f0e",
+      "oracle archetype": "#2ca02c",
+      "retrieved archetype": "#d62728"
+    },
+    "eval_root": "outputs/default/runs/source_default/micro_behavior_eval",
+    "analysis_root": "reports/default/micro_behavior",
+    "analysis_run_id": "data__variants_latest",
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true,
+    "dpi": 160,
+    "debug_print": false
+  },
+  "metrics_columns": [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "action_exact_match",
+    "target_set_exact",
+    "target_precision",
+    "target_recall",
+    "target_f1",
+    "target_jaccard",
+    "target_hit_any",
+    "unit_mae_on_overlap",
+    "unit_exact_on_overlap_rate",
+    "actual_any_action_rate",
+    "pred_any_action_rate",
+    "actual_any_punish_rate",
+    "pred_any_punish_rate",
+    "actual_any_reward_rate",
+    "pred_any_reward_rate"
+  ]
+}

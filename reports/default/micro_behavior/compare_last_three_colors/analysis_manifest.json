@@ -1,0 +1,120 @@
+{
+  "mode": "comparison",
+  "timestamp": "2026-02-27T08:47:31.851351",
+  "output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors",
+  "filters": {
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true
+  },
+  "comparison_runs": [
+    {
+      "run_id": "2602262019",
+      "run_label": "no archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/output/2602262019/micro_behavior_eval.csv",
+      "pre_filter_rows": 2810,
+      "post_filter_rows": 2810,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      }
+    },
+    {
+      "run_id": "2602270203",
+      "run_label": "oracle archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/output/2602270203/micro_behavior_eval.csv",
+      "pre_filter_rows": 4373,
+      "post_filter_rows": 4373,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      }
+    },
+    {
+      "run_id": "2602270212",
+      "run_label": "retrieved archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/output/2602270212/micro_behavior_eval.csv",
+      "pre_filter_rows": 4590,
+      "post_filter_rows": 4590,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      }
+    }
+  ],
+  "generated_files": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/comparison_overall.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/comparison_by_round.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/comparison_by_game.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/comparison_overall_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/comparison_by_round_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/comparison_significance.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/comparison_summary.md",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/compare_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/compare_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/compare_action_exact_match.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/compare_target_hit_any.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/compare_by_round_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/compare_by_round_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Micro_behavior_eval/analysis_results/compare_last_three_colors/analysis_manifest.json"
+  ],
+  "args": {
+    "compare_run_ids": [
+      "2602262019",
+      "2602270203",
+      "2602270212"
+    ],
+    "compare_labels": [
+      "no archetype",
+      "oracle archetype",
+      "retrieved archetype"
+    ],
+    "run_colors": {
+      "no archetype": "#1f77b4",
+      "oracle archetype": "#ff7f0e",
+      "retrieved archetype": "#2ca02c"
+    },
+    "analysis_root": "Micro_behavior_eval/analysis_results",
+    "analysis_run_id": "compare_last_three_colors",
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true,
+    "dpi": 160,
+    "debug_print": false
+  },
+  "metrics_columns": [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "action_exact_match",
+    "target_set_exact",
+    "target_precision",
+    "target_recall",
+    "target_f1",
+    "target_jaccard",
+    "target_hit_any",
+    "unit_mae_on_overlap",
+    "unit_exact_on_overlap_rate",
+    "actual_any_action_rate",
+    "pred_any_action_rate",
+    "actual_any_punish_rate",
+    "pred_any_punish_rate",
+    "actual_any_reward_rate",
+    "pred_any_reward_rate"
+  ]
+}

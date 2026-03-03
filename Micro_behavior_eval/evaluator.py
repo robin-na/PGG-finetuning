@@ -128,24 +128,24 @@ class GameContext:
 
 
 @dataclass
-class PersonaSummaryPool:
+class ArchetypeSummaryPool:
     all_records: List[Dict[str, str]]
     by_game_player: Dict[str, Dict[str, Dict[str, str]]]
 
 
-SUMMARY_PERSONA_INTRO = (
-    "Below is a summary of how you have been playing a different PGG in the past, "
-    "which defines your personality. Be aware of this personality as you make decisions. "
+SUMMARY_ARCHETYPE_INTRO = (
+    "Below is an archetype summary of how you played a different PGG in the past. "
+    "Be aware of this archetype as you make decisions. "
     "Recall that you're probably playing games with different people from the past, and "
     "that the exact rules of this game could differ from the ones you've played before."
 )
 
 
-def _load_persona_summary_pool(path: str) -> PersonaSummaryPool:
+def _load_archetype_summary_pool(path: str) -> ArchetypeSummaryPool:
     if not path:
-        raise ValueError("persona_summary_pool path must be set when persona mode is enabled")
+        raise ValueError("archetype_summary_pool path must be set when archetype mode is enabled")
     if not os.path.exists(path):
-        raise FileNotFoundError(f"persona summary pool file not found: {path}")
+        raise FileNotFoundError(f"archetype summary pool file not found: {path}")
     all_records: List[Dict[str, str]] = []
     by_game_player: Dict[str, Dict[str, Dict[str, str]]] = {}
     with open(path, "r", encoding="utf-8") as f:
@@ -175,15 +175,15 @@ def _load_persona_summary_pool(path: str) -> PersonaSummaryPool:
                 if participant not in game_map:
                     game_map[participant] = entry
     if not all_records:
-        raise ValueError(f"No finished-game persona summary records found in {path}")
-    return PersonaSummaryPool(all_records=all_records, by_game_player=by_game_player)
+        raise ValueError(f"No finished-game archetype summary records found in {path}")
+    return ArchetypeSummaryPool(all_records=all_records, by_game_player=by_game_player)
 
 
-def _assign_summary_personas(
+def _assign_summary_archetypes(
     ctx: GameContext,
     mode: str,
     seed: int,
-    pool: PersonaSummaryPool,
+    pool: ArchetypeSummaryPool,
 ) -> Dict[str, Dict[str, str]]:
     if mode == "matched_summary":
         game_map = pool.by_game_player.get(ctx.game_id, {})
@@ -191,9 +191,9 @@ def _assign_summary_personas(
         if missing:
             sample_missing = ", ".join(missing[:5])
             log(
-                f"[warn] matched_summary missing persona summaries for gameId={ctx.game_id}, "
+                f"[warn] matched_summary missing archetype summaries for gameId={ctx.game_id}, "
                 f"missing_playerIds={sample_missing}, total_missing={len(missing)}; "
-                "continuing without persona for missing players."
+                "continuing without archetype for missing players."
             )
         return {pid: game_map[pid] for pid in ctx.player_ids if pid in game_map}
 
@@ -1004,44 +1004,58 @@ def build_eval_rows(
     return rows
 
 
+def _resolve_archetype_mode(args: Any) -> str:
+    archetype_mode = str(getattr(args, "archetype", None) or "").strip()
+    if archetype_mode:
+        return archetype_mode
+    return str(getattr(args, "persona", None) or "").strip()
+
+
+def _resolve_archetype_pool_path(args: Any) -> str:
+    archetype_pool = str(getattr(args, "archetype_summary_pool", None) or "").strip()
+    if archetype_pool:
+        return archetype_pool
+    return str(getattr(args, "persona_summary_pool", None) or "").strip()
+
+
 def evaluate_game(
     ctx: GameContext,
     client: LLMClient,
     tok: Optional[Any],
     args: Any,
-    persona_summary_pool: Optional[PersonaSummaryPool],
+    archetype_summary_pool: Optional[ArchetypeSummaryPool],
     debug_records: List[Dict[str, Any]],
     debug_full_records: List[Dict[str, Any]],
     on_round_rows: Optional[Callable[[List[Dict[str, Any]]], None]] = None,
 ) -> Tuple[List[Dict[str, Any]], Dict[str, List[str]]]:
     transcripts: Dict[str, List[str]] = {}
-    persona_mode = str(getattr(args, "persona", None) or "").strip()
-    assigned_personas: Dict[str, Dict[str, str]] = {}
-    if persona_mode:
-        if persona_mode not in {"matched_summary", "random_summary"}:
+    archetype_mode = _resolve_archetype_mode(args)
+    assigned_archetypes: Dict[str, Dict[str, str]] = {}
+    if archetype_mode:
+        if archetype_mode not in {"matched_summary", "random_summary"}:
             raise ValueError(
-                f"Unsupported persona mode '{persona_mode}'. Allowed values: matched_summary, random_summary."
+                f"Unsupported archetype mode '{archetype_mode}'. Allowed values: matched_summary, random_summary."
             )
-        if persona_summary_pool is None:
-            raise ValueError("persona_summary_pool must be loaded when persona mode is enabled.")
-        assigned_personas = _assign_summary_personas(
+        if archetype_summary_pool is None:
+            raise ValueError("archetype_summary_pool must be loaded when archetype mode is enabled.")
+        assigned_archetypes = _assign_summary_archetypes(
             ctx=ctx,
-            mode=persona_mode,
+            mode=archetype_mode,
             seed=int(getattr(args, "seed", 0)),
-            pool=persona_summary_pool,
+            pool=archetype_summary_pool,
         )
 
     for pid in ctx.player_ids:
         lines: List[str] = []
-        if persona_mode:
-            persona_record = assigned_personas.get(pid)
-            if persona_record and persona_record.get("text"):
+        if archetype_mode:
+            archetype_record = assigned_archetypes.get(pid)
+            if archetype_record and archetype_record.get("text"):
                 lines.extend(
                     [
-                        "# YOUR PERSONA",
-                        SUMMARY_PERSONA_INTRO,
+                        "# YOUR ARCHETYPE",
+                        SUMMARY_ARCHETYPE_INTRO,
                         "<SUMMARY STARTS>",
-                        persona_record["text"],
+                        archetype_record["text"],
                         "<SUMMARY ENDS>",
                     ]
                 )
@@ -1097,8 +1111,8 @@ def _model_config(args: Any, run_ts: str) -> Dict[str, Any]:
         "contrib_max_new_tokens",
         "actions_max_new_tokens",
         "include_reasoning",
-        "persona",
-        "persona_summary_pool",
+        "archetype",
+        "archetype_summary_pool",
         "start_round",
         "game_ids",
         "max_games",
@@ -1198,20 +1212,20 @@ def run_micro_behavior_eval(args: Any) -> Tuple[pd.DataFrame, Dict[str, Optional
     if args.max_parallel_games and int(args.max_parallel_games) > 1:
         log("[warn] max_parallel_games is currently not used in this pipeline; running sequentially.")
 
-    persona_mode = str(getattr(args, "persona", None) or "").strip()
-    if persona_mode and persona_mode not in {"matched_summary", "random_summary"}:
+    archetype_mode = _resolve_archetype_mode(args)
+    if archetype_mode and archetype_mode not in {"matched_summary", "random_summary"}:
         raise ValueError(
-            f"Unsupported persona mode '{persona_mode}'. Allowed values: matched_summary, random_summary."
+            f"Unsupported archetype mode '{archetype_mode}'. Allowed values: matched_summary, random_summary."
         )
-    persona_summary_pool: Optional[PersonaSummaryPool] = None
-    if persona_mode in {"matched_summary", "random_summary"}:
-        persona_summary_pool = _load_persona_summary_pool(getattr(args, "persona_summary_pool", ""))
+    archetype_summary_pool: Optional[ArchetypeSummaryPool] = None
+    if archetype_mode in {"matched_summary", "random_summary"}:
+        archetype_summary_pool = _load_archetype_summary_pool(_resolve_archetype_pool_path(args))
         if args.debug_print:
             log(
-                "[micro] loaded persona summaries:",
-                len(persona_summary_pool.all_records),
+                "[micro] loaded archetype summaries:",
+                len(archetype_summary_pool.all_records),
                 "from",
-                getattr(args, "persona_summary_pool", ""),
+                _resolve_archetype_pool_path(args),
             )
 
     tok: Optional[Any] = None
@@ -1277,7 +1291,7 @@ def run_micro_behavior_eval(args: Any) -> Tuple[pd.DataFrame, Dict[str, Optional
                 client=client,
                 tok=tok,
                 args=args,
-                persona_summary_pool=persona_summary_pool,
+                archetype_summary_pool=archetype_summary_pool,
                 debug_records=debug_records,
                 debug_full_records=debug_full_records,
                 on_round_rows=_write_rows_chunk,
