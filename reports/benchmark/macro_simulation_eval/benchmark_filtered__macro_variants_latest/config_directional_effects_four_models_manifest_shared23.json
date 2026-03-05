@@ -1,0 +1,38 @@
+{
+  "analysis_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest",
+  "learn_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_learn.csv",
+  "val_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv",
+  "target_col": "itt_relative_efficiency",
+  "labels": {
+    "no_label": "no archetype",
+    "retrieved_label": "retrieved archetype",
+    "oracle_label": "oracle archetype"
+  },
+  "n_shared_games": 23,
+  "binary_factors": [
+    "CONFIG_chat",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_rewardExists",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_punishmentExists"
+  ],
+  "median_factors": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_MPCR"
+  ],
+  "outputs": {
+    "rows_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/config_directional_effects_four_models_shared23.csv",
+    "summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/config_directional_effects_four_models_summary_shared23.csv",
+    "summary_by_mode_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/config_directional_effects_four_models_summary_by_mode_shared23.csv",
+    "wide_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/config_directional_effects_four_models_wide_shared23.csv",
+    "linear_pred_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/linear_config_baseline_shared23_predictions.csv",
+    "plots": [
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/config_directional_effects_four_models_sign_match_rate_shared23.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/config_directional_effects_four_models_delta_by_factor_shared23.png"
+    ]
+  }
+}

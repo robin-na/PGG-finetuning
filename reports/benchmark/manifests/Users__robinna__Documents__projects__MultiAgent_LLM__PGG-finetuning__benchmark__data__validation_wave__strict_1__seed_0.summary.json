@@ -1,0 +1,14 @@
+{
+  "data_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data",
+  "missing_pair_config_ids": [],
+  "n_candidate_config_ids": 20,
+  "n_candidate_games_after_filters": 246,
+  "n_selected_config_ids": 20,
+  "n_selected_rows": 40,
+  "n_selected_unique_games": 40,
+  "output_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/manifests/Users__robinna__Documents__projects__MultiAgent_LLM__PGG-finetuning__benchmark__data__validation_wave__strict_1__seed_0.csv",
+  "output_game_ids_txt": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/manifests/Users__robinna__Documents__projects__MultiAgent_LLM__PGG-finetuning__benchmark__data__validation_wave__strict_1__seed_0.game_ids.txt",
+  "seed": 0,
+  "strict_filters_applied": true,
+  "wave": "validation_wave"
+}

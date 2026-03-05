@@ -54,6 +54,21 @@ AGG_METRIC_COLUMNS = [
     "pred_any_reward_rate",
 ]
 
+CONTRIB_REGIME_METRIC_COLUMNS = [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_mae_norm20",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "contrib_binary_n",
+    "contrib_binary_accuracy",
+    "contrib_binary_precision",
+    "contrib_binary_recall",
+    "contrib_binary_f1",
+]
+
 
 def _typed_actions(punished: Dict[str, int], rewarded: Dict[str, int]) -> Dict[TypedTarget, int]:
     out: Dict[TypedTarget, int] = {}
@@ -101,6 +116,7 @@ def score_rows(df: pd.DataFrame) -> pd.DataFrame:
     scored["contrib_error"] = contrib_error
     scored["contrib_abs_error"] = contrib_error.abs()
     scored["contrib_sq_error"] = contrib_error * contrib_error
+    scored["contrib_abs_error_norm20"] = scored["contrib_abs_error"] / 20.0
 
     row_metrics: List[Dict[str, float]] = []
     for _, row in scored.iterrows():
@@ -225,3 +241,132 @@ def aggregate_scores(scored_df: pd.DataFrame, group_cols: Optional[Sequence[str]
         rec.update(_group_metrics(group))
         rows.append(rec)
     return pd.DataFrame(rows, columns=all_columns)
+
+
+def _to_bool_or_nan(value: object) -> object:
+    if isinstance(value, bool):
+        return value
+    if value is None:
+        return float("nan")
+    try:
+        if pd.isna(value):
+            return float("nan")
+    except Exception:
+        pass
+    if isinstance(value, (int, float)):
+        return bool(int(value))
+    text = str(value).strip().lower()
+    if text in {"1", "true", "t", "yes", "y"}:
+        return True
+    if text in {"0", "false", "f", "no", "n"}:
+        return False
+    return float("nan")
+
+
+def _binary_scores(actual_pos: pd.Series, pred_pos: pd.Series) -> Dict[str, float]:
+    if len(actual_pos) == 0:
+        return {
+            "contrib_binary_n": 0,
+            "contrib_binary_accuracy": float("nan"),
+            "contrib_binary_precision": float("nan"),
+            "contrib_binary_recall": float("nan"),
+            "contrib_binary_f1": float("nan"),
+        }
+
+    actual = actual_pos.astype(bool)
+    pred = pred_pos.astype(bool)
+    tp = int((actual & pred).sum())
+    tn = int((~actual & ~pred).sum())
+    fp = int((~actual & pred).sum())
+    fn = int((actual & ~pred).sum())
+    n = int(len(actual))
+
+    accuracy = float((tp + tn) / n) if n > 0 else float("nan")
+    precision = float(tp / (tp + fp)) if (tp + fp) > 0 else 0.0
+    recall = float(tp / (tp + fn)) if (tp + fn) > 0 else 0.0
+    if precision + recall == 0.0:
+        f1 = 0.0
+    else:
+        f1 = float(2.0 * precision * recall / (precision + recall))
+    return {
+        "contrib_binary_n": n,
+        "contrib_binary_accuracy": accuracy,
+        "contrib_binary_precision": precision,
+        "contrib_binary_recall": recall,
+        "contrib_binary_f1": f1,
+    }
+
+
+def _contrib_regime_group_metrics(
+    group: pd.DataFrame,
+    regime_value: object,
+    threshold: float,
+) -> Dict[str, float]:
+    is_all_or_nothing = bool(regime_value)
+    parse_rate = _mean(group["predicted_contribution_parsed_bool"].astype(float))
+    contrib_mae = _mean(group["contrib_abs_error"])
+    contrib_mae_norm20 = _mean(group["contrib_abs_error_norm20"])
+    rmse_base = _mean(group["contrib_sq_error"])
+    contrib_rmse = float(math.sqrt(rmse_base)) if not math.isnan(rmse_base) else float("nan")
+    contrib_bias = _mean(group["contrib_error"])
+    contrib_corr = _safe_corr(group["predicted_contribution"], group["actual_contribution"])
+
+    out: Dict[str, float] = {
+        "n_rows": int(len(group)),
+        "predicted_contribution_parsed": parse_rate,
+        "contrib_mae": contrib_mae,
+        "contrib_mae_norm20": contrib_mae_norm20,
+        "contrib_rmse": contrib_rmse,
+        "contrib_bias": contrib_bias,
+        "contrib_corr": contrib_corr,
+    }
+
+    if is_all_or_nothing:
+        pair = group[["actual_contribution", "predicted_contribution"]].copy()
+        pair["actual_contribution"] = pd.to_numeric(pair["actual_contribution"], errors="coerce")
+        pair["predicted_contribution"] = pd.to_numeric(pair["predicted_contribution"], errors="coerce")
+        pair = pair.dropna(subset=["actual_contribution", "predicted_contribution"])
+        actual_pos = pair["actual_contribution"] >= float(threshold)
+        pred_pos = pair["predicted_contribution"] >= float(threshold)
+        out.update(_binary_scores(actual_pos, pred_pos))
+    else:
+        out.update(
+            {
+                "contrib_binary_n": 0,
+                "contrib_binary_accuracy": float("nan"),
+                "contrib_binary_precision": float("nan"),
+                "contrib_binary_recall": float("nan"),
+                "contrib_binary_f1": float("nan"),
+            }
+        )
+    return out
+
+
+def aggregate_contribution_by_regime(
+    scored_df: pd.DataFrame,
+    group_cols: Optional[Sequence[str]] = None,
+    regime_col: str = "CONFIG_allOrNothing",
+    contrib_max: float = 20.0,
+) -> pd.DataFrame:
+    base_cols = list(group_cols or [])
+    all_cols = [*base_cols, regime_col, *CONTRIB_REGIME_METRIC_COLUMNS]
+    if scored_df.empty or regime_col not in scored_df.columns:
+        return pd.DataFrame(columns=all_cols)
+
+    threshold = float(contrib_max) / 2.0
+    work = scored_df.copy()
+    work[regime_col] = work[regime_col].map(_to_bool_or_nan)
+    work = work[work[regime_col].isin([True, False])].copy()
+    if work.empty:
+        return pd.DataFrame(columns=all_cols)
+
+    rows: List[Dict[str, float]] = []
+    grouped = work.groupby([*base_cols, regime_col], dropna=False, sort=True)
+    for key, group in grouped:
+        if not isinstance(key, tuple):
+            key = (key,)
+        key_map = {col: val for col, val in zip([*base_cols, regime_col], key)}
+        rec = dict(key_map)
+        rec.update(_contrib_regime_group_metrics(group, key_map.get(regime_col), threshold))
+        rows.append(rec)
+    return pd.DataFrame(rows, columns=all_cols)

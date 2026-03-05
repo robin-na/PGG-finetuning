@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from dataclasses import dataclass
 from datetime import datetime
@@ -33,7 +34,13 @@ from io_utils import (  # noqa: E402
     validate_required_columns,
 )
 from manifest import write_manifest  # noqa: E402
-from metrics import AGG_METRIC_COLUMNS, aggregate_scores, score_rows  # noqa: E402
+from metrics import (  # noqa: E402
+    AGG_METRIC_COLUMNS,
+    CONTRIB_REGIME_METRIC_COLUMNS,
+    aggregate_contribution_by_regime,
+    aggregate_scores,
+    score_rows,
+)
 
 COMPARE_METRIC_MAP = {
     "contrib_mae": "contrib_abs_error",
@@ -138,6 +145,112 @@ def _prepare_scored(
     else:
         scored_df = score_rows(filtered_df)
     return scored_df, filter_summary, parse_summary
+
+
+def _normalize_game_key(value: Any) -> str:
+    text = str(value).strip()
+    return text if text else ""
+
+
+def _resolve_existing_path(path_text: str | Path, base_dir: Optional[Path] = None) -> Optional[Path]:
+    raw = str(path_text or "").strip()
+    if not raw:
+        return None
+
+    candidates: List[Path] = []
+    p = Path(raw)
+    if p.is_absolute():
+        candidates.append(p)
+    else:
+        if base_dir is not None:
+            candidates.append((base_dir / p).resolve())
+        candidates.append((PROJECT_ROOT / p).resolve())
+
+    marker = "PGG-finetuning/"
+    if marker in raw:
+        tail = raw.split(marker, 1)[1]
+        candidates.append((PROJECT_ROOT / tail).resolve())
+
+    if p.is_absolute():
+        stripped = str(p).lstrip("/")
+        candidates.append((PROJECT_ROOT / stripped).resolve())
+
+    seen: set[str] = set()
+    for cand in candidates:
+        key = str(cand)
+        if key in seen:
+            continue
+        seen.add(key)
+        if cand.exists():
+            return cand
+    return None
+
+
+def _load_run_config(run_id: str, eval_root: str) -> Dict[str, Any]:
+    config_path = (Path(eval_root).resolve() / run_id / "config.json").resolve()
+    if not config_path.exists():
+        return {}
+    try:
+        cfg = json.loads(config_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    return cfg if isinstance(cfg, dict) else {}
+
+
+def _extract_analysis_csv_from_config(run_cfg: Dict[str, Any], eval_root: str, run_id: str) -> Optional[Path]:
+    run_dir = (Path(eval_root).resolve() / run_id).resolve()
+    inputs = run_cfg.get("inputs") if isinstance(run_cfg.get("inputs"), dict) else {}
+    args = run_cfg.get("args") if isinstance(run_cfg.get("args"), dict) else {}
+    model = run_cfg.get("model") if isinstance(run_cfg.get("model"), dict) else {}
+
+    candidates = [
+        inputs.get("analysis_csv"),
+        args.get("analysis_csv"),
+        model.get("analysis_csv"),
+    ]
+    for raw in candidates:
+        resolved = _resolve_existing_path(raw, base_dir=run_dir)
+        if resolved is not None:
+            return resolved
+    return None
+
+
+def _load_all_or_nothing_map(run_id: str, eval_root: str) -> Tuple[Dict[str, Optional[bool]], Optional[Path]]:
+    run_cfg = _load_run_config(run_id, eval_root)
+    if not run_cfg:
+        return {}, None
+    analysis_csv = _extract_analysis_csv_from_config(run_cfg, eval_root=eval_root, run_id=run_id)
+    if analysis_csv is None:
+        return {}, None
+
+    try:
+        cfg_df = pd.read_csv(analysis_csv, usecols=["gameId", "CONFIG_allOrNothing"])
+    except Exception:
+        return {}, analysis_csv
+
+    cfg_df["gameId"] = cfg_df["gameId"].map(_normalize_game_key)
+    cfg_df["CONFIG_allOrNothing"] = cfg_df["CONFIG_allOrNothing"].map(lambda x: parse_bool(x, default=None))
+    cfg_df = cfg_df.drop_duplicates(subset=["gameId"], keep="first")
+
+    mapping = {
+        str(row["gameId"]): row["CONFIG_allOrNothing"]
+        for _, row in cfg_df.iterrows()
+        if str(row["gameId"]).strip()
+    }
+    return mapping, analysis_csv
+
+
+def _attach_all_or_nothing(scored_df: pd.DataFrame, mapping: Dict[str, Optional[bool]]) -> pd.DataFrame:
+    out = scored_df.copy()
+    if "gameId" not in out.columns:
+        out["CONFIG_allOrNothing"] = pd.Series([pd.NA] * len(out), dtype="boolean")
+        return out
+    if not mapping:
+        out["CONFIG_allOrNothing"] = pd.Series([pd.NA] * len(out), dtype="boolean")
+        return out
+    mapped = out["gameId"].astype(str).map(mapping)
+    out["CONFIG_allOrNothing"] = mapped.astype("boolean")
+    return out
 
 
 def _normal_cdf(x: float) -> float:
@@ -333,6 +446,7 @@ def _write_comparison_summary_md(
     run_summaries: List[Dict[str, Any]],
     comparison_overall: pd.DataFrame,
     significance_df: pd.DataFrame,
+    contrib_regime_df: pd.DataFrame,
 ) -> Path:
     lines: List[str] = []
     lines.append("# Comparison Summary")
@@ -355,6 +469,12 @@ def _write_comparison_summary_md(
     lines.append("- `compare_target_hit_any.png`: Mean target-hit-any rate across runs with 95% CI (`↑ better`).")
     lines.append("- `compare_by_round_contrib_mae.png`: Round-wise contribution MAE with 95% CI bands (`↓ better`).")
     lines.append("- `compare_by_round_target_f1.png`: Round-wise target F1 with 95% CI bands (`↑ better`).")
+    lines.append(
+        "- `compare_contrib_mae_by_all_or_nothing.png`: Contribution MAE split by `CONFIG_allOrNothing` (`↓ better`)."
+    )
+    lines.append(
+        "- `compare_contrib_binary_by_all_or_nothing_true.png`: Binary contribution metrics for all-or-nothing games (`↑ better`)."
+    )
     lines.append("")
 
     lines.append("## Standard Error and CI")
@@ -373,6 +493,34 @@ def _write_comparison_summary_md(
         for _, row in comparison_overall[show_cols].iterrows():
             lines.append(
                 f"| {row['run_label']} | {_fmt(row['contrib_mae'])} | {_fmt(row['target_f1'])} | {_fmt(row['action_exact_match'])} | {_fmt(row['target_hit_any'])} |"
+            )
+        lines.append("")
+
+    if not contrib_regime_df.empty:
+        lines.append("## Contribution By Game Regime")
+        lines.append("")
+        lines.append("| Regime | Run | n_rows | contrib_mae | contrib_mae_norm20 | contrib_binary_accuracy | contrib_binary_f1 |")
+        lines.append("|---|---|---:|---:|---:|---:|---:|")
+        show_cols = [
+            "CONFIG_allOrNothing",
+            "run_label",
+            "n_rows",
+            "contrib_mae",
+            "contrib_mae_norm20",
+            "contrib_binary_accuracy",
+            "contrib_binary_f1",
+        ]
+        ordered = contrib_regime_df.copy()
+        ordered["CONFIG_allOrNothing"] = ordered["CONFIG_allOrNothing"].map(
+            lambda x: "all-or-nothing" if bool(x) else "continuous"
+        )
+        ordered["regime_order"] = ordered["CONFIG_allOrNothing"].map(
+            lambda x: 0 if x == "continuous" else 1
+        )
+        ordered = ordered.sort_values(["regime_order", "run_label"]).drop(columns=["regime_order"])
+        for _, row in ordered[show_cols].iterrows():
+            lines.append(
+                f"| {row['CONFIG_allOrNothing']} | {row['run_label']} | {int(row['n_rows'])} | {_fmt(row['contrib_mae'])} | {_fmt(row['contrib_mae_norm20'])} | {_fmt(row['contrib_binary_accuracy'])} | {_fmt(row['contrib_binary_f1'])} |"
             )
         lines.append("")
 
@@ -561,6 +709,82 @@ def _plot_compare_lines(
     return generated
 
 
+def _plot_compare_contrib_by_regime(
+    contrib_regime_df: pd.DataFrame,
+    out_dir: Path,
+    dpi: int,
+    run_order: List[str],
+    run_color_map: Dict[str, Any],
+) -> List[str]:
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    generated: List[str] = []
+    if contrib_regime_df.empty:
+        return generated
+
+    df = contrib_regime_df.copy()
+    if run_order:
+        df["run_label"] = pd.Categorical(df["run_label"], categories=run_order, ordered=True)
+        df = df.sort_values(["run_label", "CONFIG_allOrNothing"])
+
+    labels = [str(x) for x in df["run_label"].dropna().unique().tolist()]
+    if labels:
+        regimes = [False, True]
+        x = np.arange(len(labels))
+        width = 0.36
+        fig, ax = plt.subplots(figsize=(max(8, 1.3 * len(labels)), 4))
+        for i, regime in enumerate(regimes):
+            sub = df[df["CONFIG_allOrNothing"] == regime].copy()
+            sub = sub.set_index("run_label")
+            y = [float(sub.loc[lbl, "contrib_mae"]) if lbl in sub.index else float("nan") for lbl in labels]
+            offset = (-width / 2.0) if i == 0 else (width / 2.0)
+            color = "#7aa6c2" if regime is False else "#f08a5d"
+            name = "continuous" if regime is False else "all-or-nothing"
+            ax.bar(x + offset, y, width=width, label=name, color=color)
+        ax.set_title("Contribution MAE by CONFIG_allOrNothing")
+        ax.set_ylabel("contrib_mae (lower better)")
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels, rotation=20)
+        ax.grid(axis="y", alpha=0.3)
+        ax.legend()
+        out_path = out_dir / "compare_contrib_mae_by_all_or_nothing.png"
+        fig.tight_layout()
+        fig.savefig(out_path, dpi=dpi, bbox_inches="tight")
+        plt.close(fig)
+        generated.append(str(out_path))
+
+    sub_true = df[df["CONFIG_allOrNothing"] == True].copy()  # noqa: E712
+    if not sub_true.empty:
+        if run_order:
+            sub_true["run_label"] = pd.Categorical(sub_true["run_label"], categories=run_order, ordered=True)
+            sub_true = sub_true.sort_values("run_label")
+        labels2 = [str(x) for x in sub_true["run_label"].dropna().tolist()]
+        x2 = np.arange(len(labels2))
+        width = 0.36
+        acc = pd.to_numeric(sub_true["contrib_binary_accuracy"], errors="coerce").values
+        f1 = pd.to_numeric(sub_true["contrib_binary_f1"], errors="coerce").values
+        fig, ax = plt.subplots(figsize=(max(8, 1.2 * len(labels2)), 4))
+        ax.bar(x2 - width / 2, acc, width=width, label="binary accuracy", color="#5b8e7d")
+        ax.bar(x2 + width / 2, f1, width=width, label="binary F1", color="#d07a90")
+        ax.set_title("All-or-Nothing Contribution Metrics")
+        ax.set_ylabel("score (higher better)")
+        ax.set_xticks(x2)
+        ax.set_xticklabels(labels2, rotation=20)
+        ax.set_ylim(0.0, 1.0)
+        ax.grid(axis="y", alpha=0.3)
+        ax.legend()
+        out_path = out_dir / "compare_contrib_binary_by_all_or_nothing_true.png"
+        fig.tight_layout()
+        fig.savefig(out_path, dpi=dpi, bbox_inches="tight")
+        plt.close(fig)
+        generated.append(str(out_path))
+    return generated
+
+
 def _build_run_color_map(run_order: List[str]) -> Dict[str, Any]:
     import matplotlib
 
@@ -594,10 +818,17 @@ def _run_single_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, Any]
         max_round=args.max_round,
         skip_no_actual=args.skip_no_actual,
     )
+    regime_analysis_csv: Optional[Path] = None
+    if args.run_id:
+        all_or_nothing_map, regime_analysis_csv = _load_all_or_nothing_map(args.run_id, args.eval_root)
+        scored_df = _attach_all_or_nothing(scored_df, all_or_nothing_map)
+    else:
+        scored_df = _attach_all_or_nothing(scored_df, {})
 
     metrics_overall = aggregate_scores(scored_df)
     metrics_by_round = aggregate_scores(scored_df, group_cols=["roundIndex"])
     metrics_by_game = aggregate_scores(scored_df, group_cols=["gameId"])
+    contrib_by_regime = aggregate_contribution_by_regime(scored_df)
 
     output_files: List[str] = []
     row_level_path = output_dir / "row_level_scored.csv"
@@ -615,6 +846,10 @@ def _run_single_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, Any]
     game_path = output_dir / "metrics_by_game.csv"
     metrics_by_game.to_csv(game_path, index=False)
     output_files.append(str(game_path))
+
+    regime_path = output_dir / "metrics_contribution_by_all_or_nothing.csv"
+    contrib_by_regime.to_csv(regime_path, index=False)
+    output_files.append(str(regime_path))
 
     plot_files: List[str] = []
     if not scored_df.empty:
@@ -647,6 +882,7 @@ def _run_single_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, Any]
         },
         "malformed_dict_parse_counts": parse_summary.malformed_counts,
         "malformed_dict_rows": parse_summary.malformed_rows,
+        "all_or_nothing_analysis_csv": str(regime_analysis_csv) if regime_analysis_csv is not None else None,
         "generated_files": output_files + [str(manifest_target)],
         "args": {
             "eval_csv": args.eval_csv,
@@ -661,6 +897,7 @@ def _run_single_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, Any]
             "debug_print": args.debug_print,
         },
         "metrics_columns": AGG_METRIC_COLUMNS,
+        "contribution_regime_metrics_columns": CONTRIB_REGIME_METRIC_COLUMNS,
     }
     manifest_path = write_manifest(output_dir, manifest_payload)
     output_files.append(str(manifest_path))
@@ -709,6 +946,10 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
             max_round=args.max_round,
             skip_no_actual=args.skip_no_actual,
         )
+        all_or_nothing_map, regime_analysis_csv = _load_all_or_nothing_map(run_id, args.eval_root)
+        scored_df = _attach_all_or_nothing(scored_df, all_or_nothing_map)
+        mapped_rows = int(scored_df["CONFIG_allOrNothing"].notna().sum()) if "CONFIG_allOrNothing" in scored_df else 0
+
         m_overall = aggregate_scores(scored_df)
         if m_overall.empty:
             empty_row = {k: (0 if k == "n_rows" else float("nan")) for k in AGG_METRIC_COLUMNS}
@@ -749,6 +990,8 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
                 "dropped_rows": int(filter_summary.dropped_rows),
                 "malformed_dict_rows": int(parse_summary.malformed_rows),
                 "malformed_dict_parse_counts": parse_summary.malformed_counts,
+                "all_or_nothing_analysis_csv": str(regime_analysis_csv) if regime_analysis_csv is not None else None,
+                "all_or_nothing_mapped_rows": mapped_rows,
             }
         )
 
@@ -756,6 +999,10 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
     comparison_by_round = pd.concat(by_round_frames, ignore_index=True) if by_round_frames else pd.DataFrame()
     comparison_by_game = pd.concat(by_game_frames, ignore_index=True) if by_game_frames else pd.DataFrame()
     combined_scored = pd.concat(scored_frames, ignore_index=True) if scored_frames else pd.DataFrame()
+    contribution_by_regime = aggregate_contribution_by_regime(
+        combined_scored,
+        group_cols=["run_id", "run_label"],
+    )
     run_order = labels
     run_color_map = _build_run_color_map(run_order)
 
@@ -782,6 +1029,10 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
     comparison_by_game.to_csv(game_path, index=False)
     output_files.append(str(game_path))
 
+    contrib_regime_path = output_dir / "comparison_contribution_by_all_or_nothing.csv"
+    contribution_by_regime.to_csv(contrib_regime_path, index=False)
+    output_files.append(str(contrib_regime_path))
+
     overall_err_path = output_dir / "comparison_overall_errorbars.csv"
     overall_errorbars.to_csv(overall_err_path, index=False)
     output_files.append(str(overall_err_path))
@@ -799,6 +1050,7 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
         run_summaries=run_summaries,
         comparison_overall=comparison_overall,
         significance_df=significance_df,
+        contrib_regime_df=contribution_by_regime,
     )
     output_files.append(str(summary_md_path))
 
@@ -815,6 +1067,15 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
     plot_files.extend(
         _plot_compare_lines(
             by_round_errorbars,
+            output_dir,
+            int(args.dpi),
+            run_order=run_order,
+            run_color_map=run_color_map,
+        )
+    )
+    plot_files.extend(
+        _plot_compare_contrib_by_regime(
+            contribution_by_regime,
             output_dir,
             int(args.dpi),
             run_order=run_order,
@@ -849,6 +1110,7 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
             "debug_print": args.debug_print,
         },
         "metrics_columns": AGG_METRIC_COLUMNS,
+        "contribution_regime_metrics_columns": CONTRIB_REGIME_METRIC_COLUMNS,
     }
     manifest_path = write_manifest(output_dir, manifest_payload)
     output_files.append(str(manifest_path))

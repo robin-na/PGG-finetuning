@@ -1,0 +1,2 @@
+"""Macro simulation analysis package."""
+

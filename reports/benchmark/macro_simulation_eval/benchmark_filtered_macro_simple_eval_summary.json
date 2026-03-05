@@ -1,0 +1,8 @@
+{
+  "selected_game_count": 40,
+  "selected_variants": [
+    "no_archetype",
+    "retrieved_archetype"
+  ],
+  "output_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered_macro_simple_eval_summary.csv"
+}

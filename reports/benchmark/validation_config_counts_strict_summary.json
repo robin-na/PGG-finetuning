@@ -1,0 +1,12 @@
+{
+  "analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_val.csv",
+  "demographics_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/demographics/demographics_numeric_val.csv",
+  "n_any_demo_games_within_valid_start": 249,
+  "n_completed_games_within_valid_start": 249,
+  "n_eligible_games": 246,
+  "n_total_games": 470,
+  "n_unique_configs_with_eligible_games": 20,
+  "n_valid_start_games": 417,
+  "output_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/validation_config_counts_strict.csv",
+  "player_rounds_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/raw_data/validation_wave/player-rounds.csv"
+}

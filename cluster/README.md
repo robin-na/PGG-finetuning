@@ -2,6 +2,10 @@
 
 This folder contains a clean, standalone pipeline to cluster persona-style JSONL data.
 
+For cluster job operations (SLURM submission/debugging) used in benchmark micro-eval runs, see:
+
+- `cluster/SLURM_RUNBOOK.md`
+
 ## What this pipeline does
 
 Given one input JSONL file (for example `archetype_oracle_gpt51_learn.jsonl`), it will:

@@ -1,0 +1,164 @@
+{
+  "mode": "comparison",
+  "timestamp": "2026-03-03T18:04:25.138077",
+  "output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage",
+  "filters": {
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true
+  },
+  "comparison_runs": [
+    {
+      "run_id": "no_archetype/2603022352",
+      "run_label": "no archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/_tmp_eval_inputs/benchmark_ood__player_count__high_to_low__matched_coverage/no_archetype/2603022352/micro_behavior_eval.csv",
+      "pre_filter_rows": 668,
+      "post_filter_rows": 668,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      },
+      "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data_ood_splits/player_count/high_to_low/processed_data/df_analysis_val.csv",
+      "all_or_nothing_mapped_rows": 668
+    },
+    {
+      "run_id": "random_archetype/9980072_r0_random",
+      "run_label": "random archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/_tmp_eval_inputs/benchmark_ood__player_count__high_to_low__matched_coverage/random_archetype/9980072_r0_random/micro_behavior_eval.csv",
+      "pre_filter_rows": 668,
+      "post_filter_rows": 668,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      },
+      "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data_ood_splits/player_count/high_to_low/processed_data/df_analysis_val.csv",
+      "all_or_nothing_mapped_rows": 668
+    },
+    {
+      "run_id": "oracle_archetype/9977694_r0_oracle",
+      "run_label": "oracle archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/_tmp_eval_inputs/benchmark_ood__player_count__high_to_low__matched_coverage/oracle_archetype/9977694_r0_oracle/micro_behavior_eval.csv",
+      "pre_filter_rows": 668,
+      "post_filter_rows": 668,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      },
+      "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data_ood_splits/player_count/high_to_low/processed_data/df_analysis_val.csv",
+      "all_or_nothing_mapped_rows": 668
+    },
+    {
+      "run_id": "retrieved_archetype/9976921_r1_retrieved",
+      "run_label": "retrieved archetype",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/_tmp_eval_inputs/benchmark_ood__player_count__high_to_low__matched_coverage/retrieved_archetype/9976921_r1_retrieved/micro_behavior_eval.csv",
+      "pre_filter_rows": 668,
+      "post_filter_rows": 668,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      },
+      "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data_ood_splits/player_count/high_to_low/processed_data/df_analysis_val.csv",
+      "all_or_nothing_mapped_rows": 668
+    }
+  ],
+  "generated_files": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/comparison_overall.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/comparison_by_round.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/comparison_by_game.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/comparison_contribution_by_all_or_nothing.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/comparison_overall_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/comparison_by_round_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/comparison_significance.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/comparison_summary.md",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/compare_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/compare_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/compare_action_exact_match.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/compare_target_hit_any.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/compare_by_round_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/compare_by_round_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/compare_contrib_mae_by_all_or_nothing.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/compare_contrib_binary_by_all_or_nothing_true.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_matched_coverage/analysis_manifest.json"
+  ],
+  "args": {
+    "compare_run_ids": [
+      "no_archetype/2603022352",
+      "random_archetype/9980072_r0_random",
+      "oracle_archetype/9977694_r0_oracle",
+      "retrieved_archetype/9976921_r1_retrieved"
+    ],
+    "compare_labels": [
+      "no archetype",
+      "random archetype",
+      "oracle archetype",
+      "retrieved archetype"
+    ],
+    "run_colors": {
+      "no archetype": "#1f77b4",
+      "random archetype": "#ff7f0e",
+      "oracle archetype": "#2ca02c",
+      "retrieved archetype": "#d62728"
+    },
+    "eval_root": "reports/benchmark/micro_behavior/_tmp_eval_inputs/benchmark_ood__player_count__high_to_low__matched_coverage",
+    "analysis_root": "reports/benchmark/micro_behavior",
+    "analysis_run_id": "benchmark_ood__player_count__high_to_low__variants_matched_coverage",
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true,
+    "dpi": 160,
+    "debug_print": false
+  },
+  "metrics_columns": [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "action_exact_match",
+    "target_set_exact",
+    "target_precision",
+    "target_recall",
+    "target_f1",
+    "target_jaccard",
+    "target_hit_any",
+    "unit_mae_on_overlap",
+    "unit_exact_on_overlap_rate",
+    "actual_any_action_rate",
+    "pred_any_action_rate",
+    "actual_any_punish_rate",
+    "pred_any_punish_rate",
+    "actual_any_reward_rate",
+    "pred_any_reward_rate"
+  ],
+  "contribution_regime_metrics_columns": [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_mae_norm20",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "contrib_binary_n",
+    "contrib_binary_accuracy",
+    "contrib_binary_precision",
+    "contrib_binary_recall",
+    "contrib_binary_f1"
+  ]
+}

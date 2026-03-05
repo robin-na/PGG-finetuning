@@ -1,0 +1,5 @@
+model,rmse_normalized_efficiency,n_games,source
+linear regression (CONFIG-only baseline),0.23497114220940943,23,df_analysis_val (shared games)
+retrieved archetype,0.5159506008344461,23,macro_simulation_eval
+oracle archetype,0.5470229465467504,23,macro_simulation_eval
+no archetype,0.8667769848513698,23,macro_simulation_eval

@@ -1,0 +1,4 @@
+run_id,label,n_games,mae_normalized_efficiency,rmse_normalized_efficiency,corr_normalized_efficiency,mean_human_normalized_efficiency,mean_sim_normalized_efficiency
+no_archetype/9999002_r0_macro_no_archetype,no archetype,23,0.6607574904372697,0.8667769848513698,0.016051163397114692,0.6236243129190521,0.15928295067978532
+retrieved_archetype/9999579_r0_macro_retrieved_archetype,retrieved archetype,23,0.39792168188894605,0.5159506008344461,-0.010135713314081966,0.6236243129190521,0.750600226041198
+oracle_archetype/10034953_r0_macro_oracle_archetype,oracle archetype,23,0.32452250513732617,0.5470229465467504,0.46649965880832955,0.6236243129190521,0.4096338859743797

@@ -1,0 +1,42 @@
+{
+  "analysis_run_id": "benchmark_filtered__macro_variants_latest",
+  "analysis_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval",
+  "eval_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval",
+  "run_ids": [
+    "no_archetype/9999002_r0_macro_no_archetype",
+    "retrieved_archetype/9999579_r0_macro_retrieved_archetype",
+    "oracle_archetype/10034953_r0_macro_oracle_archetype"
+  ],
+  "labels": [
+    "no archetype",
+    "retrieved archetype",
+    "oracle archetype"
+  ],
+  "shared_games_only": true,
+  "shared_games_count": 23,
+  "human_csv_by_run": {
+    "no_archetype/9999002_r0_macro_no_archetype": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv",
+    "retrieved_archetype/9999579_r0_macro_retrieved_archetype": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv",
+    "oracle_archetype/10034953_r0_macro_oracle_archetype": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv"
+  },
+  "binary_factors": [
+    "CONFIG_chat",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_rewardExists",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_punishmentExists"
+  ],
+  "median_factors": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_MPCR"
+  ],
+  "plots": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/directional_effects_no_archetype__9999002_r0_macro_no_archetype.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/directional_effects_retrieved_archetype__9999579_r0_macro_retrieved_archetype.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/directional_effects_oracle_archetype__10034953_r0_macro_oracle_archetype.png"
+  ]
+}

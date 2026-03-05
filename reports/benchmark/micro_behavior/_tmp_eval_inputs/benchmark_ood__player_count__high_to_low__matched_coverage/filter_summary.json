@@ -1,0 +1,37 @@
+{
+  "oracle_pool": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Persona/archetype_oracle_gpt51_val.jsonl",
+  "retrieved_pool": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_ood/player_count/high_to_low/archetype_retrieval/validation_wave/synthetic_archetype_ridge_val.jsonl",
+  "oracle_pairs": 3617,
+  "retrieved_pairs": 3617,
+  "eligible_pairs_intersection": 3617,
+  "runs": [
+    {
+      "run_id": "no_archetype/2603022352",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_ood/player_count/high_to_low/micro_behavior_eval/no_archetype/2603022352/micro_behavior_eval.csv",
+      "output_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/_tmp_eval_inputs/benchmark_ood__player_count__high_to_low__matched_coverage/no_archetype/2603022352/micro_behavior_eval.csv",
+      "rows_before": 1205,
+      "rows_after": 668
+    },
+    {
+      "run_id": "random_archetype/9980072_r0_random",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_ood/player_count/high_to_low/micro_behavior_eval/random_archetype/9980072_r0_random/micro_behavior_eval.csv",
+      "output_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/_tmp_eval_inputs/benchmark_ood__player_count__high_to_low__matched_coverage/random_archetype/9980072_r0_random/micro_behavior_eval.csv",
+      "rows_before": 1205,
+      "rows_after": 668
+    },
+    {
+      "run_id": "oracle_archetype/9977694_r0_oracle",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_ood/player_count/high_to_low/micro_behavior_eval/oracle_archetype/9977694_r0_oracle/micro_behavior_eval.csv",
+      "output_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/_tmp_eval_inputs/benchmark_ood__player_count__high_to_low__matched_coverage/oracle_archetype/9977694_r0_oracle/micro_behavior_eval.csv",
+      "rows_before": 1205,
+      "rows_after": 668
+    },
+    {
+      "run_id": "retrieved_archetype/9976921_r1_retrieved",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_ood/player_count/high_to_low/micro_behavior_eval/retrieved_archetype/9976921_r1_retrieved/micro_behavior_eval.csv",
+      "output_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/_tmp_eval_inputs/benchmark_ood__player_count__high_to_low__matched_coverage/retrieved_archetype/9976921_r1_retrieved/micro_behavior_eval.csv",
+      "rows_before": 1205,
+      "rows_after": 668
+    }
+  ]
+}

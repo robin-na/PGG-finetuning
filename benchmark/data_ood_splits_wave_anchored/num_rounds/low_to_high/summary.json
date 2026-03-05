@@ -1,0 +1,58 @@
+{
+  "combined": {
+    "actions": 23032,
+    "games": 224,
+    "players": 1871,
+    "rounds": 3152
+  },
+  "demographics_rows": {
+    "demographics_numeric_learn.csv": 1048,
+    "demographics_numeric_val.csv": 823
+  },
+  "learning_wave": {
+    "actions": 6782,
+    "games": 107,
+    "players": 1048,
+    "rounds": 712,
+    "source_game_counts": {
+      "learning_wave": 107,
+      "validation_wave": 0
+    }
+  },
+  "processed_data_rows": {
+    "df_analysis_learn.csv": 107,
+    "df_analysis_val.csv": 117,
+    "df_analysis_val_dedup.csv": 117,
+    "df_paired_learn.csv": 62,
+    "df_paired_val.csv": 11,
+    "df_rounds_learn.csv": 6782,
+    "df_rounds_val.csv": 16250,
+    "prediction_survey.csv": 8584
+  },
+  "selection": {
+    "n_test_validation_selected": 117,
+    "n_test_validation_total": 249,
+    "n_train_learning_selected": 107,
+    "n_train_learning_total": 214,
+    "test_validation_share": 0.46987951807228917,
+    "train_learning_share": 0.5
+  },
+  "test_game_ids_by_source": {
+    "learning_wave": 0,
+    "validation_wave": 117
+  },
+  "train_game_ids_by_source": {
+    "learning_wave": 107,
+    "validation_wave": 0
+  },
+  "validation_wave": {
+    "actions": 16250,
+    "games": 117,
+    "players": 823,
+    "rounds": 2440,
+    "source_game_counts": {
+      "learning_wave": 0,
+      "validation_wave": 117
+    }
+  }
+}

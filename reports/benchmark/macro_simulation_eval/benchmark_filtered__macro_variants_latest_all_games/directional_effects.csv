@@ -1,0 +1,23 @@
+variant,label,factor,mode,threshold,n_total,n_high,n_low,human_delta,sim_delta,human_sign,sim_sign,sign_match,sign_match_nonzero_human
+no_archetype,no archetype,CONFIG_chat,binary,,28,17,11,-0.03076445637744618,0.23104281821088932,-1,1,False,False
+no_archetype,no archetype,CONFIG_allOrNothing,binary,,28,10,18,-0.031460847231805866,0.18375754278861223,-1,1,False,False
+no_archetype,no archetype,CONFIG_defaultContribProp,binary,,28,11,17,-0.025114595852320565,-0.3057902011205861,-1,-1,True,True
+no_archetype,no archetype,CONFIG_rewardExists,binary,,28,15,13,0.043271147810838406,-0.6801634706694704,1,-1,False,False
+no_archetype,no archetype,CONFIG_showNRounds,binary,,28,20,8,-0.016177724230866164,-0.3722080060436836,-1,-1,True,True
+no_archetype,no archetype,CONFIG_showPunishmentId,binary,,28,13,15,0.13404923987874606,0.4422455493581694,1,1,True,True
+no_archetype,no archetype,CONFIG_showOtherSummaries,binary,,28,18,10,-0.1464408408484883,-0.0015122706481801584,-1,-1,True,True
+no_archetype,no archetype,CONFIG_punishmentExists,binary,,28,16,12,-0.06587950447002544,0.27168057014144303,-1,1,False,False
+no_archetype,no archetype,CONFIG_playerCount,median,6.0,28,13,10,0.19735941355114928,0.4707379923739659,1,1,True,True
+no_archetype,no archetype,CONFIG_numRounds,median,14.5,28,14,14,0.0784548115746393,0.21798658735895643,1,1,True,True
+no_archetype,no archetype,CONFIG_MPCR,median,0.52,28,13,13,-0.08518344145989354,0.5989403990052349,-1,1,False,False
+retrieved_archetype,retrieved archetype,CONFIG_chat,binary,,23,13,10,-0.11850538596873184,0.3696427970187297,-1,1,False,False
+retrieved_archetype,retrieved archetype,CONFIG_allOrNothing,binary,,23,8,15,-0.1372950759692243,0.25655770216405915,-1,1,False,False
+retrieved_archetype,retrieved archetype,CONFIG_defaultContribProp,binary,,23,9,14,-0.049417228487096176,0.16569643944084889,-1,1,False,False
+retrieved_archetype,retrieved archetype,CONFIG_rewardExists,binary,,23,11,12,0.024119157021674442,-0.27557472930890836,1,-1,False,False
+retrieved_archetype,retrieved archetype,CONFIG_showNRounds,binary,,23,16,7,-0.10693943877715695,0.29518654060774796,-1,1,False,False
+retrieved_archetype,retrieved archetype,CONFIG_showPunishmentId,binary,,23,9,14,0.17388501550586033,0.08295047881741113,1,1,True,True
+retrieved_archetype,retrieved archetype,CONFIG_showOtherSummaries,binary,,23,14,9,-0.1761360284230663,-0.08354569314419102,-1,-1,True,True
+retrieved_archetype,retrieved archetype,CONFIG_punishmentExists,binary,,23,14,9,-0.013331816424473675,0.1878548898479383,-1,1,False,False
+retrieved_archetype,retrieved archetype,CONFIG_playerCount,median,6.0,23,11,8,0.24168670906992645,-0.12501118723589866,1,-1,False,False
+retrieved_archetype,retrieved archetype,CONFIG_numRounds,median,15.0,23,11,11,0.13480222654471685,0.11323304703486392,1,1,True,True
+retrieved_archetype,retrieved archetype,CONFIG_MPCR,median,0.52,23,11,11,-0.0340379841321059,0.27299762805579264,-1,1,False,False

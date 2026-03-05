@@ -469,6 +469,14 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Run CV only; do not fit/export final models.",
     )
+    parser.add_argument(
+        "--allow-tag-errors",
+        action="store_true",
+        help=(
+            "Do not fail the full run when one or more tags error. "
+            "Useful for sparse OOD splits where some tags may be unavailable."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -637,7 +645,9 @@ def main() -> int:
         print("\nCompleted with errors:")
         for err in manifest["errors"]:
             print(f"- {err}")
-        return 1
+        if not args.allow_tag_errors:
+            return 1
+        print("Proceeding because --allow-tag-errors is set.")
     print("\nCompleted successfully.")
     return 0
 

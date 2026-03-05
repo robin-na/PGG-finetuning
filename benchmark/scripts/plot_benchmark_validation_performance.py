@@ -41,6 +41,7 @@ def split_rel_path(split_root: Path, split_base_root: Path) -> Path:
     split_base_resolved = split_base_root.resolve()
     benchmark_filtered_root = (split_base_resolved / "data").resolve()
     benchmark_ood_root = (split_base_resolved / "data_ood_splits").resolve()
+    benchmark_ood_wave_root = (split_base_resolved / "data_ood_splits_wave_anchored").resolve()
 
     if split_root_resolved == benchmark_filtered_root:
         return Path("benchmark_filtered")
@@ -50,9 +51,40 @@ def split_rel_path(split_root: Path, split_base_root: Path) -> Path:
     except Exception:
         pass
     try:
+        rel_ood_wave = split_root_resolved.relative_to(benchmark_ood_wave_root)
+        return Path("benchmark_ood_wave_anchored") / rel_ood_wave
+    except Exception:
+        pass
+    try:
         return split_root_resolved.relative_to(split_base_resolved)
     except Exception:
         return Path(split_root.name)
+
+
+def resolve_latest_run_path(raw: str) -> Path:
+    text = str(raw or "").strip()
+    if not text:
+        return Path("")
+    candidates: List[Path] = []
+    p = Path(text)
+    if p.is_absolute():
+        candidates.append(p)
+    else:
+        candidates.append((REPO_ROOT / p).resolve())
+
+    marker = "outputs/benchmark/runs/"
+    if marker in text:
+        suffix = text.split(marker, 1)[1].lstrip("/\\")
+        candidates.append((REPO_ROOT / "outputs" / "benchmark" / "runs" / suffix).resolve())
+    marker_default = "outputs/default/runs/"
+    if marker_default in text:
+        suffix = text.split(marker_default, 1)[1].lstrip("/\\")
+        candidates.append((REPO_ROOT / "outputs" / "default" / "runs" / suffix).resolve())
+
+    for c in candidates:
+        if c.is_dir():
+            return c
+    return candidates[0] if candidates else Path(text)
 
 
 def run_dir_for_split(split_root: Path, runs_root: Path, split_base_root: Path) -> Path:
@@ -60,30 +92,41 @@ def run_dir_for_split(split_root: Path, runs_root: Path, split_base_root: Path) 
     latest = runs_root / rel / "archetype_retrieval" / "model_runs" / "latest_run.txt"
     if not latest.exists():
         raise FileNotFoundError(f"missing latest_run.txt: {to_repo_rel(latest)}")
-    return Path(latest.read_text(encoding="utf-8").strip())
+    run_dir = resolve_latest_run_path(latest.read_text(encoding="utf-8"))
+    if not run_dir.is_dir():
+        raise FileNotFoundError(f"missing run directory from latest_run.txt: {run_dir}")
+    return run_dir
 
 
 def discover_split_roots(
     include_default: bool,
     default_root: Path,
-    ood_root: Path,
+    ood_roots: Sequence[Path],
 ) -> List[Path]:
     out: List[Path] = []
     if include_default and default_root.is_dir():
         out.append(default_root)
-
-    if ood_root.is_dir():
-        for config_dir in sorted([p for p in ood_root.iterdir() if p.is_dir()]):
-            for direction_dir in sorted([p for p in config_dir.iterdir() if p.is_dir()]):
-                out.append(direction_dir)
+    for ood_root in ood_roots:
+        if ood_root.is_dir():
+            for config_dir in sorted([p for p in ood_root.iterdir() if p.is_dir()]):
+                for direction_dir in sorted([p for p in config_dir.iterdir() if p.is_dir()]):
+                    out.append(direction_dir)
     return out
 
 
-def split_label(root: Path, default_root: Path, ood_root: Path) -> Dict[str, str]:
+def split_label(root: Path, default_root: Path, ood_roots: Sequence[Path]) -> Dict[str, str]:
     if root.resolve() == default_root.resolve():
         return {"split_group": "default", "split_name": "default", "config": "default", "direction": "default"}
 
-    rel = root.resolve().relative_to(ood_root.resolve())
+    rel = None
+    for ood_root in ood_roots:
+        try:
+            rel = root.resolve().relative_to(ood_root.resolve())
+            break
+        except Exception:
+            continue
+    if rel is None:
+        rel = Path(root.name)
     parts = list(rel.parts)
     if len(parts) >= 2:
         config, direction = parts[0], parts[1]
@@ -262,7 +305,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--ood-root",
         type=Path,
-        default=Path("benchmark/data_ood_splits"),
+        action="append",
+        default=None,
+        help=(
+            "OOD split root. Can be repeated. "
+            "Defaults to benchmark/data_ood_splits and "
+            "benchmark/data_ood_splits_wave_anchored."
+        ),
     )
     parser.add_argument(
         "--include-default",
@@ -294,14 +343,18 @@ def main() -> int:
     split_base_root = resolve_repo_path(args.split_base_root)
     runs_root = resolve_repo_path(args.runs_root)
     default_root = resolve_repo_path(args.default_root)
-    ood_root = resolve_repo_path(args.ood_root)
+    ood_roots_raw = args.ood_root or [
+        Path("benchmark/data_ood_splits"),
+        Path("benchmark/data_ood_splits_wave_anchored"),
+    ]
+    ood_roots = [resolve_repo_path(p) for p in ood_roots_raw]
     output_dir = resolve_repo_path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     roots = discover_split_roots(
         include_default=args.include_default,
         default_root=default_root,
-        ood_root=ood_root,
+        ood_roots=ood_roots,
     )
     if not roots:
         raise FileNotFoundError("No split roots discovered.")
@@ -321,7 +374,7 @@ def main() -> int:
             missing.append(f"missing metrics: {to_repo_rel(metrics_path)}")
             continue
         metrics = pd.read_csv(metrics_path)
-        split_meta = split_label(root, default_root=default_root, ood_root=ood_root)
+        split_meta = split_label(root, default_root=default_root, ood_roots=ood_roots)
         split_agg = aggregate_split_metrics(
             metrics_df=metrics,
             split_meta=split_meta,

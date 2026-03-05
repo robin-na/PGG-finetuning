@@ -1,0 +1,222 @@
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+from dataclasses import dataclass, field
+from typing import Optional
+
+from transformers import HfArgumentParser
+
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.dirname(SCRIPT_DIR)
+if SCRIPT_DIR not in sys.path:
+    sys.path.insert(0, SCRIPT_DIR)
+if REPO_ROOT not in sys.path:
+    sys.path.insert(0, REPO_ROOT)
+
+from simulator import run_macro_simulation_eval  # noqa: E402
+from utils import log  # noqa: E402
+
+
+DEFAULT_ROUNDS_CSV = "data/raw_data/validation_wave/player-rounds.csv"
+DEFAULT_ANALYSIS_CSV = "data/processed_data/df_analysis_val.csv"
+DEFAULT_DEMOGRAPHICS_CSV = "demographics/demographics_numeric_val.csv"
+DEFAULT_PLAYERS_CSV = "data/raw_data/validation_wave/players.csv"
+
+
+@dataclass
+class Args:
+    provider: str = field(default="local")
+    openai_model: Optional[str] = field(default=None)
+    openai_api_key: Optional[str] = field(default=None)
+    openai_api_key_env: str = field(default="OPENAI_API_KEY")
+    openai_async: bool = field(
+        default=False,
+        metadata={"help": "If true, use asyncio.gather with a thread pool for concurrent OpenAI calls."},
+    )
+    openai_max_concurrency: int = field(
+        default=8,
+        metadata={"help": "Max concurrent OpenAI calls when --openai_async is enabled."},
+    )
+
+    base_model: str = field(default="meta-llama/Llama-3.1-8B-Instruct")
+    adapter_path: Optional[str] = field(default="out/llama31-8b-lora-pgg-ptc/checkpoint-489")
+    use_peft: bool = field(default=True)
+
+    data_root: Optional[str] = field(
+        default=None,
+        metadata={
+            "help": (
+                "Optional dataset root containing raw_data/ processed_data/ demographics/. "
+                "If set, default CSV inputs are auto-resolved from this root."
+            )
+        },
+    )
+    wave: str = field(
+        default="validation_wave",
+        metadata={"help": "Wave used for raw_data path and *_val/*_learn file selection."},
+    )
+    analysis_csv: str = field(default=DEFAULT_ANALYSIS_CSV)
+    rounds_csv: str = field(default=DEFAULT_ROUNDS_CSV)
+    players_csv: str = field(default=DEFAULT_PLAYERS_CSV)
+    demographics_csv: str = field(default=DEFAULT_DEMOGRAPHICS_CSV)
+
+    output_root: str = field(default="outputs/default/runs/source_default/macro_simulation_eval")
+    run_id: Optional[str] = field(default=None)
+    rows_out_path: str = field(default="output/macro_simulation_eval.csv")
+    transcripts_out_path: Optional[str] = field(default="output/history_transcripts.jsonl")
+    debug_jsonl_path: Optional[str] = field(default="output/macro_simulation_debug.jsonl")
+    debug_full_jsonl_path: Optional[str] = field(default=None)
+
+    game_ids: Optional[str] = field(
+        default=None,
+        metadata={"help": "Optional comma-separated game IDs (or treatment names) to simulate."},
+    )
+    max_games: Optional[int] = field(default=None)
+
+    temperature: float = field(default=1.0)
+    top_p: float = field(default=1.0)
+    seed: int = field(default=0)
+    contrib_max_new_tokens: int = field(default=128)
+    chat_max_new_tokens: int = field(default=128)
+    actions_max_new_tokens: int = field(default=128)
+    include_reasoning: bool = field(
+        default=False,
+        metadata={"help": "If true, request a short reasoning field in JSON outputs."},
+    )
+
+    archetype: Optional[str] = field(
+        default=None,
+        metadata={"help": "Optional archetype mode: matched_summary | random_summary"},
+    )
+    archetype_mode: Optional[str] = field(
+        default=None,
+        metadata={"help": argparse.SUPPRESS},
+    )
+    archetype_summary_pool: str = field(
+        default="Persona/archetype_oracle_gpt51_val.jsonl",
+        metadata={"help": "JSONL file containing archetype summary entries."},
+    )
+
+    persona: Optional[str] = field(
+        default=None,
+        metadata={"help": argparse.SUPPRESS},
+    )
+    persona_summary_pool: Optional[str] = field(
+        default=None,
+        metadata={"help": argparse.SUPPRESS},
+    )
+    persona_pool: Optional[str] = field(
+        default=None,
+        metadata={"help": argparse.SUPPRESS},
+    )
+
+    max_parallel_games: int = field(
+        default=1,
+        metadata={"help": "Reserved for future use; current implementation runs sequentially."},
+    )
+
+    debug_print: bool = field(default=False)
+    debug_level: str = field(
+        default="full",
+        metadata={"help": "Debug output level: full | compact | off"},
+    )
+    debug_compact: bool = field(
+        default=False,
+        metadata={"help": "If true, store compact debug records (metadata + excerpt/hash)."},
+    )
+
+
+def _apply_data_root_paths(args: Args) -> None:
+    data_root = str(getattr(args, "data_root", "") or "").strip()
+    if not data_root:
+        return
+
+    wave = str(getattr(args, "wave", "validation_wave") or "validation_wave").strip()
+    if wave not in {"validation_wave", "learning_wave"}:
+        raise ValueError(
+            f"Unsupported --wave '{wave}'. Allowed values: validation_wave, learning_wave."
+        )
+
+    analysis_name = "df_analysis_val.csv" if wave == "validation_wave" else "df_analysis_learn.csv"
+    demographics_name = (
+        "demographics_numeric_val.csv"
+        if wave == "validation_wave"
+        else "demographics_numeric_learn.csv"
+    )
+    derived = {
+        "analysis_csv": os.path.join(data_root, "processed_data", analysis_name),
+        "rounds_csv": os.path.join(data_root, "raw_data", wave, "player-rounds.csv"),
+        "players_csv": os.path.join(data_root, "raw_data", wave, "players.csv"),
+        "demographics_csv": os.path.join(data_root, "demographics", demographics_name),
+    }
+    defaults = {
+        "analysis_csv": DEFAULT_ANALYSIS_CSV,
+        "rounds_csv": DEFAULT_ROUNDS_CSV,
+        "players_csv": DEFAULT_PLAYERS_CSV,
+        "demographics_csv": DEFAULT_DEMOGRAPHICS_CSV,
+    }
+    for key, path in derived.items():
+        current = str(getattr(args, key, "") or "").strip()
+        if (not current) or (current == defaults[key]):
+            setattr(args, key, path)
+
+
+def _normalize_archetype_args(args: Args) -> None:
+    archetype_mode = str(getattr(args, "archetype", "") or "").strip()
+    explicit_mode_alias = str(getattr(args, "archetype_mode", "") or "").strip()
+    persona_mode = str(getattr(args, "persona", "") or "").strip()
+
+    if persona_mode in {"matched_full_transcript", "random_full_transcript"}:
+        raise ValueError(
+            "Full transcript persona modes are not supported in Macro_simulation_eval. "
+            "Use --archetype matched_summary or --archetype random_summary."
+        )
+    if archetype_mode and explicit_mode_alias and archetype_mode != explicit_mode_alias:
+        raise ValueError("Conflicting values for --archetype and --archetype_mode.")
+    if not archetype_mode:
+        archetype_mode = explicit_mode_alias
+    if archetype_mode and persona_mode and archetype_mode != persona_mode:
+        raise ValueError("Conflicting values for --archetype and deprecated --persona.")
+    if not archetype_mode:
+        archetype_mode = persona_mode
+    if archetype_mode == "none":
+        archetype_mode = ""
+    args.archetype = archetype_mode or None
+    args.archetype_mode = None
+
+    archetype_pool = str(getattr(args, "archetype_summary_pool", "") or "").strip()
+    persona_pool = str(getattr(args, "persona_summary_pool", "") or "").strip()
+    if archetype_pool and persona_pool and archetype_pool != persona_pool:
+        raise ValueError(
+            "Conflicting values for --archetype_summary_pool and deprecated --persona_summary_pool."
+        )
+    if not archetype_pool:
+        archetype_pool = persona_pool
+    args.archetype_summary_pool = archetype_pool or "Persona/archetype_oracle_gpt51_val.jsonl"
+    args.persona = None
+    args.persona_summary_pool = None
+    args.persona_pool = None
+
+
+def main(args: Args) -> None:
+    _normalize_archetype_args(args)
+    _apply_data_root_paths(args)
+    _, output_paths = run_macro_simulation_eval(args)
+    if args.debug_print:
+        log(f"[macro] outputs directory -> {output_paths.get('directory')}")
+        log(f"[macro] rows -> {output_paths.get('rows')}")
+        log(f"[macro] transcripts -> {output_paths.get('transcripts')}")
+        log(f"[macro] debug -> {output_paths.get('debug')}")
+        log(f"[macro] config -> {output_paths.get('config')}")
+
+
+if __name__ == "__main__":
+    parser = HfArgumentParser(Args)
+    parsed, unknown = parser.parse_args_into_dataclasses(return_remaining_strings=True)
+    cfg = parsed[0] if isinstance(parsed, (list, tuple)) else parsed
+    if unknown:
+        log("[note] unknown args (ignored):", unknown)
+    main(cfg)

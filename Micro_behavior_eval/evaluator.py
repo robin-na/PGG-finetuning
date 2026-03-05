@@ -689,6 +689,10 @@ def predict_round_behavior(
     prediction_players = [pid for pid in ctx.player_ids if active_history.get(pid, True)]
     if not prediction_players:
         return {}
+    round_slice = ctx.round_to_rows.get(round_idx, pd.DataFrame())
+    row_by_pid: Dict[str, Any] = {}
+    if not round_slice.empty and "playerId" in round_slice.columns:
+        row_by_pid = {str(r["playerId"]): r for _, r in round_slice.iterrows()}
     include_system_in_prompt = client.provider == "local"
     stop_sequences = ["\n\n"]
     debug_excerpt_chars = 200
@@ -738,7 +742,7 @@ def predict_round_behavior(
         max_concurrency=args.openai_max_concurrency,
     )
     dt_contrib = time.perf_counter() - t1
-    contribution_by_avatar: Dict[str, int] = {}
+    predicted_contribution_by_avatar: Dict[str, int] = {}
     for pid, gen in zip(contrib_meta, contrib_raw):
         prompt_text = contrib_prompt_by_pid[pid]
         dt_per = dt_contrib / max(1, len(contrib_raw))
@@ -789,21 +793,49 @@ def predict_round_behavior(
         state[pid]["pred_contribution_parsed"] = parsed_ok
         if args.include_reasoning and ok and isinstance(payload, dict) and isinstance(payload.get("reasoning"), str):
             state[pid]["pred_contribution_reasoning"] = payload.get("reasoning")
-            work[pid].append(f"You thought: {state[pid]['pred_contribution_reasoning']}")
-        work[pid].append("<CONTRIB>")
-        work[pid].append(format_contrib_answer(state[pid]["pred_contribution"] if parsed_ok else "NaN"))
-        work[pid].append("</CONTRIB>")
-        contribution_by_avatar[ctx.avatar_by_player.get(pid, pid)] = int(val)
-    total_contrib = sum(contribution_by_avatar.values())
+        predicted_contribution_by_avatar[ctx.avatar_by_player.get(pid, pid)] = int(val)
+
+    # For action prompts in this round, condition on observed current-round contributions.
+    observed_contribution_by_player: Dict[str, Optional[int]] = {}
+    observed_contribution_by_avatar: Dict[str, int] = {}
+    for pid in prediction_players:
+        avatar = ctx.avatar_by_player.get(pid, pid)
+        row = row_by_pid.get(pid)
+        observed_val: Optional[int] = None
+        if row is not None:
+            raw_obs = row.get("data.contribution")
+            if not is_nan(raw_obs):
+                try:
+                    observed_val = int(float(raw_obs))
+                except Exception:
+                    observed_val = None
+        observed_contribution_by_player[pid] = observed_val
+        observed_contribution_by_avatar[avatar] = (
+            observed_val if observed_val is not None else predicted_contribution_by_avatar.get(avatar, 0)
+        )
+
+    total_contrib = sum(observed_contribution_by_avatar.values())
     try:
         multiplied = float(ctx.env.get("CONFIG_multiplier", 0) or 0) * float(total_contrib)
     except Exception:
         multiplied = float("nan")
+    if "data.roundPayoff" in round_slice.columns:
+        active_players = int(pd.to_numeric(round_slice["data.roundPayoff"], errors="coerce").notna().sum())
+    else:
+        active_players = len(prediction_players)
+    if active_players <= 0:
+        active_players = len(prediction_players)
     roster = [ctx.avatar_by_player.get(pid, pid) for pid in prediction_players]
     for pid in prediction_players:
         avatar = ctx.avatar_by_player.get(pid, pid)
-        work[pid].append(redist_line(total_contrib, multiplied, len(prediction_players)))
-        peers_csv, _ = peers_contributions_csv(roster, avatar, contribution_by_avatar)
+        focal_contrib = observed_contribution_by_player.get(pid)
+        if focal_contrib is None:
+            focal_contrib = predicted_contribution_by_avatar.get(avatar, 0)
+        work[pid].append("<CONTRIB>")
+        work[pid].append(format_contrib_answer(focal_contrib))
+        work[pid].append("</CONTRIB>")
+        work[pid].append(redist_line(total_contrib, multiplied, active_players))
+        peers_csv, _ = peers_contributions_csv(roster, avatar, observed_contribution_by_avatar)
         work[pid].append(f"<PEERS_CONTRIBUTIONS> {peers_csv} </PEERS_CONTRIBUTIONS>")
 
     reward_on = as_bool(ctx.env.get("CONFIG_rewardExists", False))

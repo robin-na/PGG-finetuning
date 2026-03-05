@@ -84,6 +84,7 @@ Under `reports/default/micro_behavior/<analysis_run_id>/`:
   - `metrics_overall.csv`
   - `metrics_by_round.csv`
   - `metrics_by_game.csv`
+  - `metrics_contribution_by_all_or_nothing.csv`
   - `row_level_scored.csv`
   - plot PNGs
   - `analysis_manifest.json`
@@ -91,6 +92,7 @@ Under `reports/default/micro_behavior/<analysis_run_id>/`:
   - `comparison_overall.csv`
   - `comparison_by_round.csv`
   - `comparison_by_game.csv`
+  - `comparison_contribution_by_all_or_nothing.csv`
   - `comparison_overall_errorbars.csv` (mean/SE/95% CI by run and metric)
   - `comparison_by_round_errorbars.csv` (mean/SE/95% CI by run-round and metric)
   - `comparison_significance.csv` (pairwise run differences, z-test p-values + BH-adjusted p-values)
@@ -115,6 +117,16 @@ Contribution metrics:
 - `contrib_rmse`: root mean squared error
 - `contrib_bias`: mean(predicted - actual)
 - `contrib_corr`: correlation (NaN-safe)
+
+Contribution-regime metrics (`CONFIG_allOrNothing` stratification):
+- `contrib_mae_norm20`: mean absolute error normalized by 20
+- For `CONFIG_allOrNothing=true` rows only:
+  - `contrib_binary_accuracy`
+  - `contrib_binary_precision`
+  - `contrib_binary_recall`
+  - `contrib_binary_f1`
+- Binary split rule: contribution `>= 10` is treated as `all`, `< 10` as `zero`.
+- Regime stratification is populated from each run's `config.json -> inputs.analysis_csv` mapping (`gameId -> CONFIG_allOrNothing`).
 
 Action metrics use typed targets:
 - Punish target: `("P", playerId)`

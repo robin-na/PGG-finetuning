@@ -1,0 +1,14 @@
+{
+  "train_csv": "benchmark/data/processed_data/df_analysis_learn.csv",
+  "val_csv": "benchmark/data/processed_data/df_analysis_val.csv",
+  "shared_ids_csv": "reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/macro_three_variant_shared_by_mechanism_game_ids_latest.csv",
+  "target": "itt_relative_efficiency",
+  "feature_family": "CONFIG_* only",
+  "n_train_games": 214,
+  "n_eval_games": 23,
+  "n_features_raw_config_cols": 29,
+  "n_numeric_config_cols": 28,
+  "n_categorical_config_cols": 1,
+  "rmse_normalized_efficiency": 0.23497114220940943,
+  "mae_normalized_efficiency": 0.18246672438715167
+}

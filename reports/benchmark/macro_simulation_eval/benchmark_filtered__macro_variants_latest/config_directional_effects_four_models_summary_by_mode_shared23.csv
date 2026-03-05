@@ -1,0 +1,9 @@
+model,mode,n_factors,sign_match_rate,mean_abs_delta_error
+linear_config,binary,8,0.625,0.08712371692420037
+oracle_archetype,binary,8,0.625,0.23244192262397034
+no_archetype,binary,8,0.375,0.34372253636129063
+retrieved_archetype,binary,8,0.25,0.2729557591254893
+linear_config,median,3,0.6666666666666666,0.11019889618037465
+no_archetype,median,3,0.6666666666666666,0.2517907107387311
+oracle_archetype,median,3,0.6666666666666666,0.26704308003601956
+retrieved_archetype,median,3,0.3333333333333333,0.2317675626678589

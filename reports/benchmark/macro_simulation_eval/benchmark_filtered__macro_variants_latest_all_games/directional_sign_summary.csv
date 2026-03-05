@@ -1,0 +1,3 @@
+variant,label,n_factors_evaluated,sign_match_rate_all,sign_match_rate_nonzero_human
+no_archetype,no archetype,11,0.5454545454545454,0.5454545454545454
+retrieved_archetype,retrieved archetype,11,0.2727272727272727,0.2727272727272727

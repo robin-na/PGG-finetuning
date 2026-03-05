@@ -64,12 +64,18 @@ def split_rel_path(split_root: Path, split_base_root: Path) -> Path:
     split_base_resolved = split_base_root.resolve()
     benchmark_filtered_root = (split_base_resolved / "data").resolve()
     benchmark_ood_root = (split_base_resolved / "data_ood_splits").resolve()
+    benchmark_ood_wave_root = (split_base_resolved / "data_ood_splits_wave_anchored").resolve()
 
     if split_root_resolved == benchmark_filtered_root:
         return Path("benchmark_filtered")
     try:
         rel_ood = split_root_resolved.relative_to(benchmark_ood_root)
         return Path("benchmark_ood") / rel_ood
+    except Exception:
+        pass
+    try:
+        rel_ood_wave = split_root_resolved.relative_to(benchmark_ood_wave_root)
+        return Path("benchmark_ood_wave_anchored") / rel_ood_wave
     except Exception:
         pass
     try:
@@ -353,7 +359,8 @@ def parse_args() -> argparse.Namespace:
         default=[],
         help=(
             "Single split direction root, e.g. "
-            "benchmark/data_ood_splits/all_or_nothing/false_to_true. "
+            "benchmark/data_ood_splits/all_or_nothing/false_to_true "
+            "or benchmark/data_ood_splits_wave_anchored/all_or_nothing/false_to_true. "
             "Can be provided multiple times."
         ),
     )

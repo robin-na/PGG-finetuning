@@ -1,0 +1,2 @@
+scope,n_games,retrieved_lower_rmse_contrib_rate,retrieved_lower_rmse_normalized_efficiency,retrieved_lower_rmse_punishment_rate,retrieved_lower_rmse_reward_rate,retrieved_higher_het_contrib_rate,retrieved_higher_het_punishment_rate
+shared_games,23,True,True,True,True,False,False

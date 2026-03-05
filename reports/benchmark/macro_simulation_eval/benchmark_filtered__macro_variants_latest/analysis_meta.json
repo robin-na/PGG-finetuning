@@ -1,0 +1,39 @@
+{
+  "split_root": "benchmark/data",
+  "split_relative_path": "benchmark_filtered",
+  "macro_root": "outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval",
+  "human_analysis_csv": "benchmark/data/processed_data/df_analysis_val.csv",
+  "shared_games_only": true,
+  "shared_games_count": 23,
+  "binary_factors": [
+    "CONFIG_chat",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_rewardExists",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_punishmentExists"
+  ],
+  "median_factors": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_MPCR"
+  ],
+  "selected_variants": [
+    {
+      "variant": "no_archetype",
+      "label": "no archetype",
+      "run_dir": "outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval/no_archetype/9999002_r0_macro_no_archetype"
+    },
+    {
+      "variant": "retrieved_archetype",
+      "label": "retrieved archetype",
+      "run_dir": "outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval/retrieved_archetype/9999579_r0_macro_retrieved_archetype"
+    }
+  ],
+  "plots": [
+    "reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/directional_effects_no_archetype.png",
+    "reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/directional_effects_retrieved_archetype.png"
+  ]
+}
