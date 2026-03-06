@@ -1,0 +1,57 @@
+{
+  "target": "itt_relative_efficiency",
+  "learn_analysis_csv": "benchmark/data/processed_data/df_analysis_learn.csv",
+  "val_analysis_csv": "benchmark/data/processed_data/df_analysis_val.csv",
+  "learn_persona_jsonl": "Persona/archetype_oracle_gpt51_learn.jsonl",
+  "val_persona_jsonl": "Persona/archetype_oracle_gpt51_val.jsonl",
+  "cluster_counts": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    16
+  ],
+  "ridge_alpha": 1.0,
+  "persona_coverage": {
+    "learn_games_total": 214,
+    "learn_games_with_persona": 214,
+    "val_games_total": 249,
+    "val_games_with_persona": 249
+  },
+  "best_by_model": {
+    "linear": {
+      "target": "itt_relative_efficiency",
+      "model": "linear",
+      "k_clusters": 8,
+      "baseline_r2": 0.007042079425688352,
+      "baseline_rmse": 0.2611501319609257,
+      "baseline_mae": 0.1937809238497464,
+      "augmented_r2": 0.10296214341990861,
+      "augmented_rmse": 0.24821625173254025,
+      "augmented_mae": 0.17847022378289587,
+      "delta_r2": 0.09592006399422026,
+      "delta_rmse": -0.01293388022838543,
+      "delta_mae": -0.015310700066850536,
+      "missing_style_games_learn": 0,
+      "missing_style_games_val": 0
+    },
+    "ridge": {
+      "target": "itt_relative_efficiency",
+      "model": "ridge",
+      "k_clusters": 8,
+      "baseline_r2": 0.013296171036856763,
+      "baseline_rmse": 0.26032641290314845,
+      "baseline_mae": 0.19311909382664816,
+      "augmented_r2": 0.10581851440788248,
+      "augmented_rmse": 0.24782074835576265,
+      "augmented_mae": 0.17814385409240677,
+      "delta_r2": 0.09252234337102572,
+      "delta_rmse": -0.012505664547385803,
+      "delta_mae": -0.014975239734241391,
+      "missing_style_games_learn": 0,
+      "missing_style_games_val": 0
+    }
+  },
+  "output_csv": "reports/benchmark/style_augmented_regression/results_itt_relative_efficiency.csv"
+}

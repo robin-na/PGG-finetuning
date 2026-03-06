@@ -1,0 +1,3 @@
+eval_granularity,n_train_rows,n_test_rows,n_train_unique_configs,n_test_unique_configs,n_overlap_configs,unseen_test_share,train_mean_target,oracle_test_config_mean_r2,oracle_test_config_mean_r2_oos_train_mean,oracle_test_config_mean_rmse,oracle_test_config_mean_mae,train_to_test_config_mean_r2,train_to_test_config_mean_r2_oos_train_mean,train_to_test_config_mean_rmse,train_to_test_config_mean_mae
+game,214,249,209,42,0,1.0,0.8221861028549987,0.24975601363011612,0.25001125361769105,0.12103337956772124,0.09275376528664424,-0.0003403250899511878,0.0,0.13975835707738773,0.11138584387059881
+config_treatment,206,40,206,40,0,1.0,0.8225649109357438,1.0,1.0,0.0,0.0,-0.020278850651567648,0.0,0.0814513674347233,0.065054089661815

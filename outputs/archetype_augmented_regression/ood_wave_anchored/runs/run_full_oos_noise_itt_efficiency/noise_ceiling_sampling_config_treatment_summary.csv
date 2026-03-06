@@ -1,0 +1,2 @@
+n_splits,mean_n_groups,mean_n_groups_with_replicates,mean_group_size,median_group_size,mean_mse_floor,mean_rmse_floor,mean_r2_ceiling_test_mean,mean_r2_ceiling_train_mean
+18,20.0,19.0,6.207561959645293,6.805555555555555,0.0032521968294032155,0.056201431927252944,0.4799500402052608,0.5264983980575205

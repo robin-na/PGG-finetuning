@@ -46,6 +46,18 @@ python Macro_simulation_eval/analysis/analyze_config_directional_effects.py \
   --val_analysis_csv benchmark/data/processed_data/df_analysis_val.csv
 ```
 
+Four-variant macro summary plots (no/random/oracle/retrieved) + OLS CONFIG baseline:
+
+```bash
+python Macro_simulation_eval/analysis/plot_macro_four_variant_summary.py \
+  --analysis_dir reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest \
+  --summary_csv reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/macro_four_variant_partial_rmse_variance_summary.csv \
+  --shared_game_ids_csv reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/macro_four_variant_shared4_game_ids.csv \
+  --learn_rows_csv benchmark/data/raw_data/learning_wave/player-rounds.csv \
+  --val_rows_csv benchmark/data/raw_data/validation_wave/player-rounds.csv \
+  --scope shared_4way
+```
+
 ## Outputs
 Under `<analysis_root>/<analysis_run_id>/`:
 
@@ -66,6 +78,15 @@ From `analyze_config_directional_effects.py`:
 - `config_directional_effects_four_models_manifest_shared23.json`
 - `figures/config_directional_effects_four_models_sign_match_rate_shared23.png`
 - `figures/config_directional_effects_four_models_delta_by_factor_shared23.png`
+
+From `plot_macro_four_variant_summary.py`:
+- `macro_four_variant_shared_4way_with_ols_table.csv`
+- `macro_four_variant_shared_4way_with_ols_manifest.json`
+- `figures/macro_four_variant_rmse_grouped_by_target_shared_4way_with_ols.png`
+
+Note: OLS baselines are CONFIG-only game-level regressions.
+- Normalized efficiency target comes from `itt_relative_efficiency` in `df_analysis_*.csv`.
+- Contribution/punishment/reward rate targets are aggregated from `raw_data/*/player-rounds.csv`.
 
 ## What It Computes
 

@@ -1,0 +1,36 @@
+{
+  "run_id": "run_smoke_modular",
+  "started_at_utc": "2026-03-05T22:43:12.146230+00:00",
+  "ended_at_utc": "2026-03-05T22:43:15.559720+00:00",
+  "elapsed_seconds": 3.41349,
+  "ood_root": "benchmark/data_ood_splits_wave_anchored",
+  "output_root": "outputs/archetype_augmented_regression/ood_wave_anchored",
+  "run_root": "outputs/archetype_augmented_regression/ood_wave_anchored/runs/run_smoke_modular",
+  "n_splits_requested": 1,
+  "n_failures": 0,
+  "failures": [],
+  "args": {
+    "ood_root": "benchmark/data_ood_splits_wave_anchored",
+    "output_root": "outputs/archetype_augmented_regression/ood_wave_anchored",
+    "run_id": "run_smoke_modular",
+    "target": "itt_relative_efficiency",
+    "style_source": "both",
+    "eval_granularity": "both",
+    "group_col": "CONFIG_treatmentName",
+    "ridge_alpha": 1.0,
+    "style_ridge_alpha": 1.0,
+    "style_oof_folds": 5,
+    "cluster_counts": [
+      4
+    ],
+    "max_splits": 1,
+    "skip_existing": false
+  },
+  "outputs": {
+    "all_splits_best_rows_csv": "outputs/archetype_augmented_regression/ood_wave_anchored/runs/run_smoke_modular/all_splits_best_rows.csv",
+    "comparison_csv": "outputs/archetype_augmented_regression/ood_wave_anchored/runs/run_smoke_modular/comparison_synthetic_vs_oracle.csv",
+    "comparison_counts_csv": "outputs/archetype_augmented_regression/ood_wave_anchored/runs/run_smoke_modular/comparison_counts.csv",
+    "config_only_split_level_csv": "outputs/archetype_augmented_regression/ood_wave_anchored/runs/run_smoke_modular/config_only_improvement_split_level.csv",
+    "config_only_counts_csv": "outputs/archetype_augmented_regression/ood_wave_anchored/runs/run_smoke_modular/config_only_improvement_counts.csv"
+  }
+}

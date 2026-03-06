@@ -1,0 +1,68 @@
+{
+  "target": "itt_relative_efficiency",
+  "learn_analysis_csv": "benchmark/data/processed_data/df_analysis_learn.csv",
+  "val_analysis_csv": "benchmark/data/processed_data/df_analysis_val.csv",
+  "learn_persona_jsonl": "Persona/archetype_oracle_gpt51_learn.jsonl",
+  "val_persona_jsonl": "Persona/archetype_oracle_gpt51_val.jsonl",
+  "cluster_counts": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    16
+  ],
+  "style_source": "synthetic",
+  "ridge_alpha": 1.0,
+  "style_ridge_alpha": 1.0,
+  "style_oof_folds": 5,
+  "persona_coverage": {
+    "learn_games_total": 214,
+    "learn_games_with_persona": 214,
+    "val_games_total": 249,
+    "val_games_with_persona": 249
+  },
+  "best_by_model": {
+    "synthetic": {
+      "linear": {
+        "target": "itt_relative_efficiency",
+        "style_source": "synthetic",
+        "model": "linear",
+        "k_clusters": 10,
+        "baseline_r2": 0.007042079425688352,
+        "baseline_rmse": 0.2611501319609257,
+        "baseline_mae": 0.1937809238497464,
+        "augmented_r2": 0.0314113845224534,
+        "augmented_rmse": 0.2579256344487378,
+        "augmented_mae": 0.19536286013183304,
+        "delta_r2": 0.024369305096765048,
+        "delta_rmse": -0.003224497512187896,
+        "delta_mae": 0.0015819362820866378,
+        "missing_style_games_learn": 0,
+        "missing_style_games_val": 0,
+        "style_map_val_rmse": 0.19539141875584007,
+        "style_map_val_mae": 0.11677629934407845
+      },
+      "ridge": {
+        "target": "itt_relative_efficiency",
+        "style_source": "synthetic",
+        "model": "ridge",
+        "k_clusters": 10,
+        "baseline_r2": 0.013296171036856763,
+        "baseline_rmse": 0.26032641290314845,
+        "baseline_mae": 0.19311909382664816,
+        "augmented_r2": 0.037738808690158554,
+        "augmented_rmse": 0.2570817886062612,
+        "augmented_mae": 0.1937432820918502,
+        "delta_r2": 0.02444263765330179,
+        "delta_rmse": -0.0032446242968872663,
+        "delta_mae": 0.0006241882652020525,
+        "missing_style_games_learn": 0,
+        "missing_style_games_val": 0,
+        "style_map_val_rmse": 0.19539141875584007,
+        "style_map_val_mae": 0.11677629934407845
+      }
+    }
+  },
+  "output_csv": "reports/benchmark/style_augmented_regression/results_itt_relative_efficiency_synthetic.csv"
+}

@@ -1,0 +1,5 @@
+split,factor,direction,eval_granularity,model,oracle_best_delta_r2,synthetic_best_delta_r2,oracle_best_delta_rmse,synthetic_best_delta_rmse,synthetic_beats_oracle_on_r2_gain,synthetic_beats_oracle_on_rmse_drop
+all_or_nothing/false_to_true,all_or_nothing,false_to_true,config_treatment,linear,-0.001256880460732912,0.26953440932469297,3.580757458235273e-05,-0.007822775877398352,True,True
+all_or_nothing/false_to_true,all_or_nothing,false_to_true,config_treatment,ridge,0.07524528546110121,0.32759468909460576,-0.0023013313404731117,-0.010222842316497338,True,True
+all_or_nothing/false_to_true,all_or_nothing,false_to_true,game,linear,0.06523737332899193,0.0024917690995005515,-0.007562723728022747,-0.00028541071251481087,False,False
+all_or_nothing/false_to_true,all_or_nothing,false_to_true,game,ridge,0.07325472073246186,0.02933441788122315,-0.008689726110869822,-0.003449020600335473,False,False

@@ -1,0 +1,5 @@
+eval_granularity,model,synthetic_beats_oracle_on_r2_gain,synthetic_beats_oracle_on_rmse_drop,n_splits
+config_treatment,linear,0.0,0.0,1
+config_treatment,ridge,0.0,0.0,1
+game,linear,0.0,0.0,1
+game,ridge,0.0,0.0,1

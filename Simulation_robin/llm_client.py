@@ -135,6 +135,7 @@ class LLMClient:
         self.openai_api_key_env = openai_api_key_env
         self.openai_base_url = openai_base_url.rstrip("/")
         self.openai_timeout_sec = openai_timeout_sec
+        self.last_openai_model_actual: Optional[str] = None
         if self.provider == "openai":
             self.openai_api_key = openai_api_key or _require_openai_key(openai_api_key_env)
             if not self.openai_model:
@@ -174,6 +175,7 @@ class LLMClient:
         if resp.status_code >= 400:
             raise RuntimeError(f"OpenAI API error {resp.status_code}: {resp.text}")
         data = resp.json()
+        self.last_openai_model_actual = data.get("model")
         try:
             content = data["choices"][0]["message"]["content"]
         except Exception as exc:

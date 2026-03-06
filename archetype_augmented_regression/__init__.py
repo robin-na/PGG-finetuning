@@ -1,0 +1,2 @@
+"""Archetype-augmented regression package."""
+

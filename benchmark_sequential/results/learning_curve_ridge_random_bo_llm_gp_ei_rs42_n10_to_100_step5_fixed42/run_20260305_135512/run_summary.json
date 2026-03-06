@@ -1,0 +1,91 @@
+{
+  "seed_state": 42,
+  "seed_ids": [
+    "3",
+    "20",
+    "23",
+    "25",
+    "67",
+    "90",
+    "116",
+    "129",
+    "173",
+    "179"
+  ],
+  "n_values": [
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    95,
+    100
+  ],
+  "step": 5,
+  "requested_methods": [
+    "random",
+    "bo",
+    "llm"
+  ],
+  "methods": [
+    "random",
+    "bo",
+    "llm"
+  ],
+  "llm_skipped_reason": null,
+  "random_runs": 200,
+  "features": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_showNRounds",
+    "CONFIG_allOrNothing",
+    "CONFIG_chat",
+    "CONFIG_defaultContribProp",
+    "CONFIG_punishmentCost",
+    "CONFIG_punishmentTech",
+    "CONFIG_rewardExists",
+    "CONFIG_rewardCost",
+    "CONFIG_rewardTech",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showRewardId",
+    "CONFIG_MPCR",
+    "control_itt_efficiency"
+  ],
+  "target": "treatment_itt_efficiency",
+  "regression_model": "ridge",
+  "ridge_alpha": 1.0,
+  "bo_acquisition": "ei",
+  "llm": {
+    "provider": "openai",
+    "model": "gpt-4.1-mini",
+    "shortlist_k": 20,
+    "batch_size": 5,
+    "n_max": 0,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_output_tokens": 12000,
+    "max_context_chars": 120000,
+    "overflow_policy": "trim_oldest",
+    "init_error": null
+  },
+  "baseline_mse_zero_treatment_effect": 0.005084746455933386,
+  "full_data_anchor": {
+    "mse": 0.0026800483819562917,
+    "rmse": 0.05176918370958047,
+    "r2_custom": 0.47292389007342817
+  },
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_sequential/results/learning_curve_ridge_random_bo_llm_gp_ei_rs42_n10_to_100_step5_fixed42/run_20260305_135512"
+}

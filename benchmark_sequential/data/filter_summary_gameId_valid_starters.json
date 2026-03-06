@@ -1,0 +1,148 @@
+{
+  "criteria": "gameId from processed_data/df_analysis_val.csv with valid_number_of_starting_players == True",
+  "output_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_sequential/data",
+  "processed_data": {
+    "df_analysis_learn.csv": {
+      "after": 0,
+      "before": 366
+    },
+    "df_analysis_val.csv": {
+      "after": 417,
+      "before": 470
+    },
+    "df_analysis_val_dedup.csv": {
+      "after": 38,
+      "before": 40
+    },
+    "df_paired_learn.csv": {
+      "after": 150,
+      "before": 150
+    },
+    "df_paired_val.csv": {
+      "after": 20,
+      "before": 20
+    },
+    "df_rounds_learn.csv": {
+      "after": 0,
+      "before": 61574
+    },
+    "df_rounds_val.csv": {
+      "after": 51414,
+      "before": 58038
+    },
+    "prediction_survey.csv": {
+      "after": 10723,
+      "before": 10723
+    }
+  },
+  "raw_data_learning_wave": {
+    "batches.csv": {
+      "after": 0,
+      "before": 91
+    },
+    "factor-types.csv": {
+      "after": 0,
+      "before": 110
+    },
+    "factors.csv": {
+      "after": 0,
+      "before": 1100
+    },
+    "game-lobbies.csv": {
+      "after": 0,
+      "before": 402
+    },
+    "games.csv": {
+      "after": 0,
+      "before": 376
+    },
+    "lobby-configs.csv": {
+      "after": 0,
+      "before": 10
+    },
+    "player-inputs.csv": {
+      "after": 0,
+      "before": 3716
+    },
+    "player-rounds.csv": {
+      "after": 0,
+      "before": 61574
+    },
+    "player-stages.csv": {
+      "after": 0,
+      "before": 186663
+    },
+    "players.csv": {
+      "after": 0,
+      "before": 6096
+    },
+    "rounds.csv": {
+      "after": 0,
+      "before": 5831
+    },
+    "stages.csv": {
+      "after": 0,
+      "before": 17675
+    },
+    "treatments.csv": {
+      "after": 0,
+      "before": 2560
+    }
+  },
+  "raw_data_validation_wave": {
+    "batches.csv": {
+      "after": 95,
+      "before": 103
+    },
+    "factor-types.csv": {
+      "after": 66,
+      "before": 66
+    },
+    "factors.csv": {
+      "after": 300,
+      "before": 300
+    },
+    "game-lobbies.csv": {
+      "after": 417,
+      "before": 506
+    },
+    "games.csv": {
+      "after": 417,
+      "before": 473
+    },
+    "lobby-configs.csv": {
+      "after": 6,
+      "before": 6
+    },
+    "player-inputs.csv": {
+      "after": 3334,
+      "before": 3639
+    },
+    "player-rounds.csv": {
+      "after": 51414,
+      "before": 58038
+    },
+    "player-stages.csv": {
+      "after": 157843,
+      "before": 178235
+    },
+    "players.csv": {
+      "after": 3582,
+      "before": 6792
+    },
+    "rounds.csv": {
+      "after": 6020,
+      "before": 6816
+    },
+    "stages.csv": {
+      "after": 18479,
+      "before": 20924
+    },
+    "treatments.csv": {
+      "after": 120,
+      "before": 120
+    }
+  },
+  "selected_game_ids": 417,
+  "source_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data"
+}

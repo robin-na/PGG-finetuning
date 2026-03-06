@@ -1,0 +1,26 @@
+{
+  "assertions": {
+    "paired_config_all_true_in_pool": true,
+    "seed_has_both_sides_for_each_pair": true
+  },
+  "nonseed_rows": 280,
+  "pool_pairs": 150,
+  "pool_rows": 300,
+  "random_state": 42,
+  "seed_pair_bases": [
+    "116",
+    "129",
+    "173",
+    "179",
+    "20",
+    "23",
+    "25",
+    "3",
+    "67",
+    "90"
+  ],
+  "seed_pairs": 10,
+  "seed_rows": 20,
+  "selection_policy": "outcome_blind_random_pair_sampling",
+  "source_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_learn.csv"
+}

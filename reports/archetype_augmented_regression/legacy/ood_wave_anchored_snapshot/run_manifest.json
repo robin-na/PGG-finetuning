@@ -1,0 +1,8 @@
+{
+  "n_splits": 18,
+  "n_failed": 0,
+  "failed": [],
+  "all_splits_best_rows_csv": "reports/benchmark/style_augmented_regression/ood_wave_anchored/all_splits_best_rows.csv",
+  "comparison_csv": "reports/benchmark/style_augmented_regression/ood_wave_anchored/comparison_synthetic_vs_oracle.csv",
+  "comparison_counts_csv": "reports/benchmark/style_augmented_regression/ood_wave_anchored/comparison_counts.csv"
+}

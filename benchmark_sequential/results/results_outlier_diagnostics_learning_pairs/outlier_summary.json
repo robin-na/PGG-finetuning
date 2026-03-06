@@ -1,0 +1,19 @@
+{
+  "source": "benchmark_sequential/data/processed_data/df_paired_learn.csv",
+  "n_rows": 150,
+  "iqr_outlier_config_ids": [
+    "53",
+    "123",
+    "172"
+  ],
+  "high_cooksD_config_ids": [
+    "22",
+    "27",
+    "32",
+    "47",
+    "64",
+    "123",
+    "180"
+  ],
+  "cooksD_cutoff": 0.02666666666666667
+}

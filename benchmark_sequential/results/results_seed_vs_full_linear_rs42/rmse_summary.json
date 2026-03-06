@@ -1,0 +1,62 @@
+{
+  "features_used": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_showNRounds",
+    "CONFIG_allOrNothing",
+    "CONFIG_chat",
+    "CONFIG_defaultContribProp",
+    "CONFIG_punishmentCost",
+    "CONFIG_punishmentTech",
+    "CONFIG_rewardExists",
+    "CONFIG_rewardCost",
+    "CONFIG_rewardTech",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showRewardId",
+    "CONFIG_MPCR",
+    "control_itt_efficiency"
+  ],
+  "mse": {
+    "base_zero_treatment_effect_on_val": 0.005084746455933386,
+    "full150_on_val": 0.0027550190526055775,
+    "seed10_on_val": 0.032135191570438135
+  },
+  "n_selected_config_features": 15,
+  "paired_learn_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_sequential/data/processed_data/df_paired_learn.csv",
+  "paired_val_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_sequential/data/processed_data/df_paired_val.csv",
+  "r2_custom": {
+    "definition": "1 - MSE_pred / MSE_base, where baseline predicts zero treatment effect (treatment_itt_efficiency = control_itt_efficiency)",
+    "full150_on_val": 0.4581796601892021,
+    "seed10_on_val": -5.3199201472355835
+  },
+  "rmse": {
+    "full150_on_val": 0.0524882753822754,
+    "seed10_on_val": 0.17926291186533297,
+    "seed_minus_full": 0.12677463648305756
+  },
+  "rows": {
+    "learn_pairs_full": 150,
+    "learn_pairs_seed": 10,
+    "val_pairs": 20
+  },
+  "seed_random_state": 42,
+  "seed_summary_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_sequential/data_seed_random_learning_paired300_pairs10_rs42/seed_selection_summary.json",
+  "selected_config_features": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_showNRounds",
+    "CONFIG_allOrNothing",
+    "CONFIG_chat",
+    "CONFIG_defaultContribProp",
+    "CONFIG_punishmentCost",
+    "CONFIG_punishmentTech",
+    "CONFIG_rewardExists",
+    "CONFIG_rewardCost",
+    "CONFIG_rewardTech",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showRewardId",
+    "CONFIG_MPCR"
+  ]
+}

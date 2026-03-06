@@ -1,0 +1,82 @@
+Task: Rerank a BO shortlist and select the next experiments expected to improve generalization.
+
+PGG context:
+- Efficiency measures how close a group's total payoff is to a fully cooperative benchmark (everyone contributes full endowment each round). 100% efficiency equals the fully cooperative benchmark payoff.
+- Objective proxy for candidate ranking is BO Expected Improvement score (bo_score_ei).
+
+Column glossary (sourced from benchmark_sequential/code_ref/build_positive_case_batch_input.py semantics):
+- selection_order: Order in which configs were selected in the current sequential run.
+- config_id: Unique paired configuration identifier (punishment OFF vs ON variant pair).
+- CONFIG_playerCount: Number of players in the game.
+- CONFIG_numRounds: Number of rounds in the game.
+- CONFIG_showNRounds: 1 if players know the number of rounds in advance, else 0.
+- CONFIG_allOrNothing: 1 if contribution is binary (all-or-nothing), else 0 for continuous contribution.
+- CONFIG_chat: 1 if player chat is enabled, else 0.
+- CONFIG_defaultContribProp: 1 if endowment starts in public fund by default (opt-out), else 0.
+- CONFIG_punishmentCost: Coins spent to impose one unit of punishment.
+- CONFIG_punishmentTech: Coins deducted from punished player per coin spent punishing.
+- CONFIG_rewardExists: 1 if reward mechanism exists, else 0.
+- CONFIG_rewardCost: Coins spent to grant one unit of reward.
+- CONFIG_rewardTech: Coins granted to rewarded player per coin spent rewarding.
+- CONFIG_showOtherSummaries: 1 if peer outcomes are shown to players, else 0.
+- CONFIG_showPunishmentId: 1 if identity of punisher/rewarder is shown, else 0.
+- CONFIG_showRewardId: 1 if identity of rewarder is shown, else 0.
+- CONFIG_MPCR: Marginal per-capita return.
+- control_itt_efficiency: Observed efficiency when punishment is absent (same paired config).
+- treatment_itt_efficiency: Observed efficiency when punishment is present (same paired config).
+- observed_treatment_effect: treatment_itt_efficiency - control_itt_efficiency on selected history rows.
+- ei_rank: Rank by bo_score_ei descending (1 is highest).
+- gp_mu: GP posterior mean for treatment_itt_efficiency on candidate.
+- gp_std: GP posterior standard deviation on candidate.
+- gp_ei: Expected Improvement acquisition score.
+- bo_score_ei: Same as gp_ei; BO shortlist score used for reranking.
+
+Rules:
+1) Choose ONLY from shortlist config_id values.
+2) Return exactly 10 unique config IDs in selection order.
+3) Prioritize expected generalization gain, not immediate treatment magnitude.
+4) Return strict JSON only, no markdown.
+
+Current step summary:
+- selected_pairs=10
+- unselected_pairs=140
+- requested_batch_size=10
+
+Observed history table (all selected so far):
+selection_order,config_id,CONFIG_playerCount,CONFIG_numRounds,CONFIG_showNRounds,CONFIG_allOrNothing,CONFIG_chat,CONFIG_defaultContribProp,CONFIG_punishmentCost,CONFIG_punishmentTech,CONFIG_rewardExists,CONFIG_rewardCost,CONFIG_rewardTech,CONFIG_showOtherSummaries,CONFIG_showPunishmentId,CONFIG_showRewardId,CONFIG_MPCR,control_itt_efficiency,treatment_itt_efficiency,observed_treatment_effect
+1,3,10,23,1,1,1,0,4,3.75,0,4,1,0,0,0,0.63,0.819109,0.719722,-0.0993874
+2,20,7,8,1,1,0,0,3,2,1,3,0.67,0,0,0,0.19,0.895604,0.924451,0.0288462
+3,23,6,25,0,0,0,0,4,1.25,1,4,0.75,1,0,0,0.45,0.686543,0.610988,-0.0755556
+4,25,12,19,0,1,1,1,4,2.75,1,4,1.25,1,1,1,0.11,0.965924,0.867409,-0.0985155
+5,67,10,20,0,1,0,0,2,2.5,0,2,1,1,0,0,0.34,0.935294,0.645693,-0.289601
+6,90,19,12,0,0,0,1,2,3,1,2,1,1,1,1,0.1,0.718375,0.663134,-0.0552414
+7,116,7,15,1,1,0,1,2,3.5,1,2,1,0,1,1,0.36,0.881333,0.831139,-0.0501941
+8,129,15,26,1,0,0,0,4,2.75,0,4,1.25,1,1,1,0.52,0.612081,0.797014,0.184933
+9,173,17,21,0,1,1,1,2,1.5,1,2,1.5,0,0,0,0.46,0.856434,0.834266,-0.0221677
+10,179,10,19,0,1,0,0,1,2,1,1,1,1,0,0,0.69,0.810831,0.934313,0.123481
+
+Candidate shortlist table (top GP-EI candidates):
+ei_rank,config_id,CONFIG_playerCount,CONFIG_numRounds,CONFIG_showNRounds,CONFIG_allOrNothing,CONFIG_chat,CONFIG_defaultContribProp,CONFIG_punishmentCost,CONFIG_punishmentTech,CONFIG_rewardExists,CONFIG_rewardCost,CONFIG_rewardTech,CONFIG_showOtherSummaries,CONFIG_showPunishmentId,CONFIG_showRewardId,CONFIG_MPCR,control_itt_efficiency,gp_mu,gp_std,gp_ei,bo_score_ei
+1,11,7,17,0,0,0,0,1,3,0,1,1,0,1,1,0.54,0.716718,0.782813,0.110446,0.00352576,0.00352576
+2,10,20,10,1,1,1,1,4,1.25,1,4,1.25,1,0,0,0.25,0.785288,0.782813,0.110446,0.00352576,0.00352576
+3,0,3,11,0,0,1,0,3,3,0,3,1.33,1,0,0,0.5,0.922727,0.782813,0.110446,0.00352576,0.00352576
+4,2,16,2,0,0,0,1,1,2,1,1,1,1,1,1,0.12,0.809375,0.782813,0.110446,0.00352576,0.00352576
+5,1,15,17,1,1,0,1,2,1,1,2,1,0,1,1,0.4,0.854427,0.782813,0.110446,0.00352576,0.00352576
+6,4,8,8,1,0,0,0,4,2.75,1,4,0.75,1,1,1,0.59,0.721825,0.782813,0.110446,0.00352576,0.00352576
+7,5,18,30,0,1,1,1,2,1.5,0,2,1,0,0,0,0.19,0.86872,0.782813,0.110446,0.00352576,0.00352576
+8,8,6,4,1,1,0,0,2,4,0,2,1,1,1,1,0.25,0.875,0.782813,0.110446,0.00352576,0.00352576
+9,6,13,13,1,0,1,1,2,2.5,0,2,1.5,1,0,0,0.49,0.779174,0.782813,0.110446,0.00352576,0.00352576
+10,16,4,6,0,1,1,0,4,2.25,0,4,1.5,0,1,1,0.55,0.818182,0.782813,0.110446,0.00352576,0.00352576
+11,24,4,12,1,0,0,0,1,2,0,1,1,0,0,0,0.68,0.802855,0.782813,0.110446,0.00352576,0.00352576
+12,14,13,5,0,1,0,1,3,1.67,0,3,1,1,1,1,0.69,0.548632,0.782813,0.110446,0.00352576,0.00352576
+13,19,9,22,1,0,1,0,3,1.33,0,3,1,1,1,1,0.24,0.743802,0.782813,0.110446,0.00352576,0.00352576
+14,18,17,15,0,1,0,1,2,2.5,1,2,0.5,0,0,0,0.55,0.711828,0.782813,0.110446,0.00352576,0.00352576
+15,21,19,16,0,0,1,1,2,4,0,2,1,1,1,1,0.66,0.907388,0.782813,0.110446,0.00352576,0.00352576
+16,22,12,3,1,1,1,1,2,3,0,2,1.5,0,1,1,0.36,0.764858,0.782813,0.110446,0.00352576,0.00352576
+17,32,2,1,1,0,0,1,3,2.33,0,3,1.33,0,1,1,0.6,0.958333,0.782813,0.110446,0.00352576,0.00352576
+18,31,2,19,1,1,1,0,2,2,1,2,1.5,1,1,1,0.65,0.993927,0.782813,0.110446,0.00352576,0.00352576
+19,26,19,7,1,0,1,1,3,3.67,1,3,1,0,1,1,0.43,0.81093,0.782813,0.110446,0.00352576,0.00352576
+20,29,16,24,1,1,0,1,3,3,0,3,0.67,1,0,0,0.52,0.747657,0.782813,0.110446,0.00352576,0.00352576
+
+Return JSON with this schema:
+{"selected_config_ids": ["string"], "confidence": 0.0, "rationale_short": "string"}
