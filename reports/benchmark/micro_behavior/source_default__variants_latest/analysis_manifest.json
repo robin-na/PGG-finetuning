@@ -1,7 +1,7 @@
 {
   "mode": "comparison",
-  "timestamp": "2026-03-06T10:40:11.188131",
-  "output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest",
+  "timestamp": "2026-03-06T10:40:57.925058",
+  "output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest",
   "filters": {
     "min_round": null,
     "max_round": null,
@@ -90,23 +90,23 @@
     }
   ],
   "generated_files": [
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_overall.csv",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_by_round.csv",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_by_game.csv",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_contribution_by_all_or_nothing.csv",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_overall_errorbars.csv",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_by_round_errorbars.csv",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_significance.csv",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/comparison_summary.md",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_contrib_mae.png",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_target_f1.png",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_action_exact_match.png",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_target_hit_any.png",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_by_round_contrib_mae.png",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_by_round_target_f1.png",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_contrib_mae_by_all_or_nothing.png",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/compare_contrib_binary_by_all_or_nothing_true.png",
-    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/micro_behavior/data__variants_latest/analysis_manifest.json"
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/comparison_overall.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/comparison_by_round.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/comparison_by_game.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/comparison_contribution_by_all_or_nothing.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/comparison_overall_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/comparison_by_round_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/comparison_significance.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/comparison_summary.md",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/compare_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/compare_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/compare_action_exact_match.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/compare_target_hit_any.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/compare_by_round_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/compare_by_round_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/compare_contrib_mae_by_all_or_nothing.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/compare_contrib_binary_by_all_or_nothing_true.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/source_default__variants_latest/analysis_manifest.json"
   ],
   "args": {
     "compare_run_ids": [
@@ -130,8 +130,8 @@
       "prev-round baseline": "#9467bd"
     },
     "eval_root": "outputs/default/runs/source_default/micro_behavior_eval",
-    "analysis_root": "reports/default/micro_behavior",
-    "analysis_run_id": "data__variants_latest",
+    "analysis_root": "reports/benchmark/micro_behavior",
+    "analysis_run_id": "source_default__variants_latest",
     "min_round": null,
     "max_round": null,
     "skip_no_actual": true,

@@ -48,6 +48,7 @@ python Micro_behavior_eval/analysis/run_analysis.py \
   --eval_root outputs/default/runs/source_default/micro_behavior_eval \
   --compare_run_ids no_archetype/2602262019,oracle_archetype/2602270203,retrieved_archetype/2602270212,random_archetype/2602270902 \
   --compare_labels "no archetype,oracle archetype,retrieved archetype,random archetype" \
+  --include_prev_round_baseline true \
   --analysis_run_id compare_last_four
 ```
 
@@ -74,6 +75,10 @@ python Micro_behavior_eval/analysis/run_analysis.py \
 - `--min_round`: optional lower round filter
 - `--max_round`: optional upper round filter
 - `--skip_no_actual`: `true|false`, default `true`
+- `--include_prev_round_baseline`: `true|false`, default `false`
+  - Adds a derived comparison run (`prev-round baseline`) that predicts each row from the same player's previous-round **actual** action on shared row keys across compared runs.
+  - For rows with no history (first observed row per player-game), fallback is `contribution=0` with no punish/reward targets.
+  - In comparison bar figures, this baseline is rendered as a dotted horizontal reference line (not a bar).
 - `--dpi`: plot DPI, default `160`
 - `--debug_print`: `true|false`, default `false`
 

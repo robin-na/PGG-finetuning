@@ -56,6 +56,9 @@ METRIC_DIRECTION = {
     "target_hit_any": "↑ better",
 }
 
+PREV_BASELINE_RUN_ID = "__baseline_prev_round__"
+PREV_BASELINE_RUN_LABEL = "prev-round baseline"
+
 
 @dataclass
 class AnalysisArgs:
@@ -69,6 +72,7 @@ class AnalysisArgs:
     min_round: Optional[int]
     max_round: Optional[int]
     skip_no_actual: bool
+    include_prev_round_baseline: bool
     dpi: int
     debug_print: bool
 
@@ -336,6 +340,101 @@ def _build_errorbar_summary(
     return pd.DataFrame(rows, columns=cols)
 
 
+def _normalize_round_index(series: pd.Series) -> pd.Series:
+    return pd.to_numeric(series, errors="coerce").astype("Int64")
+
+
+def _row_key_set(scored_df: pd.DataFrame) -> set[tuple[str, str, int]]:
+    if scored_df.empty:
+        return set()
+    tmp = scored_df[["gameId", "playerId", "roundIndex"]].copy()
+    tmp["gameId"] = tmp["gameId"].astype(str)
+    tmp["playerId"] = tmp["playerId"].astype(str)
+    tmp["roundIndex"] = _normalize_round_index(tmp["roundIndex"])
+    tmp = tmp[tmp["roundIndex"].notna()].copy()
+    return set(
+        (str(g), str(p), int(r))
+        for g, p, r in tmp[["gameId", "playerId", "roundIndex"]].itertuples(index=False, name=None)
+    )
+
+
+def _sanitize_action_dict(value: Any) -> Dict[str, int]:
+    if not isinstance(value, dict):
+        return {}
+    out: Dict[str, int] = {}
+    for key, units in value.items():
+        pid = str(key).strip()
+        if not pid:
+            continue
+        try:
+            units_int = int(units)
+        except Exception:
+            continue
+        if units_int > 0:
+            out[pid] = units_int
+    return out
+
+
+def _build_prev_round_baseline_scored(scored_frames: List[pd.DataFrame]) -> tuple[pd.DataFrame, Dict[str, Any]]:
+    if not scored_frames:
+        return pd.DataFrame(), {"n_input_runs": 0, "n_shared_row_keys": 0, "n_rows": 0}
+
+    key_sets = [_row_key_set(df) for df in scored_frames]
+    if not key_sets:
+        return pd.DataFrame(), {"n_input_runs": len(scored_frames), "n_shared_row_keys": 0, "n_rows": 0}
+    shared_keys = set.intersection(*key_sets)
+    if not shared_keys:
+        return pd.DataFrame(), {"n_input_runs": len(scored_frames), "n_shared_row_keys": 0, "n_rows": 0}
+
+    ref = scored_frames[0].copy()
+    if ref.empty:
+        return pd.DataFrame(), {"n_input_runs": len(scored_frames), "n_shared_row_keys": len(shared_keys), "n_rows": 0}
+
+    ref["gameId"] = ref["gameId"].astype(str)
+    ref["playerId"] = ref["playerId"].astype(str)
+    ref["roundIndex"] = _normalize_round_index(ref["roundIndex"])
+    ref = ref[ref["roundIndex"].notna()].copy()
+    ref["_row_key"] = list(
+        zip(
+            ref["gameId"].astype(str),
+            ref["playerId"].astype(str),
+            ref["roundIndex"].astype(int),
+        )
+    )
+    ref = ref[ref["_row_key"].isin(shared_keys)].copy()
+    if ref.empty:
+        return pd.DataFrame(), {"n_input_runs": len(scored_frames), "n_shared_row_keys": len(shared_keys), "n_rows": 0}
+
+    # Ensure action dictionaries are consistently typed.
+    for col in ["actual_punished_pid_dict", "actual_rewarded_pid_dict"]:
+        if col in ref.columns:
+            ref[col] = ref[col].map(_sanitize_action_dict)
+        else:
+            ref[col] = [{} for _ in range(len(ref))]
+
+    ref = ref.sort_values(["gameId", "playerId", "roundIndex"]).reset_index(drop=True)
+    grouped = ref.groupby(["gameId", "playerId"], sort=False)
+    prev_contrib = grouped["actual_contribution"].shift(1)
+    prev_punish = grouped["actual_punished_pid_dict"].shift(1)
+    prev_reward = grouped["actual_rewarded_pid_dict"].shift(1)
+
+    ref["predicted_contribution"] = pd.to_numeric(prev_contrib, errors="coerce").fillna(0.0)
+    ref["predicted_contribution_parsed_bool"] = True
+    ref["predicted_punished_pid_dict"] = prev_punish.map(_sanitize_action_dict)
+    ref["predicted_rewarded_pid_dict"] = prev_reward.map(_sanitize_action_dict)
+
+    baseline_scored = score_rows(ref)
+    first_round_rows = int((grouped.cumcount() == 0).sum())
+    meta = {
+        "n_input_runs": len(scored_frames),
+        "n_shared_row_keys": int(len(shared_keys)),
+        "n_rows": int(len(baseline_scored)),
+        "n_first_round_rows_with_no_history": first_round_rows,
+        "fallback_for_no_history": "contribution=0, no punish/reward",
+    }
+    return baseline_scored, meta
+
+
 def _compute_pairwise_significance(
     scored_df: pd.DataFrame,
     run_ids: List[str],
@@ -467,6 +566,9 @@ def _write_comparison_summary_md(
     lines.append("- `compare_target_f1.png`: Mean typed-target F1 across runs with 95% CI (`↑ better`).")
     lines.append("- `compare_action_exact_match.png`: Mean exact action-match rate across runs with 95% CI (`↑ better`).")
     lines.append("- `compare_target_hit_any.png`: Mean target-hit-any rate across runs with 95% CI (`↑ better`).")
+    lines.append(
+        f"- If enabled, `{PREV_BASELINE_RUN_LABEL}` is shown as a dotted horizontal reference line (with faint 95% CI band) in bar plots."
+    )
     lines.append("- `compare_by_round_contrib_mae.png`: Round-wise contribution MAE with 95% CI bands (`↓ better`).")
     lines.append("- `compare_by_round_target_f1.png`: Round-wise target F1 with 95% CI bands (`↑ better`).")
     lines.append(
@@ -600,6 +702,8 @@ def _plot_compare_bars(
     ]
     for metric, title, filename, direction in metrics:
         data = overall_errorbars[overall_errorbars["metric"] == metric].copy()
+        baseline = data[data["run_label"].astype(str) == PREV_BASELINE_RUN_LABEL].copy()
+        data = data[data["run_label"].astype(str) != PREV_BASELINE_RUN_LABEL].copy()
         if run_order:
             data["run_label"] = pd.Categorical(data["run_label"], categories=run_order, ordered=True)
             data = data.sort_values("run_label")
@@ -610,6 +714,23 @@ def _plot_compare_bars(
         yerr = pd.to_numeric(data["ci_half"], errors="coerce").fillna(0.0).values
         colors = [run_color_map.get(str(lbl), "#1f77b4") for lbl in data["run_label"].astype(str).tolist()]
         ax.bar(data["run_label"], data["mean"], yerr=yerr, capsize=4, color=colors)
+
+        # Render previous-round baseline as a dotted reference line, not a bar.
+        if not baseline.empty:
+            b_mean = float(pd.to_numeric(baseline.iloc[0]["mean"], errors="coerce"))
+            b_ci = float(pd.to_numeric(baseline.iloc[0]["ci_half"], errors="coerce"))
+            if b_mean == b_mean:
+                ax.axhline(
+                    b_mean,
+                    linestyle=":",
+                    linewidth=2.0,
+                    color="black",
+                    label=PREV_BASELINE_RUN_LABEL,
+                )
+                if b_ci == b_ci and b_ci > 0:
+                    ax.axhspan(b_mean - b_ci, b_mean + b_ci, color="black", alpha=0.08)
+                ax.legend(loc="best")
+
         ax.set_title(title)
         ax.set_ylabel(f"{metric} (mean ± 95% CI)")
         ax.tick_params(axis="x", rotation=20)
@@ -936,7 +1057,9 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
     by_round_frames: List[pd.DataFrame] = []
     by_game_frames: List[pd.DataFrame] = []
     scored_frames: List[pd.DataFrame] = []
+    raw_scored_frames: List[pd.DataFrame] = []
     run_summaries: List[Dict[str, Any]] = []
+    baseline_meta: Optional[Dict[str, Any]] = None
 
     for run_id, run_label in zip(run_ids, labels):
         input_csv = _resolve_run_eval_csv(run_id, eval_root=args.eval_root)
@@ -979,6 +1102,7 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
         scored_with_run["run_id"] = run_id
         scored_with_run["run_label"] = run_label
         scored_frames.append(scored_with_run)
+        raw_scored_frames.append(scored_df)
 
         run_summaries.append(
             {
@@ -995,6 +1119,57 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
             }
         )
 
+    if args.include_prev_round_baseline:
+        baseline_scored, baseline_meta = _build_prev_round_baseline_scored(raw_scored_frames)
+        if not baseline_scored.empty:
+            m_overall = aggregate_scores(baseline_scored)
+            if m_overall.empty:
+                empty_row = {k: (0 if k == "n_rows" else float("nan")) for k in AGG_METRIC_COLUMNS}
+                m_overall = pd.DataFrame([empty_row], columns=AGG_METRIC_COLUMNS)
+            m_overall.insert(0, "run_label", PREV_BASELINE_RUN_LABEL)
+            m_overall.insert(0, "run_id", PREV_BASELINE_RUN_ID)
+            m_overall["input_csv"] = "[derived: previous round baseline on shared row keys]"
+            m_overall["pre_filter_rows"] = int(baseline_meta.get("n_rows", len(baseline_scored)))
+            m_overall["post_filter_rows"] = int(baseline_meta.get("n_rows", len(baseline_scored)))
+            m_overall["malformed_dict_rows"] = 0
+            overall_frames.append(m_overall)
+
+            m_round = aggregate_scores(baseline_scored, group_cols=["roundIndex"])
+            if not m_round.empty:
+                m_round.insert(0, "run_label", PREV_BASELINE_RUN_LABEL)
+                m_round.insert(0, "run_id", PREV_BASELINE_RUN_ID)
+                by_round_frames.append(m_round)
+
+            m_game = aggregate_scores(baseline_scored, group_cols=["gameId"])
+            if not m_game.empty:
+                m_game.insert(0, "run_label", PREV_BASELINE_RUN_LABEL)
+                m_game.insert(0, "run_id", PREV_BASELINE_RUN_ID)
+                by_game_frames.append(m_game)
+
+            baseline_with_run = baseline_scored.copy()
+            baseline_with_run["run_id"] = PREV_BASELINE_RUN_ID
+            baseline_with_run["run_label"] = PREV_BASELINE_RUN_LABEL
+            scored_frames.append(baseline_with_run)
+
+            run_summaries.append(
+                {
+                    "run_id": PREV_BASELINE_RUN_ID,
+                    "run_label": PREV_BASELINE_RUN_LABEL,
+                    "input_csv": "[derived: previous round baseline on shared row keys]",
+                    "pre_filter_rows": int(baseline_meta.get("n_rows", len(baseline_scored))),
+                    "post_filter_rows": int(baseline_meta.get("n_rows", len(baseline_scored))),
+                    "dropped_rows": 0,
+                    "malformed_dict_rows": 0,
+                    "malformed_dict_parse_counts": {},
+                    "all_or_nothing_analysis_csv": None,
+                    "all_or_nothing_mapped_rows": int(
+                        baseline_scored["CONFIG_allOrNothing"].notna().sum()
+                    )
+                    if "CONFIG_allOrNothing" in baseline_scored
+                    else 0,
+                }
+            )
+
     comparison_overall = pd.concat(overall_frames, ignore_index=True)
     comparison_by_round = pd.concat(by_round_frames, ignore_index=True) if by_round_frames else pd.DataFrame()
     comparison_by_game = pd.concat(by_game_frames, ignore_index=True) if by_game_frames else pd.DataFrame()
@@ -1003,7 +1178,13 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
         combined_scored,
         group_cols=["run_id", "run_label"],
     )
-    run_order = labels
+    run_order = labels.copy()
+    run_ids_for_sig = run_ids.copy()
+    labels_for_sig = labels.copy()
+    if args.include_prev_round_baseline and PREV_BASELINE_RUN_ID in set(combined_scored.get("run_id", pd.Series(dtype=str)).astype(str)):
+        run_order.append(PREV_BASELINE_RUN_LABEL)
+        run_ids_for_sig.append(PREV_BASELINE_RUN_ID)
+        labels_for_sig.append(PREV_BASELINE_RUN_LABEL)
     run_color_map = _build_run_color_map(run_order)
 
     overall_errorbars = _build_errorbar_summary(
@@ -1014,7 +1195,7 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
         combined_scored,
         group_cols=["run_id", "run_label", "roundIndex"],
     )
-    significance_df = _compute_pairwise_significance(combined_scored, run_ids, labels)
+    significance_df = _compute_pairwise_significance(combined_scored, run_ids_for_sig, labels_for_sig)
 
     output_files: List[str] = []
     overall_path = output_dir / "comparison_overall.csv"
@@ -1099,6 +1280,7 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
         "args": {
             "compare_run_ids": run_ids,
             "compare_labels": labels,
+            "include_prev_round_baseline": bool(args.include_prev_round_baseline),
             "run_colors": run_color_map,
             "eval_root": args.eval_root,
             "analysis_root": args.analysis_root,
@@ -1109,6 +1291,7 @@ def _run_comparison_analysis(args: AnalysisArgs, output_dir: Path) -> Dict[str, 
             "dpi": args.dpi,
             "debug_print": args.debug_print,
         },
+        "previous_round_baseline": baseline_meta,
         "metrics_columns": AGG_METRIC_COLUMNS,
         "contribution_regime_metrics_columns": CONTRIB_REGIME_METRIC_COLUMNS,
     }
@@ -1195,6 +1378,12 @@ def build_parser() -> argparse.ArgumentParser:
         default="true",
         help="Whether to drop rows with no actual observation. true/false (default: true).",
     )
+    parser.add_argument(
+        "--include_prev_round_baseline",
+        type=str,
+        default="false",
+        help="Include a derived baseline that predicts each row from the same player's previous-round actual action. true/false (default: false).",
+    )
     parser.add_argument("--dpi", type=int, default=160, help="Plot DPI.")
     parser.add_argument(
         "--debug_print",
@@ -1219,6 +1408,7 @@ def parse_cli_args(argv: Optional[list[str]] = None) -> AnalysisArgs:
         min_round=ns.min_round,
         max_round=ns.max_round,
         skip_no_actual=bool(parse_bool(ns.skip_no_actual, default=True)),
+        include_prev_round_baseline=bool(parse_bool(ns.include_prev_round_baseline, default=False)),
         dpi=int(ns.dpi),
         debug_print=bool(parse_bool(ns.debug_print, default=False)),
     )

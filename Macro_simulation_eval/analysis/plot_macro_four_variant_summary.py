@@ -212,6 +212,74 @@ def make_grouped_rmse_plot(
     fig.savefig(out_path, dpi=dpi)
     plt.close(fig)
 
+
+def make_grouped_variance_plot(
+    df: pd.DataFrame,
+    out_path: Path,
+    scope: str,
+    title_suffix: str,
+    metric_specs: list[tuple[str, str, str]],
+    n_games: int,
+    dpi: int,
+) -> None:
+    """
+    metric_specs entries:
+      (sim_column, human_column, label)
+    """
+    os.environ.setdefault("MPLCONFIGDIR", str(Path(tempfile.gettempdir()) / "matplotlib"))
+    import matplotlib
+
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    variant_order = ["no_archetype", "random_archetype", "retrieved_archetype", "oracle_archetype"]
+    df = df.copy()
+    df["variant"] = pd.Categorical(df["variant"], categories=variant_order, ordered=True)
+    df = df.sort_values("variant").reset_index(drop=True)
+
+    labels = [x[2] for x in metric_specs]
+    x = np.arange(len(metric_specs))
+    width = 0.17
+    offsets = np.array([-1.5, -0.5, 0.5, 1.5]) * width
+
+    fig, ax = plt.subplots(figsize=(11.5, 5.0))
+    for idx, variant in enumerate(variant_order):
+        row = df[df["variant"] == variant]
+        if row.empty:
+            vals = [np.nan] * len(metric_specs)
+        else:
+            vals = [float(row.iloc[0][sim_col]) for sim_col, _, _ in metric_specs]
+        ax.bar(x + offsets[idx], vals, width=width, label=variant)
+
+    # Human references per metric as marker points.
+    human_vals = []
+    for _, human_col, _ in metric_specs:
+        if human_col in df.columns and not df.empty:
+            human_vals.append(float(df.iloc[0][human_col]))
+        else:
+            human_vals.append(np.nan)
+    ax.scatter(
+        x,
+        human_vals,
+        marker="D",
+        s=64,
+        color="black",
+        label="human",
+        zorder=5,
+    )
+
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, rotation=0, ha="center")
+    ax.set_ylabel("Variance")
+    ax.set_title(f"{title_suffix} ({scope}, n={n_games})")
+    ax.grid(axis="y", alpha=0.25)
+    ax.legend()
+
+    fig.tight_layout()
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(out_path, dpi=dpi)
+    plt.close(fig)
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Plot grouped 4-variant macro RMSE with OLS CONFIG baselines (game-level)."
@@ -339,12 +407,69 @@ def main() -> int:
 
     figures_dir = analysis_dir / "figures"
     rmse_fig = figures_dir / f"macro_four_variant_rmse_grouped_by_target_{args.scope}_with_ols.png"
+    variance_players_fig = figures_dir / f"macro_four_variant_variance_across_players_{args.scope}.png"
+    variance_games_fig = figures_dir / f"macro_four_variant_variance_across_games_{args.scope}.png"
     n_games_scope = int(scoped["n_games"].iloc[0]) if not scoped.empty else 0
     make_grouped_rmse_plot(
         scoped,
         rmse_fig,
         scope=args.scope,
         ols_rmse_by_target=ols_rmse_by_target,
+        n_games=n_games_scope,
+        dpi=args.dpi,
+    )
+    make_grouped_variance_plot(
+        scoped,
+        variance_players_fig,
+        scope=args.scope,
+        title_suffix="Within-game Player Variance",
+        metric_specs=[
+            (
+                "mean_var_players_contrib_rate_sim",
+                "mean_var_players_contrib_rate_human",
+                "contribution",
+            ),
+            (
+                "mean_var_players_punishment_rate_sim",
+                "mean_var_players_punishment_rate_human",
+                "punishment_rate",
+            ),
+            (
+                "mean_var_players_reward_rate_sim",
+                "mean_var_players_reward_rate_human",
+                "reward_rate",
+            ),
+        ],
+        n_games=n_games_scope,
+        dpi=args.dpi,
+    )
+    make_grouped_variance_plot(
+        scoped,
+        variance_games_fig,
+        scope=args.scope,
+        title_suffix="Across-game Variance of Game-level Means",
+        metric_specs=[
+            (
+                "var_across_games_contrib_rate_sim",
+                "var_across_games_contrib_rate_human",
+                "contribution",
+            ),
+            (
+                "var_across_games_punishment_rate_sim",
+                "var_across_games_punishment_rate_human",
+                "punishment_rate",
+            ),
+            (
+                "var_across_games_reward_rate_sim",
+                "var_across_games_reward_rate_human",
+                "reward_rate",
+            ),
+            (
+                "var_across_games_normalized_efficiency_sim",
+                "var_across_games_normalized_efficiency_human",
+                "normalized_efficiency",
+            ),
+        ],
         n_games=n_games_scope,
         dpi=args.dpi,
     )
@@ -359,6 +484,8 @@ def main() -> int:
         "outputs": {
             "table": str(scoped_out_path),
             "rmse_figure": str(rmse_fig),
+            "variance_across_players_figure": str(variance_players_fig),
+            "variance_across_games_figure": str(variance_games_fig),
         },
     }
     manifest_path = analysis_dir / f"macro_four_variant_{args.scope}_with_ols_manifest.json"
@@ -366,6 +493,8 @@ def main() -> int:
 
     print(f"Wrote {scoped_out_path}")
     print(f"Wrote {rmse_fig}")
+    print(f"Wrote {variance_players_fig}")
+    print(f"Wrote {variance_games_fig}")
     print(f"Wrote {manifest_path}")
     print(f"OLS CONFIG baseline RMSE by target: {ols_rmse_by_target}")
     print(f"OLS eval counts by target: {n_eval_by_target}")

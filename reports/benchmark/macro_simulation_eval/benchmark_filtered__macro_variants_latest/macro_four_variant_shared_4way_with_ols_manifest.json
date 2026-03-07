@@ -17,6 +17,8 @@
   },
   "outputs": {
     "table": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/macro_four_variant_shared_4way_with_ols_table.csv",
-    "rmse_figure": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/macro_four_variant_rmse_grouped_by_target_shared_4way_with_ols.png"
+    "rmse_figure": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/macro_four_variant_rmse_grouped_by_target_shared_4way_with_ols.png",
+    "variance_across_players_figure": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/macro_four_variant_variance_across_players_shared_4way.png",
+    "variance_across_games_figure": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/benchmark_filtered__macro_variants_latest/figures/macro_four_variant_variance_across_games_shared_4way.png"
   }
 }

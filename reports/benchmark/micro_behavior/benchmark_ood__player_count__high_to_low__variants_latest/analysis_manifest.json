@@ -1,6 +1,6 @@
 {
   "mode": "comparison",
-  "timestamp": "2026-03-03T18:04:59.137826",
+  "timestamp": "2026-03-06T10:40:10.818483",
   "output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior/benchmark_ood__player_count__high_to_low__variants_latest",
   "filters": {
     "min_round": null,
@@ -75,6 +75,18 @@
       },
       "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data_ood_splits/player_count/high_to_low/processed_data/df_analysis_val.csv",
       "all_or_nothing_mapped_rows": 1205
+    },
+    {
+      "run_id": "__baseline_prev_round__",
+      "run_label": "prev-round baseline",
+      "input_csv": "[derived: previous round baseline on shared row keys]",
+      "pre_filter_rows": 1205,
+      "post_filter_rows": 1205,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {},
+      "all_or_nothing_analysis_csv": null,
+      "all_or_nothing_mapped_rows": 1205
     }
   ],
   "generated_files": [
@@ -109,11 +121,13 @@
       "oracle archetype",
       "retrieved archetype"
     ],
+    "include_prev_round_baseline": true,
     "run_colors": {
       "no archetype": "#1f77b4",
       "random archetype": "#ff7f0e",
       "oracle archetype": "#2ca02c",
-      "retrieved archetype": "#d62728"
+      "retrieved archetype": "#d62728",
+      "prev-round baseline": "#9467bd"
     },
     "eval_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_ood/player_count/high_to_low/micro_behavior_eval",
     "analysis_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/micro_behavior",
@@ -123,6 +137,13 @@
     "skip_no_actual": true,
     "dpi": 160,
     "debug_print": false
+  },
+  "previous_round_baseline": {
+    "n_input_runs": 4,
+    "n_shared_row_keys": 1205,
+    "n_rows": 1205,
+    "n_first_round_rows_with_no_history": 79,
+    "fallback_for_no_history": "contribution=0, no punish/reward"
   },
   "metrics_columns": [
     "n_rows",
