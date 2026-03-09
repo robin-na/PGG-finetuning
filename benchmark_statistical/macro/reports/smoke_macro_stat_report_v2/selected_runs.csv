@@ -1,0 +1,2 @@
+run_id,label,eval_csv,human_analysis_csv,human_rows_csv,n_games_simulated,n_games_after_merge
+smoke_macro_stat,smoke_macro_stat,/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/default/runs/source_default/simulation_statistical/macro/smoke_macro_stat/macro_simulation_eval.csv,/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_val.csv,/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/raw_data/validation_wave/player-rounds.csv,1,1

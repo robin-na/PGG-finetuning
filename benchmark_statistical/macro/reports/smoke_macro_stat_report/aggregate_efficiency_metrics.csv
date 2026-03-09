@@ -1,0 +1,2 @@
+run_id,label,n_games,mae_normalized_efficiency,rmse_normalized_efficiency,corr_normalized_efficiency,mean_human_normalized_efficiency,mean_sim_normalized_efficiency
+smoke_macro_stat,smoke_macro_stat,1,0.47329081072254614,0.47329081072254614,,0.8806982181299535,0.4074074074074074

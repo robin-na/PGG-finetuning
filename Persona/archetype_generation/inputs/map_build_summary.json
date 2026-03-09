@@ -1,0 +1,26 @@
+{
+  "archetype_jsonl": "Persona/archetype_oracle_gpt51_learn.jsonl",
+  "config_csv": "data/processed_data/df_analysis_learn.csv",
+  "model": "gpt-5.1",
+  "n_rows_input": 3691,
+  "n_rows_joined": 3691,
+  "missing_config_rows": 0,
+  "n_shards": 5,
+  "shard_sizes": {
+    "1": 1623,
+    "2": 917,
+    "3": 565,
+    "4": 362,
+    "5": 224
+  },
+  "n_anchors": 14,
+  "anchor_token_budget": 20000,
+  "target_prompt_tokens": 110000,
+  "n_requests": 63,
+  "output_dir": "Persona/archetype_generation/inputs",
+  "files": {
+    "batch_requests": "Persona/archetype_generation/inputs/map_batch_requests.jsonl",
+    "request_manifest": "Persona/archetype_generation/inputs/map_request_manifest.jsonl",
+    "row_table": "Persona/archetype_generation/inputs/map_row_table.jsonl"
+  }
+}

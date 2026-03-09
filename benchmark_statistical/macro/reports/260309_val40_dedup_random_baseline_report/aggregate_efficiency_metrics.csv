@@ -1,0 +1,2 @@
+run_id,label,n_games,mae_normalized_efficiency,rmse_normalized_efficiency,corr_normalized_efficiency,mean_human_normalized_efficiency,mean_sim_normalized_efficiency
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,40,0.28550309140447006,0.335440408461991,-0.23704907205426506,0.6956599583128844,0.5382492916711972

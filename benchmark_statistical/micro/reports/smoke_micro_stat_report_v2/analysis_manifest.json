@@ -1,0 +1,107 @@
+{
+  "mode": "single",
+  "timestamp": "2026-03-09T15:16:42.289605",
+  "input_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/default/runs/source_default/simulation_statistical/micro/smoke_micro_stat/micro_behavior_eval.csv",
+  "output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2",
+  "filters": {
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true
+  },
+  "row_counts": {
+    "pre_filter": 45,
+    "post_filter": 45,
+    "dropped": 0
+  },
+  "malformed_dict_parse_counts": {
+    "predicted_punished_pid": 0,
+    "predicted_rewarded_pid": 0,
+    "actual_punished_pid": 0,
+    "actual_rewarded_pid": 0
+  },
+  "malformed_dict_rows": 0,
+  "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_val.csv",
+  "generated_files": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/row_level_scored.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/metrics_overall.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/metrics_by_round.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/metrics_by_game.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/metrics_contribution_by_all_or_nothing.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/contribution_error_histogram.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/pred_vs_actual_contribution_scatter.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/contribution_mae_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/contribution_bias_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/action_exact_match_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/target_f1_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/target_hit_any_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/action_metrics_by_game.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/contribution_mae_by_game.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/heatmap_game_round_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/heatmap_game_round_contribution_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/analysis_manifest.json",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_metrics_overall.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_f1_by_round.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_f1_by_game.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_f1_by_round.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_f1_by_game.png"
+  ],
+  "args": {
+    "eval_csv": null,
+    "run_id": "smoke_micro_stat",
+    "eval_root": "outputs/default/runs/source_default/simulation_statistical/micro",
+    "analysis_root": "reports/default/simulation_statistical/micro",
+    "analysis_run_id": "smoke_micro_stat_report_v2",
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true,
+    "dpi": 160,
+    "debug_print": false
+  },
+  "metrics_columns": [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "action_exact_match",
+    "target_set_exact",
+    "target_precision",
+    "target_recall",
+    "target_f1",
+    "target_jaccard",
+    "target_hit_any",
+    "unit_mae_on_overlap",
+    "unit_exact_on_overlap_rate",
+    "actual_any_action_rate",
+    "pred_any_action_rate",
+    "actual_any_punish_rate",
+    "pred_any_punish_rate",
+    "actual_any_reward_rate",
+    "pred_any_reward_rate"
+  ],
+  "contribution_regime_metrics_columns": [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_mae_norm20",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "contrib_binary_n",
+    "contrib_binary_accuracy",
+    "contrib_binary_precision",
+    "contrib_binary_recall",
+    "contrib_binary_f1"
+  ],
+  "supplemental_punishment_target_f1": {
+    "analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_val.csv",
+    "generated_files": [
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_metrics_overall.csv",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_f1_by_round.csv",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_f1_by_game.csv",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_f1_by_round.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/default/simulation_statistical/micro/smoke_micro_stat_report_v2/punishment_target_f1_by_game.png"
+    ]
+  }
+}

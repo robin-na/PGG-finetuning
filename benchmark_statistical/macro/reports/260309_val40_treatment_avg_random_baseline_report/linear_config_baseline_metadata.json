@@ -1,0 +1,23 @@
+{
+  "feature_cols": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_showNRounds",
+    "CONFIG_allOrNothing",
+    "CONFIG_chat",
+    "CONFIG_defaultContribProp",
+    "CONFIG_punishmentExists",
+    "CONFIG_punishmentCost",
+    "CONFIG_punishmentTech",
+    "CONFIG_rewardExists",
+    "CONFIG_rewardCost",
+    "CONFIG_rewardTech",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showRewardId",
+    "CONFIG_MPCR"
+  ],
+  "n_feature_cols": 16,
+  "learn_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_learn.csv",
+  "learn_rows_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/raw_data/learning_wave/player-rounds.csv"
+}

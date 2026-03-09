@@ -1,0 +1,56 @@
+{
+  "run_timestamp": "smoke_macro_stat",
+  "status": "completed",
+  "created_at_utc": "2026-03-09T18:56:30.523385+00:00",
+  "inputs": {
+    "analysis_csv": "data/processed_data/df_analysis_val.csv",
+    "rounds_csv": "data/raw_data/validation_wave/player-rounds.csv",
+    "players_csv": "data/raw_data/validation_wave/players.csv",
+    "demographics_csv": "demographics/demographics_numeric_val.csv"
+  },
+  "selection": {
+    "num_games": 1,
+    "game_ids": [
+      "24hqfcDGXxLrMr7JY"
+    ],
+    "requested_game_ids": null,
+    "max_games": 1
+  },
+  "strategy": {
+    "name": "random_baseline",
+    "contribution_sampler": "uniform_legal_action_space",
+    "target_probability": 0.1,
+    "action_magnitude": 1,
+    "chat_policy": "always_blank"
+  },
+  "args": {
+    "data_root": null,
+    "wave": "validation_wave",
+    "analysis_csv": "data/processed_data/df_analysis_val.csv",
+    "rounds_csv": "data/raw_data/validation_wave/player-rounds.csv",
+    "players_csv": "data/raw_data/validation_wave/players.csv",
+    "demographics_csv": "demographics/demographics_numeric_val.csv",
+    "output_root": "outputs/default/runs/source_default/simulation_statistical/macro",
+    "run_id": "smoke_macro_stat",
+    "rows_out_path": "output/macro_simulation_eval.csv",
+    "transcripts_out_path": "output/history_transcripts.jsonl",
+    "debug_jsonl_path": "output/macro_statistical_debug.jsonl",
+    "game_ids": null,
+    "max_games": 1,
+    "seed": 7,
+    "target_probability": 0.1,
+    "action_magnitude": 1,
+    "debug_print": false
+  },
+  "outputs": {
+    "directory": "outputs/default/runs/source_default/simulation_statistical/macro/smoke_macro_stat",
+    "rows": "outputs/default/runs/source_default/simulation_statistical/macro/smoke_macro_stat/macro_simulation_eval.csv",
+    "transcripts": "outputs/default/runs/source_default/simulation_statistical/macro/smoke_macro_stat/history_transcripts.jsonl",
+    "debug": "outputs/default/runs/source_default/simulation_statistical/macro/smoke_macro_stat/macro_statistical_debug.jsonl"
+  },
+  "completed_at_utc": "2026-03-09T18:56:30.525623+00:00",
+  "summary": {
+    "num_rows": 60,
+    "num_games": 1
+  }
+}

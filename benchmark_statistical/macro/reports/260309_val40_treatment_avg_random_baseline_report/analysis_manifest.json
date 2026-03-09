@@ -1,0 +1,85 @@
+{
+  "analysis_run_id": "260309_val40_treatment_avg_random_baseline_report",
+  "analysis_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports",
+  "eval_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/runs",
+  "run_ids": [
+    "260309_val40_treatment_avg_random_baseline"
+  ],
+  "labels": [
+    "260309_val40_treatment_avg_random_baseline"
+  ],
+  "shared_games_only": false,
+  "shared_games_count": null,
+  "human_csv_by_run": {
+    "260309_val40_treatment_avg_random_baseline": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val_averaged.csv"
+  },
+  "binary_factors": [
+    "CONFIG_chat",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_rewardExists",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_punishmentExists"
+  ],
+  "median_factors": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_MPCR"
+  ],
+  "plots": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/directional_effects_260309_val40_treatment_avg_random_baseline.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/game_level_metrics.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/macro_rmse_summary.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/macro_variance_summary.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/macro_player_variance_by_game.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/linear_config_baseline_summary.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/linear_config_baseline_metadata.json",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/directional_effects.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/directional_sign_summary.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/macro_rmse_by_target.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/macro_variance_across_players.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/macro_variance_across_games.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/macro_game_level_scatter_by_target.png"
+  ],
+  "supplemental_reports": [
+    {
+      "name": "single_run_rmse_variance_report",
+      "run_id": "260309_val40_treatment_avg_random_baseline",
+      "linear_config_features": [
+        "CONFIG_playerCount",
+        "CONFIG_numRounds",
+        "CONFIG_showNRounds",
+        "CONFIG_allOrNothing",
+        "CONFIG_chat",
+        "CONFIG_defaultContribProp",
+        "CONFIG_punishmentExists",
+        "CONFIG_punishmentCost",
+        "CONFIG_punishmentTech",
+        "CONFIG_rewardExists",
+        "CONFIG_rewardCost",
+        "CONFIG_rewardTech",
+        "CONFIG_showOtherSummaries",
+        "CONFIG_showPunishmentId",
+        "CONFIG_showRewardId",
+        "CONFIG_MPCR"
+      ],
+      "generated_files": [
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/game_level_metrics.csv",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/macro_rmse_summary.csv",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/macro_variance_summary.csv",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/macro_player_variance_by_game.csv",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/linear_config_baseline_summary.csv",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/linear_config_baseline_metadata.json",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/directional_effects.csv",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/directional_sign_summary.csv",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/macro_rmse_by_target.png",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/macro_variance_across_players.png",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/macro_variance_across_games.png",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/macro_game_level_scatter_by_target.png",
+        "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260309_val40_treatment_avg_random_baseline_report/figures/directional_effects_260309_val40_treatment_avg_random_baseline.png"
+      ]
+    }
+  ]
+}

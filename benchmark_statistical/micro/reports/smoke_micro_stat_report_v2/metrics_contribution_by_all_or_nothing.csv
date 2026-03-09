@@ -1,0 +1,2 @@
+CONFIG_allOrNothing,n_rows,predicted_contribution_parsed,contrib_mae,contrib_mae_norm20,contrib_rmse,contrib_bias,contrib_corr,contrib_binary_n,contrib_binary_accuracy,contrib_binary_precision,contrib_binary_recall,contrib_binary_f1
+True,45,1.0,13.777777777777779,0.6888888888888889,16.59986613065164,-11.11111111111111,-0.25738156331354817,45,0.3111111111111111,0.8125,0.3170731707317073,0.45614035087719296

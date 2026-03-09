@@ -1,0 +1,12 @@
+run_id,label,factor,mode,threshold,n_total,n_high,n_low,human_delta,sim_delta,human_sign,sim_sign,sign_match,sign_match_nonzero_human
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_chat,binary,,40,26,14,0.09778564023799774,0.02458094657898091,1,1,True,True
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_allOrNothing,binary,,40,18,22,0.02191762407906994,0.06983810647413435,1,1,True,True
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_defaultContribProp,binary,,40,16,24,-0.08037371710626307,0.004192809269503828,-1,1,False,False
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_rewardExists,binary,,40,22,18,-0.1132982936764082,-0.02653024942127069,-1,-1,True,True
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_showNRounds,binary,,40,28,12,-0.0453102012854435,-0.003321942729032412,-1,-1,True,True
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_showPunishmentId,binary,,40,20,20,0.03364588604634933,-0.03190375551033209,1,-1,False,False
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_showOtherSummaries,binary,,40,26,14,-0.08291544200181145,0.0433456083831798,-1,1,False,False
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_punishmentExists,binary,,40,20,20,-0.05469795360594776,-0.05892284700930084,-1,-1,True,True
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_playerCount,median,6.5,40,20,20,0.09146821973124264,-0.009507493655724453,1,-1,False,False
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_numRounds,median,14.5,40,20,20,0.1662508748712095,-0.07135726868880465,1,-1,False,False
+260309_val40_dedup_random_baseline,260309_val40_dedup_random_baseline,CONFIG_MPCR,median,0.485,40,20,20,0.0378394070685063,-0.009982403421340269,1,-1,False,False
