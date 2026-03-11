@@ -275,6 +275,313 @@ def _others_summary(round_slice, avatars, punishment_exists, punishment_cost, re
     return out
 
 
+def _num_or_none(x):
+    if _is_nan(x):
+        return None
+    try:
+        x = float(x)
+    except Exception:
+        return x
+    if x.is_integer():
+        return int(x)
+    return x
+
+
+def _all_contributions(round_slice, avatars):
+    out = {}
+    for _, ro in round_slice.sort_values("playerId").iterrows():
+        av = avatars.get(str(ro["playerId"]), f"Player {ro['playerId']}")
+        out[av] = _num_or_none(ro.get("data.contribution"))
+    return out
+
+
+def _actor_target_map(round_slice, avatars, field_name):
+    out = {}
+    for _, ro in round_slice.sort_values("playerId").iterrows():
+        actor_av = avatars.get(str(ro["playerId"]), f"Player {ro['playerId']}")
+        action_dict = parse_dict(ro.get(field_name, {})) or {}
+        targets = {}
+        for pid, units in action_dict.items():
+            try:
+                units_int = int(units)
+            except Exception:
+                continue
+            if units_int <= 0:
+                continue
+            target_av = avatars.get(str(pid), f"Player {pid}")
+            targets[target_av] = units_int
+        if targets:
+            out[actor_av] = targets
+    return out
+
+
+def _observer_round_summary(round_slice, avatars, punishment_exists, punishment_cost, reward_exists, reward_cost):
+    out = {}
+    for _, ro in round_slice.sort_values("playerId").iterrows():
+        av = avatars.get(str(ro["playerId"]), f"Player {ro['playerId']}")
+        payoff = ro.get("data.roundPayoff")
+        if _is_nan(payoff):
+            out[av] = {"status": "exited"}
+            continue
+
+        entry = {
+            "contribution": _num_or_none(ro.get("data.contribution")),
+            "round_payoff": _num_or_none(payoff),
+        }
+        if punishment_exists:
+            pun_dict = parse_dict(ro.get("data.punished", {})) or {}
+            pun_units = int(sum(pun_dict.values())) if pun_dict else 0
+            entry["coins_spent_on_punish"] = pun_units * int(punishment_cost or 0)
+            entry["coins_deducted_from_them"] = int(ro.get("data.penalties", 0) or 0)
+        if reward_exists:
+            rew_dict = parse_dict(ro.get("data.rewarded", {})) or {}
+            rew_units = int(sum(rew_dict.values())) if rew_dict else 0
+            entry["coins_spent_on_reward"] = rew_units * int(reward_cost or 0)
+            entry["coins_rewarded_to_them"] = int(ro.get("data.rewards", 0) or 0)
+        out[av] = entry
+    return out
+
+
+def _build_cfg_by_game(df_analysis: pd.DataFrame):
+    cfg_by_game = {}
+    for gid, g in df_analysis.groupby("gameId"):
+        r0 = g.iloc[0]
+        cfg_by_game[gid] = {
+            "players":              int(r0.get("CONFIG_playerCount", 0) or 0),
+            "numRounds":            int(r0.get("CONFIG_numRounds", 0) or 0),
+            "showNRounds":          bool(r0.get("CONFIG_showNRounds", False)),
+            "endowment":            int(r0.get("CONFIG_endowment", 0) or 0),
+            "multiplier":           r0.get("CONFIG_multiplier", "Unknown"),
+            "all_or_nothing":       bool(r0.get("CONFIG_allOrNothing", False)),
+            "chat":                 bool(r0.get("CONFIG_chat", False)),
+            "defaultContribProp":   bool(r0.get("CONFIG_defaultContribProp", False)),
+            "punishment_exists":    bool(r0.get("CONFIG_punishmentExists", False)),
+            "punishment_cost":      int(r0.get("CONFIG_punishmentCost", 0) or 0),
+            "punishment_magnitude": int(r0.get("CONFIG_punishmentMagnitude", 0) or 0),
+            "reward_exists":        bool(r0.get("CONFIG_rewardExists", False)),
+            "reward_cost":          int(r0.get("CONFIG_rewardCost", 0) or 0),
+            "reward_magnitude":     int(r0.get("CONFIG_rewardMagnitude", 0) or 0),
+            "showOtherSummaries":   bool(r0.get("CONFIG_showOtherSummaries", False)),
+            "showPunishmentId":     bool(r0.get("CONFIG_showPunishmentId", False)),
+            "showRewardId":         bool(r0.get("CONFIG_showRewardId", False)),
+        }
+    return cfg_by_game
+
+
+def _participant_system_text(cfg):
+    sys_lines = []
+    sys_lines.append(
+        "You are playing an online public goods game (PGG). Each round, you are given "
+        f"{cfg['endowment']} coins and need to decide how many coins to put into the shared pot "
+        f"({'either 0 or ' + str(cfg['endowment']) if cfg['all_or_nothing'] else 'integer from 0 to ' + str(cfg['endowment'])})."
+    )
+    sys_lines.append("You will not see others' choices before you decide.")
+    sys_lines.append(f"The pot is multiplied by {cfg['multiplier']}× and split equally among all players.")
+    sys_lines.append("Your round payoff is: coins you kept + your equal share of the multiplied pot.")
+    if cfg["reward_exists"] and cfg["punishment_exists"]:
+        sys_lines.append("After contributions are redistributed, players may punish or reward each other.")
+    elif cfg["punishment_exists"]:
+        sys_lines.append("After contributions are redistributed, players may punish each other.")
+    elif cfg["reward_exists"]:
+        sys_lines.append("After contributions are redistributed, players may reward each other.")
+    if cfg["chat"]:
+        sys_lines.append("At the start of each round, you may optionally send ONE short message to the group.")
+    return "\n".join(sys_lines)
+
+
+def _observer_system_text(cfg):
+    sys_lines = []
+    sys_lines.append(
+        "You are observing an online public goods game (PGG) from an omniscient observer's perspective. "
+        f"Each player receives {cfg['endowment']} coins per round and chooses how many coins to put into the shared pot "
+        f"({'either 0 or ' + str(cfg['endowment']) if cfg['all_or_nothing'] else 'integer from 0 to ' + str(cfg['endowment'])})."
+    )
+    sys_lines.append("In the actual player experience, players do not see others' choices before deciding.")
+    sys_lines.append(f"The pot is multiplied by {cfg['multiplier']}× and split equally among all active players.")
+    sys_lines.append("A player's round payoff is: coins kept + equal share of the multiplied pot, adjusted for any punishment or reward outcomes.")
+    if cfg["reward_exists"] and cfg["punishment_exists"]:
+        sys_lines.append("After contributions are redistributed, players may punish or reward each other.")
+    elif cfg["punishment_exists"]:
+        sys_lines.append("After contributions are redistributed, players may punish each other.")
+    elif cfg["reward_exists"]:
+        sys_lines.append("After contributions are redistributed, players may reward each other.")
+    if cfg["chat"]:
+        sys_lines.append("At the start of each round, players may optionally send ONE short message to the group.")
+
+    hidden_details = []
+    if not cfg["showNRounds"]:
+        hidden_details.append("the total number of rounds")
+    if cfg["punishment_exists"] and not cfg["showPunishmentId"]:
+        hidden_details.append("who punished whom")
+    if cfg["reward_exists"] and not cfg["showRewardId"]:
+        hidden_details.append("who rewarded whom")
+    if not cfg["showOtherSummaries"]:
+        hidden_details.append("other players' round summaries")
+
+    sys_lines.append(
+        "Observer note: this transcript always includes the full round count, every player's actions, exact punishment/reward source-target identities, and per-player round summaries."
+    )
+    if hidden_details:
+        sys_lines.append(
+            "Some of that information was not available to individual players in the live game, including "
+            + ", ".join(hidden_details[:-1] + [hidden_details[-1] if len(hidden_details) == 1 else f"and {hidden_details[-1]}"])
+            + "."
+        )
+    return "\n".join(sys_lines)
+
+
+def generate_observer_transcript_chat(
+    df_rounds: pd.DataFrame,
+    df_players: pd.DataFrame,
+    df_analysis: pd.DataFrame,
+    out_path: str = "prompts_xml_full.jsonl",
+    df_chats: pd.DataFrame = None,
+):
+    avatars = _avatars(df_players)
+    cfg_by_game = _build_cfg_by_game(df_analysis)
+    df_rounds_sorted = df_rounds.sort_values(["gameId", "roundId", "playerId"]).copy()
+
+    out_lines = 0
+    with open(out_path, "w", encoding="utf-8") as fout:
+        for game_id, gdf in df_rounds_sorted.groupby("gameId"):
+            if game_id not in cfg_by_game:
+                continue
+            cfg = cfg_by_game[game_id]
+
+            rounds_order = list(gdf["roundId"].unique())
+            roster = [
+                avatars.get(str(pid), f"Player {pid}")
+                for pid in sorted(gdf["playerId"].unique(), key=str)
+            ]
+            chats_idx = _index_chats_for_game(df_chats, game_id) if (df_chats is not None and cfg["chat"]) else {}
+
+            lines = [_observer_system_text(cfg), "# GAME STARTS"]
+            lines.append(f"<PLAYERS> {','.join(roster)} </PLAYERS>")
+
+            exited_so_far = set()
+            for idx, rid in enumerate(rounds_order, start=1):
+                rs = gdf[gdf["roundId"] == rid].sort_values("playerId")
+                if rs.empty:
+                    continue
+
+                lines.append(f'<ROUND i="{idx} of {cfg["numRounds"]}">')
+
+                endow = cfg["endowment"]
+                contrib_mode = (f"either 0 or {endow}") if cfg["all_or_nothing"] else (f"integer from 0 to {endow}")
+                if cfg["defaultContribProp"]:
+                    pre_contrib_sentence = (
+                        f"Each player starts with {endow} coins already in the public fund and chooses how many coins to pull back for private use "
+                        f"(equivalently, contribution options are {contrib_mode})."
+                    )
+                else:
+                    pre_contrib_sentence = (
+                        f"Each active player starts with {endow} coins in private holdings and chooses how many coins to contribute "
+                        f"({contrib_mode})."
+                    )
+                lines.append(f"<ROUND_INFO> {pre_contrib_sentence} (multiplier: {cfg['multiplier']}×). </ROUND_INFO>")
+
+                exited_now = {
+                    avatars.get(str(ro['playerId']), f"Player {ro['playerId']}")
+                    for _, ro in rs.iterrows()
+                    if _is_nan(ro.get("data.roundPayoff"))
+                }
+                newly_exited = sorted(exited_now - exited_so_far)
+                if newly_exited:
+                    lines.append(f"<EXIT players='{json.dumps(newly_exited, separators=(',', ':'))}'/>")
+                exited_so_far |= exited_now
+
+                if chats_idx and idx in chats_idx and "contribution" in chats_idx[idx]:
+                    for av, txt in chats_idx[idx]["contribution"]:
+                        lines.append(f"<CHAT> {{{av}: {txt}}} </CHAT>")
+
+                contribs = _all_contributions(rs, avatars)
+                lines.append(f"<CONTRIBUTIONS json='{json.dumps(contribs, separators=(',', ':'))}'/>")
+
+                active_rs = rs[rs["data.roundPayoff"].notna()]
+                total_contrib = active_rs["data.contribution"].dropna().sum()
+                active_players = int(active_rs.shape[0])
+                avg_contrib = (float(total_contrib) / active_players) if active_players > 0 else float("nan")
+                try:
+                    multiplied = float(cfg["multiplier"]) * float(total_contrib)
+                except Exception:
+                    multiplied = float("nan")
+                redistributed_each = multiplied / active_players if active_players > 0 else float("nan")
+
+                lines.append(
+                    '<REDIST total_contrib="{}" avg_contrib="{}" multiplied_contrib="{}" active_players="{}" redistributed_each="{}"/>'.format(
+                        format_num(total_contrib),
+                        format_num(round(avg_contrib, 3)) if not math.isnan(avg_contrib) else "NA",
+                        format_num(round(multiplied, 3)) if not math.isnan(multiplied) else "",
+                        active_players,
+                        format_num(round(redistributed_each, 3)) if not math.isnan(redistributed_each) else "NA",
+                    )
+                )
+
+                if chats_idx and idx in chats_idx and "outcome" in chats_idx[idx]:
+                    for av, txt in chats_idx[idx]["outcome"]:
+                        lines.append(f"<CHAT> {{{av}: {txt}}} </CHAT>")
+
+                if cfg["reward_exists"] or cfg["punishment_exists"]:
+                    if cfg["reward_exists"] and cfg["punishment_exists"]:
+                        mech_info = (
+                            f"Per reward unit: cost {cfg['reward_cost']} coins to grant {cfg['reward_magnitude']} coins. "
+                            f"Per punishment unit: cost {cfg['punishment_cost']} coins to deduct {cfg['punishment_magnitude']} coins."
+                        )
+                    elif cfg["reward_exists"]:
+                        mech_info = (
+                            f"Per reward unit: cost {cfg['reward_cost']} coins to grant {cfg['reward_magnitude']} coins."
+                        )
+                    else:
+                        mech_info = (
+                            f"Per punishment unit: cost {cfg['punishment_cost']} coins to deduct {cfg['punishment_magnitude']} coins."
+                        )
+                    lines.append(f"<MECHANISM_INFO> {mech_info} </MECHANISM_INFO>")
+
+                if cfg["punishment_exists"]:
+                    punishments = _actor_target_map(rs, avatars, "data.punished")
+                    lines.append(f"<PUNISHMENTS json='{json.dumps(punishments, separators=(',', ':'))}'/>")
+                if cfg["reward_exists"]:
+                    rewards = _actor_target_map(rs, avatars, "data.rewarded")
+                    lines.append(f"<REWARDS json='{json.dumps(rewards, separators=(',', ':'))}'/>")
+
+                round_summary = _observer_round_summary(
+                    rs,
+                    avatars,
+                    punishment_exists=cfg["punishment_exists"],
+                    punishment_cost=cfg["punishment_cost"],
+                    reward_exists=cfg["reward_exists"],
+                    reward_cost=cfg["reward_cost"],
+                )
+                lines.append(f"<ROUND SUMMARY json='{json.dumps(round_summary, separators=(',', ':'))}'/>")
+
+                if chats_idx and idx in chats_idx and "summary" in chats_idx[idx]:
+                    for av, txt in chats_idx[idx]["summary"]:
+                        lines.append(f"<CHAT> {{{av}: {txt}}} </CHAT>")
+
+                lines.append("</ROUND>")
+
+            lines.append("# GAME COMPLETE")
+            text = "\n".join(lines)
+            game_finished = bool(gdf["data.roundPayoff"].notna().all())
+            fout.write(
+                json.dumps(
+                    {
+                        "experiment": game_id,
+                        "participant": "OBSERVER",
+                        "perspective": "observer",
+                        "game_finished": game_finished,
+                        "text": text,
+                    },
+                    ensure_ascii=False,
+                )
+                + "\n"
+            )
+            out_lines += 1
+
+    print(f"Wrote {out_lines} transcripts to {out_path}")
+    return out_path
+
+
 # --- your existing helpers are assumed to exist: _is_nan, _avatars, _compact_outcomes,
 #     _sparse_rewards_punishments, parse_dict, format_num  ---
 
@@ -288,28 +595,7 @@ def generate_participant_transcript_chat(
     avatars = _avatars(df_players)
 
     # ----- configs per game -----
-    cfg_by_game = {}
-    for gid, g in df_analysis.groupby("gameId"):
-        r0 = g.iloc[0]
-        cfg_by_game[gid] = {
-            "players":              int(r0.get("CONFIG_playerCount", 0) or 0),
-            "numRounds":            int(r0.get("CONFIG_numRounds", 0) or 0),
-            "showNRounds":          bool(r0.get("CONFIG_showNRounds", False)),
-            "endowment":            int(r0.get("CONFIG_endowment", 0) or 0),
-            "multiplier":           r0.get("CONFIG_multiplier", "Unknown"),
-            "all_or_nothing":       bool(r0.get("CONFIG_allOrNothing", False)),
-            "chat":                 bool(r0.get("CONFIG_chat", False)),
-            "defaultContribProp":   bool(r0.get("CONFIG_defaultContribProp", False)),  # True => starts in public fund
-            "punishment_exists":    bool(r0.get("CONFIG_punishmentExists", False)),
-            "punishment_cost":      int(r0.get("CONFIG_punishmentCost", 0) or 0),
-            "punishment_magnitude": int(r0.get("CONFIG_punishmentMagnitude", 0) or 0),
-            "reward_exists":        bool(r0.get("CONFIG_rewardExists", False)),
-            "reward_cost":          int(r0.get("CONFIG_rewardCost", 0) or 0),
-            "reward_magnitude":     int(r0.get("CONFIG_rewardMagnitude", 0) or 0),
-            "showOtherSummaries":   bool(r0.get("CONFIG_showOtherSummaries", False)),
-            "showPunishmentId":     bool(r0.get("CONFIG_showPunishmentId", False)),
-            "showRewardId":         bool(r0.get("CONFIG_showRewardId", False)),
-        }
+    cfg_by_game = _build_cfg_by_game(df_analysis)
 
     df_rounds_sorted = df_rounds.sort_values(["gameId", "roundId", "playerId"]).copy()
 
@@ -327,24 +613,7 @@ def generate_participant_transcript_chat(
             chats_idx = _index_chats_for_game(df_chats, game_id) if (df_chats is not None and cfg["chat"]) else {}
 
             # ------------------ SYSTEM (add a chat note if enabled) ------------------
-            sys_lines = []
-            sys_lines.append(
-                "You are playing an online public goods game (PGG). Each round, you are given "
-                f"{cfg['endowment']} coins and need to decide how many coins to put into the shared pot "
-                f"({'either 0 or ' + str(cfg['endowment']) if cfg['all_or_nothing'] else 'integer from 0 to ' + str(cfg['endowment'])})."
-            )
-            sys_lines.append("You will not see others' choices before you decide.")
-            sys_lines.append(f"The pot is multiplied by {cfg['multiplier']}× and split equally among all players.")
-            sys_lines.append("Your round payoff is: coins you kept + your equal share of the multiplied pot.")
-            if cfg["reward_exists"] and cfg["punishment_exists"]:
-                sys_lines.append("After contributions are redistributed, players may punish or reward each other.")
-            elif cfg["punishment_exists"]:
-                sys_lines.append("After contributions are redistributed, players may punish each other.")
-            elif cfg["reward_exists"]:
-                sys_lines.append("After contributions are redistributed, players may reward each other.")
-            if cfg["chat"]:
-                sys_lines.append("At the start of each round, you may optionally send ONE short message to the group.")
-            sys_text = "\n".join(sys_lines)
+            sys_text = _participant_system_text(cfg)
 
             for pid in players:
                 lines = [sys_text, "# GAME STARTS"]
@@ -589,6 +858,12 @@ if __name__ == "__main__":
         default="Persona/transcripts_learn.jsonl",
         help="Output JSONL path for generated transcripts.",
     )
+    parser.add_argument(
+        "--perspective",
+        choices=("observer", "participant"),
+        default="participant",
+        help="Transcript perspective. 'participant' preserves the original one-transcript-per-player output; 'observer' emits one transcript per game.",
+    )
     args = parser.parse_args()
 
     df_rounds = pd.read_csv(args.rounds_csv)
@@ -596,10 +871,19 @@ if __name__ == "__main__":
     df_analysis = pd.read_csv(args.analysis_csv)
     df_chats = pd.read_csv(args.chats_csv)
 
-    _ = generate_participant_transcript_chat(
-        df_rounds=df_rounds,
-        df_players=df_players,
-        df_analysis=df_analysis,
-        df_chats=df_chats,
-        out_path=args.out_path,
-    )
+    if args.perspective == "observer":
+        _ = generate_observer_transcript_chat(
+            df_rounds=df_rounds,
+            df_players=df_players,
+            df_analysis=df_analysis,
+            df_chats=df_chats,
+            out_path=args.out_path,
+        )
+    else:
+        _ = generate_participant_transcript_chat(
+            df_rounds=df_rounds,
+            df_players=df_players,
+            df_analysis=df_analysis,
+            df_chats=df_chats,
+            out_path=args.out_path,
+        )

@@ -1,0 +1,46 @@
+{
+  "analysis_run_id": "260310_valraw417_treatmentagg_cluster_direct_baselines_report",
+  "analysis_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports",
+  "eval_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/runs",
+  "run_ids": [
+    "260310_valraw417_archetype_cluster",
+    "260310_valraw417_archetype_cluster_plus"
+  ],
+  "labels": [
+    "archetype_cluster",
+    "archetype_cluster_plus"
+  ],
+  "shared_games_only": true,
+  "shared_games_count": 40,
+  "aggregate_by_benchmark": true,
+  "human_csv_by_run": {
+    "260310_valraw417_archetype_cluster": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val.csv",
+    "260310_valraw417_archetype_cluster_plus": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val.csv"
+  },
+  "binary_factors": [
+    "CONFIG_chat",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_rewardExists",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_punishmentExists"
+  ],
+  "median_factors": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_MPCR"
+  ],
+  "plots": [],
+  "linear_config_baseline_available": true,
+  "direct_regression_baselines_available": [
+    "linear_config_baseline",
+    "ridge_config_baseline",
+    "linear_cluster_pred_baseline",
+    "ridge_cluster_pred_baseline",
+    "linear_cluster_pred_plus_config_baseline",
+    "ridge_cluster_pred_plus_config_baseline"
+  ],
+  "noise_ceiling_available": true
+}

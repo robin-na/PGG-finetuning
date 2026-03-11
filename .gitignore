@@ -32,6 +32,7 @@ outputs/benchmark/runs/
 outputs/benchmark/logs/
 outputs/benchmark/cache/
 outputs/default/runs/source_default/micro_behavior_eval/*/*/micro_behavior_debug.jsonl
+simulation_statistical/archetype_distribution_embedding/artifacts/intermediate/embedding_output_*.jsonl
 
 # Finetuning artifacts
 Finetuning/out_persona_types_lora

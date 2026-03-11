@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "source_tables": {
+    "contribution_stage": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/state_tables/learning_wave_contribution_stage.parquet",
+    "action_stage": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/state_tables/learning_wave_action_stage.parquet"
+  },
+  "n_contribution_rows": 60681,
+  "n_action_rows": 533730,
+  "families": [
+    {
+      "family": "unconditional_cooperator",
+      "description": "High baseline contribution with weak responsiveness to peer history.",
+      "n_contribution_rows": 60681,
+      "n_action_rows": 533730,
+      "n_contribution_features": 38,
+      "n_action_features": 51,
+      "contribution_classes": "[0, 1, 2, 3, 4]",
+      "action_classes": "[\"none\", \"punish\", \"reward\"]"
+    },
+    {
+      "family": "unconditional_defector",
+      "description": "Low baseline contribution with minimal sanctioning or reward behavior.",
+      "n_contribution_rows": 60681,
+      "n_action_rows": 533730,
+      "n_contribution_features": 38,
+      "n_action_features": 51,
+      "contribution_classes": "[0, 1, 2, 3, 4]",
+      "action_classes": "[\"none\", \"punish\", \"reward\"]"
+    },
+    {
+      "family": "conditional_cooperator",
+      "description": "Contribution responds to previous peer cooperation and own prior behavior.",
+      "n_contribution_rows": 60681,
+      "n_action_rows": 533730,
+      "n_contribution_features": 43,
+      "n_action_features": 53,
+      "contribution_classes": "[0, 1, 2, 3, 4]",
+      "action_classes": "[\"none\", \"punish\", \"reward\"]"
+    },
+    {
+      "family": "generous_conditional_cooperator",
+      "description": "Conditional cooperation with stronger reward sensitivity and forgiveness.",
+      "n_contribution_rows": 60681,
+      "n_action_rows": 533730,
+      "n_contribution_features": 47,
+      "n_action_features": 57,
+      "contribution_classes": "[0, 1, 2, 3, 4]",
+      "action_classes": "[\"none\", \"punish\", \"reward\"]"
+    },
+    {
+      "family": "endgame_defector",
+      "description": "More cooperative early, but contribution drops when the known horizon closes.",
+      "n_contribution_rows": 60681,
+      "n_action_rows": 533730,
+      "n_contribution_features": 40,
+      "n_action_features": 51,
+      "contribution_classes": "[0, 1, 2, 3, 4]",
+      "action_classes": "[\"none\", \"punish\", \"reward\"]"
+    },
+    {
+      "family": "retaliatory_punisher",
+      "description": "Punishes below-norm peers and visible prior aggressors.",
+      "n_contribution_rows": 60681,
+      "n_action_rows": 533730,
+      "n_contribution_features": 42,
+      "n_action_features": 58,
+      "contribution_classes": "[0, 1, 2, 3, 4]",
+      "action_classes": "[\"none\", \"punish\", \"reward\"]"
+    },
+    {
+      "family": "norm_enforcer",
+      "description": "Uses sanctioning mainly to enforce contribution norms rather than retaliate.",
+      "n_contribution_rows": 60681,
+      "n_action_rows": 533730,
+      "n_contribution_features": 40,
+      "n_action_features": 51,
+      "contribution_classes": "[0, 1, 2, 3, 4]",
+      "action_classes": "[\"none\", \"punish\", \"reward\"]"
+    },
+    {
+      "family": "reward_oriented_cooperator",
+      "description": "Contributes relatively highly and reinforces above-norm peers with reward.",
+      "n_contribution_rows": 60681,
+      "n_action_rows": 533730,
+      "n_contribution_features": 44,
+      "n_action_features": 58,
+      "contribution_classes": "[0, 1, 2, 3, 4]",
+      "action_classes": "[\"none\", \"punish\", \"reward\"]"
+    }
+  ]
+}

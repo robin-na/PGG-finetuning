@@ -1,0 +1,2 @@
+selected_n_clusters,avg_assignment_entropy,cluster_mass_min,cluster_mass_max,cluster_mass_std,candidate_grid_size
+6,0.016342955521381403,0.03502044989775051,0.22623859663562565,0.06680272794425555,6

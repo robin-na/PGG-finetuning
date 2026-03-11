@@ -1,0 +1,8 @@
+metric,metric_label,n_benchmarks_total,n_benchmarks_used,mean_n_games_per_benchmark,mean_within_benchmark_sample_variance,mse_floor_plugin,rmse_floor_plugin,formula
+mean_contribution_rate,Mean Contribution Rate,40,40,10.425,0.02599539799574091,0.0025797436393523317,0.050791176786449156,sqrt(mean(s2_x / n_x))
+punishment_rate,Punishment Rate,40,40,10.425,0.0067611061303276985,0.000673170570499316,0.025945530838649575,sqrt(mean(s2_x / n_x))
+reward_rate,Reward Rate,40,40,10.425,0.012263807861340525,0.0012000131048251338,0.0346412053027191,sqrt(mean(s2_x / n_x))
+normalized_efficiency,Normalized Efficiency,40,40,10.425,0.04793107277748683,0.004944318906173332,0.07031585103071236,sqrt(mean(s2_x / n_x))
+var_players_contrib_rate,Player Contribution Variance,40,40,10.425,0.0016760440232012458,0.00016499691639224422,0.012845112548835228,sqrt(mean(s2_x / n_x))
+var_players_punishment_rate,Player Punishment Variance,40,40,10.425,0.000629829909342009,6.134070376445148e-05,0.00783203062841633,sqrt(mean(s2_x / n_x))
+var_players_reward_rate,Player Reward Variance,40,40,10.425,0.0010681675657385216,0.0001024129011091602,0.010119925943857504,sqrt(mean(s2_x / n_x))

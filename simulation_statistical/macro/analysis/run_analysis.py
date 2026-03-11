@@ -32,11 +32,19 @@ from Macro_simulation_eval.analysis.run_analysis import (  # noqa: E402
     maybe_plot_directional_effects,
 )
 from supplemental import (  # noqa: E402
+    DIRECT_BASELINE_SPECS,
     LINEAR_CONFIG_FEATURES,
+    build_direct_baseline_benchmark_table,
+    build_direct_baseline_game_table,
+    build_linear_config_baseline_benchmark_table,
+    build_linear_config_baseline_game_table,
     build_macro_metric_bundle,
+    build_noise_ceiling_tables,
+    build_sim_benchmark_game_table,
     build_directional_rows_with_baseline,
     build_directional_sign_summary,
     extract_rounds_csv_from_config,
+    plot_aggregate_efficiency_comparison,
     plot_directional_effects_with_baseline,
     plot_game_level_scatter,
     plot_rmse_summary,
@@ -68,6 +76,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--binary_factors", type=str, default=",".join(DEFAULT_BINARY_FACTORS))
     parser.add_argument("--median_factors", type=str, default=",".join(DEFAULT_MEDIAN_FACTORS))
     parser.add_argument("--shared_games_only", action="store_true")
+    parser.add_argument("--aggregate_by_benchmark", action="store_true")
     parser.add_argument("--no_plots", action="store_true")
     parser.add_argument("--dpi", type=int, default=160)
     return parser
@@ -106,6 +115,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     human_csv_by_run: Dict[str, Path] = {}
     human_rows_csv_by_run: Dict[str, Path] = {}
     eval_csv_by_run: Dict[str, Path] = {}
+    unit_key = "benchmark_id" if args.aggregate_by_benchmark else "gameId"
 
     for index, run_id in enumerate(run_ids):
         if args.eval_csv and run_id == "adhoc_eval_csv":
@@ -149,11 +159,24 @@ def main(argv: Optional[list[str]] = None) -> int:
 
         human_csv_by_run[run_id] = human_csv
         human_rows_csv_by_run[run_id] = human_rows_csv
-        human = load_human_game_table(human_csv, binary_factors=binary_factors, median_factors=median_factors)
-        sim = compute_sim_game_metrics(rows_csv, human_cfg=human)
-        merged = human.merge(sim, on="gameId", how="inner")
-        merged["run_id"] = run_id
-        merged["label"] = labels[index]
+        if args.aggregate_by_benchmark:
+            merged = build_sim_benchmark_game_table(
+                sim_rows_csv=rows_csv,
+                human_analysis_csv=human_csv,
+                human_rows_csv=human_rows_csv,
+                binary_factors=binary_factors,
+                median_factors=median_factors,
+                run_id=run_id,
+                label=labels[index],
+            )
+            n_simulated = int(pd.to_numeric(merged.get("sim_games_in_benchmark"), errors="coerce").sum()) if not merged.empty else 0
+        else:
+            human = load_human_game_table(human_csv, binary_factors=binary_factors, median_factors=median_factors)
+            sim = compute_sim_game_metrics(rows_csv, human_cfg=human)
+            merged = human.merge(sim, on="gameId", how="inner")
+            merged["run_id"] = run_id
+            merged["label"] = labels[index]
+            n_simulated = int(sim["gameId"].nunique())
         game_tables[run_id] = merged
 
         run_records.append(
@@ -163,7 +186,7 @@ def main(argv: Optional[list[str]] = None) -> int:
                 "eval_csv": str(rows_csv),
                 "human_analysis_csv": str(human_csv),
                 "human_rows_csv": str(human_rows_csv),
-                "n_games_simulated": int(sim["gameId"].nunique()),
+                "n_games_simulated": n_simulated,
                 "n_games_after_merge": int(len(merged)),
             }
         )
@@ -171,9 +194,77 @@ def main(argv: Optional[list[str]] = None) -> int:
     shared_games: Optional[set[str]] = None
     if args.shared_games_only and len(game_tables) > 1:
         for table in game_tables.values():
-            game_ids = set(table["gameId"].astype(str).tolist())
+            game_ids = set(table[unit_key].astype(str).tolist())
             shared_games = game_ids if shared_games is None else (shared_games & game_ids)
         shared_games = shared_games or set()
+
+    direct_baseline_tables: List[Dict[str, Any]] = []
+    direct_baseline_summaries: List[pd.DataFrame] = []
+    noise_ceiling_summary_df = pd.DataFrame()
+    noise_ceiling_detail_df = pd.DataFrame()
+    unique_human_csvs = {str(path.resolve()) for path in human_csv_by_run.values()}
+    unique_human_rows = {str(path.resolve()) for path in human_rows_csv_by_run.values()}
+    if len(run_ids) > 1 and len(unique_human_csvs) == 1 and len(unique_human_rows) == 1:
+        baseline_human_csv = next(iter(human_csv_by_run.values()))
+        baseline_human_rows = next(iter(human_rows_csv_by_run.values()))
+        noise_ceiling_summary_df, noise_ceiling_detail_df = build_noise_ceiling_tables(
+            human_analysis_csv=baseline_human_csv,
+            human_rows_csv=baseline_human_rows,
+        )
+        for spec in DIRECT_BASELINE_SPECS:
+            if args.aggregate_by_benchmark:
+                baseline_df, baseline_summary = build_direct_baseline_benchmark_table(
+                    human_analysis_csv=baseline_human_csv,
+                    human_rows_csv=baseline_human_rows,
+                    feature_source=spec["feature_source"],
+                    model_kind=spec["model_kind"],
+                    run_id=spec["run_id"],
+                    label=spec["label"],
+                )
+            else:
+                baseline_df, baseline_summary = build_direct_baseline_game_table(
+                    human_analysis_csv=baseline_human_csv,
+                    human_rows_csv=baseline_human_rows,
+                    binary_factors=binary_factors,
+                    median_factors=median_factors,
+                    feature_source=spec["feature_source"],
+                    model_kind=spec["model_kind"],
+                    run_id=spec["run_id"],
+                    label=spec["label"],
+                )
+            if shared_games is not None and not baseline_df.empty:
+                baseline_df = baseline_df[
+                    baseline_df[unit_key].astype(str).isin(shared_games)
+                ].copy()
+            if baseline_df.empty:
+                continue
+            direct_baseline_tables.append(
+                {
+                    "run_id": spec["run_id"],
+                    "label": spec["label"],
+                    "table": baseline_df,
+                }
+            )
+            if not baseline_summary.empty:
+                direct_baseline_summaries.append(baseline_summary.copy())
+            run_records.append(
+                {
+                    "run_id": spec["run_id"],
+                    "label": spec["label"],
+                    "eval_csv": "",
+                    "human_analysis_csv": str(baseline_human_csv),
+                    "human_rows_csv": str(baseline_human_rows),
+                    "n_games_simulated": int(
+                        pd.to_numeric(
+                            baseline_df.get("sim_games_in_benchmark", baseline_df[unit_key]),
+                            errors="coerce",
+                        ).sum()
+                    )
+                    if args.aggregate_by_benchmark
+                    else int(baseline_df["gameId"].nunique()),
+                    "n_games_after_merge": int(len(baseline_df)),
+                }
+            )
 
     game_level_frames: List[pd.DataFrame] = []
     aggregate_rows: List[Dict[str, Any]] = []
@@ -182,7 +273,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     for run_id, label in zip(run_ids, labels):
         merged = game_tables[run_id].copy()
         if shared_games is not None:
-            merged = merged[merged["gameId"].isin(shared_games)].copy()
+            merged = merged[merged[unit_key].astype(str).isin(shared_games)].copy()
         game_level_frames.append(merged)
 
         abs_err = (merged["sim_normalized_efficiency"] - merged["human_normalized_efficiency"]).abs()
@@ -218,6 +309,49 @@ def main(argv: Optional[list[str]] = None) -> int:
             )
         )
 
+    for baseline_item in direct_baseline_tables:
+        baseline_df = baseline_item["table"].copy()
+        run_id = baseline_item["run_id"]
+        label = baseline_item["label"]
+        game_level_frames.append(baseline_df)
+        baseline_abs_err = (
+            baseline_df["sim_normalized_efficiency"] - baseline_df["human_normalized_efficiency"]
+        ).abs()
+        baseline_sq_err = (
+            baseline_df["sim_normalized_efficiency"] - baseline_df["human_normalized_efficiency"]
+        ) ** 2
+        aggregate_rows.append(
+            {
+                "run_id": run_id,
+                "label": label,
+                "n_games": int(len(baseline_df)),
+                "mae_normalized_efficiency": float(baseline_abs_err.mean()) if len(baseline_abs_err) else None,
+                "rmse_normalized_efficiency": float((baseline_sq_err.mean()) ** 0.5)
+                if len(baseline_sq_err)
+                else None,
+                "corr_normalized_efficiency": float(
+                    baseline_df["sim_normalized_efficiency"].corr(baseline_df["human_normalized_efficiency"])
+                )
+                if len(baseline_df) >= 2
+                else None,
+                "mean_human_normalized_efficiency": float(baseline_df["human_normalized_efficiency"].mean())
+                if len(baseline_df)
+                else None,
+                "mean_sim_normalized_efficiency": float(baseline_df["sim_normalized_efficiency"].mean())
+                if len(baseline_df)
+                else None,
+            }
+        )
+        directional_frames.append(
+            build_directional_rows(
+                merged=baseline_df,
+                run_id=run_id,
+                label=label,
+                binary_factors=binary_factors,
+                median_factors=median_factors,
+            )
+        )
+
     selected_df = pd.DataFrame(run_records)
     aggregate_df = pd.DataFrame(aggregate_rows)
     game_level_df = pd.concat(game_level_frames, ignore_index=True) if game_level_frames else pd.DataFrame()
@@ -245,6 +379,20 @@ def main(argv: Optional[list[str]] = None) -> int:
     game_level_df.to_csv(out_dir / "game_level_metrics.csv", index=False)
     directional_df.to_csv(out_dir / "directional_effects.csv", index=False)
     directional_summary_df.to_csv(out_dir / "directional_sign_summary.csv", index=False)
+    direct_baseline_summary_df = (
+        pd.concat(direct_baseline_summaries, ignore_index=True) if direct_baseline_summaries else pd.DataFrame()
+    )
+    if not direct_baseline_summary_df.empty:
+        direct_baseline_summary_df.to_csv(out_dir / "direct_regression_baseline_summaries.csv", index=False)
+        linear_subset = direct_baseline_summary_df[
+            direct_baseline_summary_df["run_id"] == "linear_config_baseline"
+        ].copy()
+        if not linear_subset.empty:
+            linear_subset.to_csv(out_dir / "linear_config_baseline_summary.csv", index=False)
+    if not noise_ceiling_summary_df.empty:
+        noise_ceiling_summary_df.to_csv(out_dir / "noise_ceiling_summary.csv", index=False)
+    if not noise_ceiling_detail_df.empty:
+        noise_ceiling_detail_df.to_csv(out_dir / "noise_ceiling_by_benchmark.csv", index=False)
 
     plot_paths = None
     if not args.no_plots:
@@ -253,6 +401,15 @@ def main(argv: Optional[list[str]] = None) -> int:
             plot_dir=out_dir / "figures",
             dpi=args.dpi,
         )
+        if len(run_ids) > 1:
+            aggregate_fig = plot_aggregate_efficiency_comparison(
+                aggregate_df=aggregate_df,
+                out_path=out_dir / "figures" / "aggregate_efficiency_comparison.png",
+                dpi=args.dpi,
+            )
+            if aggregate_fig:
+                plot_paths = list(plot_paths or [])
+                plot_paths.append(aggregate_fig)
 
     manifest = {
         "analysis_run_id": analysis_run_id,
@@ -262,10 +419,16 @@ def main(argv: Optional[list[str]] = None) -> int:
         "labels": labels,
         "shared_games_only": bool(args.shared_games_only),
         "shared_games_count": int(len(shared_games)) if shared_games is not None else None,
+        "aggregate_by_benchmark": bool(args.aggregate_by_benchmark),
         "human_csv_by_run": {run_id: str(path) for run_id, path in human_csv_by_run.items()},
         "binary_factors": binary_factors,
         "median_factors": median_factors,
         "plots": [str(path) for path in plot_paths] if plot_paths else [],
+        "linear_config_baseline_available": any(
+            item["run_id"] == "linear_config_baseline" for item in direct_baseline_tables
+        ),
+        "direct_regression_baselines_available": [item["run_id"] for item in direct_baseline_tables],
+        "noise_ceiling_available": bool(not noise_ceiling_summary_df.empty),
     }
     manifest_path = out_dir / "analysis_manifest.json"
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
@@ -283,6 +446,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         variance_summary = bundle["variance_summary"]
         player_variance_by_game = bundle["player_variance_by_game"]
         linear_summary = bundle["linear_summary"]
+        noise_ceiling_summary = bundle["noise_ceiling_summary"]
+        noise_ceiling_detail = bundle["noise_ceiling_detail"]
 
         game_level_path = out_dir / "game_level_metrics.csv"
         rmse_path = out_dir / "macro_rmse_summary.csv"
@@ -290,12 +455,16 @@ def main(argv: Optional[list[str]] = None) -> int:
         player_var_path = out_dir / "macro_player_variance_by_game.csv"
         linear_summary_path = out_dir / "linear_config_baseline_summary.csv"
         linear_meta_path = out_dir / "linear_config_baseline_metadata.json"
+        noise_ceiling_summary_path = out_dir / "noise_ceiling_summary.csv"
+        noise_ceiling_detail_path = out_dir / "noise_ceiling_by_benchmark.csv"
 
         enriched_game_level.to_csv(game_level_path, index=False)
         rmse_summary.to_csv(rmse_path, index=False)
         variance_summary.to_csv(variance_path, index=False)
         player_variance_by_game.to_csv(player_var_path, index=False)
         linear_summary.to_csv(linear_summary_path, index=False)
+        noise_ceiling_summary.to_csv(noise_ceiling_summary_path, index=False)
+        noise_ceiling_detail.to_csv(noise_ceiling_detail_path, index=False)
         linear_meta_path.write_text(
             json.dumps(
                 {

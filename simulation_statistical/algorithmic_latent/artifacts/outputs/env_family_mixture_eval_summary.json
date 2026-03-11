@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "family_probability_columns": [
+    "conditional_cooperator__posterior_prob",
+    "endgame_defector__posterior_prob",
+    "generous_conditional_cooperator__posterior_prob",
+    "norm_enforcer__posterior_prob",
+    "retaliatory_punisher__posterior_prob",
+    "reward_oriented_cooperator__posterior_prob",
+    "unconditional_cooperator__posterior_prob",
+    "unconditional_defector__posterior_prob"
+  ],
+  "learn_player_posteriors_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/outputs/learning_wave_player_family_posteriors.parquet",
+  "val_player_posteriors_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/outputs/validation_wave_player_family_posteriors.parquet",
+  "learn_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_learn.csv",
+  "val_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val.csv",
+  "model_output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/models/env_family_mixture_model.pkl",
+  "learn_predictions_output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/outputs/learning_wave_env_family_predictions.csv",
+  "val_predictions_output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/outputs/validation_wave_env_family_predictions.csv",
+  "eval_summary_output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/outputs/env_family_mixture_eval_summary.csv",
+  "n_learning_games": 366,
+  "n_validation_games": 417,
+  "n_learning_treatments": 348,
+  "n_validation_treatments": 40,
+  "model_n_iter": 136,
+  "model_final_loss": -15.149248359218644,
+  "summary_rows": [
+    {
+      "split": "learning_game",
+      "model": "dirichlet_env_family",
+      "mean_family_mae": 0.02565411835707324,
+      "max_family_mae": 0.03884496139349249,
+      "avg_l1_distance": 0.20523294685658594,
+      "avg_js_divergence": 0.012140176389933331,
+      "top_family_accuracy": 0.644808743169399
+    },
+    {
+      "split": "validation_game",
+      "model": "dirichlet_env_family",
+      "mean_family_mae": 0.032958190161075734,
+      "max_family_mae": 0.054437771115610295,
+      "avg_l1_distance": 0.263665521288606,
+      "avg_js_divergence": 0.019761427234520294,
+      "top_family_accuracy": 0.5419664268585132
+    },
+    {
+      "split": "validation_game",
+      "model": "mean_family_baseline",
+      "mean_family_mae": 0.03882591893726592,
+      "max_family_mae": 0.06823134741606882,
+      "avg_l1_distance": 0.3106073514981273,
+      "avg_js_divergence": 0.025777645290057685,
+      "top_family_accuracy": 0.44844124700239807
+    },
+    {
+      "split": "learning_treatment",
+      "model": "dirichlet_env_family",
+      "mean_family_mae": 0.025044367084264614,
+      "max_family_mae": 0.037390896887652535,
+      "avg_l1_distance": 0.20035493667411694,
+      "avg_js_divergence": 0.011354164138957713,
+      "top_family_accuracy": 0.646551724137931
+    },
+    {
+      "split": "validation_treatment",
+      "model": "dirichlet_env_family",
+      "mean_family_mae": 0.020511310095627476,
+      "max_family_mae": 0.03510379620149484,
+      "avg_l1_distance": 0.16409048076501978,
+      "avg_js_divergence": 0.007434836149296348,
+      "top_family_accuracy": 0.575
+    },
+    {
+      "split": "validation_treatment",
+      "model": "mean_family_baseline",
+      "mean_family_mae": 0.029833367267431517,
+      "max_family_mae": 0.058243556806280405,
+      "avg_l1_distance": 0.2386669381394521,
+      "avg_js_divergence": 0.013391611030434434,
+      "top_family_accuracy": 0.3
+    }
+  ]
+}

@@ -7,6 +7,7 @@ import random
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
+import numpy as np
 import pandas as pd
 
 try:
@@ -24,7 +25,7 @@ try:
         write_json,
     )
     from ..paths import BENCHMARK_DATA_ROOT, analysis_csv_name_for_wave, demographics_csv_name_for_wave
-    from ..policy import RandomBaselinePolicyConfig, sample_random_baseline_action
+    from ..policy import build_policy_strategy, sample_random_baseline_action
 except ImportError:
     from simulation_statistical.common import (
         MicroGameContext,
@@ -40,7 +41,7 @@ except ImportError:
         write_json,
     )
     from simulation_statistical.paths import BENCHMARK_DATA_ROOT, analysis_csv_name_for_wave, demographics_csv_name_for_wave
-    from simulation_statistical.policy import RandomBaselinePolicyConfig, sample_random_baseline_action
+    from simulation_statistical.policy import build_policy_strategy, sample_random_baseline_action
 
 
 DEFAULT_ROUNDS_CSV = os.path.join(BENCHMARK_DATA_ROOT, "raw_data", "validation_wave", "player-rounds.csv")
@@ -283,12 +284,7 @@ def run_micro_statistical_simulation(args: Any) -> Tuple[pd.DataFrame, Dict[str,
             "start_round": int(args.start_round),
             "skip_no_actual": bool(args.skip_no_actual),
         },
-        "strategy": {
-            "name": "random_baseline",
-            "contribution_sampler": "uniform_legal_action_space",
-            "target_probability": float(args.target_probability),
-            "action_magnitude": int(args.action_magnitude),
-        },
+        "strategy": {},
         "args": args_payload,
         "outputs": {
             "directory": run_dir,
@@ -336,10 +332,103 @@ def run_micro_statistical_simulation(args: Any) -> Tuple[pd.DataFrame, Dict[str,
         _flush(debug_file)
 
     all_rows: List[Dict[str, Any]] = []
-    policy_config = RandomBaselinePolicyConfig(
+    policy_bundle = build_policy_strategy(
+        strategy_name=getattr(args, "strategy", "random_baseline"),
         target_probability=float(args.target_probability),
         action_magnitude=int(args.action_magnitude),
+        archetype_artifacts_root=getattr(args, "archetype_artifacts_root", None),
+        rebuild_cluster_behavior_model=bool(getattr(args, "rebuild_cluster_behavior_model", False)),
     )
+    if policy_bundle.name == "random_baseline":
+        config_payload["strategy"] = {
+            "name": "random_baseline",
+            "contribution_sampler": "uniform_legal_action_space",
+            "target_probability": float(args.target_probability),
+            "action_magnitude": int(args.action_magnitude),
+        }
+    elif policy_bundle.name == "archetype_cluster":
+        config_payload["strategy"] = {
+            "name": "archetype_cluster",
+            "contribution_sampler": "cluster_conditioned_empirical_priors",
+            "cluster_assignment_source": "dirichlet_env_model",
+            "action_targeting": "cluster-conditioned contribution-rank targeting",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    elif policy_bundle.name == "archetype_cluster_oracle_treatment":
+        config_payload["strategy"] = {
+            "name": "archetype_cluster_oracle_treatment",
+            "contribution_sampler": "cluster_conditioned_empirical_priors",
+            "cluster_assignment_source": "validation_treatment_oracle",
+            "action_targeting": "cluster-conditioned contribution-rank targeting",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    elif policy_bundle.name == "archetype_cluster_plus":
+        config_payload["strategy"] = {
+            "name": "archetype_cluster_plus",
+            "contribution_sampler": "cluster_conditioned_history_backoff_empirical_priors",
+            "cluster_assignment_source": "dirichlet_env_model",
+            "action_targeting": "history-aware empirical sanctioning with rank targeting",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    elif policy_bundle.name == "archetype_cluster_plus_oracle_treatment":
+        config_payload["strategy"] = {
+            "name": "archetype_cluster_plus_oracle_treatment",
+            "contribution_sampler": "cluster_conditioned_history_backoff_empirical_priors",
+            "cluster_assignment_source": "validation_treatment_oracle",
+            "action_targeting": "history-aware empirical sanctioning with rank targeting",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    elif policy_bundle.name == "exact_sequence_archetype":
+        config_payload["strategy"] = {
+            "name": "exact_sequence_archetype",
+            "contribution_sampler": "structured_history_numeric_sgd",
+            "cluster_assignment_source": "dirichlet_env_model",
+            "action_targeting": "structured per-peer categorical action head",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    elif policy_bundle.name == "exact_sequence_oracle_treatment":
+        config_payload["strategy"] = {
+            "name": "exact_sequence_oracle_treatment",
+            "contribution_sampler": "structured_history_numeric_sgd",
+            "cluster_assignment_source": "validation_treatment_oracle",
+            "action_targeting": "structured per-peer categorical action head",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    elif policy_bundle.name == "exact_sequence_history_only":
+        config_payload["strategy"] = {
+            "name": "exact_sequence_history_only",
+            "contribution_sampler": "structured_history_numeric_sgd",
+            "cluster_assignment_source": None,
+            "action_targeting": "structured per-peer categorical action head",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    elif policy_bundle.name == "gpu_sequence_archetype":
+        config_payload["strategy"] = {
+            "name": "gpu_sequence_archetype",
+            "contribution_sampler": "structured_history_numeric_torch_mlp",
+            "cluster_assignment_source": "dirichlet_env_model",
+            "action_targeting": "structured per-peer categorical action head",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    elif policy_bundle.name == "algorithmic_latent_family":
+        config_payload["strategy"] = {
+            "name": "algorithmic_latent_family",
+            "contribution_sampler": "family-conditioned multinomial contribution head",
+            "cluster_assignment_source": "dirichlet_env_family_model",
+            "action_targeting": "family-conditioned per-target categorical action head",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    elif policy_bundle.name == "history_archetype":
+        config_payload["strategy"] = {
+            "name": "history_archetype",
+            "contribution_sampler": "history_conditioned_gradient_boosting",
+            "cluster_assignment_source": "dirichlet_env_model",
+            "action_targeting": "history-conditioned contribution-aware rank targeting",
+            "artifacts_root": getattr(args, "archetype_artifacts_root", None),
+        }
+    else:
+        raise ValueError(f"Unsupported policy bundle in micro simulator: {policy_bundle.name}")
+    write_json(config_path, config_payload)
     game_seed_rng = random.Random(int(args.seed))
 
     try:
@@ -349,7 +438,50 @@ def run_micro_statistical_simulation(args: Any) -> Tuple[pd.DataFrame, Dict[str,
 
             game_seed = game_seed_rng.randrange(0, 2**32 - 1)
             game_rng = random.Random(game_seed)
+            history_rng = np.random.default_rng(game_seed)
             transcripts = {player_id: ["# GAME STARTS"] for player_id in ctx.player_ids}
+            sequence_game_state = (
+                policy_bundle.sequence_runtime.start_game(
+                    env=ctx.env,
+                    player_ids=ctx.player_ids,
+                    avatar_by_player=ctx.avatar_by_player,
+                    rng=history_rng,
+                )
+                if policy_bundle.sequence_runtime is not None
+                else None
+            )
+            history_game_state = (
+                policy_bundle.history_runtime.start_game(
+                    env=ctx.env,
+                    player_ids=ctx.player_ids,
+                    avatar_by_player=ctx.avatar_by_player,
+                    rng=history_rng,
+                )
+                if policy_bundle.history_runtime is not None
+                else None
+            )
+            cluster_by_player = (
+                dict(sequence_game_state.cluster_by_player)
+                if sequence_game_state is not None
+                else (
+                dict(history_game_state.cluster_by_player)
+                if history_game_state is not None
+                else (
+                policy_bundle.trained_runtime.assign_clusters_for_game(
+                    env=ctx.env,
+                    player_ids=ctx.player_ids,
+                    rng=game_rng,
+                )
+                if policy_bundle.trained_runtime is not None
+                else {}
+                )
+                )
+            )
+            latent_label_by_player = (
+                dict(getattr(sequence_game_state, "archetype_label_by_player", {}))
+                if sequence_game_state is not None
+                else {}
+            )
 
             for round_idx in ctx.rounds:
                 round_slice = ctx.round_to_rows.get(round_idx, pd.DataFrame())
@@ -360,49 +492,227 @@ def run_micro_statistical_simulation(args: Any) -> Tuple[pd.DataFrame, Dict[str,
                         ctx.env.get("CONFIG_rewardExists")
                     )
 
-                    for player_id in ctx.player_ids:
-                        avatar = ctx.avatar_by_player.get(player_id, player_id)
-                        peer_avatars = [
-                            ctx.avatar_by_player[peer_id] for peer_id in ctx.player_ids if peer_id != player_id
-                        ]
-                        sampled = sample_random_baseline_action(
-                            env=ctx.env,
-                            focal_avatar=avatar,
-                            peer_avatars=peer_avatars,
-                            rng=game_rng,
-                            config=policy_config,
-                        )
-                        prediction = {
-                            "pred_contribution": int(sampled.contribution),
-                            "pred_contribution_raw": int(sampled.contribution),
-                            "pred_contribution_reasoning": None,
-                            "pred_contribution_parsed": True,
-                            "pred_punished_avatar": dict(sampled.punished_avatar),
-                            "pred_rewarded_avatar": dict(sampled.rewarded_avatar),
-                            "pred_actions_reasoning": None,
-                            "pred_actions_parsed": True if actions_enabled else None,
-                        }
-                        predictions[player_id] = prediction
-
-                        transcripts[player_id].append(
-                            f'<PREDICTED_ROUND round="{int(round_idx)}">'
-                            f'{json_compact({"contribution": sampled.contribution, "punished": sampled.punished_avatar, "rewarded": sampled.rewarded_avatar})}'
-                            "</PREDICTED_ROUND>"
-                        )
-                        debug_records.append(
-                            {
-                                "gameId": ctx.game_id,
-                                "gameName": ctx.game_name,
-                                "roundIndex": int(round_idx),
-                                "playerId": player_id,
-                                "playerAvatar": avatar,
-                                "strategy": "random_baseline",
-                                "seed": game_seed,
-                                "contribution": int(sampled.contribution),
-                                "predicted_punished_avatar": dict(sampled.punished_avatar),
-                                "predicted_rewarded_avatar": dict(sampled.rewarded_avatar),
+                    if policy_bundle.name == "random_baseline":
+                        for player_id in ctx.player_ids:
+                            avatar = ctx.avatar_by_player.get(player_id, player_id)
+                            peer_avatars = [
+                                ctx.avatar_by_player[peer_id] for peer_id in ctx.player_ids if peer_id != player_id
+                            ]
+                            sampled = sample_random_baseline_action(
+                                env=ctx.env,
+                                focal_avatar=avatar,
+                                peer_avatars=peer_avatars,
+                                rng=game_rng,
+                                config=policy_bundle.random_config,
+                            )
+                            prediction = {
+                                "pred_contribution": int(sampled.contribution),
+                                "pred_contribution_raw": int(sampled.contribution),
+                                "pred_contribution_reasoning": None,
+                                "pred_contribution_parsed": True,
+                                "pred_punished_avatar": dict(sampled.punished_avatar),
+                                "pred_rewarded_avatar": dict(sampled.rewarded_avatar),
+                                "pred_actions_reasoning": None,
+                                "pred_actions_parsed": True if actions_enabled else None,
                             }
+                            predictions[player_id] = prediction
+                            transcripts[player_id].append(
+                                f'<PREDICTED_ROUND round="{int(round_idx)}">'
+                                f'{json_compact({"contribution": sampled.contribution, "punished": sampled.punished_avatar, "rewarded": sampled.rewarded_avatar})}'
+                                "</PREDICTED_ROUND>"
+                            )
+                            debug_records.append(
+                                {
+                                    "gameId": ctx.game_id,
+                                    "gameName": ctx.game_name,
+                                    "roundIndex": int(round_idx),
+                                    "playerId": player_id,
+                                    "playerAvatar": avatar,
+                                    "strategy": "random_baseline",
+                                    "seed": game_seed,
+                                    "contribution": int(sampled.contribution),
+                                    "predicted_punished_avatar": dict(sampled.punished_avatar),
+                                    "predicted_rewarded_avatar": dict(sampled.rewarded_avatar),
+                                }
+                            )
+                    elif policy_bundle.name in {"archetype_cluster", "archetype_cluster_oracle_treatment"}:
+                        contributions_by_player = {
+                            player_id: int(
+                                policy_bundle.trained_runtime.sample_contribution(
+                                    cluster_id=int(cluster_by_player[player_id]),
+                                    env=ctx.env,
+                                    round_idx=int(round_idx),
+                                    rng=game_rng,
+                                )
+                            )
+                            for player_id in ctx.player_ids
+                        }
+                        action_bundle = policy_bundle.trained_runtime.sample_game_actions(
+                            cluster_by_player=cluster_by_player,
+                            env=ctx.env,
+                            avatar_by_player=ctx.avatar_by_player,
+                            contributions_by_player=contributions_by_player,
+                            round_idx=int(round_idx),
+                            rng=game_rng,
                         )
+                        for player_id in ctx.player_ids:
+                            avatar = ctx.avatar_by_player.get(player_id, player_id)
+                            punished_avatar = dict(action_bundle["punish"].get(avatar, {}))
+                            rewarded_avatar = dict(action_bundle["reward"].get(avatar, {}))
+                            prediction = {
+                                "pred_contribution": int(contributions_by_player[player_id]),
+                                "pred_contribution_raw": int(contributions_by_player[player_id]),
+                                "pred_contribution_reasoning": None,
+                                "pred_contribution_parsed": True,
+                                "pred_punished_avatar": punished_avatar,
+                                "pred_rewarded_avatar": rewarded_avatar,
+                                "pred_actions_reasoning": None,
+                                "pred_actions_parsed": True if actions_enabled else None,
+                            }
+                            predictions[player_id] = prediction
+                            transcripts[player_id].append(
+                                f'<PREDICTED_ROUND round="{int(round_idx)}">'
+                                f'{json_compact({"cluster": int(cluster_by_player[player_id]), "contribution": int(contributions_by_player[player_id]), "punished": punished_avatar, "rewarded": rewarded_avatar})}'
+                                "</PREDICTED_ROUND>"
+                            )
+                            debug_records.append(
+                                {
+                                    "gameId": ctx.game_id,
+                                    "gameName": ctx.game_name,
+                                    "roundIndex": int(round_idx),
+                                    "playerId": player_id,
+                                    "playerAvatar": avatar,
+                                    "strategy": "archetype_cluster",
+                                    "cluster_id": int(cluster_by_player[player_id]),
+                                    "seed": game_seed,
+                                    "contribution": int(contributions_by_player[player_id]),
+                                    "predicted_punished_avatar": punished_avatar,
+                                    "predicted_rewarded_avatar": rewarded_avatar,
+                                }
+                            )
+                    elif policy_bundle.name == "history_archetype":
+                        contributions_by_player = policy_bundle.history_runtime.sample_contributions_for_round(
+                            game_state=history_game_state,
+                            round_idx=int(round_idx),
+                            rng=history_rng,
+                        )
+                        action_bundle = policy_bundle.history_runtime.sample_actions_for_round(
+                            game_state=history_game_state,
+                            contributions_by_player=contributions_by_player,
+                            round_idx=int(round_idx),
+                            rng=history_rng,
+                        )
+                        for player_id in ctx.player_ids:
+                            avatar = ctx.avatar_by_player.get(player_id, player_id)
+                            punished_avatar = {
+                                ctx.avatar_by_player.get(str(target_player_id), str(target_player_id)): int(units)
+                                for target_player_id, units in action_bundle["punish"].get(player_id, {}).items()
+                                if int(units) > 0
+                            }
+                            rewarded_avatar = {
+                                ctx.avatar_by_player.get(str(target_player_id), str(target_player_id)): int(units)
+                                for target_player_id, units in action_bundle["reward"].get(player_id, {}).items()
+                                if int(units) > 0
+                            }
+                            prediction = {
+                                "pred_contribution": int(contributions_by_player[player_id]),
+                                "pred_contribution_raw": int(contributions_by_player[player_id]),
+                                "pred_contribution_reasoning": None,
+                                "pred_contribution_parsed": True,
+                                "pred_punished_avatar": punished_avatar,
+                                "pred_rewarded_avatar": rewarded_avatar,
+                                "pred_actions_reasoning": None,
+                                "pred_actions_parsed": True if actions_enabled else None,
+                            }
+                            predictions[player_id] = prediction
+                            transcripts[player_id].append(
+                                f'<PREDICTED_ROUND round="{int(round_idx)}">'
+                                f'{json_compact({"cluster": int(cluster_by_player[player_id]), "contribution": int(contributions_by_player[player_id]), "punished": punished_avatar, "rewarded": rewarded_avatar})}'
+                                "</PREDICTED_ROUND>"
+                            )
+                            debug_records.append(
+                                {
+                                    "gameId": ctx.game_id,
+                                    "gameName": ctx.game_name,
+                                    "roundIndex": int(round_idx),
+                                    "playerId": player_id,
+                                    "playerAvatar": avatar,
+                                    "strategy": "history_archetype",
+                                    "cluster_id": int(cluster_by_player[player_id]),
+                                    "seed": game_seed,
+                                    "contribution": int(contributions_by_player[player_id]),
+                                    "predicted_punished_avatar": punished_avatar,
+                                    "predicted_rewarded_avatar": rewarded_avatar,
+                                }
+                            )
+                    elif policy_bundle.name in {
+                        "archetype_cluster_plus",
+                        "archetype_cluster_plus_oracle_treatment",
+                        "exact_sequence_archetype",
+                        "exact_sequence_oracle_treatment",
+                        "exact_sequence_history_only",
+                        "gpu_sequence_archetype",
+                        "algorithmic_latent_family",
+                    }:
+                        contributions_by_player = policy_bundle.sequence_runtime.sample_contributions_for_round(
+                            game_state=sequence_game_state,
+                            round_idx=int(round_idx),
+                            rng=history_rng,
+                        )
+                        action_bundle = policy_bundle.sequence_runtime.sample_actions_for_round(
+                            game_state=sequence_game_state,
+                            contributions_by_player=contributions_by_player,
+                            round_idx=int(round_idx),
+                            rng=history_rng,
+                        )
+                        for player_id in ctx.player_ids:
+                            avatar = ctx.avatar_by_player.get(player_id, player_id)
+                            cluster_value = None if not cluster_by_player else cluster_by_player[player_id]
+                            latent_value = latent_label_by_player.get(player_id, cluster_value)
+                            punished_avatar = {
+                                ctx.avatar_by_player.get(str(target_player_id), str(target_player_id)): int(units)
+                                for target_player_id, units in action_bundle["punish"].get(player_id, {}).items()
+                                if int(units) > 0
+                            }
+                            rewarded_avatar = {
+                                ctx.avatar_by_player.get(str(target_player_id), str(target_player_id)): int(units)
+                                for target_player_id, units in action_bundle["reward"].get(player_id, {}).items()
+                                if int(units) > 0
+                            }
+                            prediction = {
+                                "pred_contribution": int(contributions_by_player[player_id]),
+                                "pred_contribution_raw": int(contributions_by_player[player_id]),
+                                "pred_contribution_reasoning": None,
+                                "pred_contribution_parsed": True,
+                                "pred_punished_avatar": punished_avatar,
+                                "pred_rewarded_avatar": rewarded_avatar,
+                                "pred_actions_reasoning": None,
+                                "pred_actions_parsed": True if actions_enabled else None,
+                            }
+                            predictions[player_id] = prediction
+                            transcripts[player_id].append(
+                                f'<PREDICTED_ROUND round="{int(round_idx)}">'
+                                f'{json_compact({"cluster": latent_value, "contribution": int(contributions_by_player[player_id]), "punished": punished_avatar, "rewarded": rewarded_avatar})}'
+                                "</PREDICTED_ROUND>"
+                            )
+                            debug_records.append(
+                                {
+                                    "gameId": ctx.game_id,
+                                    "gameName": ctx.game_name,
+                                    "roundIndex": int(round_idx),
+                                    "playerId": player_id,
+                                    "playerAvatar": avatar,
+                                    "strategy": policy_bundle.name,
+                                    "cluster_id": cluster_value,
+                                    "latent_state": latent_value,
+                                    "seed": game_seed,
+                                    "contribution": int(contributions_by_player[player_id]),
+                                    "predicted_punished_avatar": punished_avatar,
+                                    "predicted_rewarded_avatar": rewarded_avatar,
+                                }
+                            )
+                    else:
+                        raise ValueError(f"Unsupported policy bundle in micro simulator: {policy_bundle.name}")
 
                     round_rows = _build_eval_rows(
                         ctx=ctx,
@@ -415,6 +725,16 @@ def run_micro_statistical_simulation(args: Any) -> Tuple[pd.DataFrame, Dict[str,
                     _write_debug_chunk(debug_records)
                     all_rows.extend(round_rows)
 
+                if history_game_state is not None:
+                    policy_bundle.history_runtime.record_actual_round(
+                        game_state=history_game_state,
+                        round_rows=round_slice,
+                    )
+                if sequence_game_state is not None:
+                    policy_bundle.sequence_runtime.record_actual_round(
+                        game_state=sequence_game_state,
+                        round_rows=round_slice,
+                    )
                 _append_observed_round_to_transcripts(ctx, transcripts, int(round_idx))
 
             for player_id in ctx.player_ids:

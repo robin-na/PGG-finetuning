@@ -1,0 +1,53 @@
+{
+  "analysis_run_id": "260310_val40_treatment_avg_exact_sequence_history_only_vs_clustercal_vs_history_vs_archetype_vs_random_report",
+  "analysis_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports",
+  "eval_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/runs",
+  "run_ids": [
+    "260310_val40_treatment_avg_exact_sequence_history_only",
+    "260310_val40_treatment_avg_exact_sequence_clustercal_archetype",
+    "260310_val40_treatment_avg_history_archetype",
+    "260310_val40_treatment_avg_archetype_cluster",
+    "260309_val40_treatment_avg_random_baseline"
+  ],
+  "labels": [
+    "exact_sequence_history_only",
+    "exact_sequence_clustercal",
+    "history_archetype",
+    "archetype_cluster",
+    "random_baseline"
+  ],
+  "shared_games_only": true,
+  "shared_games_count": 40,
+  "human_csv_by_run": {
+    "260310_val40_treatment_avg_exact_sequence_history_only": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val_averaged.csv",
+    "260310_val40_treatment_avg_exact_sequence_clustercal_archetype": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val_averaged.csv",
+    "260310_val40_treatment_avg_history_archetype": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val_averaged.csv",
+    "260310_val40_treatment_avg_archetype_cluster": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val_averaged.csv",
+    "260309_val40_treatment_avg_random_baseline": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val_averaged.csv"
+  },
+  "binary_factors": [
+    "CONFIG_chat",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_rewardExists",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_punishmentExists"
+  ],
+  "median_factors": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_MPCR"
+  ],
+  "plots": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260310_val40_treatment_avg_exact_sequence_history_only_vs_clustercal_vs_history_vs_archetype_vs_random_report/figures/directional_effects_260310_val40_treatment_avg_exact_sequence_history_only.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260310_val40_treatment_avg_exact_sequence_history_only_vs_clustercal_vs_history_vs_archetype_vs_random_report/figures/directional_effects_260310_val40_treatment_avg_exact_sequence_clustercal_archetype.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260310_val40_treatment_avg_exact_sequence_history_only_vs_clustercal_vs_history_vs_archetype_vs_random_report/figures/directional_effects_260310_val40_treatment_avg_history_archetype.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260310_val40_treatment_avg_exact_sequence_history_only_vs_clustercal_vs_history_vs_archetype_vs_random_report/figures/directional_effects_260310_val40_treatment_avg_archetype_cluster.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260310_val40_treatment_avg_exact_sequence_history_only_vs_clustercal_vs_history_vs_archetype_vs_random_report/figures/directional_effects_260309_val40_treatment_avg_random_baseline.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260310_val40_treatment_avg_exact_sequence_history_only_vs_clustercal_vs_history_vs_archetype_vs_random_report/figures/directional_effects_linear_config_baseline.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/macro/reports/260310_val40_treatment_avg_exact_sequence_history_only_vs_clustercal_vs_history_vs_archetype_vs_random_report/figures/aggregate_efficiency_comparison.png"
+  ],
+  "linear_config_baseline_available": true
+}

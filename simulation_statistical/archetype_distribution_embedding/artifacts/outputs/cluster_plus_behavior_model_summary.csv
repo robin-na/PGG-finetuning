@@ -1,0 +1,3 @@
+dataset,n_rows,n_unique_keys,mean_sample_pool_size,n_punish_rate_keys,n_reward_rate_keys,mean_punish_rate,mean_reward_rate
+contribution,60681,6508.0,128.13245236631838,,,,
+action,58344,,,9029.0,11091.0,0.18224622084637693,0.19579051521364202

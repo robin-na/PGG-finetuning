@@ -1,0 +1,9 @@
+family,description,n_contribution_rows,n_action_rows,n_contribution_features,n_action_features,contribution_classes,action_classes
+unconditional_cooperator,High baseline contribution with weak responsiveness to peer history.,60681,533730,38,51,"[0, 1, 2, 3, 4]","[""none"", ""punish"", ""reward""]"
+unconditional_defector,Low baseline contribution with minimal sanctioning or reward behavior.,60681,533730,38,51,"[0, 1, 2, 3, 4]","[""none"", ""punish"", ""reward""]"
+conditional_cooperator,Contribution responds to previous peer cooperation and own prior behavior.,60681,533730,43,53,"[0, 1, 2, 3, 4]","[""none"", ""punish"", ""reward""]"
+generous_conditional_cooperator,Conditional cooperation with stronger reward sensitivity and forgiveness.,60681,533730,47,57,"[0, 1, 2, 3, 4]","[""none"", ""punish"", ""reward""]"
+endgame_defector,"More cooperative early, but contribution drops when the known horizon closes.",60681,533730,40,51,"[0, 1, 2, 3, 4]","[""none"", ""punish"", ""reward""]"
+retaliatory_punisher,Punishes below-norm peers and visible prior aggressors.,60681,533730,42,58,"[0, 1, 2, 3, 4]","[""none"", ""punish"", ""reward""]"
+norm_enforcer,Uses sanctioning mainly to enforce contribution norms rather than retaliate.,60681,533730,40,51,"[0, 1, 2, 3, 4]","[""none"", ""punish"", ""reward""]"
+reward_oriented_cooperator,Contributes relatively highly and reinforces above-norm peers with reward.,60681,533730,44,58,"[0, 1, 2, 3, 4]","[""none"", ""punish"", ""reward""]"

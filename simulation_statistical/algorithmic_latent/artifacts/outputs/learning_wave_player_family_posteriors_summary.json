@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "family_model_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/models/family_policy_bundle.pkl",
+  "contribution_stage_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/state_tables/learning_wave_contribution_stage.parquet",
+  "action_stage_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/state_tables/learning_wave_action_stage.parquet",
+  "player_output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/outputs/learning_wave_player_family_posteriors.parquet",
+  "treatment_output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/outputs/learning_wave_treatment_family_mixture.csv",
+  "n_players": 3912,
+  "n_treatments": 348,
+  "family_order": [
+    "unconditional_cooperator",
+    "unconditional_defector",
+    "conditional_cooperator",
+    "generous_conditional_cooperator",
+    "endgame_defector",
+    "retaliatory_punisher",
+    "norm_enforcer",
+    "reward_oriented_cooperator"
+  ],
+  "contribution_stage_weight": 1.0,
+  "action_stage_weight": 1.0,
+  "mean_posterior_entropy": 1.7533731401799477,
+  "mean_top_family_prob": 0.26642728115684644,
+  "top_family_counts": {
+    "reward_oriented_cooperator": 1966,
+    "unconditional_cooperator": 1173,
+    "generous_conditional_cooperator": 523,
+    "endgame_defector": 158,
+    "retaliatory_punisher": 57,
+    "conditional_cooperator": 35
+  }
+}

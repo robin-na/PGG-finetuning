@@ -1,0 +1,49 @@
+cluster,cluster_label,tag,presence_rate,avg_tag_length_chars,top_terms
+cluster_1_prob,strong_mildly_conditional_cooperator,CONTRIBUTION,0.9999999999999997,1437.6045825826368,
+cluster_2_prob,opportunistic_free_rider,CONTRIBUTION,0.9999999999999982,1489.8258766048555,
+cluster_3_prob,fragile_high_cooperator,CONTRIBUTION,1.0,1544.2494442466427,
+cluster_4_prob,near_unconditional_full_cooperator,CONTRIBUTION,1.0,1083.9141119508129,
+cluster_5_prob,unknown_or_sparse_info,CONTRIBUTION,1.0,353.7007299270073,
+cluster_6_prob,moderate_payoff_aware_conditional_cooperator,CONTRIBUTION,1.0000000000000004,1862.633497859794,
+cluster_1_prob,strong_mildly_conditional_cooperator,COMMUNICATION,0.060535017734111934,284.1897142879354,"style, unknown, communication, chat, messages, engagement, behavior, attempt"
+cluster_2_prob,opportunistic_free_rider,COMMUNICATION,0.7016688471414152,973.8899482943242,"social, low, chat, group, communication, style, non, player"
+cluster_3_prob,fragile_high_cooperator,COMMUNICATION,0.9957579111747399,1285.087964763669,"group, cooperative, social, chat, low, style, coordination, tone"
+cluster_4_prob,near_unconditional_full_cooperator,COMMUNICATION,0.9937946898695649,929.7701846688489,"group, cooperative, low, chat, social, norm, style, tone"
+cluster_5_prob,unknown_or_sparse_info,COMMUNICATION,0.46715328467153283,311.140625,"unknown, sociability, communication, use communication, communication strategically, attempts coordinate, attempts, coordinate contributions"
+cluster_6_prob,moderate_payoff_aware_conditional_cooperator,COMMUNICATION,2.6253726865049103e-31,321.99999995325754,"cooperative, express, style, low, tone, moralizing, communication, communication style"
+cluster_1_prob,strong_mildly_conditional_cooperator,PUNISHMENT,0.9999999986369167,1380.5926538534284,"punishment, punish, norm, low, contributors, player, use, free"
+cluster_2_prob,opportunistic_free_rider,PUNISHMENT,0.409739667133301,1079.4802484558977,"punishment, low, use, norm, punish, non, free, contributors"
+cluster_3_prob,fragile_high_cooperator,PUNISHMENT,0.4325850874431199,1241.065350296665,"punishment, norm, punish, use, group, low, free, non"
+cluster_4_prob,near_unconditional_full_cooperator,PUNISHMENT,0.5799319162344619,1028.047613174871,"punishment, norm, punish, use, free, group, non, low"
+cluster_5_prob,unknown_or_sparse_info,PUNISHMENT,0.5328467153284672,337.90410958904107,"punishment, unknown, player, cost, low, tolerance, use, targeting"
+cluster_6_prob,moderate_payoff_aware_conditional_cooperator,PUNISHMENT,6.060112565354319e-15,1026.3463162431997,"punishment, non, norm, clear, respond, avoiding, use, free"
+cluster_1_prob,strong_mildly_conditional_cooperator,REWARD,0.5286740735826917,1073.9007586500734,"reward, rewards, high, use, behavior, positive, rewarding, cooperation"
+cluster_2_prob,opportunistic_free_rider,REWARD,0.4047247092003718,957.395041751562,"reward, rewards, use, rewarding, behavior, high, cooperation, cost"
+cluster_3_prob,fragile_high_cooperator,REWARD,0.40184243997296937,1130.841028937949,"reward, rewards, rewarding, use, cooperation, behavior, high, cooperative"
+cluster_4_prob,near_unconditional_full_cooperator,REWARD,0.5479953254372836,950.8723163833484,"reward, rewards, use, rewarding, cooperation, high, behavior, cooperative"
+cluster_5_prob,unknown_or_sparse_info,REWARD,0.5036496350364964,313.2608695652174,"reward, unknown, rewarding, cost, gratitude, behavior, rewards, high"
+cluster_6_prob,moderate_payoff_aware_conditional_cooperator,REWARD,0.5273779915974661,1424.4222388818637,"reward, rewards, rewarding, use, behavior, high, cooperation, cooperative"
+cluster_1_prob,strong_mildly_conditional_cooperator,RESPONSE_TO_END_GAME,0.4903580534787799,892.1162163638805,
+cluster_2_prob,opportunistic_free_rider,RESPONSE_TO_END_GAME,0.634801647761262,904.6313777823867,
+cluster_3_prob,fragile_high_cooperator,RESPONSE_TO_END_GAME,0.3763173427544261,955.0780478374328,
+cluster_4_prob,near_unconditional_full_cooperator,RESPONSE_TO_END_GAME,0.5615284987247675,790.5600289990556,
+cluster_5_prob,unknown_or_sparse_info,RESPONSE_TO_END_GAME,0.5036496350364964,310.463768115942,
+cluster_6_prob,moderate_payoff_aware_conditional_cooperator,RESPONSE_TO_END_GAME,0.5170604255413289,1072.3980545565826,
+cluster_1_prob,strong_mildly_conditional_cooperator,RESPONSE_TO_OTHERS_OUTCOME,0.4908998840562576,1436.443200414261,
+cluster_2_prob,opportunistic_free_rider,RESPONSE_TO_OTHERS_OUTCOME,0.5376643557039131,1302.9038537476922,
+cluster_3_prob,fragile_high_cooperator,RESPONSE_TO_OTHERS_OUTCOME,0.49958047481006745,1388.2291407878236,
+cluster_4_prob,near_unconditional_full_cooperator,RESPONSE_TO_OTHERS_OUTCOME,0.43958069693361973,1113.0972270433467,
+cluster_5_prob,unknown_or_sparse_info,RESPONSE_TO_OTHERS_OUTCOME,0.45985401459854014,342.04761904761904,
+cluster_6_prob,moderate_payoff_aware_conditional_cooperator,RESPONSE_TO_OTHERS_OUTCOME,0.5009993963401316,1625.3451135777382,
+cluster_1_prob,strong_mildly_conditional_cooperator,RESPONSE_TO_PUNISHER,0.5419668100790729,976.636478580745,
+cluster_2_prob,opportunistic_free_rider,RESPONSE_TO_PUNISHER,0.18635757367044506,921.5999932288192,
+cluster_3_prob,fragile_high_cooperator,RESPONSE_TO_PUNISHER,0.16753848760696444,862.3376457627307,
+cluster_4_prob,near_unconditional_full_cooperator,RESPONSE_TO_PUNISHER,0.3020013026266237,600.7346496253937,
+cluster_5_prob,unknown_or_sparse_info,RESPONSE_TO_PUNISHER,0.31386861313868614,254.69767441860466,
+cluster_6_prob,moderate_payoff_aware_conditional_cooperator,RESPONSE_TO_PUNISHER,7.89051432831569e-21,329.25182207258104,
+cluster_1_prob,strong_mildly_conditional_cooperator,RESPONSE_TO_REWARDER,0.28905222238343414,785.7712834255886,
+cluster_2_prob,opportunistic_free_rider,RESPONSE_TO_REWARDER,0.20833832029341987,740.8312801000776,
+cluster_3_prob,fragile_high_cooperator,RESPONSE_TO_REWARDER,0.1228611438243785,867.3393914626213,
+cluster_4_prob,near_unconditional_full_cooperator,RESPONSE_TO_REWARDER,0.3036909265618302,682.303552235283,
+cluster_5_prob,unknown_or_sparse_info,RESPONSE_TO_REWARDER,0.32116788321167883,257.15909090909093,
+cluster_6_prob,moderate_payoff_aware_conditional_cooperator,RESPONSE_TO_REWARDER,0.2804051340238909,1143.7876215452716,

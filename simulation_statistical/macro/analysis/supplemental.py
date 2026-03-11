@@ -9,13 +9,16 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 import numpy as np
 import pandas as pd
 from sklearn.impute import SimpleImputer
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, RidgeCV
 from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
 
 from Macro_simulation_eval.analysis.run_analysis import (
     _extract_analysis_csv_from_config,
     _load_run_config,
     _resolve_existing_path,
+    compute_sim_game_metrics,
+    load_human_game_table,
     parse_binary_series,
     parse_dict_field,
 )
@@ -38,6 +41,57 @@ LINEAR_CONFIG_FEATURES: List[str] = [
     "CONFIG_showPunishmentId",
     "CONFIG_showRewardId",
     "CONFIG_MPCR",
+]
+
+CLUSTER_DISTRIBUTION_FEATURES: List[str] = [f"cluster_{index}_prob" for index in range(1, 7)]
+
+REGRESSION_TARGET_SPECS: List[Tuple[str, str, str]] = [
+    ("human_mean_contribution_rate", "mean_contribution_rate", "contribution_rate"),
+    ("human_punishment_rate", "punishment_rate", "punishment_rate"),
+    ("human_reward_rate", "reward_rate", "reward_rate"),
+    ("human_normalized_efficiency", "normalized_efficiency", "normalized_efficiency"),
+    ("human_var_players_contrib_rate", "var_players_contrib_rate", "var_players_contrib_rate"),
+    ("human_var_players_punishment_rate", "var_players_punishment_rate", "var_players_punishment_rate"),
+    ("human_var_players_reward_rate", "var_players_reward_rate", "var_players_reward_rate"),
+]
+
+DIRECT_BASELINE_SPECS: List[Dict[str, str]] = [
+    {
+        "feature_source": "config",
+        "model_kind": "linear",
+        "run_id": "linear_config_baseline",
+        "label": "linear_config",
+    },
+    {
+        "feature_source": "config",
+        "model_kind": "ridge",
+        "run_id": "ridge_config_baseline",
+        "label": "ridge_config",
+    },
+    {
+        "feature_source": "cluster_pred",
+        "model_kind": "linear",
+        "run_id": "linear_cluster_pred_baseline",
+        "label": "linear_cluster_pred",
+    },
+    {
+        "feature_source": "cluster_pred",
+        "model_kind": "ridge",
+        "run_id": "ridge_cluster_pred_baseline",
+        "label": "ridge_cluster_pred",
+    },
+    {
+        "feature_source": "cluster_pred_plus_config",
+        "model_kind": "linear",
+        "run_id": "linear_cluster_pred_plus_config_baseline",
+        "label": "linear_cluster_pred_plus_config",
+    },
+    {
+        "feature_source": "cluster_pred_plus_config",
+        "model_kind": "ridge",
+        "run_id": "ridge_cluster_pred_plus_config_baseline",
+        "label": "ridge_cluster_pred_plus_config",
+    },
 ]
 
 
@@ -135,6 +189,92 @@ def _load_config_slice(analysis_csv: Path) -> pd.DataFrame:
         "CONFIG_rewardExists",
     ]
     return cfg[keep].copy()
+
+
+def _cluster_wave_suffix_from_analysis_csv(analysis_csv: Path) -> str:
+    name = resolve_full_analysis_csv(analysis_csv).name
+    if "_learn" in name:
+        return "learn"
+    if "_val" in name:
+        return "val"
+    raise ValueError(f"Could not infer wave from analysis CSV name: {analysis_csv}")
+
+
+def _cluster_distribution_artifact_path(analysis_csv: Path, *, predicted: bool) -> Path:
+    wave = _cluster_wave_suffix_from_analysis_csv(analysis_csv)
+    stem = "predicted_game_cluster_distribution" if predicted else "game_cluster_distribution"
+    return (
+        Path(__file__).resolve().parents[2]
+        / "archetype_distribution_embedding"
+        / "artifacts"
+        / "outputs"
+        / f"{stem}_{wave}.parquet"
+    ).resolve()
+
+
+def build_benchmark_cluster_feature_table(
+    analysis_csv: Path,
+    *,
+    predicted: bool = True,
+) -> pd.DataFrame:
+    parquet_path = _cluster_distribution_artifact_path(analysis_csv, predicted=predicted)
+    if not parquet_path.exists():
+        raise FileNotFoundError(f"Cluster distribution artifact not found: {parquet_path}")
+    cluster_df = pd.read_parquet(parquet_path).copy()
+    if "game_id" in cluster_df.columns:
+        cluster_df = cluster_df.rename(columns={"game_id": "gameId"})
+    cluster_df["gameId"] = cluster_df["gameId"].astype(str)
+
+    analysis = pd.read_csv(resolve_full_analysis_csv(analysis_csv), usecols=["gameId", "CONFIG_treatmentName"]).copy()
+    analysis["gameId"] = analysis["gameId"].astype(str)
+    analysis["benchmark_id"] = analysis["CONFIG_treatmentName"].astype(str)
+    analysis = analysis[["gameId", "benchmark_id"]].drop_duplicates(subset=["gameId"], keep="first")
+
+    merged = cluster_df.merge(analysis, on="gameId", how="inner", validate="one_to_one")
+    return (
+        merged.groupby("benchmark_id", as_index=False)[CLUSTER_DISTRIBUTION_FEATURES]
+        .mean()
+        .copy()
+    )
+
+
+def _augment_benchmark_table_with_feature_source(
+    benchmark_table: pd.DataFrame,
+    analysis_csv: Path,
+    *,
+    feature_source: str,
+) -> Tuple[pd.DataFrame, List[str]]:
+    out = benchmark_table.copy()
+    if feature_source == "config":
+        return out, list(LINEAR_CONFIG_FEATURES)
+    if feature_source in {"cluster_pred", "cluster_pred_plus_config", "cluster_oracle", "cluster_oracle_plus_config"}:
+        predicted = "oracle" not in feature_source
+        cluster_features = build_benchmark_cluster_feature_table(analysis_csv, predicted=predicted)
+        out = out.merge(cluster_features, on="benchmark_id", how="inner", validate="one_to_one")
+        feature_cols = list(CLUSTER_DISTRIBUTION_FEATURES)
+        if feature_source.endswith("_plus_config"):
+            feature_cols.extend(LINEAR_CONFIG_FEATURES)
+        return out, feature_cols
+    raise ValueError(f"Unsupported feature_source: {feature_source}")
+
+
+def _build_regression_pipeline(model_kind: str) -> Pipeline:
+    if model_kind == "linear":
+        return Pipeline(
+            [
+                ("imputer", SimpleImputer(strategy="median")),
+                ("linear_regression", LinearRegression()),
+            ]
+        )
+    if model_kind == "ridge":
+        return Pipeline(
+            [
+                ("imputer", SimpleImputer(strategy="median")),
+                ("scaler", StandardScaler()),
+                ("ridge", RidgeCV(alphas=np.logspace(-4, 4, 25))),
+            ]
+        )
+    raise ValueError(f"Unsupported model_kind: {model_kind}")
 
 
 def _build_rate_rows(
@@ -292,29 +432,21 @@ def build_benchmark_target_table(analysis_csv: Path, rows_csv: Path) -> pd.DataF
     return out
 
 
-def build_linear_baseline_predictions(
+def build_regression_baseline_predictions(
     *,
     learn_benchmark_table: pd.DataFrame,
     val_benchmark_table: pd.DataFrame,
     feature_cols: Sequence[str],
+    model_kind: str,
+    prediction_prefix: str,
 ) -> Tuple[pd.DataFrame, pd.DataFrame]:
     train_x = _prepare_feature_frame(learn_benchmark_table, feature_cols)
     val_x = _prepare_feature_frame(val_benchmark_table, feature_cols)
 
-    target_specs = [
-        ("human_mean_contribution_rate", "linear_mean_contribution_rate", "contribution_rate"),
-        ("human_punishment_rate", "linear_punishment_rate", "punishment_rate"),
-        ("human_reward_rate", "linear_reward_rate", "reward_rate"),
-        ("human_normalized_efficiency", "linear_normalized_efficiency", "normalized_efficiency"),
-        ("human_var_players_contrib_rate", "linear_var_players_contrib_rate", "var_players_contrib_rate"),
-        ("human_var_players_punishment_rate", "linear_var_players_punishment_rate", "var_players_punishment_rate"),
-        ("human_var_players_reward_rate", "linear_var_players_reward_rate", "var_players_reward_rate"),
-    ]
-
     predictions = val_benchmark_table[["benchmark_id"]].copy()
     summary_rows: List[Dict[str, Any]] = []
 
-    for target_col, pred_col, metric_name in target_specs:
+    for target_col, metric_suffix, metric_name in REGRESSION_TARGET_SPECS:
         if target_col not in learn_benchmark_table.columns or target_col not in val_benchmark_table.columns:
             continue
         train_y = pd.to_numeric(learn_benchmark_table[target_col], errors="coerce")
@@ -324,12 +456,8 @@ def build_linear_baseline_predictions(
         if int(train_mask.sum()) == 0 or int(val_mask.sum()) == 0:
             continue
 
-        model = Pipeline(
-            [
-                ("imputer", SimpleImputer(strategy="median")),
-                ("linear_regression", LinearRegression()),
-            ]
-        )
+        pred_col = f"{prediction_prefix}_{metric_suffix}"
+        model = _build_regression_pipeline(model_kind)
         model.fit(train_x.loc[train_mask], train_y.loc[train_mask])
         pred_all = pd.Series(model.predict(val_x), index=val_benchmark_table.index, dtype=float)
         if metric_name in {"contribution_rate", "punishment_rate", "reward_rate"}:
@@ -349,6 +477,9 @@ def build_linear_baseline_predictions(
                 "metric": metric_name,
                 "target_col": target_col,
                 "prediction_col": pred_col,
+                "model_kind": model_kind,
+                "prediction_prefix": prediction_prefix,
+                "feature_cols": ",".join(feature_cols),
                 "n_train": int(train_mask.sum()),
                 "n_eval": int(len(pair)),
                 "rmse": _rmse(pair["predicted"], pair["actual"]),
@@ -358,6 +489,383 @@ def build_linear_baseline_predictions(
         )
 
     return predictions, pd.DataFrame(summary_rows)
+
+
+def build_linear_baseline_predictions(
+    *,
+    learn_benchmark_table: pd.DataFrame,
+    val_benchmark_table: pd.DataFrame,
+    feature_cols: Sequence[str],
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    return build_regression_baseline_predictions(
+        learn_benchmark_table=learn_benchmark_table,
+        val_benchmark_table=val_benchmark_table,
+        feature_cols=feature_cols,
+        model_kind="linear",
+        prediction_prefix="linear",
+    )
+
+
+def _build_direct_baseline_predictions_from_sources(
+    *,
+    learn_analysis_csv: Path,
+    val_analysis_csv: Path,
+    learn_rows_csv: Path,
+    val_rows_csv: Path,
+    feature_source: str,
+    model_kind: str,
+    prediction_prefix: str,
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    learn_benchmark_table = build_benchmark_target_table(learn_analysis_csv, learn_rows_csv)
+    val_benchmark_table = build_benchmark_target_table(val_analysis_csv, val_rows_csv)
+    learn_feature_table, feature_cols = _augment_benchmark_table_with_feature_source(
+        learn_benchmark_table,
+        learn_analysis_csv,
+        feature_source=feature_source,
+    )
+    val_feature_table, _ = _augment_benchmark_table_with_feature_source(
+        val_benchmark_table,
+        val_analysis_csv,
+        feature_source=feature_source,
+    )
+    return build_regression_baseline_predictions(
+        learn_benchmark_table=learn_feature_table,
+        val_benchmark_table=val_feature_table,
+        feature_cols=feature_cols,
+        model_kind=model_kind,
+        prediction_prefix=prediction_prefix,
+    )
+
+
+def build_direct_baseline_game_table(
+    *,
+    human_analysis_csv: Path,
+    human_rows_csv: Path,
+    binary_factors: Sequence[str],
+    median_factors: Sequence[str],
+    feature_source: str,
+    model_kind: str,
+    run_id: str,
+    label: str,
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    human_analysis_csv = human_analysis_csv.resolve()
+    human_rows_csv = human_rows_csv.resolve()
+    human_full_analysis_csv = resolve_full_analysis_csv(human_analysis_csv)
+    learn_analysis_csv = human_full_analysis_csv.parent / "df_analysis_learn.csv"
+    learn_rows_csv = human_rows_csv.parents[1] / "learning_wave" / "player-rounds.csv"
+    if not learn_analysis_csv.exists() or not learn_rows_csv.exists():
+        return pd.DataFrame(), pd.DataFrame()
+
+    prediction_prefix = run_id.replace("_baseline", "")
+    predictions, summary = _build_direct_baseline_predictions_from_sources(
+        learn_analysis_csv=learn_analysis_csv,
+        val_analysis_csv=human_full_analysis_csv,
+        learn_rows_csv=learn_rows_csv,
+        val_rows_csv=human_rows_csv,
+        feature_source=feature_source,
+        model_kind=model_kind,
+        prediction_prefix=prediction_prefix,
+    )
+    if predictions.empty:
+        return pd.DataFrame(), summary
+
+    human_game_table = load_human_game_table(
+        human_analysis_csv,
+        binary_factors=binary_factors,
+        median_factors=median_factors,
+    ).copy()
+    benchmark_meta = pd.read_csv(human_analysis_csv).copy()
+    benchmark_meta["gameId"] = benchmark_meta["gameId"].astype(str)
+    benchmark_meta["benchmark_id"] = _benchmark_series(benchmark_meta)
+    benchmark_meta = benchmark_meta[["gameId", "benchmark_id"]].drop_duplicates(subset=["gameId"], keep="first")
+
+    baseline_game_table = human_game_table.merge(benchmark_meta, on="gameId", how="left", validate="one_to_one")
+    baseline_game_table = baseline_game_table.merge(predictions, on="benchmark_id", how="left", validate="many_to_one")
+    baseline_game_table["sim_mean_contribution_rate"] = pd.to_numeric(
+        baseline_game_table.get(f"{prediction_prefix}_mean_contribution_rate"),
+        errors="coerce",
+    )
+    baseline_game_table["sim_punishment_rate"] = pd.to_numeric(
+        baseline_game_table.get(f"{prediction_prefix}_punishment_rate"),
+        errors="coerce",
+    )
+    baseline_game_table["sim_reward_rate"] = pd.to_numeric(
+        baseline_game_table.get(f"{prediction_prefix}_reward_rate"),
+        errors="coerce",
+    )
+    baseline_game_table["sim_normalized_efficiency"] = pd.to_numeric(
+        baseline_game_table.get(f"{prediction_prefix}_normalized_efficiency"),
+        errors="coerce",
+    )
+    baseline_game_table["run_id"] = run_id
+    baseline_game_table["label"] = label
+    if not summary.empty:
+        summary = summary.copy()
+        summary["run_id"] = run_id
+        summary["label"] = label
+        summary["feature_source"] = feature_source
+    return baseline_game_table, summary
+
+
+def build_linear_config_baseline_game_table(
+    *,
+    human_analysis_csv: Path,
+    human_rows_csv: Path,
+    binary_factors: Sequence[str],
+    median_factors: Sequence[str],
+    run_id: str = "linear_config_baseline",
+    label: str = "linear_config",
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    return build_direct_baseline_game_table(
+        human_analysis_csv=human_analysis_csv,
+        human_rows_csv=human_rows_csv,
+        binary_factors=binary_factors,
+        median_factors=median_factors,
+        feature_source="config",
+        model_kind="linear",
+        run_id=run_id,
+        label=label,
+    )
+
+
+def build_direct_baseline_benchmark_table(
+    *,
+    human_analysis_csv: Path,
+    human_rows_csv: Path,
+    feature_source: str,
+    model_kind: str,
+    run_id: str,
+    label: str,
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    human_analysis_csv = human_analysis_csv.resolve()
+    human_rows_csv = human_rows_csv.resolve()
+    human_full_analysis_csv = resolve_full_analysis_csv(human_analysis_csv)
+    learn_analysis_csv = human_full_analysis_csv.parent / "df_analysis_learn.csv"
+    learn_rows_csv = human_rows_csv.parents[1] / "learning_wave" / "player-rounds.csv"
+    if not learn_analysis_csv.exists() or not learn_rows_csv.exists():
+        return pd.DataFrame(), pd.DataFrame()
+
+    prediction_prefix = run_id.replace("_baseline", "")
+    predictions, summary = _build_direct_baseline_predictions_from_sources(
+        learn_analysis_csv=learn_analysis_csv,
+        val_analysis_csv=human_full_analysis_csv,
+        learn_rows_csv=learn_rows_csv,
+        val_rows_csv=human_rows_csv,
+        feature_source=feature_source,
+        model_kind=model_kind,
+        prediction_prefix=prediction_prefix,
+    )
+    if predictions.empty:
+        return pd.DataFrame(), summary
+
+    baseline_benchmark_table = build_benchmark_target_table(human_full_analysis_csv, human_rows_csv).merge(
+        predictions,
+        on="benchmark_id",
+        how="left",
+        validate="one_to_one",
+    )
+    baseline_benchmark_table["sim_mean_contribution_rate"] = pd.to_numeric(
+        baseline_benchmark_table.get(f"{prediction_prefix}_mean_contribution_rate"),
+        errors="coerce",
+    )
+    baseline_benchmark_table["sim_punishment_rate"] = pd.to_numeric(
+        baseline_benchmark_table.get(f"{prediction_prefix}_punishment_rate"),
+        errors="coerce",
+    )
+    baseline_benchmark_table["sim_reward_rate"] = pd.to_numeric(
+        baseline_benchmark_table.get(f"{prediction_prefix}_reward_rate"),
+        errors="coerce",
+    )
+    baseline_benchmark_table["sim_normalized_efficiency"] = pd.to_numeric(
+        baseline_benchmark_table.get(f"{prediction_prefix}_normalized_efficiency"),
+        errors="coerce",
+    )
+    baseline_benchmark_table["run_id"] = run_id
+    baseline_benchmark_table["label"] = label
+    baseline_benchmark_table["sim_games_in_benchmark"] = pd.to_numeric(
+        baseline_benchmark_table.get("benchmark_game_count"),
+        errors="coerce",
+    )
+    if not summary.empty:
+        summary = summary.copy()
+        summary["run_id"] = run_id
+        summary["label"] = label
+        summary["feature_source"] = feature_source
+    return baseline_benchmark_table, summary
+
+
+def build_sim_benchmark_game_table(
+    *,
+    sim_rows_csv: Path,
+    human_analysis_csv: Path,
+    human_rows_csv: Path,
+    binary_factors: Sequence[str],
+    median_factors: Sequence[str],
+    run_id: str,
+    label: str,
+) -> pd.DataFrame:
+    human_full_analysis_csv = resolve_full_analysis_csv(human_analysis_csv)
+    human_game_table = load_human_game_table(
+        human_full_analysis_csv,
+        binary_factors=binary_factors,
+        median_factors=median_factors,
+    )
+    sim_game_table = compute_sim_game_metrics(sim_rows_csv, human_cfg=human_game_table).copy()
+
+    benchmark_meta = pd.read_csv(human_full_analysis_csv).copy()
+    benchmark_meta["gameId"] = benchmark_meta["gameId"].astype(str)
+    benchmark_meta["benchmark_id"] = _benchmark_series(benchmark_meta)
+    benchmark_meta = benchmark_meta[["gameId", "benchmark_id"]].drop_duplicates(subset=["gameId"], keep="first")
+
+    sim_game_table = sim_game_table.merge(benchmark_meta, on="gameId", how="left", validate="one_to_one")
+    sim_game_table = sim_game_table[sim_game_table["benchmark_id"].notna()].copy()
+    if sim_game_table.empty:
+        return pd.DataFrame()
+
+    sim_benchmark_table = (
+        sim_game_table.groupby("benchmark_id", as_index=False)
+        .agg(
+            sim_mean_contribution_rate=("sim_mean_contribution_rate", "mean"),
+            sim_punishment_rate=("sim_punishment_rate", "mean"),
+            sim_reward_rate=("sim_reward_rate", "mean"),
+            sim_normalized_efficiency=("sim_normalized_efficiency", "mean"),
+            sim_games_in_benchmark=("gameId", "nunique"),
+        )
+        .copy()
+    )
+
+    benchmark_targets = build_benchmark_target_table(human_full_analysis_csv, human_rows_csv).copy()
+    merged = benchmark_targets.merge(sim_benchmark_table, on="benchmark_id", how="inner", validate="one_to_one")
+    merged["run_id"] = run_id
+    merged["label"] = label
+    return merged
+
+
+def build_linear_config_baseline_benchmark_table(
+    *,
+    human_analysis_csv: Path,
+    human_rows_csv: Path,
+    run_id: str = "linear_config_baseline",
+    label: str = "linear_config",
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    return build_direct_baseline_benchmark_table(
+        human_analysis_csv=human_analysis_csv,
+        human_rows_csv=human_rows_csv,
+        feature_source="config",
+        model_kind="linear",
+        run_id=run_id,
+        label=label,
+    )
+
+
+def build_human_game_macro_output_table(analysis_csv: Path, rows_csv: Path) -> pd.DataFrame:
+    analysis_csv = resolve_full_analysis_csv(analysis_csv)
+    analysis = pd.read_csv(analysis_csv).copy()
+    if "gameId" not in analysis.columns:
+        raise ValueError(f"{analysis_csv} is missing gameId.")
+    analysis["gameId"] = analysis["gameId"].astype(str)
+    analysis["benchmark_id"] = _benchmark_series(analysis)
+    game_efficiency = (
+        analysis[["benchmark_id", "gameId", "itt_relative_efficiency"]]
+        .drop_duplicates(subset=["gameId"], keep="first")
+        .rename(columns={"itt_relative_efficiency": "normalized_efficiency"})
+        .copy()
+    )
+
+    rate_rows = _build_rate_rows(
+        rows_csv=rows_csv,
+        analysis_csv=analysis_csv,
+        contribution_col="data.contribution",
+        punished_col="data.punished",
+        rewarded_col="data.rewarded",
+    )
+    game_rates = (
+        rate_rows.groupby(["benchmark_id", "gameId"], as_index=False)
+        .agg(
+            mean_contribution_rate=("contrib_rate", "mean"),
+            punishment_rate=("punishment_rate", "mean"),
+            reward_rate=("reward_rate", "mean"),
+        )
+        .copy()
+    )
+    player_means = (
+        rate_rows.groupby(["benchmark_id", "gameId", "playerId"], as_index=False)
+        .agg(
+            contrib_rate=("contrib_rate", "mean"),
+            punishment_rate=("punishment_rate", "mean"),
+            reward_rate=("reward_rate", "mean"),
+        )
+        .copy()
+    )
+    game_variances = (
+        player_means.groupby(["benchmark_id", "gameId"], as_index=False)
+        .agg(
+            var_players_contrib_rate=("contrib_rate", lambda s: float(pd.Series(s).var(ddof=0))),
+            var_players_punishment_rate=("punishment_rate", lambda s: float(pd.Series(s).var(ddof=0))),
+            var_players_reward_rate=("reward_rate", lambda s: float(pd.Series(s).var(ddof=0))),
+        )
+        .copy()
+    )
+
+    return (
+        game_efficiency.merge(game_rates, on=["benchmark_id", "gameId"], how="inner", validate="one_to_one")
+        .merge(game_variances, on=["benchmark_id", "gameId"], how="inner", validate="one_to_one")
+        .copy()
+    )
+
+
+def build_noise_ceiling_tables(
+    *,
+    human_analysis_csv: Path,
+    human_rows_csv: Path,
+) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    game_table = build_human_game_macro_output_table(human_analysis_csv, human_rows_csv)
+    metric_specs = [
+        ("mean_contribution_rate", "Mean Contribution Rate"),
+        ("punishment_rate", "Punishment Rate"),
+        ("reward_rate", "Reward Rate"),
+        ("normalized_efficiency", "Normalized Efficiency"),
+        ("var_players_contrib_rate", "Player Contribution Variance"),
+        ("var_players_punishment_rate", "Player Punishment Variance"),
+        ("var_players_reward_rate", "Player Reward Variance"),
+    ]
+
+    detail_frames: List[pd.DataFrame] = []
+    summary_rows: List[Dict[str, Any]] = []
+
+    for metric_col, metric_label in metric_specs:
+        grouped = (
+            game_table.groupby("benchmark_id")[metric_col]
+            .agg(
+                n_games="count",
+                benchmark_mean="mean",
+                sample_variance=lambda s: float(pd.Series(s).var(ddof=1)) if len(s) > 1 else np.nan,
+            )
+            .reset_index()
+        )
+        grouped["metric"] = metric_col
+        grouped["metric_label"] = metric_label
+        grouped["mse_floor_component"] = grouped["sample_variance"] / grouped["n_games"]
+        detail_frames.append(grouped)
+
+        valid = grouped[grouped["mse_floor_component"].notna()].copy()
+        summary_rows.append(
+            {
+                "metric": metric_col,
+                "metric_label": metric_label,
+                "n_benchmarks_total": int(len(grouped)),
+                "n_benchmarks_used": int(len(valid)),
+                "mean_n_games_per_benchmark": float(valid["n_games"].mean()) if len(valid) else None,
+                "mean_within_benchmark_sample_variance": float(valid["sample_variance"].mean()) if len(valid) else None,
+                "mse_floor_plugin": float(valid["mse_floor_component"].mean()) if len(valid) else None,
+                "rmse_floor_plugin": float(np.sqrt(valid["mse_floor_component"].mean())) if len(valid) else None,
+                "formula": "sqrt(mean(s2_x / n_x))",
+            }
+        )
+
+    detail_df = pd.concat(detail_frames, ignore_index=True) if detail_frames else pd.DataFrame()
+    summary_df = pd.DataFrame(summary_rows)
+    return summary_df, detail_df
 
 
 def _rmse(series_a: pd.Series, series_b: pd.Series) -> float:
@@ -418,8 +926,17 @@ def build_macro_metric_bundle(
     if "benchmark_game_count" in benchmark_meta.columns:
         keep_meta.append("benchmark_game_count")
     benchmark_meta = benchmark_meta[keep_meta].drop_duplicates(subset=["gameId"], keep="first")
-
-    enriched_game_level = game_level_df.merge(benchmark_meta, on="gameId", how="left")
+    if "benchmark_id" in game_level_df.columns:
+        enriched_game_level = game_level_df.copy()
+        if "benchmark_game_count" not in enriched_game_level.columns and "benchmark_game_count" in benchmark_meta.columns:
+            benchmark_counts = (
+                benchmark_meta[["benchmark_id", "benchmark_game_count"]]
+                .drop_duplicates(subset=["benchmark_id"], keep="first")
+                .copy()
+            )
+            enriched_game_level = enriched_game_level.merge(benchmark_counts, on="benchmark_id", how="left")
+    else:
+        enriched_game_level = game_level_df.merge(benchmark_meta, on="gameId", how="left")
     if "benchmark_id" not in enriched_game_level.columns or enriched_game_level["benchmark_id"].isna().any():
         raise ValueError("Could not attach treatment benchmark IDs to the game-level macro analysis table.")
 
@@ -533,12 +1050,18 @@ def build_macro_metric_bundle(
         ]
         linear_var_rows = enriched_game_level[linear_var_cols].drop_duplicates(subset=["benchmark_id"], keep="first")
         player_variance_by_game = player_variance_by_game.merge(linear_var_rows, on="benchmark_id", how="left")
+    noise_ceiling_summary, noise_ceiling_detail = build_noise_ceiling_tables(
+        human_analysis_csv=human_full_analysis_csv,
+        human_rows_csv=human_rows_csv,
+    )
     return {
         "enriched_game_level": enriched_game_level,
         "rmse_summary": rmse_summary,
         "variance_summary": variance_summary,
         "player_variance_by_game": player_variance_by_game,
         "linear_summary": linear_summary,
+        "noise_ceiling_summary": noise_ceiling_summary,
+        "noise_ceiling_detail": noise_ceiling_detail,
         "linear_config_features": list(LINEAR_CONFIG_FEATURES),
         "learn_analysis_csv": str(learn_analysis_csv),
         "learn_rows_csv": str(learn_rows_csv),
@@ -670,6 +1193,62 @@ def plot_rmse_summary(rmse_summary: pd.DataFrame, out_path: Path, dpi: int) -> O
     ax.set_xticklabels(rmse_summary["metric"], rotation=20)
     ax.grid(axis="y", alpha=0.3)
     ax.legend()
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.tight_layout()
+    fig.savefig(out_path, dpi=dpi, bbox_inches="tight")
+    plt.close(fig)
+    return str(out_path)
+
+
+def plot_aggregate_efficiency_comparison(
+    aggregate_df: pd.DataFrame,
+    out_path: Path,
+    *,
+    dpi: int,
+) -> Optional[str]:
+    if aggregate_df.empty:
+        return None
+    plot_df = aggregate_df.copy()
+    plot_df["label"] = plot_df["label"].astype(str)
+    metrics = [
+        ("mae_normalized_efficiency", "MAE", False),
+        ("rmse_normalized_efficiency", "RMSE", False),
+        ("corr_normalized_efficiency", "Correlation", True),
+    ]
+    plt = _ensure_matplotlib()
+    fig, axes = plt.subplots(1, len(metrics), figsize=(12, 4.2))
+    if len(metrics) == 1:
+        axes = [axes]
+    for ax, (column, title, higher_is_better) in zip(axes, metrics):
+        if column not in plot_df.columns:
+            ax.set_visible(False)
+            continue
+        values = pd.to_numeric(plot_df[column], errors="coerce")
+        subset = plot_df.loc[values.notna(), ["label", column]].copy()
+        if subset.empty:
+            ax.set_visible(False)
+            continue
+        y = np.arange(len(subset))
+        bars = ax.barh(y, subset[column].astype(float), color="#4C78A8")
+        ax.set_yticks(y)
+        ax.set_yticklabels(subset["label"])
+        ax.set_title(title)
+        ax.grid(axis="x", alpha=0.3)
+        ax.invert_yaxis()
+        if higher_is_better:
+            ax.set_xlabel("Higher is better")
+        else:
+            ax.set_xlabel("Lower is better")
+        for bar, value in zip(bars, subset[column].astype(float)):
+            ax.text(
+                bar.get_width(),
+                bar.get_y() + bar.get_height() / 2.0,
+                f" {value:.3f}",
+                va="center",
+                ha="left",
+                fontsize=9,
+            )
+    fig.suptitle("Macro Normalized-Efficiency Comparison")
     out_path.parent.mkdir(parents=True, exist_ok=True)
     fig.tight_layout()
     fig.savefig(out_path, dpi=dpi, bbox_inches="tight")

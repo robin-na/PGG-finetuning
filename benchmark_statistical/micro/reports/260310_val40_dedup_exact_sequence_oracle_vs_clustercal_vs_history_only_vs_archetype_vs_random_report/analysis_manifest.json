@@ -1,0 +1,186 @@
+{
+  "mode": "comparison",
+  "timestamp": "2026-03-10T09:22:59.313849",
+  "output_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report",
+  "filters": {
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true
+  },
+  "comparison_runs": [
+    {
+      "run_id": "260310_val40_dedup_exact_sequence_oracle_treatment",
+      "run_label": "exact_sequence_oracle_treatment",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/runs/260310_val40_dedup_exact_sequence_oracle_treatment/micro_behavior_eval.csv",
+      "pre_filter_rows": 4666,
+      "post_filter_rows": 4666,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      },
+      "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val_averaged.csv",
+      "all_or_nothing_mapped_rows": 4666
+    },
+    {
+      "run_id": "260310_val40_dedup_exact_sequence_clustercal_archetype",
+      "run_label": "exact_sequence_clustercal",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/runs/260310_val40_dedup_exact_sequence_clustercal_archetype/micro_behavior_eval.csv",
+      "pre_filter_rows": 4666,
+      "post_filter_rows": 4666,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      },
+      "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val_averaged.csv",
+      "all_or_nothing_mapped_rows": 4666
+    },
+    {
+      "run_id": "260310_val40_dedup_exact_sequence_history_only",
+      "run_label": "exact_sequence_history_only",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/runs/260310_val40_dedup_exact_sequence_history_only/micro_behavior_eval.csv",
+      "pre_filter_rows": 4666,
+      "post_filter_rows": 4666,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      },
+      "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/data/processed_data/df_analysis_val_averaged.csv",
+      "all_or_nothing_mapped_rows": 4666
+    },
+    {
+      "run_id": "260310_val40_dedup_archetype_cluster",
+      "run_label": "archetype_cluster",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/runs/260310_val40_dedup_archetype_cluster/micro_behavior_eval.csv",
+      "pre_filter_rows": 4609,
+      "post_filter_rows": 4609,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      },
+      "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_val_dedup.csv",
+      "all_or_nothing_mapped_rows": 4609
+    },
+    {
+      "run_id": "260309_val40_dedup_random_baseline",
+      "run_label": "random_baseline",
+      "input_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/runs/260309_val40_dedup_random_baseline/micro_behavior_eval.csv",
+      "pre_filter_rows": 4609,
+      "post_filter_rows": 4609,
+      "dropped_rows": 0,
+      "malformed_dict_rows": 0,
+      "malformed_dict_parse_counts": {
+        "predicted_punished_pid": 0,
+        "predicted_rewarded_pid": 0,
+        "actual_punished_pid": 0,
+        "actual_rewarded_pid": 0
+      },
+      "all_or_nothing_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_val_dedup.csv",
+      "all_or_nothing_mapped_rows": 4609
+    }
+  ],
+  "generated_files": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/comparison_overall.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/comparison_by_round.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/comparison_by_game.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/comparison_contribution_by_all_or_nothing.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/comparison_overall_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/comparison_by_round_errorbars.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/comparison_significance.csv",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/comparison_summary.md",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/compare_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/compare_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/compare_action_exact_match.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/compare_target_hit_any.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/compare_by_round_contrib_mae.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/compare_by_round_target_f1.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/compare_contrib_mae_by_all_or_nothing.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/compare_contrib_binary_by_all_or_nothing_true.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark_statistical/micro/reports/260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report/analysis_manifest.json"
+  ],
+  "args": {
+    "compare_run_ids": [
+      "260310_val40_dedup_exact_sequence_oracle_treatment",
+      "260310_val40_dedup_exact_sequence_clustercal_archetype",
+      "260310_val40_dedup_exact_sequence_history_only",
+      "260310_val40_dedup_archetype_cluster",
+      "260309_val40_dedup_random_baseline"
+    ],
+    "compare_labels": [
+      "exact_sequence_oracle_treatment",
+      "exact_sequence_clustercal",
+      "exact_sequence_history_only",
+      "archetype_cluster",
+      "random_baseline"
+    ],
+    "include_prev_round_baseline": false,
+    "run_colors": {
+      "exact_sequence_oracle_treatment": "#1f77b4",
+      "exact_sequence_clustercal": "#ff7f0e",
+      "exact_sequence_history_only": "#2ca02c",
+      "archetype_cluster": "#d62728",
+      "random_baseline": "#9467bd"
+    },
+    "eval_root": "benchmark_statistical/micro/runs",
+    "analysis_root": "benchmark_statistical/micro/reports",
+    "analysis_run_id": "260310_val40_dedup_exact_sequence_oracle_vs_clustercal_vs_history_only_vs_archetype_vs_random_report",
+    "min_round": null,
+    "max_round": null,
+    "skip_no_actual": true,
+    "dpi": 160,
+    "debug_print": false
+  },
+  "previous_round_baseline": null,
+  "metrics_columns": [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "action_exact_match",
+    "target_set_exact",
+    "target_precision",
+    "target_recall",
+    "target_f1",
+    "target_jaccard",
+    "target_hit_any",
+    "unit_mae_on_overlap",
+    "unit_exact_on_overlap_rate",
+    "actual_any_action_rate",
+    "pred_any_action_rate",
+    "actual_any_punish_rate",
+    "pred_any_punish_rate",
+    "actual_any_reward_rate",
+    "pred_any_reward_rate"
+  ],
+  "contribution_regime_metrics_columns": [
+    "n_rows",
+    "predicted_contribution_parsed",
+    "contrib_mae",
+    "contrib_mae_norm20",
+    "contrib_rmse",
+    "contrib_bias",
+    "contrib_corr",
+    "contrib_binary_n",
+    "contrib_binary_accuracy",
+    "contrib_binary_precision",
+    "contrib_binary_recall",
+    "contrib_binary_f1"
+  ]
+}

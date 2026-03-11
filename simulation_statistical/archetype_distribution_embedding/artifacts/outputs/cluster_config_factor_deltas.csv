@@ -1,0 +1,133 @@
+source,factor,factor_type,split,cluster,cluster_label,delta_prob
+actual_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,-0.4059991727693271
+actual_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,0.20374881219036856
+actual_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,0.2987056954763551
+actual_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.3801463807534939
+actual_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.01437663700821596
+actual_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.46222507864267426
+actual_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,0.3369097707096434
+actual_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,-0.07106073941384947
+actual_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,-0.034737740723855215
+actual_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.0917738822760229
+actual_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,0.0006723821986979947
+actual_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.32355755504665934
+actual_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,0.03519025267539597
+actual_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,-0.04766471793247745
+actual_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,-0.04176773691307242
+actual_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.037478114262216894
+actual_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.002896408630060944
+actual_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,0.019660496537997507
+actual_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,-0.1152773770820617
+actual_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,0.09318509564843433
+actual_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,0.0026171695537519635
+actual_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.12046820032000927
+actual_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,0.016460846436922985
+actual_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.11745393487705674
+actual_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,0.03513592237452426
+actual_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,0.09633508990041073
+actual_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,-0.12132794379982312
+actual_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,-0.05189201030395871
+actual_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.0025470922839343976
+actual_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,0.04429603411278152
+actual_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,-0.03719549089987184
+actual_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,-0.0782464594790846
+actual_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,0.07076295737529525
+actual_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.07832172852779051
+actual_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,0.005879771787666528
+actual_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.039522507311795796
+actual_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,-0.03719549089987184
+actual_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,-0.0782464594790846
+actual_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,0.07076295737529525
+actual_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.07832172852779051
+actual_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,0.005879771787666528
+actual_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.039522507311795796
+actual_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,0.01708711871827459
+actual_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,0.03806703212153936
+actual_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,-0.07706268157264531
+actual_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.015006847965703562
+actual_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.013958119528294968
+actual_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,0.020859802295422697
+actual_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_1_prob,strong_mildly_conditional_cooperator,0.026074390709282663
+actual_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_2_prob,opportunistic_free_rider,-0.11521855997018673
+actual_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_3_prob,fragile_high_cooperator,0.0021759487453238135
+actual_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_4_prob,near_unconditional_full_cooperator,0.015776822218359132
+actual_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_5_prob,unknown_or_sparse_info,0.03652260361470888
+actual_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,0.03466879468251205
+actual_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_1_prob,strong_mildly_conditional_cooperator,-0.062274799420498794
+actual_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_2_prob,opportunistic_free_rider,-0.06722440701368357
+actual_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_3_prob,fragile_high_cooperator,0.11939739933702642
+actual_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_4_prob,near_unconditional_full_cooperator,0.05431457693034222
+actual_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_5_prob,unknown_or_sparse_info,-0.0028817722238774907
+actual_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.04133099760930872
+actual_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_1_prob,strong_mildly_conditional_cooperator,0.031830045960313164
+actual_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_2_prob,opportunistic_free_rider,0.028411705178481877
+actual_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_3_prob,fragile_high_cooperator,0.007113602022931209
+actual_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_4_prob,near_unconditional_full_cooperator,-0.10793963647180338
+actual_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_5_prob,unknown_or_sparse_info,-0.0054502198581145925
+actual_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,0.04603450316819227
+predicted_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,-0.2087592480296299
+predicted_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,0.006601332190085296
+predicted_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,0.17548923346944595
+predicted_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.26249305327395045
+predicted_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.023495498474120732
+predicted_val_treatment_mix,CONFIG_chat,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.21232887242973109
+predicted_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,0.17352596777972873
+predicted_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,-0.024968866707137438
+predicted_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,-0.035709209713541995
+predicted_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.03978487177341539
+predicted_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.002173102193459217
+predicted_val_treatment_mix,CONFIG_punishmentExists,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.15045966093900548
+predicted_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,-0.002979898426330424
+predicted_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,-0.002155153743877203
+predicted_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,-0.010001890113359446
+predicted_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.02558672571115983
+predicted_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.005491372519461107
+predicted_val_treatment_mix,CONFIG_rewardExists,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.00495841090813165
+predicted_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,-0.09153794262935551
+predicted_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,0.0468843728824444
+predicted_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,0.04925637811671496
+predicted_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.06489195113671553
+predicted_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.010694450238869765
+predicted_val_treatment_mix,CONFIG_allOrNothing,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.0588003092676497
+predicted_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,-0.006121971233567641
+predicted_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,0.03602853364781844
+predicted_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,0.02076987346587275
+predicted_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,-0.04767728386932771
+predicted_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.014303917408080846
+predicted_val_treatment_mix,CONFIG_showOtherSummaries,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,0.011304765397285019
+predicted_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,0.008574867664027375
+predicted_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,-0.06176220968340759
+predicted_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,0.012940322067784116
+predicted_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.030143816674332136
+predicted_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,0.015324081685428877
+predicted_val_treatment_mix,CONFIG_showPunishmentId,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.005220878408164903
+predicted_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,0.008574867664027375
+predicted_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,-0.06176220968340759
+predicted_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,0.012940322067784116
+predicted_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.030143816674332136
+predicted_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,0.015324081685428877
+predicted_val_treatment_mix,CONFIG_showRewardId,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.005220878408164903
+predicted_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_1_prob,strong_mildly_conditional_cooperator,0.05191723800434424
+predicted_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_2_prob,opportunistic_free_rider,-0.010303673611275294
+predicted_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_3_prob,fragile_high_cooperator,-0.08434462330622053
+predicted_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_4_prob,near_unconditional_full_cooperator,0.02900841883452651
+predicted_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_5_prob,unknown_or_sparse_info,-0.011067287725659486
+predicted_val_treatment_mix,CONFIG_showNRounds,binary,1 - 0,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,0.024789927804284517
+predicted_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_1_prob,strong_mildly_conditional_cooperator,-0.042309593235601226
+predicted_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_2_prob,opportunistic_free_rider,0.03513034056911596
+predicted_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_3_prob,fragile_high_cooperator,-0.001749965874104531
+predicted_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_4_prob,near_unconditional_full_cooperator,0.006369236627656483
+predicted_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_5_prob,unknown_or_sparse_info,0.006807145352418345
+predicted_val_treatment_mix,CONFIG_playerCount,median_split,> 6.5 minus <= 6.5,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.00424716343948503
+predicted_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_1_prob,strong_mildly_conditional_cooperator,0.011499537757237277
+predicted_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_2_prob,opportunistic_free_rider,-0.08466266893528682
+predicted_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_3_prob,fragile_high_cooperator,0.05696633009031016
+predicted_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_4_prob,near_unconditional_full_cooperator,0.005325187730933073
+predicted_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_5_prob,unknown_or_sparse_info,0.014310258352717722
+predicted_val_treatment_mix,CONFIG_numRounds,median_split,> 14.5 minus <= 14.5,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,-0.003438644995911344
+predicted_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_1_prob,strong_mildly_conditional_cooperator,0.053349831831149275
+predicted_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_2_prob,opportunistic_free_rider,-0.04647966773127435
+predicted_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_3_prob,fragile_high_cooperator,0.0019325303846016162
+predicted_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_4_prob,near_unconditional_full_cooperator,-0.06405583188798872
+predicted_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_5_prob,unknown_or_sparse_info,0.01296363705287086
+predicted_val_treatment_mix,CONFIG_MPCR,median_split,> 0.485 minus <= 0.485,cluster_6_prob,moderate_payoff_aware_conditional_cooperator,0.04228950035064133

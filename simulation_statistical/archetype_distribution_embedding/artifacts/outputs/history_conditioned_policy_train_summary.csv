@@ -1,0 +1,4 @@
+dataset,n_rows,n_all_or_nothing_rows,n_continuous_rows,mean_target_contribution_rate,n_positive_rows,positive_rate,mean_units_if_positive
+contribution,60681,30805.0,29876.0,0.7266038793032416,,,
+punish_action,30157,,,,5160.0,0.17110455284013662,4.047674418604651
+reward_action,28187,,,,4985.0,0.1768545783517224,5.765496489468405

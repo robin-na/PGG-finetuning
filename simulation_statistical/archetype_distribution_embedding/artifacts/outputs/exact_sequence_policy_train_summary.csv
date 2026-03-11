@@ -1,0 +1,3 @@
+dataset,n_rows,n_all_or_nothing_rows,n_continuous_rows,mean_target_contribution_rate,continuous_bin_rate_0,continuous_bin_rate_5,continuous_bin_rate_10,continuous_bin_rate_15,continuous_bin_rate_20,aon_global_positive_rate,cluster_calibration_strength,cluster_calibration_prior_weight,none_rate,punish_rate,reward_rate,fixed_action_units
+contribution,60681,30805.0,29876.0,0.7266038793032414,0.16330834114339268,0.051613335118489756,0.15353460972017674,0.05542910697549873,0.5761146070424421,0.7442788976531308,0.5,24.0,,,,
+action_edge,533730,,,,,,,,,,,,0.9540516740674123,0.01647087478687726,0.02947745114571038,1.0

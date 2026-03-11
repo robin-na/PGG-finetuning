@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "action_stage_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/state_tables/learning_wave_action_stage.parquet",
+  "family_model_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/models/family_policy_bundle.pkl",
+  "player_posteriors_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/simulation_statistical/algorithmic_latent/artifacts/outputs/learning_wave_player_family_posteriors.parquet",
+  "global": {
+    "punish_scale": 0.13762850041712227,
+    "reward_scale": 0.030050634838517
+  },
+  "summary_rows": [
+    {
+      "mechanism": "punish",
+      "actual_row_rate": 0.17110455284013662,
+      "predicted_row_rate_before": 0.41474703924305867,
+      "predicted_row_rate_after": 0.17110455284045906,
+      "scale": 0.13762850041712227
+    },
+    {
+      "mechanism": "reward",
+      "actual_row_rate": 0.1768545783517224,
+      "predicted_row_rate_before": 0.9106284070544366,
+      "predicted_row_rate_after": 0.1768545783558644,
+      "scale": 0.030050634838517
+    }
+  ]
+}
