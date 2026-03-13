@@ -1,0 +1,63 @@
+{
+  "analysis_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval",
+  "analysis_run_id": "macro_alignment__local12b_four_variant_shared31",
+  "eval_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval",
+  "run_ids": [
+    "no_archetype/10477689_r0_macro_no_archetype_local_12b",
+    "oracle_archetype/10478932_r0_macro_oracle_archetype_local_12b",
+    "random_archetype/10492196_r0_macro_random_archetype_local_12b_s0",
+    "config_bank_archetype/10491393_r0_macro_config_bank_archetype_local_12b"
+  ],
+  "labels": [
+    "no archetype",
+    "oracle archetype",
+    "random archetype",
+    "retrieved archetype"
+  ],
+  "human_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv",
+  "human_rounds_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_rounds_val.csv",
+  "learn_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_learn.csv",
+  "learn_rounds_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_rounds_learn.csv",
+  "shared_games_only": true,
+  "n_shared_games": 31,
+  "progress_bins": 10,
+  "targeting_bins": 5,
+  "bootstrap_iterations": 2000,
+  "magnitude_override_by_label": {},
+  "unit_edge_by_label": [],
+  "outputs": {
+    "selected_runs_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/selected_runs.csv",
+    "shared_game_ids_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/shared_game_ids.csv",
+    "game_level_parity_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/game_level_parity.csv",
+    "game_level_alignment_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/game_level_alignment_summary.csv",
+    "game_level_ols_baseline_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/game_level_ols_baseline_summary.csv",
+    "game_level_correlation_bootstrap_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/game_level_correlation_bootstrap.csv",
+    "game_level_rmse_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/game_level_alignment_summary.csv",
+    "game_round_metrics_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/game_round_metrics.csv",
+    "trajectory_alignment_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/trajectory_alignment.csv",
+    "event_study_alignment_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/event_study_alignment.csv",
+    "targeting_alignment_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/targeting_alignment.csv",
+    "player_game_distribution_metrics_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/player_game_distribution_metrics.csv",
+    "player_heterogeneity_by_game_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/player_heterogeneity_by_game.csv",
+    "player_heterogeneity_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/player_heterogeneity_summary.csv",
+    "player_distribution_alignment_by_game_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/player_distribution_alignment_by_game.csv",
+    "player_distribution_wasserstein_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/player_distribution_wasserstein_summary.csv",
+    "contribution_shift_by_game_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/contribution_shift_by_game.csv",
+    "contribution_shift_parity_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/contribution_shift_parity.csv",
+    "contribution_shift_alignment_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/contribution_shift_alignment.csv",
+    "figures": [
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_game_level_parity.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_game_level_correlation_bars.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_game_level_rmse_bars.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_round_trajectories.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_event_study.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_targeting.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_player_distribution_contribution.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_player_distribution_punishment.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_player_distribution_reward.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_player_heterogeneity.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_distribution_wasserstein.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__local12b_four_variant_shared31/figures/macro_alignment_contribution_shift_parity.png"
+    ]
+  }
+}

@@ -71,7 +71,9 @@ def _model_config(args: Any, run_ts: str) -> Dict[str, Any]:
         "env_csv"
     ]
     if provider != "openai":
-        base_keys.extend(["base_model", "adapter_path", "use_peft"])
+        base_keys.append("base_model")
+    if provider == "local":
+        base_keys.extend(["adapter_path", "use_peft", "load_in_8bit", "load_in_4bit", "quant_compute_dtype"])
 
     model_config = {k: args_dict.get(k) for k in base_keys if k in args_dict}
     model_config["run_timestamp"] = run_ts

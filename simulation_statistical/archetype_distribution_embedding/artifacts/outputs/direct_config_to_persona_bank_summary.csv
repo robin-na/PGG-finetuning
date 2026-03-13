@@ -1,0 +1,2 @@
+pred_true_cos_mean,pred_to_bank_top1_mean_sim,mean_unique_top1_bank_persona_per_treatment,treatments_with_exactly_one_top1_persona,n_treatments
+0.5303751113294335,0.7278064896042635,1.0,40,40

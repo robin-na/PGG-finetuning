@@ -278,6 +278,8 @@ def infer_variant_name(archetype_mode: str, archetype_pool: Path) -> str:
         return "no_archetype"
     if mode == "random_summary":
         return "random_archetype"
+    if mode == "config_bank_archetype":
+        return "config_bank_archetype"
 
     pool_resolved = archetype_pool.resolve()
     pool_text = str(pool_resolved).lower()
@@ -336,7 +338,7 @@ def parse_stages(stage_text: str) -> List[str]:
 def resolve_archetype_pool_for_mode(archetype_mode: str, pool_arg: Optional[Path]) -> Path:
     if pool_arg is not None:
         return resolve_repo_path(pool_arg)
-    if archetype_mode == "random_summary":
+    if archetype_mode in {"random_summary", "config_bank_archetype"}:
         return (REPO_ROOT / DEFAULT_ORACLE_LEARN_POOL).resolve()
     return (REPO_ROOT / DEFAULT_ORACLE_VAL_POOL).resolve()
 
@@ -454,7 +456,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--archetype-mode",
         dest="archetype_mode",
-        choices=["none", "matched_summary", "random_summary"],
+        choices=["none", "matched_summary", "random_summary", "config_bank_archetype"],
         default="matched_summary",
         help=(
             "Archetype mode for micro and macro eval. "
@@ -464,7 +466,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--persona-mode",
         dest="archetype_mode",
-        choices=["none", "matched_summary", "random_summary"],
+        choices=["none", "matched_summary", "random_summary", "config_bank_archetype"],
         help=argparse.SUPPRESS,
     )
     parser.add_argument(
@@ -476,6 +478,7 @@ def parse_args() -> argparse.Namespace:
             "Archetype summary pool JSONL used when archetype mode is enabled. "
             "Default depends on mode: "
             "random_summary -> Persona/archetype_oracle_gpt51_learn.jsonl, "
+            "config_bank_archetype -> Persona/archetype_oracle_gpt51_learn.jsonl, "
             "matched_summary -> Persona/archetype_oracle_gpt51_val.jsonl."
         ),
     )
@@ -515,6 +518,7 @@ def parse_args() -> argparse.Namespace:
             "random_archetype",
             "oracle_archetype",
             "retrieved_archetype",
+            "config_bank_archetype",
         ],
         default="auto",
         help=(
@@ -539,6 +543,7 @@ def parse_args() -> argparse.Namespace:
             "random_archetype",
             "oracle_archetype",
             "retrieved_archetype",
+            "config_bank_archetype",
         ],
         default="auto",
         help=(

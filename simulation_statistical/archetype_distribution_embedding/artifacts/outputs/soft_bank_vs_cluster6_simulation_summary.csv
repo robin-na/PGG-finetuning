@@ -1,0 +1,3 @@
+method,mean_cluster_l1_to_actual_treatment,mean_cluster_js_to_actual_treatment,top_cluster_match_rate,mean_embedding_centroid_distance,mean_abs_pairwise_dist_error,mean_effective_persona_support
+cluster6_exemplar_bank,0.8103094430675322,0.16774359088423096,0.476375,30.054108383917793,18.374220971017753,2408.17220103385
+direct_soft_bank,0.5817228321734579,0.11613421026062665,0.658,19.87216373617917,5.371535107720131,126.60392438208336

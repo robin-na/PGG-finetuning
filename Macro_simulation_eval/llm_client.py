@@ -10,24 +10,22 @@ import asyncio
 
 import requests
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer, StoppingCriteria, StoppingCriteriaList
+from transformers import AutoModelForCausalLM, AutoTokenizer, LogitsProcessor, LogitsProcessorList
 
 
 def _apply_stop_sequences(text: str, stop: Optional[List[str]]) -> str:
     if not stop:
         return text
     earliest_idx = None
-    earliest_seq = None
     for seq in stop:
         if not seq:
             continue
         idx = text.find(seq)
         if idx != -1 and (earliest_idx is None or idx < earliest_idx):
             earliest_idx = idx
-            earliest_seq = seq
-    if earliest_idx is None or earliest_seq is None:
+    if earliest_idx is None:
         return text
-    return text[: earliest_idx + len(earliest_seq)]
+    return text[:earliest_idx]
 
 
 def _require_openai_key(env_name: str) -> str:
@@ -40,6 +38,53 @@ def _require_openai_key(env_name: str) -> str:
     print(f"  export {env_name}='your-api-key-here'")
     print()
     sys.exit(1)
+
+
+def _extract_message_content(message: Any) -> str:
+    if isinstance(message, str):
+        return message
+    if isinstance(message, list):
+        parts: List[str] = []
+        for item in message:
+            if isinstance(item, str):
+                parts.append(item)
+            elif isinstance(item, dict) and item.get("type") == "text":
+                parts.append(str(item.get("text", "")))
+        return "".join(parts)
+    return str(message)
+
+
+class _ForceEosAfterStopSequences(LogitsProcessor):
+    """Stop completed rows individually without truncating the whole batch."""
+
+    def __init__(
+        self,
+        tokenizer: AutoTokenizer,
+        stop_sequences: List[str],
+        prompt_lens: List[int],
+        eos_token_id: Optional[int],
+    ):
+        self.tokenizer = tokenizer
+        self.stop_sequences = [seq for seq in stop_sequences if seq]
+        self.prompt_lens = prompt_lens
+        self.eos_token_id = eos_token_id
+        self.finished = [False] * len(prompt_lens)
+
+    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor) -> torch.FloatTensor:
+        if not self.stop_sequences or self.eos_token_id is None:
+            return scores
+
+        min_score = torch.finfo(scores.dtype).min
+        for idx, seq in enumerate(input_ids):
+            if not self.finished[idx]:
+                prompt_len = self.prompt_lens[idx]
+                decoded = self.tokenizer.decode(seq[prompt_len:], skip_special_tokens=True)
+                if any(stop_seq in decoded for stop_seq in self.stop_sequences):
+                    self.finished[idx] = True
+            if self.finished[idx]:
+                scores[idx, :] = min_score
+                scores[idx, self.eos_token_id] = 0
+        return scores
 
 
 @torch.inference_mode()
@@ -75,24 +120,12 @@ def _batch_generate_until(
     inputs = {k: v.to(model.device) for k, v in inputs.items()}
 
     prompt_lengths = [inputs["input_ids"][i].shape[-1] for i in range(len(prompts))]
-    stopping_criteria = None
-    if stop:
-        class _StopOnSequences(StoppingCriteria):
-            def __init__(self, tokenizer: AutoTokenizer, stop_sequences: List[str], prompt_lens: List[int]):
-                self.tokenizer = tokenizer
-                self.stop_sequences = stop_sequences
-                self.prompt_lens = prompt_lens
-
-            def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs: Any) -> bool:
-                for idx, seq in enumerate(input_ids):
-                    prompt_len = self.prompt_lens[idx]
-                    decoded = self.tokenizer.decode(seq[prompt_len:], skip_special_tokens=True)
-                    for stop_seq in self.stop_sequences:
-                        if stop_seq and stop_seq in decoded:
-                            return True
-                return False
-
-        stopping_criteria = StoppingCriteriaList([_StopOnSequences(tok, stop, prompt_lengths)])
+    logits_processor = None
+    forced_eos_token_id = tok.eos_token_id if tok.eos_token_id is not None else tok.pad_token_id
+    if stop and forced_eos_token_id is not None:
+        logits_processor = LogitsProcessorList(
+            [_ForceEosAfterStopSequences(tok, stop, prompt_lengths, forced_eos_token_id)]
+        )
 
     gen_out = model.generate(
         **inputs,
@@ -103,7 +136,7 @@ def _batch_generate_until(
         pad_token_id=tok.pad_token_id,
         eos_token_id=tok.eos_token_id,
         use_cache=True,
-        stopping_criteria=stopping_criteria,
+        logits_processor=logits_processor,
     )
 
     out_texts = []
@@ -122,29 +155,47 @@ class LLMClient:
         provider: str,
         tok: Optional[AutoTokenizer] = None,
         model: Optional[AutoModelForCausalLM] = None,
+        base_model: Optional[str] = None,
         openai_model: Optional[str] = None,
         openai_api_key: Optional[str] = None,
         openai_api_key_env: str = "OPENAI_API_KEY",
         openai_base_url: str = "https://api.openai.com/v1",
         openai_timeout_sec: int = 60,
+        vllm_model: Optional[str] = None,
+        vllm_api_key: Optional[str] = None,
+        vllm_api_key_env: str = "VLLM_API_KEY",
+        vllm_base_url: str = "http://localhost:8000/v1",
+        vllm_timeout_sec: int = 60,
     ):
         self.provider = (provider or "local").lower()
         self.tok = tok
         self.model = model
+        self.base_model = base_model
         self.openai_model = openai_model
         self.openai_api_key_env = openai_api_key_env
         self.openai_base_url = openai_base_url.rstrip("/")
         self.openai_timeout_sec = openai_timeout_sec
+        self.vllm_model = vllm_model or base_model or openai_model
+        self.vllm_api_key_env = vllm_api_key_env
+        self.vllm_base_url = vllm_base_url.rstrip("/")
+        self.vllm_timeout_sec = vllm_timeout_sec
         if self.provider == "openai":
             self.openai_api_key = openai_api_key or _require_openai_key(openai_api_key_env)
             if not self.openai_model:
                 raise ValueError("Missing OpenAI model name: set --openai_model.")
+            self.vllm_api_key = None
+        elif self.provider == "vllm":
+            self.openai_api_key = None
+            self.vllm_api_key = vllm_api_key or os.getenv(vllm_api_key_env) or "EMPTY"
+            if not self.vllm_model:
+                raise ValueError("Missing vLLM model name: set --vllm_model or --base_model.")
         elif self.provider == "local":
             self.openai_api_key = None
+            self.vllm_api_key = None
         else:
-            raise ValueError(f"Unsupported provider '{provider}'. Use 'local' or 'openai'.")
+            raise ValueError(f"Unsupported provider '{provider}'. Use 'local', 'openai', or 'vllm'.")
 
-    def _openai_chat_completion(
+    def _remote_chat_completion(
         self,
         messages: List[Dict[str, str]],
         max_new_tokens: int,
@@ -152,8 +203,23 @@ class LLMClient:
         top_p: float,
         stop: Optional[List[str]],
     ) -> str:
+        if self.provider == "openai":
+            model_name = self.openai_model
+            api_key = self.openai_api_key
+            base_url = self.openai_base_url
+            timeout_sec = self.openai_timeout_sec
+            backend_name = "OpenAI"
+        elif self.provider == "vllm":
+            model_name = self.vllm_model
+            api_key = self.vllm_api_key
+            base_url = self.vllm_base_url
+            timeout_sec = self.vllm_timeout_sec
+            backend_name = "vLLM"
+        else:
+            raise ValueError(f"Remote chat completion is unavailable for provider '{self.provider}'.")
+
         payload: Dict[str, Any] = {
-            "model": self.openai_model,
+            "model": model_name,
             "messages": messages,
             "temperature": temperature,
             "top_p": top_p,
@@ -162,22 +228,23 @@ class LLMClient:
         if stop:
             payload["stop"] = stop
         headers = {
-            "Authorization": f"Bearer {self.openai_api_key}",
             "Content-Type": "application/json",
         }
+        if api_key:
+            headers["Authorization"] = f"Bearer {api_key}"
         resp = requests.post(
-            f"{self.openai_base_url}/chat/completions",
+            f"{base_url}/chat/completions",
             headers=headers,
             data=json.dumps(payload),
-            timeout=self.openai_timeout_sec,
+            timeout=timeout_sec,
         )
         if resp.status_code >= 400:
-            raise RuntimeError(f"OpenAI API error {resp.status_code}: {resp.text}")
+            raise RuntimeError(f"{backend_name} API error {resp.status_code}: {resp.text}")
         data = resp.json()
         try:
-            content = data["choices"][0]["message"]["content"]
+            content = _extract_message_content(data["choices"][0]["message"]["content"])
         except Exception as exc:
-            raise RuntimeError(f"Unexpected OpenAI response: {data}") from exc
+            raise RuntimeError(f"Unexpected {backend_name} response: {data}") from exc
         return _apply_stop_sequences(content, stop)
 
     def generate_batch(
@@ -192,14 +259,16 @@ class LLMClient:
         async_openai: bool = False,
         max_concurrency: int = 8,
     ) -> List[str]:
-        if self.provider == "openai":
+        if self.provider in {"openai", "vllm"}:
             if messages_list is None:
-                raise ValueError("OpenAI provider requires messages_list.")
-            if not async_openai:
+                raise ValueError(f"{self.provider} provider requires messages_list.")
+            use_async_requests = bool(async_openai or self.provider == "vllm")
+            bounded_concurrency = max(1, int(max_concurrency))
+            if not use_async_requests or bounded_concurrency <= 1:
                 outputs = []
                 for messages in messages_list:
                     outputs.append(
-                        self._openai_chat_completion(
+                        self._remote_chat_completion(
                             messages=messages,
                             max_new_tokens=max_new_tokens,
                             temperature=temperature,
@@ -210,12 +279,12 @@ class LLMClient:
                 return outputs
 
             async def _run_async() -> List[str]:
-                semaphore = asyncio.Semaphore(max_concurrency)
+                semaphore = asyncio.Semaphore(bounded_concurrency)
 
                 async def _run_one(messages: List[Dict[str, str]]) -> str:
                     async with semaphore:
                         return await asyncio.to_thread(
-                            self._openai_chat_completion,
+                            self._remote_chat_completion,
                             messages=messages,
                             max_new_tokens=max_new_tokens,
                             temperature=temperature,

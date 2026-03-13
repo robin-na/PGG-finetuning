@@ -17,6 +17,7 @@ if REPO_ROOT not in sys.path:
     sys.path.insert(0, REPO_ROOT)
 
 from evaluator import run_micro_behavior_eval  # noqa: E402
+from Persona.archetype_sampling.runtime import canonicalize_archetype_mode, default_summary_pool_for_mode  # noqa: E402
 from utils import log  # noqa: E402
 
 
@@ -29,7 +30,7 @@ DEFAULT_GAMES_CSV = "data/raw_data/validation_wave/games.csv"
 
 @dataclass
 class Args:
-    provider: str = field(default="local")
+    provider: str = field(default="local", metadata={"help": "Inference provider: local | openai | vllm."})
     openai_model: Optional[str] = field(default=None)
     openai_api_key: Optional[str] = field(default=None)
     openai_api_key_env: str = field(default="OPENAI_API_KEY")
@@ -41,10 +42,36 @@ class Args:
         default=8,
         metadata={"help": "Max concurrent OpenAI calls when --openai_async is enabled."},
     )
+    vllm_model: Optional[str] = field(
+        default=None,
+        metadata={"help": "Served model name for --provider vllm. Defaults to --base_model."},
+    )
+    vllm_base_url: str = field(
+        default="http://localhost:8000/v1",
+        metadata={"help": "OpenAI-compatible vLLM base URL when --provider vllm is used."},
+    )
+    vllm_api_key: Optional[str] = field(default=None)
+    vllm_api_key_env: str = field(default="VLLM_API_KEY")
+    vllm_max_concurrency: int = field(
+        default=8,
+        metadata={"help": "Max concurrent vLLM requests per game stage."},
+    )
 
     base_model: str = field(default="meta-llama/Llama-3.1-8B-Instruct")
     adapter_path: Optional[str] = field(default="out/llama31-8b-lora-pgg-ptc/checkpoint-489")
     use_peft: bool = field(default=True)
+    load_in_8bit: bool = field(
+        default=False,
+        metadata={"help": "If true, load the local HF model with bitsandbytes 8-bit quantization."},
+    )
+    load_in_4bit: bool = field(
+        default=False,
+        metadata={"help": "If true, load the local HF model with bitsandbytes 4-bit quantization."},
+    )
+    quant_compute_dtype: str = field(
+        default="auto",
+        metadata={"help": "bitsandbytes compute dtype for local quantized loading: auto | bf16 | fp16 | fp32."},
+    )
 
     data_root: Optional[str] = field(
         default=None,
@@ -67,8 +94,18 @@ class Args:
 
     output_root: str = field(default="outputs/default/runs/source_default/micro_behavior_eval")
     run_id: Optional[str] = field(default=None)
+    resume_from_run: Optional[str] = field(
+        default=None,
+        metadata={
+            "help": (
+                "Resume an existing run in place. Accepts either a run ID under --output_root "
+                "or an explicit run directory path."
+            )
+        },
+    )
     rows_out_path: str = field(default="output/micro_behavior_eval.csv")
     transcripts_out_path: Optional[str] = field(default="output/history_transcripts.jsonl")
+    archetype_assignments_out_path: Optional[str] = field(default="output/archetype_assignments.jsonl")
     debug_jsonl_path: Optional[str] = field(default="output/micro_behavior_debug.jsonl")
     debug_full_jsonl_path: Optional[str] = field(default=None)
 
@@ -89,19 +126,49 @@ class Args:
     temperature: float = field(default=1.0)
     top_p: float = field(default=1.0)
     seed: int = field(default=0)
-    contrib_max_new_tokens: int = field(default=128)
-    actions_max_new_tokens: int = field(default=128)
+    contrib_max_new_tokens: int = field(default=512)
+    actions_max_new_tokens: int = field(default=512)
+    action_prompt_mode: str = field(
+        default="binary_targets",
+        metadata={
+            "help": "Action prompt/output mode: binary_targets (default, one unit per selected target) or legacy_units."
+        },
+    )
+    action_continuation_gate: bool = field(
+        default=True,
+        metadata={"help": "If true, probabilistically thin repeated same-dyad punish/reward actions from the previous round."},
+    )
+    punish_continuation_keep_prob: float = field(
+        default=0.5,
+        metadata={"help": "Keep probability for repeated punish dyads when continuation gating is enabled."},
+    )
+    reward_continuation_keep_prob: float = field(
+        default=0.35,
+        metadata={"help": "Keep probability for repeated reward dyads when continuation gating is enabled."},
+    )
     include_reasoning: bool = field(
         default=False,
         metadata={"help": "If true, request a short reasoning field in JSON outputs."},
     )
+    include_demographics: bool = field(
+        default=False,
+        metadata={"help": "If true, include demographic information in the prompt header."},
+    )
     archetype: Optional[str] = field(
         default=None,
-        metadata={"help": "Optional archetype mode: matched_summary | random_summary"},
+        metadata={"help": "Optional archetype mode: matched_summary | random_summary | config_bank_archetype"},
     )
     archetype_summary_pool: str = field(
         default="Persona/archetype_oracle_gpt51_val.jsonl",
         metadata={"help": "JSONL file containing archetype summary entries."},
+    )
+    archetype_assignments_in_path: Optional[str] = field(
+        default=None,
+        metadata={"help": "Optional JSONL file of precomputed target-game archetype assignments."},
+    )
+    archetype_soft_bank_temperature: float = field(
+        default=0.07,
+        metadata={"help": "Temperature for config_bank_archetype sampling over the learn-wave persona bank."},
     )
     persona: Optional[str] = field(
         default=None,
@@ -113,7 +180,7 @@ class Args:
     )
     max_parallel_games: int = field(
         default=1,
-        metadata={"help": "Reserved for future use; current implementation runs sequentially."},
+        metadata={"help": "Number of games to process concurrently. Applied only for remote providers."},
     )
 
     debug_print: bool = field(default=False)
@@ -190,6 +257,7 @@ def _normalize_archetype_args(args: Args) -> None:
         )
     if not archetype_mode:
         archetype_mode = persona_mode
+    archetype_mode = canonicalize_archetype_mode(archetype_mode)
     args.archetype = archetype_mode or None
 
     archetype_pool = str(getattr(args, "archetype_summary_pool", "") or "").strip()
@@ -200,7 +268,12 @@ def _normalize_archetype_args(args: Args) -> None:
         )
     if not archetype_pool:
         archetype_pool = persona_pool
-    args.archetype_summary_pool = archetype_pool or "Persona/archetype_oracle_gpt51_val.jsonl"
+    if not archetype_pool:
+        archetype_pool = "Persona/archetype_oracle_gpt51_val.jsonl"
+    default_pool = default_summary_pool_for_mode(args.archetype or "")
+    if args.archetype and archetype_pool == "Persona/archetype_oracle_gpt51_val.jsonl":
+        archetype_pool = default_pool
+    args.archetype_summary_pool = archetype_pool
     args.persona = None
     args.persona_summary_pool = None
 

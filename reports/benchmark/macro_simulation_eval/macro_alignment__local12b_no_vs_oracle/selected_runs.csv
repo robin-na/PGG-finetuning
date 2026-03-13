@@ -1,0 +1,3 @@
+run_id,label,eval_csv,n_games_raw,n_games_shared
+no_archetype/10477689_r0_macro_no_archetype_local_12b,no archetype,/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval/no_archetype/10477689_r0_macro_no_archetype_local_12b/macro_simulation_eval.csv,40,31
+oracle_archetype/10478932_r0_macro_oracle_archetype_local_12b,oracle archetype,/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval/oracle_archetype/10478932_r0_macro_oracle_archetype_local_12b/macro_simulation_eval.csv,31,31

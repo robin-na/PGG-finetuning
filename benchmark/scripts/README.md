@@ -27,12 +27,13 @@ They write only to `outputs/benchmark` and `reports/benchmark` (not `outputs/def
     - `--archetype-mode random_summary` (default pool: `Persona/archetype_oracle_gpt51_learn.jsonl`)
     - `--archetype-mode random_summary --archetype-summary-pool <pool_jsonl>` (override)
     - `--archetype-mode matched_summary --archetype-summary-pool <oracle_or_retrieved_jsonl>`
+    - `--archetype-mode config_bank_archetype --archetype-summary-pool Persona/archetype_oracle_gpt51_learn.jsonl`
   - Micro output layout:
     - `outputs/benchmark/runs/<split-relative-path>/micro_behavior_eval/<variant>/<run_id>/...`
-    - variants: `no_archetype`, `random_archetype`, `oracle_archetype`, `retrieved_archetype`
+    - variants: `no_archetype`, `random_archetype`, `oracle_archetype`, `retrieved_archetype`, `config_bank_archetype`
   - Macro output layout:
     - `outputs/benchmark/runs/<split-relative-path>/macro_simulation_eval/<variant>/<run_id>/...`
-    - variants: `no_archetype`, `random_archetype`, `oracle_archetype`, `retrieved_archetype`
+    - variants: `no_archetype`, `random_archetype`, `oracle_archetype`, `retrieved_archetype`, `config_bank_archetype`
   - Writes split run index:
     - `outputs/benchmark/runs/<split-relative-path>/run_index.json`
     - includes latest archetype run, latest micro run per variant, latest macro run per variant, and retrieved summary pointers when present.
@@ -52,6 +53,15 @@ They write only to `outputs/benchmark` and `reports/benchmark` (not `outputs/def
 - `build_paired_eval_manifest.py`
   - Builds strict-filtered paired manifests with one game for `CONFIG_punishmentExists=False` and one for `True` per `CONFIG_configId`.
   - Writes both a manifest CSV and a comma-separated game-id text file for direct `--game_ids` usage.
+- `shard_game_manifest.py`
+  - Splits a manifest CSV into stable shards for multi-GPU runs.
+  - Useful when launching one benchmark job per GPU against disjoint game subsets.
+- `sample_game_manifest.py`
+  - Selects a stable subset of games from a manifest CSV.
+  - Useful for quick calibration runs or autosweeps before launching a full benchmark.
+- `merge_macro_shard_runs.py`
+  - Merges multiple shard-local macro run directories into one combined macro run directory.
+  - Useful after data-parallel benchmark runs where each GPU handled a disjoint manifest shard.
 - `migrate_micro_runs_layout.py`
   - Migrates old flat micro run folders into variant-based layout.
   - Default destination: `outputs/default/runs/source_default/micro_behavior_eval/`

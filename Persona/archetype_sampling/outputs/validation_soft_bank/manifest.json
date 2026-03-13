@@ -1,0 +1,14 @@
+{
+  "summary_pool": "Persona/archetype_oracle_gpt51_learn.jsonl",
+  "val_player_table": "simulation_statistical/archetype_distribution_embedding/artifacts/intermediate/player_game_table_val_clean.parquet",
+  "temperature": 0.07,
+  "seed": 0,
+  "n_samples": 200,
+  "top_k_personas": 20,
+  "outputs": {
+    "single_sample_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Persona/archetype_sampling/outputs/validation_soft_bank/validation_treatment_single_sample_seed0.jsonl",
+    "bank_distribution_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Persona/archetype_sampling/outputs/validation_soft_bank/validation_treatment_bank_distribution.csv",
+    "resample_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Persona/archetype_sampling/outputs/validation_soft_bank/validation_treatment_resample_summary.csv",
+    "top_personas_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/Persona/archetype_sampling/outputs/validation_soft_bank/validation_treatment_top_personas.jsonl"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "analysis_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval",
+  "analysis_run_id": "macro_alignment__oracle12b_vs_oracle27b_unit_edges",
+  "eval_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval",
+  "run_ids": [
+    "oracle_archetype/10478932_r0_macro_oracle_archetype_local_12b",
+    "oracle_archetype/10034953_r0_macro_oracle_archetype"
+  ],
+  "labels": [
+    "oracle archetype 12B",
+    "oracle archetype 27B unit-edge"
+  ],
+  "human_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv",
+  "human_rounds_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_rounds_val.csv",
+  "shared_games_only": true,
+  "n_shared_games": 24,
+  "progress_bins": 10,
+  "targeting_bins": 5,
+  "magnitude_override_by_label": {},
+  "unit_edge_by_label": [
+    "oracle archetype 27B unit-edge"
+  ],
+  "outputs": {
+    "selected_runs_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/selected_runs.csv",
+    "shared_game_ids_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/shared_game_ids.csv",
+    "game_level_parity_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/game_level_parity.csv",
+    "game_level_alignment_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/game_level_alignment_summary.csv",
+    "game_round_metrics_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/game_round_metrics.csv",
+    "trajectory_alignment_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/trajectory_alignment.csv",
+    "event_study_alignment_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/event_study_alignment.csv",
+    "targeting_alignment_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/targeting_alignment.csv",
+    "player_game_distribution_metrics_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/player_game_distribution_metrics.csv",
+    "contribution_shift_by_game_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/contribution_shift_by_game.csv",
+    "contribution_shift_parity_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/contribution_shift_parity.csv",
+    "contribution_shift_alignment_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/contribution_shift_alignment.csv",
+    "figures": [
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/figures/macro_alignment_game_level_parity.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/figures/macro_alignment_round_trajectories.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/figures/macro_alignment_event_study.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/figures/macro_alignment_targeting.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/figures/macro_alignment_player_distribution_contribution.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/figures/macro_alignment_player_distribution_punishment.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/figures/macro_alignment_player_distribution_reward.png",
+      "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/macro_alignment__oracle12b_vs_oracle27b_unit_edges/figures/macro_alignment_contribution_shift_parity.png"
+    ]
+  }
+}

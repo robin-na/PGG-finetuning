@@ -1,0 +1,3 @@
+source,metric,n_games,rmse,corr
+OLS config baseline,contribution_rate,31,0.19009408215847623,0.44688600231783476
+OLS config baseline,normalized_efficiency,31,0.2476613198868516,0.2159332760730667

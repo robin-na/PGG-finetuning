@@ -1,0 +1,9 @@
+source,metric,metric_title,n_games,corr,ci_low,ci_high
+no archetype,contribution_rate,Contribution Rate,31,0.03650682253531202,-0.27370930768746365,0.367332873668412
+oracle archetype,contribution_rate,Contribution Rate,31,0.6969716719403958,0.3818777018617738,0.8537372329276834
+random archetype,contribution_rate,Contribution Rate,31,0.29874304352174985,-0.3954069157628391,0.7104451816738127
+retrieved archetype,contribution_rate,Contribution Rate,31,0.5217304094003886,0.24193671053483512,0.7476541836363884
+no archetype,normalized_efficiency,Normalized Efficiency,31,0.16767035974101285,-0.24687796724392821,0.5075005640289453
+oracle archetype,normalized_efficiency,Normalized Efficiency,31,0.5030606200545602,0.1412031039117752,0.7786902980151117
+random archetype,normalized_efficiency,Normalized Efficiency,31,0.40151673167625607,-0.12519681712452194,0.718923643706519
+retrieved archetype,normalized_efficiency,Normalized Efficiency,31,0.4338759628315642,0.0016556578830501534,0.7033673051152228

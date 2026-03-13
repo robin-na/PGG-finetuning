@@ -1,0 +1,2 @@
+method,mean_cluster_l1_to_actual_treatment,mean_cluster_js_to_actual_treatment,top_cluster_match_rate,mean_embedding_centroid_distance,mean_abs_pairwise_dist_error
+cluster6_hybrid_soft_in_cluster,0.8084512840790318,0.1662342635392313,0.496875,20.47491510751805,9.074465120966005

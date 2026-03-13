@@ -6,6 +6,9 @@ import re
 from typing import Dict, List, Optional, Tuple
 
 
+JSON_STOP_SENTINEL = "<<END_JSON>>"
+
+
 def system_header_lines(env: Dict, demographics_text: str, include_reasoning: bool) -> List[str]:
     endow = int(env.get("CONFIG_endowment", 0) or 0)
     mult = env.get("CONFIG_multiplier", "Unknown")
@@ -94,12 +97,55 @@ def contrib_format_line(env: Dict, include_reasoning: bool) -> str:
         f"RULES: {contrib_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "Do not add extra text before or after the JSON.\n"
+        f"Immediately after the JSON object, output {JSON_STOP_SENTINEL} and nothing else.\n"
         "YOUR RESPONSE:"
     )
 
 
-def actions_format_line(tag: str, include_reasoning: bool) -> str:
+def _use_binary_targets(action_prompt_mode: str) -> bool:
+    return str(action_prompt_mode or "binary_targets").strip().lower() != "legacy_units"
+
+
+def actions_format_line(
+    tag: str,
+    include_reasoning: bool,
+    action_prompt_mode: str = "binary_targets",
+) -> str:
+    if _use_binary_targets(action_prompt_mode):
+        if tag == "PUNISHMENT":
+            dict_hint = (
+                "Use 'punish' as a list of avatars to punish once each; omit players you do not punish."
+            )
+            fmt = '{"stage":"actions","punish":[<avatar>,...]}'
+            if include_reasoning:
+                fmt = '{"stage":"actions","reasoning":<string>,"punish":[<avatar>,...]}'
+        elif tag == "REWARD":
+            dict_hint = (
+                "Use 'reward' as a list of avatars to reward once each; omit players you do not reward."
+            )
+            fmt = '{"stage":"actions","reward":[<avatar>,...]}'
+            if include_reasoning:
+                fmt = '{"stage":"actions","reasoning":<string>,"reward":[<avatar>,...]}'
+        else:
+            dict_hint = (
+                "Use 'punish' as a list of avatars to punish once each and 'reward' as a list of avatars "
+                "to reward once each. A player must not appear in both lists."
+            )
+            fmt = '{"stage":"actions","punish":[<avatar>,...],"reward":[<avatar>,...]}'
+            if include_reasoning:
+                fmt = (
+                    '{"stage":"actions","reasoning":<string>,"punish":[<avatar>,...],'
+                    '"reward":[<avatar>,...]}'
+                )
+        reasoning_hint = "Provide reasons for your action, keep it brief." if include_reasoning else ""
+        return (
+            f"RULES: {dict_hint} {reasoning_hint}\n"
+            "FORMAT (JSON ONLY): "
+            f"{fmt}\n"
+            f"Immediately after the JSON object, output {JSON_STOP_SENTINEL} and nothing else.\n"
+            "YOUR RESPONSE:"
+        )
+
     if tag == "PUNISHMENT":
         dict_hint = "Use 'actions' as a dict mapping avatar -> nonnegative punishment units; omit zeros."
     elif tag == "REWARD":
@@ -119,7 +165,7 @@ def actions_format_line(tag: str, include_reasoning: bool) -> str:
         f"RULES: {dict_hint} {reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "Do not add extra text before or after the JSON.\n"
+        f"Immediately after the JSON object, output {JSON_STOP_SENTINEL} and nothing else.\n"
         "YOUR RESPONSE:"
     )
 
@@ -136,7 +182,7 @@ def chat_format_line(include_reasoning: bool) -> str:
         f"{reasoning_hint}\n"
         "FORMAT (JSON ONLY): "
         f"{fmt}\n"
-        "Do not add extra text before or after the JSON.\n"
+        f"Immediately after the JSON object, output {JSON_STOP_SENTINEL} and nothing else.\n"
         "YOUR RESPONSE:"
     )
 
@@ -170,11 +216,31 @@ def peers_contributions_csv(roster: List[str], focal: str, contrib_math: Dict[st
     return ",".join(parts), peer_order
 
 
-def mech_info(env: Dict) -> Optional[str]:
+def mech_info(env: Dict, action_prompt_mode: str = "binary_targets") -> Optional[str]:
     r_on = env.get("CONFIG_rewardExists", False)
     p_on = env.get("CONFIG_punishmentExists", False)
     if not (r_on or p_on):
         return None
+    if _use_binary_targets(action_prompt_mode):
+        if r_on and p_on:
+            return (
+                "QUESTION: If you reward a player, each selected player costs you "
+                f"{env['CONFIG_rewardCost']} coins and gives that player {env['CONFIG_rewardMagnitude']} coins. "
+                "If you punish a player, each selected player costs you "
+                f"{env['CONFIG_punishmentCost']} coins and deducts {env['CONFIG_punishmentMagnitude']} coins from that player. "
+                "List which players to punish and which players to reward. Each selected player receives exactly one unit."
+            )
+        if r_on:
+            return (
+                "QUESTION: If you reward a player, each selected player costs you "
+                f"{env['CONFIG_rewardCost']} coins and gives that player {env['CONFIG_rewardMagnitude']} coins. "
+                "List which players to reward. Each selected player receives exactly one unit."
+            )
+        return (
+            "QUESTION: If you punish a player, each selected player costs you "
+            f"{env['CONFIG_punishmentCost']} coins and deducts {env['CONFIG_punishmentMagnitude']} coins from that player. "
+            "List which players to punish. Each selected player receives exactly one unit."
+        )
     if r_on and p_on:
         return (
             "QUESTION: It will cost you, per reward unit, "
