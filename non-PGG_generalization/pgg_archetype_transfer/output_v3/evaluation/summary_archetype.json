@@ -1,0 +1,10 @@
+{
+  "n_questions_evaluated": 14,
+  "mean_accuracy": 0.5728571428571428,
+  "mean_mad": 0.737142857142857,
+  "mean_correlation": 0.3117378377743367,
+  "median_correlation": 0.3388080040439736,
+  "n_significant_correlations": 10,
+  "n_participants": 100,
+  "mode": "archetype"
+}
