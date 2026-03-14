@@ -1,0 +1,1140 @@
+{
+  "content_store": {
+    "9c5f9b982df78190": "You are DUCK. This is the optional group chat at the start of the round. Reply with one short message to the group, or reply exactly SILENT.",
+    "f0639810f52631cd": "QUESTION: You have 20 coins in your pocket. How much would you like to contribute (integer from 0 to 20)? The pot multiplier is 1.9\u00d7. Reply with the number only.",
+    "3633e8ae2a00adca": "You are DUCK. QUESTION: If you punish a player, each selected player costs you 4 coins and deducts 12.0 coins from that player. List which players to punish. Each selected player receives exactly one unit.\nAvailable target avatars: SLOTH, GORILLA.\nReply with JSON only in this format:\n{\"stage\":\"actions\",\"punish\":[\"AVATAR\", ...]}"
+  },
+  "entries": [
+    {
+      "step": 1,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 1 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {},
+          "next_game_master": {},
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "chat",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "chat",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "9c5f9b982df78190"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "speech"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 1,
+              "observation": "[event] Resolved round 1 chat."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 2,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 2 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 1
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 1
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "contribution",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "contribution",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "f0639810f52631cd"
+                },
+                "output_type": "float",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 2,
+              "observation": "[event] Resolved round 1 contributions."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 3,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 3 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 2
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 2
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "actions",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "actions",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "3633e8ae2a00adca"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 3,
+              "observation": "[event] Resolved round 1 punishment/reward stage."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 4,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 4 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 3
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 3
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "chat",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "chat",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "9c5f9b982df78190"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "speech"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 4,
+              "observation": "[event] Resolved round 2 chat."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 5,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 5 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 4
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 4
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "contribution",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "contribution",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "f0639810f52631cd"
+                },
+                "output_type": "float",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 5,
+              "observation": "[event] Resolved round 2 contributions."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 6,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 6 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 5
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 5
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "actions",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "actions",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "3633e8ae2a00adca"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 6,
+              "observation": "[event] Resolved round 2 punishment/reward stage."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 7,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 7 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 6
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 6
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "chat",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "chat",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "9c5f9b982df78190"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "speech"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 7,
+              "observation": "[event] Resolved round 3 chat."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 8,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 8 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 7
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 7
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "contribution",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "contribution",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "f0639810f52631cd"
+                },
+                "output_type": "float",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 8,
+              "observation": "[event] Resolved round 3 contributions."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 9,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 9 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 8
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 8
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "actions",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "actions",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "3633e8ae2a00adca"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 9,
+              "observation": "[event] Resolved round 3 punishment/reward stage."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 10,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 10 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 9
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 9
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "chat",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "chat",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "9c5f9b982df78190"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "speech"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 10,
+              "observation": "[event] Resolved round 4 chat."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 11,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 11 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 10
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 10
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "contribution",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "contribution",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "f0639810f52631cd"
+                },
+                "output_type": "float",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 11,
+              "observation": "[event] Resolved round 4 contributions."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 12,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 12 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 11
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 11
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "actions",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "actions",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "3633e8ae2a00adca"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 12,
+              "observation": "[event] Resolved round 4 punishment/reward stage."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 13,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 13 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 12
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 12
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "chat",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "chat",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "9c5f9b982df78190"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "speech"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 13,
+              "observation": "[event] Resolved round 5 chat."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 14,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 14 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 13
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 13
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "contribution",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "contribution",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "f0639810f52631cd"
+                },
+                "output_type": "float",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 14,
+              "observation": "[event] Resolved round 5 contributions."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 15,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 15 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 14
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 14
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "actions",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "actions",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "3633e8ae2a00adca"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 15,
+              "observation": "[event] Resolved round 5 punishment/reward stage."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 16,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 16 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 15
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 15
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "chat",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "chat",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "9c5f9b982df78190"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "speech"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 16,
+              "observation": "[event] Resolved round 6 chat."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 17,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 17 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 16
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 16
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "contribution",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "contribution",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "f0639810f52631cd"
+                },
+                "output_type": "float",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 17,
+              "observation": "[event] Resolved round 6 contributions."
+            }
+          }
+        }
+      }
+    },
+    {
+      "step": 18,
+      "timestamp": "",
+      "entity_name": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "component_name": "game_master",
+      "entry_type": "step",
+      "summary": "Step 18 macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+      "deduplicated_data": {
+        "key": "macro_pgg_game_master::XcwKJ8eiRs6TmysXX",
+        "value": {
+          "terminate": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 17
+            }
+          },
+          "next_game_master": {
+            "__pgg_game_master__": {
+              "phase": "terminate",
+              "stage_index": 17
+            }
+          },
+          "make_observation": {},
+          "next_acting": {
+            "__pgg_game_master__": {
+              "phase": "next_acting",
+              "stage": "actions",
+              "players": [
+                "SLOTH",
+                "GORILLA",
+                "DUCK"
+              ]
+            }
+          },
+          "next_action_spec": {
+            "__pgg_game_master__": {
+              "phase": "next_action_spec",
+              "stage": "actions",
+              "avatar": "DUCK",
+              "action_spec": {
+                "call_to_action": {
+                  "_ref": "3633e8ae2a00adca"
+                },
+                "output_type": "free",
+                "options": [],
+                "tag": "action"
+              }
+            }
+          },
+          "resolve": {
+            "__pgg_game_master__": {
+              "phase": "observe",
+              "stage_index": 18,
+              "observation": "[event] Resolved round 6 punishment/reward stage."
+            }
+          }
+        }
+      }
+    }
+  ],
+  "entity_memories": {
+    "SLOTH": [
+      "[observation] You are playing an online public goods game (PGG). Each round, you are given 20 coins and need to decide how many coins to put into the shared pot (integer from 0 to 20). You will not see others' choices before you decide. The pot is multiplied by 1.9\u00d7 and split equally among all players. Your round payoff is: coins you kept + your equal share of the multiplied pot. After contributions are redistributed, players may punish each other. At the start of each round, you may optionally send ONE short message to the group. # GAME STARTS Your avatar is SLOTH.",
+      "[observation] <ROUND i=\"1 of 6\">",
+      "[observation] <CHAT_LOG>[]</CHAT_LOG>",
+      "[observation] <CONTRIB v=\"0\"/> <REDIST total_contrib=\"0\" multiplied_contrib=\"0.0\" active_players=\"3\" redistributed_each=\"0.0\"/> <PEERS_CONTRIBUTIONS> GORILLA=0,DUCK=0 </PEERS_CONTRIBUTIONS>",
+      "[observation] <PUNISHMENT>{}</PUNISHMENT>",
+      "[observation] <ROUND_SUMMARY>{\"SLOTH (YOU)\":{\"coins_spent_on_punish\":0,\"coins_deducted_from_you\":0,\"payoff\":20},\"GORILLA\":{\"coins_spent_on_punish\":0,\"coins_deducted_from_them\":0,\"payoff\":20},\"DUCK\":{\"coins_spent_on_punish\":0,\"coins_deducted_from_them\":0,\"payoff\":20}}</ROUND_SUMMARY>",
+      "[observation] <ROUND i=\"2 of 6\">",
+      "[observation] <ROUND i=\"3 of 6\">",
+      "[observation] <ROUND i=\"4 of 6\">",
+      "[observation] <ROUND i=\"5 of 6\">",
+      "[observation] <ROUND i=\"6 of 6\">"
+    ],
+    "GORILLA": [
+      "[observation] You are playing an online public goods game (PGG). Each round, you are given 20 coins and need to decide how many coins to put into the shared pot (integer from 0 to 20). You will not see others' choices before you decide. The pot is multiplied by 1.9\u00d7 and split equally among all players. Your round payoff is: coins you kept + your equal share of the multiplied pot. After contributions are redistributed, players may punish each other. At the start of each round, you may optionally send ONE short message to the group. # GAME STARTS Your avatar is GORILLA.",
+      "[observation] <ROUND i=\"1 of 6\">",
+      "[observation] <CHAT_LOG>[]</CHAT_LOG>",
+      "[observation] <CONTRIB v=\"0\"/> <REDIST total_contrib=\"0\" multiplied_contrib=\"0.0\" active_players=\"3\" redistributed_each=\"0.0\"/> <PEERS_CONTRIBUTIONS> SLOTH=0,DUCK=0 </PEERS_CONTRIBUTIONS>",
+      "[observation] <PUNISHMENT>{}</PUNISHMENT>",
+      "[observation] <ROUND_SUMMARY>{\"GORILLA (YOU)\":{\"coins_spent_on_punish\":0,\"coins_deducted_from_you\":0,\"payoff\":20},\"SLOTH\":{\"coins_spent_on_punish\":0,\"coins_deducted_from_them\":0,\"payoff\":20},\"DUCK\":{\"coins_spent_on_punish\":0,\"coins_deducted_from_them\":0,\"payoff\":20}}</ROUND_SUMMARY>",
+      "[observation] <ROUND i=\"2 of 6\">",
+      "[observation] <ROUND i=\"3 of 6\">",
+      "[observation] <ROUND i=\"4 of 6\">",
+      "[observation] <ROUND i=\"5 of 6\">",
+      "[observation] <ROUND i=\"6 of 6\">"
+    ],
+    "DUCK": [
+      "[observation] You are playing an online public goods game (PGG). Each round, you are given 20 coins and need to decide how many coins to put into the shared pot (integer from 0 to 20). You will not see others' choices before you decide. The pot is multiplied by 1.9\u00d7 and split equally among all players. Your round payoff is: coins you kept + your equal share of the multiplied pot. After contributions are redistributed, players may punish each other. At the start of each round, you may optionally send ONE short message to the group. # GAME STARTS Your avatar is DUCK.",
+      "[observation] <ROUND i=\"1 of 6\">",
+      "[observation] <CHAT_LOG>[]</CHAT_LOG>",
+      "[observation] <CONTRIB v=\"0\"/> <REDIST total_contrib=\"0\" multiplied_contrib=\"0.0\" active_players=\"3\" redistributed_each=\"0.0\"/> <PEERS_CONTRIBUTIONS> SLOTH=0,GORILLA=0 </PEERS_CONTRIBUTIONS>",
+      "[observation] <PUNISHMENT>{}</PUNISHMENT>",
+      "[observation] <ROUND_SUMMARY>{\"DUCK (YOU)\":{\"coins_spent_on_punish\":0,\"coins_deducted_from_you\":0,\"payoff\":20},\"SLOTH\":{\"coins_spent_on_punish\":0,\"coins_deducted_from_them\":0,\"payoff\":20},\"GORILLA\":{\"coins_spent_on_punish\":0,\"coins_deducted_from_them\":0,\"payoff\":20}}</ROUND_SUMMARY>",
+      "[observation] <ROUND i=\"2 of 6\">",
+      "[observation] <ROUND i=\"3 of 6\">",
+      "[observation] <ROUND i=\"4 of 6\">",
+      "[observation] <ROUND i=\"5 of 6\">",
+      "[observation] <ROUND i=\"6 of 6\">"
+    ]
+  },
+  "game_master_memories": [
+    "[putative_event]",
+    "[event] Resolved round 1 chat.",
+    "[putative_event]",
+    "[event] Resolved round 1 contributions.",
+    "[putative_event]",
+    "[event] Resolved round 1 punishment/reward stage.",
+    "[putative_event]",
+    "[event] Resolved round 2 chat.",
+    "[putative_event]",
+    "[event] Resolved round 2 contributions.",
+    "[putative_event]",
+    "[event] Resolved round 2 punishment/reward stage.",
+    "[putative_event]",
+    "[event] Resolved round 3 chat.",
+    "[putative_event]",
+    "[event] Resolved round 3 contributions.",
+    "[putative_event]",
+    "[event] Resolved round 3 punishment/reward stage.",
+    "[putative_event]",
+    "[event] Resolved round 4 chat.",
+    "[putative_event]",
+    "[event] Resolved round 4 contributions.",
+    "[putative_event]",
+    "[event] Resolved round 4 punishment/reward stage.",
+    "[putative_event]",
+    "[event] Resolved round 5 chat.",
+    "[putative_event]",
+    "[event] Resolved round 5 contributions.",
+    "[putative_event]",
+    "[event] Resolved round 5 punishment/reward stage.",
+    "[putative_event]",
+    "[event] Resolved round 6 chat.",
+    "[putative_event]",
+    "[event] Resolved round 6 contributions.",
+    "[putative_event]",
+    "[event] Resolved round 6 punishment/reward stage."
+  ]
+}

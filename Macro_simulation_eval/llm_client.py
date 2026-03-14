@@ -198,7 +198,7 @@ class LLMClient:
     def _remote_chat_completion(
         self,
         messages: List[Dict[str, str]],
-        max_new_tokens: int,
+        max_new_tokens: Optional[int],
         temperature: float,
         top_p: float,
         stop: Optional[List[str]],
@@ -223,8 +223,12 @@ class LLMClient:
             "messages": messages,
             "temperature": temperature,
             "top_p": top_p,
-            "max_tokens": max_new_tokens,
         }
+        if max_new_tokens is not None:
+            if self.provider == "openai":
+                payload["max_completion_tokens"] = int(max_new_tokens)
+            else:
+                payload["max_tokens"] = int(max_new_tokens)
         if stop:
             payload["stop"] = stop
         headers = {
@@ -232,13 +236,33 @@ class LLMClient:
         }
         if api_key:
             headers["Authorization"] = f"Bearer {api_key}"
-        resp = requests.post(
-            f"{base_url}/chat/completions",
-            headers=headers,
-            data=json.dumps(payload),
-            timeout=timeout_sec,
-        )
-        if resp.status_code >= 400:
+        ignored_params = set()
+        while True:
+            resp = requests.post(
+                f"{base_url}/chat/completions",
+                headers=headers,
+                data=json.dumps(payload),
+                timeout=timeout_sec,
+            )
+            if resp.status_code < 400:
+                break
+            if self.provider == "openai":
+                try:
+                    error_payload = resp.json()
+                except Exception:
+                    error_payload = None
+                error_info = error_payload.get("error", {}) if isinstance(error_payload, dict) else {}
+                unsupported_param = error_info.get("param")
+                if (
+                    resp.status_code == 400
+                    and error_info.get("code") == "unsupported_parameter"
+                    and isinstance(unsupported_param, str)
+                    and unsupported_param in payload
+                    and unsupported_param not in ignored_params
+                ):
+                    ignored_params.add(unsupported_param)
+                    payload.pop(unsupported_param, None)
+                    continue
             raise RuntimeError(f"{backend_name} API error {resp.status_code}: {resp.text}")
         data = resp.json()
         try:
@@ -252,7 +276,7 @@ class LLMClient:
         prompts: Optional[List[str]],
         messages_list: Optional[List[List[Dict[str, str]]]],
         stop: Optional[List[str]],
-        max_new_tokens: int,
+        max_new_tokens: Optional[int],
         temperature: float,
         top_p: float,
         seed: int,
@@ -298,6 +322,8 @@ class LLMClient:
             return asyncio.run(_run_async())
         if prompts is None or self.tok is None or self.model is None:
             raise ValueError("Local provider requires prompts and a loaded model/tokenizer.")
+        if max_new_tokens is None:
+            raise ValueError("Local provider requires max_new_tokens.")
         chunk_size = len(prompts)
         env_chunk_size = os.getenv("PGG_LOCAL_GENERATION_CHUNK_SIZE")
         if env_chunk_size:

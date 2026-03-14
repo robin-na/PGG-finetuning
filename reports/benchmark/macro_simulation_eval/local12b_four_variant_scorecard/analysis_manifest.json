@@ -1,0 +1,46 @@
+{
+  "analysis_run_id": "local12b_four_variant_scorecard",
+  "analysis_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval",
+  "eval_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval",
+  "run_ids": [
+    "no_archetype/10477689_r0_macro_no_archetype_local_12b",
+    "oracle_archetype/10478932_r0_macro_oracle_archetype_local_12b",
+    "config_bank_archetype/10491393_r0_macro_config_bank_archetype_local_12b",
+    "random_archetype/10492196_r0_macro_random_archetype_local_12b_s0"
+  ],
+  "labels": [
+    "no archetype",
+    "oracle archetype",
+    "retrieved archetype",
+    "random archetype"
+  ],
+  "shared_games_only": false,
+  "shared_games_count": null,
+  "human_csv_by_run": {
+    "no_archetype/10477689_r0_macro_no_archetype_local_12b": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv",
+    "oracle_archetype/10478932_r0_macro_oracle_archetype_local_12b": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv",
+    "config_bank_archetype/10491393_r0_macro_config_bank_archetype_local_12b": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv",
+    "random_archetype/10492196_r0_macro_random_archetype_local_12b_s0": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv"
+  },
+  "binary_factors": [
+    "CONFIG_chat",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_rewardExists",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_punishmentExists"
+  ],
+  "median_factors": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_MPCR"
+  ],
+  "plots": [
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/local12b_four_variant_scorecard/figures/directional_effects_no_archetype__10477689_r0_macro_no_archetype_local_12b.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/local12b_four_variant_scorecard/figures/directional_effects_oracle_archetype__10478932_r0_macro_oracle_archetype_local_12b.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/local12b_four_variant_scorecard/figures/directional_effects_config_bank_archetype__10491393_r0_macro_config_bank_archetype_local_12b.png",
+    "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/local12b_four_variant_scorecard/figures/directional_effects_random_archetype__10492196_r0_macro_random_archetype_local_12b_s0.png"
+  ]
+}

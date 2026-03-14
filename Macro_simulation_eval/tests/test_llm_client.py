@@ -1,4 +1,5 @@
 import importlib
+import json
 import sys
 from pathlib import Path
 
@@ -86,3 +87,125 @@ def test_force_eos_after_stop_sequences_ignores_stop_text_inside_prompt(module_n
     updated = processor(input_ids, scores.clone())
 
     assert torch.all(updated == 0)
+
+
+class _FakeResponse:
+    def __init__(self, payload, status_code=200):
+        self.status_code = status_code
+        self._payload = payload
+        self.text = json.dumps(payload)
+
+    def json(self):
+        return self._payload
+
+
+def test_macro_openai_chat_completion_uses_max_completion_tokens(monkeypatch):
+    module = importlib.import_module("Macro_simulation_eval.llm_client")
+    captured = {}
+
+    def fake_post(url, headers=None, data=None, timeout=None):
+        captured["url"] = url
+        captured["headers"] = headers
+        captured["payload"] = json.loads(data)
+        captured["timeout"] = timeout
+        return _FakeResponse({"choices": [{"message": {"content": "ok"}}]})
+
+    monkeypatch.setattr(module.requests, "post", fake_post)
+
+    client = module.LLMClient(
+        provider="openai",
+        openai_model="gpt-5-mini",
+        openai_api_key="test-key",
+    )
+
+    output = client.generate_batch(
+        prompts=None,
+        messages_list=[[{"role": "user", "content": "hello"}]],
+        stop=None,
+        max_new_tokens=17,
+        temperature=0.7,
+        top_p=0.9,
+        seed=0,
+    )
+
+    assert output == ["ok"]
+    assert captured["payload"]["model"] == "gpt-5-mini"
+    assert captured["payload"]["max_completion_tokens"] == 17
+    assert "max_tokens" not in captured["payload"]
+
+
+def test_macro_vllm_chat_completion_keeps_max_tokens(monkeypatch):
+    module = importlib.import_module("Macro_simulation_eval.llm_client")
+    captured = {}
+
+    def fake_post(url, headers=None, data=None, timeout=None):
+        captured["payload"] = json.loads(data)
+        return _FakeResponse({"choices": [{"message": {"content": "ok"}}]})
+
+    monkeypatch.setattr(module.requests, "post", fake_post)
+
+    client = module.LLMClient(
+        provider="vllm",
+        vllm_model="some-served-model",
+        vllm_api_key="EMPTY",
+    )
+
+    output = client.generate_batch(
+        prompts=None,
+        messages_list=[[{"role": "user", "content": "hello"}]],
+        stop=None,
+        max_new_tokens=23,
+        temperature=0.7,
+        top_p=0.9,
+        seed=0,
+    )
+
+    assert output == ["ok"]
+    assert captured["payload"]["model"] == "some-served-model"
+    assert captured["payload"]["max_tokens"] == 23
+    assert "max_completion_tokens" not in captured["payload"]
+
+
+def test_macro_openai_chat_completion_retries_without_unsupported_param(monkeypatch):
+    module = importlib.import_module("Macro_simulation_eval.llm_client")
+    payloads = []
+
+    def fake_post(url, headers=None, data=None, timeout=None):
+        payload = json.loads(data)
+        payloads.append(payload)
+        if len(payloads) == 1:
+            return _FakeResponse(
+                {
+                    "error": {
+                        "message": "Unsupported parameter: 'top_p' is not supported with this model.",
+                        "type": "invalid_request_error",
+                        "param": "top_p",
+                        "code": "unsupported_parameter",
+                    }
+                },
+                status_code=400,
+            )
+        return _FakeResponse({"choices": [{"message": {"content": "ok"}}]})
+
+    monkeypatch.setattr(module.requests, "post", fake_post)
+
+    client = module.LLMClient(
+        provider="openai",
+        openai_model="gpt-5-mini",
+        openai_api_key="test-key",
+    )
+
+    output = client.generate_batch(
+        prompts=None,
+        messages_list=[[{"role": "user", "content": "hello"}]],
+        stop=None,
+        max_new_tokens=17,
+        temperature=0.7,
+        top_p=0.9,
+        seed=0,
+    )
+
+    assert output == ["ok"]
+    assert len(payloads) == 2
+    assert payloads[0]["top_p"] == 0.9
+    assert "top_p" not in payloads[1]
