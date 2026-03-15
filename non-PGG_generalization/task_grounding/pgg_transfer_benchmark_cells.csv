@@ -1,0 +1,10 @@
+target_family,condition,condition_label,allowed_input_families,target_question_count,target_choice_question_count,allowed_input_question_count,excluded_input_question_count,target_choice_min_availability,target_choice_max_availability,n_participants_total
+trust,main,Main benchmark,"demographics,personality,cognitive_tests,ultimatum,dictator,mental_accounting,time_preference,risk_preference_gain,risk_preference_loss",8,6,149,9,2058,2058,2058
+trust,intermediate,Intermediate ablation,"demographics,personality,cognitive_tests,mental_accounting,time_preference,risk_preference_gain,risk_preference_loss",8,6,140,18,2058,2058,2058
+trust,strict,Strict ablation,"demographics,personality,cognitive_tests",8,6,123,35,2058,2058,2058
+ultimatum,main,Main benchmark,"demographics,personality,cognitive_tests,trust,dictator,mental_accounting,time_preference,risk_preference_gain,risk_preference_loss",7,7,150,8,2058,2058,2058
+ultimatum,intermediate,Intermediate ablation,"demographics,personality,cognitive_tests,mental_accounting,time_preference,risk_preference_gain,risk_preference_loss",7,7,140,18,2058,2058,2058
+ultimatum,strict,Strict ablation,"demographics,personality,cognitive_tests",7,7,123,35,2058,2058,2058
+dictator,main,Main benchmark,"demographics,personality,cognitive_tests,trust,ultimatum,mental_accounting,time_preference,risk_preference_gain,risk_preference_loss",2,1,155,3,2058,2058,2058
+dictator,intermediate,Intermediate ablation,"demographics,personality,cognitive_tests,mental_accounting,time_preference,risk_preference_gain,risk_preference_loss",2,1,140,18,2058,2058,2058
+dictator,strict,Strict ablation,"demographics,personality,cognitive_tests",2,1,123,35,2058,2058,2058

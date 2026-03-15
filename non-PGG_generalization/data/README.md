@@ -3,7 +3,7 @@
 This directory groups non-PGG generalization assets by dataset/source.
 
 - `PGG/`: consolidated PGG-derived artifacts.
-- `Twin-2k-500/`: folder reserved for Twin-2k-500 assets.
+- `Twin-2k-500/`: local Twin-related scratch space if needed.
 
 To regenerate the PGG consolidated artifacts, run:
 

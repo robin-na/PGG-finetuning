@@ -7,12 +7,12 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # ── Load .env from project root ───────────────────────────────────────────────
-PROJECT_ROOT = Path(__file__).resolve().parents[2]  # PGG-finetuning/
+PROJECT_ROOT = Path(__file__).resolve().parents[3]  # PGG-finetuning/
 load_dotenv(PROJECT_ROOT / ".env")
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 NON_PGG_ROOT = PROJECT_ROOT / "non-PGG_generalization"
-TRANSFER_ROOT = NON_PGG_ROOT / "pgg_archetype_transfer"
+TRANSFER_ROOT = Path(__file__).resolve().parent
 OUTPUT_ROOT = TRANSFER_ROOT / "output"
 
 # PGG consolidated data
@@ -20,7 +20,7 @@ PGG_DATA_DIR = NON_PGG_ROOT / "data" / "PGG"
 PGG_DEMOGRAPHICS_CSV = PGG_DATA_DIR / "demographics_numeric_learn_val_consolidated.csv"
 PGG_ARCHETYPE_JSONL = PGG_DATA_DIR / "archetype_oracle_gpt51_learn_val_union_finished.jsonl"
 
-# Twin-2k-500
+# Twin-2k-500 legacy local paths
 TWIN_DIR = NON_PGG_ROOT / "twin-20k-500"
 QUESTION_CATALOG_JSON = (
     TWIN_DIR / "question_catalog_and_human_response_csv" / "question_catalog.json"
