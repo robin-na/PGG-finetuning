@@ -55,9 +55,20 @@ Each extraction request is built from four evidence sources:
    - built directly from `player-rounds.csv` and `df_analysis_*.csv`
    - includes contribution summaries, mechanism availability, conditionality, punishment/reward modules, completion flags, and event responses
 
-3. Compact participant transcript evidence
-   - selected round snippets rather than the full transcript
-   - prioritizes first/last rounds, extreme contribution rounds, sanction/reward events, and chat evidence
+3. Participant transcript evidence
+   - by default, the full transcript is included
+   - snippet mode remains available as an option for cheaper experiments
+   - transcript evidence can also be omitted entirely with `--transcript-mode none`
+   - when transcript mode is `none`, missing transcript rows no longer cause participants to be skipped
+
+4. Optional existing oracle/archetype summary
+   - loaded from `Persona/archetype_oracle_gpt51_learn.jsonl` and `Persona/archetype_oracle_gpt51_val.jsonl`
+   - useful as a second qualitative view over the same participant
+   - treated as a lossy prior summary, not as the sole source of truth
+
+5. Optional selected event evidence
+   - compact deterministic event snippets such as `was_punished`, `was_rewarded`, `saw_defection`, and `endgame_phase`
+   - omitted by default in compact prompt variants unless `--include-event-evidence` is set
 
 Demographics are no longer included in the LLM prompt by default.
 
@@ -67,10 +78,19 @@ The batch requests ask the model to return JSON only, with:
 
 - `observed_in_pgg`
 - `latent_traits`
-- `transfer_hypotheses`
 - `uncertainties`
 - `evidence`
 - `persona_card`
+
+The output is intentionally oriented toward:
+
+- general transferable features
+- retrieval relevance
+- cautious uncertainty
+- distinct section roles, so the same claim is not repeated across observed traits, latent traits, evidence, and card text
+- compact cards, with fewer required bullets to reduce redundancy
+
+It does **not** ask the model to produce a narrow game-by-game forecast block for trust / ultimatum / dictator.
 
 The output intentionally does **not** ask the model to generate:
 
@@ -94,7 +114,10 @@ Useful options:
 ```bash
 python Persona/misc/build_transfer_profile_requests.py --limit 5
 python Persona/misc/build_transfer_profile_requests.py --model gpt-5.1
-python Persona/misc/build_transfer_profile_requests.py --max-round-snippets 6
+python Persona/misc/build_transfer_profile_requests.py --transcript-mode snippets --max-round-snippets 6
+python Persona/misc/build_transfer_profile_requests.py --limit 5 --include-oracle-summary
+python Persona/misc/build_transfer_profile_requests.py --limit 5 --include-oracle-summary --transcript-mode none
+python Persona/misc/build_transfer_profile_requests.py --limit 5 --include-oracle-summary --transcript-mode none --include-event-evidence
 ```
 
 ## Outputs
@@ -112,3 +135,15 @@ Files:
 - `token_estimate_transfer_profiles_<model>.json`
 
 The manifest carries the external join keys (`gameId`, `playerId`) so the model output itself can stay ID-free.
+By default, request bodies omit `temperature`; it is only sent if explicitly passed on the CLI.
+
+## Render completed outputs
+
+To turn completed batch outputs into a readable Markdown summary plus a flat CSV:
+
+```bash
+python Persona/misc/render_transfer_profile_outputs.py \
+  --outputs-jsonl Persona/transfer_profiles/output/smoke_5/outputs_transfer_profiles_gpt-5.1.jsonl \
+  --output-md Persona/transfer_profiles/output/smoke_5/readable_profiles.md \
+  --output-csv Persona/transfer_profiles/output/smoke_5/readable_profiles.csv
+```

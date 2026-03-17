@@ -303,6 +303,7 @@ def task_name_for_qid(manifest_example: Dict[str, Any], qid: str) -> str:
 def build_ground_truth_rows(
     ds,
     manifest_example: Dict[str, Any],
+    allowed_pids: Optional[set[str]],
     ref_by_family_qid: Dict[Tuple[str, str], str],
     metadata_by_ref: Dict[str, Dict[str, Any]],
 ) -> List[Dict[str, Any]]:
@@ -311,6 +312,8 @@ def build_ground_truth_rows(
 
     for example in ds:
         pid = str(example["pid"])
+        if allowed_pids is not None and pid not in allowed_pids:
+            continue
         ref_to_question = find_question_map(example)
         answers_by_qid: Dict[str, int] = {}
         option_count_by_qid: Dict[str, Optional[int]] = {}
@@ -476,6 +479,7 @@ def main() -> int:
     if not manifest_rows:
         raise ValueError(f"No manifest rows found in {args.manifest_jsonl}")
     manifest_example = manifest_rows[0]
+    allowed_pids = {str(row["pid"]) for row in manifest_rows if row.get("pid") is not None}
 
     catalog_rows = load_question_catalog(QUESTION_CATALOG_PATH)
     inventory_rows = load_inventory(INVENTORY_CSV)
@@ -485,6 +489,7 @@ def main() -> int:
     ground_truth_rows = build_ground_truth_rows(
         ds=ds,
         manifest_example=manifest_example,
+        allowed_pids=allowed_pids,
         ref_by_family_qid=ref_by_family_qid,
         metadata_by_ref=metadata_by_ref,
     )

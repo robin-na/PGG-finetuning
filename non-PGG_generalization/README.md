@@ -15,6 +15,7 @@ This folder stores non-PGG generalization assets, benchmark specs, and evaluatio
     - `PGG_TRANSFER_BENCHMARK.md`
 - `pgg_transfer_eval/`
   - Batch builders, evaluators, and comparison baselines for the Twin social-game benchmark.
+  - Includes random, human-consistency, kNN allowed-input, and trait-heuristic comparison baselines.
   - See:
     - `pgg_transfer_eval/README.md`
 - `legacy_demographicsOnly/`

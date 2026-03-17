@@ -51,12 +51,20 @@ DEFAULT_OUTPUT_DIR = (
 
 DEFAULT_MODEL = "gpt-4.1-mini"
 DEFAULT_TEMPERATURE = 0.0
+DEFAULT_PROMPT_VARIANT = "baseline_no_retrieval"
 
 TARGET_FAMILIES = ["trust", "ultimatum", "dictator"]
 ALLOWED_INPUT_FAMILIES = [
     "demographics",
     "personality",
     "cognitive_tests",
+    "mental_accounting",
+    "time_preference",
+    "risk_preference_gain",
+    "risk_preference_loss",
+]
+STRUCTURED_ALLOWED_INPUT_FAMILIES = [
+    "personality",
     "mental_accounting",
     "time_preference",
     "risk_preference_gain",
@@ -73,10 +81,111 @@ PROFILE_FAMILY_ORDER = [
 ]
 TARGET_FAMILY_ORDER = ["trust", "ultimatum", "dictator"]
 
+PROMPT_VARIANTS = [
+    "baseline_no_retrieval",
+    "relevant_structured_summary",
+    "relevant_structured_summary_tuned",
+]
+
+STRUCTURED_Q25_ROWS = [
+    ("helpful_unselfish", "Is helpful and unselfish with others"),
+    ("forgiving", "Has a forgiving nature"),
+    ("generally_trusting", "Is generally trusting"),
+    ("cold_aloof", "Can be cold and aloof"),
+    ("considerate_kind", "Is considerate and kind to almost everyone"),
+    ("starts_quarrels", "Starts quarrels with others"),
+    ("rude_to_others", "Is sometimes rude to others"),
+    ("likes_to_cooperate", "Likes to cooperate with others"),
+]
+STRUCTURED_Q27_ROWS = [
+    ("resentful_when_denied", "I sometimes feel resentful when I don't get my way"),
+    ("took_advantage", "There have been occasions when I took advantage of someone"),
+    ("get_even", "I sometimes try to get even rather than forgive and forget"),
+    ("jealous_of_others", "There have been times when I was quite jealous of the good fortune of others"),
+    ("irritated_by_favors", "I am sometimes irritated by people who ask favors of me"),
+    ("always_courteous", "I am always courteous, even to people who are disagreeable"),
+]
+STRUCTURED_Q29_ROWS = [
+    ("trust_value", "TRUST (being true to one’s word, assuming good in others)"),
+    ("humility_value", "HUMILITY (appreciating others, being modest about oneself)"),
+    ("altruism_value", "ALTRUISM (helping others in need)"),
+    ("loyalty_value", "LOYALTY (being faithful to friends, family, and group)"),
+    ("politeness_value", "POLITENESS (courtesy, good manners)"),
+    ("harmony_value", "HARMONY (good relations, balance, wholeness)"),
+    ("honesty_value", "HONESTY (being genuine, sincere)"),
+    ("compassion_value", "COMPASSION (caring for others, displaying kindness)"),
+    ("equality_value", "EQUALITY (human rights and equal opportunity for all)"),
+    ("power_value", "POWER (control over others, dominance)"),
+    ("superiority_value", "SUPERIORITY (defeating the competition, standing on top)"),
+]
+STRUCTURED_Q232_ROWS = [
+    ("feel_friend_sadness", "After being with a friend who is sad about something, I usually feel sad."),
+    ("understand_friend_happiness", "I can understand my friend’s happiness when she/he does well at something."),
+    ("caught_up_in_others_feelings", "I get caught up in other people’s feelings easily."),
+    ("understand_when_down", "When someone is feeling down I can usually understand how they feel."),
+    ("infer_feelings_before_told", "I can often understand how people are feeling even before they tell me."),
+    ("realize_friend_angry", "I can usually realize quickly when a friend is angry."),
+]
+STRUCTURED_Q233_ROWS = [
+    ("depend_on_self", "I'd rather depend on myself than others"),
+    ("winning_is_everything", "Winning is everything"),
+    ("competition_is_natural", "Competition is the law of nature"),
+    ("coworker_prize_pride", "If a co-worker gets a prize, I would feel proud"),
+    ("coworker_wellbeing", "The well-being of my coworkers is important to me"),
+    ("pleasure_with_others", "To me, pleasure is spending time with others"),
+    ("cooperate_feels_good", "I feel good when I cooperate with others"),
+]
+STRUCTURED_Q236_ROWS = [
+    ("adjust_behavior", "In social situations, I have the ability to alter my behavior if I feel that something else is called for."),
+    ("read_true_emotions", "I am often able to read people's true emotions correctly through their eyes."),
+    ("sensitive_to_expression", "In conversations, I am sensitive to even the slightest change in the facial expression of the person I'm conversing with."),
+    ("understand_emotions_motives", "My powers of intuition are quite good when it comes to understanding others' emotions and motives."),
+    ("detect_inappropriate", "I can usually tell when I've said something inappropriate by reading it in the listener's eyes."),
+    ("detect_lying", "If someone is lying to me, I usually know it at once from that person's manner of expression."),
+]
+STRUCTURED_Q238_ROWS = [
+    ("dislike_uncertainty", "I don’t like situations that are uncertain."),
+    ("prefer_order", "I find that a well ordered life with regular hours suits my temperament."),
+    ("relieved_after_decision", "When I have made a decision, I feel relieved."),
+    ("reach_solution_quickly", "When I am confronted with a problem, I’m dying to reach a solution very quickly."),
+    ("dislike_unpredictable", "I dislike unpredictable situations."),
+]
+MENTAL_ACCOUNTING_QIDS = ["QID149", "QID150", "QID151", "QID152"]
+TIME_PREFERENCE_QIDS = ["QID84", "QID244", "QID245", "QID246", "QID247", "QID248"]
+RISK_GAIN_QIDS = ["QID250", "QID251", "QID252"]
+RISK_LOSS_QIDS = ["QID276", "QID277", "QID278", "QID279"]
+
+TARGET_ROLE_METADATA = {
+    "QID117": ("Trust sender", False),
+    "QID118": ("Trust receiver", False),
+    "QID119": ("Trust receiver", False),
+    "QID120": ("Trust receiver", False),
+    "QID121": ("Trust receiver", False),
+    "QID122": ("Trust receiver", False),
+    "QID224": ("Ultimatum proposer", False),
+    "QID225": ("Ultimatum receiver", True),
+    "QID226": ("Ultimatum receiver", True),
+    "QID227": ("Ultimatum receiver", True),
+    "QID228": ("Ultimatum receiver", True),
+    "QID229": ("Ultimatum receiver", True),
+    "QID230": ("Ultimatum receiver", True),
+    "QID231": ("Dictator allocator", False),
+}
+
 
 def load_inventory(path: Path) -> List[Dict[str, str]]:
     with path.open(newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+def load_jsonl(path: Path) -> List[Dict]:
+    rows: List[Dict] = []
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                rows.append(json.loads(line))
+    return rows
 
 
 def load_question_catalog() -> List[Dict]:
@@ -210,7 +319,7 @@ def encode_answer_value(q: Dict) -> Optional[object]:
 def render_profile_item(q: Dict) -> Optional[str]:
     qid = q.get("QuestionID", "")
     qtype = q.get("QuestionType")
-    question_text = shorten(q.get("QuestionText", ""), 140)
+    question_text = normalize_whitespace(q.get("QuestionText", ""))
     answers = q.get("Answers", {})
 
     if qtype == "MC":
@@ -231,7 +340,7 @@ def render_profile_item(q: Dict) -> Optional[str]:
         for row_text, value in zip(rows, selected):
             if value is None:
                 continue
-            parts.append(f"{shorten(str(row_text), 72)}={int(value)}")
+            parts.append(f"{normalize_whitespace(str(row_text))}={int(value)}")
         if not parts:
             return None
         return f"- [{qid}] {question_text} => " + " ; ".join(parts)
@@ -240,7 +349,7 @@ def render_profile_item(q: Dict) -> Optional[str]:
         texts = encode_answer_value(q) or []
         if not texts:
             return None
-        compact = " | ".join(shorten(text, 72) for text in texts[:6])
+        compact = " | ".join(normalize_whitespace(str(text)) for text in texts)
         return f"- [{qid}] {question_text} => {compact}"
 
     return None
@@ -250,12 +359,175 @@ def render_target_question(q: Dict) -> str:
     qid = q.get("QuestionID", "")
     question_text = normalize_whitespace(q.get("QuestionText", ""))
     options = q.get("Options", []) or []
-    lines = [f"### {qid}", question_text, ""]
+    role_name, is_binary_receiver = TARGET_ROLE_METADATA.get(
+        qid,
+        ("Unknown role", False),
+    )
+    lines = [f"### {qid}", f"Role: {role_name}", "", question_text, ""]
     for idx, option in enumerate(options, start=1):
         lines.append(f"{idx}. {normalize_whitespace(str(option))}")
     lines.append("")
-    lines.append(f"Respond for {qid} with a single integer from 1 to {len(options)}.")
+    if is_binary_receiver:
+        lines.append(f"Respond for {qid} with a single integer: 1 or 2 only. Do not output 3 or higher.")
+    else:
+        lines.append(f"Respond for {qid} with a single integer from 1 to {len(options)}.")
     return "\n".join(lines)
+
+
+def build_matrix_answer_map(q: Optional[Dict]) -> Dict[str, int]:
+    if not q or q.get("QuestionType") != "Matrix":
+        return {}
+    rows = q.get("Rows", []) or []
+    selected = q.get("Answers", {}).get("SelectedByPosition", []) or []
+    out: Dict[str, int] = {}
+    for row_text, value in zip(rows, selected):
+        if value is None:
+            continue
+        out[normalize_whitespace(str(row_text))] = int(value)
+    return out
+
+
+def render_named_matrix_slice(
+    q: Optional[Dict],
+    named_rows: Sequence[Tuple[str, str]],
+) -> Tuple[List[str], bool]:
+    answer_map = build_matrix_answer_map(q)
+    parts: List[str] = []
+    for short_name, row_text in named_rows:
+        value = answer_map.get(normalize_whitespace(row_text))
+        if value is None:
+            continue
+        parts.append(f"{short_name}={value}")
+    return parts, bool(parts)
+
+
+def summarize_matrix_switch_behavior(
+    q: Optional[Dict],
+    left_choice_name: str,
+    right_choice_name: str,
+) -> Optional[str]:
+    if not q or q.get("QuestionType") != "Matrix":
+        return None
+    values = q.get("Answers", {}).get("SelectedByPosition", []) or []
+    if not values:
+        return None
+    clean_values = [int(v) for v in values if v is not None]
+    if not clean_values:
+        return None
+    left_count = sum(1 for v in clean_values if v == 1)
+    right_count = sum(1 for v in clean_values if v == 2)
+    first_right = next((idx for idx, v in enumerate(clean_values, start=1) if v == 2), None)
+    if first_right is None:
+        switch_text = f"never switches to {right_choice_name}"
+    else:
+        switch_text = f"switches to {right_choice_name} at row {first_right}/{len(clean_values)}"
+    return (
+        f"{q.get('QuestionID')}: {left_choice_name} on {left_count}/{len(clean_values)} rows, "
+        f"{right_choice_name} on {right_count}/{len(clean_values)} rows, {switch_text}"
+    )
+
+
+def render_mc_answer_summary(q: Optional[Dict]) -> Optional[str]:
+    if not q or q.get("QuestionType") != "MC":
+        return None
+    pos = q.get("Answers", {}).get("SelectedByPosition")
+    text = normalize_whitespace(str(q.get("Answers", {}).get("SelectedText", "")))
+    if pos is None:
+        return None
+    question_text = normalize_whitespace(q.get("QuestionText", ""))
+    return f"{q.get('QuestionID')}: {question_text} => {int(pos)} | {text}"
+
+
+def render_structured_profile_text(
+    ref_to_question: Dict[str, Dict],
+) -> Tuple[str, int, List[str]]:
+    qid_to_question = {
+        str(question.get("QuestionID", "")): question
+        for question in ref_to_question.values()
+    }
+    lines: List[str] = []
+    component_count = 0
+    used_refs: List[str] = []
+
+    def add_section(title: str, section_lines: Sequence[str], used_qids: Sequence[str]) -> None:
+        nonlocal component_count
+        clean_lines = [line for line in section_lines if line]
+        if not clean_lines:
+            return
+        lines.append(f"## {title}")
+        lines.extend(f"- {line}" for line in clean_lines)
+        lines.append("")
+        component_count += len(clean_lines)
+        used_refs.extend(
+            ref_for_parts(qid_to_question[qid].get("BlockName", ""), qid)
+            for qid in used_qids
+            if qid in qid_to_question
+        )
+
+    social_lines: List[str] = []
+    q25_parts, q25_used = render_named_matrix_slice(qid_to_question.get("QID25"), STRUCTURED_Q25_ROWS)
+    if q25_used:
+        social_lines.append("Cooperation / trust markers: " + " ; ".join(q25_parts))
+    q27_parts, q27_used = render_named_matrix_slice(qid_to_question.get("QID27"), STRUCTURED_Q27_ROWS)
+    if q27_used:
+        social_lines.append("Resentment / retaliation markers: " + " ; ".join(q27_parts))
+    q29_parts, q29_used = render_named_matrix_slice(qid_to_question.get("QID29"), STRUCTURED_Q29_ROWS)
+    if q29_used:
+        social_lines.append("Values: " + " ; ".join(q29_parts))
+    q232_parts, q232_used = render_named_matrix_slice(qid_to_question.get("QID232"), STRUCTURED_Q232_ROWS)
+    if q232_used:
+        social_lines.append("Empathy markers: " + " ; ".join(q232_parts))
+    q233_parts, q233_used = render_named_matrix_slice(qid_to_question.get("QID233"), STRUCTURED_Q233_ROWS)
+    if q233_used:
+        social_lines.append("Independence / competition markers: " + " ; ".join(q233_parts))
+    q236_parts, q236_used = render_named_matrix_slice(qid_to_question.get("QID236"), STRUCTURED_Q236_ROWS)
+    if q236_used:
+        social_lines.append("Social-perception markers: " + " ; ".join(q236_parts))
+    q238_parts, q238_used = render_named_matrix_slice(qid_to_question.get("QID238"), STRUCTURED_Q238_ROWS)
+    if q238_used:
+        social_lines.append("Need-for-certainty markers: " + " ; ".join(q238_parts))
+    add_section(
+        "Relevant Social Profile",
+        social_lines,
+        ["QID25", "QID27", "QID29", "QID232", "QID233", "QID236", "QID238"],
+    )
+
+    mental_lines = [render_mc_answer_summary(qid_to_question.get(qid)) for qid in MENTAL_ACCOUNTING_QIDS]
+    add_section("Mental Accounting", [line for line in mental_lines if line], MENTAL_ACCOUNTING_QIDS)
+
+    time_lines = [
+        summarize_matrix_switch_behavior(
+            qid_to_question.get(qid),
+            left_choice_name="later reward",
+            right_choice_name="sooner reward",
+        )
+        for qid in TIME_PREFERENCE_QIDS
+    ]
+    add_section("Time Preference", [line for line in time_lines if line], TIME_PREFERENCE_QIDS)
+
+    risk_gain_lines = [
+        summarize_matrix_switch_behavior(
+            qid_to_question.get(qid),
+            left_choice_name="lottery",
+            right_choice_name="sure amount",
+        )
+        for qid in RISK_GAIN_QIDS
+    ]
+    add_section("Risk Preference (Gains)", [line for line in risk_gain_lines if line], RISK_GAIN_QIDS)
+
+    risk_loss_lines = [
+        summarize_matrix_switch_behavior(
+            qid_to_question.get(qid),
+            left_choice_name="lottery",
+            right_choice_name="sure outcome",
+        )
+        for qid in RISK_LOSS_QIDS
+    ]
+    add_section("Risk Preference (Losses)", [line for line in risk_loss_lines if line], RISK_LOSS_QIDS)
+
+    if lines and not lines[-1]:
+        lines.pop()
+    return "\n".join(lines).strip(), component_count, sorted(set(used_refs))
 
 
 def find_question_map(example: Dict) -> Dict[str, Dict]:
@@ -300,13 +572,13 @@ def render_profile_text(
 
 
 def group_target_questions(target_questions: Sequence[Dict], target_ref_entries: Sequence[Dict[str, str]]) -> List[Tuple[str, List[Dict]]]:
-    q_by_ref = {
-        ref_for_parts(q.get("BlockName", ""), q.get("QuestionID", "")): q
+    q_by_qid = {
+        str(q.get("QuestionID", "")): q
         for q in target_questions
     }
     grouped: Dict[str, List[Dict]] = {family: [] for family in TARGET_FAMILY_ORDER}
     for entry in target_ref_entries:
-        question = q_by_ref.get(entry["ref"])
+        question = q_by_qid.get(entry["question_id"])
         if question is None:
             continue
         grouped.setdefault(entry["family"], []).append(question)
@@ -318,6 +590,7 @@ def build_messages(
     target_questions: Sequence[Dict],
     target_ref_entries: Sequence[Dict[str, str]],
     include_reasoning: bool,
+    prompt_variant: str,
 ) -> List[Dict[str, str]]:
     system_lines = [
         "You are predicting how a specific Twin participant would answer held-out social decision questions.",
@@ -325,12 +598,39 @@ def build_messages(
         "Infer the answers only from the remaining participant profile.",
         "Return JSON only and do not include markdown.",
     ]
-    if include_reasoning:
-        system_lines.append(
-            'Return JSON with keys "answers" and "reasoning". '
-            '"answers" must map each QID to an integer option number. '
-            '"reasoning" must map each QID to a short explanation.'
+    if prompt_variant in {"relevant_structured_summary", "relevant_structured_summary_tuned"}:
+        system_lines.extend(
+            [
+                "The profile is a compact structured summary built from the non-target information most relevant to social-game prediction.",
+                "Use the concrete behavioral-economics evidence and the social-value indicators together.",
+                "Do not default to the most generous option just because the participant sounds prosocial.",
+                "Calibrate to the actual answer scale and the specific game mechanics.",
+            ]
         )
+    if prompt_variant == "relevant_structured_summary_tuned":
+        system_lines.extend(
+            [
+                "For each QID, identify the exact game and role before deciding on an answer.",
+                "Keep the games distinct: trust return is not ultimatum acceptance, and dictator allocation is not ultimatum offering.",
+                "Respect the option list shown for each QID exactly.",
+                "For binary ultimatum-receiver questions, the answer must be 1 or 2 only.",
+            ]
+        )
+    if include_reasoning:
+        if prompt_variant == "relevant_structured_summary_tuned":
+            system_lines.append(
+                'Return JSON with keys "reasoning" and "answers", in that order. '
+                '"reasoning" must map each QID to a short explanation that begins with the game role. '
+                '"answers" must map each QID to an integer option number. '
+                "Reason through each QID first, then give the final prediction."
+            )
+        else:
+            system_lines.append(
+                'Return JSON with keys "reasoning" and "answers", in that order. '
+                '"reasoning" must map each QID to a short explanation. '
+                '"answers" must map each QID to an integer option number. '
+                "Reason through each QID first, then give the final prediction."
+            )
     else:
         system_lines.append(
             'Return JSON with exactly one top-level key, "answers", mapping each QID to an integer option number.'
@@ -339,11 +639,11 @@ def build_messages(
     qid_list = [q["QuestionID"] for q in target_questions]
     if include_reasoning:
         response_shape = {
-            "answers": {qid: 1 for qid in qid_list},
             "reasoning": {qid: "short explanation" for qid in qid_list},
+            "answers": {qid: "integer option number" for qid in qid_list},
         }
     else:
-        response_shape = {"answers": {qid: 1 for qid in qid_list}}
+        response_shape = {"answers": {qid: "integer option number" for qid in qid_list}}
 
     user_lines = [
         "# Participant Profile",
@@ -371,6 +671,13 @@ def build_messages(
             "Use the real predicted option number for each QID.",
         ]
     )
+    if prompt_variant == "relevant_structured_summary_tuned" and include_reasoning:
+        user_lines.extend(
+            [
+                "Each reasoning string should explicitly name the role before the explanation.",
+                'Example style: "Trust receiver; ..." or "Ultimatum receiver; ...".',
+            ]
+        )
 
     return [
         {"role": "system", "content": "\n".join(system_lines)},
@@ -444,6 +751,13 @@ def main() -> int:
     parser.add_argument("--model", type=str, default=DEFAULT_MODEL)
     parser.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
     parser.add_argument(
+        "--prompt-variant",
+        type=str,
+        choices=PROMPT_VARIANTS,
+        default=DEFAULT_PROMPT_VARIANT,
+        help="Prompt construction variant.",
+    )
+    parser.add_argument(
         "--max-completion-tokens",
         type=int,
         default=None,
@@ -461,10 +775,28 @@ def main() -> int:
         help="Optional cap for quick testing.",
     )
     parser.add_argument(
+        "--sample-fraction",
+        type=float,
+        default=None,
+        help="Optional random sample fraction of participants to keep, e.g. 0.1 for 10%%.",
+    )
+    parser.add_argument(
+        "--random-seed",
+        type=int,
+        default=42,
+        help="Seed used when --sample-fraction is set.",
+    )
+    parser.add_argument(
         "--target-qids",
         type=str,
         default=None,
         help="Optional comma-separated subset of target QIDs.",
+    )
+    parser.add_argument(
+        "--reuse-manifest",
+        type=Path,
+        default=None,
+        help="Optional manifest whose participant IDs should be reused exactly, in order.",
     )
     args = parser.parse_args()
 
@@ -510,8 +842,22 @@ def main() -> int:
     ]
 
     ds = load_wave_split()
+    n_source_participants = len(ds)
+    if args.reuse_manifest is not None:
+        manifest_rows = load_jsonl(args.reuse_manifest)
+        requested_pids = [str(row["pid"]) for row in manifest_rows if row.get("pid") is not None]
+        by_pid = {str(example["pid"]): example for example in ds}
+        ds = [by_pid[pid] for pid in requested_pids if pid in by_pid]
+    elif args.sample_fraction is not None:
+        if not (0 < args.sample_fraction <= 1):
+            raise ValueError("--sample-fraction must be in the interval (0, 1].")
+        sample_size = max(1, math.ceil(len(ds) * args.sample_fraction))
+        ds = ds.shuffle(seed=args.random_seed).select(range(sample_size))
     if args.limit_participants:
-        ds = ds.select(range(min(args.limit_participants, len(ds))))
+        if isinstance(ds, list):
+            ds = ds[: min(args.limit_participants, len(ds))]
+        else:
+            ds = ds.select(range(min(args.limit_participants, len(ds))))
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     requests_path = args.output_dir / f"requests_joint_social_baseline_{args.model}.jsonl"
@@ -531,10 +877,18 @@ def main() -> int:
             pid = str(example["pid"])
             ref_to_question = find_question_map(example)
 
-            profile_text, rendered_items = render_profile_text(
-                ref_to_question=ref_to_question,
-                allowed_ref_entries=allowed_ref_entries,
-            )
+            if args.prompt_variant in {"relevant_structured_summary", "relevant_structured_summary_tuned"}:
+                profile_text, rendered_items, used_input_refs = render_structured_profile_text(
+                    ref_to_question=ref_to_question,
+                )
+                used_input_families = STRUCTURED_ALLOWED_INPUT_FAMILIES
+            else:
+                profile_text, rendered_items = render_profile_text(
+                    ref_to_question=ref_to_question,
+                    allowed_ref_entries=allowed_ref_entries,
+                )
+                used_input_refs = [entry["ref"] for entry in allowed_ref_entries]
+                used_input_families = ALLOWED_INPUT_FAMILIES
             if not profile_text:
                 continue
 
@@ -559,6 +913,7 @@ def main() -> int:
                 target_questions=target_questions,
                 target_ref_entries=target_ref_entries,
                 include_reasoning=args.include_reasoning,
+                prompt_variant=args.prompt_variant,
             )
             approx_prompt_tokens = estimate_chat_tokens(messages, args.model)
             token_counts.append(approx_prompt_tokens)
@@ -584,7 +939,7 @@ def main() -> int:
                 "custom_id": custom_id,
                 "pid": pid,
                 "condition": "joint_social_baseline",
-                "prompt_variant": "baseline_no_retrieval",
+                "prompt_variant": args.prompt_variant,
                 "target_family": "joint_social_block",
                 "target_families": selected_target_families,
                 "target_family_to_qids": target_family_to_qids,
@@ -592,8 +947,8 @@ def main() -> int:
                 "include_reasoning": args.include_reasoning,
                 "target_question_ids": [q["QuestionID"] for q in target_questions],
                 "ground_truth_answers": ground_truth,
-                "allowed_input_families": ALLOWED_INPUT_FAMILIES,
-                "allowed_input_refs": [entry["ref"] for entry in allowed_ref_entries],
+                "allowed_input_families": used_input_families,
+                "allowed_input_refs": used_input_refs,
                 "excluded_target_refs": [entry["ref"] for entry in target_ref_entries],
                 "approx_prompt_tokens": approx_prompt_tokens,
                 "profile_rendered_item_count": rendered_items,
@@ -621,13 +976,17 @@ def main() -> int:
         "model": args.model,
         "tokenizer_source": tokenizer_source,
         "condition": "joint_social_baseline",
-        "prompt_variant": "baseline_no_retrieval",
+        "prompt_variant": args.prompt_variant,
         "include_reasoning": args.include_reasoning,
+        "n_source_participants": n_source_participants,
         "n_participants": len(ds),
+        "sample_fraction": args.sample_fraction,
+        "reuse_manifest": str(args.reuse_manifest) if args.reuse_manifest is not None else None,
+        "random_seed": args.random_seed if args.sample_fraction is not None else None,
         "n_requests": request_count,
         "target_families": selected_target_families,
         "target_question_count": len(target_ref_entries),
-        "allowed_input_families": ALLOWED_INPUT_FAMILIES,
+        "allowed_input_families": STRUCTURED_ALLOWED_INPUT_FAMILIES if args.prompt_variant in {"relevant_structured_summary", "relevant_structured_summary_tuned"} else ALLOWED_INPUT_FAMILIES,
         "total_prompt_tokens": int(sum(token_counts)),
         "mean_prompt_tokens": float(round(statistics.mean(token_counts), 2)) if token_counts else 0.0,
         "median_prompt_tokens": int(statistics.median(token_counts_sorted)) if token_counts else 0,

@@ -27,19 +27,35 @@ PERSONA_DIR = PROJECT_ROOT / "Persona"
 DEFAULT_OUTPUT_DIR = PERSONA_DIR / "transfer_profiles" / "output" / "all_waves"
 
 DEFAULT_MODEL = "gpt-5.1"
-DEFAULT_TEMPERATURE = 0.0
 SUPPORTED_SPLITS = ("learn", "val", "all")
+TRANSCRIPT_MODES = ("full", "snippets", "none")
 
 SYSTEM_PROMPT = """You extract transfer-oriented behavioral profiles from public-goods-game evidence.
 
 Your job is to separate:
 1. behavior directly observed in this exact PGG environment, and
-2. broader latent economic or social-preference traits that might transfer to trust, ultimatum, and dictator games.
+2. broader latent economic or social-preference traits that may transfer across other games or bargaining settings.
 
 Rules:
 - Ground every latent inference in the provided evidence.
 - Generalize cautiously. If the evidence is weak or the mechanism was unavailable, say so.
 - Use general economic / behavioral language, not only PGG-specific jargon.
+- Use `none` only when a behavior or mechanism was available and observed at zero.
+- Use `unknown` when a mechanism was unavailable or the relevant behavior was not observed well enough to infer.
+- Use `unknown` for `response_to_sanctions` when the player was never punished.
+- Do not use rewards as evidence for `response_to_sanctions`.
+- Use `none` for `sanctioning_behavior` or `reward_behavior` when the corresponding mechanism was available and total observed use was exactly zero.
+- Reserve `very_low` for small but nonzero observed use or responsiveness.
+- If the player shows no observable adjustment to others' behavior, prefer `none` or `very_low` over `low` for `response_to_others`.
+- Reserve `medium` or higher for `strategic_cooperation` only when there is clear evidence of contingent, incentive-aware adjustment or targeted mechanism use; simple fixed heuristics or mild payoff awareness should stay below that.
+- Avoid redundancy across fields. Do not restate the same claim in multiple sections unless the section requires a short cross-reference.
+- Keep section roles distinct:
+  - `observed_in_pgg` = only what was directly observed in this exact PGG environment.
+  - `latent_traits` = broader transferable tendencies inferred from the evidence.
+  - `evidence` = only the highest-signal supporting facts, not paraphrases of the same point.
+  - `persona_card.behavioral_signature` = 2-3 distinctive transferable patterns.
+  - `persona_card.transfer_relevance` = 2-3 retrieval use cases, without repeating the signature verbatim.
+  - `persona_card.limits` = 2-3 scope limits on transfer, distinct from `uncertainties`.
 - Keep the persona card concise and retrieval-friendly.
 - Do not output participant IDs, game IDs, config IDs, or a standalone game-context object.
 - Return JSON only, matching the schema exactly.
@@ -47,14 +63,26 @@ Rules:
 
 USER_INSTRUCTIONS = """Create a transfer-oriented profile for downstream retrieval and prompt augmentation.
 
-The output should be useful for retrieving analogous PGG cases when predicting held-out trust, ultimatum, and dictator-game behavior in a different dataset.
+The output should be useful for retrieving analogous cases from a PGG library when reasoning about behavior in other economic or social-decision games.
 
 Important:
 - The persona card should mention that the evidence comes from a repeated public-goods game, but it should describe general latent tendencies rather than only PGG mechanics.
-- Much of the direct PGG behavior has already been summarized deterministically from raw game logs. Use the transcript snippets mainly for nuance, style, and local context.
+- Much of the direct PGG behavior has already been summarized deterministically from raw game logs. If transcript evidence is provided, use it to refine, qualify, or contextualize those summaries rather than to overwrite them casually.
+- If an existing summary is provided, treat it as a lossy qualitative prior. Use it to capture broad patterns, but anchor the final profile in the deterministic summary and transcript when they are more specific.
 - If punishment or reward was unavailable in the game, do not infer behavior for that mechanism from thin evidence; mark it as unknown.
 - If communication was unavailable, mark communication style as unknown.
-- Keep evidence statements concrete and tied to the provided stats, events, or transcript snippets.
+- Keep evidence statements concrete and tied to the provided stats, events, existing summary, or transcript evidence when present.
+- Prefer transferable features such as generosity, reciprocity, norm enforcement, exploitation caution, conditionality, and behavioral stability over narrow game-by-game predictions.
+- Do not generate a separate per-target-game forecast block. Keep transfer claims general and retrieval-oriented.
+- Keep the output compact. Use the shortest wording that preserves the claim.
+- `summary`: max 2 sentences.
+- `behavioral_signature`: 2-3 bullets covering the most distinctive transferable patterns only.
+- `transfer_relevance`: 2-3 bullets explaining when this case would be useful to retrieve; do not paraphrase the signature.
+- `limits`: 2-3 bullets about transfer scope limits of this evidence or environment.
+- `uncertainties`: 2-3 bullets about unresolved ambiguity in the participant's traits or motives; do not repeat `limits`.
+- If two statements say nearly the same thing, keep the more general transferable version and drop the duplicate.
+- In the persona card, avoid repeating PGG mechanics unless they are necessary to explain why the broader trait was inferred.
+- Do not merely paraphrase the existing summary back to us. Reconcile it with the deterministic profile and transcript, then keep only the most transferable claims.
 """
 
 OBSERVED_DIMENSIONS = [
@@ -95,10 +123,13 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--split", choices=SUPPORTED_SPLITS, default="all")
     parser.add_argument("--model", default=DEFAULT_MODEL)
-    parser.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
+    parser.add_argument("--temperature", type=float, default=None)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--max-round-snippets", type=int, default=5)
+    parser.add_argument("--transcript-mode", choices=TRANSCRIPT_MODES, default="full")
+    parser.add_argument("--include-oracle-summary", action="store_true")
+    parser.add_argument("--include-event-evidence", action="store_true")
     parser.add_argument("--max-completion-tokens", type=int, default=None)
     return parser.parse_args()
 
@@ -126,6 +157,16 @@ def load_participant_transcripts(split: str) -> Dict[Tuple[str, str, str], Dict]
         return {
             (split, str(row["experiment"]), str(row["participant"])): row
             for row in (json.loads(line) for line in f)
+        }
+
+
+def load_oracle_summaries(split: str) -> Dict[Tuple[str, str, str], str]:
+    path = PERSONA_DIR / f"archetype_oracle_gpt51_{'learn' if split == 'learn' else 'val'}.jsonl"
+    with path.open("r", encoding="utf-8") as f:
+        return {
+            (split, str(row["experiment"]), str(row["participant"])): str(row["text"])
+            for row in (json.loads(line) for line in f)
+            if row.get("text")
         }
 
 
@@ -342,25 +383,6 @@ def build_dimension_schema() -> Dict:
     }
 
 
-def build_hypothesis_schema() -> Dict:
-    return {
-        "type": "object",
-        "additionalProperties": False,
-        "properties": {
-            "expected_pattern": {"type": "string"},
-            "predicted_behaviors": {
-                "type": "array",
-                "items": {"type": "string"},
-                "minItems": 2,
-                "maxItems": 4,
-            },
-            "confidence": {"type": "string", "enum": CONFIDENCE_ENUM},
-            "rationale": {"type": "string"},
-        },
-        "required": ["expected_pattern", "predicted_behaviors", "confidence", "rationale"],
-    }
-
-
 def build_response_schema() -> Dict:
     observed_properties = {name: build_dimension_schema() for name in OBSERVED_DIMENSIONS}
     latent_properties = {name: build_dimension_schema() for name in LATENT_DIMENSIONS}
@@ -380,21 +402,11 @@ def build_response_schema() -> Dict:
                 "properties": latent_properties,
                 "required": LATENT_DIMENSIONS,
             },
-            "transfer_hypotheses": {
-                "type": "object",
-                "additionalProperties": False,
-                "properties": {
-                    "trust_game": build_hypothesis_schema(),
-                    "ultimatum_game": build_hypothesis_schema(),
-                    "dictator_game": build_hypothesis_schema(),
-                },
-                "required": ["trust_game", "ultimatum_game", "dictator_game"],
-            },
             "uncertainties": {
                 "type": "array",
                 "items": {"type": "string"},
                 "minItems": 2,
-                "maxItems": 5,
+                "maxItems": 3,
             },
             "evidence": {
                 "type": "array",
@@ -402,13 +414,13 @@ def build_response_schema() -> Dict:
                     "type": "object",
                     "additionalProperties": False,
                     "properties": {
-                        "source_type": {"type": "string", "enum": ["stat", "event", "transcript"]},
+                        "source_type": {"type": "string", "enum": ["stat", "event", "summary", "transcript"]},
                         "detail": {"type": "string"},
                     },
                     "required": ["source_type", "detail"],
                 },
-                "minItems": 3,
-                "maxItems": 8,
+                "minItems": 2,
+                "maxItems": 4,
             },
             "persona_card": {
                 "type": "object",
@@ -419,20 +431,20 @@ def build_response_schema() -> Dict:
                     "behavioral_signature": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "minItems": 3,
-                        "maxItems": 5,
+                        "minItems": 2,
+                        "maxItems": 3,
                     },
                     "transfer_relevance": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "minItems": 3,
-                        "maxItems": 5,
+                        "minItems": 2,
+                        "maxItems": 3,
                     },
                     "limits": {
                         "type": "array",
                         "items": {"type": "string"},
                         "minItems": 2,
-                        "maxItems": 4,
+                        "maxItems": 3,
                     },
                 },
                 "required": [
@@ -447,7 +459,6 @@ def build_response_schema() -> Dict:
         "required": [
             "observed_in_pgg",
             "latent_traits",
-            "transfer_hypotheses",
             "uncertainties",
             "evidence",
             "persona_card",
@@ -459,19 +470,39 @@ def json_dumps_pretty(obj: object) -> str:
     return json.dumps(obj, ensure_ascii=True, indent=2, sort_keys=False)
 
 
-def build_user_prompt(*, profile: Dict, participant_text: str, max_round_snippets: int) -> str:
+def build_user_prompt(
+    *,
+    profile: Dict,
+    participant_text: str,
+    oracle_summary: Optional[str],
+    max_round_snippets: int,
+    transcript_mode: str,
+    include_event_evidence: bool,
+) -> str:
     rule_summary = build_rule_summary(profile.get("config", {}))
     trimmed_profile = trim_profile_for_prompt(profile)
-    selected_events = select_event_evidence(profile)
+    selected_events = select_event_evidence(profile) if include_event_evidence else []
     round_snippets = select_round_snippets(participant_text, max_round_snippets=max_round_snippets)
+    if transcript_mode == "full":
+        transcript_section = participant_text
+    elif transcript_mode == "snippets":
+        transcript_section = "\n\n".join(round_snippets) if round_snippets else "None"
+    else:
+        transcript_section = "Omitted for this run."
     sections = [
         USER_INSTRUCTIONS,
         "\nPGG rule summary derived from the exact game config:\n- " + "\n- ".join(rule_summary),
         "\nDirect profile from raw game data:\n" + json_dumps_pretty(trimmed_profile),
-        "\nSelected event evidence from raw game data:\n" + json_dumps_pretty(selected_events),
-        "\nParticipant transcript snippets:\n" + ("\n\n".join(round_snippets) if round_snippets else "None"),
-        "\nOutput JSON schema follows. Do not include participant_id, playerId, gameId, configId, or a separate game_context field in the output.\n",
     ]
+    if selected_events:
+        sections.append("\nSelected event evidence from raw game data:\n" + json_dumps_pretty(selected_events))
+    if oracle_summary:
+        sections.append("\nExisting summary for this participant:\n" + oracle_summary)
+    if transcript_mode != "none":
+        sections.append("\nParticipant transcript:\n" + transcript_section)
+    sections.append(
+        "\nOutput JSON schema follows. Do not include participant_id, playerId, gameId, configId, or a separate game_context field in the output.\n"
+    )
     return "\n".join(sections)
 
 
@@ -500,8 +531,11 @@ def main() -> None:
     write_profiles_jsonl(profiles, raw_profiles_path)
 
     participant_transcripts: Dict[Tuple[str, str, str], Dict] = {}
+    oracle_summaries: Dict[Tuple[str, str, str], str] = {}
     for split in splits:
         participant_transcripts.update(load_participant_transcripts(split))
+        if args.include_oracle_summary:
+            oracle_summaries.update(load_oracle_summaries(split))
 
     eligible_complete_profiles = [
         profile
@@ -523,14 +557,20 @@ def main() -> None:
     tokenizer_source = None
     preview_request: Optional[Dict] = None
     missing_transcript = 0
+    missing_oracle_summary = 0
 
     with requests_path.open("w", encoding="utf-8") as requests_file, manifest_path.open("w", encoding="utf-8") as manifest_file:
         for profile in filtered_profiles:
             key = (profile["split"], profile["gameId"], profile["playerId"])
             transcript_row = participant_transcripts.get(key)
-            if transcript_row is None:
+            if args.transcript_mode != "none" and transcript_row is None:
                 missing_transcript += 1
                 continue
+            oracle_summary = None
+            if args.include_oracle_summary:
+                oracle_summary = oracle_summaries.get(key)
+                if oracle_summary is None:
+                    missing_oracle_summary += 1
 
             messages = [
                 {"role": "system", "content": SYSTEM_PROMPT},
@@ -538,14 +578,16 @@ def main() -> None:
                     "role": "user",
                     "content": build_user_prompt(
                         profile=profile,
-                        participant_text=str(transcript_row["text"]),
+                        participant_text=str(transcript_row["text"]) if transcript_row is not None else "",
+                        oracle_summary=oracle_summary,
                         max_round_snippets=args.max_round_snippets,
+                        transcript_mode=args.transcript_mode,
+                        include_event_evidence=args.include_event_evidence,
                     ),
                 },
             ]
             body = {
                 "model": args.model,
-                "temperature": args.temperature,
                 "messages": messages,
                 "response_format": {
                     "type": "json_schema",
@@ -556,6 +598,8 @@ def main() -> None:
                     },
                 },
             }
+            if args.temperature is not None:
+                body["temperature"] = args.temperature
             if args.max_completion_tokens is not None:
                 body["max_completion_tokens"] = args.max_completion_tokens
 
@@ -583,6 +627,9 @@ def main() -> None:
                 "punishment_enabled": bool(profile.get("config", {}).get("CONFIG_punishmentExists")),
                 "reward_enabled": bool(profile.get("config", {}).get("CONFIG_rewardExists")),
                 "played_to_end": bool(profile.get("played_to_end")),
+                "transcript_mode": args.transcript_mode,
+                "include_oracle_summary": bool(args.include_oracle_summary),
+                "include_event_evidence": bool(args.include_event_evidence),
                 "request_token_estimate": token_estimate,
             }
             manifest_file.write(json.dumps(manifest_row, ensure_ascii=True))
@@ -601,12 +648,16 @@ def main() -> None:
             "eligible_complete_profiles": len(eligible_complete_profiles),
             "requests_targeted_after_limit": len(filtered_profiles),
             "request_count": len(request_token_estimates),
+            "transcript_mode": args.transcript_mode,
+            "include_oracle_summary": bool(args.include_oracle_summary),
+            "include_event_evidence": bool(args.include_event_evidence),
             "total_prompt_tokens_estimate": int(sum(request_token_estimates)),
             "mean_prompt_tokens_estimate": statistics.mean(request_token_estimates),
             "median_prompt_tokens_estimate": statistics.median(request_token_estimates),
             "p95_prompt_tokens_estimate": sorted_estimates[p95_index],
             "max_prompt_tokens_estimate": max(request_token_estimates),
             "missing_participant_transcripts": missing_transcript,
+            "missing_oracle_summaries": missing_oracle_summary,
         }
     else:
         token_summary = {
@@ -617,7 +668,11 @@ def main() -> None:
             "eligible_complete_profiles": len(eligible_complete_profiles),
             "requests_targeted_after_limit": len(filtered_profiles),
             "request_count": 0,
+            "transcript_mode": args.transcript_mode,
+            "include_oracle_summary": bool(args.include_oracle_summary),
+            "include_event_evidence": bool(args.include_event_evidence),
             "missing_participant_transcripts": missing_transcript,
+            "missing_oracle_summaries": missing_oracle_summary,
         }
 
     if preview_request is not None:

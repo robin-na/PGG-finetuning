@@ -16,9 +16,6 @@ from scipy import stats
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_OUTPUT_DIR = (
-    PROJECT_ROOT / "non-PGG_generalization" / "pgg_transfer_eval" / "output" / "main"
-)
 QUESTION_CATALOG_PATH = (
     PROJECT_ROOT
     / "non-PGG_generalization"
@@ -180,36 +177,64 @@ def recover_partial_json_object(text: str) -> Optional[Dict[str, Any]]:
     return recovered
 
 
-def extract_content(response_row: Dict[str, Any]) -> Tuple[Optional[str], Optional[Dict[str, Any]]]:
+def extract_content(response_row: Dict[str, Any]) -> Tuple[Optional[str], Optional[Dict[str, Any]], Optional[List[Dict[str, Any]]]]:
     error = response_row.get("error")
     if error:
-        return None, {"type": "batch_error", "detail": error}
+        return None, {"type": "batch_error", "detail": error}, None
 
     response = response_row.get("response", {})
     if response.get("status_code") != 200:
-        return None, {
-            "type": "http_error",
-            "status_code": response.get("status_code"),
-            "body": response.get("body"),
-        }
+        return (
+            None,
+            {
+                "type": "http_error",
+                "status_code": response.get("status_code"),
+                "body": response.get("body"),
+            },
+            None,
+        )
 
     body = response.get("body", {})
+    if isinstance(body, dict) and body.get("object") == "response":
+        traces: List[Dict[str, Any]] = []
+        output_items = body.get("output", []) or []
+        text_parts: List[str] = []
+        for item in output_items:
+            if not isinstance(item, dict):
+                continue
+            item_type = item.get("type")
+            if item_type == "file_search_call":
+                traces.append(item)
+                continue
+            if item_type == "message":
+                for content_part in item.get("content", []) or []:
+                    if isinstance(content_part, dict) and content_part.get("type") == "output_text":
+                        text = content_part.get("text")
+                        if isinstance(text, str):
+                            text_parts.append(text)
+        if text_parts:
+            return "\n".join(text_parts), None, traces or None
+        output_text = body.get("output_text")
+        if isinstance(output_text, str) and output_text:
+            return output_text, None, traces or None
+        return None, {"type": "missing_responses_output_text", "body": body}, traces or None
+
     choices = body.get("choices", [])
     if not choices:
-        return None, {"type": "missing_choices", "body": body}
+        return None, {"type": "missing_choices", "body": body}, None
 
     message = choices[0].get("message", {})
     content = message.get("content")
     if isinstance(content, str):
-        return content, None
+        return content, None, None
     if isinstance(content, list):
         text_parts = []
         for item in content:
             if isinstance(item, dict) and item.get("type") == "text":
                 text_parts.append(item.get("text", ""))
         if text_parts:
-            return "\n".join(text_parts), None
-    return None, {"type": "missing_content", "message": message}
+            return "\n".join(text_parts), None, None
+    return None, {"type": "missing_content", "message": message}, None
 
 
 def normalize_int(value: Any) -> Optional[int]:
@@ -419,8 +444,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Evaluate OpenAI Batch outputs for the PGG-transfer benchmark.")
     parser.add_argument("--responses-jsonl", type=Path, required=True)
     parser.add_argument("--manifest-jsonl", type=Path, required=True)
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR / "evals")
+    parser.add_argument("--output-dir", type=Path, default=None)
     args = parser.parse_args()
+
+    if args.output_dir is None:
+        args.output_dir = args.responses_jsonl.resolve().parent / "evals"
 
     manifest_rows = load_jsonl(args.manifest_jsonl)
     response_rows = load_jsonl(args.responses_jsonl)
@@ -434,6 +462,7 @@ def main() -> int:
 
     parsed_rows: List[Dict[str, Any]] = []
     error_rows: List[Dict[str, Any]] = []
+    retrieval_trace_rows: List[Dict[str, Any]] = []
     usage_prompt_tokens = 0
     usage_completion_tokens = 0
 
@@ -450,7 +479,7 @@ def main() -> int:
             )
             continue
 
-        content, error = extract_content(response_row)
+        content, error, retrieval_traces = extract_content(response_row)
         response_body = response_row.get("response", {}).get("body", {})
         usage = response_body.get("usage", {}) if isinstance(response_body, dict) else {}
         usage_prompt_tokens += int(usage.get("prompt_tokens", 0) or 0)
@@ -467,6 +496,19 @@ def main() -> int:
                 }
             )
             continue
+
+        if retrieval_traces:
+            for trace in retrieval_traces:
+                retrieval_trace_rows.append(
+                    {
+                        "custom_id": custom_id,
+                        "pid": manifest["pid"],
+                        "target_family": manifest["target_family"],
+                        "queries": trace.get("queries"),
+                        "status": trace.get("status"),
+                        "results": trace.get("results"),
+                    }
+                )
 
         parsed_obj = parse_json_object(content or "")
         recovered_from_partial = False
@@ -546,11 +588,13 @@ def main() -> int:
         "mean_task_accuracy": float(task_request_df["task_accuracy"].mean()) if not task_request_df.empty else 0.0,
         "usage_prompt_tokens": usage_prompt_tokens,
         "usage_completion_tokens": usage_completion_tokens,
+        "retrieval_trace_rows": len(retrieval_trace_rows),
     }
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     parsed_path = args.output_dir / "parsed_predictions.jsonl"
     errors_path = args.output_dir / "batch_errors.jsonl"
+    retrieval_trace_path = args.output_dir / "retrieval_traces.jsonl"
     request_path = args.output_dir / "request_level_metrics.csv"
     task_request_path = args.output_dir / "task_request_metrics.csv"
     question_path = args.output_dir / "per_question_metrics.csv"
@@ -564,6 +608,9 @@ def main() -> int:
     with errors_path.open("w", encoding="utf-8") as f:
         for row in error_rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
+    with retrieval_trace_path.open("w", encoding="utf-8") as f:
+        for row in retrieval_trace_rows:
+            f.write(json.dumps(row, ensure_ascii=False) + "\n")
     request_df.to_csv(request_path, index=False)
     task_request_df.to_csv(task_request_path, index=False)
     question_df.to_csv(question_path, index=False)
@@ -573,6 +620,7 @@ def main() -> int:
 
     print(f"Wrote {parsed_path}")
     print(f"Wrote {errors_path}")
+    print(f"Wrote {retrieval_trace_path}")
     print(f"Wrote {request_path}")
     print(f"Wrote {task_request_path}")
     print(f"Wrote {question_path}")

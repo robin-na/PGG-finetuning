@@ -112,7 +112,7 @@ def encode_answer_value(q: Dict) -> Optional[object]:
 def render_profile_item(q: Dict) -> Optional[str]:
     qid = q.get("QuestionID", "")
     qtype = q.get("QuestionType")
-    question_text = shorten(q.get("QuestionText", ""), 140)
+    question_text = normalize_whitespace(q.get("QuestionText", ""))
     answers = q.get("Answers", {})
 
     if qtype == "MC":
@@ -133,7 +133,7 @@ def render_profile_item(q: Dict) -> Optional[str]:
         for row_text, value in zip(rows, selected):
             if value is None:
                 continue
-            parts.append(f"{shorten(str(row_text), 72)}={int(value)}")
+            parts.append(f"{normalize_whitespace(str(row_text))}={int(value)}")
         if not parts:
             return None
         return f"- [{qid}] {question_text} => " + " ; ".join(parts)
@@ -142,7 +142,7 @@ def render_profile_item(q: Dict) -> Optional[str]:
         texts = encode_answer_value(q) or []
         if not texts:
             return None
-        compact = " | ".join(shorten(text, 72) for text in texts[:6])
+        compact = " | ".join(normalize_whitespace(str(text)) for text in texts)
         return f"- [{qid}] {question_text} => {compact}"
 
     return None
@@ -235,11 +235,11 @@ def build_messages(
     qid_list = [q["QuestionID"] for q in target_questions]
     if include_reasoning:
         response_shape = {
-            "answers": {qid: 1 for qid in qid_list},
+            "answers": {qid: "integer option number" for qid in qid_list},
             "reasoning": {qid: "short explanation" for qid in qid_list},
         }
     else:
-        response_shape = {"answers": {qid: 1 for qid in qid_list}}
+        response_shape = {"answers": {qid: "integer option number" for qid in qid_list}}
 
     user_lines = [
         "# Participant Profile",
