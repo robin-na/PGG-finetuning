@@ -1,0 +1,13 @@
+source,category,category_title,rate
+human,coordination,Coordination,0.19739478957915832
+human,mentions_20_or_full,20 / Full / Max,0.07515030060120241
+human,meta_experiment,Meta / Platform,0.047094188376753505
+human,non_game_banter,Banter / Identity,0.16733466933867736
+oracle archetype,coordination,Coordination,0.8851978505129457
+oracle archetype,mentions_20_or_full,20 / Full / Max,0.4782608695652174
+oracle archetype,meta_experiment,Meta / Platform,0.07572056668295066
+oracle archetype,non_game_banter,Banter / Identity,0.038104543234000976
+retrieved archetype,coordination,Coordination,0.9058171745152355
+retrieved archetype,mentions_20_or_full,20 / Full / Max,0.6265004616805171
+retrieved archetype,meta_experiment,Meta / Platform,0.12973222530009235
+retrieved archetype,non_game_banter,Banter / Identity,0.015235457063711912

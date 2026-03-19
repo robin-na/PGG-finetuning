@@ -1,0 +1,22 @@
+{
+  "repo_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning",
+  "k_values": [
+    1,
+    3,
+    5,
+    8
+  ],
+  "min_num_rounds_exclusive": 10,
+  "games_loaded": 2,
+  "games_by_k": {
+    "1": 2,
+    "3": 2,
+    "5": 2,
+    "8": 2
+  },
+  "baselines": [
+    "persistence",
+    "ewma",
+    "within_game_ar"
+  ]
+}

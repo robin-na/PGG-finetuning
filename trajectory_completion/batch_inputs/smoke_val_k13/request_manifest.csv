@@ -1,0 +1,5 @@
+custom_id,game_id,split,k,num_rounds,num_players,prompt_player_names,all_or_nothing,punishment_enabled,reward_enabled,game_finished_flag_in_transcript
+trajectory_completion__2KKC9nMd8nRXfgH5G__k1,2KKC9nMd8nRXfgH5G,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__2khRAszouj8vP8ZfP__k1,2khRAszouj8vP8ZfP,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__2KKC9nMd8nRXfgH5G__k3,2KKC9nMd8nRXfgH5G,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__2khRAszouj8vP8ZfP__k3,2khRAszouj8vP8ZfP,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True

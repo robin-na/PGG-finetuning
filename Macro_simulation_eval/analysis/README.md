@@ -96,6 +96,18 @@ python Macro_simulation_eval/analysis/compare_macro_alignment.py \
   --analysis_run_id macro_alignment__oracle12b_vs_oracle27b_unit_edges
 ```
 
+One-page chat summary for human vs selected macro runs:
+
+```bash
+python Macro_simulation_eval/analysis/make_chat_comparison_summary.py \
+  --analysis_csv benchmark/data/processed_data/df_analysis_val.csv \
+  --eval_root outputs/benchmark/runs/benchmark_filtered/macro_simulation_eval \
+  --run_ids oracle_archetype/10478932_r0_macro_oracle_archetype_local_12b,config_bank_archetype/10491393_r0_macro_config_bank_archetype_local_12b \
+  --labels "oracle archetype,retrieved archetype" \
+  --analysis_root reports/benchmark/macro_simulation_eval \
+  --analysis_run_id chat_comparison__human_vs_oracle_vs_retrieved_shared_chat
+```
+
 ## Outputs
 Under `<analysis_root>/<analysis_run_id>/`:
 
@@ -152,6 +164,14 @@ From `compare_macro_alignment.py`:
 - `figures/macro_alignment_player_heterogeneity.png`
 - `figures/macro_alignment_distribution_wasserstein.png`
 - `figures/macro_alignment_contribution_shift_parity.png`
+
+From `make_chat_comparison_summary.py`:
+- `chat_frequency_summary.csv`
+- `chat_category_rates.csv`
+- `chat_examples.csv`
+- `team_share_summary.md`
+- `manifest.json`
+- `figures/chat_comparison_summary.png`
 
 Note: OLS baselines are CONFIG-only game-level regressions.
 - Normalized efficiency target comes from `itt_relative_efficiency` in `df_analysis_*.csv`.

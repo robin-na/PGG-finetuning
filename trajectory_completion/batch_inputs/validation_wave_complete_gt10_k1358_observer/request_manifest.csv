@@ -1,0 +1,541 @@
+custom_id,game_id,split,k,num_rounds,num_players,prompt_player_names,all_or_nothing,punishment_enabled,reward_enabled,game_finished_flag_in_transcript
+trajectory_completion__2KKC9nMd8nRXfgH5G__k1,2KKC9nMd8nRXfgH5G,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__2khRAszouj8vP8ZfP__k1,2khRAszouj8vP8ZfP,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__3Ce6KgbmNCQEwYBfk__k1,3Ce6KgbmNCQEwYBfk,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__5CF98timgPxWv28MK__k1,5CF98timgPxWv28MK,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__5R7YRmti4R5GiJKpi__k1,5R7YRmti4R5GiJKpi,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__6Pxb9DsQpyk22cJNr__k1,6Pxb9DsQpyk22cJNr,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__75Lp6nDFLGvmzj2Bm__k1,75Lp6nDFLGvmzj2Bm,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__7oRFMBwqmesGX7t3H__k1,7oRFMBwqmesGX7t3H,val,1,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,False,True,True
+trajectory_completion__7tfDsTHHnxsgrhE3d__k1,7tfDsTHHnxsgrhE3d,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__7ywewvEuctuz4Rq8j__k1,7ywewvEuctuz4Rq8j,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__925LF9k9CXpz8KjQm__k1,925LF9k9CXpz8KjQm,val,1,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,True,True,True
+trajectory_completion__AJ4ikZuWJeJcEXhgZ__k1,AJ4ikZuWJeJcEXhgZ,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__ANZmRctEmzi3aXhxq__k1,ANZmRctEmzi3aXhxq,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__ASQtYBWx6cGN27KxL__k1,ASQtYBWx6cGN27KxL,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__Aj2G7CTuhLZ7Z2SPK__k1,Aj2G7CTuhLZ7Z2SPK,val,1,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__AyQkFs97hRTki5zWR__k1,AyQkFs97hRTki5zWR,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__C5Cd8Yq5dDbdycXKB__k1,C5Cd8Yq5dDbdycXKB,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__CapNW6NsJ4cku7sjt__k1,CapNW6NsJ4cku7sjt,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__CarK72F4To7L5xGeb__k1,CarK72F4To7L5xGeb,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__CbDvrXGkphmfGtH3G__k1,CbDvrXGkphmfGtH3G,val,1,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__CoHyYysb84APn5gDE__k1,CoHyYysb84APn5gDE,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__CpcpNpmXaYtr3JqsB__k1,CpcpNpmXaYtr3JqsB,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__CxdGPvHo36TqhpAmm__k1,CxdGPvHo36TqhpAmm,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__DYFJDsdGg8bppBJ7P__k1,DYFJDsdGg8bppBJ7P,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__DYRPApJAy2LnezJW3__k1,DYRPApJAy2LnezJW3,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__Dykb225N5mCo3B33S__k1,Dykb225N5mCo3B33S,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__DzCRjHQttCBN587JL__k1,DzCRjHQttCBN587JL,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__EZDNBZXqSWEGgM3rB__k1,EZDNBZXqSWEGgM3rB,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__FAuuG8S2iw8wkGRnA__k1,FAuuG8S2iw8wkGRnA,val,1,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,True,False,True
+trajectory_completion__FYHQtKWP82LiMEuKo__k1,FYHQtKWP82LiMEuKo,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__FchxXr9pWNRHCAWnu__k1,FchxXr9pWNRHCAWnu,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__Fm7uYc98E2b6kcoDE__k1,Fm7uYc98E2b6kcoDE,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__FvbM5EM5aB5pcjLpA__k1,FvbM5EM5aB5pcjLpA,val,1,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,True,True,True
+trajectory_completion__GEyMgmTp37c4DXAWA__k1,GEyMgmTp37c4DXAWA,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__GgqMbe6kLtHq97cqW__k1,GgqMbe6kLtHq97cqW,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__HyMH2wFdBsGCcERZ7__k1,HyMH2wFdBsGCcERZ7,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__JbBvp4oGtGfqAvYzK__k1,JbBvp4oGtGfqAvYzK,val,1,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,True,False,True
+trajectory_completion__KK4HShJfMijev4coq__k1,KK4HShJfMijev4coq,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__KeCNqo8rknDTPRXCN__k1,KeCNqo8rknDTPRXCN,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__LENkaA2TC6u3FfEPn__k1,LENkaA2TC6u3FfEPn,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__Lb5CGirJ4pRHAdHzC__k1,Lb5CGirJ4pRHAdHzC,val,1,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,False,True,True
+trajectory_completion__N56o7Mxv3K5PaL9PZ__k1,N56o7Mxv3K5PaL9PZ,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__NZpNLYcXAdipwHiuH__k1,NZpNLYcXAdipwHiuH,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__NoZQLERPr4kYDgFzP__k1,NoZQLERPr4kYDgFzP,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,False
+trajectory_completion__PPXAxGcBiLKnraZbn__k1,PPXAxGcBiLKnraZbn,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__Pc3ZtY7HxvMXPyYXu__k1,Pc3ZtY7HxvMXPyYXu,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__PmcxhmDRj2tN3cECC__k1,PmcxhmDRj2tN3cECC,val,1,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,False,True,True
+trajectory_completion__PqDK6bkR3gXPNng4F__k1,PqDK6bkR3gXPNng4F,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__PrfKWppTZdvPhe4oN__k1,PrfKWppTZdvPhe4oN,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__Pu2EYfbvqDn5duudf__k1,Pu2EYfbvqDn5duudf,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__Qdg4gv38vfnM9ktKv__k1,Qdg4gv38vfnM9ktKv,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__QdqBfTFqaaH2BmeGf__k1,QdqBfTFqaaH2BmeGf,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__RAPkyGgbimpE2farJ__k1,RAPkyGgbimpE2farJ,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__RStPzcSWsgnZpozDg__k1,RStPzcSWsgnZpozDg,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RWQ2vFkinzDJatdiK__k1,RWQ2vFkinzDJatdiK,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RjouKH2EcY9toqwNu__k1,RjouKH2EcY9toqwNu,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RndvQoAzSMZfDbwGm__k1,RndvQoAzSMZfDbwGm,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__SFohXkBYvScM7Y7rC__k1,SFohXkBYvScM7Y7rC,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__SMZBbZw2az8XaF5qY__k1,SMZBbZw2az8XaF5qY,val,1,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__SxP3u469uffATbuCL__k1,SxP3u469uffATbuCL,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__TJPaSpryeQ4jvvYtQ__k1,TJPaSpryeQ4jvvYtQ,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__TvaK7RsiSd758hAmp__k1,TvaK7RsiSd758hAmp,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__WRGBgZZHHT7aanmfu__k1,WRGBgZZHHT7aanmfu,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__WugGwkWo2nM3RgnwF__k1,WugGwkWo2nM3RgnwF,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__XSabP8mGgLEZc59Fq__k1,XSabP8mGgLEZc59Fq,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__XXp5gLR8saMAt2pbb__k1,XXp5gLR8saMAt2pbb,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__Y2rXNdCsvwNXKdBeC__k1,Y2rXNdCsvwNXKdBeC,val,1,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,True,True,True
+trajectory_completion__ZvNnTZ4QTMyc2YWhs__k1,ZvNnTZ4QTMyc2YWhs,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__a2PCpqs4NBBS3qsDJ__k1,a2PCpqs4NBBS3qsDJ,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__aCwABuHs4X2RsQjPQ__k1,aCwABuHs4X2RsQjPQ,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__amLXh9uWHwWnDMAEJ__k1,amLXh9uWHwWnDMAEJ,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__bCJp3xM9rXfEYftS3__k1,bCJp3xM9rXfEYftS3,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__bJn7By83cXqDHYcvj__k1,bJn7By83cXqDHYcvj,val,1,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__bSN2jEMtheLREPnSz__k1,bSN2jEMtheLREPnSz,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__cEQim72euG5jzNSzR__k1,cEQim72euG5jzNSzR,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__dYdCLYP8K6xi8DNdF__k1,dYdCLYP8K6xi8DNdF,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__dakGThnA5puHNGNmR__k1,dakGThnA5puHNGNmR,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__dcbuervX39CFjNDsD__k1,dcbuervX39CFjNDsD,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__f58BzbvBptcgqwLNK__k1,f58BzbvBptcgqwLNK,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__f5kBd6G3t4e65zNgw__k1,f5kBd6G3t4e65zNgw,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__fMhhGrfpZH9ign2AK__k1,fMhhGrfpZH9ign2AK,val,1,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,True,True,True
+trajectory_completion__gRaZAaugSyBEdfDhw__k1,gRaZAaugSyBEdfDhw,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__gixvAJagenLR4bZqY__k1,gixvAJagenLR4bZqY,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__gnPsSsTjfGxNtntHM__k1,gnPsSsTjfGxNtntHM,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__gucxYCpGb5Z3d39ya__k1,gucxYCpGb5Z3d39ya,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__gv6sq5Y4NMqzeGSFH__k1,gv6sq5Y4NMqzeGSFH,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__h34j9usb3xNBh8FkC__k1,h34j9usb3xNBh8FkC,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__hWgX6ZBKFiRT8dQKD__k1,hWgX6ZBKFiRT8dQKD,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__hoYh5A3kzJp7czidB__k1,hoYh5A3kzJp7czidB,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__hqoPbc8aJ4afe2iWA__k1,hqoPbc8aJ4afe2iWA,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__i7C4Y4NiesraiSwwb__k1,i7C4Y4NiesraiSwwb,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__igzR4gy2oRnE6uN85__k1,igzR4gy2oRnE6uN85,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__jKen5K2Lw8Rmccxh2__k1,jKen5K2Lw8Rmccxh2,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__jLW7uN5mLX4JmjFo7__k1,jLW7uN5mLX4JmjFo7,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__jvD9GfjCgL4JoEaMq__k1,jvD9GfjCgL4JoEaMq,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__k6ASmEnkogfYzTeTR__k1,k6ASmEnkogfYzTeTR,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__kf8QF2MCDs5kJhToE__k1,kf8QF2MCDs5kJhToE,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__mf69tavvQcoqC5iaR__k1,mf69tavvQcoqC5iaR,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__n54FzkWNqLZxLv2BS__k1,n54FzkWNqLZxLv2BS,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__nRTwAP7KEWAmawF3x__k1,nRTwAP7KEWAmawF3x,val,1,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__nxmwtbBo6NK64RrLp__k1,nxmwtbBo6NK64RrLp,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__o73iA6ZktS8eD8Tvx__k1,o73iA6ZktS8eD8Tvx,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__pPsoXTn2Pr6iTzqiY__k1,pPsoXTn2Pr6iTzqiY,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__privie8F5995NBXnB__k1,privie8F5995NBXnB,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__q6MFaNc9JLxdrPuxQ__k1,q6MFaNc9JLxdrPuxQ,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__qifdzNTJxMn9kXwzv__k1,qifdzNTJxMn9kXwzv,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__qn3ZZ26WLFCPKeBWM__k1,qn3ZZ26WLFCPKeBWM,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__qnwoWA9PooEsojSqN__k1,qnwoWA9PooEsojSqN,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__qqdGcErMMiFvQuwur__k1,qqdGcErMMiFvQuwur,val,1,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,False,True,True
+trajectory_completion__rMnamRP2AWhWgPZ2m__k1,rMnamRP2AWhWgPZ2m,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__rNRuBfonGaB2vPorM__k1,rNRuBfonGaB2vPorM,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__rk28XFsjoeBNZ7wCx__k1,rk28XFsjoeBNZ7wCx,val,1,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__ruMMYez5kuSd3D4SF__k1,ruMMYez5kuSd3D4SF,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__sX9yfB3XHqdTLM3Ru__k1,sX9yfB3XHqdTLM3Ru,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__sXv4pLM9QNSAFxxQW__k1,sXv4pLM9QNSAFxxQW,val,1,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__t8Ss94ojpNP6xdGYh__k1,t8Ss94ojpNP6xdGYh,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__tCFnJifRgNRyrz7WY__k1,tCFnJifRgNRyrz7WY,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__tGoAaMWpJTmqmxxMh__k1,tGoAaMWpJTmqmxxMh,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__tomGidqaeJHBa5YMr__k1,tomGidqaeJHBa5YMr,val,1,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__uERcGPrTeqKWLtmbJ__k1,uERcGPrTeqKWLtmbJ,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__uFaYheSQ6WssQwa7w__k1,uFaYheSQ6WssQwa7w,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__uW4Cg9gRG7BwbDMJi__k1,uW4Cg9gRG7BwbDMJi,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__ubqE84hRkjXyn8o9L__k1,ubqE84hRkjXyn8o9L,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__urf8ouXom7YTA2ASn__k1,urf8ouXom7YTA2ASn,val,1,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__uwTnwBFdLcqtTZALa__k1,uwTnwBFdLcqtTZALa,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__v9hzdr6gxdBLtzfBL__k1,v9hzdr6gxdBLtzfBL,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__wNsxNofHWZfK3J2p9__k1,wNsxNofHWZfK3J2p9,val,1,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__wZsGucrLXmLgJASMm__k1,wZsGucrLXmLgJASMm,val,1,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__wbfiYici7fRE6g98p__k1,wbfiYici7fRE6g98p,val,1,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__yB6tLexJ2FZ6h4oim__k1,yB6tLexJ2FZ6h4oim,val,1,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__zKf8JGD6NqbmcmQAK__k1,zKf8JGD6NqbmcmQAK,val,1,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__zXKx7QTLiHXMeeBKe__k1,zXKx7QTLiHXMeeBKe,val,1,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,True,True,True
+trajectory_completion__zZi9i6kMGmSc4w78o__k1,zZi9i6kMGmSc4w78o,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__zjHbWYPbEC977w5CW__k1,zjHbWYPbEC977w5CW,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__zxAZxpenZ3cNvqNjo__k1,zxAZxpenZ3cNvqNjo,val,1,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__2KKC9nMd8nRXfgH5G__k3,2KKC9nMd8nRXfgH5G,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__2khRAszouj8vP8ZfP__k3,2khRAszouj8vP8ZfP,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__3Ce6KgbmNCQEwYBfk__k3,3Ce6KgbmNCQEwYBfk,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__5CF98timgPxWv28MK__k3,5CF98timgPxWv28MK,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__5R7YRmti4R5GiJKpi__k3,5R7YRmti4R5GiJKpi,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__6Pxb9DsQpyk22cJNr__k3,6Pxb9DsQpyk22cJNr,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__75Lp6nDFLGvmzj2Bm__k3,75Lp6nDFLGvmzj2Bm,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__7oRFMBwqmesGX7t3H__k3,7oRFMBwqmesGX7t3H,val,3,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,False,True,True
+trajectory_completion__7tfDsTHHnxsgrhE3d__k3,7tfDsTHHnxsgrhE3d,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__7ywewvEuctuz4Rq8j__k3,7ywewvEuctuz4Rq8j,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__925LF9k9CXpz8KjQm__k3,925LF9k9CXpz8KjQm,val,3,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,True,True,True
+trajectory_completion__AJ4ikZuWJeJcEXhgZ__k3,AJ4ikZuWJeJcEXhgZ,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__ANZmRctEmzi3aXhxq__k3,ANZmRctEmzi3aXhxq,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__ASQtYBWx6cGN27KxL__k3,ASQtYBWx6cGN27KxL,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__Aj2G7CTuhLZ7Z2SPK__k3,Aj2G7CTuhLZ7Z2SPK,val,3,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__AyQkFs97hRTki5zWR__k3,AyQkFs97hRTki5zWR,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__C5Cd8Yq5dDbdycXKB__k3,C5Cd8Yq5dDbdycXKB,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__CapNW6NsJ4cku7sjt__k3,CapNW6NsJ4cku7sjt,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__CarK72F4To7L5xGeb__k3,CarK72F4To7L5xGeb,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__CbDvrXGkphmfGtH3G__k3,CbDvrXGkphmfGtH3G,val,3,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__CoHyYysb84APn5gDE__k3,CoHyYysb84APn5gDE,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__CpcpNpmXaYtr3JqsB__k3,CpcpNpmXaYtr3JqsB,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__CxdGPvHo36TqhpAmm__k3,CxdGPvHo36TqhpAmm,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__DYFJDsdGg8bppBJ7P__k3,DYFJDsdGg8bppBJ7P,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__DYRPApJAy2LnezJW3__k3,DYRPApJAy2LnezJW3,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__Dykb225N5mCo3B33S__k3,Dykb225N5mCo3B33S,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__DzCRjHQttCBN587JL__k3,DzCRjHQttCBN587JL,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__EZDNBZXqSWEGgM3rB__k3,EZDNBZXqSWEGgM3rB,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__FAuuG8S2iw8wkGRnA__k3,FAuuG8S2iw8wkGRnA,val,3,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,True,False,True
+trajectory_completion__FYHQtKWP82LiMEuKo__k3,FYHQtKWP82LiMEuKo,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__FchxXr9pWNRHCAWnu__k3,FchxXr9pWNRHCAWnu,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__Fm7uYc98E2b6kcoDE__k3,Fm7uYc98E2b6kcoDE,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__FvbM5EM5aB5pcjLpA__k3,FvbM5EM5aB5pcjLpA,val,3,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,True,True,True
+trajectory_completion__GEyMgmTp37c4DXAWA__k3,GEyMgmTp37c4DXAWA,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__GgqMbe6kLtHq97cqW__k3,GgqMbe6kLtHq97cqW,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__HyMH2wFdBsGCcERZ7__k3,HyMH2wFdBsGCcERZ7,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__JbBvp4oGtGfqAvYzK__k3,JbBvp4oGtGfqAvYzK,val,3,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,True,False,True
+trajectory_completion__KK4HShJfMijev4coq__k3,KK4HShJfMijev4coq,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__KeCNqo8rknDTPRXCN__k3,KeCNqo8rknDTPRXCN,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__LENkaA2TC6u3FfEPn__k3,LENkaA2TC6u3FfEPn,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__Lb5CGirJ4pRHAdHzC__k3,Lb5CGirJ4pRHAdHzC,val,3,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,False,True,True
+trajectory_completion__N56o7Mxv3K5PaL9PZ__k3,N56o7Mxv3K5PaL9PZ,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__NZpNLYcXAdipwHiuH__k3,NZpNLYcXAdipwHiuH,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__NoZQLERPr4kYDgFzP__k3,NoZQLERPr4kYDgFzP,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,False
+trajectory_completion__PPXAxGcBiLKnraZbn__k3,PPXAxGcBiLKnraZbn,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__Pc3ZtY7HxvMXPyYXu__k3,Pc3ZtY7HxvMXPyYXu,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__PmcxhmDRj2tN3cECC__k3,PmcxhmDRj2tN3cECC,val,3,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,False,True,True
+trajectory_completion__PqDK6bkR3gXPNng4F__k3,PqDK6bkR3gXPNng4F,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__PrfKWppTZdvPhe4oN__k3,PrfKWppTZdvPhe4oN,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__Pu2EYfbvqDn5duudf__k3,Pu2EYfbvqDn5duudf,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__Qdg4gv38vfnM9ktKv__k3,Qdg4gv38vfnM9ktKv,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__QdqBfTFqaaH2BmeGf__k3,QdqBfTFqaaH2BmeGf,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__RAPkyGgbimpE2farJ__k3,RAPkyGgbimpE2farJ,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__RStPzcSWsgnZpozDg__k3,RStPzcSWsgnZpozDg,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RWQ2vFkinzDJatdiK__k3,RWQ2vFkinzDJatdiK,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RjouKH2EcY9toqwNu__k3,RjouKH2EcY9toqwNu,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RndvQoAzSMZfDbwGm__k3,RndvQoAzSMZfDbwGm,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__SFohXkBYvScM7Y7rC__k3,SFohXkBYvScM7Y7rC,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__SMZBbZw2az8XaF5qY__k3,SMZBbZw2az8XaF5qY,val,3,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__SxP3u469uffATbuCL__k3,SxP3u469uffATbuCL,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__TJPaSpryeQ4jvvYtQ__k3,TJPaSpryeQ4jvvYtQ,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__TvaK7RsiSd758hAmp__k3,TvaK7RsiSd758hAmp,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__WRGBgZZHHT7aanmfu__k3,WRGBgZZHHT7aanmfu,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__WugGwkWo2nM3RgnwF__k3,WugGwkWo2nM3RgnwF,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__XSabP8mGgLEZc59Fq__k3,XSabP8mGgLEZc59Fq,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__XXp5gLR8saMAt2pbb__k3,XXp5gLR8saMAt2pbb,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__Y2rXNdCsvwNXKdBeC__k3,Y2rXNdCsvwNXKdBeC,val,3,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,True,True,True
+trajectory_completion__ZvNnTZ4QTMyc2YWhs__k3,ZvNnTZ4QTMyc2YWhs,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__a2PCpqs4NBBS3qsDJ__k3,a2PCpqs4NBBS3qsDJ,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__aCwABuHs4X2RsQjPQ__k3,aCwABuHs4X2RsQjPQ,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__amLXh9uWHwWnDMAEJ__k3,amLXh9uWHwWnDMAEJ,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__bCJp3xM9rXfEYftS3__k3,bCJp3xM9rXfEYftS3,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__bJn7By83cXqDHYcvj__k3,bJn7By83cXqDHYcvj,val,3,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__bSN2jEMtheLREPnSz__k3,bSN2jEMtheLREPnSz,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__cEQim72euG5jzNSzR__k3,cEQim72euG5jzNSzR,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__dYdCLYP8K6xi8DNdF__k3,dYdCLYP8K6xi8DNdF,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__dakGThnA5puHNGNmR__k3,dakGThnA5puHNGNmR,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__dcbuervX39CFjNDsD__k3,dcbuervX39CFjNDsD,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__f58BzbvBptcgqwLNK__k3,f58BzbvBptcgqwLNK,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__f5kBd6G3t4e65zNgw__k3,f5kBd6G3t4e65zNgw,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__fMhhGrfpZH9ign2AK__k3,fMhhGrfpZH9ign2AK,val,3,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,True,True,True
+trajectory_completion__gRaZAaugSyBEdfDhw__k3,gRaZAaugSyBEdfDhw,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__gixvAJagenLR4bZqY__k3,gixvAJagenLR4bZqY,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__gnPsSsTjfGxNtntHM__k3,gnPsSsTjfGxNtntHM,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__gucxYCpGb5Z3d39ya__k3,gucxYCpGb5Z3d39ya,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__gv6sq5Y4NMqzeGSFH__k3,gv6sq5Y4NMqzeGSFH,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__h34j9usb3xNBh8FkC__k3,h34j9usb3xNBh8FkC,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__hWgX6ZBKFiRT8dQKD__k3,hWgX6ZBKFiRT8dQKD,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__hoYh5A3kzJp7czidB__k3,hoYh5A3kzJp7czidB,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__hqoPbc8aJ4afe2iWA__k3,hqoPbc8aJ4afe2iWA,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__i7C4Y4NiesraiSwwb__k3,i7C4Y4NiesraiSwwb,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__igzR4gy2oRnE6uN85__k3,igzR4gy2oRnE6uN85,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__jKen5K2Lw8Rmccxh2__k3,jKen5K2Lw8Rmccxh2,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__jLW7uN5mLX4JmjFo7__k3,jLW7uN5mLX4JmjFo7,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__jvD9GfjCgL4JoEaMq__k3,jvD9GfjCgL4JoEaMq,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__k6ASmEnkogfYzTeTR__k3,k6ASmEnkogfYzTeTR,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__kf8QF2MCDs5kJhToE__k3,kf8QF2MCDs5kJhToE,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__mf69tavvQcoqC5iaR__k3,mf69tavvQcoqC5iaR,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__n54FzkWNqLZxLv2BS__k3,n54FzkWNqLZxLv2BS,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__nRTwAP7KEWAmawF3x__k3,nRTwAP7KEWAmawF3x,val,3,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__nxmwtbBo6NK64RrLp__k3,nxmwtbBo6NK64RrLp,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__o73iA6ZktS8eD8Tvx__k3,o73iA6ZktS8eD8Tvx,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__pPsoXTn2Pr6iTzqiY__k3,pPsoXTn2Pr6iTzqiY,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__privie8F5995NBXnB__k3,privie8F5995NBXnB,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__q6MFaNc9JLxdrPuxQ__k3,q6MFaNc9JLxdrPuxQ,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__qifdzNTJxMn9kXwzv__k3,qifdzNTJxMn9kXwzv,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__qn3ZZ26WLFCPKeBWM__k3,qn3ZZ26WLFCPKeBWM,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__qnwoWA9PooEsojSqN__k3,qnwoWA9PooEsojSqN,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__qqdGcErMMiFvQuwur__k3,qqdGcErMMiFvQuwur,val,3,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,False,True,True
+trajectory_completion__rMnamRP2AWhWgPZ2m__k3,rMnamRP2AWhWgPZ2m,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__rNRuBfonGaB2vPorM__k3,rNRuBfonGaB2vPorM,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__rk28XFsjoeBNZ7wCx__k3,rk28XFsjoeBNZ7wCx,val,3,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__ruMMYez5kuSd3D4SF__k3,ruMMYez5kuSd3D4SF,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__sX9yfB3XHqdTLM3Ru__k3,sX9yfB3XHqdTLM3Ru,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__sXv4pLM9QNSAFxxQW__k3,sXv4pLM9QNSAFxxQW,val,3,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__t8Ss94ojpNP6xdGYh__k3,t8Ss94ojpNP6xdGYh,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__tCFnJifRgNRyrz7WY__k3,tCFnJifRgNRyrz7WY,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__tGoAaMWpJTmqmxxMh__k3,tGoAaMWpJTmqmxxMh,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__tomGidqaeJHBa5YMr__k3,tomGidqaeJHBa5YMr,val,3,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__uERcGPrTeqKWLtmbJ__k3,uERcGPrTeqKWLtmbJ,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__uFaYheSQ6WssQwa7w__k3,uFaYheSQ6WssQwa7w,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__uW4Cg9gRG7BwbDMJi__k3,uW4Cg9gRG7BwbDMJi,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__ubqE84hRkjXyn8o9L__k3,ubqE84hRkjXyn8o9L,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__urf8ouXom7YTA2ASn__k3,urf8ouXom7YTA2ASn,val,3,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__uwTnwBFdLcqtTZALa__k3,uwTnwBFdLcqtTZALa,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__v9hzdr6gxdBLtzfBL__k3,v9hzdr6gxdBLtzfBL,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__wNsxNofHWZfK3J2p9__k3,wNsxNofHWZfK3J2p9,val,3,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__wZsGucrLXmLgJASMm__k3,wZsGucrLXmLgJASMm,val,3,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__wbfiYici7fRE6g98p__k3,wbfiYici7fRE6g98p,val,3,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__yB6tLexJ2FZ6h4oim__k3,yB6tLexJ2FZ6h4oim,val,3,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__zKf8JGD6NqbmcmQAK__k3,zKf8JGD6NqbmcmQAK,val,3,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__zXKx7QTLiHXMeeBKe__k3,zXKx7QTLiHXMeeBKe,val,3,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,True,True,True
+trajectory_completion__zZi9i6kMGmSc4w78o__k3,zZi9i6kMGmSc4w78o,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__zjHbWYPbEC977w5CW__k3,zjHbWYPbEC977w5CW,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__zxAZxpenZ3cNvqNjo__k3,zxAZxpenZ3cNvqNjo,val,3,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__2KKC9nMd8nRXfgH5G__k5,2KKC9nMd8nRXfgH5G,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__2khRAszouj8vP8ZfP__k5,2khRAszouj8vP8ZfP,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__3Ce6KgbmNCQEwYBfk__k5,3Ce6KgbmNCQEwYBfk,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__5CF98timgPxWv28MK__k5,5CF98timgPxWv28MK,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__5R7YRmti4R5GiJKpi__k5,5R7YRmti4R5GiJKpi,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__6Pxb9DsQpyk22cJNr__k5,6Pxb9DsQpyk22cJNr,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__75Lp6nDFLGvmzj2Bm__k5,75Lp6nDFLGvmzj2Bm,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__7oRFMBwqmesGX7t3H__k5,7oRFMBwqmesGX7t3H,val,5,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,False,True,True
+trajectory_completion__7tfDsTHHnxsgrhE3d__k5,7tfDsTHHnxsgrhE3d,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__7ywewvEuctuz4Rq8j__k5,7ywewvEuctuz4Rq8j,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__925LF9k9CXpz8KjQm__k5,925LF9k9CXpz8KjQm,val,5,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,True,True,True
+trajectory_completion__AJ4ikZuWJeJcEXhgZ__k5,AJ4ikZuWJeJcEXhgZ,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__ANZmRctEmzi3aXhxq__k5,ANZmRctEmzi3aXhxq,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__ASQtYBWx6cGN27KxL__k5,ASQtYBWx6cGN27KxL,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__Aj2G7CTuhLZ7Z2SPK__k5,Aj2G7CTuhLZ7Z2SPK,val,5,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__AyQkFs97hRTki5zWR__k5,AyQkFs97hRTki5zWR,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__C5Cd8Yq5dDbdycXKB__k5,C5Cd8Yq5dDbdycXKB,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__CapNW6NsJ4cku7sjt__k5,CapNW6NsJ4cku7sjt,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__CarK72F4To7L5xGeb__k5,CarK72F4To7L5xGeb,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__CbDvrXGkphmfGtH3G__k5,CbDvrXGkphmfGtH3G,val,5,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__CoHyYysb84APn5gDE__k5,CoHyYysb84APn5gDE,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__CpcpNpmXaYtr3JqsB__k5,CpcpNpmXaYtr3JqsB,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__CxdGPvHo36TqhpAmm__k5,CxdGPvHo36TqhpAmm,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__DYFJDsdGg8bppBJ7P__k5,DYFJDsdGg8bppBJ7P,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__DYRPApJAy2LnezJW3__k5,DYRPApJAy2LnezJW3,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__Dykb225N5mCo3B33S__k5,Dykb225N5mCo3B33S,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__DzCRjHQttCBN587JL__k5,DzCRjHQttCBN587JL,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__EZDNBZXqSWEGgM3rB__k5,EZDNBZXqSWEGgM3rB,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__FAuuG8S2iw8wkGRnA__k5,FAuuG8S2iw8wkGRnA,val,5,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,True,False,True
+trajectory_completion__FYHQtKWP82LiMEuKo__k5,FYHQtKWP82LiMEuKo,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__FchxXr9pWNRHCAWnu__k5,FchxXr9pWNRHCAWnu,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__Fm7uYc98E2b6kcoDE__k5,Fm7uYc98E2b6kcoDE,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__FvbM5EM5aB5pcjLpA__k5,FvbM5EM5aB5pcjLpA,val,5,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,True,True,True
+trajectory_completion__GEyMgmTp37c4DXAWA__k5,GEyMgmTp37c4DXAWA,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__GgqMbe6kLtHq97cqW__k5,GgqMbe6kLtHq97cqW,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__HyMH2wFdBsGCcERZ7__k5,HyMH2wFdBsGCcERZ7,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__JbBvp4oGtGfqAvYzK__k5,JbBvp4oGtGfqAvYzK,val,5,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,True,False,True
+trajectory_completion__KK4HShJfMijev4coq__k5,KK4HShJfMijev4coq,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__KeCNqo8rknDTPRXCN__k5,KeCNqo8rknDTPRXCN,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__LENkaA2TC6u3FfEPn__k5,LENkaA2TC6u3FfEPn,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__Lb5CGirJ4pRHAdHzC__k5,Lb5CGirJ4pRHAdHzC,val,5,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,False,True,True
+trajectory_completion__N56o7Mxv3K5PaL9PZ__k5,N56o7Mxv3K5PaL9PZ,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__NZpNLYcXAdipwHiuH__k5,NZpNLYcXAdipwHiuH,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__NoZQLERPr4kYDgFzP__k5,NoZQLERPr4kYDgFzP,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,False
+trajectory_completion__PPXAxGcBiLKnraZbn__k5,PPXAxGcBiLKnraZbn,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__Pc3ZtY7HxvMXPyYXu__k5,Pc3ZtY7HxvMXPyYXu,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__PmcxhmDRj2tN3cECC__k5,PmcxhmDRj2tN3cECC,val,5,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,False,True,True
+trajectory_completion__PqDK6bkR3gXPNng4F__k5,PqDK6bkR3gXPNng4F,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__PrfKWppTZdvPhe4oN__k5,PrfKWppTZdvPhe4oN,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__Pu2EYfbvqDn5duudf__k5,Pu2EYfbvqDn5duudf,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__Qdg4gv38vfnM9ktKv__k5,Qdg4gv38vfnM9ktKv,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__QdqBfTFqaaH2BmeGf__k5,QdqBfTFqaaH2BmeGf,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__RAPkyGgbimpE2farJ__k5,RAPkyGgbimpE2farJ,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__RStPzcSWsgnZpozDg__k5,RStPzcSWsgnZpozDg,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RWQ2vFkinzDJatdiK__k5,RWQ2vFkinzDJatdiK,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RjouKH2EcY9toqwNu__k5,RjouKH2EcY9toqwNu,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RndvQoAzSMZfDbwGm__k5,RndvQoAzSMZfDbwGm,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__SFohXkBYvScM7Y7rC__k5,SFohXkBYvScM7Y7rC,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__SMZBbZw2az8XaF5qY__k5,SMZBbZw2az8XaF5qY,val,5,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__SxP3u469uffATbuCL__k5,SxP3u469uffATbuCL,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__TJPaSpryeQ4jvvYtQ__k5,TJPaSpryeQ4jvvYtQ,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__TvaK7RsiSd758hAmp__k5,TvaK7RsiSd758hAmp,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__WRGBgZZHHT7aanmfu__k5,WRGBgZZHHT7aanmfu,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__WugGwkWo2nM3RgnwF__k5,WugGwkWo2nM3RgnwF,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__XSabP8mGgLEZc59Fq__k5,XSabP8mGgLEZc59Fq,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__XXp5gLR8saMAt2pbb__k5,XXp5gLR8saMAt2pbb,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__Y2rXNdCsvwNXKdBeC__k5,Y2rXNdCsvwNXKdBeC,val,5,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,True,True,True
+trajectory_completion__ZvNnTZ4QTMyc2YWhs__k5,ZvNnTZ4QTMyc2YWhs,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__a2PCpqs4NBBS3qsDJ__k5,a2PCpqs4NBBS3qsDJ,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__aCwABuHs4X2RsQjPQ__k5,aCwABuHs4X2RsQjPQ,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__amLXh9uWHwWnDMAEJ__k5,amLXh9uWHwWnDMAEJ,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__bCJp3xM9rXfEYftS3__k5,bCJp3xM9rXfEYftS3,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__bJn7By83cXqDHYcvj__k5,bJn7By83cXqDHYcvj,val,5,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__bSN2jEMtheLREPnSz__k5,bSN2jEMtheLREPnSz,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__cEQim72euG5jzNSzR__k5,cEQim72euG5jzNSzR,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__dYdCLYP8K6xi8DNdF__k5,dYdCLYP8K6xi8DNdF,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__dakGThnA5puHNGNmR__k5,dakGThnA5puHNGNmR,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__dcbuervX39CFjNDsD__k5,dcbuervX39CFjNDsD,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__f58BzbvBptcgqwLNK__k5,f58BzbvBptcgqwLNK,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__f5kBd6G3t4e65zNgw__k5,f5kBd6G3t4e65zNgw,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__fMhhGrfpZH9ign2AK__k5,fMhhGrfpZH9ign2AK,val,5,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,True,True,True
+trajectory_completion__gRaZAaugSyBEdfDhw__k5,gRaZAaugSyBEdfDhw,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__gixvAJagenLR4bZqY__k5,gixvAJagenLR4bZqY,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__gnPsSsTjfGxNtntHM__k5,gnPsSsTjfGxNtntHM,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__gucxYCpGb5Z3d39ya__k5,gucxYCpGb5Z3d39ya,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__gv6sq5Y4NMqzeGSFH__k5,gv6sq5Y4NMqzeGSFH,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__h34j9usb3xNBh8FkC__k5,h34j9usb3xNBh8FkC,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__hWgX6ZBKFiRT8dQKD__k5,hWgX6ZBKFiRT8dQKD,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__hoYh5A3kzJp7czidB__k5,hoYh5A3kzJp7czidB,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__hqoPbc8aJ4afe2iWA__k5,hqoPbc8aJ4afe2iWA,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__i7C4Y4NiesraiSwwb__k5,i7C4Y4NiesraiSwwb,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__igzR4gy2oRnE6uN85__k5,igzR4gy2oRnE6uN85,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__jKen5K2Lw8Rmccxh2__k5,jKen5K2Lw8Rmccxh2,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__jLW7uN5mLX4JmjFo7__k5,jLW7uN5mLX4JmjFo7,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__jvD9GfjCgL4JoEaMq__k5,jvD9GfjCgL4JoEaMq,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__k6ASmEnkogfYzTeTR__k5,k6ASmEnkogfYzTeTR,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__kf8QF2MCDs5kJhToE__k5,kf8QF2MCDs5kJhToE,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__mf69tavvQcoqC5iaR__k5,mf69tavvQcoqC5iaR,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__n54FzkWNqLZxLv2BS__k5,n54FzkWNqLZxLv2BS,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__nRTwAP7KEWAmawF3x__k5,nRTwAP7KEWAmawF3x,val,5,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__nxmwtbBo6NK64RrLp__k5,nxmwtbBo6NK64RrLp,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__o73iA6ZktS8eD8Tvx__k5,o73iA6ZktS8eD8Tvx,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__pPsoXTn2Pr6iTzqiY__k5,pPsoXTn2Pr6iTzqiY,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__privie8F5995NBXnB__k5,privie8F5995NBXnB,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__q6MFaNc9JLxdrPuxQ__k5,q6MFaNc9JLxdrPuxQ,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__qifdzNTJxMn9kXwzv__k5,qifdzNTJxMn9kXwzv,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__qn3ZZ26WLFCPKeBWM__k5,qn3ZZ26WLFCPKeBWM,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__qnwoWA9PooEsojSqN__k5,qnwoWA9PooEsojSqN,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__qqdGcErMMiFvQuwur__k5,qqdGcErMMiFvQuwur,val,5,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,False,True,True
+trajectory_completion__rMnamRP2AWhWgPZ2m__k5,rMnamRP2AWhWgPZ2m,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__rNRuBfonGaB2vPorM__k5,rNRuBfonGaB2vPorM,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__rk28XFsjoeBNZ7wCx__k5,rk28XFsjoeBNZ7wCx,val,5,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__ruMMYez5kuSd3D4SF__k5,ruMMYez5kuSd3D4SF,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__sX9yfB3XHqdTLM3Ru__k5,sX9yfB3XHqdTLM3Ru,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__sXv4pLM9QNSAFxxQW__k5,sXv4pLM9QNSAFxxQW,val,5,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__t8Ss94ojpNP6xdGYh__k5,t8Ss94ojpNP6xdGYh,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__tCFnJifRgNRyrz7WY__k5,tCFnJifRgNRyrz7WY,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__tGoAaMWpJTmqmxxMh__k5,tGoAaMWpJTmqmxxMh,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__tomGidqaeJHBa5YMr__k5,tomGidqaeJHBa5YMr,val,5,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__uERcGPrTeqKWLtmbJ__k5,uERcGPrTeqKWLtmbJ,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__uFaYheSQ6WssQwa7w__k5,uFaYheSQ6WssQwa7w,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__uW4Cg9gRG7BwbDMJi__k5,uW4Cg9gRG7BwbDMJi,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__ubqE84hRkjXyn8o9L__k5,ubqE84hRkjXyn8o9L,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__urf8ouXom7YTA2ASn__k5,urf8ouXom7YTA2ASn,val,5,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__uwTnwBFdLcqtTZALa__k5,uwTnwBFdLcqtTZALa,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__v9hzdr6gxdBLtzfBL__k5,v9hzdr6gxdBLtzfBL,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__wNsxNofHWZfK3J2p9__k5,wNsxNofHWZfK3J2p9,val,5,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__wZsGucrLXmLgJASMm__k5,wZsGucrLXmLgJASMm,val,5,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__wbfiYici7fRE6g98p__k5,wbfiYici7fRE6g98p,val,5,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__yB6tLexJ2FZ6h4oim__k5,yB6tLexJ2FZ6h4oim,val,5,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__zKf8JGD6NqbmcmQAK__k5,zKf8JGD6NqbmcmQAK,val,5,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__zXKx7QTLiHXMeeBKe__k5,zXKx7QTLiHXMeeBKe,val,5,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,True,True,True
+trajectory_completion__zZi9i6kMGmSc4w78o__k5,zZi9i6kMGmSc4w78o,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__zjHbWYPbEC977w5CW__k5,zjHbWYPbEC977w5CW,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__zxAZxpenZ3cNvqNjo__k5,zxAZxpenZ3cNvqNjo,val,5,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__2KKC9nMd8nRXfgH5G__k8,2KKC9nMd8nRXfgH5G,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__2khRAszouj8vP8ZfP__k8,2khRAszouj8vP8ZfP,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__3Ce6KgbmNCQEwYBfk__k8,3Ce6KgbmNCQEwYBfk,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__5CF98timgPxWv28MK__k8,5CF98timgPxWv28MK,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__5R7YRmti4R5GiJKpi__k8,5R7YRmti4R5GiJKpi,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__6Pxb9DsQpyk22cJNr__k8,6Pxb9DsQpyk22cJNr,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__75Lp6nDFLGvmzj2Bm__k8,75Lp6nDFLGvmzj2Bm,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__7oRFMBwqmesGX7t3H__k8,7oRFMBwqmesGX7t3H,val,8,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,False,True,True
+trajectory_completion__7tfDsTHHnxsgrhE3d__k8,7tfDsTHHnxsgrhE3d,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__7ywewvEuctuz4Rq8j__k8,7ywewvEuctuz4Rq8j,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__925LF9k9CXpz8KjQm__k8,925LF9k9CXpz8KjQm,val,8,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,True,True,True
+trajectory_completion__AJ4ikZuWJeJcEXhgZ__k8,AJ4ikZuWJeJcEXhgZ,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__ANZmRctEmzi3aXhxq__k8,ANZmRctEmzi3aXhxq,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__ASQtYBWx6cGN27KxL__k8,ASQtYBWx6cGN27KxL,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__Aj2G7CTuhLZ7Z2SPK__k8,Aj2G7CTuhLZ7Z2SPK,val,8,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__AyQkFs97hRTki5zWR__k8,AyQkFs97hRTki5zWR,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__C5Cd8Yq5dDbdycXKB__k8,C5Cd8Yq5dDbdycXKB,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__CapNW6NsJ4cku7sjt__k8,CapNW6NsJ4cku7sjt,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__CarK72F4To7L5xGeb__k8,CarK72F4To7L5xGeb,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__CbDvrXGkphmfGtH3G__k8,CbDvrXGkphmfGtH3G,val,8,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__CoHyYysb84APn5gDE__k8,CoHyYysb84APn5gDE,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__CpcpNpmXaYtr3JqsB__k8,CpcpNpmXaYtr3JqsB,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__CxdGPvHo36TqhpAmm__k8,CxdGPvHo36TqhpAmm,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__DYFJDsdGg8bppBJ7P__k8,DYFJDsdGg8bppBJ7P,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__DYRPApJAy2LnezJW3__k8,DYRPApJAy2LnezJW3,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__Dykb225N5mCo3B33S__k8,Dykb225N5mCo3B33S,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__DzCRjHQttCBN587JL__k8,DzCRjHQttCBN587JL,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__EZDNBZXqSWEGgM3rB__k8,EZDNBZXqSWEGgM3rB,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__FAuuG8S2iw8wkGRnA__k8,FAuuG8S2iw8wkGRnA,val,8,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,True,False,True
+trajectory_completion__FYHQtKWP82LiMEuKo__k8,FYHQtKWP82LiMEuKo,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__FchxXr9pWNRHCAWnu__k8,FchxXr9pWNRHCAWnu,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__Fm7uYc98E2b6kcoDE__k8,Fm7uYc98E2b6kcoDE,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__FvbM5EM5aB5pcjLpA__k8,FvbM5EM5aB5pcjLpA,val,8,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,True,True,True
+trajectory_completion__GEyMgmTp37c4DXAWA__k8,GEyMgmTp37c4DXAWA,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__GgqMbe6kLtHq97cqW__k8,GgqMbe6kLtHq97cqW,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__HyMH2wFdBsGCcERZ7__k8,HyMH2wFdBsGCcERZ7,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__JbBvp4oGtGfqAvYzK__k8,JbBvp4oGtGfqAvYzK,val,8,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,True,False,True
+trajectory_completion__KK4HShJfMijev4coq__k8,KK4HShJfMijev4coq,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__KeCNqo8rknDTPRXCN__k8,KeCNqo8rknDTPRXCN,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__LENkaA2TC6u3FfEPn__k8,LENkaA2TC6u3FfEPn,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__Lb5CGirJ4pRHAdHzC__k8,Lb5CGirJ4pRHAdHzC,val,8,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,False,True,True
+trajectory_completion__N56o7Mxv3K5PaL9PZ__k8,N56o7Mxv3K5PaL9PZ,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__NZpNLYcXAdipwHiuH__k8,NZpNLYcXAdipwHiuH,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__NoZQLERPr4kYDgFzP__k8,NoZQLERPr4kYDgFzP,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,False
+trajectory_completion__PPXAxGcBiLKnraZbn__k8,PPXAxGcBiLKnraZbn,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__Pc3ZtY7HxvMXPyYXu__k8,Pc3ZtY7HxvMXPyYXu,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__PmcxhmDRj2tN3cECC__k8,PmcxhmDRj2tN3cECC,val,8,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,False,True,True
+trajectory_completion__PqDK6bkR3gXPNng4F__k8,PqDK6bkR3gXPNng4F,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__PrfKWppTZdvPhe4oN__k8,PrfKWppTZdvPhe4oN,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__Pu2EYfbvqDn5duudf__k8,Pu2EYfbvqDn5duudf,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__Qdg4gv38vfnM9ktKv__k8,Qdg4gv38vfnM9ktKv,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__QdqBfTFqaaH2BmeGf__k8,QdqBfTFqaaH2BmeGf,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__RAPkyGgbimpE2farJ__k8,RAPkyGgbimpE2farJ,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__RStPzcSWsgnZpozDg__k8,RStPzcSWsgnZpozDg,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RWQ2vFkinzDJatdiK__k8,RWQ2vFkinzDJatdiK,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RjouKH2EcY9toqwNu__k8,RjouKH2EcY9toqwNu,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__RndvQoAzSMZfDbwGm__k8,RndvQoAzSMZfDbwGm,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__SFohXkBYvScM7Y7rC__k8,SFohXkBYvScM7Y7rC,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__SMZBbZw2az8XaF5qY__k8,SMZBbZw2az8XaF5qY,val,8,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__SxP3u469uffATbuCL__k8,SxP3u469uffATbuCL,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__TJPaSpryeQ4jvvYtQ__k8,TJPaSpryeQ4jvvYtQ,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__TvaK7RsiSd758hAmp__k8,TvaK7RsiSd758hAmp,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__WRGBgZZHHT7aanmfu__k8,WRGBgZZHHT7aanmfu,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__WugGwkWo2nM3RgnwF__k8,WugGwkWo2nM3RgnwF,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__XSabP8mGgLEZc59Fq__k8,XSabP8mGgLEZc59Fq,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__XXp5gLR8saMAt2pbb__k8,XXp5gLR8saMAt2pbb,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__Y2rXNdCsvwNXKdBeC__k8,Y2rXNdCsvwNXKdBeC,val,8,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,True,True,True
+trajectory_completion__ZvNnTZ4QTMyc2YWhs__k8,ZvNnTZ4QTMyc2YWhs,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__a2PCpqs4NBBS3qsDJ__k8,a2PCpqs4NBBS3qsDJ,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__aCwABuHs4X2RsQjPQ__k8,aCwABuHs4X2RsQjPQ,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__amLXh9uWHwWnDMAEJ__k8,amLXh9uWHwWnDMAEJ,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__bCJp3xM9rXfEYftS3__k8,bCJp3xM9rXfEYftS3,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__bJn7By83cXqDHYcvj__k8,bJn7By83cXqDHYcvj,val,8,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__bSN2jEMtheLREPnSz__k8,bSN2jEMtheLREPnSz,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__cEQim72euG5jzNSzR__k8,cEQim72euG5jzNSzR,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__dYdCLYP8K6xi8DNdF__k8,dYdCLYP8K6xi8DNdF,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__dakGThnA5puHNGNmR__k8,dakGThnA5puHNGNmR,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__dcbuervX39CFjNDsD__k8,dcbuervX39CFjNDsD,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__f58BzbvBptcgqwLNK__k8,f58BzbvBptcgqwLNK,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__f5kBd6G3t4e65zNgw__k8,f5kBd6G3t4e65zNgw,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__fMhhGrfpZH9ign2AK__k8,fMhhGrfpZH9ign2AK,val,8,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,True,True,True
+trajectory_completion__gRaZAaugSyBEdfDhw__k8,gRaZAaugSyBEdfDhw,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__gixvAJagenLR4bZqY__k8,gixvAJagenLR4bZqY,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__gnPsSsTjfGxNtntHM__k8,gnPsSsTjfGxNtntHM,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__gucxYCpGb5Z3d39ya__k8,gucxYCpGb5Z3d39ya,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__gv6sq5Y4NMqzeGSFH__k8,gv6sq5Y4NMqzeGSFH,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__h34j9usb3xNBh8FkC__k8,h34j9usb3xNBh8FkC,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,True,False,True
+trajectory_completion__hWgX6ZBKFiRT8dQKD__k8,hWgX6ZBKFiRT8dQKD,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__hoYh5A3kzJp7czidB__k8,hoYh5A3kzJp7czidB,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__hqoPbc8aJ4afe2iWA__k8,hqoPbc8aJ4afe2iWA,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,True,False,True
+trajectory_completion__i7C4Y4NiesraiSwwb__k8,i7C4Y4NiesraiSwwb,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__igzR4gy2oRnE6uN85__k8,igzR4gy2oRnE6uN85,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__jKen5K2Lw8Rmccxh2__k8,jKen5K2Lw8Rmccxh2,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__jLW7uN5mLX4JmjFo7__k8,jLW7uN5mLX4JmjFo7,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__jvD9GfjCgL4JoEaMq__k8,jvD9GfjCgL4JoEaMq,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__k6ASmEnkogfYzTeTR__k8,k6ASmEnkogfYzTeTR,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__kf8QF2MCDs5kJhToE__k8,kf8QF2MCDs5kJhToE,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__mf69tavvQcoqC5iaR__k8,mf69tavvQcoqC5iaR,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__n54FzkWNqLZxLv2BS__k8,n54FzkWNqLZxLv2BS,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__nRTwAP7KEWAmawF3x__k8,nRTwAP7KEWAmawF3x,val,8,16,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",False,False,False,True
+trajectory_completion__nxmwtbBo6NK64RrLp__k8,nxmwtbBo6NK64RrLp,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__o73iA6ZktS8eD8Tvx__k8,o73iA6ZktS8eD8Tvx,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__pPsoXTn2Pr6iTzqiY__k8,pPsoXTn2Pr6iTzqiY,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__privie8F5995NBXnB__k8,privie8F5995NBXnB,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__q6MFaNc9JLxdrPuxQ__k8,q6MFaNc9JLxdrPuxQ,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__qifdzNTJxMn9kXwzv__k8,qifdzNTJxMn9kXwzv,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__qn3ZZ26WLFCPKeBWM__k8,qn3ZZ26WLFCPKeBWM,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__qnwoWA9PooEsojSqN__k8,qnwoWA9PooEsojSqN,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,False,True,True
+trajectory_completion__qqdGcErMMiFvQuwur__k8,qqdGcErMMiFvQuwur,val,8,26,12,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE""]",True,False,True,True
+trajectory_completion__rMnamRP2AWhWgPZ2m__k8,rMnamRP2AWhWgPZ2m,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__rNRuBfonGaB2vPorM__k8,rNRuBfonGaB2vPorM,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__rk28XFsjoeBNZ7wCx__k8,rk28XFsjoeBNZ7wCx,val,8,15,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",True,False,False,True
+trajectory_completion__ruMMYez5kuSd3D4SF__k8,ruMMYez5kuSd3D4SF,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,False,False,True
+trajectory_completion__sX9yfB3XHqdTLM3Ru__k8,sX9yfB3XHqdTLM3Ru,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,True,False,True
+trajectory_completion__sXv4pLM9QNSAFxxQW__k8,sXv4pLM9QNSAFxxQW,val,8,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__t8Ss94ojpNP6xdGYh__k8,t8Ss94ojpNP6xdGYh,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__tCFnJifRgNRyrz7WY__k8,tCFnJifRgNRyrz7WY,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__tGoAaMWpJTmqmxxMh__k8,tGoAaMWpJTmqmxxMh,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__tomGidqaeJHBa5YMr__k8,tomGidqaeJHBa5YMr,val,8,12,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",True,True,False,True
+trajectory_completion__uERcGPrTeqKWLtmbJ__k8,uERcGPrTeqKWLtmbJ,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__uFaYheSQ6WssQwa7w__k8,uFaYheSQ6WssQwa7w,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__uW4Cg9gRG7BwbDMJi__k8,uW4Cg9gRG7BwbDMJi,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__ubqE84hRkjXyn8o9L__k8,ubqE84hRkjXyn8o9L,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,False,False,True
+trajectory_completion__urf8ouXom7YTA2ASn__k8,urf8ouXom7YTA2ASn,val,8,26,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__uwTnwBFdLcqtTZALa__k8,uwTnwBFdLcqtTZALa,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__v9hzdr6gxdBLtzfBL__k8,v9hzdr6gxdBLtzfBL,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__wNsxNofHWZfK3J2p9__k8,wNsxNofHWZfK3J2p9,val,8,23,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",True,False,False,True
+trajectory_completion__wZsGucrLXmLgJASMm__k8,wZsGucrLXmLgJASMm,val,8,17,16,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW"", ""PINGUIN"", ""MONKEY"", ""FROG""]",False,False,True,True
+trajectory_completion__wbfiYici7fRE6g98p__k8,wbfiYici7fRE6g98p,val,8,19,10,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK""]",False,False,False,True
+trajectory_completion__yB6tLexJ2FZ6h4oim__k8,yB6tLexJ2FZ6h4oim,val,8,16,3,"[""SLOTH"", ""GORILLA"", ""DUCK""]",False,True,False,True
+trajectory_completion__zKf8JGD6NqbmcmQAK__k8,zKf8JGD6NqbmcmQAK,val,8,29,4,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN""]",False,True,True,True
+trajectory_completion__zXKx7QTLiHXMeeBKe__k8,zXKx7QTLiHXMeeBKe,val,8,14,13,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT"", ""MOOSE"", ""RABBIT"", ""OWL"", ""CHICK"", ""SNAKE"", ""CROCODILE"", ""COW""]",True,True,True,True
+trajectory_completion__zZi9i6kMGmSc4w78o__k8,zZi9i6kMGmSc4w78o,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,True,True,True
+trajectory_completion__zjHbWYPbEC977w5CW__k8,zjHbWYPbEC977w5CW,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True
+trajectory_completion__zxAZxpenZ3cNvqNjo__k8,zxAZxpenZ3cNvqNjo,val,8,19,6,"[""SLOTH"", ""GORILLA"", ""DUCK"", ""CHICKEN"", ""DOG"", ""PARROT""]",False,False,True,True

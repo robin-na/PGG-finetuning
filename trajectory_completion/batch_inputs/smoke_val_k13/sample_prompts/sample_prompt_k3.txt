@@ -1,0 +1,73 @@
+=== SYSTEM MESSAGE ===
+
+You forecast the remaining rounds of an observed public goods game from an external observer perspective. Return only JSON that matches the provided schema. Do not add explanations.
+
+=== USER MESSAGE ===
+
+GAME SNAPSHOT
+- game_id: 2KKC9nMd8nRXfgH5G
+- total_rounds: 29
+- observed_rounds: 3
+- remaining_rounds: 26
+- players: SLOTH, GORILLA, DUCK, CHICKEN
+- endowment_per_round: 20
+- all_or_nothing: false
+- punishment_enabled: false
+- reward_enabled: true
+
+TASK
+- Predict every remaining round from round 4 through round 29.
+- Use the observer transcript prefix exactly as given below.
+- Do not predict chat messages. Predict only contributions, punishments, and rewards.
+
+STRICT OUTPUT RULES
+- Return JSON only. No markdown. No explanation.
+- Keep `game_id` exactly `2KKC9nMd8nRXfgH5G`.
+- Keep `observed_rounds` exactly 3.
+- Output exactly 26 objects in `predicted_rounds`.
+- `round_number` values must be [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29].
+- In every predicted round, include exactly these players in `player_predictions`: ['SLOTH', 'GORILLA', 'DUCK', 'CHICKEN'].
+- Each contribution must be an integer from 0 to 20.
+- This is not all-or-nothing.
+- Punishment is disabled. Every `punish` array must be empty.
+- Reward is enabled. `reward` must list outgoing reward actions by that player.
+- Never target the acting player themself.
+- Use integer `units >= 1` for every listed action.
+- If a player sends no punishment or no reward, use an empty array for that field.
+- Preserve exact player names.
+
+OBSERVED TRANSCRIPT PREFIX
+You are observing an online public goods game (PGG) from an omniscient observer's perspective. Each player receives 20 coins per round and chooses how many coins to put into the shared pot (integer from 0 to 20).
+In the actual player experience, players do not see others' choices before deciding.
+The pot is multiplied by 1.8× and split equally among all active players.
+A player's round payoff is: coins kept + equal share of the multiplied pot, adjusted for any punishment or reward outcomes.
+After contributions are redistributed, players may reward each other.
+Observer note: this transcript always includes the full round count, every player's actions, exact punishment/reward source-target identities, and per-player round summaries.
+Some of that information was not available to individual players in the live game, including other players' round summaries.
+# GAME STARTS
+<PLAYERS> SLOTH,GORILLA,DUCK,CHICKEN </PLAYERS>
+<ROUND i="1 of 29">
+<ROUND_INFO> Each player starts with 20 coins already in the public fund and chooses how many coins to pull back for private use (equivalently, contribution options are integer from 0 to 20). (multiplier: 1.8×). </ROUND_INFO>
+<CONTRIBUTIONS json='{"SLOTH":0,"GORILLA":10,"DUCK":20,"CHICKEN":0}'/>
+<REDIST total_contrib="30" avg_contrib="7.5" multiplied_contrib="54" active_players="4" redistributed_each="13.5"/>
+<MECHANISM_INFO> Per reward unit: cost 3 coins to grant 2 coins. </MECHANISM_INFO>
+<REWARDS json='{}'/>
+<ROUND SUMMARY json='{"SLOTH":{"contribution":0,"round_payoff":34,"coins_spent_on_reward":0,"coins_rewarded_to_them":0},"GORILLA":{"contribution":10,"round_payoff":24,"coins_spent_on_reward":0,"coins_rewarded_to_them":0},"DUCK":{"contribution":20,"round_payoff":14,"coins_spent_on_reward":0,"coins_rewarded_to_them":0},"CHICKEN":{"contribution":0,"round_payoff":34,"coins_spent_on_reward":0,"coins_rewarded_to_them":0}}'/>
+</ROUND>
+<ROUND i="2 of 29">
+<ROUND_INFO> Each player starts with 20 coins already in the public fund and chooses how many coins to pull back for private use (equivalently, contribution options are integer from 0 to 20). (multiplier: 1.8×). </ROUND_INFO>
+<CONTRIBUTIONS json='{"SLOTH":10,"GORILLA":0,"DUCK":20,"CHICKEN":10}'/>
+<REDIST total_contrib="40" avg_contrib="10" multiplied_contrib="72" active_players="4" redistributed_each="18"/>
+<MECHANISM_INFO> Per reward unit: cost 3 coins to grant 2 coins. </MECHANISM_INFO>
+<REWARDS json='{}'/>
+<ROUND SUMMARY json='{"SLOTH":{"contribution":10,"round_payoff":28,"coins_spent_on_reward":0,"coins_rewarded_to_them":0},"GORILLA":{"contribution":0,"round_payoff":38,"coins_spent_on_reward":0,"coins_rewarded_to_them":0},"DUCK":{"contribution":20,"round_payoff":18,"coins_spent_on_reward":0,"coins_rewarded_to_them":0},"CHICKEN":{"contribution":10,"round_payoff":28,"coins_spent_on_reward":0,"coins_rewarded_to_them":0}}'/>
+</ROUND>
+<ROUND i="3 of 29">
+<ROUND_INFO> Each player starts with 20 coins already in the public fund and chooses how many coins to pull back for private use (equivalently, contribution options are integer from 0 to 20). (multiplier: 1.8×). </ROUND_INFO>
+<CONTRIBUTIONS json='{"SLOTH":10,"GORILLA":20,"DUCK":0,"CHICKEN":10}'/>
+<REDIST total_contrib="40" avg_contrib="10" multiplied_contrib="72" active_players="4" redistributed_each="18"/>
+<MECHANISM_INFO> Per reward unit: cost 3 coins to grant 2 coins. </MECHANISM_INFO>
+<REWARDS json='{"CHICKEN":{"GORILLA":1}}'/>
+<ROUND SUMMARY json='{"SLOTH":{"contribution":10,"round_payoff":28,"coins_spent_on_reward":0,"coins_rewarded_to_them":0},"GORILLA":{"contribution":20,"round_payoff":20,"coins_spent_on_reward":0,"coins_rewarded_to_them":2},"DUCK":{"contribution":0,"round_payoff":38,"coins_spent_on_reward":0,"coins_rewarded_to_them":0},"CHICKEN":{"contribution":10,"round_payoff":25,"coins_spent_on_reward":3,"coins_rewarded_to_them":0}}'/>
+</ROUND>
+# OBSERVED PREFIX ENDS AFTER ROUND 3 OF 29

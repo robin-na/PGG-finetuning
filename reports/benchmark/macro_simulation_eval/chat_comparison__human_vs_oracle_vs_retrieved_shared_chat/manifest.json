@@ -1,0 +1,19 @@
+{
+  "analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/benchmark/data/processed_data/df_analysis_val.csv",
+  "run_ids": [
+    "oracle_archetype/10478932_r0_macro_oracle_archetype_local_12b",
+    "config_bank_archetype/10491393_r0_macro_config_bank_archetype_local_12b"
+  ],
+  "labels": [
+    "oracle archetype",
+    "retrieved archetype"
+  ],
+  "n_chat_enabled_shared_games": 20,
+  "outputs": {
+    "chat_frequency_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/chat_comparison__human_vs_oracle_vs_retrieved_shared_chat/chat_frequency_summary.csv",
+    "chat_category_rates_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/chat_comparison__human_vs_oracle_vs_retrieved_shared_chat/chat_category_rates.csv",
+    "chat_examples_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/chat_comparison__human_vs_oracle_vs_retrieved_shared_chat/chat_examples.csv",
+    "team_share_summary_md": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/chat_comparison__human_vs_oracle_vs_retrieved_shared_chat/team_share_summary.md",
+    "chat_comparison_summary_png": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/reports/benchmark/macro_simulation_eval/chat_comparison__human_vs_oracle_vs_retrieved_shared_chat/figures/chat_comparison_summary.png"
+  }
+}
