@@ -1,0 +1,82 @@
+{
+  "source_comparison_game_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/results/validation_wave_one_per_treatment_validstart_ge10_k1358_gpt4mini_vs_gpt5_vs_persistence/comparison_game_summary.csv",
+  "config_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_val.csv",
+  "filter": "CONFIG_chat == True",
+  "game_counts_by_k": {
+    "1": 16,
+    "3": 15,
+    "5": 15,
+    "8": 15
+  },
+  "treatments_by_k": {
+    "1": [
+      "VALIDATION_11_C",
+      "VALIDATION_11_T",
+      "VALIDATION_12_C",
+      "VALIDATION_12_T",
+      "VALIDATION_13_C",
+      "VALIDATION_13_T",
+      "VALIDATION_14_C",
+      "VALIDATION_14_T",
+      "VALIDATION_16_C",
+      "VALIDATION_16_T",
+      "VALIDATION_18_C",
+      "VALIDATION_18_T",
+      "VALIDATION_3_C",
+      "VALIDATION_3_T",
+      "VALIDATION_7_C",
+      "VALIDATION_7_T"
+    ],
+    "3": [
+      "VALIDATION_11_C",
+      "VALIDATION_12_C",
+      "VALIDATION_12_T",
+      "VALIDATION_13_C",
+      "VALIDATION_13_T",
+      "VALIDATION_14_C",
+      "VALIDATION_14_T",
+      "VALIDATION_16_C",
+      "VALIDATION_16_T",
+      "VALIDATION_18_C",
+      "VALIDATION_18_T",
+      "VALIDATION_3_C",
+      "VALIDATION_3_T",
+      "VALIDATION_7_C",
+      "VALIDATION_7_T"
+    ],
+    "5": [
+      "VALIDATION_11_C",
+      "VALIDATION_11_T",
+      "VALIDATION_12_C",
+      "VALIDATION_12_T",
+      "VALIDATION_13_C",
+      "VALIDATION_13_T",
+      "VALIDATION_14_C",
+      "VALIDATION_14_T",
+      "VALIDATION_16_C",
+      "VALIDATION_16_T",
+      "VALIDATION_18_C",
+      "VALIDATION_3_C",
+      "VALIDATION_3_T",
+      "VALIDATION_7_C",
+      "VALIDATION_7_T"
+    ],
+    "8": [
+      "VALIDATION_11_T",
+      "VALIDATION_12_C",
+      "VALIDATION_12_T",
+      "VALIDATION_13_C",
+      "VALIDATION_13_T",
+      "VALIDATION_14_C",
+      "VALIDATION_14_T",
+      "VALIDATION_16_C",
+      "VALIDATION_16_T",
+      "VALIDATION_18_C",
+      "VALIDATION_18_T",
+      "VALIDATION_3_C",
+      "VALIDATION_3_T",
+      "VALIDATION_7_C",
+      "VALIDATION_7_T"
+    ]
+  }
+}

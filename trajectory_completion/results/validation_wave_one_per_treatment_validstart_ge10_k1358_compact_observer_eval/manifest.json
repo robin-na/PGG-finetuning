@@ -1,0 +1,23 @@
+{
+  "repo_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning",
+  "split": "val",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/batch_inputs/validation_wave_one_per_treatment_validstart_ge10_k1358_compact_observer/request_manifest.csv",
+  "output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/batch_inputs/validation_wave_one_per_treatment_validstart_ge10_k1358_compact_observer/output_batch_all_k.jsonl",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/batch_inputs/validation_wave_one_per_treatment_validstart_ge10_k1358_compact_observer/parsed_output_batch_all_k.jsonl",
+  "baseline_name": "compact_observer_llm",
+  "selected_game_count": 28,
+  "k_values": [
+    1,
+    3,
+    5,
+    8
+  ],
+  "evaluated_requests": 90,
+  "skipped_requests": 22,
+  "llm_evaluated_games_by_k": {
+    "1": 23,
+    "3": 20,
+    "5": 22,
+    "8": 25
+  }
+}

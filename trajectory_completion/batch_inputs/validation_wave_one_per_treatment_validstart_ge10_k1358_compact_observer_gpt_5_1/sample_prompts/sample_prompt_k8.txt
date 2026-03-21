@@ -1,0 +1,111 @@
+=== SYSTEM MESSAGE ===
+
+You forecast the remaining rounds of an observed public goods game.
+
+First write a careful free-form reflection about what the observed history suggests about each player's incentives, values, beliefs, strategy, and uncertainty. Be cautious where the evidence is weak.
+
+Then continue the game in the same transcript format as the observed history. Keep the stage ordering coherent within each round. Any predicted action lines that are wrapped in the observed history should stay wrapped in <<>> exactly.
+
+=== USER MESSAGE ===
+
+Predict every remaining round from round 9 through round 26.
+
+# GAME RULES
+This is an online public goods game (PGG).
+Each round, the 20 coins begin in the shared pot. Each player chooses how many coins to withdraw for private use, so the resulting contribution must be either 0 or 20.
+Players do not see others' choices before deciding.
+The shared pot is multiplied by 2.9 and split equally among all active players.
+After contributions are revealed and redistributed, players may reward other players.
+Each reward unit costs 1 coin to the source and adds 1 coin to the target.
+Players may send messages to the group whenever they choose to do so.
+Players know that the game lasts 26 rounds.
+Players cannot identify who rewarded them in their summary information.
+At the summary stage (`ROUND N SUMMARY SHOWN TO PLAYERS`), each player sees their own net payoff of the round, along with the amount they used for rewarding other players and amount received for reward.
+However, the corresponding information of the peers are not shown.
+
+Output requirements:
+- First write `### OVERALL REFLECTION` followed by a detailed reflection on the state of the game, what each player's behavior suggests, and where uncertainty remains.
+- After that, continue only the unobserved rounds in the same transcript format as the observed history.
+- Use the exact avatar order from `<PLAYERS>` for every contribution list.
+- Keep the contribution line wrapped as `### CONTRIBUTIONS: <<[...]>>`.
+- Keep the action line wrapped as `### REWARD: <<[...]>>`.
+- In `### REWARD`, use tuples `(source_avatar, target_avatar, unit)`.
+- Include only non-zero action edges. If no one acts in a round, write `### REWARD: <<[]>>`.
+- Because this game only has reward, every `unit` must be positive.
+- Predict chat inline as transcript lines, using `CHAT from AVATAR: ...`.
+- Preserve exact avatar names.
+
+Observed history:
+# GAME STARTS
+<PLAYERS> SLOTH, GORILLA, DUCK, CHICKEN, DOG, PARROT, MOOSE, RABBIT, OWL, CHICK, SNAKE, CROCODILE </PLAYERS>
+## ROUND 1 BEGINS
+### CONTRIBUTIONS: <<[0, 20, 20, 20, 0, 0, 20, 20, 20, 20, 0, 20]>>
+CHAT from PARROT: HI
+CHAT from CROCODILE: hi
+### REWARD: <<[(MOOSE, RABBIT, 1), (CHICK, GORILLA, 1), (CHICK, DUCK, 1), (CHICK, CHICKEN, 1), (CHICK, MOOSE, 1), (CHICK, RABBIT, 1), (CHICK, OWL, 1), (CHICK, CROCODILE, 1), (SNAKE, RABBIT, 1)]>>
+### ROUND 1 SUMMARY SHOWN TO PLAYERS
+CHAT from SNAKE: hello
+CHAT from MOOSE: hi
+CHAT from CHICKEN: Hi
+CHAT from CHICK: contributing max every round makes the most for everyone
+## ROUND 2 BEGINS
+CHAT from PARROT: true
+CHAT from SNAKE: ok thanks
+### CONTRIBUTIONS: <<[0, 20, 20, 0, 20, 0, 20, 20, 20, 20, 0, 20]>>
+CHAT from CROCODILE: cool
+### REWARD: <<[(GORILLA, CHICK, 1), (CHICK, GORILLA, 1), (CHICK, DUCK, 1), (CHICK, DOG, 1), (CHICK, MOOSE, 1), (CHICK, RABBIT, 1), (CHICK, OWL, 1), (CHICK, CROCODILE, 1)]>>
+### ROUND 2 SUMMARY SHOWN TO PLAYERS
+## ROUND 3 BEGINS
+CHAT from PARROT: cool
+### CONTRIBUTIONS: <<[20, 20, 20, 20, 20, 0, 20, 20, 20, 20, 0, 20]>>
+### REWARD: <<[(MOOSE, PARROT, 1), (CHICK, SLOTH, 1), (CHICK, GORILLA, 1), (CHICK, DUCK, 1), (CHICK, CHICKEN, 1), (CHICK, DOG, 1), (CHICK, MOOSE, 1), (CHICK, RABBIT, 1), (CHICK, OWL, 1), (CHICK, CROCODILE, 1)]>>
+### ROUND 3 SUMMARY SHOWN TO PLAYERS
+CHAT from CHICK: I give bonuses to those who  give max. leechers get nothing
+## ROUND 4 BEGINS
+CHAT from GORILLA: Agreed. Not sure why some are still giving 0 round after round and don't get they'll get more themselves if they contribute max??
+### CONTRIBUTIONS: <<[20, 20, 20, 0, 20, 0, 20, 20, 20, 20, 0, 20]>>
+CHAT from SLOTH: Red bird and snake please contribute!!
+CHAT from CROCODILE: and chicken
+### REWARD: <<[(GORILLA, SLOTH, 1), (GORILLA, DUCK, 1), (GORILLA, DOG, 1), (GORILLA, MOOSE, 1), (GORILLA, RABBIT, 1), (GORILLA, OWL, 1), (GORILLA, CHICK, 1), (GORILLA, CROCODILE, 1), (CHICK, SLOTH, 1), (CHICK, GORILLA, 1), (CHICK, DUCK, 1), (CHICK, DOG, 1), (CHICK, MOOSE, 1), (CHICK, RABBIT, 1), (CHICK, OWL, 1), (CHICK, CROCODILE, 1), (SNAKE, RABBIT, 20), (CROCODILE, GORILLA, 1), (CROCODILE, CHICK, 1)]>>
+### ROUND 4 SUMMARY SHOWN TO PLAYERS
+CHAT from MOOSE: They don't have to contribute.
+CHAT from SNAKE: right, cvalm down
+CHAT from CROCODILE: they don't have to, but they'll get more if they do
+CHAT from SNAKE: calm down
+## ROUND 5 BEGINS
+### CONTRIBUTIONS: <<[20, 20, 20, 20, 20, 0, 20, 20, 20, 20, 0, 20]>>
+CHAT from SLOTH: You calm down and use your brain
+CHAT from DOG: hi
+### REWARD: <<[(SLOTH, CHICK, 1), (GORILLA, SLOTH, 1), (GORILLA, DUCK, 1), (GORILLA, CHICKEN, 1), (GORILLA, DOG, 1), (GORILLA, MOOSE, 1), (GORILLA, RABBIT, 1), (GORILLA, OWL, 1), (GORILLA, CHICK, 1), (GORILLA, CROCODILE, 1), (DUCK, SLOTH, 1), (DUCK, GORILLA, 1), (DUCK, CHICKEN, 1), (DUCK, DOG, 1), (DUCK, MOOSE, 1), (DUCK, RABBIT, 1), (DUCK, OWL, 1), (DUCK, CHICK, 1), (DUCK, CROCODILE, 1), (OWL, CHICK, 1), (CHICK, SLOTH, 1), (CHICK, GORILLA, 1), (CHICK, DUCK, 1), (CHICK, CHICKEN, 1), (CHICK, DOG, 1), (CHICK, MOOSE, 1), (CHICK, RABBIT, 1), (CHICK, OWL, 1), (CHICK, CROCODILE, 1), (CROCODILE, CHICKEN, 1), (CROCODILE, CHICK, 1)]>>
+### ROUND 5 SUMMARY SHOWN TO PLAYERS
+CHAT from PARROT: hello
+CHAT from CROCODILE: hi wolf
+CHAT from SNAKE: lol
+## ROUND 6 BEGINS
+CHAT from SLOTH: snake, we all have more than you
+### CONTRIBUTIONS: <<[20, 20, 20, 20, 20, 0, 20, 20, 20, 20, 0, 20]>>
+CHAT from CROCODILE: lol
+CHAT from PARROT: i think i have more than everyone
+### REWARD: <<[(SLOTH, GORILLA, 1), (SLOTH, DUCK, 1), (SLOTH, DOG, 1), (SLOTH, MOOSE, 1), (SLOTH, RABBIT, 1), (SLOTH, OWL, 1), (SLOTH, CHICK, 1), (SLOTH, CROCODILE, 1), (GORILLA, SLOTH, 1), (GORILLA, DUCK, 1), (GORILLA, CHICKEN, 1), (GORILLA, DOG, 1), (GORILLA, MOOSE, 1), (GORILLA, RABBIT, 1), (GORILLA, OWL, 1), (GORILLA, CHICK, 1), (GORILLA, CROCODILE, 1), (DUCK, SLOTH, 1), (DUCK, GORILLA, 1), (DUCK, CHICKEN, 1), (DUCK, DOG, 1), (DUCK, MOOSE, 1), (DUCK, RABBIT, 1), (DUCK, OWL, 1), (DUCK, CHICK, 1), (DUCK, CROCODILE, 1), (CHICKEN, SLOTH, 1), (CHICKEN, GORILLA, 1), (CHICKEN, DUCK, 1), (CHICKEN, DOG, 1), (CHICKEN, PARROT, 2), (CHICKEN, MOOSE, 1), (CHICKEN, RABBIT, 1), (CHICKEN, OWL, 1), (CHICKEN, CHICK, 1), (CHICKEN, SNAKE, 1), (CHICKEN, CROCODILE, 1), (CHICK, SLOTH, 1), (CHICK, GORILLA, 1), (CHICK, DUCK, 1), (CHICK, CHICKEN, 1), (CHICK, DOG, 1), (CHICK, MOOSE, 1), (CHICK, RABBIT, 1), (CHICK, OWL, 1), (CHICK, CROCODILE, 1), (CROCODILE, CHICKEN, 1), (CROCODILE, DOG, 1)]>>
+### ROUND 6 SUMMARY SHOWN TO PLAYERS
+CHAT from SLOTH: no, its simple maths
+CHAT from CHICK: you put nothing in and just take
+CHAT from CHICK: bird
+CHAT from GORILLA: Apparently it's still not simple enough for some people, lol.
+## ROUND 7 BEGINS
+CHAT from SLOTH: maths is hard clearly
+### CONTRIBUTIONS: <<[20, 20, 20, 20, 0, 0, 20, 20, 20, 20, 0, 20]>>
+### REWARD: <<[(SLOTH, GORILLA, 1), (SLOTH, DUCK, 1), (SLOTH, CHICKEN, 1), (SLOTH, MOOSE, 1), (SLOTH, RABBIT, 1), (SLOTH, OWL, 1), (SLOTH, CHICK, 1), (SLOTH, CROCODILE, 1), (GORILLA, SLOTH, 1), (GORILLA, DUCK, 1), (GORILLA, CHICKEN, 1), (GORILLA, MOOSE, 1), (GORILLA, RABBIT, 1), (GORILLA, OWL, 1), (GORILLA, CHICK, 1), (GORILLA, CROCODILE, 1), (CHICKEN, SLOTH, 1), (CHICKEN, GORILLA, 1), (CHICKEN, DUCK, 1), (CHICKEN, DOG, 1), (CHICKEN, PARROT, 1), (CHICKEN, MOOSE, 1), (CHICKEN, RABBIT, 1), (CHICKEN, OWL, 1), (CHICKEN, CHICK, 1), (CHICKEN, SNAKE, 1), (CHICKEN, CROCODILE, 1), (RABBIT, SLOTH, 1), (RABBIT, GORILLA, 1), (RABBIT, DUCK, 1), (RABBIT, CHICKEN, 1), (RABBIT, MOOSE, 1), (RABBIT, OWL, 1), (RABBIT, CHICK, 1), (RABBIT, CROCODILE, 1), (CHICK, SLOTH, 1), (CHICK, GORILLA, 1), (CHICK, DUCK, 1), (CHICK, CHICKEN, 1), (CHICK, MOOSE, 1), (CHICK, RABBIT, 1), (CHICK, OWL, 1), (CHICK, CROCODILE, 1), (CROCODILE, RABBIT, 1), (CROCODILE, OWL, 1)]>>
+### ROUND 7 SUMMARY SHOWN TO PLAYERS
+CHAT from MOOSE: This is mind numbingly boring.
+CHAT from CROCODILE: was the bonus per 300 coins or 400? anyone remember?
+## ROUND 8 BEGINS
+CHAT from MOOSE: 300
+CHAT from CROCODILE: ok cool
+### CONTRIBUTIONS: <<[20, 20, 20, 20, 0, 0, 20, 20, 20, 20, 20, 20]>>
+CHAT from PARROT: 200
+CHAT from CHICK: ty snek
+### REWARD: <<[(SLOTH, CHICK, 1), (GORILLA, SLOTH, 1), (GORILLA, DUCK, 1), (GORILLA, CHICKEN, 1), (GORILLA, MOOSE, 1), (GORILLA, RABBIT, 1), (GORILLA, OWL, 1), (GORILLA, CHICK, 1), (GORILLA, CROCODILE, 1), (CHICK, SLOTH, 1), (CHICK, GORILLA, 1), (CHICK, DUCK, 1), (CHICK, CHICKEN, 1), (CHICK, MOOSE, 1), (CHICK, RABBIT, 1), (CHICK, OWL, 1), (CHICK, SNAKE, 1), (CHICK, CROCODILE, 1), (CROCODILE, SLOTH, 1), (CROCODILE, MOOSE, 1)]>>
+### ROUND 8 SUMMARY SHOWN TO PLAYERS
+CHAT from SLOTH: all red bird has is 200?
+CHAT from CROCODILE: lol

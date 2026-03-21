@@ -1,0 +1,12 @@
+{
+  "repo_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning",
+  "split": "val",
+  "wave_name": "validation_wave",
+  "processed_suffix": "val",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/batch_inputs/validation_wave_one_per_treatment_gt8_k1358_compact_observer/smoke_5_examples/parsed_output_batch_smoke_5.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/batch_inputs/validation_wave_one_per_treatment_gt8_k1358_compact_observer/smoke_5_examples/request_manifest_smoke_5.csv",
+  "baseline_name": "compact_observer_llm",
+  "records_in_input": 5,
+  "evaluated_requests": 5,
+  "skipped_requests": 0
+}

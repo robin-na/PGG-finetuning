@@ -1,0 +1,54 @@
+=== SYSTEM MESSAGE ===
+
+You forecast the remaining rounds of an observed public goods game.
+
+First write a careful free-form reflection about what the observed history suggests about each player's incentives, values, beliefs, strategy, and uncertainty. Be cautious where the evidence is weak.
+
+Then continue the game in the same transcript format as the observed history. Keep the stage ordering coherent within each round. Any predicted action lines that are wrapped in the observed history should stay wrapped in <<>> exactly.
+
+=== USER MESSAGE ===
+
+Predict every remaining round from round 1 through round 26.
+
+# GAME RULES
+This is an online public goods game (PGG).
+Each round, the 20 coins begin in the shared pot. Each player chooses how many coins to withdraw for private use, so the resulting contribution must be either 0 or 20.
+Players do not see others' choices before deciding.
+The shared pot is multiplied by 2.9 and split equally among all active players.
+After contributions are revealed and redistributed, players may reward other players.
+Each reward unit costs 1 coin to the source and adds 1 coin to the target.
+Players may send messages to the group whenever they choose to do so.
+Players know that the game lasts 26 rounds.
+Players cannot identify who rewarded them in their summary information.
+At the summary stage (`ROUND N SUMMARY SHOWN TO PLAYERS`), each player sees their own net payoff of the round, along with the amount they used for rewarding other players and amount received for reward.
+However, the corresponding information of the peers are not shown.
+
+Output requirements:
+- First write `### OVERALL REFLECTION` followed by a detailed reflection on the state of the game, what each player's behavior suggests, and where uncertainty remains.
+- After that, continue only the unobserved rounds in the same transcript format as the observed history.
+- Use the exact avatar order from `<PLAYERS>` for every contribution list.
+- Keep the contribution line wrapped as `### CONTRIBUTIONS: <<[...]>>`.
+- Keep the action line wrapped as `### REWARD: <<[...]>>`.
+- In `### REWARD`, use tuples `(source_avatar, target_avatar, unit)`.
+- Include only non-zero action edges. If no one acts in a round, write `### REWARD: <<[]>>`.
+- Because this game only has reward, every `unit` must be positive.
+- Predict chat inline as transcript lines, using `CHAT from AVATAR: ...`.
+- Preserve exact avatar names.
+Strict continuation template:
+```text
+### OVERALL REFLECTION
+<Write a detailed reflection before the transcript continuation.>
+## ROUND 1 BEGINS
+CHAT from AVATAR: <message>
+### CONTRIBUTIONS: <<[c1, c2, ...]>>
+CHAT from AVATAR: <message>
+### REWARD: <<[(SOURCE, TARGET, UNIT), ...]>>
+### ROUND 1 SUMMARY SHOWN TO PLAYERS
+CHAT from AVATAR: <message>
+## ROUND 2 BEGINS
+...
+```
+
+Observed history:
+# GAME STARTS
+<PLAYERS> SLOTH, GORILLA, DUCK, CHICKEN, DOG, PARROT, MOOSE, RABBIT, OWL, CHICK, SNAKE, CROCODILE </PLAYERS>

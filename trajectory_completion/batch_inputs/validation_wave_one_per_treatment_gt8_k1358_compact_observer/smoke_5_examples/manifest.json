@@ -1,0 +1,11 @@
+{
+  "source_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/batch_inputs/validation_wave_one_per_treatment_gt8_k1358_compact_observer",
+  "smoke_count": 5,
+  "selected_custom_ids": [
+    "trajectory_completion_compact__VALIDATION_11_C__PmcxhmDRj2tN3cECC__k1",
+    "trajectory_completion_compact__VALIDATION_11_T__925LF9k9CXpz8KjQm__k3",
+    "trajectory_completion_compact__VALIDATION_12_C__gv6sq5Y4NMqzeGSFH__k5",
+    "trajectory_completion_compact__VALIDATION_12_T__rMnamRP2AWhWgPZ2m__k8",
+    "trajectory_completion_compact__VALIDATION_15_C__Lb5CGirJ4pRHAdHzC__k3"
+  ]
+}

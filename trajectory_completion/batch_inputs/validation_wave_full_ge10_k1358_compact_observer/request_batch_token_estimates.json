@@ -1,0 +1,44 @@
+{
+  "encoding_model": "gpt-4o",
+  "estimation_method": "tiktoken message-content estimate with 3-token-per-message and 3-token reply primer overhead",
+  "request_count": 628,
+  "total_estimated_input_tokens": 588460,
+  "mean_estimated_input_tokens": 937.0382165605096,
+  "median_estimated_input_tokens": 820.5,
+  "max_estimated_input_tokens": 7047,
+  "min_estimated_input_tokens": 405,
+  "by_k": {
+    "1": {
+      "request_count": 157,
+      "total_estimated_input_tokens": 95268,
+      "mean_estimated_input_tokens": 606.8025477707006,
+      "median_estimated_input_tokens": 629.0,
+      "max_estimated_input_tokens": 963,
+      "min_estimated_input_tokens": 405
+    },
+    "3": {
+      "request_count": 157,
+      "total_estimated_input_tokens": 128977,
+      "mean_estimated_input_tokens": 821.5095541401274,
+      "median_estimated_input_tokens": 784.0,
+      "max_estimated_input_tokens": 2794,
+      "min_estimated_input_tokens": 473
+    },
+    "5": {
+      "request_count": 157,
+      "total_estimated_input_tokens": 160361,
+      "mean_estimated_input_tokens": 1021.4076433121019,
+      "median_estimated_input_tokens": 934.0,
+      "max_estimated_input_tokens": 5124,
+      "min_estimated_input_tokens": 541
+    },
+    "8": {
+      "request_count": 157,
+      "total_estimated_input_tokens": 203854,
+      "mean_estimated_input_tokens": 1298.4331210191083,
+      "median_estimated_input_tokens": 1149.0,
+      "max_estimated_input_tokens": 7047,
+      "min_estimated_input_tokens": 643
+    }
+  }
+}

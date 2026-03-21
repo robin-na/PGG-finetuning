@@ -7,7 +7,7 @@ from pathlib import Path
 import pandas as pd
 
 from .baselines import make_rollouts, simulate_round
-from .data import GameTrajectory, RoundRecord, load_learning_wave_games
+from .data import GameTrajectory, RoundRecord, load_wave_games
 
 
 def _typed_action_map(round_record: RoundRecord, player_id: str) -> dict[tuple[str, str], int]:
@@ -441,6 +441,7 @@ def _rollout_game(game: GameTrajectory, k: int) -> tuple[list[dict[str, object]]
 def main() -> None:
     parser = argparse.ArgumentParser(description="Evaluate within-game trajectory completion baselines.")
     parser.add_argument("--repo-root", type=Path, default=Path(__file__).resolve().parents[1])
+    parser.add_argument("--split", type=str, choices=["learn", "val"], default="learn")
     parser.add_argument("--k-values", type=str, default="1,3,5,8")
     parser.add_argument("--min-num-rounds-exclusive", type=int, default=10)
     parser.add_argument(
@@ -452,7 +453,14 @@ def main() -> None:
     args = parser.parse_args()
 
     k_values = _parse_k_values(args.k_values)
-    games = load_learning_wave_games(args.repo_root, min_num_rounds_exclusive=args.min_num_rounds_exclusive)
+    wave_name = "learning_wave" if args.split == "learn" else "validation_wave"
+    processed_suffix = "learn" if args.split == "learn" else "val"
+    games = load_wave_games(
+        repo_root=args.repo_root,
+        wave_name=wave_name,
+        processed_suffix=processed_suffix,
+        min_num_rounds_exclusive=args.min_num_rounds_exclusive,
+    )
     if args.limit_games > 0:
         games = games[: args.limit_games]
 
@@ -503,6 +511,9 @@ def main() -> None:
 
     manifest = {
         "repo_root": str(args.repo_root),
+        "split": args.split,
+        "wave_name": wave_name,
+        "processed_suffix": processed_suffix,
         "k_values": k_values,
         "min_num_rounds_exclusive": args.min_num_rounds_exclusive,
         "games_loaded": len(games),

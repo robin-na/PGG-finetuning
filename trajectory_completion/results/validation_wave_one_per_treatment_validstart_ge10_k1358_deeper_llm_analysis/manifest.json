@@ -1,0 +1,8 @@
+{
+  "common_manifest_json": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/results/validation_wave_one_per_treatment_validstart_ge10_k1358_gpt4mini_vs_gpt5_vs_persistence/manifest.json",
+  "df_analysis_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/data/processed_data/df_analysis_val.csv",
+  "gpt4_actor_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/results/validation_wave_one_per_treatment_validstart_ge10_k1358_compact_observer_eval_permissive/llm_actor_level_predictions.csv",
+  "gpt4_game_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/results/validation_wave_one_per_treatment_validstart_ge10_k1358_compact_observer_eval_permissive/llm_game_summary.csv",
+  "gpt5_actor_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/results/validation_wave_one_per_treatment_validstart_ge10_k1358_compact_observer_gpt_5_1_eval_permissive/llm_actor_level_predictions.csv",
+  "gpt5_game_summary_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/trajectory_completion/results/validation_wave_one_per_treatment_validstart_ge10_k1358_compact_observer_gpt_5_1_eval_permissive/llm_game_summary.csv"
+}

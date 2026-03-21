@@ -1,0 +1,9 @@
+model,metric,r2,n_rows
+gpt_4_1_mini,contribution_rate_mae,0.36970360485629394,104
+gpt_4_1_mini,future_normalized_efficiency_abs_error,0.2792291203137681,104
+gpt_4_1_mini,punish_target_f1,0.8688273953607102,104
+gpt_4_1_mini,reward_target_f1,0.9236557672942542,104
+gpt_5_1,contribution_rate_mae,0.33752789087573576,104
+gpt_5_1,future_normalized_efficiency_abs_error,0.228021761521504,104
+gpt_5_1,punish_target_f1,0.7611730720956348,104
+gpt_5_1,reward_target_f1,0.9392710942817697,104

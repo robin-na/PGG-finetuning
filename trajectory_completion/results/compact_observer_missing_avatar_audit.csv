@@ -1,0 +1,10 @@
+split,gameId,CONFIG_treatmentName,valid_number_of_starting_players,CONFIG_playerCount,roster_size_from_games_csv,num_actual_players,num_started_game,num_started_and_readycheck,num_completed_first_round,CONFIG_numRounds,missing_player_id,missing_avatar_all_contribution_na,missing_avatar_all_roundpayoff_na,createdAt
+learn,Yq3KD8v64AAp9TWB8,28_T,False,11,8,7,8,8,7,2,AoWKYANgwmrEhiBRd,True,True,2023-05-03T19:19:24Z
+learn,zTbHGGYYavSwFSdRx,1_T,True,15,14,13,14,14,13,17,SzoPoKxLGoYRkW7c2,True,True,2023-06-07T15:14:15Z
+learn,KSbkpoF7LDj2u2BBi,77_T,True,17,17,16,17,17,16,26,tg8DE97ZeozTbusFr,True,True,2023-06-30T18:46:19Z
+learn,PHxHJu5s7CogZREzt,78_C,True,14,14,13,14,14,13,10,2KRxXBpzorocnEYgW,True,True,2023-07-05T15:13:55Z
+learn,iLiiPwTLDTLQvdbxP,115_T,False,10,10,8,10,9,8,16,PodQCRfbuyNu3cZiA,True,True,2023-10-06T17:42:10Z
+learn,gv3H4EqgWKzE7LQGF,145_T,True,14,13,12,13,13,12,20,YGhtRZTuNDm2uGsmx,True,True,2024-05-14T19:16:08Z
+val,PSJq6rD9XtWqDiofD,VALIDATION_1_C,False,3,3,2,3,3,2,16,Qm5dyKoWfhRvr7t86,True,True,2024-07-08T17:47:16Z
+val,h8kYzB9zLiEGyJaS7,VALIDATION_0_T,True,10,10,9,10,10,9,6,uomxEj7M4zRZXFNbo,True,True,2024-07-09T15:35:12Z
+val,nksA9bQGkMzbEzXmB,VALIDATION_6_T,True,13,13,12,13,13,12,16,2bRTWBaguvtacbvKN,True,True,2024-07-10T19:38:56Z

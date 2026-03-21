@@ -94,7 +94,7 @@ def _plot_metric(ax: plt.Axes, df: pd.DataFrame, metric: str, title: str, subtit
     ax.spines["right"].set_visible(False)
 
 
-def build_figure(df: pd.DataFrame, output_path: Path) -> None:
+def build_figure(df: pd.DataFrame, output_path: Path, dataset_label: str) -> None:
     plt.style.use("seaborn-v0_8-whitegrid")
     fig, axes = plt.subplots(2, 3, figsize=(16, 9), constrained_layout=True)
     fig.patch.set_facecolor("#f5f1e8")
@@ -112,7 +112,7 @@ def build_figure(df: pd.DataFrame, output_path: Path) -> None:
         bbox_to_anchor=(0.5, 1.02),
     )
     fig.suptitle(
-        "Trajectory Completion Baselines\nLearning-wave complete games, num_rounds > 10",
+        f"Trajectory Completion Baselines\n{dataset_label}",
         fontsize=15,
         fontweight="bold",
         y=1.06,
@@ -138,13 +138,18 @@ def main() -> None:
         type=Path,
         default=Path(__file__).resolve().parent / "results" / "learning_wave_complete_gt10_k1358" / "plot_metric_summary.csv",
     )
+    parser.add_argument(
+        "--dataset-label",
+        type=str,
+        default="Learning-wave complete games, num_rounds > 10",
+    )
     args = parser.parse_args()
 
     df = pd.read_csv(args.game_summary_csv)
     plot_df = _summarize_for_plot(df)
     args.output_path.parent.mkdir(parents=True, exist_ok=True)
     plot_df.to_csv(args.stats_output_csv, index=False)
-    build_figure(plot_df, args.output_path)
+    build_figure(plot_df, args.output_path, args.dataset_label)
     print(f"Wrote plot to {args.output_path}")
     print(f"Wrote plot stats to {args.stats_output_csv}")
 
