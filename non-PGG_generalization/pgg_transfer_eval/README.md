@@ -239,6 +239,42 @@ Typical output structure:
 - `output/joint_social_oracle_onestep/`
   - one-step hosted-retrieval prediction request JSONL, manifest, previews, token estimates
 
+## MobLab Exploratory Analyses
+
+This repo also contains local analysis scripts for MobLab behavioral data. These are
+pure data-exploration and statistical-baseline utilities; they do not run any LLM
+inference.
+
+- `analyze_moblab_multiround_transfer.py`
+  - Builds rich multiround source-game features from raw MobLab logs.
+  - Evaluates cross-game predictive power and compares rich features against
+    collapsed scalar baselines.
+  - Writes results under `non-PGG_generalization/pgg_transfer_eval/output/moblab_multiround_analysis/`.
+- `analyze_moblab_persistence_and_correlation.py`
+  - Compares round-1 vs multiround distributions for each MobLab game measure.
+  - Computes round-1 cross-game correlations and compares them with multiround
+    correlations.
+  - Writes results under `non-PGG_generalization/pgg_transfer_eval/output/moblab_round1_multiround/`.
+- `analyze_moblab_statistical_baselines.py`
+  - Implements two non-LLM baselines:
+    1. predict a target game's first-round action from other games' first-round
+       actions
+    2. `k=1 persistence`, where round 1 predicts the later rounds of the same game
+  - Also joins these statistical baselines against the earlier rich-feature
+    cross-game results to explain why moderate correlations can still correspond to
+    low out-of-sample `R^2`.
+  - Writes results under `non-PGG_generalization/pgg_transfer_eval/output/moblab_statistical_baselines/`.
+
+Typical commands:
+
+- `python non-PGG_generalization/pgg_transfer_eval/analyze_moblab_multiround_transfer.py`
+- `python non-PGG_generalization/pgg_transfer_eval/analyze_moblab_persistence_and_correlation.py`
+- `python non-PGG_generalization/pgg_transfer_eval/analyze_moblab_statistical_baselines.py`
+
+These MobLab analysis outputs are intentionally kept under the ignored
+`non-PGG_generalization/pgg_transfer_eval/output/` tree. This analysis workflow does
+not depend on slide-deck or PDF-generation utilities.
+
 ## One-Step Hosted Retrieval Run Order
 
 1. Build the local oracle corpus
