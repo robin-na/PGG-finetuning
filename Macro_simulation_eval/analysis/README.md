@@ -192,3 +192,94 @@ Note: OLS baselines are CONFIG-only game-level regressions.
   - For binary configs: `True mean - False mean`
   - For continuous configs: `above-median mean - below-median mean`
   - Sign agreement between human vs simulated deltas.
+
+---
+
+## LLM Simulation vs OLS: Data Efficiency & Experimental Design
+
+Two analyses compare LLM persona-based simulation against OLS (Ridge regression on
+CONFIG features) as tools for predicting and optimizing PGG outcomes.
+
+### Data
+
+| Dataset | Description |
+|---------|-------------|
+| Learning wave | 214 games, 137 unique configs — OLS training pool |
+| Validation wave | 249 games, 20 unique configs — evaluation universe |
+| LLM simulation | `local12b_four_variant_rollout`: 31 shared games × 4 variants (no / oracle / retrieved / random archetype), using `binary_targets` action mode (max 1 punish/reward per target) |
+| Per-config ground truth | Mean outcome across replicate games per config (3–20 replicates each) |
+
+### Task 1: OLS Scaling Curve — How much training data does OLS need?
+
+**Script**: `plot_ols_vs_llm_by_data_availability.py`
+
+**Question**: OLS trained on all 137 configs is a strong baseline. But what if the
+experimenter only has data from a few configs? How does OLS prediction quality
+degrade, and how does it compare to LLM simulation (which needs zero training data)?
+
+**Method**:
+1. For each sample size `n_configs` ∈ {2, 5, 10, 20, 40, 80, 137}:
+   - Randomly sample `n_configs` unique configIds from the learning wave
+   - Keep all games with those configIds as training data
+   - Train Ridge regression (α=1.0) on CONFIG features → predict all 249 val games
+   - Compute RMSE
+   - Repeat 50 times with different random seeds → mean + 95% CI
+2. LLM simulation RMSE is computed from `game_level_parity.csv` (31 shared games)
+   for each archetype variant — shown as flat horizontal reference lines.
+
+**Output**: 2×2 subplot grid (contribution rate, normalized efficiency, punishment
+rate, reward rate). X-axis = number of unique training configs, Y-axis = RMSE.
+
+**Key finding**: OLS needs ~40–80 configs to match LLM oracle/retrieved archetype
+accuracy. At 2–5 configs, OLS RMSE is 2–3× higher. LLM performance is constant
+regardless of available training data.
+
+```bash
+# Run from repo root
+python Macro_simulation_eval/analysis/plot_ols_vs_llm_by_data_availability.py
+```
+
+**Output figure**: `reports/benchmark/macro_simulation_eval/local12b_four_variant_rollout/figures/ols_scaling_vs_llm.png`
+
+### Task 2: LLM-Guided Experimental Design — Finding the optimal config
+
+**Script**: `plot_llm_guided_experiment_design.py`
+
+**Question**: A researcher wants to find the config that maximizes contribution rate
+(or normalized efficiency) but can only run a limited number of experiments. Can LLM
+simulation guide which experiments to run, outperforming random or OLS-guided search?
+
+**Setup**:
+- Universe: 20 unique val configs (ground truth known but hidden)
+- True optimum: configId=7 (contribution rate = 0.91, normalized efficiency = 0.89)
+- Sequential protocol: at each step, select one config to observe, reveal its true
+  outcome, record the best outcome found so far
+
+**Methods compared**:
+
+| Method | How it selects the next config |
+|--------|-------------------------------|
+| **Random search** | Pick uniformly at random from remaining configs. 500 repeats for CI. |
+| **OLS-guided (cold start)** | Steps 1–2: random (need ≥2 points to fit). Step t≥3: train Ridge on observed configs only, predict all remaining, pick highest predicted. 500 repeats. |
+| **LLM oracle archetype** | LLM simulates all 20 configs upfront, ranks by predicted outcome. Observe in rank order (highest first). Deterministic, single run. |
+| **LLM retrieved archetype** | Same as oracle but using retrieved-archetype simulation predictions. |
+
+**Output**: 1×2 subplot (contribution rate, normalized efficiency). X-axis = number
+of experiments run, Y-axis = best real outcome found so far.
+
+**Key finding**: LLM oracle archetype reaches near-optimal contribution rate (0.90)
+within 3 experiments. Random search needs ~10 experiments on average. OLS cold start
+is comparable to random in early steps (limited by the 2-step random initialization).
+
+```bash
+# Run from repo root
+python Macro_simulation_eval/analysis/plot_llm_guided_experiment_design.py
+```
+
+**Output figure**: `reports/benchmark/macro_simulation_eval/local12b_four_variant_rollout/figures/llm_guided_experiment_design.png`
+
+### Shared Dependencies
+
+Both scripts import `build_game_level_rate_targets()` from `plot_macro_four_variant_summary.py`
+to compute game-level contribution/punishment/reward rates from raw player-round data.
+Both must be run from the **repo root** (paths are relative to it).
