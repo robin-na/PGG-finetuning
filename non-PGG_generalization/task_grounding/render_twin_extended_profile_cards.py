@@ -16,7 +16,7 @@ THIS_DIR = Path(__file__).resolve().parent
 DEFAULT_PROFILES_JSONL = THIS_DIR / "output" / "twin_extended_profiles" / "twin_extended_profiles.jsonl"
 DEFAULT_SCHEMA_JSON = THIS_DIR / "twin_extended_profile_card_schema.json"
 DEFAULT_OUTPUT_DIR = THIS_DIR / "output" / "twin_extended_profile_cards"
-DETAIL_MODES = ("compact", "standard", "audit")
+DETAIL_MODES = ("compact", "standard", "audit", "pgg_prompt", "pgg_prompt_min")
 
 MODE_SETTINGS = {
     "compact": {
@@ -36,6 +36,18 @@ MODE_SETTINGS = {
         "signature_max": 6,
         "anchors_max": 7,
         "limits_max": 6,
+    },
+    "pgg_prompt": {
+        "background_max": 4,
+        "signature_max": 5,
+        "anchors_max": 5,
+        "limits_max": 2,
+    },
+    "pgg_prompt_min": {
+        "background_max": 3,
+        "signature_max": 4,
+        "anchors_max": 4,
+        "limits_max": 2,
     },
 }
 
@@ -79,6 +91,49 @@ DECISION_STYLE_CONSTRUCTION = [
     "Cognitive performance: financial-literacy, numeracy, CRT-style, and logic items from the cognitive-test blocks.",
     "Heuristics and consumer tasks: anchoring, framing, sale-search, WTA/WTP, and pricing-purchase judgments.",
 ]
+
+PGG_PROMPT_SHARED_NOTE = [
+    "These profiles summarize prior survey and behavioral-task evidence about each participant.",
+    "Treat the cues as relative tendencies, not deterministic predictions for any single public-goods-game decision.",
+    "Unless a player-specific limit is listed, shared methodological caveats apply to all players.",
+]
+
+PGG_PROMPT_SHARED_CAVEATS = [
+    "Communication/coordination is indirect: the source tasks do not directly observe repeated group discussion.",
+    "Norm-enforcement cues mainly reflect unfair-split resistance and revenge/forgiveness items, not direct repeated-game sanction use.",
+    "Pricing, anchoring, and framing signals are secondary and relatively coarse compared with direct social-allocation behavior.",
+]
+
+PGG_PROMPT_CUE_GLOSSARY = {
+    "cooperation_orientation": [
+        "Meaning: blend of one-shot sharing behavior and cooperation/prosocial self-report.",
+        "Built from: trust-game sending, dictator giving, cooperation/competition items, agreeableness/helpfulness items, and prosocial values.",
+    ],
+    "conditional_cooperation": [
+        "Meaning: reciprocity and fairness-threshold sensitivity rather than a repeated-game reaction function.",
+        "Built from: trust-game return behavior and ultimatum acceptance-threshold signals.",
+    ],
+    "norm_enforcement": [
+        "Meaning: resistance to unfair splits and revenge/low-forgiveness cues in ultimatum-like contexts.",
+        "Built from: ultimatum minimum acceptable amounts plus revenge/forgiveness self-report.",
+    ],
+    "generosity_without_return": [
+        "Meaning: willingness to give when repayment incentives are weak or absent.",
+        "Built from: dictator giving, trust-game sending, and prosocial/helpfulness cues.",
+    ],
+    "exploitation_caution": [
+        "Meaning: guardedness against being taken advantage of.",
+        "Built from: lower trustingness, stricter acceptance thresholds, uncertainty aversion, self-reliance, and revenge tendency.",
+    ],
+    "communication_coordination": [
+        "Meaning: indirect cue for likely social expressiveness and coordination readiness.",
+        "Built from: empathy, social-sensitivity/self-monitoring, and extraversion-related self-report.",
+    ],
+    "behavioral_stability": [
+        "Meaning: rule-like internal consistency across self-regulation items.",
+        "Built from: conscientiousness-related items, self-concept clarity, and lower volatility-related personality items.",
+    ],
+}
 
 CUE_MEANINGS = {
     "cooperation_orientation": "Here, cooperation orientation means a blend of one-shot sharing behavior and cooperation/prosocial self-report. It is not a direct measure of repeated-group contribution.",
@@ -129,6 +184,8 @@ def mode_setting(detail_mode: str, key: str) -> int:
 
 
 def social_style_construction(detail_mode: str) -> List[str]:
+    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+        return []
     if detail_mode == "compact":
         return [
             "Prosocial/competitive self-report from the personality and values blocks.",
@@ -142,6 +199,8 @@ def social_style_construction(detail_mode: str) -> List[str]:
 
 
 def decision_style_construction(detail_mode: str) -> List[str]:
+    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+        return []
     if detail_mode == "compact":
         return [
             "Time/risk choice tasks plus cognitive-test performance.",
@@ -156,6 +215,19 @@ def decision_style_construction(detail_mode: str) -> List[str]:
 
 def cue_meaning_text(cue: str, payload: Dict[str, Any], detail_mode: str) -> str:
     base = f"{CUE_DISPLAY_NAMES[cue]} is {label_pretty(payload['label'])} ({payload['score_0_to_100']}/100)."
+    if detail_mode == "pgg_prompt_min":
+        return ""
+    if detail_mode == "pgg_prompt":
+        prompt_meanings = {
+            "cooperation_orientation": " Blend of one-shot sharing behavior and cooperation/prosocial self-report.",
+            "conditional_cooperation": " Reciprocity and fairness-threshold sensitivity rather than a repeated-game strategy.",
+            "norm_enforcement": " Mainly about unfair-split resistance and revenge/forgiveness cues.",
+            "generosity_without_return": " Mainly about giving when repayment is weak or absent.",
+            "exploitation_caution": " Mainly about guardedness against exploitation.",
+            "communication_coordination": " Indirect cue from self-report; the source tasks do not observe repeated group discussion.",
+            "behavioral_stability": " Rule-like consistency across self-regulation items.",
+        }
+        return base + prompt_meanings[cue]
     if detail_mode == "compact":
         compact_meanings = {
             "cooperation_orientation": " Blend of one-shot sharing behavior and cooperation/prosocial self-report.",
@@ -163,7 +235,7 @@ def cue_meaning_text(cue: str, payload: Dict[str, Any], detail_mode: str) -> str
             "norm_enforcement": " Mainly about unfair-split resistance in ultimatum-like contexts, not generic punishment.",
             "generosity_without_return": " Mainly about giving when repayment is weak or absent.",
             "exploitation_caution": " Mainly about guardedness against being taken advantage of.",
-            "communication_coordination": " Indirect cue from self-report; Twin does not observe repeated group communication.",
+            "communication_coordination": " Indirect cue from self-report; the source tasks do not observe repeated group communication.",
             "behavioral_stability": " Rule-like consistency across self-regulation items, not invariance across all future settings.",
         }
         return base + compact_meanings[cue]
@@ -171,6 +243,8 @@ def cue_meaning_text(cue: str, payload: Dict[str, Any], detail_mode: str) -> str
 
 
 def cue_components(cue: str, detail_mode: str) -> List[str]:
+    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+        return []
     if detail_mode == "compact":
         return CUE_COMPONENTS[cue][:2]
     if detail_mode == "audit":
@@ -414,7 +488,7 @@ def pick_headline_descriptors(profile: Dict[str, Any]) -> List[str]:
         if len(chosen) == 3:
             break
     if not chosen:
-        return ["mixed", "evidence-rich", "Twin profile"]
+        return ["mixed", "evidence-rich", "behavior profile"]
     while len(chosen) < 3:
         chosen.append("mixed")
     return chosen[:3]
@@ -497,11 +571,14 @@ def build_social_style_section(profile: Dict[str, Any], detail_mode: str) -> Dic
     else:
         cautions.append("Self-report prosociality and direct allocation behavior point in a similar broad direction, but they still come from different task formats.")
     if profile["pgg_relevant_cues"]["communication_coordination"]["confidence"] == "low":
-        cautions.append("Communication-related readings are especially indirect because Twin does not observe repeated strategic group communication.")
+        cautions.append("Communication-related readings are especially indirect because the source tasks do not observe repeated strategic group communication.")
+
+    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+        cautions = []
 
     return {
         "summary": (
-            "Here, social style summarizes direct social-allocation behavior together with prosocial/competitive and empathy-related self-report. "
+            "Social style summarizes direct social-allocation behavior together with prosocial/competitive and empathy-related self-report. "
             f"The most distinctive supported social signals are {top_text}."
         ),
         "constructed_from": social_style_construction(detail_mode),
@@ -525,9 +602,12 @@ def build_decision_style_section(profile: Dict[str, Any], detail_mode: str) -> D
     ]
     cautions.append("Anchoring/framing and pricing-related inferences are based on relatively sparse task sets and should be read as coarse tendencies.")
 
+    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+        cautions = []
+
     return {
         "summary": (
-            "Here, decision style summarizes intertemporal/risk choices, cognitive-test performance, heuristics/biases, and consumer-choice behavior. "
+            "Decision style summarizes intertemporal/risk choices, cognitive-test performance, heuristics/biases, and consumer-choice behavior. "
             f"The most distinctive supported decision signals are {top_text}."
         ),
         "constructed_from": decision_style_construction(detail_mode),
@@ -770,16 +850,50 @@ def build_transfer_relevance(profile: Dict[str, Any], detail_mode: str) -> List[
                 "confidence": payload["confidence"],
                 "meaning_here": cue_meaning_text(cue, payload, detail_mode),
                 "constructed_from": cue_components(cue, detail_mode),
-                "scope_note": payload["scope_note"],
+                "scope_note": "" if detail_mode in {"pgg_prompt", "pgg_prompt_min"} else payload["scope_note"],
                 "evidence_refs": payload["evidence_refs"],
             }
         )
     return out
 
 
+def build_limits(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, Any]]:
+    if detail_mode not in {"pgg_prompt", "pgg_prompt_min"}:
+        return profile["uncertainties"][: mode_setting(detail_mode, "limits_max")]
+
+    limits: List[Dict[str, Any]] = []
+    cooperation_score = profile["derived_dimensions"]["self_regulation_and_affect"]["cooperation_orientation"]["score_0_to_100"]
+    generosity_score = profile["pgg_relevant_cues"]["generosity_without_return"]["score_0_to_100"]
+    if abs(cooperation_score - generosity_score) >= 20:
+        limits.append(
+            {
+                "topic": "Prosociality mismatch",
+                "note": "Cooperative self-report and direct one-shot giving behavior do not fully align for this participant.",
+                "evidence_refs": [
+                    "Personality::QID25",
+                    "Personality::QID233",
+                    "Economic preferences::QID117",
+                    "Economic preferences::QID231",
+                ],
+            }
+        )
+
+    communication_payload = profile["pgg_relevant_cues"]["communication_coordination"]
+    if communication_payload["confidence"] == "low" and score_distance(communication_payload) >= 15:
+        limits.append(
+            {
+                "topic": "Communication uncertainty",
+                "note": "Communication/coordination is distinctive here but remains indirect because it comes from self-report and social-sensitivity items rather than observed group discussion.",
+                "evidence_refs": communication_payload["evidence_refs"],
+            }
+        )
+
+    return limits[: mode_setting(detail_mode, "limits_max")]
+
+
 def build_card(profile: Dict[str, Any], detail_mode: str) -> Dict[str, Any]:
     return {
-        "profile_card_version": "twin_extended_profile_card_v3",
+        "profile_card_version": "twin_extended_profile_card_v4",
         "detail_mode": detail_mode,
         "participant": {
             "pid": profile["participant"]["pid"],
@@ -794,7 +908,7 @@ def build_card(profile: Dict[str, Any], detail_mode: str) -> Dict[str, Any]:
         "decision_style": build_decision_style_section(profile, detail_mode),
         "observed_anchors": build_observed_anchors(profile, detail_mode),
         "transfer_relevance": build_transfer_relevance(profile, detail_mode),
-        "limits": profile["uncertainties"][: mode_setting(detail_mode, "limits_max")],
+        "limits": build_limits(profile, detail_mode),
     }
 
 
@@ -809,10 +923,18 @@ def validate_card(card: Dict[str, Any], validator: Draft202012Validator) -> None
 
 def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: str) -> str:
     lines: List[str] = []
-    lines.append("# Twin Extended Profile Cards")
+    if detail_mode == "pgg_prompt":
+        lines.append("# Behavior Profile Cards For PGG Prompting")
+    elif detail_mode == "pgg_prompt_min":
+        lines.append("# Minimal Behavior Profile Cards For PGG Prompting")
+    else:
+        lines.append("# Twin Extended Profile Cards")
     lines.append("")
     lines.append(f"Detail mode: `{detail_mode}`")
     lines.append("")
+    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+        lines.append("Shared prompt note is written separately to `shared_prompt_notes.md` in this output directory.")
+        lines.append("")
     lines.append(f"Preview cards rendered: {len(cards)} of {total_count}")
     lines.append("")
     for idx, card in enumerate(cards, start=1):
@@ -832,17 +954,19 @@ def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: s
         lines.append("")
         lines.append("**Social Style**")
         lines.append(f"- {card['social_style']['summary']}")
-        lines.append("- Constructed from:")
-        for item in card["social_style"]["constructed_from"]:
-            lines.append(f"  - {item}")
+        if card["social_style"]["constructed_from"]:
+            lines.append("- Constructed from:")
+            for item in card["social_style"]["constructed_from"]:
+                lines.append(f"  - {item}")
         for item in card["social_style"]["cautions"]:
             lines.append(f"- Caution: {item}")
         lines.append("")
         lines.append("**Decision Style**")
         lines.append(f"- {card['decision_style']['summary']}")
-        lines.append("- Constructed from:")
-        for item in card["decision_style"]["constructed_from"]:
-            lines.append(f"  - {item}")
+        if card["decision_style"]["constructed_from"]:
+            lines.append("- Constructed from:")
+            for item in card["decision_style"]["constructed_from"]:
+                lines.append(f"  - {item}")
         for item in card["decision_style"]["cautions"]:
             lines.append(f"- Caution: {item}")
         lines.append("")
@@ -855,17 +979,45 @@ def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: s
             lines.append(
                 f"- `{CUE_DISPLAY_NAMES[item['cue']]}`: {label_pretty(item['label'])} ({item['score_0_to_100']}), confidence {item['confidence']}"
             )
-            lines.append(f"  Meaning here: {item['meaning_here']}")
-            lines.append("  Constructed from:")
-            for sub in item["constructed_from"]:
-                lines.append(f"  - {sub}")
-            lines.append(f"  Boundary: {item['scope_note']}")
+            if item["meaning_here"]:
+                lines.append(f"  Meaning here: {item['meaning_here']}")
+            if item["constructed_from"]:
+                lines.append("  Constructed from:")
+                for sub in item["constructed_from"]:
+                    lines.append(f"  - {sub}")
+            if item["scope_note"]:
+                lines.append(f"  Boundary: {item['scope_note']}")
         lines.append("")
-        lines.append("**Limits**")
-        for item in card["limits"]:
-            lines.append(f"- {item['topic']}: {item['note']}")
-        lines.append("")
+        if card["limits"]:
+            lines.append("**Limits**")
+            for item in card["limits"]:
+                lines.append(f"- {item['topic']}: {item['note']}")
+            lines.append("")
     return "\n".join(lines)
+
+
+def build_shared_prompt_notes() -> str:
+    lines: List[str] = []
+    lines.append("# Shared Prompt Notes")
+    lines.append("")
+    lines.append("## General Interpretation Note")
+    lines.append("")
+    for item in PGG_PROMPT_SHARED_NOTE:
+        lines.append(f"- {item}")
+    lines.append("")
+    lines.append("## Shared Caveats")
+    lines.append("")
+    for item in PGG_PROMPT_SHARED_CAVEATS:
+        lines.append(f"- {item}")
+    lines.append("")
+    lines.append("## Cue Glossary")
+    lines.append("")
+    for cue in CUE_ORDER:
+        lines.append(f"### {CUE_DISPLAY_NAMES[cue]}")
+        for item in PGG_PROMPT_CUE_GLOSSARY[cue]:
+            lines.append(f"- {item}")
+        lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
 
 
 def build_csv_rows(cards: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -932,6 +1084,7 @@ def write_mode_outputs(
     preview_json = output_dir / "preview_twin_extended_profile_cards.json"
     output_md = output_dir / "preview_twin_extended_profile_cards.md"
     output_csv = output_dir / "twin_extended_profile_cards.csv"
+    shared_prompt_notes = output_dir / "shared_prompt_notes.md"
 
     with output_jsonl.open("w", encoding="utf-8") as f:
         for card in cards:
@@ -939,11 +1092,15 @@ def write_mode_outputs(
     preview_json.write_text(json.dumps(cards[:3], ensure_ascii=False, indent=2), encoding="utf-8")
     output_md.write_text(build_markdown(cards[: markdown_limit], len(cards), detail_mode), encoding="utf-8")
     write_csv(build_csv_rows(cards), output_csv)
+    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+        shared_prompt_notes.write_text(build_shared_prompt_notes(), encoding="utf-8")
 
     print(f"[{detail_mode}] Wrote jsonl:   {output_jsonl}")
     print(f"[{detail_mode}] Wrote preview: {preview_json}")
     print(f"[{detail_mode}] Wrote md:      {output_md}")
     print(f"[{detail_mode}] Wrote csv:     {output_csv}")
+    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+        print(f"[{detail_mode}] Wrote note:    {shared_prompt_notes}")
     print(f"[{detail_mode}] Cards:         {len(cards)}")
 
 

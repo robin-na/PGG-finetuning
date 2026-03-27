@@ -24,6 +24,15 @@ Start with a game-level explanation of the likely dynamics, incentives, and unce
 
 
 PHASE_ORDER = ("contribution", "outcome", "summary")
+TWIN_TRANSFER_CUE_DISPLAY_NAMES = {
+    "cooperation_orientation": "Cooperation orientation",
+    "conditional_cooperation": "Conditional cooperation",
+    "norm_enforcement": "Norm enforcement",
+    "generosity_without_return": "Generosity without return",
+    "exploitation_caution": "Exploitation caution",
+    "communication_coordination": "Communication/coordination",
+    "behavioral_stability": "Behavioral stability",
+}
 
 
 @dataclass(frozen=True)
@@ -50,6 +59,18 @@ class PromptMetadata:
     show_reward_id: bool
     valid_number_of_starting_players: bool
     chat_log: str
+
+
+@dataclass(frozen=True)
+class TwinPersonaAssignment:
+    seat_index: int
+    player_id: str
+    headline: str
+    summary: str
+    target_age_bracket: str
+    target_education_harmonized: str
+    target_sex: str
+    twin_pid: str
 
 
 def _as_bool(value: Any) -> bool:
@@ -87,27 +108,65 @@ def _sanitize_token(value: str) -> str:
     return sanitized.strip("_").lower()
 
 
+def _canonical_variant_name(variant_name: str) -> str:
+    variant_slug = _sanitize_token(variant_name)
+    aliases = {
+        "baseline_direct_transcript": "baseline",
+    }
+    return aliases.get(variant_slug, variant_slug)
+
+
+def _twin_assignment_path_for_variant(repo_root: Path, variant_name: str) -> Path | None:
+    variant_slug = _canonical_variant_name(variant_name)
+    if variant_slug == "twin_sampled_seed_0":
+        return (
+            repo_root
+            / "non-PGG_generalization/task_grounding/output"
+            / "twin_to_pgg_validation_persona_sampling/seed_0/game_assignments.jsonl"
+        )
+    return None
+
+
+def _twin_prompt_cards_path_for_variant(repo_root: Path, variant_name: str) -> Path | None:
+    variant_slug = _canonical_variant_name(variant_name)
+    if variant_slug == "twin_sampled_seed_0":
+        return (
+            repo_root
+            / "non-PGG_generalization/task_grounding/output"
+            / "twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl"
+        )
+    return None
+
+
+def _twin_shared_notes_path_for_variant(repo_root: Path, variant_name: str) -> Path | None:
+    variant_slug = _canonical_variant_name(variant_name)
+    if variant_slug == "twin_sampled_seed_0":
+        return (
+            repo_root
+            / "non-PGG_generalization/task_grounding/output"
+            / "twin_extended_profile_cards/pgg_prompt_min/shared_prompt_notes.md"
+        )
+    return None
+
+
 def _default_run_name(args: argparse.Namespace, selected_game_count: int) -> str:
-    repeat_token = (
-        "repeat_match_valid_start_counts"
-        if args.repeat_count_mode == "match_valid_start_treatment_counts"
-        else f"repeat_{args.repeats_per_game}"
-    )
-    valid_start_token = "validstart" if args.require_valid_starting_players else "allstarts"
-    min_rounds_token = f"minrounds_gt_{args.min_num_rounds_exclusive}"
-    return "__".join(
-        [
-            _sanitize_token(args.variant_name),
-            _sanitize_token(args.split),
-            "k0",
-            _sanitize_token(args.selection_mode),
-            valid_start_token,
-            f"games_{selected_game_count}",
-            min_rounds_token,
-            repeat_token,
-            _sanitize_token(args.model),
-        ]
-    )
+    base_name = f"{_canonical_variant_name(args.variant_name)}_{_sanitize_token(args.model)}"
+    suffixes: list[str] = []
+    if args.split != "val":
+        suffixes.append(_sanitize_token(args.split))
+    if args.selection_mode != "one_per_treatment":
+        suffixes.append(_sanitize_token(args.selection_mode))
+    if not args.require_valid_starting_players:
+        suffixes.append("allstarts")
+    if args.min_num_rounds_exclusive != 0:
+        suffixes.append(f"minrounds_gt_{args.min_num_rounds_exclusive}")
+    if args.repeat_count_mode != "match_valid_start_treatment_counts":
+        suffixes.append(f"repeat_{args.repeats_per_game}")
+    if selected_game_count != 40:
+        suffixes.append(f"games_{selected_game_count}")
+    if not suffixes:
+        return base_name
+    return "__".join([base_name, *suffixes])
 
 
 def _load_avatar_map(players_path: Path) -> dict[str, str]:
@@ -117,6 +176,16 @@ def _load_avatar_map(players_path: Path) -> dict[str, str]:
         str(row["_id"]): str(row["data.avatar"]).strip().upper()
         for _, row in players.iterrows()
     }
+
+
+def _load_avatar_inventory(players_path: Path) -> list[str]:
+    players = pd.read_csv(players_path, usecols=["data.avatar"])
+    avatars = {
+        str(value).strip().upper()
+        for value in players["data.avatar"].dropna().tolist()
+        if str(value).strip()
+    }
+    return sorted(avatars)
 
 
 def _load_game_rows(games_path: Path) -> dict[str, dict[str, Any]]:
@@ -194,6 +263,50 @@ def _load_valid_start_treatment_counts(processed_path: Path) -> dict[str, int]:
     frame = frame[frame["valid_number_of_starting_players"].apply(_as_bool)].copy()
     counts = frame.groupby("CONFIG_treatmentName").size()
     return {str(treatment_name): int(count) for treatment_name, count in counts.items()}
+
+
+def _load_twin_game_assignments(
+    assignments_path: Path,
+) -> dict[str, dict[str, TwinPersonaAssignment]]:
+    assignments_by_game: dict[str, dict[str, TwinPersonaAssignment]] = {}
+    with assignments_path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            row = json.loads(line)
+            game_id = str(row["gameId"])
+            player_assignments: dict[str, TwinPersonaAssignment] = {}
+            for assignment in row.get("assignments", []):
+                player_id = assignment.get("pgg_roster_playerId")
+                if player_id is None:
+                    continue
+                player_key = str(player_id)
+                player_assignments[player_key] = TwinPersonaAssignment(
+                    seat_index=int(assignment["seat_index"]),
+                    player_id=player_key,
+                    headline=str(assignment.get("twin_profile_headline", "")).strip(),
+                    summary=str(assignment.get("twin_profile_summary", "")).strip(),
+                    target_age_bracket=str(assignment.get("target_age_bracket", "")).strip(),
+                    target_education_harmonized=str(
+                        assignment.get("target_education_harmonized", "")
+                    ).strip(),
+                    target_sex=str(assignment.get("target_sex", "")).strip(),
+                    twin_pid=str(assignment.get("twin_pid", "")).strip(),
+                )
+            assignments_by_game[game_id] = player_assignments
+    return assignments_by_game
+
+
+def _load_twin_profile_cards(cards_path: Path) -> dict[str, dict[str, Any]]:
+    cards_by_pid: dict[str, dict[str, Any]] = {}
+    with cards_path.open("r", encoding="utf-8") as handle:
+        for line in handle:
+            card = json.loads(line)
+            pid = str(card["participant"]["pid"])
+            cards_by_pid[pid] = card
+    return cards_by_pid
+
+
+def _load_text_file(path: Path) -> str:
+    return path.read_text(encoding="utf-8").strip()
 
 
 def _parse_chat_messages(raw_value: str) -> list[dict[str, Any]]:
@@ -371,9 +484,40 @@ def _player_avatar_order(
     game_id: str,
     game_rows: dict[str, dict[str, Any]],
     avatar_map: dict[str, str],
+    avatar_inventory: list[str],
 ) -> tuple[list[str], list[str]]:
     raw_player_order = list(game_rows[game_id]["player_order"])
-    avatar_order = [avatar_map[player_id] for player_id in raw_player_order]
+    known_avatar_order = [
+        avatar_map[player_id].strip().upper()
+        for player_id in raw_player_order
+        if player_id in avatar_map and avatar_map[player_id].strip()
+    ]
+    if len(set(known_avatar_order)) != len(known_avatar_order):
+        raise ValueError(f"Game {game_id} has duplicate avatar names within the selected roster.")
+
+    avatar_order: list[str] = []
+    reserved_avatars = set(known_avatar_order)
+    assigned_missing_avatars: set[str] = set()
+    for player_id in raw_player_order:
+        avatar = avatar_map.get(player_id)
+        if avatar:
+            normalized_avatar = avatar.strip().upper()
+            avatar_order.append(normalized_avatar)
+            continue
+        replacement = next(
+            (
+                candidate
+                for candidate in avatar_inventory
+                if candidate not in reserved_avatars and candidate not in assigned_missing_avatars
+            ),
+            None,
+        )
+        if replacement is None:
+            raise ValueError(
+                f"Game {game_id} has missing avatar metadata and no unused replacement avatar is available."
+            )
+        avatar_order.append(replacement)
+        assigned_missing_avatars.add(replacement)
     if len(set(avatar_order)) != len(avatar_order):
         raise ValueError(f"Game {game_id} has duplicate avatar names within the selected roster.")
     return raw_player_order, avatar_order
@@ -494,6 +638,15 @@ def _build_observed_prefix(
             "# GAME STARTS",
             f"<PLAYERS> {', '.join(avatar_order)} </PLAYERS>",
             *blocks,
+        ]
+    )
+
+
+def _build_k0_scaffold(avatar_order: list[str]) -> str:
+    return "\n".join(
+        [
+            "# GAME STARTS",
+            f"<PLAYERS> {', '.join(avatar_order)} </PLAYERS>",
         ]
     )
 
@@ -713,12 +866,91 @@ def _strict_transcript_template(metadata: PromptMetadata, start_round: int) -> l
     return lines
 
 
+def _build_persona_block(
+    *,
+    shared_prompt_notes: str | None,
+    raw_player_order: list[str],
+    avatar_order: list[str],
+    persona_assignments: dict[str, TwinPersonaAssignment],
+    twin_profile_cards: dict[str, dict[str, Any]],
+) -> str:
+    lines = [
+        "# PLAYER PERSONAS",
+        "Use these provided personas as player-specific priors when reasoning about motivations and likely choices.",
+    ]
+    if shared_prompt_notes:
+        note_lines = shared_prompt_notes.splitlines()
+        if note_lines and note_lines[0].strip() == "# Shared Prompt Notes":
+            note_lines = ["## Shared Prompt Notes", *note_lines[1:]]
+        demoted_note_lines: list[str] = []
+        for idx, line in enumerate(note_lines):
+            if idx > 0 and line.startswith("## "):
+                demoted_note_lines.append(f"#{line}")
+            else:
+                demoted_note_lines.append(line)
+        lines.extend(["", *demoted_note_lines, ""])
+    for player_id, avatar in zip(raw_player_order, avatar_order):
+        assignment = persona_assignments[player_id]
+        card = twin_profile_cards[assignment.twin_pid]
+        lines.append(f"## {avatar}")
+        lines.append(f"Headline: {card.get('headline', assignment.headline)}")
+        lines.append(f"Summary: {card.get('summary', assignment.summary)}")
+
+        background = card.get("background", {})
+        background_summary = str(background.get("summary", "")).strip()
+        if background_summary:
+            lines.append(f"Background: {background_summary}")
+
+        behavioral_signature = card.get("behavioral_signature", [])
+        if behavioral_signature:
+            lines.append("Behavioral Signature:")
+            for item in behavioral_signature:
+                lines.append(f"- {item}")
+
+        observed_anchors = card.get("observed_anchors", [])
+        if observed_anchors:
+            lines.append("Observed Anchors:")
+            for item in observed_anchors:
+                title = str(item.get("title", "")).strip()
+                detail = str(item.get("detail", "")).strip()
+                if title and detail:
+                    lines.append(f"- {title}: {detail}")
+
+        transfer_relevance = card.get("transfer_relevance", [])
+        if transfer_relevance:
+            lines.append("Transfer-Relevant Cues:")
+            for item in transfer_relevance:
+                cue = str(item.get("cue", "")).strip()
+                cue_name = TWIN_TRANSFER_CUE_DISPLAY_NAMES.get(
+                    cue, cue.replace("_", " ").capitalize()
+                )
+                label = str(item.get("label", "")).replace("_", " ").strip()
+                score = item.get("score_0_to_100", "")
+                confidence = str(item.get("confidence", "")).strip()
+                lines.append(f"- {cue_name}: {label} ({score}), confidence {confidence}")
+
+        limits = card.get("limits", [])
+        if limits:
+            lines.append("Limits:")
+            for item in limits:
+                topic = str(item.get("topic", "")).strip()
+                note = str(item.get("note", "")).strip()
+                if topic and note:
+                    lines.append(f"- {topic}: {note}")
+                elif note:
+                    lines.append(f"- {note}")
+
+        lines.append("")
+    return "\n".join(lines)
+
+
 def _build_user_prompt(
-    game: GameTrajectory,
+    num_rounds: int,
     metadata: PromptMetadata,
     avatar_order: list[str],
     transcript_prefix: str,
     k: int,
+    persona_block: str | None = None,
 ) -> str:
     interaction_tag = _interaction_tag_name(metadata)
     if k == 0:
@@ -755,9 +987,9 @@ def _build_user_prompt(
         output_requirement_lines.append("- Predict chat inline as transcript lines, using `CHAT from AVATAR: ...`.")
     output_requirement_lines.append("- Preserve exact avatar names.")
     intro_line = (
-        f"Generate a full game transcript from round 1 through round {game.num_rounds}."
+        f"Generate a full game transcript from round 1 through round {num_rounds}."
         if k == 0
-        else f"Predict every remaining round from round {k + 1} through round {game.num_rounds}."
+        else f"Predict every remaining round from round {k + 1} through round {num_rounds}."
     )
     history_label = "Start from this scaffold:" if k == 0 else "Observed history:"
     lines = [
@@ -770,6 +1002,7 @@ def _build_user_prompt(
         f"The shared pot is multiplied by {_format_num(metadata.multiplier)} and split equally among all active players.",
         *(_mechanism_rules(metadata)),
         *(_visibility_rules(metadata)),
+        *(["", persona_block] if persona_block else []),
         "",
         "Output requirements:",
         *output_requirement_lines,
@@ -838,9 +1071,26 @@ def main() -> None:
     parser.add_argument("--run-name", type=str, default=None)
     parser.add_argument("--forecasting-root", type=Path, default=Path(__file__).resolve().parent)
     args = parser.parse_args()
+    variant_slug = _canonical_variant_name(args.variant_name)
 
     if args.split != "val":
         raise ValueError("Only validation-wave generation is supported in this compact builder.")
+    if variant_slug == "twin_sampled_seed_0":
+        if args.selection_mode != "full":
+            raise ValueError(
+                "twin-sampled_seed_0 must be built with --selection-mode full so each request uses "
+                "its own assigned validation game."
+            )
+        if not args.require_valid_starting_players:
+            raise ValueError(
+                "twin-sampled_seed_0 must be built with --require-valid-starting-players."
+            )
+        if args.repeat_count_mode != "fixed" or args.repeats_per_game != 1:
+            raise ValueError(
+                "twin-sampled_seed_0 must be built with --repeat-count-mode fixed "
+                "--repeats-per-game 1 because the 417 assigned games already provide the "
+                "within-CONFIG sampling."
+            )
 
     k_values = _parse_k_values(args.k_values)
     if k_values != [0]:
@@ -854,35 +1104,94 @@ def main() -> None:
     for directory in [batch_input_dir, batch_output_dir, metadata_root, results_root]:
         directory.mkdir(parents=True, exist_ok=True)
 
-    games = load_wave_games(
+    complete_games = load_wave_games(
         repo_root=repo_root,
         wave_name="validation_wave",
         processed_suffix="val",
         min_num_rounds_exclusive=args.min_num_rounds_exclusive,
     )
+    complete_games_by_id = {game.game_id: game for game in complete_games}
     prompt_metadata = _load_prompt_metadata(repo_root / "data/processed_data/df_analysis_val.csv")
     valid_start_treatment_counts = _load_valid_start_treatment_counts(
         repo_root / "data/processed_data/df_analysis_val.csv"
     )
-    avatar_map = _load_avatar_map(repo_root / "data/raw_data/validation_wave/players.csv")
+    players_path = repo_root / "data/raw_data/validation_wave/players.csv"
+    avatar_map = _load_avatar_map(players_path)
+    avatar_inventory = _load_avatar_inventory(players_path)
     game_rows = _load_game_rows(repo_root / "data/raw_data/validation_wave/games.csv")
-
-    selected_games, selection_rule = _select_games(
-        games=games,
-        prompt_metadata=prompt_metadata,
-        game_rows=game_rows,
-        selection_mode=args.selection_mode,
-        require_valid_starting_players=args.require_valid_starting_players,
+    twin_assignments_path = _twin_assignment_path_for_variant(repo_root, args.variant_name)
+    twin_cards_path = _twin_prompt_cards_path_for_variant(repo_root, args.variant_name)
+    twin_shared_notes_path = _twin_shared_notes_path_for_variant(repo_root, args.variant_name)
+    twin_assignments_by_game = (
+        _load_twin_game_assignments(twin_assignments_path)
+        if twin_assignments_path is not None
+        else {}
     )
+    twin_profile_cards = (
+        _load_twin_profile_cards(twin_cards_path) if twin_cards_path is not None else {}
+    )
+    twin_shared_prompt_notes = (
+        _load_text_file(twin_shared_notes_path) if twin_shared_notes_path is not None else None
+    )
+
+    if twin_assignments_path is not None:
+        selected_game_ids = sorted(
+            twin_assignments_by_game,
+            key=lambda game_id: (
+                game_rows[game_id]["created_at"],
+                game_id,
+            ),
+        )
+        selection_rule = "all valid-start validation games from the twin persona assignment manifest"
+    else:
+        selected_games, selection_rule = _select_games(
+            games=complete_games,
+            prompt_metadata=prompt_metadata,
+            game_rows=game_rows,
+            selection_mode=args.selection_mode,
+            require_valid_starting_players=args.require_valid_starting_players,
+        )
+        selected_game_ids = [game.game_id for game in selected_games]
 
     selected_rows: list[dict[str, Any]] = []
     all_batch_rows: list[dict[str, Any]] = []
     all_gold_rows: list[dict[str, Any]] = []
     request_manifest_rows: list[dict[str, Any]] = []
 
-    for game in selected_games:
-        metadata = prompt_metadata[game.game_id]
-        raw_player_order, avatar_order = _player_avatar_order(game.game_id, game_rows, avatar_map)
+    for game_id in selected_game_ids:
+        metadata = prompt_metadata[game_id]
+        raw_player_order, avatar_order = _player_avatar_order(
+            game_id,
+            game_rows,
+            avatar_map,
+            avatar_inventory,
+        )
+        if twin_assignments_path is not None:
+            persona_assignments = twin_assignments_by_game.get(game_id)
+            if persona_assignments is None:
+                raise ValueError(
+                    f"Missing twin persona assignments for selected game {game_id}."
+                )
+            missing_player_ids = [
+                player_id for player_id in raw_player_order if player_id not in persona_assignments
+            ]
+            if missing_player_ids:
+                raise ValueError(
+                    f"Game {game_id} is missing twin persona assignments for roster players: "
+                    f"{missing_player_ids}"
+                )
+            missing_twin_pids = sorted(
+                {
+                    assignment.twin_pid
+                    for player_id, assignment in persona_assignments.items()
+                    if player_id in raw_player_order and assignment.twin_pid not in twin_profile_cards
+                }
+            )
+            if missing_twin_pids:
+                raise ValueError(
+                    f"Game {game_id} references Twin profile cards that are missing from "
+                    f"{twin_cards_path}: {missing_twin_pids}"
+                )
         repeat_count = (
             valid_start_treatment_counts.get(metadata.treatment_name, 1)
             if args.repeat_count_mode == "match_valid_start_treatment_counts"
@@ -890,19 +1199,20 @@ def main() -> None:
         )
         selected_rows.append(
             {
-                "game_id": game.game_id,
+                "game_id": game_id,
                 "treatment_name": metadata.treatment_name,
                 "config_id": metadata.config_id,
-                "created_at": game_rows[game.game_id]["created_at"],
-                "num_rounds": game.num_rounds,
+                "created_at": game_rows[game_id]["created_at"],
+                "num_rounds": metadata.num_rounds,
                 "num_players": len(raw_player_order),
                 "avatars": json.dumps(avatar_order),
                 "valid_number_of_starting_players": metadata.valid_number_of_starting_players,
+                "has_complete_gold_trajectory": game_id in complete_games_by_id,
                 "repeat_count": repeat_count,
             }
         )
 
-    run_name = args.run_name or _default_run_name(args, len(selected_games))
+    run_name = args.run_name or _default_run_name(args, len(selected_game_ids))
     metadata_dir = metadata_root / run_name
     metadata_dir.mkdir(parents=True, exist_ok=True)
     sample_dir = metadata_dir / "sample_prompts"
@@ -913,27 +1223,47 @@ def main() -> None:
         gold_rows: list[dict[str, Any]] = []
         sample_written = False
 
-        for game in selected_games:
-            if game.num_rounds <= k:
+        for game_id in selected_game_ids:
+            metadata = prompt_metadata[game_id]
+            if metadata.num_rounds <= k:
                 continue
-            metadata = prompt_metadata[game.game_id]
-            raw_player_order, avatar_order = _player_avatar_order(game.game_id, game_rows, avatar_map)
+            raw_player_order, avatar_order = _player_avatar_order(
+                game_id,
+                game_rows,
+                avatar_map,
+                avatar_inventory,
+            )
+            persona_block = None
+            if twin_assignments_path is not None:
+                persona_block = _build_persona_block(
+                    shared_prompt_notes=twin_shared_prompt_notes,
+                    raw_player_order=raw_player_order,
+                    avatar_order=avatar_order,
+                    persona_assignments=twin_assignments_by_game[game_id],
+                    twin_profile_cards=twin_profile_cards,
+                )
             chat_index = _index_chat_log(metadata.chat_log) if metadata.chat_enabled else _empty_chat_index()
+            complete_game = complete_games_by_id.get(game_id)
 
-            transcript_prefix = _build_observed_prefix(
-                game=game,
-                metadata=metadata,
-                raw_player_order=raw_player_order,
-                avatar_order=avatar_order,
-                chat_index=chat_index,
-                k=k,
+            transcript_prefix = (
+                _build_observed_prefix(
+                    game=complete_game,
+                    metadata=metadata,
+                    raw_player_order=raw_player_order,
+                    avatar_order=avatar_order,
+                    chat_index=chat_index,
+                    k=k,
+                )
+                if complete_game is not None and k > 0
+                else _build_k0_scaffold(avatar_order)
             )
             user_prompt = _build_user_prompt(
-                game=game,
+                num_rounds=metadata.num_rounds,
                 metadata=metadata,
                 avatar_order=avatar_order,
                 transcript_prefix=transcript_prefix,
                 k=k,
+                persona_block=persona_block,
             )
             repeat_count = (
                 valid_start_treatment_counts.get(metadata.treatment_name, 1)
@@ -942,7 +1272,7 @@ def main() -> None:
             )
             for repeat_index in range(1, repeat_count + 1):
                 custom_id = (
-                    f"trajectory_completion_compact__{metadata.treatment_name}__{game.game_id}"
+                    f"trajectory_completion_compact__{metadata.treatment_name}__{game_id}"
                     f"__k{k}__rep{repeat_index}"
                 )
                 batch_row = _batch_entry(
@@ -953,28 +1283,37 @@ def main() -> None:
                 )
                 gold_row = {
                     "custom_id": custom_id,
-                    "game_id": game.game_id,
+                    "game_id": game_id,
                     "treatment_name": metadata.treatment_name,
                     "config_id": metadata.config_id,
                     "k": k,
                     "repeat_index": repeat_index,
                     "repeat_count_for_treatment": repeat_count,
                     "players": avatar_order,
-                    "gold_continuation_text": _build_gold_continuation(
-                        game=game,
-                        metadata=metadata,
-                        raw_player_order=raw_player_order,
-                        avatar_order=avatar_order,
-                        chat_index=chat_index,
-                        k=k,
+                    "has_complete_gold_trajectory": complete_game is not None,
+                    "gold_continuation_text": (
+                        _build_gold_continuation(
+                            game=complete_game,
+                            metadata=metadata,
+                            raw_player_order=raw_player_order,
+                            avatar_order=avatar_order,
+                            chat_index=chat_index,
+                            k=k,
+                        )
+                        if complete_game is not None
+                        else ""
                     ),
-                    "gold_rounds": _build_gold_round_payload(
-                        game=game,
-                        metadata=metadata,
-                        raw_player_order=raw_player_order,
-                        avatar_order=avatar_order,
-                        chat_index=chat_index,
-                        k=k,
+                    "gold_rounds": (
+                        _build_gold_round_payload(
+                            game=complete_game,
+                            metadata=metadata,
+                            raw_player_order=raw_player_order,
+                            avatar_order=avatar_order,
+                            chat_index=chat_index,
+                            k=k,
+                        )
+                        if complete_game is not None
+                        else []
                     ),
                 }
                 batch_rows.append(batch_row)
@@ -982,13 +1321,13 @@ def main() -> None:
                 request_manifest_rows.append(
                     {
                         "custom_id": custom_id,
-                        "game_id": game.game_id,
+                        "game_id": game_id,
                         "treatment_name": metadata.treatment_name,
                         "config_id": metadata.config_id,
                         "k": k,
                         "repeat_index": repeat_index,
                         "repeat_count_for_treatment": repeat_count,
-                        "num_rounds": game.num_rounds,
+                        "num_rounds": metadata.num_rounds,
                         "num_players": len(raw_player_order),
                         "avatars": json.dumps(avatar_order),
                         "chat_enabled": metadata.chat_enabled,
@@ -996,6 +1335,8 @@ def main() -> None:
                         "reward_enabled": metadata.reward_exists,
                         "all_or_nothing": metadata.all_or_nothing,
                         "valid_number_of_starting_players": metadata.valid_number_of_starting_players,
+                        "has_complete_gold_trajectory": complete_game is not None,
+                        "persona_variant": _canonical_variant_name(args.variant_name),
                     }
                 )
 
@@ -1041,14 +1382,21 @@ def main() -> None:
         "selection_mode": args.selection_mode,
         "selection_rule": selection_rule,
         "require_valid_starting_players": args.require_valid_starting_players,
-        "selected_game_count": len(selected_games),
+        "selected_game_count": len(selected_game_ids),
         "run_name": run_name,
         "variant_name": args.variant_name,
         "repeat_count_mode": args.repeat_count_mode,
         "repeats_per_game": args.repeats_per_game,
         "total_request_count": len(request_manifest_rows),
-        "treatment_names": [prompt_metadata[game.game_id].treatment_name for game in selected_games],
+        "treatment_names": [prompt_metadata[game_id].treatment_name for game_id in selected_game_ids],
         "model": args.model,
+        "persona_assignment_file": (
+            str(twin_assignments_path) if twin_assignments_path is not None else None
+        ),
+        "persona_cards_file": str(twin_cards_path) if twin_cards_path is not None else None,
+        "persona_shared_notes_file": (
+            str(twin_shared_notes_path) if twin_shared_notes_path is not None else None
+        ),
         "request_file_prefix": args.request_file_prefix,
         "batch_input_file": str(batch_input_dir / f"{run_name}.jsonl"),
         "expected_batch_output_file": str(batch_output_dir / f"{run_name}.jsonl"),

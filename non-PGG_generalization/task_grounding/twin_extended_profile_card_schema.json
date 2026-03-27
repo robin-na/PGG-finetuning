@@ -20,14 +20,16 @@
   "properties": {
     "profile_card_version": {
       "type": "string",
-      "const": "twin_extended_profile_card_v3"
+      "const": "twin_extended_profile_card_v4"
     },
     "detail_mode": {
       "type": "string",
       "enum": [
         "compact",
         "standard",
-        "audit"
+        "audit",
+        "pgg_prompt",
+        "pgg_prompt_min"
       ]
     },
     "participant": {
@@ -116,7 +118,7 @@
       "items": {
         "$ref": "#/$defs/uncertaintyItem"
       },
-      "minItems": 2,
+      "minItems": 0,
       "maxItems": 6
     }
   },
@@ -154,7 +156,7 @@
           "items": {
             "type": "string"
           },
-          "minItems": 2,
+          "minItems": 0,
           "maxItems": 6
         },
         "cautions": {
@@ -162,7 +164,7 @@
           "items": {
             "type": "string"
           },
-          "minItems": 1,
+          "minItems": 0,
           "maxItems": 3
         }
       }
@@ -240,7 +242,7 @@
           "items": {
             "type": "string"
           },
-          "minItems": 2,
+          "minItems": 0,
           "maxItems": 6
         },
         "scope_note": {

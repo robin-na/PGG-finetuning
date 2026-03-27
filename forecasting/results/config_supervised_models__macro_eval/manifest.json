@@ -1,0 +1,49 @@
+{
+  "train_split": "learn",
+  "test_split": "val",
+  "valid_start_only": true,
+  "feature_columns": [
+    "CONFIG_playerCount",
+    "CONFIG_numRounds",
+    "CONFIG_showNRounds",
+    "CONFIG_endowment",
+    "CONFIG_multiplier",
+    "CONFIG_allOrNothing",
+    "CONFIG_chat",
+    "CONFIG_defaultContribProp",
+    "CONFIG_punishmentExists",
+    "CONFIG_punishmentCost",
+    "CONFIG_punishmentMagnitude",
+    "CONFIG_rewardExists",
+    "CONFIG_rewardCost",
+    "CONFIG_rewardMagnitude",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_showPunishmentId",
+    "CONFIG_showRewardId",
+    "CONFIG_MPCR",
+    "CONFIG_punishmentTech",
+    "CONFIG_rewardTech"
+  ],
+  "target_metrics": [
+    "mean_total_contribution_rate",
+    "mean_round_normalized_efficiency",
+    "final_total_contribution_rate",
+    "final_round_normalized_efficiency",
+    "total_contribution_rate_sd",
+    "total_contribution_rate_decay_slope",
+    "round_normalized_efficiency_decay_slope",
+    "mean_within_round_contribution_rate_var",
+    "punish_actor_round_rate",
+    "reward_actor_round_rate",
+    "messages_per_round",
+    "rounds_with_chat_rate"
+  ],
+  "models": [
+    "linear",
+    "ridge",
+    "elastic_net",
+    "random_forest"
+  ],
+  "num_learning_treatments": 320,
+  "num_validation_treatments": 40
+}

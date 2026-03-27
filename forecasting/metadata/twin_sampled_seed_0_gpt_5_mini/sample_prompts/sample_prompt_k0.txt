@@ -1,0 +1,196 @@
+=== SYSTEM MESSAGE ===
+
+You simulate an entire public goods game from round 1.
+
+Start with a game-level explanation of the likely dynamics, incentives, and uncertainties. Then write the game directly in transcript form, starting from round 1. At the start of each round, include a round explanation before the predicted actions. Keep the stage ordering coherent within each round. Any action lines that are wrapped in the scaffold should stay wrapped in <<>> exactly.
+
+=== USER MESSAGE ===
+
+Generate a full game transcript from round 1 through round 23.
+
+# GAME RULES
+This is an online public goods game (PGG).
+Each round, the 20 coins begin in the shared pot. Each player chooses how many coins to withdraw for private use, so the resulting contribution must be either 0 or 20.
+Players do not see others' choices before deciding.
+The shared pot is multiplied by 2.5 and split equally among all active players.
+After contributions are revealed and redistributed, players may punish other players.
+Each punishment unit costs 1 coin to the source and deducts 2 coins from the target.
+Players may send messages to the group whenever they choose to do so.
+Players know that the game lasts 23 rounds.
+Players cannot identify who punished them in their summary information.
+At the summary stage (`ROUND N SUMMARY SHOWN TO PLAYERS`), each player sees their own net payoff of the round, along with the amount they used for punishing other players and amount deducted from punishment.
+The corresponding information of the peers are also shown.
+
+# PLAYER PERSONAS
+Use these provided personas as player-specific priors when reasoning about motivations and likely choices.
+
+## Shared Prompt Notes
+
+### General Interpretation Note
+
+- These profiles summarize prior survey and behavioral-task evidence about each participant.
+- Treat the cues as relative tendencies, not deterministic predictions for any single public-goods-game decision.
+- Unless a player-specific limit is listed, shared methodological caveats apply to all players.
+
+### Shared Caveats
+
+- Communication/coordination is indirect: the source tasks do not directly observe repeated group discussion.
+- Norm-enforcement cues mainly reflect unfair-split resistance and revenge/forgiveness items, not direct repeated-game sanction use.
+- Pricing, anchoring, and framing signals are secondary and relatively coarse compared with direct social-allocation behavior.
+
+### Cue Glossary
+
+### Cooperation orientation
+- Meaning: blend of one-shot sharing behavior and cooperation/prosocial self-report.
+- Built from: trust-game sending, dictator giving, cooperation/competition items, agreeableness/helpfulness items, and prosocial values.
+
+### Conditional cooperation
+- Meaning: reciprocity and fairness-threshold sensitivity rather than a repeated-game reaction function.
+- Built from: trust-game return behavior and ultimatum acceptance-threshold signals.
+
+### Norm enforcement
+- Meaning: resistance to unfair splits and revenge/low-forgiveness cues in ultimatum-like contexts.
+- Built from: ultimatum minimum acceptable amounts plus revenge/forgiveness self-report.
+
+### Generosity without return
+- Meaning: willingness to give when repayment incentives are weak or absent.
+- Built from: dictator giving, trust-game sending, and prosocial/helpfulness cues.
+
+### Exploitation caution
+- Meaning: guardedness against being taken advantage of.
+- Built from: lower trustingness, stricter acceptance thresholds, uncertainty aversion, self-reliance, and revenge tendency.
+
+### Communication/coordination
+- Meaning: indirect cue for likely social expressiveness and coordination readiness.
+- Built from: empathy, social-sensitivity/self-monitoring, and extraversion-related self-report.
+
+### Behavioral stability
+- Meaning: rule-like internal consistency across self-regulation items.
+- Built from: conscientiousness-related items, self-concept clarity, and lower volatility-related personality items.
+
+## SLOTH
+Headline: Short-horizon, inequality-tolerant, cooperation-oriented
+Summary: Strongest supported tendencies are short-horizon, inequality-tolerant, and cooperation-oriented. Social evidence is mixed between self-report and direct allocation tasks. Fairness-enforcement signals are relatively weak.
+Background: Age: 18-29; Sex assigned at birth: Male; Completed education: High school graduate.
+Behavioral Signature:
+- Frequently prefers sooner rewards, indicating a shorter time horizon.
+- Prefers structure, closure, and predictability over open-ended uncertainty.
+- Cooperation orientation looks high rather than neutral.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $2/$5, mean trust return 37%, ultimatum offer $2/$5, minimum acceptable $2/$5, dictator give $2/$5.
+- Self-report pattern: Self-report block emphasizes empathy medium, cooperation orientation high, uncertainty aversion high.
+- Time and risk profile: Time/risk tasks: later-choice rate 25%, gain-lottery choice 74%, loss-lottery choice 57%, mental-accounting endorsement 75%.
+- Cognitive performance: Cognitive tasks: financial literacy 100%, numeracy 58%, cognitive reflection 57%, logical reasoning 53%.
+Transfer-Relevant Cues:
+- Cooperation orientation: medium (61), confidence medium
+- Conditional cooperation: medium (48), confidence medium
+- Norm enforcement: low (29), confidence medium
+- Generosity without return: medium (53), confidence medium
+- Exploitation caution: medium (58), confidence medium
+- Communication/coordination: medium (58), confidence low
+- Behavioral stability: mixed (35), confidence medium
+
+## GORILLA
+Headline: More intuitive, short-horizon, behaviorally stable
+Summary: Strongest supported tendencies are more intuitive, short-horizon, and behaviorally stable. Social evidence is mixed between self-report and direct allocation tasks.
+Background: Age: 50-64; Sex assigned at birth: Male; Completed education: College graduate/some postgrad.
+Behavioral Signature:
+- Shows a relatively strong sharing/prosocial orientation in direct allocation tasks.
+- Frequently prefers sooner rewards, indicating a shorter time horizon.
+- Cognitive reflection looks very low rather than neutral.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $5/$5, mean trust return 46%, ultimatum offer $3/$5, minimum acceptable $2/$5, dictator give $3/$5.
+- Self-report pattern: Self-report block emphasizes empathy medium, cooperation orientation mixed, uncertainty aversion medium.
+- Time and risk profile: Time/risk tasks: later-choice rate 23%, gain-lottery choice 31%, loss-lottery choice 57%, mental-accounting endorsement 50%.
+- Cognitive performance: Cognitive tasks: financial literacy 100%, numeracy 33%, cognitive reflection 14%, logical reasoning 76%.
+Transfer-Relevant Cues:
+- Cooperation orientation: high (66), confidence medium
+- Conditional cooperation: medium (49), confidence medium
+- Norm enforcement: mixed (45), confidence medium
+- Generosity without return: high (72), confidence medium
+- Exploitation caution: mixed (39), confidence medium
+- Communication/coordination: medium (50), confidence low
+- Behavioral stability: high (75), confidence medium
+
+## DUCK
+Headline: Reflective, short-horizon, behaviorally stable
+Summary: Strongest supported tendencies are reflective, short-horizon, and behaviorally stable. Social evidence is mixed between self-report and direct allocation tasks.
+Background: Age: 30-49; Sex assigned at birth: Male; Completed education: College graduate/some postgrad.
+Behavioral Signature:
+- Frequently prefers sooner rewards, indicating a shorter time horizon.
+- Cognitive reflection looks very high rather than neutral.
+- Behavioral stability looks high rather than neutral.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $2/$5, mean trust return 67%, ultimatum offer $3/$5, minimum acceptable $2/$5, dictator give $3/$5.
+- Self-report pattern: Self-report block emphasizes empathy medium, cooperation orientation high, uncertainty aversion medium.
+- Time and risk profile: Time/risk tasks: later-choice rate 25%, gain-lottery choice 57%, loss-lottery choice 84%, mental-accounting endorsement 75%.
+- Cognitive performance: Cognitive tasks: financial literacy 71%, numeracy 92%, cognitive reflection 86%, logical reasoning 53%.
+Transfer-Relevant Cues:
+- Cooperation orientation: medium (59), confidence medium
+- Conditional cooperation: medium (57), confidence medium
+- Norm enforcement: medium (53), confidence medium
+- Generosity without return: medium (55), confidence medium
+- Exploitation caution: medium (60), confidence medium
+- Communication/coordination: medium (60), confidence low
+- Behavioral stability: high (74), confidence medium
+
+## CHICKEN
+Headline: Structure-seeking, empathic, cooperation-oriented
+Summary: Strongest supported tendencies are structure-seeking, empathic, and cooperation-oriented. Cooperative self-report and direct allocation behavior point in the same general direction. Fairness-enforcement signals are relatively weak.
+Background: Age: 18-29; Sex assigned at birth: Male; Completed education: High school graduate.
+Behavioral Signature:
+- Shows a relatively strong sharing/prosocial orientation in direct allocation tasks.
+- Looks more tolerant of unequal outcomes than a strong norm-enforcement type.
+- Prefers structure, closure, and predictability over open-ended uncertainty.
+- Has self-report cues consistent with reading others and adapting socially.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $5/$5, mean trust return 34%, ultimatum offer $3/$5, minimum acceptable $1/$5, dictator give $2/$5.
+- Self-report pattern: Self-report block emphasizes empathy very high, cooperation orientation high, uncertainty aversion very high.
+- Time and risk profile: Time/risk tasks: later-choice rate 50%, gain-lottery choice 50%, loss-lottery choice 34%, mental-accounting endorsement 75%.
+- Cognitive performance: Cognitive tasks: financial literacy 71%, numeracy 25%, cognitive reflection 29%, logical reasoning 59%.
+Transfer-Relevant Cues:
+- Cooperation orientation: high (74), confidence medium
+- Conditional cooperation: medium (46), confidence medium
+- Norm enforcement: low (27), confidence medium
+- Generosity without return: high (70), confidence medium
+- Exploitation caution: mixed (37), confidence medium
+- Communication/coordination: high (69), confidence low
+- Behavioral stability: low (32), confidence medium
+Limits:
+- Communication uncertainty: Communication/coordination is distinctive here but remains indirect because it comes from self-report and social-sensitivity items rather than observed group discussion.
+
+
+Output requirements:
+- First write `### GAME EXPLANATION` followed by your explanation of how the game is likely to unfold.
+- Then generate the full game directly in transcript form from round 1 onward.
+- At the start of each round, immediately after `## ROUND N BEGINS`, write `### ROUND N EXPLANATION`.
+- Use the exact avatar order from `<PLAYERS>` for every contribution list.
+- Keep the contribution line wrapped as `### CONTRIBUTIONS: <<[...]>>`.
+- Keep the action line wrapped as `### PUNISHMENT: <<[...]>>`.
+- In `### PUNISHMENT`, use tuples `(source_avatar, target_avatar, unit)`.
+- Include only non-zero action edges. If no one acts in a round, write `### PUNISHMENT: <<[]>>`.
+- Because this game only has punishment, every `unit` must be positive.
+- Predict chat inline as transcript lines, using `CHAT from AVATAR: ...`.
+- Preserve exact avatar names.
+- In real games, players usually send relatively few chat messages. Keep chat sparse and purposeful.
+- In real games, players usually punish sparingly. Do not over-predict punishment actions.
+Strict continuation template:
+```text
+### GAME EXPLANATION
+<Explain your overall prediction for how the game is likely to unfold.>
+## ROUND 1 BEGINS
+### ROUND 1 EXPLANATION
+<Explain why you expect this round to unfold this way.>
+CHAT from AVATAR: <message>
+### CONTRIBUTIONS: <<[c1, c2, ...]>>
+CHAT from AVATAR: <message>
+### PUNISHMENT: <<[(SOURCE, TARGET, UNIT), ...]>>
+### ROUND 1 SUMMARY SHOWN TO PLAYERS
+CHAT from AVATAR: <message>
+## ROUND 2 BEGINS
+...
+```
+
+Start from this scaffold:
+# GAME STARTS
+<PLAYERS> SLOTH, GORILLA, DUCK, CHICKEN </PLAYERS>

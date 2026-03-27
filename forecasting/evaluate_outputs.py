@@ -46,11 +46,22 @@ def _build_avatar_mapping(
     avatar_map: dict[str, str],
 ) -> tuple[list[str], dict[str, str]]:
     raw_player_order = list(game_rows[game_id]["player_order"])
-    actual_avatar_order = [avatar_map[player_id] for player_id in raw_player_order]
-    if expected_avatars and actual_avatar_order != expected_avatars:
-        raise ValueError(
-            f"Avatar order mismatch for game {game_id}: expected {expected_avatars}, found {actual_avatar_order}."
-        )
+    if expected_avatars:
+        if len(expected_avatars) != len(raw_player_order):
+            raise ValueError(
+                f"Avatar count mismatch for game {game_id}: expected {len(raw_player_order)} avatars, "
+                f"found {len(expected_avatars)}."
+            )
+        if len(set(expected_avatars)) != len(expected_avatars):
+            raise ValueError(f"Expected avatar order for game {game_id} contains duplicates.")
+        return raw_player_order, dict(zip(expected_avatars, raw_player_order))
+
+    actual_avatar_order: list[str] = []
+    for player_id in raw_player_order:
+        avatar = avatar_map.get(player_id)
+        if not avatar:
+            raise ValueError(f"Missing avatar metadata for player {player_id} in game {game_id}.")
+        actual_avatar_order.append(avatar)
     return raw_player_order, dict(zip(actual_avatar_order, raw_player_order))
 
 

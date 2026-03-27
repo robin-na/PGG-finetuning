@@ -15,6 +15,8 @@ The convention is:
 
 - request file: `forecasting/batch_input/<run_name>.jsonl`
 - batch output file: `forecasting/batch_output/<run_name>.jsonl`
+- default run names are intentionally short, typically `<variant>_<model>`, with extra suffixes only when you deviate from the standard baseline settings
+- the baseline direct-transcript variant is shortened to `baseline`, so the default files are things like `baseline_gpt_5_1.jsonl`
 
 ## Build A Batch
 
@@ -74,3 +76,28 @@ This writes:
 - `forecasting/results/<run_name>__vs_human_treatments/`
 
 and compares each generated rollout to the distribution of real validation-wave games from the same `CONFIG_treatmentName`.
+
+Key outputs now include:
+
+- `generated_game_summary.csv` and `human_game_summary.csv` with per-game aggregate metrics, including decay slopes and mean within-round contribution variance
+- `treatment_metric_comparison.csv` and `overall_metric_summary.csv` for generated-game-vs-human-distribution comparisons
+- `treatment_mean_alignment.csv` and `treatment_mean_alignment_summary.csv` for treatment-mean MAE/RMSE/Spearman
+- `treatment_dispersion.csv` and `treatment_dispersion_summary.csv` for across-game SD/IQR calibration within treatment
+- `treatment_wasserstein_distance.csv` and `treatment_wasserstein_summary.csv` for per-treatment 1-Wasserstein distances
+
+## Compare Models Against A Noise Ceiling
+
+```bash
+python -m forecasting.compare_models_with_noise_ceiling \
+  --run-names baseline_gpt_5_1 baseline_gpt_5_mini
+```
+
+This writes:
+
+- `forecasting/results/model_comparison__noise_ceiling/`
+
+Key outputs include:
+
+- `model_vs_noise_ceiling.png` with grouped bars for `gpt-5.1`, `gpt-5-mini`, and the matched human noise ceiling
+- `model_vs_noise_ceiling_summary.csv` with raw scores, gap-to-ceiling, and ratio-to-ceiling values
+- `noise_ceiling_summary.csv` and `noise_ceiling_bootstrap.csv` for the bootstrap human-vs-human reference

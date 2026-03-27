@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from trajectory_completion.data import _parse_action_dict, load_wave_games
+from trajectory_completion.data import GameConfig, GameTrajectory, RoundRecord, _parse_action_dict, load_wave_games
 from trajectory_completion.evaluate import _relative_efficiency
 
 from .build_batch_inputs import _index_chat_log, _load_avatar_map, _load_game_rows
@@ -31,10 +31,30 @@ CORE_METRICS = [
     "final_round_normalized_efficiency",
     "total_contribution_rate_rmse_to_treatment_mean",
     "round_normalized_efficiency_rmse_to_treatment_mean",
+    "total_contribution_rate_decay_slope",
+    "round_normalized_efficiency_decay_slope",
+    "mean_within_round_contribution_rate_var",
     "punish_actor_round_rate",
     "reward_actor_round_rate",
     "messages_per_round",
     "rounds_with_chat_rate",
+]
+
+TREATMENT_MEAN_ALIGNMENT_METRICS = [
+    "mean_total_contribution_rate",
+    "mean_round_normalized_efficiency",
+]
+
+TREATMENT_DISPERSION_METRICS = [
+    "mean_total_contribution_rate",
+    "mean_round_normalized_efficiency",
+    "final_total_contribution_rate",
+    "final_round_normalized_efficiency",
+]
+
+TREATMENT_WASSERSTEIN_METRICS = [
+    "mean_round_normalized_efficiency",
+    "final_total_contribution_rate",
 ]
 
 
@@ -44,16 +64,95 @@ def _safe_float(value: Any) -> float:
     return float(value)
 
 
+def _iqr(values: pd.Series) -> float:
+    clean = values.dropna().astype(float)
+    if clean.empty:
+        return float("nan")
+    return float(clean.quantile(0.75) - clean.quantile(0.25))
+
+
+def _safe_ratio(numerator: float, denominator: float) -> float:
+    if math.isnan(numerator) or math.isnan(denominator):
+        return float("nan")
+    if denominator == 0:
+        return 1.0 if numerator == 0 else float("nan")
+    return float(numerator / denominator)
+
+
+def _abs_log_ratio(value: float) -> float:
+    if math.isnan(value) or value <= 0:
+        return float("nan")
+    return abs(float(math.log(value)))
+
+
+def _spearman_rank_correlation(x_values: pd.Series, y_values: pd.Series) -> float:
+    paired = pd.DataFrame({"x": x_values, "y": y_values}).dropna()
+    if paired.shape[0] < 2:
+        return float("nan")
+    x_rank = paired["x"].rank(method="average").to_numpy(dtype=float)
+    y_rank = paired["y"].rank(method="average").to_numpy(dtype=float)
+    if np.allclose(x_rank, x_rank[0]) or np.allclose(y_rank, y_rank[0]):
+        return float("nan")
+    return float(np.corrcoef(x_rank, y_rank)[0, 1])
+
+
+def _normalized_round_slope(round_numbers: pd.Series, values: pd.Series) -> float:
+    frame = (
+        pd.DataFrame({"round_number": round_numbers, "value": values})
+        .dropna()
+        .sort_values("round_number")
+    )
+    if frame.shape[0] < 2:
+        return float("nan")
+
+    x = frame["round_number"].to_numpy(dtype=float)
+    y = frame["value"].to_numpy(dtype=float)
+    x_min = float(x.min())
+    x_max = float(x.max())
+    if x_max == x_min:
+        return 0.0
+
+    x_norm = (x - x_min) / (x_max - x_min)
+    x_centered = x_norm - x_norm.mean()
+    denominator = float(np.sum(x_centered**2))
+    if denominator == 0:
+        return 0.0
+    return float(np.sum(x_centered * (y - y.mean())) / denominator)
+
+
+def _wasserstein_distance_1d(x_values: pd.Series, y_values: pd.Series) -> float:
+    x = np.sort(x_values.dropna().astype(float).to_numpy())
+    y = np.sort(y_values.dropna().astype(float).to_numpy())
+    if x.size == 0 or y.size == 0:
+        return float("nan")
+    if x.size == 1 and y.size == 1:
+        return float(abs(x[0] - y[0]))
+
+    support = np.sort(np.concatenate([x, y]))
+    deltas = np.diff(support)
+    if deltas.size == 0:
+        return 0.0
+
+    x_cdf = np.searchsorted(x, support[:-1], side="right") / float(x.size)
+    y_cdf = np.searchsorted(y, support[:-1], side="right") / float(y.size)
+    return float(np.sum(np.abs(x_cdf - y_cdf) * deltas))
+
+
 def _load_validation_metadata(repo_root: Path, treatment_names: set[str]) -> pd.DataFrame:
     cols = [
         "gameId",
         "CONFIG_treatmentName",
         "CONFIG_numRounds",
         "CONFIG_endowment",
+        "CONFIG_allOrNothing",
         "CONFIG_MPCR",
         "CONFIG_chat",
         "CONFIG_punishmentExists",
+        "CONFIG_punishmentCost",
+        "CONFIG_punishmentMagnitude",
         "CONFIG_rewardExists",
+        "CONFIG_rewardCost",
+        "CONFIG_rewardMagnitude",
         "valid_number_of_starting_players",
         "chat_log",
     ]
@@ -65,10 +164,15 @@ def _load_validation_metadata(repo_root: Path, treatment_names: set[str]) -> pd.
                 "CONFIG_treatmentName": "treatment_name",
                 "CONFIG_numRounds": "config_num_rounds",
                 "CONFIG_endowment": "endowment",
+                "CONFIG_allOrNothing": "all_or_nothing",
                 "CONFIG_MPCR": "mpcr",
                 "CONFIG_chat": "chat_enabled",
                 "CONFIG_punishmentExists": "punishment_enabled",
+                "CONFIG_punishmentCost": "punishment_cost",
+                "CONFIG_punishmentMagnitude": "punishment_magnitude",
                 "CONFIG_rewardExists": "reward_enabled",
+                "CONFIG_rewardCost": "reward_cost",
+                "CONFIG_rewardMagnitude": "reward_magnitude",
                 "valid_number_of_starting_players": "valid_start",
             }
         )
@@ -79,7 +183,53 @@ def _load_validation_metadata(repo_root: Path, treatment_names: set[str]) -> pd.
     metadata["chat_enabled"] = metadata["chat_enabled"].astype(bool)
     metadata["punishment_enabled"] = metadata["punishment_enabled"].astype(bool)
     metadata["reward_enabled"] = metadata["reward_enabled"].astype(bool)
+    metadata["all_or_nothing"] = metadata["all_or_nothing"].astype(bool)
     return metadata.reset_index(drop=True)
+
+
+def _build_stub_game_trajectory(
+    *,
+    game_id: str,
+    raw_player_order: list[str],
+    config_num_rounds: int,
+    endowment: int,
+    all_or_nothing: bool,
+    punishment_enabled: bool,
+    punishment_cost: float,
+    punishment_magnitude: float,
+    reward_enabled: bool,
+    reward_cost: float,
+    reward_magnitude: float,
+    mpcr: float,
+) -> GameTrajectory:
+    config = GameConfig(
+        num_rounds=int(config_num_rounds),
+        endowment=int(endowment),
+        all_or_nothing=bool(all_or_nothing),
+        punishment_exists=bool(punishment_enabled),
+        reward_exists=bool(reward_enabled),
+        punishment_cost=float(punishment_cost),
+        punishment_magnitude=float(punishment_magnitude),
+        reward_cost=float(reward_cost),
+        reward_magnitude=float(reward_magnitude),
+        mpcr=float(mpcr),
+    )
+    placeholder_rounds = [
+        RoundRecord(
+            index=round_index,
+            contributions={player_id: 0 for player_id in raw_player_order},
+            punished={player_id: {} for player_id in raw_player_order},
+            rewarded={player_id: {} for player_id in raw_player_order},
+            round_payoffs={player_id: 0.0 for player_id in raw_player_order},
+        )
+        for round_index in range(int(config_num_rounds))
+    ]
+    return GameTrajectory(
+        game_id=game_id,
+        players=list(raw_player_order),
+        config=config,
+        rounds=placeholder_rounds,
+    )
 
 
 def _round_summary_from_round_records(
@@ -104,6 +254,10 @@ def _round_summary_from_round_records(
         total_contribution = int(sum(round_record.contributions.values()))
         total_contribution_rate = total_contribution / float(num_players * endowment)
         total_round_payoff = float(sum(round_record.round_payoffs.values()))
+        contribution_rates = np.array(
+            [value / float(endowment) for value in round_record.contributions.values()],
+            dtype=float,
+        )
         round_normalized_efficiency = _relative_efficiency(
             total_round_payoff,
             defect_round_coin_gen,
@@ -120,6 +274,7 @@ def _round_summary_from_round_records(
                 "total_contribution_rate": total_contribution_rate,
                 "total_round_payoff": total_round_payoff,
                 "round_normalized_efficiency": round_normalized_efficiency,
+                "within_round_contribution_rate_var": float(contribution_rates.var(ddof=0)),
                 "message_count": int(message_count_by_round.get(round_number, 0)),
                 "has_chat": int(message_count_by_round.get(round_number, 0) > 0),
             }
@@ -178,15 +333,34 @@ def _summarize_game_metrics(
             final_total_contribution_rate=("total_contribution_rate", lambda s: float(s.iloc[-1])),
             mean_round_normalized_efficiency=("round_normalized_efficiency", "mean"),
             final_round_normalized_efficiency=("round_normalized_efficiency", lambda s: float(s.iloc[-1])),
+            mean_within_round_contribution_rate_var=("within_round_contribution_rate_var", "mean"),
             messages_per_round=("message_count", "mean"),
             rounds_with_chat_rate=("has_chat", "mean"),
             observed_rounds=("round_number", "count"),
         )
     )
-    return metadata_df.merge(actor_summary, on=entity_id_col, how="left").merge(
-        round_summary,
-        on=entity_id_col,
-        how="left",
+    dynamic_summary_rows: list[dict[str, Any]] = []
+    for entity_id, group in round_df.groupby(entity_id_col, sort=False):
+        ordered = group.sort_values("round_number")
+        dynamic_summary_rows.append(
+            {
+                entity_id_col: entity_id,
+                "total_contribution_rate_decay_slope": _normalized_round_slope(
+                    ordered["round_number"],
+                    ordered["total_contribution_rate"],
+                ),
+                "round_normalized_efficiency_decay_slope": _normalized_round_slope(
+                    ordered["round_number"],
+                    ordered["round_normalized_efficiency"],
+                ),
+            }
+        )
+    dynamic_summary = pd.DataFrame(dynamic_summary_rows)
+
+    return (
+        metadata_df.merge(actor_summary, on=entity_id_col, how="left")
+        .merge(round_summary, on=entity_id_col, how="left")
+        .merge(dynamic_summary, on=entity_id_col, how="left")
     )
 
 
@@ -282,6 +456,7 @@ def _build_human_round_metrics(repo_root: Path, metadata_df: pd.DataFrame) -> tu
             num_active_players=("playerId", "count"),
             total_contribution=("contribution", "sum"),
             total_round_payoff=("round_payoff", "sum"),
+            within_round_contribution_rate_var=("contribution_rate", lambda s: float(s.var(ddof=0))),
         )
         .sort_values(["game_id", "round_number"])
         .reset_index(drop=True)
@@ -549,6 +724,176 @@ def _summarize_treatment_typicality(comparison_df: pd.DataFrame) -> pd.DataFrame
     return summary
 
 
+def _build_treatment_mean_alignment(
+    generated_game_df: pd.DataFrame,
+    human_game_df: pd.DataFrame,
+) -> pd.DataFrame:
+    generated_counts = generated_game_df.groupby("treatment_name")["custom_id"].nunique()
+    human_counts = human_game_df.groupby("treatment_name")["game_id"].nunique()
+    treatment_names = sorted(set(generated_counts.index) & set(human_counts.index))
+
+    rows: list[dict[str, Any]] = []
+    for treatment_name in treatment_names:
+        generated_subset = generated_game_df[generated_game_df["treatment_name"] == treatment_name]
+        human_subset = human_game_df[human_game_df["treatment_name"] == treatment_name]
+        for metric in TREATMENT_MEAN_ALIGNMENT_METRICS:
+            generated_treatment_mean = _safe_float(generated_subset[metric].mean())
+            human_treatment_mean = _safe_float(human_subset[metric].mean())
+            rows.append(
+                {
+                    "treatment_name": treatment_name,
+                    "metric": metric,
+                    "generated_game_count": int(generated_counts[treatment_name]),
+                    "human_game_count": int(human_counts[treatment_name]),
+                    "generated_treatment_mean": generated_treatment_mean,
+                    "human_treatment_mean": human_treatment_mean,
+                    "abs_error": abs(generated_treatment_mean - human_treatment_mean)
+                    if not math.isnan(generated_treatment_mean) and not math.isnan(human_treatment_mean)
+                    else float("nan"),
+                    "squared_error": (generated_treatment_mean - human_treatment_mean) ** 2
+                    if not math.isnan(generated_treatment_mean) and not math.isnan(human_treatment_mean)
+                    else float("nan"),
+                }
+            )
+    return pd.DataFrame(rows)
+
+
+def _summarize_treatment_mean_alignment(mean_alignment_df: pd.DataFrame) -> pd.DataFrame:
+    summary_rows: list[dict[str, Any]] = []
+    for metric, metric_df in mean_alignment_df.groupby("metric", sort=True):
+        valid = metric_df.dropna(subset=["generated_treatment_mean", "human_treatment_mean"]).copy()
+        if valid.empty:
+            continue
+        summary_rows.append(
+            {
+                "metric": metric,
+                "num_treatments": int(valid["treatment_name"].nunique()),
+                "mae": float(valid["abs_error"].mean()),
+                "rmse": float(np.sqrt(valid["squared_error"].mean())),
+                "spearman": _spearman_rank_correlation(
+                    valid["generated_treatment_mean"],
+                    valid["human_treatment_mean"],
+                ),
+            }
+        )
+    return pd.DataFrame(summary_rows).sort_values("metric").reset_index(drop=True)
+
+
+def _build_treatment_dispersion_comparison(
+    generated_game_df: pd.DataFrame,
+    human_game_df: pd.DataFrame,
+) -> pd.DataFrame:
+    generated_counts = generated_game_df.groupby("treatment_name")["custom_id"].nunique()
+    human_counts = human_game_df.groupby("treatment_name")["game_id"].nunique()
+    treatment_names = sorted(set(generated_counts.index) & set(human_counts.index))
+
+    rows: list[dict[str, Any]] = []
+    for treatment_name in treatment_names:
+        generated_subset = generated_game_df[generated_game_df["treatment_name"] == treatment_name]
+        human_subset = human_game_df[human_game_df["treatment_name"] == treatment_name]
+        for metric in TREATMENT_DISPERSION_METRICS:
+            generated_values = generated_subset[metric].dropna().astype(float)
+            human_values = human_subset[metric].dropna().astype(float)
+            generated_sd = float(generated_values.std(ddof=0)) if not generated_values.empty else float("nan")
+            human_sd = float(human_values.std(ddof=0)) if not human_values.empty else float("nan")
+            generated_iqr = _iqr(generated_values)
+            human_iqr = _iqr(human_values)
+            sd_ratio = _safe_ratio(generated_sd, human_sd)
+            iqr_ratio = _safe_ratio(generated_iqr, human_iqr)
+            rows.append(
+                {
+                    "treatment_name": treatment_name,
+                    "metric": metric,
+                    "generated_game_count": int(generated_counts[treatment_name]),
+                    "human_game_count": int(human_counts[treatment_name]),
+                    "generated_sd": generated_sd,
+                    "human_sd": human_sd,
+                    "sd_ratio": sd_ratio,
+                    "abs_log_sd_ratio": _abs_log_ratio(sd_ratio),
+                    "generated_iqr": generated_iqr,
+                    "human_iqr": human_iqr,
+                    "iqr_ratio": iqr_ratio,
+                    "abs_log_iqr_ratio": _abs_log_ratio(iqr_ratio),
+                }
+            )
+    return pd.DataFrame(rows)
+
+
+def _summarize_treatment_dispersion_comparison(dispersion_df: pd.DataFrame) -> pd.DataFrame:
+    summary_rows: list[dict[str, Any]] = []
+    for metric, metric_df in dispersion_df.groupby("metric", sort=True):
+        summary_rows.append(
+            {
+                "metric": metric,
+                "num_treatments": int(metric_df["treatment_name"].nunique()),
+                "mean_sd_ratio": float(metric_df["sd_ratio"].dropna().mean())
+                if metric_df["sd_ratio"].notna().any()
+                else float("nan"),
+                "median_sd_ratio": float(metric_df["sd_ratio"].dropna().median())
+                if metric_df["sd_ratio"].notna().any()
+                else float("nan"),
+                "mean_abs_log_sd_ratio": float(metric_df["abs_log_sd_ratio"].dropna().mean())
+                if metric_df["abs_log_sd_ratio"].notna().any()
+                else float("nan"),
+                "mean_iqr_ratio": float(metric_df["iqr_ratio"].dropna().mean())
+                if metric_df["iqr_ratio"].notna().any()
+                else float("nan"),
+                "median_iqr_ratio": float(metric_df["iqr_ratio"].dropna().median())
+                if metric_df["iqr_ratio"].notna().any()
+                else float("nan"),
+                "mean_abs_log_iqr_ratio": float(metric_df["abs_log_iqr_ratio"].dropna().mean())
+                if metric_df["abs_log_iqr_ratio"].notna().any()
+                else float("nan"),
+            }
+        )
+    return pd.DataFrame(summary_rows).sort_values("metric").reset_index(drop=True)
+
+
+def _build_treatment_wasserstein_distance(
+    generated_game_df: pd.DataFrame,
+    human_game_df: pd.DataFrame,
+) -> pd.DataFrame:
+    generated_counts = generated_game_df.groupby("treatment_name")["custom_id"].nunique()
+    human_counts = human_game_df.groupby("treatment_name")["game_id"].nunique()
+    treatment_names = sorted(set(generated_counts.index) & set(human_counts.index))
+
+    rows: list[dict[str, Any]] = []
+    for treatment_name in treatment_names:
+        generated_subset = generated_game_df[generated_game_df["treatment_name"] == treatment_name]
+        human_subset = human_game_df[human_game_df["treatment_name"] == treatment_name]
+        for metric in TREATMENT_WASSERSTEIN_METRICS:
+            generated_values = generated_subset[metric].dropna().astype(float)
+            human_values = human_subset[metric].dropna().astype(float)
+            rows.append(
+                {
+                    "treatment_name": treatment_name,
+                    "metric": metric,
+                    "generated_game_count": int(generated_counts[treatment_name]),
+                    "human_game_count": int(human_counts[treatment_name]),
+                    "wasserstein_distance": _wasserstein_distance_1d(generated_values, human_values),
+                }
+            )
+    return pd.DataFrame(rows)
+
+
+def _summarize_treatment_wasserstein_distance(wasserstein_df: pd.DataFrame) -> pd.DataFrame:
+    summary_rows: list[dict[str, Any]] = []
+    for metric, metric_df in wasserstein_df.groupby("metric", sort=True):
+        summary_rows.append(
+            {
+                "metric": metric,
+                "num_treatments": int(metric_df["treatment_name"].nunique()),
+                "mean_wasserstein_distance": float(metric_df["wasserstein_distance"].dropna().mean())
+                if metric_df["wasserstein_distance"].notna().any()
+                else float("nan"),
+                "median_wasserstein_distance": float(metric_df["wasserstein_distance"].dropna().median())
+                if metric_df["wasserstein_distance"].notna().any()
+                else float("nan"),
+            }
+        )
+    return pd.DataFrame(summary_rows).sort_values("metric").reset_index(drop=True)
+
+
 def _plot_generated_vs_human_means(
     comparison_df: pd.DataFrame,
     output_path: Path,
@@ -616,6 +961,10 @@ def main() -> None:
     request_manifest = _load_request_manifest(args.request_manifest_csv)
     manifest_df = pd.read_csv(args.request_manifest_csv)
     treatment_names = set(manifest_df["treatment_name"].astype(str))
+    validation_metadata_df = _load_validation_metadata(args.repo_root, treatment_names)
+    validation_metadata_by_game_id = {
+        str(row.game_id): row for row in validation_metadata_df.itertuples(index=False)
+    }
 
     validation_games = load_wave_games(
         repo_root=args.repo_root,
@@ -637,13 +986,31 @@ def main() -> None:
         custom_id = str(parsed_row["custom_id"])
         manifest_row = request_manifest[custom_id]
         game_id = str(manifest_row["game_id"])
-        game = validation_games_by_id[game_id]
         raw_player_order, avatar_to_player = _build_avatar_mapping(
             game_id=game_id,
             expected_avatars=list(manifest_row["avatars"]),
             game_rows=game_rows,
             avatar_map=avatar_map,
         )
+        validation_metadata_row = validation_metadata_by_game_id.get(game_id)
+        if validation_metadata_row is None:
+            raise KeyError(f"Missing validation metadata for game {game_id}.")
+        game = validation_games_by_id.get(game_id)
+        if game is None:
+            game = _build_stub_game_trajectory(
+                game_id=game_id,
+                raw_player_order=raw_player_order,
+                config_num_rounds=int(validation_metadata_row.config_num_rounds),
+                endowment=int(validation_metadata_row.endowment),
+                all_or_nothing=bool(validation_metadata_row.all_or_nothing),
+                punishment_enabled=bool(validation_metadata_row.punishment_enabled),
+                punishment_cost=float(validation_metadata_row.punishment_cost),
+                punishment_magnitude=float(validation_metadata_row.punishment_magnitude),
+                reward_enabled=bool(validation_metadata_row.reward_enabled),
+                reward_cost=float(validation_metadata_row.reward_cost),
+                reward_magnitude=float(validation_metadata_row.reward_magnitude),
+                mpcr=float(validation_metadata_row.mpcr),
+            )
         predicted_rounds = _parsed_rounds_to_round_records(
             game=game,
             k=int(manifest_row["k"]),
@@ -660,9 +1027,9 @@ def main() -> None:
             message_count_by_round=_message_count_by_round_from_parsed_rounds(
                 list(parsed_row.get("predicted_rounds", []))
             ),
-            endowment=int(game.config.endowment),
-            mpcr=float(game.config.mpcr),
-            num_players=int(game.num_players),
+            endowment=int(validation_metadata_row.endowment),
+            mpcr=float(validation_metadata_row.mpcr),
+            num_players=int(manifest_row["num_players"]),
             entity_kind="generated",
         )
         actor_df.insert(0, "custom_id", custom_id)
@@ -693,7 +1060,7 @@ def main() -> None:
         entity_id_col="custom_id",
     )
 
-    human_metadata_df = _load_validation_metadata(args.repo_root, treatment_names)
+    human_metadata_df = validation_metadata_df.copy()
     human_actor_df, human_round_df = _build_human_round_metrics(args.repo_root, human_metadata_df)
     human_game_df = _summarize_game_metrics(
         human_actor_df.rename(columns={"game_id": "entity_id"}),
@@ -712,6 +1079,12 @@ def main() -> None:
     comparison_df = _build_metric_comparison(generated_game_df, human_game_df)
     overall_df = _summarize_metric_comparison(comparison_df)
     treatment_typicality_df = _summarize_treatment_typicality(comparison_df)
+    treatment_mean_alignment_df = _build_treatment_mean_alignment(generated_game_df, human_game_df)
+    treatment_mean_alignment_summary_df = _summarize_treatment_mean_alignment(treatment_mean_alignment_df)
+    treatment_dispersion_df = _build_treatment_dispersion_comparison(generated_game_df, human_game_df)
+    treatment_dispersion_summary_df = _summarize_treatment_dispersion_comparison(treatment_dispersion_df)
+    treatment_wasserstein_df = _build_treatment_wasserstein_distance(generated_game_df, human_game_df)
+    treatment_wasserstein_summary_df = _summarize_treatment_wasserstein_distance(treatment_wasserstein_df)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     generated_game_df.sort_values("treatment_name").to_csv(args.output_dir / "generated_game_summary.csv", index=False)
@@ -733,6 +1106,30 @@ def main() -> None:
     )
     overall_df.to_csv(args.output_dir / "overall_metric_summary.csv", index=False)
     treatment_typicality_df.to_csv(args.output_dir / "treatment_typicality.csv", index=False)
+    treatment_mean_alignment_df.sort_values(["metric", "treatment_name"]).to_csv(
+        args.output_dir / "treatment_mean_alignment.csv",
+        index=False,
+    )
+    treatment_mean_alignment_summary_df.to_csv(
+        args.output_dir / "treatment_mean_alignment_summary.csv",
+        index=False,
+    )
+    treatment_dispersion_df.sort_values(["metric", "treatment_name"]).to_csv(
+        args.output_dir / "treatment_dispersion.csv",
+        index=False,
+    )
+    treatment_dispersion_summary_df.to_csv(
+        args.output_dir / "treatment_dispersion_summary.csv",
+        index=False,
+    )
+    treatment_wasserstein_df.sort_values(["metric", "treatment_name"]).to_csv(
+        args.output_dir / "treatment_wasserstein_distance.csv",
+        index=False,
+    )
+    treatment_wasserstein_summary_df.to_csv(
+        args.output_dir / "treatment_wasserstein_summary.csv",
+        index=False,
+    )
     _plot_generated_vs_human_means(comparison_df, args.output_dir / "generated_vs_human_treatment_means.png")
 
     manifest = {
@@ -750,6 +1147,15 @@ def main() -> None:
 
     print(f"Wrote outputs to {args.output_dir}")
     print(overall_df.to_string(index=False))
+    print()
+    print("Treatment mean alignment summary")
+    print(treatment_mean_alignment_summary_df.to_string(index=False))
+    print()
+    print("Treatment dispersion summary")
+    print(treatment_dispersion_summary_df.to_string(index=False))
+    print()
+    print("Treatment Wasserstein summary")
+    print(treatment_wasserstein_summary_df.to_string(index=False))
 
 
 if __name__ == "__main__":

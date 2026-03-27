@@ -27,6 +27,14 @@
 - Their benchmark is well-suited for Twin-internal persona completion.
 - It is not the cleanest primary benchmark for PGG transfer because the main wave-4 target set is mostly outside the canonical social-preference game space.
 
+## Validation-Wave Twin Sampling
+
+- `sample_twin_personas_for_pgg_validation.py` builds a seat-level Twin persona assignment for the PGG validation wave.
+- It targets the aggregate PGG demographic distribution over `age x education x male/female`, not individual PGG participants.
+- It currently points to the `pgg_prompt_min` profile cards.
+- Sampling uses replacement across games but disallows reuse within a game unless forced.
+- Detailed method and output notes are in `TWIN_TO_PGG_VALIDATION_PERSONA_SAMPLING.md`.
+
 ## Files
 
 - `twin_question_inventory.csv`
@@ -40,7 +48,15 @@
 - `build_twin_extended_profiles.py`
 - `render_twin_extended_profile_cards.py`
 - `analyze_twin_profile_card_distributions.py`
+- `sample_twin_personas_for_pgg_validation.py`
+- `TWIN_TO_PGG_VALIDATION_PERSONA_SAMPLING.md`
 - `output/twin_extended_profiles/twin_extended_profiles.jsonl`
 - `output/twin_extended_profile_cards/compact/twin_extended_profile_cards.jsonl`
 - `output/twin_extended_profile_cards/standard/twin_extended_profile_cards.jsonl`
 - `output/twin_extended_profile_cards/audit/twin_extended_profile_cards.jsonl`
+- `output/twin_extended_profile_cards/pgg_prompt/twin_extended_profile_cards.jsonl`
+- `output/twin_extended_profile_cards/pgg_prompt/shared_prompt_notes.md`
+- `output/twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl`
+- `output/twin_extended_profile_cards/pgg_prompt_min/shared_prompt_notes.md`
+- `output/twin_to_pgg_validation_persona_sampling/seed_0/seat_assignments.jsonl`
+- `output/twin_to_pgg_validation_persona_sampling/seed_0/summary.json`

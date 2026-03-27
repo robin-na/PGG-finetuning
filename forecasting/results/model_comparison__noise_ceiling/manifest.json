@@ -1,0 +1,25 @@
+{
+  "run_names": [
+    "baseline_gpt_5_1",
+    "twin_sampled_seed_0_gpt_5_1",
+    "baseline_gpt_5_mini",
+    "twin_sampled_seed_0_gpt_5_mini"
+  ],
+  "bootstrap_iters": 200,
+  "random_seed": 7,
+  "score_families": [
+    "rmse_of_config_means",
+    "mean_wasserstein_distance",
+    "mean_abs_log_sd_ratio",
+    "mean_abs_log_iqr_ratio"
+  ],
+  "metrics": [
+    "mean_total_contribution_rate",
+    "mean_round_normalized_efficiency",
+    "final_total_contribution_rate",
+    "final_round_normalized_efficiency",
+    "total_contribution_rate_decay_slope",
+    "round_normalized_efficiency_decay_slope",
+    "mean_within_round_contribution_rate_var"
+  ]
+}

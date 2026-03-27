@@ -9,16 +9,20 @@ from pathlib import Path
 from typing import Any
 
 
-ROUND_BEGIN_RE = re.compile(r"^#{2,3}\s*ROUND (\d+) BEGINS\s*$")
+ROUND_BEGIN_RE = re.compile(r"^#{2,3}\s*ROUND (\d+) BEGINS(?:\s*\([^)]*\))?\s*$")
 ROUND_EXPLANATION_RE = re.compile(r"^### ROUND (\d+) EXPLANATION\s*$")
 ROUND_SUMMARY_RE = re.compile(r"^#{2,3}\s*ROUND (\d+) SUMMARY SHOWN TO PLAYERS\s*$")
-CONTRIBUTIONS_RE = re.compile(r"^### CONTRIBUTION(?:S)?:\s*<<(.*)>>\s*$")
-INTERACTIONS_RE = re.compile(r"^### (PUNISHMENT/REWARD|PUNISHMENT|REWARD):\s*<<(.*)>>\s*$")
+CONTRIBUTIONS_RE = re.compile(r"^### CONTRIBUTION(?:S)?:\s*<<(.*?)>>[\]>]*\s*$")
+INTERACTIONS_RE = re.compile(r"^### (PUNISHMENT/REWARD|PUNISHMENT|REWARD):\s*<<(.*?)>>[\]>]*\s*$")
 CHAT_RE = re.compile(r"^CHAT(?: from |/)([^:]+):\s*(.*)$")
 GAME_EXPLANATION_RE = re.compile(r"^### GAME EXPLANATION\s*$")
 OVERALL_REFLECTION_RE = re.compile(r"^### OVERALL REFLECTION\s*$")
 INTERACTION_TUPLE_RE = re.compile(
     r"\(\s*[\"']?([A-Za-z][A-Za-z0-9_]*)[\"']?\s*,\s*[\"']?([A-Za-z][A-Za-z0-9_]*)[\"']?\s*,\s*([+-]?\d+)\s*\)"
+)
+EDITORIAL_TRAILING_RE = re.compile(
+    r"\b(note|placeholder|error|correct(?:ion|ed)?|fixed below|final correction)\b",
+    re.IGNORECASE,
 )
 
 IGNORABLE_ROUND_PREFIXES = ("#", "-", "(", "*")
@@ -138,10 +142,8 @@ def _parse_contributions(inner: str) -> list[int]:
 
 def _parse_interactions(inner: str) -> list[list[Any]]:
     inner = inner.strip()
-    if inner == "[]":
+    if inner in {"", "[]"}:
         return []
-    if not (inner.startswith("[") and inner.endswith("]")):
-        raise ValueError("Interaction block must be bracketed.")
     try:
         parsed = ast.literal_eval(inner)
         if isinstance(parsed, list):
@@ -154,12 +156,19 @@ def _parse_interactions(inner: str) -> list[list[Any]]:
             return structured
     except Exception:
         pass
-    body = inner[1:-1]
+
+    body = inner
+    if body.startswith("["):
+        body = body[1:]
+    if body.endswith("]"):
+        body = body[:-1]
+
     results: list[list[Any]] = []
     position = 0
     for match in INTERACTION_TUPLE_RE.finditer(body):
         separator = body[position: match.start()].strip()
-        if separator not in {"", ","}:
+        cleaned_separator = separator.replace(">", "").replace("<", "").replace("]", "").replace("[", "").strip()
+        if cleaned_separator not in {"", ","}:
             raise ValueError(f"Unexpected interaction separator: {separator!r}")
         source = match.group(1).strip()
         target = match.group(2).strip()
@@ -167,8 +176,15 @@ def _parse_interactions(inner: str) -> list[list[Any]]:
         results.append([source, target, unit])
         position = match.end()
     trailing = body[position:].strip()
-    if trailing not in {"", ","}:
+    cleaned_trailing = trailing.replace(">", "").replace("<", "").replace("]", "").replace("[", "").strip()
+    if cleaned_trailing not in {"", ","}:
+        if EDITORIAL_TRAILING_RE.search(cleaned_trailing):
+            return results
         raise ValueError(f"Unparsed interaction content remains: {trailing!r}")
+    if not results and body.strip():
+        if EDITORIAL_TRAILING_RE.search(body):
+            return []
+        raise ValueError("Interaction block contains no parseable tuples.")
     return results
 
 
@@ -182,9 +198,10 @@ def parse_compact_observer_text(text: str) -> dict[str, Any]:
     current_round: dict[str, Any] | None = None
     current_stage = "reflection"
     current_explanation_lines: list[str] | None = None
+    current_round_errors: list[str] = []
 
     def finalize_round() -> None:
-        nonlocal current_round, current_stage, current_explanation_lines
+        nonlocal current_round, current_stage, current_explanation_lines, current_round_errors
         if current_round is None:
             return
         if current_explanation_lines is not None:
@@ -192,8 +209,10 @@ def parse_compact_observer_text(text: str) -> dict[str, Any]:
             current_explanation_lines = None
         current_round.pop("summary_marker_seen", None)
         rounds.append(current_round)
+        errors.extend(current_round_errors)
         current_round = None
         current_stage = "reflection"
+        current_round_errors = []
 
     for line_number, raw_line in enumerate(lines, start=1):
         line = raw_line.rstrip()
@@ -207,9 +226,15 @@ def parse_compact_observer_text(text: str) -> dict[str, Any]:
 
         round_begin_match = ROUND_BEGIN_RE.match(stripped)
         if round_begin_match:
-            finalize_round()
+            round_number = int(round_begin_match.group(1))
+            if current_round is not None and round_number == current_round["round_number"]:
+                current_round = None
+                current_explanation_lines = None
+                current_round_errors = []
+            else:
+                finalize_round()
             current_round = {
-                "round_number": int(round_begin_match.group(1)),
+                "round_number": round_number,
                 "explanation": "",
                 "contributions": None,
                 "interactions": None,
@@ -232,7 +257,7 @@ def parse_compact_observer_text(text: str) -> dict[str, Any]:
         if explanation_match:
             explanation_round_number = int(explanation_match.group(1))
             if explanation_round_number != current_round["round_number"]:
-                errors.append(
+                current_round_errors.append(
                     f"Line {line_number}: explanation round {explanation_round_number} does not match current round {current_round['round_number']}."
                 )
             current_explanation_lines = []
@@ -246,7 +271,7 @@ def parse_compact_observer_text(text: str) -> dict[str, Any]:
             try:
                 current_round["contributions"] = _parse_contributions(contributions_match.group(1))
             except Exception as exc:
-                errors.append(f"Line {line_number}: could not parse contributions: {exc}")
+                current_round_errors.append(f"Line {line_number}: could not parse contributions: {exc}")
             current_stage = "outcome"
             continue
 
@@ -258,7 +283,7 @@ def parse_compact_observer_text(text: str) -> dict[str, Any]:
             try:
                 current_round["interactions"] = _parse_interactions(interactions_match.group(2))
             except Exception as exc:
-                errors.append(f"Line {line_number}: could not parse interactions: {exc}")
+                current_round_errors.append(f"Line {line_number}: could not parse interactions: {exc}")
             continue
 
         summary_match = ROUND_SUMMARY_RE.match(stripped)
@@ -268,7 +293,7 @@ def parse_compact_observer_text(text: str) -> dict[str, Any]:
                 current_explanation_lines = None
             summary_round_number = int(summary_match.group(1))
             if summary_round_number != current_round["round_number"]:
-                errors.append(
+                current_round_errors.append(
                     f"Line {line_number}: summary round {summary_round_number} does not match current round {current_round['round_number']}."
                 )
             current_round["summary_marker_seen"] = True
