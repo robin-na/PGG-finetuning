@@ -1,0 +1,34 @@
+{
+  "features": [
+    "chat_enabled",
+    "punishment_enabled",
+    "reward_enabled",
+    "all_or_nothing",
+    "opt_out_default",
+    "show_n_rounds",
+    "show_other_summaries",
+    "show_actor_id"
+  ],
+  "macro_metrics": [
+    "mean_total_contribution_rate",
+    "first_round_total_contribution_rate",
+    "final_total_contribution_rate",
+    "mean_round_normalized_efficiency",
+    "first_round_normalized_efficiency",
+    "final_round_normalized_efficiency"
+  ],
+  "micro_metrics": [
+    "Player mean contrib",
+    "Player mean payoff",
+    "Round contrib",
+    "Round eff",
+    "Round-to-round contrib change",
+    "Round-to-round eff change"
+  ],
+  "models": [
+    "gpt-5.1 baseline",
+    "gpt-5.1 twin",
+    "gpt-5-mini baseline",
+    "gpt-5-mini twin"
+  ]
+}

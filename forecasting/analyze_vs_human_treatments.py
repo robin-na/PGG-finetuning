@@ -25,9 +25,11 @@ from .parse_outputs import _read_jsonl
 
 CORE_METRICS = [
     "mean_total_contribution_rate",
+    "first_round_total_contribution_rate",
     "final_total_contribution_rate",
     "total_contribution_rate_sd",
     "mean_round_normalized_efficiency",
+    "first_round_normalized_efficiency",
     "final_round_normalized_efficiency",
     "total_contribution_rate_rmse_to_treatment_mean",
     "round_normalized_efficiency_rmse_to_treatment_mean",
@@ -42,19 +44,29 @@ CORE_METRICS = [
 
 TREATMENT_MEAN_ALIGNMENT_METRICS = [
     "mean_total_contribution_rate",
+    "first_round_total_contribution_rate",
+    "final_total_contribution_rate",
     "mean_round_normalized_efficiency",
+    "first_round_normalized_efficiency",
+    "final_round_normalized_efficiency",
 ]
 
 TREATMENT_DISPERSION_METRICS = [
     "mean_total_contribution_rate",
-    "mean_round_normalized_efficiency",
+    "first_round_total_contribution_rate",
     "final_total_contribution_rate",
+    "mean_round_normalized_efficiency",
+    "first_round_normalized_efficiency",
     "final_round_normalized_efficiency",
 ]
 
 TREATMENT_WASSERSTEIN_METRICS = [
-    "mean_round_normalized_efficiency",
+    "mean_total_contribution_rate",
+    "first_round_total_contribution_rate",
     "final_total_contribution_rate",
+    "mean_round_normalized_efficiency",
+    "first_round_normalized_efficiency",
+    "final_round_normalized_efficiency",
 ]
 
 
@@ -248,6 +260,8 @@ def _round_summary_from_round_records(
 
     defect_round_coin_gen = float(num_players * endowment)
     max_round_coin_gen = float(mpcr * (num_players**2) * endowment)
+    defect_player_payoff = defect_round_coin_gen / float(num_players)
+    max_player_payoff = max_round_coin_gen / float(num_players)
 
     for round_record in rounds:
         round_number = int(round_record.index) + 1
@@ -290,6 +304,12 @@ def _round_summary_from_round_records(
                     "round_number": round_number,
                     "player_id": player_id,
                     "contribution_rate": round_record.contributions[player_id] / float(endowment),
+                    "round_payoff": float(round_record.round_payoffs[player_id]),
+                    "round_normalized_payoff": _relative_efficiency(
+                        float(round_record.round_payoffs[player_id]),
+                        defect_player_payoff,
+                        max_player_payoff,
+                    ),
                     "punish_target_count": punish_target_count,
                     "reward_target_count": reward_target_count,
                     "has_punish": int(punish_target_count > 0),
@@ -329,9 +349,11 @@ def _summarize_game_metrics(
         round_df.groupby(entity_id_col, as_index=False)
         .agg(
             mean_total_contribution_rate=("total_contribution_rate", "mean"),
+            first_round_total_contribution_rate=("total_contribution_rate", lambda s: float(s.iloc[0])),
             total_contribution_rate_sd=("total_contribution_rate", lambda s: float(s.std(ddof=0))),
             final_total_contribution_rate=("total_contribution_rate", lambda s: float(s.iloc[-1])),
             mean_round_normalized_efficiency=("round_normalized_efficiency", "mean"),
+            first_round_normalized_efficiency=("round_normalized_efficiency", lambda s: float(s.iloc[0])),
             final_round_normalized_efficiency=("round_normalized_efficiency", lambda s: float(s.iloc[-1])),
             mean_within_round_contribution_rate_var=("within_round_contribution_rate_var", "mean"),
             messages_per_round=("message_count", "mean"),
@@ -481,6 +503,27 @@ def _build_human_round_metrics(repo_root: Path, metadata_df: pd.DataFrame) -> tu
         human_round_df["message_count"] = 0
     human_round_df["message_count"] = human_round_df["message_count"].fillna(0).astype(int)
     human_round_df["has_chat"] = (human_round_df["message_count"] > 0).astype(int)
+    human_actor_sizes = human_round_df[
+        ["game_id", "round_number", "num_active_players"]
+    ].copy()
+    player_rounds = player_rounds.merge(
+        human_actor_sizes,
+        on=["game_id", "round_number"],
+        how="left",
+        validate="many_to_one",
+    )
+    player_defect_payoff = player_rounds["endowment"].astype(float)
+    player_max_payoff = (
+        player_rounds["mpcr"].astype(float)
+        * player_rounds["num_active_players"].astype(float)
+        * player_rounds["endowment"].astype(float)
+    )
+    payoff_denominator = player_max_payoff - player_defect_payoff
+    player_rounds["round_normalized_payoff"] = np.where(
+        payoff_denominator != 0,
+        (player_rounds["round_payoff"].astype(float) - player_defect_payoff) / payoff_denominator,
+        np.nan,
+    )
 
     human_actor_df = player_rounds[
         [
@@ -489,6 +532,8 @@ def _build_human_round_metrics(repo_root: Path, metadata_df: pd.DataFrame) -> tu
             "round_number",
             "playerId",
             "contribution_rate",
+            "round_payoff",
+            "round_normalized_payoff",
             "punish_target_count",
             "reward_target_count",
             "has_punish",
@@ -1087,9 +1132,17 @@ def main() -> None:
     treatment_wasserstein_summary_df = _summarize_treatment_wasserstein_distance(treatment_wasserstein_df)
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    generated_actor_df.sort_values(["treatment_name", "custom_id", "player_id", "round_number"]).to_csv(
+        args.output_dir / "generated_actor_summary.csv",
+        index=False,
+    )
     generated_game_df.sort_values("treatment_name").to_csv(args.output_dir / "generated_game_summary.csv", index=False)
     generated_round_df.sort_values(["treatment_name", "round_number"]).to_csv(
         args.output_dir / "generated_round_summary.csv",
+        index=False,
+    )
+    human_actor_df.sort_values(["treatment_name", "game_id", "player_id", "round_number"]).to_csv(
+        args.output_dir / "human_actor_summary.csv",
         index=False,
     )
     human_game_df.sort_values(["treatment_name", "game_id"]).to_csv(

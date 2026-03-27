@@ -101,3 +101,19 @@ Key outputs include:
 - `model_vs_noise_ceiling.png` with grouped bars for `gpt-5.1`, `gpt-5-mini`, and the matched human noise ceiling
 - `model_vs_noise_ceiling_summary.csv` with raw scores, gap-to-ceiling, and ratio-to-ceiling values
 - `noise_ceiling_summary.csv` and `noise_ceiling_bootstrap.csv` for the bootstrap human-vs-human reference
+
+## Plot Macro Pointwise Alignment
+
+```bash
+python -m forecasting.plot_macro_pointwise_alignment
+```
+
+This writes:
+
+- `forecasting/results/macro_pointwise_alignment__llms/`
+
+Key outputs include:
+
+- `macro_pointwise_alignment.png` with grouped bars for the four LLM runs plus the matched human noise ceiling, shown for RMSE of config means and mean within-config Wasserstein distance across the 40 validation configs
+- `macro_pointwise_alignment_summary.csv` with model scores, standard errors, matched noise-ceiling summaries, and gap-to-ceiling values for mean, first-round, and final-round contribution / normalized efficiency
+- `macro_pointwise_alignment_bootstrap.csv` with the matched human-vs-human bootstrap resamples used to estimate the noise-ceiling components

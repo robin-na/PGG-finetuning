@@ -1,0 +1,385 @@
+domain,feature_name,feature_label,metric_label,model_name,wd_diff_true_minus_false,diff_stderr,true_num_treatments,false_num_treatments
+macro,all_or_nothing,All-or-nothing,Final-round contrib,gpt-5-mini baseline,0.0315364095697096,0.07520404953038849,18,22
+macro,all_or_nothing,All-or-nothing,Final-round contrib,gpt-5-mini twin,-0.02733220746140047,0.055252314140974146,18,22
+macro,all_or_nothing,All-or-nothing,Final-round contrib,gpt-5.1 baseline,-0.019357214965111558,0.07784198306048798,18,22
+macro,all_or_nothing,All-or-nothing,Final-round contrib,gpt-5.1 twin,-0.048471195995982985,0.05949818774907168,18,22
+macro,all_or_nothing,All-or-nothing,Final-round eff,gpt-5-mini baseline,-0.024250890814889514,0.12065058826536647,18,22
+macro,all_or_nothing,All-or-nothing,Final-round eff,gpt-5-mini twin,-0.07823719151660774,0.10424807306557876,18,22
+macro,all_or_nothing,All-or-nothing,Final-round eff,gpt-5.1 baseline,-0.06028977361578852,0.11932663238228992,18,22
+macro,all_or_nothing,All-or-nothing,Final-round eff,gpt-5.1 twin,-0.08737017097371658,0.11019596819474888,18,22
+macro,all_or_nothing,All-or-nothing,First-round contrib,gpt-5-mini baseline,0.032250811958165135,0.0195782265107999,18,22
+macro,all_or_nothing,All-or-nothing,First-round contrib,gpt-5-mini twin,0.019868614965970102,0.011571330567656296,18,22
+macro,all_or_nothing,All-or-nothing,First-round contrib,gpt-5.1 baseline,-0.0017844384507728628,0.026917373398831088,18,22
+macro,all_or_nothing,All-or-nothing,First-round contrib,gpt-5.1 twin,0.017722219851323384,0.018275735361357303,18,22
+macro,all_or_nothing,All-or-nothing,First-round eff,gpt-5-mini baseline,0.022635692235389887,0.023453681719519674,18,22
+macro,all_or_nothing,All-or-nothing,First-round eff,gpt-5-mini twin,0.03400554453281626,0.01742890409679942,18,22
+macro,all_or_nothing,All-or-nothing,First-round eff,gpt-5.1 baseline,-0.013507477842066407,0.024453896382122423,18,22
+macro,all_or_nothing,All-or-nothing,First-round eff,gpt-5.1 twin,0.016203459221610497,0.021137344825762783,18,22
+macro,all_or_nothing,All-or-nothing,Mean contrib,gpt-5-mini baseline,-0.07687825997310016,0.04682473843839884,18,22
+macro,all_or_nothing,All-or-nothing,Mean contrib,gpt-5-mini twin,-0.07653555893676722,0.032371462889096925,18,22
+macro,all_or_nothing,All-or-nothing,Mean contrib,gpt-5.1 baseline,0.03174343130924845,0.03990637957524945,18,22
+macro,all_or_nothing,All-or-nothing,Mean contrib,gpt-5.1 twin,-0.00844699098445964,0.02476478948659848,18,22
+macro,all_or_nothing,All-or-nothing,Mean eff,gpt-5-mini baseline,-0.08139086289142572,0.05572108344769223,18,22
+macro,all_or_nothing,All-or-nothing,Mean eff,gpt-5-mini twin,-0.07875442711025413,0.0399380377891772,18,22
+macro,all_or_nothing,All-or-nothing,Mean eff,gpt-5.1 baseline,0.01991758653907702,0.0471034947282532,18,22
+macro,all_or_nothing,All-or-nothing,Mean eff,gpt-5.1 twin,-0.02890502367408268,0.03394208111902687,18,22
+macro,chat_enabled,Chat enabled,Final-round contrib,gpt-5-mini baseline,0.04347463000719509,0.0708082362560698,26,14
+macro,chat_enabled,Chat enabled,Final-round contrib,gpt-5-mini twin,-0.008728181425008585,0.062062667410748784,26,14
+macro,chat_enabled,Chat enabled,Final-round contrib,gpt-5.1 baseline,-0.053515433421460146,0.07651536287264019,26,14
+macro,chat_enabled,Chat enabled,Final-round contrib,gpt-5.1 twin,-0.016761302887821017,0.0654042058337416,26,14
+macro,chat_enabled,Chat enabled,Final-round eff,gpt-5-mini baseline,-0.00951975349433365,0.1535970478316246,26,14
+macro,chat_enabled,Chat enabled,Final-round eff,gpt-5-mini twin,-0.07034956507235884,0.1458730112600856,26,14
+macro,chat_enabled,Chat enabled,Final-round eff,gpt-5.1 baseline,-0.0899255337093301,0.15845611089819117,26,14
+macro,chat_enabled,Chat enabled,Final-round eff,gpt-5.1 twin,-0.045108635729982416,0.15632839131194082,26,14
+macro,chat_enabled,Chat enabled,First-round contrib,gpt-5-mini baseline,-0.009873271526232047,0.02068126667400114,26,14
+macro,chat_enabled,Chat enabled,First-round contrib,gpt-5-mini twin,0.012116897478739633,0.012189221561752136,26,14
+macro,chat_enabled,Chat enabled,First-round contrib,gpt-5.1 baseline,0.034174669141774416,0.029357690037973855,26,14
+macro,chat_enabled,Chat enabled,First-round contrib,gpt-5.1 twin,0.014871349715099721,0.021987636836371133,26,14
+macro,chat_enabled,Chat enabled,First-round eff,gpt-5-mini baseline,0.011227189772077623,0.022516889870068175,26,14
+macro,chat_enabled,Chat enabled,First-round eff,gpt-5-mini twin,0.02986196150589457,0.015022241683514116,26,14
+macro,chat_enabled,Chat enabled,First-round eff,gpt-5.1 baseline,0.03185292445347901,0.0270023687318952,26,14
+macro,chat_enabled,Chat enabled,First-round eff,gpt-5.1 twin,0.01864626160756104,0.023669293899876757,26,14
+macro,chat_enabled,Chat enabled,Mean contrib,gpt-5-mini baseline,-0.009841241485566532,0.047918726982363026,26,14
+macro,chat_enabled,Chat enabled,Mean contrib,gpt-5-mini twin,-0.005804490099311388,0.038303843283909476,26,14
+macro,chat_enabled,Chat enabled,Mean contrib,gpt-5.1 baseline,0.004487005477430417,0.04339681755580839,26,14
+macro,chat_enabled,Chat enabled,Mean contrib,gpt-5.1 twin,-0.0002757202153590155,0.028221783177699307,26,14
+macro,chat_enabled,Chat enabled,Mean eff,gpt-5-mini baseline,0.026629330569586496,0.0573382369595059,26,14
+macro,chat_enabled,Chat enabled,Mean eff,gpt-5-mini twin,0.01706280370487917,0.04706994171795501,26,14
+macro,chat_enabled,Chat enabled,Mean eff,gpt-5.1 baseline,0.03792468512347044,0.05198762521327123,26,14
+macro,chat_enabled,Chat enabled,Mean eff,gpt-5.1 twin,0.022168641331431482,0.03833181534586187,26,14
+macro,opt_out_default,Opt-out default,Final-round contrib,gpt-5-mini baseline,0.03199066699934716,0.07687475046010359,16,24
+macro,opt_out_default,Opt-out default,Final-round contrib,gpt-5-mini twin,0.0028310584480089607,0.057312835363054315,16,24
+macro,opt_out_default,Opt-out default,Final-round contrib,gpt-5.1 baseline,-0.025007585348210293,0.07511603414817854,16,24
+macro,opt_out_default,Opt-out default,Final-round contrib,gpt-5.1 twin,0.03429126653549869,0.06219229058537253,16,24
+macro,opt_out_default,Opt-out default,Final-round eff,gpt-5-mini baseline,0.16799706243167012,0.14436236135267388,16,24
+macro,opt_out_default,Opt-out default,Final-round eff,gpt-5-mini twin,0.13637835536706827,0.12983109411723728,16,24
+macro,opt_out_default,Opt-out default,Final-round eff,gpt-5.1 baseline,0.10222125897185935,0.1439603624896399,16,24
+macro,opt_out_default,Opt-out default,Final-round eff,gpt-5.1 twin,0.16536890692447564,0.1376838186993555,16,24
+macro,opt_out_default,Opt-out default,First-round contrib,gpt-5-mini baseline,-0.01528230863414523,0.020906546349527384,16,24
+macro,opt_out_default,Opt-out default,First-round contrib,gpt-5-mini twin,0.009913348763403593,0.012248212931693203,16,24
+macro,opt_out_default,Opt-out default,First-round contrib,gpt-5.1 baseline,0.04901655722242346,0.024172256971522723,16,24
+macro,opt_out_default,Opt-out default,First-round contrib,gpt-5.1 twin,0.03379892339527758,0.017714519322451622,16,24
+macro,opt_out_default,Opt-out default,First-round eff,gpt-5-mini baseline,-0.009785204080041632,0.02436304707858861,16,24
+macro,opt_out_default,Opt-out default,First-round eff,gpt-5-mini twin,0.01624055054670691,0.018966671365314894,16,24
+macro,opt_out_default,Opt-out default,First-round eff,gpt-5.1 baseline,0.022299862835863576,0.022686384995703756,16,24
+macro,opt_out_default,Opt-out default,First-round eff,gpt-5.1 twin,0.024946303605631562,0.020619380469636725,16,24
+macro,opt_out_default,Opt-out default,Mean contrib,gpt-5-mini baseline,-0.07967081330530418,0.045080791238526444,16,24
+macro,opt_out_default,Opt-out default,Mean contrib,gpt-5-mini twin,-0.03834186617452348,0.03331706915355119,16,24
+macro,opt_out_default,Opt-out default,Mean contrib,gpt-5.1 baseline,0.027018789470087817,0.03745055736050486,16,24
+macro,opt_out_default,Opt-out default,Mean contrib,gpt-5.1 twin,0.008628197556132644,0.024340220776575546,16,24
+macro,opt_out_default,Opt-out default,Mean eff,gpt-5-mini baseline,-0.06446367824420746,0.056106194060290084,16,24
+macro,opt_out_default,Opt-out default,Mean eff,gpt-5-mini twin,-0.024815775658338812,0.042521487314540564,16,24
+macro,opt_out_default,Opt-out default,Mean eff,gpt-5.1 baseline,0.02095571004503094,0.04441127161649786,16,24
+macro,opt_out_default,Opt-out default,Mean eff,gpt-5.1 twin,0.014026175829989163,0.03411730985733677,16,24
+macro,punishment_enabled,Punishment enabled,Final-round contrib,gpt-5-mini baseline,-0.0066801336341607565,0.07422880383452433,20,20
+macro,punishment_enabled,Punishment enabled,Final-round contrib,gpt-5-mini twin,-0.024618658761782264,0.05637555263752958,20,20
+macro,punishment_enabled,Punishment enabled,Final-round contrib,gpt-5.1 baseline,-0.07910263716584598,0.07803039826855665,20,20
+macro,punishment_enabled,Punishment enabled,Final-round contrib,gpt-5.1 twin,-0.008643244443343578,0.061478930902526874,20,20
+macro,punishment_enabled,Punishment enabled,Final-round eff,gpt-5-mini baseline,0.013067798730959423,0.1253528716222422,20,20
+macro,punishment_enabled,Punishment enabled,Final-round eff,gpt-5-mini twin,0.03521146687271898,0.11179698289963139,20,20
+macro,punishment_enabled,Punishment enabled,Final-round eff,gpt-5.1 baseline,-0.03201643135219179,0.1267397601763651,20,20
+macro,punishment_enabled,Punishment enabled,Final-round eff,gpt-5.1 twin,0.03823950865819309,0.11819011067499303,20,20
+macro,punishment_enabled,Punishment enabled,First-round contrib,gpt-5-mini baseline,-0.0051249320550307564,0.019308297663605086,20,20
+macro,punishment_enabled,Punishment enabled,First-round contrib,gpt-5-mini twin,0.0033853859347280357,0.011758008495553236,20,20
+macro,punishment_enabled,Punishment enabled,First-round contrib,gpt-5.1 baseline,-0.0020158264006947813,0.0266034436115811,20,20
+macro,punishment_enabled,Punishment enabled,First-round contrib,gpt-5.1 twin,-0.01980359421889026,0.0182662870331905,20,20
+macro,punishment_enabled,Punishment enabled,First-round eff,gpt-5-mini baseline,0.021876451353551762,0.022582881924113334,20,20
+macro,punishment_enabled,Punishment enabled,First-round eff,gpt-5-mini twin,0.030125490190355236,0.01733494728628476,20,20
+macro,punishment_enabled,Punishment enabled,First-round eff,gpt-5.1 baseline,0.013063567572828005,0.024762813827490664,20,20
+macro,punishment_enabled,Punishment enabled,First-round eff,gpt-5.1 twin,0.0072329421713115405,0.021202806617328637,20,20
+macro,punishment_enabled,Punishment enabled,Mean contrib,gpt-5-mini baseline,-0.1369711400719926,0.042998990365451836,20,20
+macro,punishment_enabled,Punishment enabled,Mean contrib,gpt-5-mini twin,-0.05541988376103321,0.03494612533235206,20,20
+macro,punishment_enabled,Punishment enabled,Mean contrib,gpt-5.1 baseline,-0.06596697643111227,0.03863949378508591,20,20
+macro,punishment_enabled,Punishment enabled,Mean contrib,gpt-5.1 twin,-0.040638763693267216,0.02465131372316619,20,20
+macro,punishment_enabled,Punishment enabled,Mean eff,gpt-5-mini baseline,-0.16055271948072541,0.05056503151297218,20,20
+macro,punishment_enabled,Punishment enabled,Mean eff,gpt-5-mini twin,-0.061485082544924574,0.04217955355711595,20,20
+macro,punishment_enabled,Punishment enabled,Mean eff,gpt-5.1 baseline,-0.06435388733518482,0.04600556810570377,20,20
+macro,punishment_enabled,Punishment enabled,Mean eff,gpt-5.1 twin,-0.037352150475719575,0.03411853645501437,20,20
+macro,reward_enabled,Reward enabled,Final-round contrib,gpt-5-mini baseline,-0.052051387639401314,0.07231573789325686,22,18
+macro,reward_enabled,Reward enabled,Final-round contrib,gpt-5-mini twin,-0.019882679378907198,0.05503787150022083,22,18
+macro,reward_enabled,Reward enabled,Final-round contrib,gpt-5.1 baseline,-0.0894805934728653,0.07840302823748219,22,18
+macro,reward_enabled,Reward enabled,Final-round contrib,gpt-5.1 twin,-0.046113128365277534,0.060703712286174716,22,18
+macro,reward_enabled,Reward enabled,Final-round eff,gpt-5-mini baseline,0.048636920134460526,0.11683009255370905,22,18
+macro,reward_enabled,Reward enabled,Final-round eff,gpt-5-mini twin,0.07024172717288879,0.10387263229756415,22,18
+macro,reward_enabled,Reward enabled,Final-round eff,gpt-5.1 baseline,0.0063711196074932586,0.12007074093177762,22,18
+macro,reward_enabled,Reward enabled,Final-round eff,gpt-5.1 twin,0.05464011460930496,0.10969272073490877,22,18
+macro,reward_enabled,Reward enabled,First-round contrib,gpt-5-mini baseline,0.0014348906669315042,0.01919882621208614,22,18
+macro,reward_enabled,Reward enabled,First-round contrib,gpt-5-mini twin,-0.0037432420224153273,0.012047299981143332,22,18
+macro,reward_enabled,Reward enabled,First-round contrib,gpt-5.1 baseline,0.01672838900078405,0.027727648425902647,22,18
+macro,reward_enabled,Reward enabled,First-round contrib,gpt-5.1 twin,-0.007029825825596067,0.019432530085226538,22,18
+macro,reward_enabled,Reward enabled,First-round eff,gpt-5-mini baseline,0.013980132280675905,0.022156412135586608,22,18
+macro,reward_enabled,Reward enabled,First-round eff,gpt-5-mini twin,0.0018633324060928352,0.01794354100288956,22,18
+macro,reward_enabled,Reward enabled,First-round eff,gpt-5.1 baseline,0.021773018836721447,0.025443528836908685,22,18
+macro,reward_enabled,Reward enabled,First-round eff,gpt-5.1 twin,0.012255597862983636,0.021869557841272803,22,18
+macro,reward_enabled,Reward enabled,Mean contrib,gpt-5-mini baseline,-0.048954329041875966,0.049894364933621066,22,18
+macro,reward_enabled,Reward enabled,Mean contrib,gpt-5-mini twin,-0.03179008464415295,0.03631629762692013,22,18
+macro,reward_enabled,Reward enabled,Mean contrib,gpt-5.1 baseline,-0.06919991529134542,0.041125894685372574,22,18
+macro,reward_enabled,Reward enabled,Mean contrib,gpt-5.1 twin,-0.02521524963511343,0.025969979256926082,22,18
+macro,reward_enabled,Reward enabled,Mean eff,gpt-5-mini baseline,-0.06088521204773861,0.0578072842080447,22,18
+macro,reward_enabled,Reward enabled,Mean eff,gpt-5-mini twin,-0.04113782733655855,0.04292183260046276,22,18
+macro,reward_enabled,Reward enabled,Mean eff,gpt-5.1 baseline,-0.09540479727884887,0.04645484335147693,22,18
+macro,reward_enabled,Reward enabled,Mean eff,gpt-5.1 twin,-0.03806971393390676,0.03462192097898752,22,18
+macro,show_actor_id,Show actor IDs,Final-round contrib,gpt-5-mini baseline,-0.04644211888138616,0.07385343520676979,20,20
+macro,show_actor_id,Show actor IDs,Final-round contrib,gpt-5-mini twin,0.014405672662080704,0.0564684976200012,20,20
+macro,show_actor_id,Show actor IDs,Final-round contrib,gpt-5.1 baseline,0.08105796789293634,0.07797757253442589,20,20
+macro,show_actor_id,Show actor IDs,Final-round contrib,gpt-5.1 twin,0.07081259294946723,0.06041246870715908,20,20
+macro,show_actor_id,Show actor IDs,Final-round eff,gpt-5-mini baseline,-0.05681158209944093,0.12503159849170342,20,20
+macro,show_actor_id,Show actor IDs,Final-round eff,gpt-5-mini twin,0.005030187097353422,0.11193983690317902,20,20
+macro,show_actor_id,Show actor IDs,Final-round eff,gpt-5.1 baseline,0.07210596031652605,0.12630565694781615,20,20
+macro,show_actor_id,Show actor IDs,Final-round eff,gpt-5.1 twin,0.08242537062495625,0.11759504601896653,20,20
+macro,show_actor_id,Show actor IDs,First-round contrib,gpt-5-mini baseline,-0.0051055784189008024,0.01930843259120051,20,20
+macro,show_actor_id,Show actor IDs,First-round contrib,gpt-5-mini twin,-0.016070688692399235,0.011478495714041385,20,20
+macro,show_actor_id,Show actor IDs,First-round contrib,gpt-5.1 baseline,-0.037988071261097545,0.025881924221626877,20,20
+macro,show_actor_id,Show actor IDs,First-round contrib,gpt-5.1 twin,-0.031135485463610474,0.01784563862694254,20,20
+macro,show_actor_id,Show actor IDs,First-round eff,gpt-5-mini baseline,-0.02033620338124409,0.022620732853665285,20,20
+macro,show_actor_id,Show actor IDs,First-round eff,gpt-5-mini twin,-0.04040556663444936,0.01677556999271056,20,20
+macro,show_actor_id,Show actor IDs,First-round eff,gpt-5.1 baseline,-0.030383628951207275,0.024359681928165965,20,20
+macro,show_actor_id,Show actor IDs,First-round eff,gpt-5.1 twin,-0.03772497798089308,0.020334300688067623,20,20
+macro,show_actor_id,Show actor IDs,Mean contrib,gpt-5-mini baseline,0.004799545910847303,0.048394420656208824,20,20
+macro,show_actor_id,Show actor IDs,Mean contrib,gpt-5-mini twin,0.04537230886775814,0.03532537509853542,20,20
+macro,show_actor_id,Show actor IDs,Mean contrib,gpt-5.1 baseline,0.006790070767221212,0.04007884832532629,20,20
+macro,show_actor_id,Show actor IDs,Mean contrib,gpt-5.1 twin,0.043604528418735466,0.02451759325918058,20,20
+macro,show_actor_id,Show actor IDs,Mean eff,gpt-5-mini baseline,-0.024451272245022526,0.056740072785966,20,20
+macro,show_actor_id,Show actor IDs,Mean eff,gpt-5-mini twin,0.011530875970822835,0.04330242922851804,20,20
+macro,show_actor_id,Show actor IDs,Mean eff,gpt-5.1 baseline,-0.00261413010247577,0.04717326863881197,20,20
+macro,show_actor_id,Show actor IDs,Mean eff,gpt-5.1 twin,0.009639993416624526,0.03461711084576745,20,20
+macro,show_n_rounds,Show # rounds,Final-round contrib,gpt-5-mini baseline,0.27997269192149615,0.07653839901015937,28,12
+macro,show_n_rounds,Show # rounds,Final-round contrib,gpt-5-mini twin,0.1262769324060287,0.053891624656093214,28,12
+macro,show_n_rounds,Show # rounds,Final-round contrib,gpt-5.1 baseline,0.15186512250015283,0.09019378211697705,28,12
+macro,show_n_rounds,Show # rounds,Final-round contrib,gpt-5.1 twin,0.11915701664939027,0.06061350260226815,28,12
+macro,show_n_rounds,Show # rounds,Final-round eff,gpt-5-mini baseline,0.3884849922272597,0.10090851719506601,28,12
+macro,show_n_rounds,Show # rounds,Final-round eff,gpt-5-mini twin,0.2514580970151749,0.08365260598085182,28,12
+macro,show_n_rounds,Show # rounds,Final-round eff,gpt-5.1 baseline,0.28493486632714116,0.11233563893217026,28,12
+macro,show_n_rounds,Show # rounds,Final-round eff,gpt-5.1 twin,0.23829266093587304,0.09115533096681089,28,12
+macro,show_n_rounds,Show # rounds,First-round contrib,gpt-5-mini baseline,-0.027093124802828716,0.02058317949506721,28,12
+macro,show_n_rounds,Show # rounds,First-round contrib,gpt-5-mini twin,0.012439890153705932,0.013385689264914964,28,12
+macro,show_n_rounds,Show # rounds,First-round contrib,gpt-5.1 baseline,-0.04957479107150162,0.031488220392988764,28,12
+macro,show_n_rounds,Show # rounds,First-round contrib,gpt-5.1 twin,-0.005370668105043164,0.021074599510232234,28,12
+macro,show_n_rounds,Show # rounds,First-round eff,gpt-5-mini baseline,0.011885387428612448,0.020889064823923463,28,12
+macro,show_n_rounds,Show # rounds,First-round eff,gpt-5-mini twin,0.023991892984380023,0.01705021931769455,28,12
+macro,show_n_rounds,Show # rounds,First-round eff,gpt-5.1 baseline,-0.03701143386021882,0.027579020223996983,28,12
+macro,show_n_rounds,Show # rounds,First-round eff,gpt-5.1 twin,0.0014095026757830198,0.023293169573399906,28,12
+macro,show_n_rounds,Show # rounds,Mean contrib,gpt-5-mini baseline,0.04397869934163684,0.05813509994712498,28,12
+macro,show_n_rounds,Show # rounds,Mean contrib,gpt-5-mini twin,-0.013218008133117964,0.03714227994228957,28,12
+macro,show_n_rounds,Show # rounds,Mean contrib,gpt-5.1 baseline,-0.03145078853795785,0.05044413873072127,28,12
+macro,show_n_rounds,Show # rounds,Mean contrib,gpt-5.1 twin,-0.017384814868644155,0.02767170949273974,28,12
+macro,show_n_rounds,Show # rounds,Mean eff,gpt-5-mini baseline,0.09086220248415539,0.06060569678533661,28,12
+macro,show_n_rounds,Show # rounds,Mean eff,gpt-5-mini twin,0.04069977458786603,0.041469976666291514,28,12
+macro,show_n_rounds,Show # rounds,Mean eff,gpt-5.1 baseline,0.016311915393312115,0.05232111983261879,28,12
+macro,show_n_rounds,Show # rounds,Mean eff,gpt-5.1 twin,0.04095703791114619,0.03323272684650315,28,12
+macro,show_other_summaries,Show outcome summaries,Final-round contrib,gpt-5-mini baseline,-0.17148403359893288,0.07265334344509133,26,14
+macro,show_other_summaries,Show outcome summaries,Final-round contrib,gpt-5-mini twin,-0.19075143587743176,0.054082823126606554,26,14
+macro,show_other_summaries,Show outcome summaries,Final-round contrib,gpt-5.1 baseline,-0.18215830417165396,0.07991007323005984,26,14
+macro,show_other_summaries,Show outcome summaries,Final-round contrib,gpt-5.1 twin,-0.20009256635257466,0.058443770966930764,26,14
+macro,show_other_summaries,Show outcome summaries,Final-round eff,gpt-5-mini baseline,-0.26381946760665187,0.14761986351963516,26,14
+macro,show_other_summaries,Show outcome summaries,Final-round eff,gpt-5-mini twin,-0.25561232650335874,0.13753382930679434,26,14
+macro,show_other_summaries,Show outcome summaries,Final-round eff,gpt-5.1 baseline,-0.2755869385035843,0.15293472757524595,26,14
+macro,show_other_summaries,Show outcome summaries,Final-round eff,gpt-5.1 twin,-0.2891060299548646,0.14529570902632227,26,14
+macro,show_other_summaries,Show outcome summaries,First-round contrib,gpt-5-mini baseline,0.046619073566821545,0.016512824695283295,26,14
+macro,show_other_summaries,Show outcome summaries,First-round contrib,gpt-5-mini twin,0.027510320969329073,0.009811040048587393,26,14
+macro,show_other_summaries,Show outcome summaries,First-round contrib,gpt-5.1 baseline,0.002629538608789589,0.023935829496609887,26,14
+macro,show_other_summaries,Show outcome summaries,First-round contrib,gpt-5.1 twin,0.025200683842510785,0.016457814814469073,26,14
+macro,show_other_summaries,Show outcome summaries,First-round eff,gpt-5-mini baseline,0.04719819410502733,0.021076566893133305,26,14
+macro,show_other_summaries,Show outcome summaries,First-round eff,gpt-5-mini twin,0.03935806679583717,0.01623449301489498,26,14
+macro,show_other_summaries,Show outcome summaries,First-round eff,gpt-5.1 baseline,-0.0011081728148891745,0.023794218229351505,26,14
+macro,show_other_summaries,Show outcome summaries,First-round eff,gpt-5.1 twin,0.022193804002664214,0.019897031518282392,26,14
+macro,show_other_summaries,Show outcome summaries,Mean contrib,gpt-5-mini baseline,-0.11131733860058635,0.046752863859928176,26,14
+macro,show_other_summaries,Show outcome summaries,Mean contrib,gpt-5-mini twin,-0.096991589159623,0.038275460521013396,26,14
+macro,show_other_summaries,Show outcome summaries,Mean contrib,gpt-5.1 baseline,-0.025486083257125064,0.04304848512233786,26,14
+macro,show_other_summaries,Show outcome summaries,Mean contrib,gpt-5.1 twin,-0.05764270796608467,0.02691344775614015,26,14
+macro,show_other_summaries,Show outcome summaries,Mean eff,gpt-5-mini baseline,-0.11465105278245691,0.05574338274319194,26,14
+macro,show_other_summaries,Show outcome summaries,Mean eff,gpt-5-mini twin,-0.0970106193995561,0.04599274757442031,26,14
+macro,show_other_summaries,Show outcome summaries,Mean eff,gpt-5.1 baseline,-0.0366264407341666,0.048812195200560175,26,14
+macro,show_other_summaries,Show outcome summaries,Mean eff,gpt-5.1 twin,-0.07082635992778971,0.035265674046025416,26,14
+micro,all_or_nothing,All-or-nothing,Player mean contrib,gpt-5-mini baseline,-0.0767059859801868,0.04589201182005642,18,22
+micro,all_or_nothing,All-or-nothing,Player mean contrib,gpt-5-mini twin,-0.09130030742292454,0.03287272126115707,18,22
+micro,all_or_nothing,All-or-nothing,Player mean contrib,gpt-5.1 baseline,0.0027095230818773575,0.035963478379776856,18,22
+micro,all_or_nothing,All-or-nothing,Player mean contrib,gpt-5.1 twin,-0.05509859069859471,0.023063425970869363,18,22
+micro,all_or_nothing,All-or-nothing,Player mean payoff,gpt-5-mini baseline,-0.06914990516197872,0.055494775761971746,18,22
+micro,all_or_nothing,All-or-nothing,Player mean payoff,gpt-5-mini twin,-0.08343684784588468,0.03955311494732595,18,22
+micro,all_or_nothing,All-or-nothing,Player mean payoff,gpt-5.1 baseline,0.017996960781323512,0.046928610469166375,18,22
+micro,all_or_nothing,All-or-nothing,Player mean payoff,gpt-5.1 twin,-0.03146733486064854,0.03344938740180992,18,22
+micro,all_or_nothing,All-or-nothing,Round contrib,gpt-5-mini baseline,-0.059087071894445675,0.04393128282773181,18,22
+micro,all_or_nothing,All-or-nothing,Round contrib,gpt-5-mini twin,-0.06254981226940998,0.030659342916396885,18,22
+micro,all_or_nothing,All-or-nothing,Round contrib,gpt-5.1 baseline,0.029586038602850723,0.03495508329232519,18,22
+micro,all_or_nothing,All-or-nothing,Round contrib,gpt-5.1 twin,-0.007318454991069923,0.02190347522904952,18,22
+micro,all_or_nothing,All-or-nothing,Round eff,gpt-5-mini baseline,-0.05729734862201746,0.05296766238714178,18,22
+micro,all_or_nothing,All-or-nothing,Round eff,gpt-5-mini twin,-0.0650538416651964,0.040247846368619285,18,22
+micro,all_or_nothing,All-or-nothing,Round eff,gpt-5.1 baseline,0.011449148187972547,0.04479619232546289,18,22
+micro,all_or_nothing,All-or-nothing,Round eff,gpt-5.1 twin,-0.019900938275606073,0.035179292899984047,18,22
+micro,all_or_nothing,All-or-nothing,Round-to-round contrib change,gpt-5-mini baseline,0.04395683271201009,0.013488032144617731,18,22
+micro,all_or_nothing,All-or-nothing,Round-to-round contrib change,gpt-5-mini twin,0.020917978231593484,0.009946398278398143,18,22
+micro,all_or_nothing,All-or-nothing,Round-to-round contrib change,gpt-5.1 baseline,0.026943785567761627,0.012279092291754886,18,22
+micro,all_or_nothing,All-or-nothing,Round-to-round contrib change,gpt-5.1 twin,0.01803891382911571,0.010542644205220495,18,22
+micro,all_or_nothing,All-or-nothing,Round-to-round eff change,gpt-5-mini baseline,0.032240502684101974,0.028880160973644212,18,22
+micro,all_or_nothing,All-or-nothing,Round-to-round eff change,gpt-5-mini twin,0.02051908040577638,0.025496994052778575,18,22
+micro,all_or_nothing,All-or-nothing,Round-to-round eff change,gpt-5.1 baseline,0.023143318000000718,0.021483208991422854,18,22
+micro,all_or_nothing,All-or-nothing,Round-to-round eff change,gpt-5.1 twin,0.01944422634722151,0.024018606119021405,18,22
+micro,chat_enabled,Chat enabled,Player mean contrib,gpt-5-mini baseline,-0.002350180813658176,0.04857271508753415,26,14
+micro,chat_enabled,Chat enabled,Player mean contrib,gpt-5-mini twin,-0.019481546404366418,0.039235908396962504,26,14
+micro,chat_enabled,Chat enabled,Player mean contrib,gpt-5.1 baseline,0.013712769480404896,0.03882782838335166,26,14
+micro,chat_enabled,Chat enabled,Player mean contrib,gpt-5.1 twin,0.015352978146949803,0.02907732075488865,26,14
+micro,chat_enabled,Chat enabled,Player mean payoff,gpt-5-mini baseline,0.027044143162646417,0.05516481681982527,26,14
+micro,chat_enabled,Chat enabled,Player mean payoff,gpt-5-mini twin,0.012165291077504276,0.04552091610830189,26,14
+micro,chat_enabled,Chat enabled,Player mean payoff,gpt-5.1 baseline,0.03267849065569564,0.04944383324898294,26,14
+micro,chat_enabled,Chat enabled,Player mean payoff,gpt-5.1 twin,0.022739197253936555,0.03635796234255641,26,14
+micro,chat_enabled,Chat enabled,Round contrib,gpt-5-mini baseline,0.00032449726953232005,0.04581361861751634,26,14
+micro,chat_enabled,Chat enabled,Round contrib,gpt-5-mini twin,-0.007912168278696174,0.035691568615630526,26,14
+micro,chat_enabled,Chat enabled,Round contrib,gpt-5.1 baseline,-0.004384765574641819,0.03749477688977648,26,14
+micro,chat_enabled,Chat enabled,Round contrib,gpt-5.1 twin,0.0010501168020047025,0.025297022496542452,26,14
+micro,chat_enabled,Chat enabled,Round eff,gpt-5-mini baseline,0.024433592363863887,0.057392190825700545,26,14
+micro,chat_enabled,Chat enabled,Round eff,gpt-5-mini twin,0.0015379553185584927,0.04881306638329594,26,14
+micro,chat_enabled,Chat enabled,Round eff,gpt-5.1 baseline,0.010538124346404332,0.05063333953427147,26,14
+micro,chat_enabled,Chat enabled,Round eff,gpt-5.1 twin,0.01611739792572936,0.04477709568507807,26,14
+micro,chat_enabled,Chat enabled,Round-to-round contrib change,gpt-5-mini baseline,0.03131510698120013,0.01205896259711665,26,14
+micro,chat_enabled,Chat enabled,Round-to-round contrib change,gpt-5-mini twin,0.010819055065503319,0.009244749247172487,26,14
+micro,chat_enabled,Chat enabled,Round-to-round contrib change,gpt-5.1 baseline,0.01740540881548433,0.011271332380176897,26,14
+micro,chat_enabled,Chat enabled,Round-to-round contrib change,gpt-5.1 twin,0.008558701973873845,0.009638072992585902,26,14
+micro,chat_enabled,Chat enabled,Round-to-round eff change,gpt-5-mini baseline,0.03535622268485239,0.028314984977531862,26,14
+micro,chat_enabled,Chat enabled,Round-to-round eff change,gpt-5-mini twin,0.012981077862106588,0.02549599917260763,26,14
+micro,chat_enabled,Chat enabled,Round-to-round eff change,gpt-5.1 baseline,0.011259989103116735,0.023173095981540638,26,14
+micro,chat_enabled,Chat enabled,Round-to-round eff change,gpt-5.1 twin,0.011812856295287,0.024473539453458894,26,14
+micro,opt_out_default,Opt-out default,Player mean contrib,gpt-5-mini baseline,-0.06701067290940058,0.045753999087123944,16,24
+micro,opt_out_default,Opt-out default,Player mean contrib,gpt-5-mini twin,-0.04062987184508157,0.035395294157987964,16,24
+micro,opt_out_default,Opt-out default,Player mean contrib,gpt-5.1 baseline,0.003978453700745427,0.033569324648575455,16,24
+micro,opt_out_default,Opt-out default,Player mean contrib,gpt-5.1 twin,-0.02129054035031927,0.024934639558681755,16,24
+micro,opt_out_default,Opt-out default,Player mean payoff,gpt-5-mini baseline,-0.0669435324993411,0.05599114710092547,16,24
+micro,opt_out_default,Opt-out default,Player mean payoff,gpt-5-mini twin,-0.040189258118385085,0.04205401155224029,16,24
+micro,opt_out_default,Opt-out default,Player mean payoff,gpt-5.1 baseline,0.01842615303216591,0.04509324779425353,16,24
+micro,opt_out_default,Opt-out default,Player mean payoff,gpt-5.1 twin,0.0011972911148767085,0.03392150355458762,16,24
+micro,opt_out_default,Opt-out default,Round contrib,gpt-5-mini baseline,-0.06540587300888401,0.04187195713574015,16,24
+micro,opt_out_default,Opt-out default,Round contrib,gpt-5-mini twin,-0.030160426499395876,0.03127570424993775,16,24
+micro,opt_out_default,Opt-out default,Round contrib,gpt-5.1 baseline,0.020052718118495988,0.0319782635805866,16,24
+micro,opt_out_default,Opt-out default,Round contrib,gpt-5.1 twin,0.006422607784259876,0.021477599398178473,16,24
+micro,opt_out_default,Opt-out default,Round eff,gpt-5-mini baseline,-0.04893378203407839,0.055286755850241266,16,24
+micro,opt_out_default,Opt-out default,Round eff,gpt-5-mini twin,-0.016507869082542925,0.044849730083620344,16,24
+micro,opt_out_default,Opt-out default,Round eff,gpt-5.1 baseline,0.01729592873011826,0.044604273140038994,16,24
+micro,opt_out_default,Opt-out default,Round eff,gpt-5.1 twin,0.01362442973479655,0.038217748231989396,16,24
+micro,opt_out_default,Opt-out default,Round-to-round contrib change,gpt-5-mini baseline,0.0019812458091439666,0.014967223594608064,16,24
+micro,opt_out_default,Opt-out default,Round-to-round contrib change,gpt-5-mini twin,0.008108127561939127,0.01094127968405608,16,24
+micro,opt_out_default,Opt-out default,Round-to-round contrib change,gpt-5.1 baseline,-6.444698943797178e-05,0.01310870254812282,16,24
+micro,opt_out_default,Opt-out default,Round-to-round contrib change,gpt-5.1 twin,0.006898579278085432,0.011499776090197391,16,24
+micro,opt_out_default,Opt-out default,Round-to-round eff change,gpt-5-mini baseline,-0.015191351877761744,0.02808087974874342,16,24
+micro,opt_out_default,Opt-out default,Round-to-round eff change,gpt-5-mini twin,0.0004079502384329581,0.025058394335370666,16,24
+micro,opt_out_default,Opt-out default,Round-to-round eff change,gpt-5.1 baseline,-0.013706568362561594,0.02064342497253054,16,24
+micro,opt_out_default,Opt-out default,Round-to-round eff change,gpt-5.1 twin,0.0012514302712363923,0.024059997996277154,16,24
+micro,punishment_enabled,Punishment enabled,Player mean contrib,gpt-5-mini baseline,-0.1274956923235217,0.0426213599220787,20,20
+micro,punishment_enabled,Punishment enabled,Player mean contrib,gpt-5-mini twin,-0.05749560787601085,0.035665442232552746,20,20
+micro,punishment_enabled,Punishment enabled,Player mean contrib,gpt-5.1 baseline,-0.054567360850802854,0.03493615011269328,20,20
+micro,punishment_enabled,Punishment enabled,Player mean contrib,gpt-5.1 twin,-0.02806709110817049,0.02465787686648636,20,20
+micro,punishment_enabled,Punishment enabled,Player mean payoff,gpt-5-mini baseline,-0.15984876722626196,0.04951157082592461,20,20
+micro,punishment_enabled,Punishment enabled,Player mean payoff,gpt-5-mini twin,-0.07257495936492517,0.041115576772571924,20,20
+micro,punishment_enabled,Punishment enabled,Player mean payoff,gpt-5.1 baseline,-0.0668998490736884,0.04527282511212542,20,20
+micro,punishment_enabled,Punishment enabled,Player mean payoff,gpt-5.1 twin,-0.03786546884578121,0.033332227307123825,20,20
+micro,punishment_enabled,Punishment enabled,Round contrib,gpt-5-mini baseline,-0.12464604905320278,0.04058860239810493,20,20
+micro,punishment_enabled,Punishment enabled,Round contrib,gpt-5-mini twin,-0.050928076917921894,0.03274276803516264,20,20
+micro,punishment_enabled,Punishment enabled,Round contrib,gpt-5.1 baseline,-0.07005169431333516,0.03352369235585295,20,20
+micro,punishment_enabled,Punishment enabled,Round contrib,gpt-5.1 twin,-0.03288884474616843,0.021950822857009274,20,20
+micro,punishment_enabled,Punishment enabled,Round eff,gpt-5-mini baseline,-0.11842557194044573,0.05087181794840922,20,20
+micro,punishment_enabled,Punishment enabled,Round eff,gpt-5-mini twin,-0.03121187204025222,0.04313822732880412,20,20
+micro,punishment_enabled,Punishment enabled,Round eff,gpt-5.1 baseline,-0.04158197028755589,0.04494290665093777,20,20
+micro,punishment_enabled,Punishment enabled,Round eff,gpt-5.1 twin,-0.0030029994509206404,0.03664839713191591,20,20
+micro,punishment_enabled,Punishment enabled,Round-to-round contrib change,gpt-5-mini baseline,-0.009206970849999996,0.014754964044989799,20,20
+micro,punishment_enabled,Punishment enabled,Round-to-round contrib change,gpt-5-mini twin,-0.004696261240518959,0.010420885507839922,20,20
+micro,punishment_enabled,Punishment enabled,Round-to-round contrib change,gpt-5.1 baseline,-0.01833756419241353,0.012377963104194128,20,20
+micro,punishment_enabled,Punishment enabled,Round-to-round contrib change,gpt-5.1 twin,-0.009301915794901583,0.010663961805722575,20,20
+micro,punishment_enabled,Punishment enabled,Round-to-round eff change,gpt-5-mini baseline,0.05276238837968669,0.02899919726898765,20,20
+micro,punishment_enabled,Punishment enabled,Round-to-round eff change,gpt-5-mini twin,0.05571654931192421,0.024235723534898772,20,20
+micro,punishment_enabled,Punishment enabled,Round-to-round eff change,gpt-5.1 baseline,0.036996973637799246,0.020644901711421613,20,20
+micro,punishment_enabled,Punishment enabled,Round-to-round eff change,gpt-5.1 twin,0.04774136209906103,0.022400936060746137,20,20
+micro,reward_enabled,Reward enabled,Player mean contrib,gpt-5-mini baseline,-0.04933111655767408,0.048763704686460775,22,18
+micro,reward_enabled,Reward enabled,Player mean contrib,gpt-5-mini twin,-0.041721725237872986,0.036789851307220435,22,18
+micro,reward_enabled,Reward enabled,Player mean contrib,gpt-5.1 baseline,-0.0639806568360956,0.03666452809611971,22,18
+micro,reward_enabled,Reward enabled,Player mean contrib,gpt-5.1 twin,-0.013112295271737767,0.02575167359004198,22,18
+micro,reward_enabled,Reward enabled,Player mean payoff,gpt-5-mini baseline,-0.049979446715090914,0.056798847770242245,22,18
+micro,reward_enabled,Reward enabled,Player mean payoff,gpt-5-mini twin,-0.038518494777428025,0.042482494329025906,22,18
+micro,reward_enabled,Reward enabled,Player mean payoff,gpt-5.1 baseline,-0.08263194387023318,0.04619949049189733,22,18
+micro,reward_enabled,Reward enabled,Player mean payoff,gpt-5.1 twin,-0.029594100986151672,0.034126007350836124,22,18
+micro,reward_enabled,Reward enabled,Round contrib,gpt-5-mini baseline,-0.04715654128155461,0.046889178046669706,22,18
+micro,reward_enabled,Reward enabled,Round contrib,gpt-5-mini twin,-0.027931067223587874,0.033876258727567665,22,18
+micro,reward_enabled,Reward enabled,Round contrib,gpt-5.1 baseline,-0.07576331584559226,0.03564810558420484,22,18
+micro,reward_enabled,Reward enabled,Round contrib,gpt-5.1 twin,-0.03844765018985738,0.022215285330486816,22,18
+micro,reward_enabled,Reward enabled,Round eff,gpt-5-mini baseline,-0.053626262561471016,0.05476259312529036,22,18
+micro,reward_enabled,Reward enabled,Round eff,gpt-5-mini twin,-0.03057383276105735,0.04246382494626057,22,18
+micro,reward_enabled,Reward enabled,Round eff,gpt-5.1 baseline,-0.0775916667932241,0.04450255887544497,22,18
+micro,reward_enabled,Reward enabled,Round eff,gpt-5.1 twin,-0.03308071152136377,0.03591709943326583,22,18
+micro,reward_enabled,Reward enabled,Round-to-round contrib change,gpt-5-mini baseline,-0.029375126712552907,0.0144521391739261,22,18
+micro,reward_enabled,Reward enabled,Round-to-round contrib change,gpt-5-mini twin,-0.002212308797844495,0.010209679570225349,22,18
+micro,reward_enabled,Reward enabled,Round-to-round contrib change,gpt-5.1 baseline,-0.009036527194197772,0.012637393516429797,22,18
+micro,reward_enabled,Reward enabled,Round-to-round contrib change,gpt-5.1 twin,0.0010029606163132199,0.01041043931752843,22,18
+micro,reward_enabled,Reward enabled,Round-to-round eff change,gpt-5-mini baseline,-0.03551082593893995,0.03110822414565425,22,18
+micro,reward_enabled,Reward enabled,Round-to-round eff change,gpt-5-mini twin,-0.008687429790904894,0.026467409941600503,22,18
+micro,reward_enabled,Reward enabled,Round-to-round eff change,gpt-5.1 baseline,-0.010269052497237141,0.021703324118564824,22,18
+micro,reward_enabled,Reward enabled,Round-to-round eff change,gpt-5.1 twin,0.005983661547209362,0.02370598353606572,22,18
+micro,show_actor_id,Show actor IDs,Player mean contrib,gpt-5-mini baseline,-0.001441359521515695,0.047373967497390326,20,20
+micro,show_actor_id,Show actor IDs,Player mean contrib,gpt-5-mini twin,0.037764779901683226,0.03635224946723401,20,20
+micro,show_actor_id,Show actor IDs,Player mean contrib,gpt-5.1 baseline,-0.00837770929288234,0.03601451647223511,20,20
+micro,show_actor_id,Show actor IDs,Player mean contrib,gpt-5.1 twin,0.03595780277059023,0.024386801813671023,20,20
+micro,show_actor_id,Show actor IDs,Player mean payoff,gpt-5-mini baseline,-0.02980705219231311,0.05568147252998436,20,20
+micro,show_actor_id,Show actor IDs,Player mean payoff,gpt-5-mini twin,0.014474136992752573,0.04270346618253276,20,20
+micro,show_actor_id,Show actor IDs,Player mean payoff,gpt-5.1 baseline,-0.008528457619584096,0.04653486117524401,20,20
+micro,show_actor_id,Show actor IDs,Player mean payoff,gpt-5.1 twin,0.004734154659989248,0.03388479003849485,20,20
+micro,show_actor_id,Show actor IDs,Round contrib,gpt-5-mini baseline,0.010086463492051556,0.045316842835746954,20,20
+micro,show_actor_id,Show actor IDs,Round contrib,gpt-5-mini twin,0.029837662100665352,0.03342027416731145,20,20
+micro,show_actor_id,Show actor IDs,Round contrib,gpt-5.1 baseline,0.007648874762256286,0.03537564455782338,20,20
+micro,show_actor_id,Show actor IDs,Round contrib,gpt-5.1 twin,0.028728820670552324,0.02210394028186952,20,20
+micro,show_actor_id,Show actor IDs,Round eff,gpt-5-mini baseline,-0.01953957347723756,0.05428594174176722,20,20
+micro,show_actor_id,Show actor IDs,Round eff,gpt-5-mini twin,-0.002701082724751225,0.04343214249871536,20,20
+micro,show_actor_id,Show actor IDs,Round eff,gpt-5.1 baseline,-0.011816431257222482,0.04540585888994161,20,20
+micro,show_actor_id,Show actor IDs,Round eff,gpt-5.1 twin,-0.005935509408405648,0.03663898491850931,20,20
+micro,show_actor_id,Show actor IDs,Round-to-round contrib change,gpt-5-mini baseline,-0.011731924604200528,0.014707741327304198,20,20
+micro,show_actor_id,Show actor IDs,Round-to-round contrib change,gpt-5-mini twin,-0.02707138094716381,0.009481005504661534,20,20
+micro,show_actor_id,Show actor IDs,Round-to-round contrib change,gpt-5.1 baseline,-0.016573892958834935,0.01244324295163954,20,20
+micro,show_actor_id,Show actor IDs,Round-to-round contrib change,gpt-5.1 twin,-0.021776491453920216,0.010174365556815808,20,20
+micro,show_actor_id,Show actor IDs,Round-to-round eff change,gpt-5-mini baseline,-0.051452768017543615,0.02906105781761676,20,20
+micro,show_actor_id,Show actor IDs,Round-to-round eff change,gpt-5-mini twin,-0.06032730525505403,0.023943475832497764,20,20
+micro,show_actor_id,Show actor IDs,Round-to-round eff change,gpt-5.1 baseline,-0.03306499802694114,0.020819738039618126,20,20
+micro,show_actor_id,Show actor IDs,Round-to-round eff change,gpt-5.1 twin,-0.04952264365020638,0.02229893731482484,20,20
+micro,show_n_rounds,Show # rounds,Player mean contrib,gpt-5-mini baseline,0.0559328272623362,0.05907506488557469,28,12
+micro,show_n_rounds,Show # rounds,Player mean contrib,gpt-5-mini twin,-0.01198644259818224,0.03941869249376197,28,12
+micro,show_n_rounds,Show # rounds,Player mean contrib,gpt-5.1 baseline,-0.009756041688477268,0.044309210311140323,28,12
+micro,show_n_rounds,Show # rounds,Player mean contrib,gpt-5.1 twin,0.01650880866982138,0.027842133382968776,28,12
+micro,show_n_rounds,Show # rounds,Player mean payoff,gpt-5-mini baseline,0.09994868390334782,0.060956713834274534,28,12
+micro,show_n_rounds,Show # rounds,Player mean payoff,gpt-5-mini twin,0.035639109253841506,0.04159043549633483,28,12
+micro,show_n_rounds,Show # rounds,Player mean payoff,gpt-5.1 baseline,0.0320366937681536,0.05189587862068151,28,12
+micro,show_n_rounds,Show # rounds,Player mean payoff,gpt-5.1 twin,0.05139971760197948,0.03243448217284611,28,12
+micro,show_n_rounds,Show # rounds,Round contrib,gpt-5-mini baseline,0.048560172232039345,0.05471508741431112,28,12
+micro,show_n_rounds,Show # rounds,Round contrib,gpt-5-mini twin,0.007894625279263767,0.03627988673286788,28,12
+micro,show_n_rounds,Show # rounds,Round contrib,gpt-5.1 baseline,0.0021567792679830777,0.04758540432285081,28,12
+micro,show_n_rounds,Show # rounds,Round contrib,gpt-5.1 twin,0.013451181147977609,0.025979584352890394,28,12
+micro,show_n_rounds,Show # rounds,Round eff,gpt-5-mini baseline,0.11596237957972988,0.05663871234691343,28,12
+micro,show_n_rounds,Show # rounds,Round eff,gpt-5-mini twin,0.06964958426012988,0.04019103095068028,28,12
+micro,show_n_rounds,Show # rounds,Round eff,gpt-5.1 baseline,0.06734515080380693,0.04952461528949194,28,12
+micro,show_n_rounds,Show # rounds,Round eff,gpt-5.1 twin,0.07836253140634064,0.03236584926834062,28,12
+micro,show_n_rounds,Show # rounds,Round-to-round contrib change,gpt-5-mini baseline,0.020907879864662873,0.016250166584376356,28,12
+micro,show_n_rounds,Show # rounds,Round-to-round contrib change,gpt-5-mini twin,0.02365678693855522,0.008456566198032462,28,12
+micro,show_n_rounds,Show # rounds,Round-to-round contrib change,gpt-5.1 baseline,0.033078175033459445,0.010893240346257892,28,12
+micro,show_n_rounds,Show # rounds,Round-to-round contrib change,gpt-5.1 twin,0.026848318321890385,0.008447473906671554,28,12
+micro,show_n_rounds,Show # rounds,Round-to-round eff change,gpt-5-mini baseline,0.06578448359777196,0.023830765853052736,28,12
+micro,show_n_rounds,Show # rounds,Round-to-round eff change,gpt-5-mini twin,0.06326082264094493,0.01880657626820797,28,12
+micro,show_n_rounds,Show # rounds,Round-to-round eff change,gpt-5.1 baseline,0.0626960276956616,0.015688221856459184,28,12
+micro,show_n_rounds,Show # rounds,Round-to-round eff change,gpt-5.1 twin,0.06504449410118265,0.016787246824065464,28,12
+micro,show_other_summaries,Show outcome summaries,Player mean contrib,gpt-5-mini baseline,-0.11119013103621825,0.04463846842897235,26,14
+micro,show_other_summaries,Show outcome summaries,Player mean contrib,gpt-5-mini twin,-0.10437041119238215,0.036419036828078094,26,14
+micro,show_other_summaries,Show outcome summaries,Player mean contrib,gpt-5.1 baseline,-0.03920494889085807,0.039073179076051796,26,14
+micro,show_other_summaries,Show outcome summaries,Player mean contrib,gpt-5.1 twin,-0.08470600097818536,0.022952611018105955,26,14
+micro,show_other_summaries,Show outcome summaries,Player mean payoff,gpt-5-mini baseline,-0.11702328921414895,0.05397236771900261,26,14
+micro,show_other_summaries,Show outcome summaries,Player mean payoff,gpt-5-mini twin,-0.11031846724981739,0.043358359450987684,26,14
+micro,show_other_summaries,Show outcome summaries,Player mean payoff,gpt-5.1 baseline,-0.04515366585372391,0.04779574010115601,26,14
+micro,show_other_summaries,Show outcome summaries,Player mean payoff,gpt-5.1 twin,-0.0773935625348523,0.032822454426085584,26,14
+micro,show_other_summaries,Show outcome summaries,Round contrib,gpt-5-mini baseline,-0.09849318726171574,0.04518106376116875,26,14
+micro,show_other_summaries,Show outcome summaries,Round contrib,gpt-5-mini twin,-0.09424414223332356,0.03555348567663969,26,14
+micro,show_other_summaries,Show outcome summaries,Round contrib,gpt-5.1 baseline,-0.02398159398725469,0.03810780863008977,26,14
+micro,show_other_summaries,Show outcome summaries,Round contrib,gpt-5.1 twin,-0.05247773220959712,0.023527361541734463,26,14
+micro,show_other_summaries,Show outcome summaries,Round eff,gpt-5-mini baseline,-0.10047275676409434,0.056276730918014946,26,14
+micro,show_other_summaries,Show outcome summaries,Round eff,gpt-5-mini twin,-0.09114024423377326,0.04769674834449969,26,14
+micro,show_other_summaries,Show outcome summaries,Round eff,gpt-5.1 baseline,-0.04305405324613493,0.04849506538274525,26,14
+micro,show_other_summaries,Show outcome summaries,Round eff,gpt-5.1 twin,-0.06137106555778307,0.039302458204503204,26,14
+micro,show_other_summaries,Show outcome summaries,Round-to-round contrib change,gpt-5-mini baseline,0.04871039448692588,0.010867796400584677,26,14
+micro,show_other_summaries,Show outcome summaries,Round-to-round contrib change,gpt-5-mini twin,0.025382860302750235,0.010162190790082208,26,14
+micro,show_other_summaries,Show outcome summaries,Round-to-round contrib change,gpt-5.1 baseline,0.03240877006568539,0.011266910656361429,26,14
+micro,show_other_summaries,Show outcome summaries,Round-to-round contrib change,gpt-5.1 twin,0.02311446947250005,0.01112627123369302,26,14
+micro,show_other_summaries,Show outcome summaries,Round-to-round eff change,gpt-5-mini baseline,0.0635616285191963,0.02512109738475658,26,14
+micro,show_other_summaries,Show outcome summaries,Round-to-round eff change,gpt-5-mini twin,0.04726112413011359,0.022323465150929245,26,14
+micro,show_other_summaries,Show outcome summaries,Round-to-round eff change,gpt-5.1 baseline,0.035755432539163357,0.020648684562949965,26,14
+micro,show_other_summaries,Show outcome summaries,Round-to-round eff change,gpt-5.1 twin,0.037190239269628014,0.022137026468039372,26,14

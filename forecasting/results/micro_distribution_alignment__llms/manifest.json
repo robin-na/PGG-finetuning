@@ -1,0 +1,20 @@
+{
+  "run_names": [
+    "baseline_gpt_5_1",
+    "twin_sampled_seed_0_gpt_5_1",
+    "baseline_gpt_5_mini",
+    "twin_sampled_seed_0_gpt_5_mini"
+  ],
+  "bootstrap_iters": 0,
+  "random_seed": 7,
+  "player_metrics": [
+    "player_mean_contribution_rate",
+    "player_mean_normalized_payoff"
+  ],
+  "round_metrics": [
+    "round_total_contribution_rate",
+    "round_normalized_efficiency",
+    "delta_total_contribution_rate",
+    "delta_round_normalized_efficiency"
+  ]
+}

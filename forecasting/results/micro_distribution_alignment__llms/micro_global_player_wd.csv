@@ -1,0 +1,9 @@
+model_name,metric,metric_label,global_wd,noise_ceiling_mean,noise_ceiling_stderr,gap_to_noise_ceiling,ratio_to_noise_ceiling
+gpt-5-mini baseline,player_mean_contribution_rate,Player mean contrib,0.28597529267755645,,,,
+gpt-5-mini twin,player_mean_contribution_rate,Player mean contrib,0.14310450762596946,,,,
+gpt-5.1 baseline,player_mean_contribution_rate,Player mean contrib,0.11772343056114765,,,,
+gpt-5.1 twin,player_mean_contribution_rate,Player mean contrib,0.07806641840291306,,,,
+gpt-5-mini baseline,player_mean_normalized_payoff,Player mean payoff,0.3426218336206414,,,,
+gpt-5-mini twin,player_mean_normalized_payoff,Player mean payoff,0.2031414885162442,,,,
+gpt-5.1 baseline,player_mean_normalized_payoff,Player mean payoff,0.16692903511159352,,,,
+gpt-5.1 twin,player_mean_normalized_payoff,Player mean payoff,0.12426768243784181,,,,
