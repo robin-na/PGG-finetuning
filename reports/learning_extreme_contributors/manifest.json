@@ -1,0 +1,29 @@
+{
+  "player_rounds": "data/raw_data/learning_wave/player-rounds.csv",
+  "config_csv": "data/processed_data/df_analysis_learn.csv",
+  "config_columns": [
+    "CONFIG_chat",
+    "CONFIG_punishmentExists",
+    "CONFIG_showRewardId",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_rewardExists",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp"
+  ],
+  "output_dir": "reports/learning_extreme_contributors",
+  "definition": {
+    "always_full": "player contributed exactly CONFIG_endowment in every observed round and had complete round coverage",
+    "always_zero": "player contributed 0 in every observed round and had complete round coverage",
+    "complete_round_coverage": "n_observed_rounds == CONFIG_numRounds"
+  },
+  "matched_all": {
+    "n_player_game_rows": 3906,
+    "n_games": 366
+  },
+  "valid_only": {
+    "n_player_game_rows": 3682,
+    "n_games": 335
+  }
+}

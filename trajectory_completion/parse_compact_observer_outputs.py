@@ -15,9 +15,26 @@ ROUND_SUMMARY_RE = re.compile(r"^#{2,3}\s*ROUND (\d+) SUMMARY SHOWN TO PLAYERS\s
 CONTRIBUTIONS_RE = re.compile(r"^### CONTRIBUTION(?:S)?:\s*<<(.*)>>\s*$")
 INTERACTIONS_RE = re.compile(r"^### (PUNISHMENT/REWARD|PUNISHMENT|REWARD):\s*<<(.*)>>\s*$")
 CHAT_RE = re.compile(r"^CHAT(?: from |/)([^:]+):\s*(.*)$")
+GAME_EXPLANATION_RE = re.compile(r"^### GAME EXPLANATION\s*$")
 OVERALL_REFLECTION_RE = re.compile(r"^### OVERALL REFLECTION\s*$")
 INTERACTION_TUPLE_RE = re.compile(
-    r"\(\s*([A-Za-z][A-Za-z0-9_]*)\s*,\s*([A-Za-z][A-Za-z0-9_]*)\s*,\s*([+-]?\d+)\s*\)"
+    r"\(\s*[\"']?([A-Za-z][A-Za-z0-9_]*)[\"']?\s*,\s*[\"']?([A-Za-z][A-Za-z0-9_]*)[\"']?\s*,\s*([+-]?\d+)\s*\)"
+)
+
+IGNORABLE_ROUND_PREFIXES = ("#", "-", "(", "*")
+IGNORABLE_ROUND_PHRASES = (
+    "net payoffs",
+    "payoffs this round",
+    "summary table",
+    "outcome details",
+    "each player sees",
+    "pot =",
+    "multiplied pot =",
+    "per-player return =",
+    "contributors:",
+    "defectors:",
+    "order:",
+    "total contributions =",
 )
 
 
@@ -125,6 +142,18 @@ def _parse_interactions(inner: str) -> list[list[Any]]:
         return []
     if not (inner.startswith("[") and inner.endswith("]")):
         raise ValueError("Interaction block must be bracketed.")
+    try:
+        parsed = ast.literal_eval(inner)
+        if isinstance(parsed, list):
+            structured: list[list[Any]] = []
+            for item in parsed:
+                if not isinstance(item, (list, tuple)) or len(item) != 3:
+                    raise ValueError("Interaction block contains a malformed tuple/list.")
+                source, target, unit = item
+                structured.append([str(source), str(target), int(unit)])
+            return structured
+    except Exception:
+        pass
     body = inner[1:-1]
     results: list[list[Any]] = []
     position = 0
@@ -146,7 +175,7 @@ def _parse_interactions(inner: str) -> list[list[Any]]:
 def parse_compact_observer_text(text: str) -> dict[str, Any]:
     lines = text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
     reflection_lines: list[str] = []
-    reflection_marker_seen = False
+    game_explanation_marker_seen = False
     rounds: list[dict[str, Any]] = []
     errors: list[str] = []
 
@@ -191,8 +220,8 @@ def parse_compact_observer_text(text: str) -> dict[str, Any]:
             continue
 
         if current_round is None:
-            if OVERALL_REFLECTION_RE.match(stripped):
-                reflection_marker_seen = True
+            if GAME_EXPLANATION_RE.match(stripped) or OVERALL_REFLECTION_RE.match(stripped):
+                game_explanation_marker_seen = True
             elif stripped in {"---", "## Next rounds", "### Next rounds", "## Predicted continuation", "### Predicted continuation"}:
                 continue
             else:
@@ -265,15 +294,20 @@ def parse_compact_observer_text(text: str) -> dict[str, Any]:
 
         if current_explanation_lines is not None:
             current_explanation_lines.append(line)
+        elif current_round.get("contributions") is None:
+            current_explanation_lines = [line]
+        elif stripped.startswith(IGNORABLE_ROUND_PREFIXES) or stripped.lower().startswith(IGNORABLE_ROUND_PHRASES):
+            continue
         else:
-            errors.append(f"Line {line_number}: unrecognized content inside round: {line}")
+            continue
 
     finalize_round()
 
     reflection = "\n".join(reflection_lines).strip()
     return {
         "reflection": reflection,
-        "overall_reflection_marker_seen": reflection_marker_seen,
+        "game_explanation_marker_seen": game_explanation_marker_seen,
+        "overall_reflection_marker_seen": game_explanation_marker_seen,
         "predicted_rounds": rounds,
         "parse_errors": errors,
     }
@@ -284,6 +318,10 @@ def _sanitize_parsed_output(parsed: dict[str, Any], expectations: dict[str, Any]
         return parsed
 
     expected_players = set(expectations.get("avatars") or [])
+    punishment_enabled = bool(expectations.get("punishment_enabled"))
+    reward_enabled = bool(expectations.get("reward_enabled"))
+    interactions_enabled = punishment_enabled or reward_enabled
+    chat_enabled = bool(expectations.get("chat_enabled"))
     sanitized_rounds: list[dict[str, Any]] = []
     for round_payload in parsed["predicted_rounds"]:
         sanitized_round = dict(round_payload)
@@ -299,6 +337,13 @@ def _sanitize_parsed_output(parsed: dict[str, Any], expectations: dict[str, Any]
                     continue
             if source == target:
                 continue
+            if punishment_enabled and not reward_enabled:
+                unit = abs(int(unit))
+            elif reward_enabled and not punishment_enabled:
+                unit = abs(int(unit))
+            else:
+                unit = int(unit)
+            interaction = [source, target, unit]
             interactions.append(interaction)
         sanitized_round["interactions"] = interactions if round_payload.get("interactions") is not None else None
 
@@ -308,6 +353,10 @@ def _sanitize_parsed_output(parsed: dict[str, Any], expectations: dict[str, Any]
                 continue
             messages.append(message)
         sanitized_round["messages"] = messages
+        if not chat_enabled:
+            sanitized_round["messages"] = []
+        if interactions_enabled and sanitized_round.get("interactions") is None:
+            sanitized_round["interactions"] = []
         sanitized_rounds.append(sanitized_round)
 
     return {
@@ -384,7 +433,9 @@ def _build_output_row(
     custom_id = str(record.get("custom_id", ""))
     output = {
         "custom_id": custom_id,
+        "game_explanation": parsed["reflection"],
         "reflection": parsed["reflection"],
+        "game_explanation_marker_seen": parsed.get("game_explanation_marker_seen", False),
         "overall_reflection_marker_seen": parsed["overall_reflection_marker_seen"],
         "predicted_rounds": parsed["predicted_rounds"],
         "parse_errors": parsed["parse_errors"],

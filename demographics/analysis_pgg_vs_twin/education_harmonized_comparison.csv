@@ -1,0 +1,5 @@
+dimension,category,pgg_count,twin_count,pgg_pct,twin_pct,pct_point_diff_pgg_minus_twin
+education_bachelor_or_higher,below_bachelor,1396,1010,38.36,49.08,-10.72
+education_bachelor_or_higher,bachelor_or_higher,2243,1048,61.64,50.92,10.72
+education_postgraduate_or_higher,below_postgraduate,2865,1745,78.73,84.79,-6.06
+education_postgraduate_or_higher,postgraduate_or_higher,774,313,21.27,15.21,6.06

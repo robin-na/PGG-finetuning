@@ -1,0 +1,28 @@
+{
+  "player_rounds": "data/raw_data/learning_wave/player-rounds.csv",
+  "config_csv": "data/processed_data/df_analysis_learn.csv",
+  "feature_manifest": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/manifest.json",
+  "output_dir": "reports/learning_player_contributions",
+  "features_used": [
+    "CONFIG_chat",
+    "CONFIG_punishmentExists",
+    "CONFIG_showRewardId",
+    "CONFIG_rewardMagnitude",
+    "CONFIG_punishmentMagnitude",
+    "CONFIG_showNRounds",
+    "CONFIG_endowment",
+    "CONFIG_showPunishmentId",
+    "CONFIG_rewardExists",
+    "CONFIG_MPCR",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_numRounds",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_playerCount"
+  ],
+  "n_games_raw": 376,
+  "n_games_player_avg_all": 376,
+  "n_player_game_rows_all": 3952,
+  "n_games_matched": 366,
+  "n_player_game_rows_matched": 3906
+}

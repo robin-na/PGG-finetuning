@@ -1,0 +1,13 @@
+metric,value
+n_participants,3334.0
+n_games,417.0
+n_config_columns_tested,23.0
+n_config_tests_total,69.0
+n_config_tests_raw_p_lt_0_05,1.0
+n_config_tests_fdr_p_lt_0_05,0.0
+game_level_age_eta_squared,0.12582195946609814
+game_level_age_permutation_p_value,0.44955044955044954
+game_level_gender_cramers_v,0.3567882991544329
+game_level_gender_permutation_p_value,0.38461538461538464
+game_level_education_cramers_v,0.33937828383248475
+game_level_education_permutation_p_value,0.987012987012987

@@ -1,0 +1,50 @@
+tag,cluster_id,cluster_title,n_player_game_rows,n_outcomes,dominant_outcome,dominant_share,entropy_bits
+COMMUNICATION,0,Silent Participants in Communication Dynamics,129,4,other,0.4418604651162791,1.6024970978876871
+COMMUNICATION,1,Silent Observers in Social Dynamics,350,4,other,0.38285714285714284,1.7850101961427203
+COMMUNICATION,2,Quietly Cooperative Social Participants,257,4,other,0.33852140077821014,1.6756921377447387
+COMMUNICATION,3,Minimalist Communicators in Group Dynamics,225,4,binary_0_20,0.37777777777777777,1.7396473548649263
+COMMUNICATION,4,Subtle Contributors in Cooperative Settings,254,3,always_full,0.5393700787401575,1.4382973450230556
+COMMUNICATION,5,Engaged Social Coordinators,360,4,always_full,0.45555555555555555,1.57753226357263
+COMMUNICATION,6,Assertive Norm Enforcers in Group Dynamics,184,4,always_full,0.5380434782608695,1.4932881448703585
+PUNISHMENT,0,Consistent Non-Punishers in Cooperative Settings,229,4,other,0.34497816593886466,1.7419983200740337
+PUNISHMENT,1,Consistent Non-Punishers with Strong Aversion,274,4,other,0.4051094890510949,1.707171460540666
+PUNISHMENT,2,Reluctant Non-Punishers in Competitive Environments,287,4,always_full,0.5644599303135889,1.5080897899213324
+PUNISHMENT,3,Selective Punishers with Norm-Based Strategies,184,4,always_full,0.42391304347826086,1.6248829360746389
+PUNISHMENT,4,Selective Punishers with High Thresholds,265,4,other,0.4528301886792453,1.5822217062692743
+PUNISHMENT,5,Targeted Punishers of Low Contributors,183,4,always_full,0.45901639344262296,1.5990362381457555
+PUNISHMENT,6,Proactive Punishers with Norm Enforcement,274,4,other,0.35766423357664234,1.6983949057839487
+REWARD,0,Generous Rewarding for Cooperative Engagement,307,4,always_full,0.33876221498371334,1.7172126267965135
+REWARD,1,Selective Rewarding for Cooperative Behavior,195,4,always_full,0.39487179487179486,1.6796517223819545
+REWARD,2,Selective Rewarding for Strategic Cooperation,165,4,other,0.47878787878787876,1.5498592191682328
+REWARD,3,Negative Reinforcement Over Positive Incentives,128,3,always_full,0.4609375,1.5306463199593905
+REWARD,4,Passive Observers of Reward Dynamics,348,4,other,0.39080459770114945,1.7217194424180349
+REWARD,5,Disengaged from Reward Dynamics,340,4,always_full,0.43823529411764706,1.6847763049785438
+REWARD,6,Reluctant Non-Participants in Reward Systems,195,4,binary_0_20,0.3435897435897436,1.7779056389323176
+RESPONSE_TO_END_GAME,0,Unyielding Commitment to Cooperation,341,3,always_full,0.5630498533724341,1.4213373577106396
+RESPONSE_TO_END_GAME,1,Dynamic Cooperation in Final Phases,317,3,other,0.5993690851735016,0.9978979072880837
+RESPONSE_TO_END_GAME,2,Unyielding Cooperation in Final Stages,333,4,always_full,0.6546546546546547,1.357628495579425
+RESPONSE_TO_END_GAME,3,Consistent Cooperation in Final Phases,160,4,other,0.425,1.587795764574103
+RESPONSE_TO_END_GAME,4,Consistent Contributions Near Game's End,259,4,other,0.5675675675675675,1.0743993066377875
+RESPONSE_TO_END_GAME,5,Consistent Defection in Final Game Phases,217,4,binary_0_20,0.48847926267281105,1.516912969009727
+RESPONSE_TO_END_GAME,6,Unwavering Commitment to Collective Success,189,4,always_full,0.5079365079365079,1.5710484213238851
+RESPONSE_TO_OTHERS_OUTCOME,0,Strategic Observers of Contribution Dynamics,202,4,other,0.48514851485148514,1.53104651394348
+RESPONSE_TO_OTHERS_OUTCOME,1,Detached Observers of Contribution Patterns,290,4,other,0.33448275862068966,1.6826606620258968
+RESPONSE_TO_OTHERS_OUTCOME,2,Incentive Architects of Group Dynamics,225,3,always_full,0.4177777777777778,1.5584838931108458
+RESPONSE_TO_OTHERS_OUTCOME,3,Attentive Contributors to Reward Dynamics,247,4,other,0.5870445344129555,1.44932174388804
+RESPONSE_TO_OTHERS_OUTCOME,4,Indifferent Contributors to Reward Dynamics,272,4,always_full,0.5404411764705882,1.605571063907199
+RESPONSE_TO_OTHERS_OUTCOME,5,Passive Observers of Reward Dynamics,289,4,other,0.3494809688581315,1.7709805085595454
+RESPONSE_TO_OTHERS_OUTCOME,6,Opportunistic Players in Contribution Dynamics,247,4,binary_0_20,0.4979757085020243,1.2636344569683127
+RESPONSE_TO_PUNISHER,0,Unobserved Responses to Punishment,102,3,always_full,0.6568627450980392,1.2359466793931744
+RESPONSE_TO_PUNISHER,1,Responses to Unpunished Players,72,3,always_full,0.6388888888888888,1.129915800468738
+RESPONSE_TO_PUNISHER,2,Unobserved Reactions to Punishment Dynamics,134,3,always_full,0.6044776119402985,1.286158665345957
+RESPONSE_TO_PUNISHER,3,Complex Reactions to Punishment Dynamics,137,4,binary_0_20,0.5766423357664233,1.3819281640418142
+RESPONSE_TO_PUNISHER,4,Resilient Cooperation Post-Punishment,192,4,always_full,0.4375,1.6105027118950443
+RESPONSE_TO_PUNISHER,5,Ambiguous Responses to Punishment,88,4,other,0.5795454545454546,1.3851171950481365
+RESPONSE_TO_PUNISHER,6,Non-Retaliatory Contributors in Punishment Scenarios,140,4,other,0.5071428571428571,1.4586865526626072
+RESPONSE_TO_REWARDER,0,Unrewarded Players: Behavioral Insights,60,4,other,0.6833333333333333,1.2841428547959364
+RESPONSE_TO_REWARDER,1,Unrewarded Observers: Behavioral Dynamics,109,4,always_full,0.46788990825688076,1.4389302561312745
+RESPONSE_TO_REWARDER,2,Indirect Reward Seekers: Cooperative Dynamics,133,4,binary_0_20,0.38345864661654133,1.6274500239757617
+RESPONSE_TO_REWARDER,3,Consistent Contributors: Reward Dynamics,150,4,always_full,0.5,1.5721284803524507
+RESPONSE_TO_REWARDER,4,Non-Reciprocating Reward Recipients,147,4,other,0.3197278911564626,1.7856132530627333
+RESPONSE_TO_REWARDER,5,Generous Rewarders: Cooperative Engagement Patterns,115,4,other,0.34782608695652173,1.6391597536095879
+RESPONSE_TO_REWARDER,6,Passive Reward Recipients: Engagement Patterns,149,4,other,0.4161073825503356,1.7210936733362716

@@ -1,0 +1,9 @@
+{
+  "request_file": "trajectory_completion/batch_inputs/validation_wave_one_per_treatment_validstart_all40_k0_compact_observer_gpt_5_mini_repeated_match_valid_start_counts/request_batch_k0.jsonl",
+  "num_requests": 417,
+  "total_input_tokens_estimate": 285698,
+  "mean_input_tokens_estimate": 685.1270983213429,
+  "median_input_tokens_estimate": 720,
+  "max_input_tokens_estimate": 816,
+  "min_input_tokens_estimate": 461
+}

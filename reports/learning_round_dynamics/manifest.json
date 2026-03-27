@@ -1,0 +1,44 @@
+{
+  "player_rounds": "data/raw_data/learning_wave/player-rounds.csv",
+  "rounds_csv": "data/raw_data/learning_wave/rounds.csv",
+  "config_csv": "data/processed_data/df_analysis_learn.csv",
+  "feature_manifest": "Persona/misc/tag_section_clusters_openai/analysis_regression_multinomial/manifest.json",
+  "output_dir": "reports/learning_round_dynamics",
+  "features_used": [
+    "CONFIG_chat",
+    "CONFIG_punishmentExists",
+    "CONFIG_showRewardId",
+    "CONFIG_rewardMagnitude",
+    "CONFIG_punishmentMagnitude",
+    "CONFIG_showNRounds",
+    "CONFIG_endowment",
+    "CONFIG_showPunishmentId",
+    "CONFIG_rewardExists",
+    "CONFIG_MPCR",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_numRounds",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp",
+    "CONFIG_playerCount"
+  ],
+  "scope_counts": {
+    "all_raw": {
+      "n_player_round_rows": 58247,
+      "n_games": 376,
+      "n_games_with_slopes": 368,
+      "n_game_round_rows": 5795
+    },
+    "matched_all": {
+      "n_player_round_rows": 57527,
+      "n_games": 366,
+      "n_games_with_slopes": 360,
+      "n_game_round_rows": 5666
+    },
+    "valid_only": {
+      "n_player_round_rows": 54124,
+      "n_games": 335,
+      "n_games_with_slopes": 329,
+      "n_game_round_rows": 5158
+    }
+  }
+}

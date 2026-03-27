@@ -1,0 +1,40 @@
+{
+  "extreme_flags": "reports/learning_extreme_contributors/player_game_extreme_strategy_flags.csv",
+  "nonextreme_labels": "reports/learning_nonextreme_patterns/valid_only_player_game_pattern_labels.csv",
+  "tag_base": "Persona/archetype_retrieval/learning_wave",
+  "cluster_catalog_base": "Persona/cluster/tag_section_clusters_openai_learn",
+  "output_dir": "reports/learning_noncontribution_persona_outcomes",
+  "binary_configs": [
+    "CONFIG_chat",
+    "CONFIG_punishmentExists",
+    "CONFIG_showRewardId",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_rewardExists",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp"
+  ],
+  "tags": [
+    "COMMUNICATION",
+    "PUNISHMENT",
+    "REWARD",
+    "RESPONSE_TO_END_GAME",
+    "RESPONSE_TO_OTHERS_OUTCOME",
+    "RESPONSE_TO_PUNISHER",
+    "RESPONSE_TO_REWARDER"
+  ],
+  "outcome_4class": [
+    "always_full",
+    "always_zero",
+    "binary_0_20",
+    "other"
+  ],
+  "notes": [
+    "Outcome labels are always_full, always_zero, binary_0_20, and other (all remaining patterns).",
+    "Only valid_only players with complete round coverage are included.",
+    "Each playerId appears in exactly one game in the learning wave, so this is type-level rather than person-level analysis.",
+    "Predictive evaluation uses grouped cross-validation by gameId to avoid train/test leakage within the same game.",
+    "Non-contribution tag coverage is conditional on the availability of that section in the persona artifacts."
+  ]
+}

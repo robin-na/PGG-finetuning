@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Twin Extended Profile Card",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_card_version",
+    "detail_mode",
+    "participant",
+    "headline",
+    "summary",
+    "background",
+    "behavioral_signature",
+    "social_style",
+    "decision_style",
+    "observed_anchors",
+    "transfer_relevance",
+    "limits"
+  ],
+  "properties": {
+    "profile_card_version": {
+      "type": "string",
+      "const": "twin_extended_profile_card_v3"
+    },
+    "detail_mode": {
+      "type": "string",
+      "enum": [
+        "compact",
+        "standard",
+        "audit"
+      ]
+    },
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pid",
+        "source_dataset",
+        "source_profile_version"
+      ],
+      "properties": {
+        "pid": {
+          "type": "string"
+        },
+        "source_dataset": {
+          "type": "string",
+          "const": "Twin-2k"
+        },
+        "source_profile_version": {
+          "type": "string",
+          "const": "twin_extended_profile_v1"
+        }
+      }
+    },
+    "headline": {
+      "type": "string",
+      "minLength": 3
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 10
+    },
+    "background": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "selected_context"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "selected_context": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/contextField"
+          },
+          "minItems": 3,
+          "maxItems": 6
+        }
+      }
+    },
+    "behavioral_signature": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 3,
+      "maxItems": 6
+    },
+    "social_style": {
+      "$ref": "#/$defs/styleSection"
+    },
+    "decision_style": {
+      "$ref": "#/$defs/styleSection"
+    },
+    "observed_anchors": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/anchorItem"
+      },
+      "minItems": 4,
+      "maxItems": 8
+    },
+    "transfer_relevance": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/transferCue"
+      },
+      "minItems": 4,
+      "maxItems": 7
+    },
+    "limits": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/uncertaintyItem"
+      },
+      "minItems": 2,
+      "maxItems": 6
+    }
+  },
+  "$defs": {
+    "contextField": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "value"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "styleSection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "constructed_from",
+        "cautions"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "constructed_from": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "maxItems": 6
+        },
+        "cautions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 3
+        }
+      }
+    },
+    "anchorItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "title",
+        "detail",
+        "evidence_refs"
+      ],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "transferCue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cue",
+        "label",
+        "score_0_to_100",
+        "confidence",
+        "meaning_here",
+        "constructed_from",
+        "scope_note",
+        "evidence_refs"
+      ],
+      "properties": {
+        "cue": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string",
+          "enum": [
+            "very_low",
+            "low",
+            "mixed",
+            "medium",
+            "high",
+            "very_high",
+            "unknown"
+          ]
+        },
+        "score_0_to_100": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "meaning_here": {
+          "type": "string"
+        },
+        "constructed_from": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "maxItems": 6
+        },
+        "scope_note": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "uncertaintyItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "topic",
+        "note",
+        "evidence_refs"
+      ],
+      "properties": {
+        "topic": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

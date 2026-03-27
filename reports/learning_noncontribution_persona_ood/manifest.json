@@ -1,0 +1,32 @@
+{
+  "extreme_flags": "reports/learning_extreme_contributors/player_game_extreme_strategy_flags.csv",
+  "nonextreme_labels": "reports/learning_nonextreme_patterns/valid_only_player_game_pattern_labels.csv",
+  "tag_base": "Persona/archetype_retrieval/learning_wave",
+  "output_dir": "reports/learning_noncontribution_persona_ood",
+  "binary_configs": [
+    "CONFIG_chat",
+    "CONFIG_punishmentExists",
+    "CONFIG_showRewardId",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_rewardExists",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp"
+  ],
+  "tags": [
+    "COMMUNICATION",
+    "PUNISHMENT",
+    "REWARD",
+    "RESPONSE_TO_END_GAME",
+    "RESPONSE_TO_OTHERS_OUTCOME",
+    "RESPONSE_TO_PUNISHER",
+    "RESPONSE_TO_REWARDER"
+  ],
+  "notes": [
+    "This is the closest feasible proxy to a seed-games-only benchmark in this dataset.",
+    "No participant repeats across games, so true same-person seed-to-target transfer is impossible.",
+    "For each tag and held-out config value, models are trained on the opposite config value only.",
+    "config_only and config_plus_tag exclude the held-out config from features, so this is genuine value-level extrapolation on that dimension."
+  ]
+}

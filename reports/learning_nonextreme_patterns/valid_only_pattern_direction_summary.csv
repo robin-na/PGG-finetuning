@@ -1,0 +1,16 @@
+pattern,direction,n_players,share_within_pattern
+binary_0_20,flat,476,0.46529814271749753
+binary_0_20,down,289,0.2825024437927664
+binary_0_20,up,258,0.25219941348973607
+high_cooperator,up,392,0.765625
+high_cooperator,flat,83,0.162109375
+high_cooperator,down,37,0.072265625
+low_contributor,down,36,0.7659574468085106
+low_contributor,up,7,0.14893617021276595
+low_contributor,flat,4,0.0851063829787234
+stable_mid,flat,74,0.6434782608695652
+stable_mid,up,24,0.20869565217391303
+stable_mid,down,17,0.14782608695652175
+variable_mid,down,272,0.47304347826086957
+variable_mid,up,225,0.391304347826087
+variable_mid,flat,78,0.1356521739130435

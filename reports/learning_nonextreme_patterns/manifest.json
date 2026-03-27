@@ -1,0 +1,11 @@
+{
+  "player_rounds": "data/raw_data/learning_wave/player-rounds.csv",
+  "extreme_flags": "reports/learning_extreme_contributors/player_game_extreme_strategy_flags.csv",
+  "output_dir": "reports/learning_nonextreme_patterns",
+  "notes": [
+    "Trajectories are ordered within player-game by createdAt timestamp.",
+    "Only complete-coverage player-games are included.",
+    "Always-full and always-zero players are excluded before pattern classification.",
+    "Pattern labels reuse the simple interpretable classifier from scripts/analyze_learning_match_contributions.py."
+  ]
+}

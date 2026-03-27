@@ -59,6 +59,8 @@ def _parsed_rounds_to_round_records(
     k: int,
     raw_player_order: list[str],
     avatar_to_player: dict[str, str],
+    punishment_enabled: bool,
+    reward_enabled: bool,
     parsed_rounds: list[dict[str, Any]],
 ) -> list[RoundRecord]:
     payload_by_round_number = {
@@ -98,10 +100,17 @@ def _parsed_rounds_to_round_records(
             source_id = avatar_to_player[source_avatar]
             target_id = avatar_to_player[target_avatar]
             unit = int(unit_value)
-            if unit > 0:
-                rewarded[source_id][target_id] = rewarded[source_id].get(target_id, 0) + unit
-            elif unit < 0:
-                punished[source_id][target_id] = punished[source_id].get(target_id, 0) + abs(unit)
+            if punishment_enabled and reward_enabled:
+                if unit > 0:
+                    rewarded[source_id][target_id] = rewarded[source_id].get(target_id, 0) + unit
+                elif unit < 0:
+                    punished[source_id][target_id] = punished[source_id].get(target_id, 0) + abs(unit)
+            elif punishment_enabled:
+                if unit != 0:
+                    punished[source_id][target_id] = punished[source_id].get(target_id, 0) + abs(unit)
+            elif reward_enabled:
+                if unit != 0:
+                    rewarded[source_id][target_id] = rewarded[source_id].get(target_id, 0) + abs(unit)
 
         predicted_rounds.append(
             simulate_round(
@@ -202,6 +211,8 @@ def main() -> None:
                 k=int(manifest_row["k"]),
                 raw_player_order=raw_player_order,
                 avatar_to_player=avatar_to_player,
+                punishment_enabled=bool(manifest_row.get("punishment_enabled")),
+                reward_enabled=bool(manifest_row.get("reward_enabled")),
                 parsed_rounds=list(parsed_row.get("predicted_rounds", [])),
             )
             game_actor_rows, game_round_rows = _evaluate_game_rollout(

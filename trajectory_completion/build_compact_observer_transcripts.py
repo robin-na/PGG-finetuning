@@ -133,6 +133,7 @@ def _render_contributions(round_df: pd.DataFrame, raw_player_order: list[str]) -
 
 def _render_interactions(
     round_df: pd.DataFrame,
+    metadata: Any,
     raw_player_order: list[str],
     raw_to_avatar: dict[str, str],
 ) -> str:
@@ -150,8 +151,9 @@ def _render_interactions(
             punish_units = punished.get(target_id, 0)
             reward_units = rewarded.get(target_id, 0)
             if punish_units > 0:
+                unit_value = -int(punish_units) if metadata.reward_exists else int(punish_units)
                 tuples.append(
-                    f"({raw_to_avatar[source_id]}, {raw_to_avatar[target_id]}, {-int(punish_units)})"
+                    f"({raw_to_avatar[source_id]}, {raw_to_avatar[target_id]}, {unit_value})"
                 )
             if reward_units > 0:
                 tuples.append(
@@ -175,6 +177,7 @@ def _render_round_block(
     *,
     round_number: int,
     round_df: pd.DataFrame,
+    metadata: Any,
     raw_player_order: list[str],
     raw_to_avatar: dict[str, str],
     chat_index: dict[int, dict[str, list[tuple[str, str]]]],
@@ -188,7 +191,9 @@ def _render_round_block(
     if chat_enabled:
         lines.extend(_render_chat_lines(chat_index, round_number, "outcome"))
     if interaction_tag is not None:
-        lines.append(f"### {interaction_tag}: {_render_interactions(round_df, raw_player_order, raw_to_avatar)}")
+        lines.append(
+            f"### {interaction_tag}: {_render_interactions(round_df, metadata, raw_player_order, raw_to_avatar)}"
+        )
     lines.append(f"### ROUND {round_number} SUMMARY SHOWN TO PLAYERS")
     if chat_enabled:
         lines.extend(_render_chat_lines(chat_index, round_number, "summary"))
@@ -223,6 +228,7 @@ def _build_transcript_text(
             _render_round_block(
                 round_number=int(round_index) + 1,
                 round_df=round_df.sort_values("playerId").copy(),
+                metadata=metadata,
                 raw_player_order=raw_player_order,
                 raw_to_avatar=raw_to_avatar,
                 chat_index=chat_index,

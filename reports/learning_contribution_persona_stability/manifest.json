@@ -1,0 +1,24 @@
+{
+  "cluster_jsonl": "Persona/archetype_retrieval/learning_wave/CONTRIBUTION/contribution_clustered.jsonl",
+  "cluster_catalog": "Persona/cluster/tag_section_clusters_openai_learn/CONTRIBUTION/cluster_catalog_polished.json",
+  "extreme_flags": "reports/learning_extreme_contributors/player_game_extreme_strategy_flags.csv",
+  "nonextreme_labels": "reports/learning_nonextreme_patterns/valid_only_player_game_pattern_labels.csv",
+  "output_dir": "reports/learning_contribution_persona_stability",
+  "binary_configs": [
+    "CONFIG_chat",
+    "CONFIG_punishmentExists",
+    "CONFIG_showRewardId",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_rewardExists",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp"
+  ],
+  "notes": [
+    "This analysis is type-level, not person-level: each playerId appears in exactly one game in the learning wave.",
+    "Persona clusters come from the CONTRIBUTION section summaries, so they are behavior-derived rather than independent background traits.",
+    "The pattern labels require complete round coverage and use always_full / always_zero plus the non-extreme motif labels from reports/learning_nonextreme_patterns.",
+    "Within-cluster config shift is summarized by total variation distance between the pattern distributions under the two config values."
+  ]
+}

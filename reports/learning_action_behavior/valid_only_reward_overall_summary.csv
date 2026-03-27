@@ -1,0 +1,2 @@
+n_player_round_rows,share_any,mean_units,median_units,p95_units,p99_units,max_units,mean_targets,median_targets,p95_targets,conditional_mean_units_if_any,conditional_median_units_if_any
+25656,0.1761771125662613,0.852198316183349,0.0,4.0,15.0,200.0,0.5565949485500468,0.0,3.0,4.837168141592921,2.0

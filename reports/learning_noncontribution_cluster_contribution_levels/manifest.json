@@ -1,0 +1,20 @@
+{
+  "player_rounds": "data/raw_data/learning_wave/player-rounds.csv",
+  "extreme_flags": "reports/learning_extreme_contributors/player_game_extreme_strategy_flags.csv",
+  "tag_base": "Persona/archetype_retrieval/learning_wave",
+  "output_dir": "reports/learning_noncontribution_cluster_contribution_levels",
+  "tags": [
+    "COMMUNICATION",
+    "RESPONSE_TO_END_GAME",
+    "RESPONSE_TO_OTHERS_OUTCOME",
+    "PUNISHMENT",
+    "REWARD",
+    "RESPONSE_TO_PUNISHER",
+    "RESPONSE_TO_REWARDER"
+  ],
+  "notes": [
+    "Contribution summaries are computed at the player-game level, then averaged within each non-contribution persona cluster.",
+    "Only valid_only players with complete round coverage are included.",
+    "mean_contribution is the player's average contribution over all observed rounds in that game."
+  ]
+}

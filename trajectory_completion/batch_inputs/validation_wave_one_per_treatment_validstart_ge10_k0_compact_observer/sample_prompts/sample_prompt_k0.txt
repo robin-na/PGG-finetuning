@@ -1,14 +1,12 @@
 === SYSTEM MESSAGE ===
 
-You forecast the remaining rounds of an observed public goods game.
+You simulate an entire public goods game from round 1.
 
-First write a careful free-form reflection about what the observed history suggests about each player's incentives, values, beliefs, strategy, and uncertainty. Be cautious where the evidence is weak.
-
-Then continue the game in the same transcript format as the observed history. Keep the stage ordering coherent within each round. Any predicted action lines that are wrapped in the observed history should stay wrapped in <<>> exactly.
+Start with a game-level explanation of the likely dynamics, incentives, and uncertainties. Then write the game directly in transcript form, starting from round 1. At the start of each round, include a round explanation before the predicted actions. Keep the stage ordering coherent within each round. Any action lines that are wrapped in the scaffold should stay wrapped in <<>> exactly.
 
 === USER MESSAGE ===
 
-Predict every remaining round from round 1 through round 26.
+Generate a full game transcript from round 1 through round 26.
 
 # GAME RULES
 This is an online public goods game (PGG).
@@ -24,8 +22,9 @@ At the summary stage (`ROUND N SUMMARY SHOWN TO PLAYERS`), each player sees thei
 However, the corresponding information of the peers are not shown.
 
 Output requirements:
-- First write `### OVERALL REFLECTION` followed by a detailed reflection on the state of the game, what each player's behavior suggests, and where uncertainty remains.
-- After that, continue only the unobserved rounds in the same transcript format as the observed history.
+- First write `### GAME EXPLANATION` followed by your explanation of how the game is likely to unfold.
+- Then generate the full game directly in transcript form from round 1 onward.
+- At the start of each round, immediately after `## ROUND N BEGINS`, write `### ROUND N EXPLANATION`.
 - Use the exact avatar order from `<PLAYERS>` for every contribution list.
 - Keep the contribution line wrapped as `### CONTRIBUTIONS: <<[...]>>`.
 - Keep the action line wrapped as `### REWARD: <<[...]>>`.
@@ -34,11 +33,15 @@ Output requirements:
 - Because this game only has reward, every `unit` must be positive.
 - Predict chat inline as transcript lines, using `CHAT from AVATAR: ...`.
 - Preserve exact avatar names.
+- In real games, players usually send relatively few chat messages. Keep chat sparse and purposeful.
+- In real games, players usually reward sparingly. Do not over-predict reward actions.
 Strict continuation template:
 ```text
-### OVERALL REFLECTION
-<Write a detailed reflection before the transcript continuation.>
+### GAME EXPLANATION
+<Explain your overall prediction for how the game is likely to unfold.>
 ## ROUND 1 BEGINS
+### ROUND 1 EXPLANATION
+<Explain why you expect this round to unfold this way.>
 CHAT from AVATAR: <message>
 ### CONTRIBUTIONS: <<[c1, c2, ...]>>
 CHAT from AVATAR: <message>
@@ -49,6 +52,6 @@ CHAT from AVATAR: <message>
 ...
 ```
 
-Observed history:
+Start from this scaffold:
 # GAME STARTS
 <PLAYERS> SLOTH, GORILLA, DUCK, CHICKEN, DOG, PARROT, MOOSE, RABBIT, OWL, CHICK, SNAKE, CROCODILE </PLAYERS>

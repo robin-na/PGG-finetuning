@@ -1,0 +1,8 @@
+cluster_id,cluster_title,n_player_game_rows,n_patterns,dominant_pattern,dominant_share,entropy_bits
+0,Unwavering High Contributors,494,5,always_full,0.8603238866396761,0.7625694244480079
+1,Steadfast Full Contributors,699,3,always_full,0.9642346208869814,0.25312324194634134
+2,Principled High Contributors with Strategic Flexibility,605,5,high_cooperator,0.46942148760330576,1.4414087299005718
+3,Moderate Contributors with Strategic Flexibility,648,5,variable_mid,0.4089506172839506,1.9001049047327299
+4,Dynamic Contributors with Strategic Flexibility,593,4,binary_0_20,0.6003372681281619,1.2226489238121034
+5,Inconsistent Contributors with Opportunistic Strategies,315,6,binary_0_20,0.5587301587301587,1.6182795409680526
+6,Consistent Free-Riders with Fixed Strategies,140,5,always_zero,0.6785714285714286,1.2884208440233038

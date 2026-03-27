@@ -14,11 +14,13 @@ import pandas as pd
 from .data import GameTrajectory, RoundRecord, load_wave_games
 
 
-SYSTEM_PROMPT = """You forecast the remaining rounds of an observed public goods game.
+CONTINUATION_SYSTEM_PROMPT = """You forecast the remaining rounds of an observed public goods game.
 
-First write a careful free-form reflection about what the observed history suggests about each player's incentives, values, beliefs, strategy, and uncertainty. Be cautious where the evidence is weak.
+Start with a careful game-level explanation of what the observed history suggests about each player's incentives, values, beliefs, strategy, and uncertainty. Then continue the game in the same transcript format as the observed history. At the start of each predicted round, include a round explanation before the predicted actions. Keep the stage ordering coherent within each round. Any predicted action lines that are wrapped in the observed history should stay wrapped in <<>> exactly."""
 
-Then continue the game in the same transcript format as the observed history. Keep the stage ordering coherent within each round. Any predicted action lines that are wrapped in the observed history should stay wrapped in <<>> exactly."""
+FULL_ROLLOUT_SYSTEM_PROMPT = """You simulate an entire public goods game from round 1.
+
+Start with a game-level explanation of the likely dynamics, incentives, and uncertainties. Then write the game directly in transcript form, starting from round 1. At the start of each round, include a round explanation before the predicted actions. Keep the stage ordering coherent within each round. Any action lines that are wrapped in the scaffold should stay wrapped in <<>> exactly."""
 
 
 PHASE_ORDER = ("contribution", "outcome", "summary")
@@ -154,6 +156,16 @@ def _load_prompt_metadata(processed_path: Path) -> dict[str, PromptMetadata]:
             chat_log="" if pd.isna(row["chat_log"]) else str(row["chat_log"]),
         )
     return metadata
+
+
+def _load_valid_start_treatment_counts(processed_path: Path) -> dict[str, int]:
+    frame = pd.read_csv(
+        processed_path,
+        usecols=["CONFIG_treatmentName", "valid_number_of_starting_players"],
+    )
+    frame = frame[frame["valid_number_of_starting_players"].apply(_as_bool)].copy()
+    counts = frame.groupby("CONFIG_treatmentName").size()
+    return {str(treatment_name): int(count) for treatment_name, count in counts.items()}
 
 
 def _parse_chat_messages(raw_value: str) -> list[dict[str, Any]]:
@@ -346,6 +358,7 @@ def _render_contributions(round_record: RoundRecord, raw_player_order: list[str]
 
 def _render_interactions(
     round_record: RoundRecord,
+    metadata: PromptMetadata,
     raw_player_order: list[str],
     raw_to_avatar: dict[str, str],
 ) -> str:
@@ -357,8 +370,9 @@ def _render_interactions(
             punish_units = round_record.punished[source_id].get(target_id, 0)
             reward_units = round_record.rewarded[source_id].get(target_id, 0)
             if punish_units > 0:
+                unit_value = -int(punish_units) if metadata.reward_exists else int(punish_units)
                 tuples.append(
-                    f"({raw_to_avatar[source_id]}, {raw_to_avatar[target_id]}, {-int(punish_units)})"
+                    f"({raw_to_avatar[source_id]}, {raw_to_avatar[target_id]}, {unit_value})"
                 )
             if reward_units > 0:
                 tuples.append(
@@ -416,7 +430,7 @@ def _render_round_block(
         lines.extend(_render_chat_lines(chat_index, round_number, "outcome"))
     if include_interactions and interaction_tag is not None:
         lines.append(
-            f"### {interaction_tag}: {_render_interactions(round_record, raw_player_order, raw_to_avatar)}"
+            f"### {interaction_tag}: {_render_interactions(round_record, metadata, raw_player_order, raw_to_avatar)}"
         )
     lines.append(f"### ROUND {round_number} SUMMARY SHOWN TO PLAYERS")
     if include_chat:
@@ -502,8 +516,9 @@ def _build_gold_round_payload(
                 punish_units = round_record.punished[source_id].get(target_id, 0)
                 reward_units = round_record.rewarded[source_id].get(target_id, 0)
                 if punish_units > 0:
+                    unit_value = -int(punish_units) if metadata.reward_exists else int(punish_units)
                     interactions.append(
-                        [raw_to_avatar[source_id], raw_to_avatar[target_id], -int(punish_units)]
+                        [raw_to_avatar[source_id], raw_to_avatar[target_id], unit_value]
                     )
                 if reward_units > 0:
                     interactions.append(
@@ -632,14 +647,27 @@ def _mechanism_rules(metadata: PromptMetadata) -> list[str]:
     return lines
 
 
+def _behavioral_sparsity_hints(metadata: PromptMetadata) -> list[str]:
+    lines: list[str] = []
+    if metadata.chat_enabled:
+        lines.append("- In real games, players usually send relatively few chat messages. Keep chat sparse and purposeful.")
+    if metadata.punishment_exists:
+        lines.append("- In real games, players usually punish sparingly. Do not over-predict punishment actions.")
+    if metadata.reward_exists:
+        lines.append("- In real games, players usually reward sparingly. Do not over-predict reward actions.")
+    return lines
+
+
 def _strict_transcript_template(metadata: PromptMetadata, start_round: int) -> list[str]:
     interaction_tag = _interaction_tag_name(metadata)
     lines = [
         "Strict continuation template:",
         "```text",
-        "### OVERALL REFLECTION",
-        "<Write a detailed reflection before the transcript continuation.>",
+        "### GAME EXPLANATION",
+        "<Explain your overall prediction for how the game is likely to unfold.>",
         f"## ROUND {start_round} BEGINS",
+        f"### ROUND {start_round} EXPLANATION",
+        "<Explain why you expect this round to unfold this way.>",
     ]
     if metadata.chat_enabled:
         lines.append("CHAT from AVATAR: <message>")
@@ -665,12 +693,22 @@ def _build_user_prompt(
     k: int,
 ) -> str:
     interaction_tag = _interaction_tag_name(metadata)
-    output_requirement_lines = [
-        "- First write `### OVERALL REFLECTION` followed by a detailed reflection on the state of the game, what each player's behavior suggests, and where uncertainty remains.",
-        "- After that, continue only the unobserved rounds in the same transcript format as the observed history.",
-        "- Use the exact avatar order from `<PLAYERS>` for every contribution list.",
-        "- Keep the contribution line wrapped as `### CONTRIBUTIONS: <<[...]>>`.",
-    ]
+    if k == 0:
+        output_requirement_lines = [
+            "- First write `### GAME EXPLANATION` followed by your explanation of how the game is likely to unfold.",
+            "- Then generate the full game directly in transcript form from round 1 onward.",
+            "- At the start of each round, immediately after `## ROUND N BEGINS`, write `### ROUND N EXPLANATION`.",
+            "- Use the exact avatar order from `<PLAYERS>` for every contribution list.",
+            "- Keep the contribution line wrapped as `### CONTRIBUTIONS: <<[...]>>`.",
+        ]
+    else:
+        output_requirement_lines = [
+            "- First write `### GAME EXPLANATION` followed by a detailed explanation of the game state, what each player's behavior suggests, and where uncertainty remains.",
+            "- After that, continue only the unobserved rounds in the same transcript format as the observed history.",
+            "- At the start of each predicted round, immediately after `## ROUND N BEGINS`, write `### ROUND N EXPLANATION`.",
+            "- Use the exact avatar order from `<PLAYERS>` for every contribution list.",
+            "- Keep the contribution line wrapped as `### CONTRIBUTIONS: <<[...]>>`.",
+        ]
     if interaction_tag is not None:
         output_requirement_lines.extend(
             [
@@ -682,17 +720,20 @@ def _build_user_prompt(
         if metadata.punishment_exists and metadata.reward_exists:
             output_requirement_lines.append("- Positive `unit` means reward and negative `unit` means punishment.")
         elif metadata.punishment_exists:
-            output_requirement_lines.append("- Because this game only has punishment, every `unit` must be negative.")
+            output_requirement_lines.append("- Because this game only has punishment, every `unit` must be positive.")
         elif metadata.reward_exists:
             output_requirement_lines.append("- Because this game only has reward, every `unit` must be positive.")
-    output_requirement_lines.extend(
-        [
-            "- Predict chat inline as transcript lines, using `CHAT from AVATAR: ...`.",
-            "- Preserve exact avatar names.",
-        ]
+    if metadata.chat_enabled:
+        output_requirement_lines.append("- Predict chat inline as transcript lines, using `CHAT from AVATAR: ...`.")
+    output_requirement_lines.append("- Preserve exact avatar names.")
+    intro_line = (
+        f"Generate a full game transcript from round 1 through round {game.num_rounds}."
+        if k == 0
+        else f"Predict every remaining round from round {k + 1} through round {game.num_rounds}."
     )
+    history_label = "Start from this scaffold:" if k == 0 else "Observed history:"
     lines = [
-        f"Predict every remaining round from round {k + 1} through round {game.num_rounds}.",
+        intro_line,
         "",
         "# GAME RULES",
         "This is an online public goods game (PGG).",
@@ -704,9 +745,10 @@ def _build_user_prompt(
         "",
         "Output requirements:",
         *output_requirement_lines,
+        *(_behavioral_sparsity_hints(metadata)),
         *(_strict_transcript_template(metadata, k + 1) if k == 0 else []),
         "",
-        "Observed history:",
+        history_label,
         transcript_prefix,
     ]
     return "\n".join(lines)
@@ -716,6 +758,7 @@ def _batch_entry(
     *,
     custom_id: str,
     model: str,
+    system_prompt: str,
     user_prompt: str,
 ) -> dict[str, Any]:
     return {
@@ -725,7 +768,7 @@ def _batch_entry(
         "body": {
             "model": model,
             "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
         },
@@ -748,6 +791,13 @@ def main() -> None:
     parser.add_argument("--k-values", type=str, default="1,3,5,8")
     parser.add_argument("--min-num-rounds-exclusive", type=int, default=8)
     parser.add_argument("--model", type=str, default="gpt-4.1-mini")
+    parser.add_argument("--repeats-per-game", type=int, default=1)
+    parser.add_argument(
+        "--repeat-count-mode",
+        type=str,
+        choices=["fixed", "match_valid_start_treatment_counts"],
+        default="fixed",
+    )
     parser.add_argument(
         "--selection-mode",
         type=str,
@@ -778,6 +828,9 @@ def main() -> None:
         min_num_rounds_exclusive=args.min_num_rounds_exclusive,
     )
     prompt_metadata = _load_prompt_metadata(repo_root / "data/processed_data/df_analysis_val.csv")
+    valid_start_treatment_counts = _load_valid_start_treatment_counts(
+        repo_root / "data/processed_data/df_analysis_val.csv"
+    )
     avatar_map = _load_avatar_map(repo_root / "data/raw_data/validation_wave/players.csv")
     game_rows = _load_game_rows(repo_root / "data/raw_data/validation_wave/games.csv")
 
@@ -801,6 +854,11 @@ def main() -> None:
     for game in selected_games:
         metadata = prompt_metadata[game.game_id]
         raw_player_order, avatar_order = _player_avatar_order(game.game_id, game_rows, avatar_map)
+        repeat_count = (
+            valid_start_treatment_counts.get(metadata.treatment_name, 1)
+            if args.repeat_count_mode == "match_valid_start_treatment_counts"
+            else args.repeats_per_game
+        )
         selected_rows.append(
             {
                 "game_id": game.game_id,
@@ -811,6 +869,7 @@ def main() -> None:
                 "num_players": len(raw_player_order),
                 "avatars": json.dumps(avatar_order),
                 "valid_number_of_starting_players": metadata.valid_number_of_starting_players,
+                "repeat_count": repeat_count,
             }
         )
 
@@ -841,62 +900,75 @@ def main() -> None:
                 transcript_prefix=transcript_prefix,
                 k=k,
             )
-
-            custom_id = f"trajectory_completion_compact__{metadata.treatment_name}__{game.game_id}__k{k}"
-            batch_row = _batch_entry(
-                custom_id=custom_id,
-                model=args.model,
-                user_prompt=user_prompt,
+            repeat_count = (
+                valid_start_treatment_counts.get(metadata.treatment_name, 1)
+                if args.repeat_count_mode == "match_valid_start_treatment_counts"
+                else args.repeats_per_game
             )
-            gold_row = {
-                "custom_id": custom_id,
-                "game_id": game.game_id,
-                "treatment_name": metadata.treatment_name,
-                "config_id": metadata.config_id,
-                "k": k,
-                "players": avatar_order,
-                "gold_continuation_text": _build_gold_continuation(
-                    game=game,
-                    metadata=metadata,
-                    raw_player_order=raw_player_order,
-                    avatar_order=avatar_order,
-                    chat_index=chat_index,
-                    k=k,
-                ),
-                "gold_rounds": _build_gold_round_payload(
-                    game=game,
-                    metadata=metadata,
-                    raw_player_order=raw_player_order,
-                    avatar_order=avatar_order,
-                    chat_index=chat_index,
-                    k=k,
-                ),
-            }
-            batch_rows.append(batch_row)
-            gold_rows.append(gold_row)
-            request_manifest_rows.append(
-                {
+            for repeat_index in range(1, repeat_count + 1):
+                custom_id = (
+                    f"trajectory_completion_compact__{metadata.treatment_name}__{game.game_id}"
+                    f"__k{k}__rep{repeat_index}"
+                )
+                batch_row = _batch_entry(
+                    custom_id=custom_id,
+                    model=args.model,
+                    system_prompt=CONTINUATION_SYSTEM_PROMPT if k > 0 else FULL_ROLLOUT_SYSTEM_PROMPT,
+                    user_prompt=user_prompt,
+                )
+                gold_row = {
                     "custom_id": custom_id,
                     "game_id": game.game_id,
                     "treatment_name": metadata.treatment_name,
                     "config_id": metadata.config_id,
                     "k": k,
-                    "num_rounds": game.num_rounds,
-                    "num_players": len(raw_player_order),
-                    "avatars": json.dumps(avatar_order),
-                    "chat_enabled": metadata.chat_enabled,
-                    "punishment_enabled": metadata.punishment_exists,
-                    "reward_enabled": metadata.reward_exists,
-                    "all_or_nothing": metadata.all_or_nothing,
-                    "valid_number_of_starting_players": metadata.valid_number_of_starting_players,
+                    "repeat_index": repeat_index,
+                    "repeat_count_for_treatment": repeat_count,
+                    "players": avatar_order,
+                    "gold_continuation_text": _build_gold_continuation(
+                        game=game,
+                        metadata=metadata,
+                        raw_player_order=raw_player_order,
+                        avatar_order=avatar_order,
+                        chat_index=chat_index,
+                        k=k,
+                    ),
+                    "gold_rounds": _build_gold_round_payload(
+                        game=game,
+                        metadata=metadata,
+                        raw_player_order=raw_player_order,
+                        avatar_order=avatar_order,
+                        chat_index=chat_index,
+                        k=k,
+                    ),
                 }
-            )
+                batch_rows.append(batch_row)
+                gold_rows.append(gold_row)
+                request_manifest_rows.append(
+                    {
+                        "custom_id": custom_id,
+                        "game_id": game.game_id,
+                        "treatment_name": metadata.treatment_name,
+                        "config_id": metadata.config_id,
+                        "k": k,
+                        "repeat_index": repeat_index,
+                        "repeat_count_for_treatment": repeat_count,
+                        "num_rounds": game.num_rounds,
+                        "num_players": len(raw_player_order),
+                        "avatars": json.dumps(avatar_order),
+                        "chat_enabled": metadata.chat_enabled,
+                        "punishment_enabled": metadata.punishment_exists,
+                        "reward_enabled": metadata.reward_exists,
+                        "all_or_nothing": metadata.all_or_nothing,
+                        "valid_number_of_starting_players": metadata.valid_number_of_starting_players,
+                    }
+                )
 
             if not sample_written:
                 sample_text = "\n\n".join(
                     [
                         "=== SYSTEM MESSAGE ===",
-                        SYSTEM_PROMPT,
+                        CONTINUATION_SYSTEM_PROMPT if k > 0 else FULL_ROLLOUT_SYSTEM_PROMPT,
                         "=== USER MESSAGE ===",
                         user_prompt,
                     ]
@@ -909,8 +981,9 @@ def main() -> None:
         all_batch_rows.extend(batch_rows)
         all_gold_rows.extend(gold_rows)
 
-    _write_jsonl(args.output_dir / f"{args.request_file_prefix}_all_k.jsonl", all_batch_rows)
-    _write_jsonl(args.output_dir / "gold_continuations_all_k.jsonl", all_gold_rows)
+    if len(k_values) > 1:
+        _write_jsonl(args.output_dir / f"{args.request_file_prefix}_all_k.jsonl", all_batch_rows)
+        _write_jsonl(args.output_dir / "gold_continuations_all_k.jsonl", all_gold_rows)
 
     selected_path = args.output_dir / "selected_games.csv"
     with selected_path.open("w", encoding="utf-8", newline="") as handle:
@@ -938,11 +1011,14 @@ def main() -> None:
         "selection_rule": selection_rule,
         "require_valid_starting_players": args.require_valid_starting_players,
         "selected_game_count": len(selected_games),
+        "repeat_count_mode": args.repeat_count_mode,
+        "repeats_per_game": args.repeats_per_game,
+        "total_request_count": len(request_manifest_rows),
         "treatment_names": [prompt_metadata[game.game_id].treatment_name for game in selected_games],
         "model": args.model,
         "request_file_prefix": args.request_file_prefix,
         "requests_by_k": {
-            str(k): int(sum(game.num_rounds > k for game in selected_games))
+            str(k): int(sum(row["k"] == k for row in request_manifest_rows))
             for k in k_values
         },
         "total_requests": len(all_batch_rows),

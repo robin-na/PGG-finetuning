@@ -1,0 +1,8 @@
+dimension,test,statistic,degrees_of_freedom,p_value,notes
+age,chi2,628.503516,3,6.667741304262142e-136,
+education,chi2,738.827246,4,1.3626646770093611e-158,
+gender,chi2,1.116417,1,0.290691306130522,Computed on man/woman only because Twin has no non-binary or unknown category.
+education_bachelor_or_higher,chi2,61.42032,1,4.6102795292360416e-15,"Coarse harmonization. PGG uses high_school/bachelor/master/other, while Twin uses less_than_high_school/high_school/some_college/associate/college_graduate/postgraduate."
+education_postgraduate_or_higher,chi2,30.882447,1,2.74140136343811e-08,"Coarse harmonization. PGG uses high_school/bachelor/master/other, while Twin uses less_than_high_school/high_school/some_college/associate/college_graduate/postgraduate."
+sex_male_female,chi2,1.116417,1,0.290691306130522,Harmonized male/female comparison. PGG non-binary and unknown responses are excluded.
+education_degree_completed_harmonized,chi2,44.947127,2,1.7372226628011003e-10,"Practical completed-degree harmonization. Twin some_college_no_degree is grouped with high school, Twin associate's with college/postsecondary, Twin less_than_high_school merged into high school due rarity, and PGG other grouped with college/postsecondary."

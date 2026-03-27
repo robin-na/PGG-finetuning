@@ -32,3 +32,15 @@
 - `twin_question_inventory.csv`
 - `wave4_target_inventory.csv`
 - `wave4_target_inventory_full_text.csv`
+- `TWIN_EXTENDED_PROFILE_SPEC.md`
+- `twin_extended_profile_schema.json`
+- `twin_extended_profile_card_schema.json`
+- `twin_extended_profile_mapping.csv`
+- `build_twin_extended_profile_mapping.py`
+- `build_twin_extended_profiles.py`
+- `render_twin_extended_profile_cards.py`
+- `analyze_twin_profile_card_distributions.py`
+- `output/twin_extended_profiles/twin_extended_profiles.jsonl`
+- `output/twin_extended_profile_cards/compact/twin_extended_profile_cards.jsonl`
+- `output/twin_extended_profile_cards/standard/twin_extended_profile_cards.jsonl`
+- `output/twin_extended_profile_cards/audit/twin_extended_profile_cards.jsonl`

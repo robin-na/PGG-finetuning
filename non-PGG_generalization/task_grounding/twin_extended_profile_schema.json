@@ -1,0 +1,572 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Twin Extended Profile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_spec_version",
+    "participant",
+    "coverage",
+    "background_context",
+    "observed_in_twin",
+    "derived_dimensions",
+    "behavioral_signature",
+    "social_style",
+    "decision_style",
+    "pgg_relevant_cues",
+    "uncertainties"
+  ],
+  "properties": {
+    "profile_spec_version": {
+      "type": "string",
+      "const": "twin_extended_profile_v1"
+    },
+    "participant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pid",
+        "source_dataset",
+        "source_waves"
+      ],
+      "properties": {
+        "pid": {
+          "type": "string"
+        },
+        "source_dataset": {
+          "type": "string",
+          "const": "Twin-2k"
+        },
+        "source_waves": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "enum": [
+              1,
+              2,
+              3
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "included_question_refs",
+        "excluded_scaffolding_refs",
+        "notes"
+      ],
+      "properties": {
+        "included_question_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "excluded_scaffolding_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "background_context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_refs",
+        "harmonized_features",
+        "context_notes"
+      ],
+      "properties": {
+        "question_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "harmonized_features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceFeature"
+          }
+        },
+        "context_notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "observed_in_twin": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "personality_and_self_report",
+        "social_game_behavior",
+        "economic_preferences_non_social",
+        "cognitive_performance",
+        "heuristics_and_biases",
+        "pricing_and_consumer_choice",
+        "open_text_responses"
+      ],
+      "properties": {
+        "personality_and_self_report": {
+          "$ref": "#/$defs/observedBlock"
+        },
+        "social_game_behavior": {
+          "$ref": "#/$defs/observedBlock"
+        },
+        "economic_preferences_non_social": {
+          "$ref": "#/$defs/observedBlock"
+        },
+        "cognitive_performance": {
+          "$ref": "#/$defs/observedBlock"
+        },
+        "heuristics_and_biases": {
+          "$ref": "#/$defs/observedBlock"
+        },
+        "pricing_and_consumer_choice": {
+          "$ref": "#/$defs/observedBlock"
+        },
+        "open_text_responses": {
+          "$ref": "#/$defs/observedBlock"
+        }
+      }
+    },
+    "derived_dimensions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "social_preferences",
+        "decision_style",
+        "consumer_style",
+        "self_regulation_and_affect"
+      ],
+      "properties": {
+        "social_preferences": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "trustingness",
+            "reciprocity",
+            "fairness_enforcement",
+            "altruistic_sharing",
+            "exploitation_caution"
+          ],
+          "properties": {
+            "trustingness": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "reciprocity": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "fairness_enforcement": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "altruistic_sharing": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "exploitation_caution": {
+              "$ref": "#/$defs/scoredDimension"
+            }
+          }
+        },
+        "decision_style": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "patience",
+            "risk_tolerance_gains",
+            "risk_tolerance_losses",
+            "mental_accounting_reliance",
+            "cognitive_reflection",
+            "numeracy",
+            "logical_reasoning",
+            "anchor_susceptibility",
+            "framing_susceptibility"
+          ],
+          "properties": {
+            "patience": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "risk_tolerance_gains": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "risk_tolerance_losses": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "mental_accounting_reliance": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "cognitive_reflection": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "numeracy": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "logical_reasoning": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "anchor_susceptibility": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "framing_susceptibility": {
+              "$ref": "#/$defs/scoredDimension"
+            }
+          }
+        },
+        "consumer_style": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "price_sensitivity",
+            "willingness_to_search",
+            "reference_dependence",
+            "purchase_inhibition"
+          ],
+          "properties": {
+            "price_sensitivity": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "willingness_to_search": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "reference_dependence": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "purchase_inhibition": {
+              "$ref": "#/$defs/scoredDimension"
+            }
+          }
+        },
+        "self_regulation_and_affect": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "empathy",
+            "cooperation_orientation",
+            "competition_orientation",
+            "uncertainty_aversion",
+            "depressive_affect",
+            "spending_self_control"
+          ],
+          "properties": {
+            "empathy": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "cooperation_orientation": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "competition_orientation": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "uncertainty_aversion": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "depressive_affect": {
+              "$ref": "#/$defs/scoredDimension"
+            },
+            "spending_self_control": {
+              "$ref": "#/$defs/scoredDimension"
+            }
+          }
+        }
+      }
+    },
+    "behavioral_signature": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 3,
+      "maxItems": 8
+    },
+    "social_style": {
+      "$ref": "#/$defs/styleSummary"
+    },
+    "decision_style": {
+      "$ref": "#/$defs/styleSummary"
+    },
+    "pgg_relevant_cues": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "These are transfer-relevant cues only, not scenario-specific PGG forecasts.",
+      "required": [
+        "cooperation_orientation",
+        "conditional_cooperation",
+        "norm_enforcement",
+        "generosity_without_return",
+        "exploitation_caution",
+        "communication_coordination",
+        "behavioral_stability"
+      ],
+      "properties": {
+        "cooperation_orientation": {
+          "$ref": "#/$defs/cueDimension"
+        },
+        "conditional_cooperation": {
+          "$ref": "#/$defs/cueDimension"
+        },
+        "norm_enforcement": {
+          "$ref": "#/$defs/cueDimension"
+        },
+        "generosity_without_return": {
+          "$ref": "#/$defs/cueDimension"
+        },
+        "exploitation_caution": {
+          "$ref": "#/$defs/cueDimension"
+        },
+        "communication_coordination": {
+          "$ref": "#/$defs/cueDimension"
+        },
+        "behavioral_stability": {
+          "$ref": "#/$defs/cueDimension"
+        }
+      }
+    },
+    "uncertainties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/uncertaintyItem"
+      },
+      "minItems": 2,
+      "maxItems": 10
+    }
+  },
+  "$defs": {
+    "evidenceFeature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "value",
+        "evidence_refs"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {},
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "diagnosticItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_ref",
+        "prompt_excerpt",
+        "response_excerpt"
+      ],
+      "properties": {
+        "question_ref": {
+          "type": "string"
+        },
+        "prompt_excerpt": {
+          "type": "string"
+        },
+        "response_excerpt": {
+          "type": "string"
+        }
+      }
+    },
+    "observedBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_refs",
+        "summary_features",
+        "diagnostic_items"
+      ],
+      "properties": {
+        "question_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "summary_features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidenceFeature"
+          }
+        },
+        "diagnostic_items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/diagnosticItem"
+          }
+        }
+      }
+    },
+    "scoredDimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "score_0_to_100",
+        "confidence",
+        "rationale",
+        "evidence_refs"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "enum": [
+            "very_low",
+            "low",
+            "mixed",
+            "medium",
+            "high",
+            "very_high",
+            "unknown"
+          ]
+        },
+        "score_0_to_100": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "cueDimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "score_0_to_100",
+        "confidence",
+        "rationale",
+        "evidence_refs",
+        "scope_note"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "enum": [
+            "very_low",
+            "low",
+            "mixed",
+            "medium",
+            "high",
+            "very_high",
+            "unknown"
+          ]
+        },
+        "score_0_to_100": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scope_note": {
+          "type": "string"
+        }
+      }
+    },
+    "styleSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "summary",
+        "highlights",
+        "cautions"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "highlights": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 2,
+          "maxItems": 6
+        },
+        "cautions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "maxItems": 5
+        }
+      }
+    },
+    "uncertaintyItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "topic",
+        "note",
+        "evidence_refs"
+      ],
+      "properties": {
+        "topic": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

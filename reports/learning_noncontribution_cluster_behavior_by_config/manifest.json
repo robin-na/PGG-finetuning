@@ -1,0 +1,32 @@
+{
+  "player_rounds": "data/raw_data/learning_wave/player-rounds.csv",
+  "extreme_flags": "reports/learning_extreme_contributors/player_game_extreme_strategy_flags.csv",
+  "tag_base": "Persona/archetype_retrieval/learning_wave",
+  "output_dir": "reports/learning_noncontribution_cluster_behavior_by_config",
+  "tags": [
+    "COMMUNICATION",
+    "PUNISHMENT",
+    "REWARD",
+    "RESPONSE_TO_END_GAME",
+    "RESPONSE_TO_OTHERS_OUTCOME",
+    "RESPONSE_TO_PUNISHER",
+    "RESPONSE_TO_REWARDER"
+  ],
+  "binary_configs": [
+    "CONFIG_chat",
+    "CONFIG_punishmentExists",
+    "CONFIG_showRewardId",
+    "CONFIG_showNRounds",
+    "CONFIG_showPunishmentId",
+    "CONFIG_rewardExists",
+    "CONFIG_showOtherSummaries",
+    "CONFIG_allOrNothing",
+    "CONFIG_defaultContribProp"
+  ],
+  "notes": [
+    "Behavior metrics are aggregated at the player-game level, then averaged within clusters.",
+    "Only valid_only players with complete round coverage are included.",
+    "implied_* metrics use overall cluster behavior profiles combined with the cluster shares under each config value.",
+    "Cluster-mix total variation distance measures how much the cluster distribution shifts between the two config values."
+  ]
+}

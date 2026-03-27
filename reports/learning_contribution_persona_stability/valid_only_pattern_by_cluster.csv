@@ -1,0 +1,34 @@
+cluster_id,cluster_title,pattern,n_player_game_rows,share_within_cluster
+0,Unwavering High Contributors,always_full,425,0.8603238866396761
+0,Unwavering High Contributors,high_cooperator,40,0.08097165991902834
+0,Unwavering High Contributors,binary_0_20,25,0.05060728744939271
+0,Unwavering High Contributors,stable_mid,2,0.004048582995951417
+0,Unwavering High Contributors,variable_mid,2,0.004048582995951417
+1,Steadfast Full Contributors,always_full,674,0.9642346208869814
+1,Steadfast Full Contributors,binary_0_20,18,0.02575107296137339
+1,Steadfast Full Contributors,high_cooperator,7,0.010014306151645207
+2,Principled High Contributors with Strategic Flexibility,high_cooperator,284,0.46942148760330576
+2,Principled High Contributors with Strategic Flexibility,binary_0_20,271,0.4479338842975207
+2,Principled High Contributors with Strategic Flexibility,always_full,29,0.047933884297520664
+2,Principled High Contributors with Strategic Flexibility,variable_mid,14,0.023140495867768594
+2,Principled High Contributors with Strategic Flexibility,stable_mid,7,0.011570247933884297
+3,Moderate Contributors with Strategic Flexibility,variable_mid,265,0.4089506172839506
+3,Moderate Contributors with Strategic Flexibility,high_cooperator,154,0.23765432098765432
+3,Moderate Contributors with Strategic Flexibility,binary_0_20,143,0.22067901234567902
+3,Moderate Contributors with Strategic Flexibility,stable_mid,85,0.13117283950617284
+3,Moderate Contributors with Strategic Flexibility,low_contributor,1,0.0015432098765432098
+4,Dynamic Contributors with Strategic Flexibility,binary_0_20,356,0.6003372681281619
+4,Dynamic Contributors with Strategic Flexibility,variable_mid,207,0.3490725126475548
+4,Dynamic Contributors with Strategic Flexibility,high_cooperator,25,0.04215851602023609
+4,Dynamic Contributors with Strategic Flexibility,low_contributor,5,0.008431703204047217
+5,Inconsistent Contributors with Opportunistic Strategies,binary_0_20,176,0.5587301587301587
+5,Inconsistent Contributors with Opportunistic Strategies,variable_mid,86,0.273015873015873
+5,Inconsistent Contributors with Opportunistic Strategies,low_contributor,34,0.10793650793650794
+5,Inconsistent Contributors with Opportunistic Strategies,stable_mid,16,0.050793650793650794
+5,Inconsistent Contributors with Opportunistic Strategies,high_cooperator,2,0.006349206349206349
+5,Inconsistent Contributors with Opportunistic Strategies,always_zero,1,0.0031746031746031746
+6,Consistent Free-Riders with Fixed Strategies,always_zero,95,0.6785714285714286
+6,Consistent Free-Riders with Fixed Strategies,binary_0_20,33,0.2357142857142857
+6,Consistent Free-Riders with Fixed Strategies,low_contributor,6,0.04285714285714286
+6,Consistent Free-Riders with Fixed Strategies,stable_mid,5,0.03571428571428571
+6,Consistent Free-Riders with Fixed Strategies,variable_mid,1,0.007142857142857143

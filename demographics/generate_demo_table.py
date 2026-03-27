@@ -30,6 +30,11 @@ def _clean_text(value) -> str:
     return str(value).strip().lower()
 
 
+def _has_token_prefix(tokens: set[str], prefixes: tuple[str, ...]) -> bool:
+    """Check token prefixes without substring false positives like female -> male."""
+    return any(token.startswith(prefix) for token in tokens for prefix in prefixes)
+
+
 def _normalize_gender(value) -> str:
     """
     Normalize raw/open-ended gender input into:
@@ -132,8 +137,8 @@ def _normalize_gender(value) -> str:
         "femme",
     }
 
-    male_hit = bool(tokens & male_aliases) or any(stem in normalized for stem in ("male", "man", "mascul"))
-    female_hit = bool(tokens & female_aliases) or any(stem in normalized for stem in ("female", "woman", "girl", "fem"))
+    male_hit = bool(tokens & male_aliases) or _has_token_prefix(tokens, ("mal", "man", "mascul"))
+    female_hit = bool(tokens & female_aliases) or _has_token_prefix(tokens, ("fem", "wom", "gir"))
     trans_hit = "trans" in tokens or "transgender" in tokens or "transgender" in normalized
 
     if trans_hit:
