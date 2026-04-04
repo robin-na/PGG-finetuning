@@ -32,15 +32,23 @@ SCORE_FAMILY_SPECS = [
 RUN_NAME_TO_LABEL = {
     "baseline_gpt_5_1": "gpt-5.1 baseline",
     "twin_sampled_seed_0_gpt_5_1": "gpt-5.1 twin",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1": "gpt-5.1 twin unadj",
+    "demographic_only_row_resampled_seed_0_gpt_5_1": "gpt-5.1 demo-only",
     "baseline_gpt_5_mini": "gpt-5-mini baseline",
     "twin_sampled_seed_0_gpt_5_mini": "gpt-5-mini twin",
+    "twin_sampled_unadjusted_seed_0_gpt_5_mini": "gpt-5-mini twin unadj",
+    "demographic_only_row_resampled_seed_0_gpt_5_mini": "gpt-5-mini demo-only",
 }
 
 MODEL_STYLE = {
     "gpt-5.1 baseline": {"color": "#1f77b4"},
     "gpt-5.1 twin": {"color": "#6baed6"},
+    "gpt-5.1 twin unadj": {"color": "#9ecae1"},
+    "gpt-5.1 demo-only": {"color": "#c6dbef"},
     "gpt-5-mini baseline": {"color": "#ff7f0e"},
     "gpt-5-mini twin": {"color": "#fdae6b"},
+    "gpt-5-mini twin unadj": {"color": "#fdd0a2"},
+    "gpt-5-mini demo-only": {"color": "#fee6ce"},
     "noise_ceiling": {"color": "#2ca02c"},
 }
 def _rmse_from_mse_components(mse_components: pd.Series) -> tuple[float, float]:
@@ -254,14 +262,19 @@ def _plot_comparison_figure(
     metric_labels = {key: label for key, label in MACRO_METRICS}
     model_order = [
         "gpt-5.1 baseline",
+        "gpt-5.1 demo-only",
+        "gpt-5.1 twin unadj",
         "gpt-5.1 twin",
         "gpt-5-mini baseline",
+        "gpt-5-mini demo-only",
+        "gpt-5-mini twin unadj",
         "gpt-5-mini twin",
         "noise_ceiling",
     ]
-    bar_width = min(0.15, 0.84 / len(model_order))
+    bar_width = min(0.11, 0.84 / len(model_order))
 
-    fig, axes = plt.subplots(2, 1, figsize=(14, 8.5), constrained_layout=True, sharex=True)
+    fig, axes = plt.subplots(2, 1, figsize=(18.5, 9.4), constrained_layout=False, sharex=True)
+    fig.subplots_adjust(top=0.86, bottom=0.14, hspace=0.28)
     for ax, (score_family, title) in zip(axes, SCORE_FAMILY_SPECS, strict=True):
         family_df = plot_df[plot_df["score_family"] == score_family].copy()
         metric_order = [metric for metric, _ in MACRO_METRICS]
@@ -310,8 +323,8 @@ def _plot_comparison_figure(
     fig.legend(
         handles,
         labels,
-        loc="lower center",
-        bbox_to_anchor=(0.5, -0.02),
+        loc="upper center",
+        bbox_to_anchor=(0.5, 0.98),
         ncol=5,
         frameon=False,
     )

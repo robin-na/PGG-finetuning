@@ -62,15 +62,12 @@ class PromptMetadata:
 
 
 @dataclass(frozen=True)
-class TwinPersonaAssignment:
+class PersonaAssignment:
     seat_index: int
-    player_id: str
+    player_id: str | None
+    profile_id: str
     headline: str
     summary: str
-    target_age_bracket: str
-    target_education_harmonized: str
-    target_sex: str
-    twin_pid: str
 
 
 def _as_bool(value: Any) -> bool:
@@ -112,8 +109,27 @@ def _canonical_variant_name(variant_name: str) -> str:
     variant_slug = _sanitize_token(variant_name)
     aliases = {
         "baseline_direct_transcript": "baseline",
+        "twin_sampled_seed_0_unadjusted": "twin_sampled_unadjusted_seed_0",
+        "twin_to_pgg_validation_persona_sampling_unadjusted_seed_0": (
+            "twin_sampled_unadjusted_seed_0"
+        ),
+        "pgg_validation_demographic_only_sampling_row_resampled_seed_0": (
+            "demographic_only_row_resampled_seed_0"
+        ),
     }
     return aliases.get(variant_slug, variant_slug)
+
+
+def _is_assigned_profile_variant(variant_slug: str) -> bool:
+    return variant_slug in {
+        "twin_sampled_seed_0",
+        "twin_sampled_unadjusted_seed_0",
+        "demographic_only_row_resampled_seed_0",
+    }
+
+
+def _is_demographic_only_variant(variant_slug: str) -> bool:
+    return variant_slug == "demographic_only_row_resampled_seed_0"
 
 
 def _twin_assignment_path_for_variant(repo_root: Path, variant_name: str) -> Path | None:
@@ -124,28 +140,48 @@ def _twin_assignment_path_for_variant(repo_root: Path, variant_name: str) -> Pat
             / "non-PGG_generalization/task_grounding/output"
             / "twin_to_pgg_validation_persona_sampling/seed_0/game_assignments.jsonl"
         )
+    if variant_slug == "twin_sampled_unadjusted_seed_0":
+        return (
+            repo_root
+            / "non-PGG_generalization/task_grounding/output"
+            / "twin_to_pgg_validation_persona_sampling_unadjusted/seed_0/game_assignments.jsonl"
+        )
+    if variant_slug == "demographic_only_row_resampled_seed_0":
+        return (
+            repo_root
+            / "non-PGG_generalization/task_grounding/output"
+            / "pgg_validation_demographic_only_sampling_row_resampled/seed_0/game_assignments.jsonl"
+        )
     return None
 
 
 def _twin_prompt_cards_path_for_variant(repo_root: Path, variant_name: str) -> Path | None:
     variant_slug = _canonical_variant_name(variant_name)
-    if variant_slug == "twin_sampled_seed_0":
+    if variant_slug in {"twin_sampled_seed_0", "twin_sampled_unadjusted_seed_0"}:
         return (
             repo_root
             / "non-PGG_generalization/task_grounding/output"
             / "twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl"
+        )
+    if variant_slug == "demographic_only_row_resampled_seed_0":
+        return (
+            repo_root
+            / "non-PGG_generalization/task_grounding/output"
+            / "pgg_validation_demographic_only_sampling_row_resampled/seed_0/demographic_profile_cards.jsonl"
         )
     return None
 
 
 def _twin_shared_notes_path_for_variant(repo_root: Path, variant_name: str) -> Path | None:
     variant_slug = _canonical_variant_name(variant_name)
-    if variant_slug == "twin_sampled_seed_0":
+    if variant_slug in {"twin_sampled_seed_0", "twin_sampled_unadjusted_seed_0"}:
         return (
             repo_root
             / "non-PGG_generalization/task_grounding/output"
             / "twin_extended_profile_cards/pgg_prompt_min/shared_prompt_notes.md"
         )
+    if variant_slug == "demographic_only_row_resampled_seed_0":
+        return None
     return None
 
 
@@ -267,29 +303,34 @@ def _load_valid_start_treatment_counts(processed_path: Path) -> dict[str, int]:
 
 def _load_twin_game_assignments(
     assignments_path: Path,
-) -> dict[str, dict[str, TwinPersonaAssignment]]:
-    assignments_by_game: dict[str, dict[str, TwinPersonaAssignment]] = {}
+) -> dict[str, dict[str, PersonaAssignment]]:
+    assignments_by_game: dict[str, dict[str, PersonaAssignment]] = {}
     with assignments_path.open("r", encoding="utf-8") as handle:
         for line in handle:
             row = json.loads(line)
             game_id = str(row["gameId"])
-            player_assignments: dict[str, TwinPersonaAssignment] = {}
+            player_assignments: dict[str, PersonaAssignment] = {}
             for assignment in row.get("assignments", []):
                 player_id = assignment.get("pgg_roster_playerId")
-                if player_id is None:
-                    continue
-                player_key = str(player_id)
-                player_assignments[player_key] = TwinPersonaAssignment(
+                player_key = (
+                    str(player_id) if player_id is not None else f"seat:{int(assignment['seat_index'])}"
+                )
+                profile_id = (
+                    str(assignment.get("twin_pid", "")).strip()
+                    or str(assignment.get("profile_id", "")).strip()
+                )
+                player_assignments[player_key] = PersonaAssignment(
                     seat_index=int(assignment["seat_index"]),
-                    player_id=player_key,
-                    headline=str(assignment.get("twin_profile_headline", "")).strip(),
-                    summary=str(assignment.get("twin_profile_summary", "")).strip(),
-                    target_age_bracket=str(assignment.get("target_age_bracket", "")).strip(),
-                    target_education_harmonized=str(
-                        assignment.get("target_education_harmonized", "")
+                    player_id=str(player_id) if player_id is not None else None,
+                    profile_id=profile_id,
+                    headline=str(
+                        assignment.get("twin_profile_headline", "")
+                        or assignment.get("profile_headline", "")
                     ).strip(),
-                    target_sex=str(assignment.get("target_sex", "")).strip(),
-                    twin_pid=str(assignment.get("twin_pid", "")).strip(),
+                    summary=str(
+                        assignment.get("twin_profile_summary", "")
+                        or assignment.get("profile_summary", "")
+                    ).strip(),
                 )
             assignments_by_game[game_id] = player_assignments
     return assignments_by_game
@@ -300,7 +341,11 @@ def _load_twin_profile_cards(cards_path: Path) -> dict[str, dict[str, Any]]:
     with cards_path.open("r", encoding="utf-8") as handle:
         for line in handle:
             card = json.loads(line)
-            pid = str(card["participant"]["pid"])
+            participant = card.get("participant", {})
+            if isinstance(participant, dict) and participant.get("pid") is not None:
+                pid = str(participant["pid"])
+            else:
+                pid = str(card["profile_id"])
             cards_by_pid[pid] = card
     return cards_by_pid
 
@@ -868,16 +913,25 @@ def _strict_transcript_template(metadata: PromptMetadata, start_round: int) -> l
 
 def _build_persona_block(
     *,
+    variant_slug: str,
     shared_prompt_notes: str | None,
     raw_player_order: list[str],
     avatar_order: list[str],
-    persona_assignments: dict[str, TwinPersonaAssignment],
+    persona_assignments: dict[str, PersonaAssignment],
     twin_profile_cards: dict[str, dict[str, Any]],
 ) -> str:
-    lines = [
-        "# PLAYER PERSONAS",
-        "Use these provided personas as player-specific priors when reasoning about motivations and likely choices.",
-    ]
+    is_demographic_only = _is_demographic_only_variant(variant_slug)
+    lines = (
+        [
+            "# PLAYER PROFILES",
+            "Use these provided profiles as player-specific priors when reasoning about motivations and likely choices.",
+        ]
+        if is_demographic_only
+        else [
+            "# PLAYER PERSONAS",
+            "Use these provided personas as player-specific priors when reasoning about motivations and likely choices.",
+        ]
+    )
     if shared_prompt_notes:
         note_lines = shared_prompt_notes.splitlines()
         if note_lines and note_lines[0].strip() == "# Shared Prompt Notes":
@@ -889,10 +943,20 @@ def _build_persona_block(
             else:
                 demoted_note_lines.append(line)
         lines.extend(["", *demoted_note_lines, ""])
-    for player_id, avatar in zip(raw_player_order, avatar_order):
-        assignment = persona_assignments[player_id]
-        card = twin_profile_cards[assignment.twin_pid]
+    for seat_index, (player_id, avatar) in enumerate(zip(raw_player_order, avatar_order), start=1):
+        assignment = persona_assignments.get(player_id) or persona_assignments.get(f"seat:{seat_index}")
+        if assignment is None:
+            raise KeyError(f"Missing persona assignment for game seat {seat_index} ({avatar})")
+        card = twin_profile_cards[assignment.profile_id]
         lines.append(f"## {avatar}")
+
+        if is_demographic_only:
+            summary = str(card.get("summary", assignment.summary)).strip()
+            if summary:
+                lines.append(f"Summary: {summary}")
+            lines.append("")
+            continue
+
         lines.append(f"Headline: {card.get('headline', assignment.headline)}")
         lines.append(f"Summary: {card.get('summary', assignment.summary)}")
 
@@ -940,7 +1004,7 @@ def _build_persona_block(
                 elif note:
                     lines.append(f"- {note}")
 
-        lines.append("")
+            lines.append("")
     return "\n".join(lines)
 
 
@@ -1075,19 +1139,19 @@ def main() -> None:
 
     if args.split != "val":
         raise ValueError("Only validation-wave generation is supported in this compact builder.")
-    if variant_slug == "twin_sampled_seed_0":
+    if _is_assigned_profile_variant(variant_slug):
         if args.selection_mode != "full":
             raise ValueError(
-                "twin-sampled_seed_0 must be built with --selection-mode full so each request uses "
+                f"{variant_slug} must be built with --selection-mode full so each request uses "
                 "its own assigned validation game."
             )
         if not args.require_valid_starting_players:
             raise ValueError(
-                "twin-sampled_seed_0 must be built with --require-valid-starting-players."
+                f"{variant_slug} must be built with --require-valid-starting-players."
             )
         if args.repeat_count_mode != "fixed" or args.repeats_per_game != 1:
             raise ValueError(
-                "twin-sampled_seed_0 must be built with --repeat-count-mode fixed "
+                f"{variant_slug} must be built with --repeat-count-mode fixed "
                 "--repeats-per-game 1 because the 417 assigned games already provide the "
                 "within-CONFIG sampling."
             )
@@ -1142,7 +1206,7 @@ def main() -> None:
                 game_id,
             ),
         )
-        selection_rule = "all valid-start validation games from the twin persona assignment manifest"
+        selection_rule = "all valid-start validation games from the assigned profile manifest"
     else:
         selected_games, selection_rule = _select_games(
             games=complete_games,
@@ -1172,25 +1236,26 @@ def main() -> None:
                 raise ValueError(
                     f"Missing twin persona assignments for selected game {game_id}."
                 )
-            missing_player_ids = [
-                player_id for player_id in raw_player_order if player_id not in persona_assignments
-            ]
-            if missing_player_ids:
-                raise ValueError(
-                    f"Game {game_id} is missing twin persona assignments for roster players: "
-                    f"{missing_player_ids}"
+            missing_assignment_slots = []
+            missing_profile_ids = set()
+            for seat_index, player_id in enumerate(raw_player_order, start=1):
+                assignment = persona_assignments.get(player_id) or persona_assignments.get(
+                    f"seat:{seat_index}"
                 )
-            missing_twin_pids = sorted(
-                {
-                    assignment.twin_pid
-                    for player_id, assignment in persona_assignments.items()
-                    if player_id in raw_player_order and assignment.twin_pid not in twin_profile_cards
-                }
-            )
-            if missing_twin_pids:
+                if assignment is None:
+                    missing_assignment_slots.append(player_id)
+                    continue
+                if assignment.profile_id not in twin_profile_cards:
+                    missing_profile_ids.add(assignment.profile_id)
+            if missing_assignment_slots:
                 raise ValueError(
-                    f"Game {game_id} references Twin profile cards that are missing from "
-                    f"{twin_cards_path}: {missing_twin_pids}"
+                    f"Game {game_id} is missing profile assignments for roster players: "
+                    f"{missing_assignment_slots}"
+                )
+            if missing_profile_ids:
+                raise ValueError(
+                    f"Game {game_id} references profile cards that are missing from "
+                    f"{twin_cards_path}: {sorted(missing_profile_ids)}"
                 )
         repeat_count = (
             valid_start_treatment_counts.get(metadata.treatment_name, 1)
@@ -1236,6 +1301,7 @@ def main() -> None:
             persona_block = None
             if twin_assignments_path is not None:
                 persona_block = _build_persona_block(
+                    variant_slug=variant_slug,
                     shared_prompt_notes=twin_shared_prompt_notes,
                     raw_player_order=raw_player_order,
                     avatar_order=avatar_order,

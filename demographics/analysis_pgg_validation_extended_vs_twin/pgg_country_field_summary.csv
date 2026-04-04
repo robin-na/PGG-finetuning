@@ -1,0 +1,34 @@
+field,category,count,pct,n_used
+PROLIFIC_Country of birth,United States,1813,51.0848,3549
+PROLIFIC_Country of birth,United Kingdom,1192,33.5869,3549
+PROLIFIC_Country of birth,Canada,151,4.2547,3549
+PROLIFIC_Country of birth,Nigeria,55,1.5497,3549
+PROLIFIC_Country of birth,India,25,0.7044,3549
+PROLIFIC_Country of birth,China,24,0.6762,3549
+PROLIFIC_Country of birth,Poland,19,0.5354,3549
+PROLIFIC_Country of birth,Ghana,19,0.5354,3549
+PROLIFIC_Country of birth,Philippines,18,0.5072,3549
+PROLIFIC_Country of birth,Hong Kong,16,0.4508,3549
+PROLIFIC_Country of birth,Germany,15,0.4227,3549
+PROLIFIC_Country of birth,Romania,13,0.3663,3549
+PROLIFIC_Country of birth,France,11,0.3099,3549
+PROLIFIC_Country of birth,Pakistan,10,0.2818,3549
+PROLIFIC_Country of birth,Bulgaria,9,0.2536,3549
+PROLIFIC_Country of residence,United States,1920,54.0236,3554
+PROLIFIC_Country of residence,United Kingdom,1449,40.771,3554
+PROLIFIC_Country of residence,Canada,185,5.2054,3554
+PROLIFIC_Nationality,United States,1893,53.2639,3554
+PROLIFIC_Nationality,United Kingdom,1265,35.5937,3554
+PROLIFIC_Nationality,Canada,161,4.5301,3554
+PROLIFIC_Nationality,Nigeria,43,1.2099,3554
+PROLIFIC_Nationality,Ireland,21,0.5909,3554
+PROLIFIC_Nationality,Poland,17,0.4783,3554
+PROLIFIC_Nationality,India,13,0.3658,3554
+PROLIFIC_Nationality,China,10,0.2814,3554
+PROLIFIC_Nationality,Romania,9,0.2532,3554
+PROLIFIC_Nationality,France,9,0.2532,3554
+PROLIFIC_Nationality,Bulgaria,8,0.2251,3554
+PROLIFIC_Nationality,Germany,8,0.2251,3554
+PROLIFIC_Nationality,Italy,7,0.197,3554
+PROLIFIC_Nationality,Lithuania,6,0.1688,3554
+PROLIFIC_Nationality,Vietnam,5,0.1407,3554

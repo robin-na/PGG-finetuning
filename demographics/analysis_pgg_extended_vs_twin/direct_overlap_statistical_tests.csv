@@ -1,0 +1,6 @@
+dimension,test,statistic,degrees_of_freedom,p_value,notes
+age,chi2,736.63926,3,2.382171143379739e-159,Age brackets: PGG best available age vs Twin age bracket.
+sex_male_female,chi2,1.677572,1,0.1952473303709075,"Male/female only. PGG uses Prolific sex first, then player-input gender fallback."
+education_completed,chi2,31.523394,2,1.4281765054740643e-07,Completed-degree harmonization: Twin sub-bachelor levels collapsed to high school vs college/postsecondary.
+race_ethnicity_harmonized,chi2,150.390427,3,2.1704178615000596e-32,Coarse race/ethnicity harmonization. Twin Hispanic is folded into other/mixed because Prolific simplified ethnicity lacks a Hispanic bucket.
+employment_harmonized,chi2,435.749893,4,5.227679788324924e-93,Employment harmonization uses Twin employment status vs Prolific employment plus student status.

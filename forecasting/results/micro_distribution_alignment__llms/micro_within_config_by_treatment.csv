@@ -4,7 +4,7 @@ VALIDATION_0_T,0.14183006535947712,gpt-5-mini baseline,player_within_config_wd,p
 VALIDATION_10_C,0.4138888888888889,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_10_T,0.2025,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_11_C,0.3408176892551893,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_11_T,0.2873737373737374,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_T,0.2733044733044733,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_12_C,0.43139730639730645,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_12_T,0.08234126984126984,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_13_C,0.44560004456327984,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
@@ -16,7 +16,7 @@ VALIDATION_15_T,0.2735958485958486,gpt-5-mini baseline,player_within_config_wd,p
 VALIDATION_16_C,0.5305,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_16_T,0.13528846153846155,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_17_C,0.44181856155540367,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_17_T,0.0647626931567329,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_T,0.06184915932214642,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_18_C,0.23731884057971014,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_18_T,0.18432971014492755,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_19_C,0.2765164576802508,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
@@ -30,21 +30,61 @@ VALIDATION_3_T,0.3443386752136752,gpt-5-mini baseline,player_within_config_wd,pl
 VALIDATION_4_C,0.030357142857142867,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_4_T,0.06547619047619048,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_5_C,0.25,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_5_T,0.17847222222222223,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_T,0.19204545454545455,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_6_C,0.4972021901709402,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_6_T,0.20395203388161134,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_T,0.21927986186348863,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_7_C,0.6240256633318835,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_7_T,0.2193534828658184,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_8_C,0.2590277777777778,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_8_T,0.15454545454545454,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_9_C,0.24612794612794608,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_9_T,0.24739105339105338,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_C,0.2428417508417508,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_T,0.274884506440062,gpt-5-mini baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_0_C,0.36416666666666664,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_0_T,0.07238562091503269,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_10_C,0.4063888888888889,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_10_T,0.1325,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_C,0.3196638431013431,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_T,0.23846431346431346,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_12_C,0.43486952861952866,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_12_T,0.07308201058201057,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_13_C,0.39973607397504457,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_13_T,0.3754012021475257,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_14_C,0.3165255441845354,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_14_T,0.317535552897395,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_15_C,0.15306360306360306,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_15_T,0.12707570207570207,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_16_C,0.5651666666666667,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_16_T,0.05778846153846155,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_C,0.4413400926558821,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_T,0.04148035652044018,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_18_C,0.2626811594202898,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_18_T,0.16041666666666665,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_19_C,0.18854231974921629,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_19_T,0.35328448275862073,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_1_C,0.5128906249999999,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_1_T,0.19535590277777778,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_2_C,0.10361111111111113,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_2_T,0.07420454545454544,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_3_C,0.13184947768281102,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_3_T,0.19881517094017095,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_4_C,0.023214285714285725,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_4_T,0.04166666666666667,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_C,0.14814814814814814,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_T,0.06035353535353537,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_C,0.43201789529914536,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_T,0.27248036294691225,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_7_C,0.6256285341452805,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_7_T,0.1775990969009061,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_8_C,0.18159722222222222,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_8_T,0.14356060606060606,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_C,0.23289562289562288,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_T,0.15530030463363798,gpt-5-mini demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_0_C,0.12916666666666665,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_0_T,0.03914565826330532,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_10_C,0.18916666666666668,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_10_T,0.13055555555555554,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_11_C,0.15972794566544568,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_11_T,0.1078865578865579,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_T,0.1023920523920524,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_12_C,0.24736952861952866,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_12_T,0.03224206349206348,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_13_C,0.3604346033868092,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
@@ -56,7 +96,7 @@ VALIDATION_15_T,0.07090964590964592,gpt-5-mini twin,player_within_config_wd,play
 VALIDATION_16_C,0.2338333333333333,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_16_T,0.03471153846153847,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_17_C,0.3140673653831549,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_17_T,0.18612950699043415,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_T,0.18668719259517447,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_18_C,0.11050724637681159,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_18_T,0.049003623188405794,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_19_C,0.1645336990595611,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
@@ -70,21 +110,61 @@ VALIDATION_3_T,0.24398611111111113,gpt-5-mini twin,player_within_config_wd,playe
 VALIDATION_4_C,0.0544642857142857,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_4_T,0.07142857142857142,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_5_C,0.023148148148148147,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_5_T,0.026388888888888892,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_T,0.024116161616161612,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_6_C,0.34612045940170943,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_6_T,0.1417484364227322,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_T,0.14505213976164677,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_7_C,0.3929251848629839,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_7_T,0.1638271670763447,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_8_C,0.09895833333333333,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_8_T,0.06780303030303031,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_9_C,0.10164983164983166,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_9_T,0.09058874458874461,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_C,0.11637710437710437,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_T,0.08773053284164398,gpt-5-mini twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_0_C,0.08583333333333333,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_0_T,0.024194677871148457,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_10_C,0.16055555555555556,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_10_T,0.07249999999999998,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_C,0.139535637973138,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_T,0.16020923520923522,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_12_C,0.0899621212121212,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_12_T,0.04646164021164022,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_13_C,0.30687210338680926,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_13_T,0.2781919775485952,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_14_C,0.16637934535412607,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_14_T,0.19727239500265814,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_15_C,0.08802863802863804,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_15_T,0.0625593542260209,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_16_C,0.4045,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_16_T,0.038878205128205126,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_C,0.1165660363028784,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_T,0.19345410988840755,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_18_C,0.13496376811594202,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_18_T,0.05172101449275362,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_19_C,0.0747335423197492,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_19_T,0.19858620689655168,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_1_C,0.44388020833333336,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_1_T,0.1209201388888889,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_2_C,0.06250000000000001,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_2_T,0.06613636363636365,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_3_C,0.08284662867996202,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_3_T,0.2932489316239316,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_4_C,0.07083333333333333,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_4_T,0.08333333333333333,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_C,0.08796296296296295,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_T,0.0731060606060606,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_C,0.35952190170940174,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_T,0.2624258531960997,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_7_C,0.48503044802087864,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_7_T,0.19053769339213417,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_8_C,0.07534722222222223,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_8_T,0.05946969696969697,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_C,0.09898989898989899,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_T,0.12086558708780931,gpt-5-mini twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_0_C,0.11583333333333334,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_0_T,0.09886788048552755,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_10_C,0.11361111111111111,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_10_T,0.16388888888888892,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_11_C,0.11902281746031747,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_11_T,0.32350427350427347,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_T,0.40837773337773337,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_12_C,0.28209175084175087,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_12_T,0.09970238095238095,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_13_C,0.13189661319073084,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
@@ -96,7 +176,7 @@ VALIDATION_15_T,0.06517094017094016,gpt-5.1 baseline,player_within_config_wd,pla
 VALIDATION_16_C,0.4325,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_16_T,0.0694551282051282,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_17_C,0.30198602567023625,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_17_T,0.2705496495100887,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_T,0.32083160439730674,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_18_C,0.11775362318840579,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_18_T,0.15643115942028984,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_19_C,0.06522335423197492,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
@@ -110,21 +190,61 @@ VALIDATION_3_T,0.05024465811965812,gpt-5.1 baseline,player_within_config_wd,play
 VALIDATION_4_C,0.10208333333333332,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_4_T,0.14484126984126983,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_5_C,0.21296296296296297,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_5_T,0.26875000000000004,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_T,0.3018939393939394,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_6_C,0.3691172542735043,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_6_T,0.1206075174825175,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_T,0.11831527627302274,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_7_C,0.5078773379730317,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_7_T,0.047905289064006165,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_8_C,0.15659722222222222,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_8_T,0.19090909090909092,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_9_C,0.0853872053872054,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_9_T,0.08523520923520925,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_C,0.07790909090909091,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_T,0.09914467425578537,gpt-5.1 baseline,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_0_C,0.037500000000000006,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_0_T,0.11414565826330533,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_10_C,0.1211111111111111,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_10_T,0.1338888888888889,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_C,0.15237904456654455,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_T,0.3863997113997114,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_12_C,0.2543139730639731,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_12_T,0.08581349206349206,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_13_C,0.24656573083778968,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_13_T,0.2877842235379,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_14_C,0.29624045646523717,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_14_T,0.2808250265816055,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_15_C,0.031085581085581064,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_15_T,0.039441731108397785,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_16_C,0.34983333333333333,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_16_T,0.06137820512820512,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_C,0.1112683223209539,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_T,0.06574023358617294,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_18_C,0.16349637681159418,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_18_T,0.11041666666666666,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_19_C,0.047276645768025094,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_19_T,0.26005172413793104,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_1_C,0.33554687499999997,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_1_T,0.18628472222222223,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_2_C,0.12111111111111111,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_2_T,0.08227272727272728,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_3_C,0.16724833808167142,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_3_T,0.0802767094017094,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_4_C,0.27321428571428574,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_4_T,0.33333333333333337,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_C,0.08333333333333331,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_T,0.2147727272727273,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_C,0.4123864850427351,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_T,0.1652864301191766,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_7_C,0.5309873858199218,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_7_T,0.11012376795353769,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_8_C,0.128125,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_8_T,0.1571969696969697,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_C,0.10077777777777779,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_T,0.08975821709155044,gpt-5.1 demo-only,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_0_C,0.10083333333333333,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_0_T,0.09609010270774977,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_10_C,0.10638888888888892,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_10_T,0.15222222222222223,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_11_C,0.2536382020757021,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_11_T,0.2151126651126651,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_T,0.1853923853923854,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_12_C,0.19297138047138046,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_12_T,0.049603174603174593,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_13_C,0.17535249554367205,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
@@ -136,7 +256,7 @@ VALIDATION_15_T,0.04012006512006512,gpt-5.1 twin,player_within_config_wd,player_
 VALIDATION_16_C,0.21849999999999997,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_16_T,0.07278846153846155,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_17_C,0.06393445735550997,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_17_T,0.05066225165562913,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_T,0.06296619031021262,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_18_C,0.10507246376811594,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_18_T,0.0819746376811594,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_19_C,0.09043887147335423,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
@@ -150,21 +270,61 @@ VALIDATION_3_T,0.1573514957264957,gpt-5.1 twin,player_within_config_wd,player_me
 VALIDATION_4_C,0.1199404761904762,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_4_T,0.08928571428571427,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_5_C,0.05092592592592591,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_5_T,0.0916666666666667,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_T,0.051893939393939395,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_6_C,0.23904914529914528,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_6_T,0.1641839234708953,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_T,0.17500914138678225,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_7_C,0.33357111787733795,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_7_T,0.17766488637459033,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_8_C,0.1107638888888889,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_8_T,0.1143939393939394,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_9_C,0.05757575757575759,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
-VALIDATION_9_T,0.09776046176046177,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_C,0.05171043771043773,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_T,0.09778290844957513,gpt-5.1 twin,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_0_C,0.06916666666666665,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_0_T,0.1155345471521942,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_10_C,0.16055555555555556,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_10_T,0.13222222222222224,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_C,0.09722794566544565,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_11_T,0.3029519092019092,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_12_C,0.06513047138047137,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_12_T,0.10201719576719578,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_13_C,0.16853264260249554,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_13_T,0.2706886353026059,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_14_C,0.20464688921377516,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_14_T,0.2854741493886231,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_15_C,0.059723609723609725,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_15_T,0.07762515262515261,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_16_C,0.2865,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_16_T,0.09637820512820512,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_C,0.14468937495253284,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_17_T,0.09154792962739983,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_18_C,0.12658514492753623,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_18_T,0.13360507246376813,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_19_C,0.105423197492163,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_19_T,0.21806896551724136,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_1_C,0.286328125,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_1_T,0.1502170138888889,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_2_C,0.16611111111111113,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_2_T,0.05659090909090909,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_3_C,0.1758309591642925,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_3_T,0.15900534188034188,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_4_C,0.06190476190476191,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_4_T,0.10714285714285715,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_C,0.11574074074074076,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_5_T,0.20340909090909093,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_C,0.22180154914529915,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_6_T,0.10906453141928492,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_7_C,0.3097672901261418,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_7_T,0.11744558812897628,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_8_C,0.1076388888888889,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_8_T,0.0693181818181818,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_C,0.09509090909090907,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
+VALIDATION_9_T,0.08903992303992304,gpt-5.1 twin unadj,player_within_config_wd,player_mean_contribution_rate,Player mean contrib
 VALIDATION_0_C,0.4656405079827856,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_0_T,0.17062377653967778,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_10_C,0.4945020647267838,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_10_T,0.3974118889849227,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_11_C,0.4235259158956485,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_11_T,0.3457812447845174,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_T,0.33222163817121664,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_12_C,0.45929476299518246,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_12_T,0.19681215499729726,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_13_C,0.5779859426807623,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
@@ -176,7 +336,7 @@ VALIDATION_15_T,0.27561162536075623,gpt-5-mini baseline,player_within_config_wd,
 VALIDATION_16_C,0.7652783331211794,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_16_T,0.16550634816145599,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_17_C,0.46015335164830895,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_17_T,0.1621099483195087,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_T,0.18762755267785344,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_18_C,0.2901582383698157,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_18_T,0.17185269463454497,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_19_C,0.32936807266009854,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
@@ -190,21 +350,61 @@ VALIDATION_3_T,0.32991913784667587,gpt-5-mini baseline,player_within_config_wd,p
 VALIDATION_4_C,0.0662759753840303,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_4_T,0.09717406101645479,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_5_C,0.5428240740740741,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_5_T,0.24840856481481477,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_T,0.2660853324915825,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_6_C,0.5870383187012385,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_6_T,0.1940966408364574,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_T,0.20950315379101572,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_7_C,0.69868329806786,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_7_T,0.21886698998913567,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_8_C,0.30340238554438187,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_8_T,0.255622803797376,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_9_C,0.3275763649912688,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_9_T,0.21300342553420204,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_C,0.3243144028888264,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_T,0.23874467642696812,gpt-5-mini baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_0_C,0.4608328156750933,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_0_T,0.12334997754174087,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_10_C,0.4891961970613656,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_10_T,0.37337942955920483,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_C,0.4018401548481853,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_T,0.29564932499268803,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_12_C,0.46248614371413677,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_12_T,0.19242932547660008,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_13_C,0.5320578618295468,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_13_T,0.4445231830117922,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_14_C,0.4860967522974099,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_14_T,0.43656432748537993,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_15_C,0.2874583198594678,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_15_T,0.14540386927594584,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_16_C,0.8000931479359943,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_16_T,0.1260243978567209,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_C,0.4596405450373959,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_T,0.12597063331351982,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_18_C,0.316169303783055,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_18_T,0.1751933755219903,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_19_C,0.23707281403940886,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_19_T,0.47468929597701154,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_1_C,0.5074257425742573,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_1_T,0.4093213089691322,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_2_C,0.12448559670781893,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_2_T,0.08512205387205389,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_3_C,0.2158287618081245,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_3_T,0.21357759569578122,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_4_C,0.05438261577669025,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_4_T,0.11969468149778272,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_C,0.41975308641975306,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_T,0.1493450126262626,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_C,0.5209098502622174,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_T,0.2722959981541411,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_7_C,0.7000888004602046,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_7_T,0.18905737929742666,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_8_C,0.24470800615328117,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_8_T,0.24946955542649268,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_C,0.3131334105757586,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_T,0.12513094653546042,gpt-5-mini demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_0_C,0.18887768746996514,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_0_T,0.08765054134115649,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_10_C,0.27290406222990493,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_10_T,0.3053394794967828,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_11_C,0.24304992026007838,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_11_T,0.17550462614690557,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_T,0.17137279193976357,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_12_C,0.27496061266838506,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_12_T,0.14253555682783622,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_13_C,0.49537155618206113,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
@@ -216,7 +416,7 @@ VALIDATION_15_T,0.09815772581061781,gpt-5-mini twin,player_within_config_wd,play
 VALIDATION_16_C,0.47379685163969804,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_16_T,0.09095060898769228,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_17_C,0.3325910128887136,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_17_T,0.21723497849629825,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_T,0.21757798361311773,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_18_C,0.1620613915229689,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_18_T,0.07005604929644364,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_19_C,0.2155749692118227,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
@@ -230,21 +430,61 @@ VALIDATION_3_T,0.2448910065055949,gpt-5-mini twin,player_within_config_wd,player
 VALIDATION_4_C,0.08568643147712465,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_4_T,0.15831395885258964,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_5_C,0.31172839506172845,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_5_T,0.1228298611111111,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_T,0.12130418771043772,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_6_C,0.43573674610009067,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_6_T,0.1579109887620314,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_T,0.16075360992036863,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_7_C,0.4668736603371696,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_7_T,0.1701475351019176,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_8_C,0.14799807901302617,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_8_T,0.14745685671809722,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_9_C,0.18848140548578896,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_9_T,0.07250385916342354,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_C,0.2034238622624367,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_T,0.06740287362528874,gpt-5-mini twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_0_C,0.16836486695714462,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_0_T,0.07957923260964975,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_10_C,0.2557380197829636,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_10_T,0.23854796888504753,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_C,0.2210334293431443,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_T,0.22094743067412081,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_12_C,0.11032791931326524,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_12_T,0.1610480493852457,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_13_C,0.44125065078723524,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_13_T,0.3515282380998782,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_14_C,0.331067251461988,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_14_T,0.32817616959064305,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_15_C,0.19037835900399677,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_15_T,0.14059948931353797,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_16_C,0.6434264812693277,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_16_T,0.1017885886489916,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_C,0.1450698239962819,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_T,0.22410516901826388,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_18_C,0.18739922936080672,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_18_T,0.07641936136627744,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_19_C,0.12026246921182264,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_19_T,0.34430136494252866,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_1_C,0.4376804867986798,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_1_T,0.3400917297612114,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_2_C,0.05889917695473253,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_2_T,0.06776094276094279,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_3_C,0.10818193859321164,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_3_T,0.2742972386049357,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_4_C,0.051129611797090094,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_4_T,0.16950292940592768,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_C,0.32060185185185186,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_T,0.10389046717171718,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_C,0.44961447454492254,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_T,0.26181839195070333,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_7_C,0.5597265311505668,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_7_T,0.19391006643023845,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_8_C,0.09637729408703388,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_8_T,0.16263165800970178,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_C,0.18550035041439655,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_T,0.08770661058334671,gpt-5-mini twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_0_C,0.21179435413663183,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_0_T,0.1091957942507559,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_10_C,0.21391529818496108,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_10_T,0.2788101411696917,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_11_C,0.19933742707950003,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_11_T,0.37485543677335165,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_T,0.4592645305694868,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_12_C,0.29249193075117375,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_12_T,0.18252835421853164,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_13_C,0.22243809740835194,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
@@ -256,7 +496,7 @@ VALIDATION_15_T,0.09739233285970016,gpt-5.1 baseline,player_within_config_wd,pla
 VALIDATION_16_C,0.6708338886767351,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_16_T,0.1845164161789229,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_17_C,0.3841279823678845,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_17_T,0.31392448539377,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_T,0.358102683326769,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_18_C,0.13458146594521725,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_18_T,0.18746075719660152,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_19_C,0.13125384852216748,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
@@ -270,21 +510,61 @@ VALIDATION_3_T,0.1016580794304393,gpt-5.1 baseline,player_within_config_wd,playe
 VALIDATION_4_C,0.16995375030580764,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_4_T,0.1756346212245418,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_5_C,0.5092592592592593,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_5_T,0.24782986111111108,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_T,0.283867319023569,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_6_C,0.45556450450787733,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_6_T,0.13659782287671995,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_T,0.13397854060092207,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_7_C,0.5769642276645791,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_7_T,0.08725558034809965,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_8_C,0.132168304480262,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_8_T,0.1959915649381958,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_9_C,0.05634801315266341,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_9_T,0.06284854884523444,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_C,0.06631332794854805,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_T,0.06818626159077547,gpt-5.1 baseline,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_0_C,0.11499948234176004,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_0_T,0.11828159590121268,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_10_C,0.22546336310381254,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_10_T,0.26258042831076533,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_C,0.23338338998184593,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_T,0.4449233212259739,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_12_C,0.2664928158274265,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_12_T,0.18495935379227418,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_13_C,0.34137208774677397,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_13_T,0.339013434221444,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_14_C,0.44876514202172074,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_14_T,0.3823976608187133,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_15_C,0.1639944431749279,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_15_T,0.13091180231074345,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_16_C,0.5893524071952535,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_16_T,0.20839494448025386,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_C,0.27678335786240105,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_T,0.1992851842675832,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_18_C,0.2148179524317037,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_18_T,0.12304883968180226,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_19_C,0.084217210591133,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_19_T,0.3845492097701149,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_1_C,0.3372524752475246,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_1_T,0.4293037759658318,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_2_C,0.0925925925925926,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_2_T,0.11279461279461281,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_3_C,0.19973407800925388,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_3_T,0.09818815411845273,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_4_C,0.3278257430181567,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_4_T,0.27910968110460543,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_C,0.38734567901234573,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_T,0.16654829545454541,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_C,0.4948993950068967,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_T,0.14841836718199583,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_7_C,0.5970342891820091,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_7_T,0.11028827790020891,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_8_C,0.10959029786778104,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_8_T,0.16129521620496182,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_C,0.13621939067222083,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_T,0.05883198469483192,gpt-5.1 demo-only,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_0_C,0.058997122989883286,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_0_T,0.09045985479410418,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_10_C,0.20548833189282628,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_10_T,0.3184480937289926,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_11_C,0.33671467748866535,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_11_T,0.26676626021583866,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_T,0.2374760716391281,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_12_C,0.2271134637344766,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_12_T,0.13163369457327256,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_13_C,0.2684840566268851,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
@@ -296,7 +576,7 @@ VALIDATION_15_T,0.14693566817658146,gpt-5.1 twin,player_within_config_wd,player_
 VALIDATION_16_C,0.45527833312117955,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_16_T,0.1552272637229849,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_17_C,0.16504799489835564,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_17_T,0.1472109449476272,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_T,0.1621105230305456,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_18_C,0.1705685399757695,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_18_T,0.10557912292619068,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_19_C,0.14041333128078817,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
@@ -310,341 +590,61 @@ VALIDATION_3_T,0.13320727656646936,gpt-5.1 twin,player_within_config_wd,player_m
 VALIDATION_4_C,0.15882846472073048,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_4_T,0.17928241084485858,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_5_C,0.3306327160493828,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_5_T,0.08637152777777778,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_T,0.09710385101010101,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_6_C,0.30915177388392157,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_6_T,0.17381072449668203,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_T,0.18489289965001743,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_7_C,0.39800831515603496,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_7_T,0.1662549912422685,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_8_C,0.09345869495339121,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_8_T,0.14159902271266178,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_9_C,0.07083926837690893,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_9_T,0.06047567326402552,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
-VALIDATION_0_C,0.1592380336790817,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_0_T,0.18338538079258604,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_10_C,0.23612791702679337,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_10_T,0.5380870066263324,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_11_C,0.06685148561004814,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_11_T,0.08870716400487122,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_12_C,0.20203213861302102,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_12_T,0.147325859090565,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_13_C,0.06672241349294958,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_13_T,0.07779615303546472,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_14_C,0.09275848765432101,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_14_T,0.18304398148148152,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_15_C,0.12861386282714957,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_15_T,0.3038668916553532,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_16_C,0.1196566411455747,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_16_T,0.30861421198128947,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_17_C,0.0903892372365374,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_17_T,0.08130656991980392,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_18_C,0.18230803477896496,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_18_T,0.17332700036188406,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_19_C,0.1027795493197279,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_19_T,0.23036777210884352,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_1_C,0.12995049504950493,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_1_T,0.24662686856920982,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_2_C,0.10002286236854137,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_2_T,0.07248410026187804,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_3_C,0.0738330407889111,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_3_T,0.08172223523506776,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_4_C,0.12633411958452836,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_4_T,0.18623433839288203,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_5_C,0.2578703703703703,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_5_T,0.2694444444444445,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_6_C,0.0786232204048239,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_6_T,0.09606791317782741,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_7_C,0.06670845677598833,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_7_T,0.06810699948206268,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_8_C,0.18940051430408228,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_8_T,0.15746325355775698,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_9_C,0.06473835507926418,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_9_T,0.09622885952431409,gpt-5-mini baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_0_C,0.11251181109041372,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_0_T,0.09412343963654009,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_10_C,0.19867473350619416,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_10_T,0.4212330740420628,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_11_C,0.05631013654223307,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_11_T,0.08401085825058555,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_12_C,0.06534754053136406,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_12_T,0.1346926997662292,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_13_C,0.07024753932203236,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_13_T,0.07680999838551697,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_14_C,0.08043788580246915,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_14_T,0.17638888888888893,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_15_C,0.1286987138735391,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_15_T,0.3018805411113103,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_16_C,0.12085974722795645,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_16_T,0.2545467516638292,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_17_C,0.09022311253665957,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_17_T,0.1012396577485444,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_18_C,0.14020627392720414,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_18_T,0.1672597875359503,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_19_C,0.09937021683673468,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_19_T,0.21931866496598637,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_1_C,0.11358635863586358,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_1_T,0.23480068595094802,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_2_C,0.09802240512117057,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_2_T,0.06722315750093527,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_3_C,0.07587647890663397,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_3_T,0.07905417433495063,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_4_C,0.10901783127933104,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_4_T,0.15568206180640456,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_5_C,0.24444444444444446,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_5_T,0.29618055555555556,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_6_C,0.07771212216880184,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_6_T,0.08904165081373243,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_7_C,0.05548724204190264,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_7_T,0.06855593461667032,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_8_C,0.16378576020572166,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_8_T,0.16118903597206397,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_9_C,0.06878867344776435,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_9_T,0.10070839514021335,gpt-5-mini twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_0_C,0.20482678141848448,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_0_T,0.12034415649044472,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_10_C,0.23275713050993946,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_10_T,0.22503601267646206,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_11_C,0.05764667113720045,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_11_T,0.08511505344524169,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_12_C,0.13037544563279857,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_12_T,0.1411856757444993,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_13_C,0.07684288639404838,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_13_T,0.08842670423713661,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_14_C,0.09675925925925927,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_14_T,0.1957175925925926,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_15_C,0.14609878175437616,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_15_T,0.29325037142344834,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_16_C,0.134184138017136,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_16_T,0.3055416097009407,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_17_C,0.07130369114690017,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_17_T,0.08955748551110365,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_18_C,0.14826831323924347,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_18_T,0.13965362693560368,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_19_C,0.1123219600340136,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_19_T,0.2280027636054422,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_1_C,0.11509900990099009,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_1_T,0.253777583640717,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_2_C,0.11488340192043897,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_2_T,0.08733164983164982,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_3_C,0.08267372018338001,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_3_T,0.07680206346550665,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_4_C,0.12534253829379988,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_4_T,0.1305999940616175,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_5_C,0.17314814814814813,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_5_T,0.2534722222222222,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_6_C,0.08023986777605231,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_6_T,0.09527607763116812,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_7_C,0.06409745371511644,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_7_T,0.0709354161582498,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_8_C,0.19907719918568526,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_8_T,0.18478565792934168,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_9_C,0.06496815053633237,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_9_T,0.10604230365594004,gpt-5.1 baseline,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_0_C,0.13102252284348354,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_0_T,0.08788799567729698,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_10_C,0.18931143762604435,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_10_T,0.30256410256410254,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_11_C,0.059639053257761095,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_11_T,0.0840215969261353,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_12_C,0.09406698285374757,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_12_T,0.12125408568423275,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_13_C,0.07072128692571811,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_13_T,0.07830861874863088,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_14_C,0.08774691358024693,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_14_T,0.18483796296296298,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_15_C,0.1286580348555873,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_15_T,0.2964691042575658,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_16_C,0.12317402248991784,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_16_T,0.2822253230924006,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_17_C,0.06344660068174729,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_17_T,0.08599792117593263,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_18_C,0.13342392339485365,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_18_T,0.1482171256880559,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_19_C,0.10925807823129252,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_19_T,0.23667889030612246,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_1_C,0.11454895489548954,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_1_T,0.2392011259949524,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_2_C,0.10788180155464105,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_2_T,0.0825383464272353,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_3_C,0.08576595647186862,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_3_T,0.08764758239919691,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_4_C,0.11520666623180878,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_4_T,0.1420477459980796,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_5_C,0.28240740740740744,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_5_T,0.29131944444444446,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_6_C,0.071922184106991,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_6_T,0.10176319183316553,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_7_C,0.05303593969307611,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_7_T,0.07568602651010285,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_8_C,0.18427756348441018,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_8_T,0.19099529528652,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_9_C,0.07039073300436936,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_9_T,0.11107181959454687,gpt-5.1 twin,round_within_config_wd,delta_round_normalized_efficiency,Round-to-round eff change
-VALIDATION_0_C,0.14433333333333337,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_0_T,0.19995370370370374,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_10_C,0.15266666666666667,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_10_T,0.16799999999999998,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_11_C,0.06213939393939394,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_11_T,0.052501377410468314,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_12_C,0.20454545454545456,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_12_T,0.10126262626262625,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_13_C,0.05585526842948718,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_13_T,0.05720052083333334,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_14_C,0.07277777777777779,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_14_T,0.06560185185185186,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_15_C,0.10591226954863317,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_15_T,0.10500660782712064,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_16_C,0.09697278911564623,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_16_T,0.11252480158730159,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_17_C,0.07915042235217673,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_17_T,0.06960674058197279,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_18_C,0.17803030303030307,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_18_T,0.1337121212121212,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_19_C,0.08052083333333333,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_19_T,0.06075892857142856,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_1_C,0.13458333333333336,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_1_T,0.09013888888888887,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_2_C,0.09753086419753086,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_2_T,0.07575757575757575,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_3_C,0.06331111111111112,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_3_T,0.04906666666666666,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_4_C,0.12273242630385488,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_4_T,0.13643235071806506,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_5_C,0.1388888888888889,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_5_T,0.2041666666666667,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_6_C,0.06970522533022533,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_6_T,0.058916437098255274,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_7_C,0.06411475869809204,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_7_T,0.04529578189300412,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_8_C,0.12986111111111112,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_8_T,0.09136363636363636,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_9_C,0.05254818098568098,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_9_T,0.0447737111373475,gpt-5-mini baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_0_C,0.09077777777777776,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_0_T,0.09199074074074076,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_10_C,0.10200000000000001,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_10_T,0.13200000000000003,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_11_C,0.05044242424242425,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_11_T,0.057465564738292015,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_12_C,0.05707070707070708,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_12_T,0.09444444444444443,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_13_C,0.05689347241300366,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_13_T,0.04923549107142858,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_14_C,0.05977623456790123,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_14_T,0.05,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_15_C,0.09975711933753892,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_15_T,0.10696704055678413,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_16_C,0.09479591836734692,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_16_T,0.06698908730158733,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_17_C,0.0764218987258203,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_17_T,0.07788883659626694,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_18_C,0.13636363636363638,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_18_T,0.10833333333333334,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_19_C,0.07882440476190475,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_19_T,0.059047619047619036,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_1_C,0.1177777777777778,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_1_T,0.06694444444444445,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_2_C,0.09475308641975308,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_2_T,0.06426767676767675,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_3_C,0.06533333333333333,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_3_T,0.04383333333333333,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_4_C,0.08871882086167802,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_4_T,0.09108087679516252,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_5_C,0.16111111111111112,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_5_T,0.15833333333333333,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_6_C,0.06877800440300441,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_6_T,0.04584587130041675,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_7_C,0.05105780022446689,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_7_T,0.044286265432098765,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_8_C,0.10972222222222222,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_8_T,0.1557575757575758,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_9_C,0.05532540376290377,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_9_T,0.057064393939393936,gpt-5-mini twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_0_C,0.18611111111111112,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_0_T,0.10865740740740741,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_10_C,0.16533333333333333,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_10_T,0.09966666666666665,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_11_C,0.04913333333333334,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_11_T,0.05928925619834711,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_12_C,0.12979797979797977,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_12_T,0.0914141414141414,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_13_C,0.06644120592948718,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_13_T,0.059942167207792205,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_14_C,0.07464506172839508,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_14_T,0.06027777777777779,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_15_C,0.1208844768285328,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_15_T,0.12046825918620788,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_16_C,0.10657596371882085,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_16_T,0.09064980158730161,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_17_C,0.06467083111819955,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_17_T,0.06512223872904986,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_18_C,0.14488636363636365,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_18_T,0.10757575757575756,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_19_C,0.09226190476190475,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_19_T,0.0659672619047619,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_1_C,0.11777777777777777,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_1_T,0.09152777777777779,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_2_C,0.1154320987654321,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_2_T,0.08876262626262625,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_3_C,0.07137777777777778,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_3_T,0.04253333333333332,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_4_C,0.11026077097505671,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_4_T,0.0782312925170068,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_5_C,0.13333333333333336,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_5_T,0.20833333333333331,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_6_C,0.07147387334887334,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_6_T,0.05262484989757718,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_7_C,0.05909231200897867,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_7_T,0.04515560699588477,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_8_C,0.15,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_8_T,0.12772727272727274,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_9_C,0.05238854895104896,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_9_T,0.051199945887445884,gpt-5.1 baseline,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_0_C,0.11322222222222222,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_0_T,0.06949074074074077,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_10_C,0.08800000000000001,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_10_T,0.09133333333333331,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_11_C,0.05353939393939394,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_11_T,0.04416528925619836,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_12_C,0.09823232323232323,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_12_T,0.08383838383838384,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_13_C,0.058815719436813185,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_13_T,0.0477049512987013,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_14_C,0.06727623456790124,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_14_T,0.05148148148148148,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_15_C,0.10156812884085611,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_15_T,0.10440692261205083,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_16_C,0.09662131519274376,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_16_T,0.08013392857142858,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_17_C,0.06163870386006609,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_17_T,0.0653491813579533,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_18_C,0.12689393939393942,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_18_T,0.13106060606060607,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_19_C,0.08913690476190474,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_19_T,0.06511904761904762,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_1_C,0.12152777777777776,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_1_T,0.08152777777777778,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_2_C,0.11064814814814815,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_2_T,0.08131313131313128,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_3_C,0.07492592592592592,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_3_T,0.046966666666666664,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_4_C,0.09268707482993198,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_4_T,0.06235827664399095,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_5_C,0.15,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_5_T,0.175,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_6_C,0.0630239898989899,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_6_T,0.05417814508723599,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_7_C,0.047403198653198655,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_7_T,0.048216306584362136,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_8_C,0.12222222222222222,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_8_T,0.1686363636363636,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_9_C,0.057437250249750244,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
-VALIDATION_9_T,0.05650162337662337,gpt-5.1 twin,round_within_config_wd,delta_total_contribution_rate,Round-to-round contrib change
+VALIDATION_9_C,0.07777811094876086,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_T,0.06493397683849071,gpt-5.1 twin,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_0_C,0.06748783246427464,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_0_T,0.11645271174850681,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_10_C,0.26104388744838186,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_10_T,0.27600115240564677,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_C,0.17840180242047116,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_11_T,0.3562980706179792,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_12_C,0.05374665271037993,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_12_T,0.1840620670394088,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_13_C,0.26267993711156534,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_13_T,0.3216738060889393,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_14_C,0.3444287802840431,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_14_T,0.37620248538011675,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_15_C,0.10052423990880627,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_15_T,0.09506686547813288,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_16_C,0.5252783331211794,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_16_T,0.2619158071150405,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_C,0.20383537000707486,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_17_T,0.11782032797756312,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_18_C,0.18733802685395204,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_18_T,0.15507239056910446,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_19_C,0.07912176724137931,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_19_T,0.32878412356321834,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_1_C,0.2814304867986797,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_1_T,0.39011235682391765,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_2_C,0.16177983539094648,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_2_T,0.07344276094276095,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_3_C,0.19522266930338592,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_3_T,0.16883262244361377,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_4_C,0.06264370562047716,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_4_T,0.12889143951117554,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_C,0.3969907407407408,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_5_T,0.09831386784511785,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_C,0.3084027000116182,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_6_T,0.11617249211067604,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_7_C,0.3750930725039503,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_7_T,0.10818723518715097,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_8_C,0.08608001943946983,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_8_T,0.11345384139125107,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_C,0.15071254019681693,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
+VALIDATION_9_T,0.04976222849081645,gpt-5.1 twin unadj,player_within_config_wd,player_mean_normalized_payoff,Player mean payoff
 VALIDATION_0_C,0.47021233638591725,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_0_T,0.19269308007481226,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_10_C,0.5590127724959185,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_10_T,0.48953231537501196,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_11_C,0.42608058186839975,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_11_T,0.3607104200268918,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_T,0.351150613267852,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_12_C,0.46249975684718336,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_12_T,0.20062262235975473,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_13_C,0.5793422368553339,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
@@ -656,7 +656,7 @@ VALIDATION_15_T,0.39301070622499196,gpt-5-mini baseline,round_within_config_wd,r
 VALIDATION_16_C,0.7734519981843924,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_16_T,0.32833406063159587,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_17_C,0.4546076990351785,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_17_T,0.17131428417825106,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_T,0.19367339673011563,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_18_C,0.3227578248116671,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_18_T,0.25425200858087604,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_19_C,0.3544334975369458,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
@@ -670,21 +670,61 @@ VALIDATION_3_T,0.3460019712316015,gpt-5-mini baseline,round_within_config_wd,rou
 VALIDATION_4_C,0.14122137346019964,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_4_T,0.180209013529459,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_5_C,0.46875,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_5_T,0.3530092592592593,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_T,0.37131734006734013,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_6_C,0.5837483425641212,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_6_T,0.21698996399945586,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_T,0.23137147371598538,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_7_C,0.6978803895957053,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_7_T,0.21954840489507793,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_8_C,0.26261920068573885,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_8_T,0.24390798047982237,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_9_C,0.3282043868028717,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_9_T,0.19887153811396238,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_C,0.32491696715181567,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_T,0.22543170447210853,gpt-5-mini baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_0_C,0.4622956697192506,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_0_T,0.15390234596930377,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_10_C,0.5537069048305002,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_10_T,0.42679823297800823,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_C,0.40694749215928516,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_T,0.3391840667386315,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_12_C,0.46620175848117024,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_12_T,0.20520848448238158,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_13_C,0.5372857375314665,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_13_T,0.4295707650304397,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_14_C,0.5026224415204679,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_14_T,0.47212719298245626,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_15_C,0.2769622450060762,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_15_T,0.3328268424696996,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_16_C,0.8086371833695775,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_16_T,0.2376102734641467,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_C,0.45409489242426543,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_T,0.1587234349856347,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_18_C,0.3315709857987411,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_18_T,0.24805518359613396,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_19_C,0.28444427339901474,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_19_T,0.6655942118226601,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_1_C,0.5074257425742573,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_1_T,0.4709719593282857,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_2_C,0.13528806584362138,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_2_T,0.12194865319865318,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_3_C,0.2443564977444025,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_3_T,0.23196627671029543,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_4_C,0.11198956139317262,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_4_T,0.19665390557363963,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_C,0.40663580246913583,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_T,0.32801978114478114,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_C,0.5176198741251002,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_T,0.2822008173100804,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_7_C,0.6992858919880497,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_7_T,0.190456142990316,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_8_C,0.20171300760741456,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_8_T,0.21068642061891824,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_C,0.31991716112170665,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_T,0.1193252333151323,gpt-5-mini demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_0_C,0.21136618253976333,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_0_T,0.10780743933946264,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_10_C,0.3449054067031594,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_10_T,0.40619898204167865,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_11_C,0.26772877107756465,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_11_T,0.24654299375279945,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_T,0.23826552267904316,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_12_C,0.2786762274354186,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_12_T,0.20103780579423966,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_13_C,0.502021200682244,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
@@ -696,7 +736,7 @@ VALIDATION_15_T,0.31689725287939574,gpt-5-mini twin,round_within_config_wd,round
 VALIDATION_16_C,0.4920977989147001,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_16_T,0.2009618644917941,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_17_C,0.3451156586118704,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_17_T,0.22393928165465624,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_T,0.22463328032468838,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_18_C,0.22556824392643401,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_18_T,0.17637736953333513,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_19_C,0.2551878078817734,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
@@ -710,21 +750,61 @@ VALIDATION_3_T,0.2650090732423006,gpt-5-mini twin,round_within_config_wd,round_n
 VALIDATION_4_C,0.10479687093416604,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_4_T,0.17517249364604767,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_5_C,0.33564814814814814,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_5_T,0.2725694444444444,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_T,0.27946127946127947,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_6_C,0.43259431481660904,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_6_T,0.18515538976223483,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_T,0.18736427468326317,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_7_C,0.4664808680646048,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_7_T,0.17786215802790997,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_8_C,0.11661510232508304,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_8_T,0.13772318167207273,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_9_C,0.2009260758881971,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_9_T,0.09070670911580003,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_C,0.21511777644353403,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_T,0.09164270789691666,gpt-5-mini twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_0_C,0.21773625432468227,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_0_T,0.11419664962241383,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_10_C,0.3589503505233842,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_10_T,0.3225535388456736,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_C,0.23694777642786213,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_T,0.2746368059072351,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_12_C,0.13846823451602863,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_12_T,0.19363550459598258,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_13_C,0.4482211246173352,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_13_T,0.33547040545087137,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_14_C,0.364875730994152,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_14_T,0.38369517543859655,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_15_C,0.18693619962288802,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_15_T,0.33083833824905245,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_16_C,0.6570075537399479,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_16_T,0.2180732364271097,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_C,0.1719341781682354,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_T,0.22941950225344804,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_18_C,0.22520102888530594,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_18_T,0.16833251350440429,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_19_C,0.20036176108374384,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_19_T,0.5401631773399015,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_1_C,0.4387118399339934,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_1_T,0.44196515239759265,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_2_C,0.07381687242798354,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_2_T,0.11931818181818181,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_3_C,0.17726876065917502,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_3_T,0.2949966216651009,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_4_C,0.10948178567746308,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_4_T,0.19946367814060367,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_C,0.3900462962962963,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_T,0.27446338383838387,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_C,0.44632449840780536,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_T,0.2769925274539214,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_7_C,0.5589236226784121,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_7_T,0.20060651893016562,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_8_C,0.097101012536162,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_8_T,0.13430788112562458,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_C,0.19832015207015205,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_T,0.09469149817634664,gpt-5-mini twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_0_C,0.30363641170409733,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_0_T,0.13145862103285685,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_10_C,0.3140065302986651,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_10_T,0.34471333909536156,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_11_C,0.21590929341805065,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_11_T,0.3873245500666245,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_T,0.4635115329757935,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_12_C,0.37719688569872395,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_12_T,0.20464777408711235,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_13_C,0.2515899549080722,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
@@ -736,7 +816,7 @@ VALIDATION_15_T,0.3434786410679268,gpt-5.1 baseline,round_within_config_wd,round
 VALIDATION_16_C,0.6869334796658738,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_16_T,0.29407480137233655,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_17_C,0.39595313332170645,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_17_T,0.300626723433379,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_T,0.3469237016628422,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_18_C,0.2638810132174642,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_18_T,0.24965982792701702,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_19_C,0.24935601395730705,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
@@ -750,21 +830,61 @@ VALIDATION_3_T,0.17701792769719826,gpt-5.1 baseline,round_within_config_wd,round
 VALIDATION_4_C,0.21671623915573038,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_4_T,0.16524521019185417,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_5_C,0.4313271604938272,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_5_T,0.3553240740740741,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_T,0.39441287878787873,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_6_C,0.4548225144970041,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_6_T,0.2003931717143855,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_T,0.1977084084304003,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_7_C,0.5867730758568126,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_7_T,0.14076412025466442,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_8_C,0.15686877209900355,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_8_T,0.2347264837380556,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_9_C,0.08022092245577095,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_9_T,0.09781502167865803,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_C,0.08682689560719864,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_T,0.10770799689149858,gpt-5.1 baseline,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_0_C,0.2252928767011737,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_0_T,0.13161502024311342,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_10_C,0.2812349947181408,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_10_T,0.34471333909536156,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_C,0.2500693795695742,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_T,0.4478114048168184,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_12_C,0.3381769374416433,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_12_T,0.19978714928163457,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_13_C,0.3672225613989444,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_13_T,0.3373933493933386,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_14_C,0.500749269005848,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_14_T,0.46006578947368415,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_15_C,0.19701466282635122,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_15_T,0.33570566008066,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_16_C,0.6087592490972771,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_16_T,0.305961864491794,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_C,0.29713785640192386,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_T,0.22414303460299295,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_18_C,0.2767947421638018,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_18_T,0.2188647191174997,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_19_C,0.22858682266009853,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_19_T,0.6086694376026273,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_1_C,0.34112004950495045,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_1_T,0.5162225781401669,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_2_C,0.12937242798353907,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_2_T,0.14393939393939392,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_3_C,0.2658855595277725,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_3_T,0.16415129792409364,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_4_C,0.33589734030017826,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_4_T,0.28268950980055224,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_C,0.3487654320987654,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_T,0.2680450336700337,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_C,0.49160941886977966,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_T,0.2018641875139944,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_7_C,0.598794606957291,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_7_T,0.15284568000762308,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_8_C,0.11503134040501448,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_8_T,0.18473890301276996,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_C,0.14493517341244613,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_T,0.09044958969201394,gpt-5.1 demo-only,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_0_C,0.1862663585807691,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_0_T,0.12027964605748448,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_10_C,0.2712474791126476,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_10_T,0.3899692691827523,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_11_C,0.3473787472473902,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_11_T,0.28543802549528596,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_T,0.25227402442414343,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_12_C,0.25493235488639904,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_12_T,0.22143443666881166,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_13_C,0.2824630110270715,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
@@ -776,7 +896,7 @@ VALIDATION_15_T,0.32248310221524495,gpt-5.1 twin,round_within_config_wd,round_no
 VALIDATION_16_C,0.48949998983801796,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_16_T,0.23112879198266525,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_17_C,0.20641422516166222,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_17_T,0.1484160287563417,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_T,0.16834276272766346,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_18_C,0.26669632853277947,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_18_T,0.22959451488900423,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_19_C,0.21493996305418722,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
@@ -790,21 +910,61 @@ VALIDATION_3_T,0.18217149714932884,gpt-5.1 twin,round_within_config_wd,round_nor
 VALIDATION_4_C,0.18759336075393146,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_4_T,0.19531755032837625,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_5_C,0.3121141975308642,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_5_T,0.2476851851851852,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_T,0.24900042087542085,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_6_C,0.3081146941657773,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_6_T,0.2093129039590781,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_T,0.21712636839812383,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_7_C,0.40288722486569845,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_7_T,0.18887406278981472,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_8_C,0.11303908175291977,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_8_T,0.17325107390199007,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_9_C,0.10205717823142066,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
-VALIDATION_9_T,0.09041734359916179,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_C,0.11119326773114653,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_T,0.09773107737754202,gpt-5.1 twin,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_0_C,0.19711068670129805,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_0_T,0.1331374561405493,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_10_C,0.30058580620378367,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_10_T,0.3556371842888697,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_C,0.212068000866976,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_11_T,0.37618521213575945,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_12_C,0.14692022642390287,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_12_T,0.21234696487453844,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_13_C,0.27936230953957997,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_13_T,0.315568675166281,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_14_C,0.4059027777777777,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_14_T,0.437094298245614,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_15_C,0.15497188417642965,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_15_T,0.3231130939166653,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_16_C,0.5547112574436516,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_16_T,0.3060361993900726,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_C,0.2548735813729717,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_17_T,0.1479846093139025,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_18_C,0.2957675192887529,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_18_T,0.21748211178822907,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_19_C,0.1817554392446634,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_19_T,0.5672362479474549,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_1_C,0.2907126650165016,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_1_T,0.47006952533488644,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_2_C,0.15380658436213993,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_2_T,0.11616161616161613,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_3_C,0.25052385962115037,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_3_T,0.21645945140131187,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_4_C,0.18616494889016544,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_4_T,0.14599975124255982,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_C,0.3414351851851852,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_5_T,0.24894781144781142,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_C,0.3077061084172482,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_6_T,0.16532916488785876,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_7_C,0.3783400615027457,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_7_T,0.13316056028354906,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_8_C,0.10876995606985962,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_8_T,0.12512638438385792,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_C,0.16026741692650784,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
+VALIDATION_9_T,0.09472621093833215,gpt-5.1 twin unadj,round_within_config_wd,round_normalized_efficiency,Round eff
 VALIDATION_0_C,0.40981481481481485,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_0_T,0.18206018518518516,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_10_C,0.4183333333333334,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_10_T,0.2205555555555556,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_11_C,0.34175990675990675,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_11_T,0.28895952532316166,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_T,0.27922683377228835,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_12_C,0.4421296296296297,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_12_T,0.05856481481481481,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_13_C,0.49681531458737344,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
@@ -816,7 +976,7 @@ VALIDATION_15_T,0.3314231447564782,gpt-5-mini baseline,round_within_config_wd,ro
 VALIDATION_16_C,0.5732063492063494,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_16_T,0.21337962962962964,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_17_C,0.4198044688369766,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_17_T,0.17015468535592376,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_T,0.18973980010357722,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_18_C,0.26268115942028986,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_18_T,0.18586956521739129,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_19_C,0.2890373563218391,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
@@ -830,21 +990,61 @@ VALIDATION_3_T,0.3548717948717949,gpt-5-mini baseline,round_within_config_wd,rou
 VALIDATION_4_C,0.1416170634920635,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_4_T,0.126984126984127,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_5_C,0.26851851851851855,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_5_T,0.22916666666666666,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_T,0.242739898989899,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_6_C,0.5315689952408702,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_6_T,0.22162219882390333,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_T,0.23710952399872853,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_7_C,0.654138091440723,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_7_T,0.22117872807017544,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_8_C,0.2670138888888889,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_8_T,0.1684090909090909,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_9_C,0.2707304732304733,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_9_T,0.2665850101077374,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_C,0.267444277944278,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_T,0.2935397426180255,gpt-5-mini baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_0_C,0.40148148148148155,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_0_T,0.1428626543209877,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_10_C,0.41472222222222227,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_10_T,0.15166666666666664,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_C,0.32200466200466205,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_T,0.2690196167468895,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_12_C,0.4456018518518519,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_12_T,0.06458333333333333,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_13_C,0.45212781458737344,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_13_T,0.406512286732875,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_14_C,0.3177631578947369,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_14_T,0.3192105263157895,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_15_C,0.185332092150274,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_15_T,0.21915578248911585,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_16_C,0.6078730158730159,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_16_T,0.12171296296296297,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_C,0.41932599993745506,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_T,0.15676090679186655,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_18_C,0.26992753623188404,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_18_T,0.18804347826086953,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_19_C,0.2175574712643678,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_19_T,0.3640229885057472,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_1_C,0.512890625,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_1_T,0.21992187500000002,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_2_C,0.11472222222222221,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_2_T,0.11352272727272728,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_3_C,0.1544159544159544,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_3_T,0.21272435897435898,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_4_C,0.10739087301587302,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_4_T,0.1130952380952381,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_C,0.22222222222222224,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_T,0.20233585858585856,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_C,0.46546322601010104,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_T,0.2992958320089002,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_7_C,0.6554538809144074,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_7_T,0.17837171052631576,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_8_C,0.18819444444444444,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_8_T,0.14530303030303032,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_C,0.26192309542309544,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_T,0.16881043899983295,gpt-5-mini demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_0_C,0.1512962962962963,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_0_T,0.08946759259259258,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_10_C,0.20194444444444448,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_10_T,0.1475,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_11_C,0.1934207459207459,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_11_T,0.17638270820089003,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_T,0.1681288408561136,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_12_C,0.2604166666666667,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_12_T,0.09074074074074073,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_13_C,0.41699791262658914,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
@@ -856,7 +1056,7 @@ VALIDATION_15_T,0.16416447749781085,gpt-5-mini twin,round_within_config_wd,round
 VALIDATION_16_C,0.2823174603174603,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_16_T,0.07212962962962963,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_17_C,0.29986826469024613,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_17_T,0.20476080850693856,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_T,0.2049801067525526,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_18_C,0.16847826086956522,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_18_T,0.10760869565217392,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_19_C,0.18788793103448273,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
@@ -870,21 +1070,61 @@ VALIDATION_3_T,0.25798076923076924,gpt-5-mini twin,round_within_config_wd,round_
 VALIDATION_4_C,0.08556547619047619,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_4_T,0.10648148148148147,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_5_C,0.15277777777777776,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_5_T,0.15625,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_T,0.1587752525252525,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_6_C,0.38036707216394716,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_6_T,0.1822567347425302,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_T,0.18520326737656284,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_7_C,0.42255914407230205,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_7_T,0.17396381578947367,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_8_C,0.09027777777777776,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_8_T,0.10515151515151516,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_9_C,0.1439002664002664,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_9_T,0.0887062222289495,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_C,0.15833797683797685,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_T,0.08535845888118615,gpt-5-mini twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_0_C,0.16388888888888892,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_0_T,0.10351080246913581,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_10_C,0.2077777777777778,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_10_T,0.08611111111111112,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_C,0.16250582750582748,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_T,0.20228786365150003,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_12_C,0.11689814814814815,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_12_T,0.052314814814814814,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_13_C,0.36352364792070674,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_13_T,0.3153525273745862,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_14_C,0.17631578947368423,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_14_T,0.20210526315789473,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_15_C,0.14036947900584265,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_15_T,0.11759993093326426,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_16_C,0.4472063492063492,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_16_T,0.10574074074074073,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_C,0.14611908559276982,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_T,0.2135849521995033,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_18_C,0.16394927536231882,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_18_T,0.09818840579710145,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_19_C,0.13482758620689658,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_19_T,0.21624999999999997,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_1_C,0.4451822916666667,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_1_T,0.16770833333333335,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_2_C,0.0727777777777778,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_2_T,0.10704545454545453,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_3_C,0.09415954415954417,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_3_T,0.3038461538461539,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_4_C,0.09895833333333334,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_4_T,0.10052910052910052,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_C,0.21759259259259256,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_T,0.14299242424242423,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_C,0.3938887067793318,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_T,0.2927260476266158,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_7_C,0.5151428761297182,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_7_T,0.20012609649122806,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_8_C,0.07250000000000001,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_8_T,0.08545454545454548,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_C,0.13844401894401895,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_T,0.1241174776402049,gpt-5-mini twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_0_C,0.2653703703703704,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_0_T,0.11338734567901236,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_10_C,0.1763888888888889,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_10_T,0.18583333333333338,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_11_C,0.1530885780885781,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_11_T,0.3235219326128417,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_T,0.4014235764235764,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_12_C,0.36087962962962966,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_12_T,0.05833333333333333,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_13_C,0.17006671514759752,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
@@ -896,7 +1136,7 @@ VALIDATION_15_T,0.1754587387920721,gpt-5.1 baseline,round_within_config_wd,round
 VALIDATION_16_C,0.4783174603174603,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_16_T,0.13296296296296298,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_17_C,0.3857882227851268,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_17_T,0.31953893028196434,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_T,0.36851308134589866,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_18_C,0.20833333333333334,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_18_T,0.19637681159420292,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_19_C,0.18995689655172415,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
@@ -910,21 +1150,61 @@ VALIDATION_3_T,0.11278846153846156,gpt-5.1 baseline,round_within_config_wd,round
 VALIDATION_4_C,0.2120535714285714,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_4_T,0.20833333333333331,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_5_C,0.22222222222222224,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_5_T,0.29166666666666663,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_T,0.3267045454545454,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_6_C,0.4026427131895882,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_6_T,0.18309940532951896,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_T,0.18104024290103837,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_7_C,0.5431146996278575,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_7_T,0.09688048245614035,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_8_C,0.1201388888888889,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_8_T,0.16719696969696968,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_9_C,0.06286944536944537,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_9_T,0.07172690524963252,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_C,0.05567247567247567,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_T,0.08553001571940967,gpt-5.1 baseline,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_0_C,0.20018518518518522,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_0_T,0.11477623456790124,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_10_C,0.13444444444444445,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_10_T,0.1413888888888889,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_C,0.18377622377622374,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_T,0.3822533527078982,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_12_C,0.32199074074074074,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_12_T,0.0537037037037037,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_13_C,0.2836633538030597,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_13_T,0.31941001400560226,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_14_C,0.31370614035087724,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_14_T,0.2992543859649123,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_15_C,0.15658962249871342,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_15_T,0.1391894525227859,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_16_C,0.4005396825396826,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_16_T,0.12796296296296297,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_C,0.30868100509741375,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_T,0.2239687548433679,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_18_C,0.2178442028985507,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_18_T,0.1532608695652174,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_19_C,0.17579022988505746,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_19_T,0.29323275862068965,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_1_C,0.34231770833333336,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_1_T,0.22421875000000002,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_2_C,0.13361111111111112,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_2_T,0.1315909090909091,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_3_C,0.17871794871794872,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_3_T,0.12416666666666669,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_4_C,0.2966765873015873,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_4_T,0.3485449735449736,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_C,0.1851851851851852,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_T,0.23263888888888892,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_C,0.43942155934343435,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_T,0.19698208041958043,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_7_C,0.5546404837852205,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_7_T,0.12139558966861597,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_8_C,0.08430555555555555,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_8_T,0.12590909090909094,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_C,0.09648268398268398,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_T,0.07336036344874729,gpt-5.1 demo-only,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_0_C,0.18111111111111114,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_0_T,0.09957561728395063,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_10_C,0.12361111111111112,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_10_T,0.13194444444444445,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_11_C,0.26402097902097904,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_11_T,0.2301335028607756,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_T,0.2011549057003602,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_12_C,0.23888888888888893,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_12_T,0.1159722222222222,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_13_C,0.19914864792070675,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
@@ -936,7 +1216,7 @@ VALIDATION_15_T,0.11759993093326426,gpt-5.1 twin,round_within_config_wd,round_to
 VALIDATION_16_C,0.29261375661375666,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_16_T,0.14305555555555557,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_17_C,0.2251845076148482,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_17_T,0.1457502305915619,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_T,0.16143926936496594,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_18_C,0.21376811594202905,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_18_T,0.16811594202898553,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_19_C,0.1538793103448276,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
@@ -950,12 +1230,52 @@ VALIDATION_3_T,0.17506410256410257,gpt-5.1 twin,round_within_config_wd,round_tot
 VALIDATION_4_C,0.1763392857142857,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_4_T,0.10846560846560846,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_5_C,0.13425925925925927,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_5_T,0.16319444444444445,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_T,0.14804292929292928,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_6_C,0.2557076170357421,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_6_T,0.2053670997563043,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_T,0.21374764913117186,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_7_C,0.359138091440723,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_7_T,0.1814199561403509,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_8_C,0.07527777777777779,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
 VALIDATION_8_T,0.1171969696969697,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_9_C,0.0832229807229807,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
-VALIDATION_9_T,0.080287839265112,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_C,0.09433388833388832,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_T,0.07936805945644329,gpt-5.1 twin,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_0_C,0.18796296296296297,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_0_T,0.1134645061728395,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_10_C,0.1516666666666667,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_10_T,0.09083333333333336,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_C,0.15568764568764568,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_11_T,0.309572435140617,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_12_C,0.14189814814814816,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_12_T,0.059722222222222225,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_13_C,0.19596850086188322,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_13_T,0.2998946396740514,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_14_C,0.2237938596491228,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_14_T,0.29162280701754384,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_15_C,0.15655934974116792,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_15_T,0.17743824077157413,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_16_C,0.3481693121693122,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_16_T,0.09898148148148149,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_C,0.25148896081558625,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_17_T,0.1253164869186541,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_18_C,0.244338768115942,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_18_T,0.16992753623188403,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_19_C,0.13982758620689656,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_19_T,0.25297413793103446,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_1_C,0.294921875,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_1_T,0.17096354166666666,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_2_C,0.16722222222222222,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_2_T,0.10340909090909092,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_3_C,0.1648789173789174,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_3_T,0.19028846153846152,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_4_C,0.19122023809523808,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_4_T,0.1779100529100529,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_C,0.19907407407407407,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_5_T,0.23642676767676765,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_C,0.25552732857420357,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_6_T,0.14917544103623648,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_7_C,0.3350259170653907,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_7_T,0.11567434210526317,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_8_C,0.07284722222222223,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_8_T,0.08545454545454545,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_C,0.10831474081474082,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib
+VALIDATION_9_T,0.09390879743152471,gpt-5.1 twin unadj,round_within_config_wd,round_total_contribution_rate,Round contrib

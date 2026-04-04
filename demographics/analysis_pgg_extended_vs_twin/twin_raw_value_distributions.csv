@@ -1,0 +1,32 @@
+dataset,field,value,count,pct_of_rows,n_rows
+twin,QID11_region,South,834,40.5248,2058
+twin,QID11_region,West,494,24.0039,2058
+twin,QID11_region,Midwest,372,18.0758,2058
+twin,QID11_region,Northeast,342,16.6181,2058
+twin,QID11_region,Pacific,16,0.7775,2058
+twin,QID12_sex_assigned_at_birth,female,1044,50.7289,2058
+twin,QID12_sex_assigned_at_birth,male,1014,49.2711,2058
+twin,QID13_age,30-49,735,35.7143,2058
+twin,QID13_age,50-64,658,31.9728,2058
+twin,QID13_age,18-29,388,18.8533,2058
+twin,QID13_age,65+,277,13.4597,2058
+twin,QID14_education,College graduate/some postgrad,735,35.7143,2058
+twin,QID14_education,"Some college, no degree",468,22.7405,2058
+twin,QID14_education,Postgraduate,313,15.2089,2058
+twin,QID14_education,High school graduate,272,13.2167,2058
+twin,QID14_education,Associate's degree,253,12.2935,2058
+twin,QID14_education,Less than high school,17,0.826,2058
+twin,QID15_race_or_origin,White,1361,66.1322,2058
+twin,QID15_race_or_origin,Black,251,12.1963,2058
+twin,QID15_race_or_origin,Hispanic,194,9.4266,2058
+twin,QID15_race_or_origin,Asian,140,6.8027,2058
+twin,QID15_race_or_origin,Other,112,5.4422,2058
+twin,QID16_us_citizen,Yes,2054,99.8056,2058
+twin,QID16_us_citizen,No,4,0.1944,2058
+twin,QID24_employment_status,Full-time employment,871,42.3226,2058
+twin,QID24_employment_status,Self-employed,280,13.6054,2058
+twin,QID24_employment_status,Part-time employment,269,13.0709,2058
+twin,QID24_employment_status,Unemployed,249,12.0991,2058
+twin,QID24_employment_status,Retired,245,11.9048,2058
+twin,QID24_employment_status,Student,78,3.7901,2058
+twin,QID24_employment_status,Home-maker,66,3.207,2058

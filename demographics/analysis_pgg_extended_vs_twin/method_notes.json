@@ -1,0 +1,26 @@
+{
+  "pgg_extended_fields": {
+    "age": "PROLIFIC_Age first, then PGGEXIT_data.age fallback",
+    "sex": "PROLIFIC_Sex first, then PGGEXIT_data.gender fallback (male/female only)",
+    "education": "PGGEXIT_data.education",
+    "race_ethnicity": "PROLIFIC_Ethnicity simplified",
+    "employment": "PROLIFIC_Employment status plus PROLIFIC_Student status",
+    "country_of_birth": "PROLIFIC_Country of birth",
+    "country_of_residence": "PROLIFIC_Country of residence",
+    "nationality": "PROLIFIC_Nationality"
+  },
+  "twin_fields": {
+    "age": "QID13",
+    "sex": "QID12",
+    "education": "QID14",
+    "race_ethnicity": "QID15",
+    "employment": "QID24",
+    "us_citizenship_proxy": "QID16",
+    "us_residence_proxy": "QID11"
+  },
+  "notes": [
+    "The merged PGG file covers all validation games and only a subset of learning games.",
+    "Country of birth/residence/nationality do not have direct Twin counterparts, so they are summarized separately and only linked via limited U.S. proxy comparisons.",
+    "Twin Hispanic is folded into other/mixed in the race/ethnicity comparison because the Prolific simplified ethnicity field has no direct Hispanic category."
+  ]
+}

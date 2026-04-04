@@ -1,0 +1,19 @@
+dimension,category,pgg_count,twin_count,pgg_pct,twin_pct,pct_point_diff_pgg_minus_twin
+age,18-29,1225,388,33.6631,18.8533,14.8098
+age,30-49,1811,735,49.7664,35.7143,14.0521
+age,50-64,520,658,14.2896,31.9728,-17.6832
+age,65+,83,277,2.2808,13.4597,-11.1789
+sex_male_female,male,1722,1014,47.3988,49.2711,-1.8723
+sex_male_female,female,1911,1044,52.6012,50.7289,1.8723
+education_completed,high school,1086,757,29.9174,36.7833,-6.8659
+education_completed,college/postsecondary,1770,988,48.7603,48.0078,0.7525
+education_completed,postgraduate,774,313,21.3223,15.2089,6.1134
+race_ethnicity_harmonized,white,2535,1361,71.7317,66.1322,5.5995
+race_ethnicity_harmonized,black,311,251,8.8002,12.1963,-3.3961
+race_ethnicity_harmonized,asian,380,140,10.7527,6.8027,3.95
+race_ethnicity_harmonized,other/mixed,308,306,8.7153,14.8688,-6.1535
+employment_harmonized,full-time,1802,871,58.0354,42.3226,15.7128
+employment_harmonized,part-time,533,269,17.1659,13.0709,4.095
+employment_harmonized,unemployed,200,249,6.4412,12.0991,-5.6579
+employment_harmonized,student,244,78,7.8583,3.7901,4.0682
+employment_harmonized,other/nonstandard,326,591,10.4992,28.7172,-18.218

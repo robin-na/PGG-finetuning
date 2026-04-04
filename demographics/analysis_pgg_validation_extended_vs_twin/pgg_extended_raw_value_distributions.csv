@@ -1,0 +1,239 @@
+dataset,field,value,count,pct_of_rows,n_rows
+pgg_extended,PROLIFIC_Age,29,135,3.7098,3639
+pgg_extended,PROLIFIC_Age,33,134,3.6823,3639
+pgg_extended,PROLIFIC_Age,26,133,3.6549,3639
+pgg_extended,PROLIFIC_Age,32,127,3.49,3639
+pgg_extended,PROLIFIC_Age,27,127,3.49,3639
+pgg_extended,PROLIFIC_Age,23,126,3.4625,3639
+pgg_extended,PROLIFIC_Age,28,125,3.435,3639
+pgg_extended,PROLIFIC_Age,34,120,3.2976,3639
+pgg_extended,PROLIFIC_Age,30,118,3.2426,3639
+pgg_extended,PROLIFIC_Age,25,118,3.2426,3639
+pgg_extended,PROLIFIC_Age,36,117,3.2152,3639
+pgg_extended,PROLIFIC_Age,24,113,3.1052,3639
+pgg_extended,PROLIFIC_Age,37,112,3.0778,3639
+pgg_extended,PROLIFIC_Age,31,112,3.0778,3639
+pgg_extended,PROLIFIC_Age,35,105,2.8854,3639
+pgg_extended,PROLIFIC_Age,22,100,2.748,3639
+pgg_extended,PROLIFIC_Age,39,96,2.6381,3639
+pgg_extended,PROLIFIC_Age,40,88,2.4182,3639
+pgg_extended,PROLIFIC_Age,41,83,2.2808,3639
+pgg_extended,PROLIFIC_Age,38,81,2.2259,3639
+pgg_extended,PROLIFIC_Age,CONSENT_REVOKED,80,2.1984,3639
+pgg_extended,PROLIFIC_Age,21,79,2.1709,3639
+pgg_extended,PROLIFIC_Age,42,76,2.0885,3639
+pgg_extended,PROLIFIC_Age,43,68,1.8686,3639
+pgg_extended,PROLIFIC_Age,50,67,1.8412,3639
+pgg_extended,PROLIFIC_Age,48,61,1.6763,3639
+pgg_extended,PROLIFIC_Age,44,59,1.6213,3639
+pgg_extended,PROLIFIC_Age,20,59,1.6213,3639
+pgg_extended,PROLIFIC_Age,51,59,1.6213,3639
+pgg_extended,PROLIFIC_Age,19,58,1.5938,3639
+pgg_extended,PROLIFIC_Age,52,58,1.5938,3639
+pgg_extended,PROLIFIC_Age,45,56,1.5389,3639
+pgg_extended,PROLIFIC_Age,47,54,1.4839,3639
+pgg_extended,PROLIFIC_Age,53,53,1.4564,3639
+pgg_extended,PROLIFIC_Age,46,48,1.319,3639
+pgg_extended,PROLIFIC_Age,49,47,1.2916,3639
+pgg_extended,PROLIFIC_Age,54,37,1.0168,3639
+pgg_extended,PROLIFIC_Age,55,33,0.9068,3639
+pgg_extended,PROLIFIC_Age,58,33,0.9068,3639
+pgg_extended,PROLIFIC_Age,56,33,0.9068,3639
+pgg_extended,PROLIFIC_Age,18,30,0.8244,3639
+pgg_extended,PROLIFIC_Age,57,29,0.7969,3639
+pgg_extended,PROLIFIC_Age,60,26,0.7145,3639
+pgg_extended,PROLIFIC_Age,59,22,0.6046,3639
+pgg_extended,PROLIFIC_Age,62,18,0.4946,3639
+pgg_extended,PROLIFIC_Age,64,16,0.4397,3639
+pgg_extended,PROLIFIC_Age,63,14,0.3847,3639
+pgg_extended,PROLIFIC_Age,61,13,0.3572,3639
+pgg_extended,PROLIFIC_Age,66,13,0.3572,3639
+pgg_extended,PROLIFIC_Age,65,13,0.3572,3639
+pgg_extended,PROLIFIC_Age,68,9,0.2473,3639
+pgg_extended,PROLIFIC_Age,71,7,0.1924,3639
+pgg_extended,PROLIFIC_Age,67,7,0.1924,3639
+pgg_extended,PROLIFIC_Age,70,6,0.1649,3639
+pgg_extended,PROLIFIC_Age,DATA_EXPIRED,5,0.1374,3639
+pgg_extended,PROLIFIC_Age,69,5,0.1374,3639
+pgg_extended,PROLIFIC_Age,73,4,0.1099,3639
+pgg_extended,PROLIFIC_Age,74,3,0.0824,3639
+pgg_extended,PROLIFIC_Age,78,3,0.0824,3639
+pgg_extended,PROLIFIC_Age,72,3,0.0824,3639
+pgg_extended,PROLIFIC_Age,75,2,0.055,3639
+pgg_extended,PROLIFIC_Age,80,1,0.0275,3639
+pgg_extended,PROLIFIC_Age,83,1,0.0275,3639
+pgg_extended,PROLIFIC_Age,76,1,0.0275,3639
+pgg_extended,PROLIFIC_Sex,Female,1863,51.1954,3639
+pgg_extended,PROLIFIC_Sex,Male,1675,46.0291,3639
+pgg_extended,PROLIFIC_Sex,CONSENT_REVOKED,80,2.1984,3639
+pgg_extended,PROLIFIC_Sex,Prefer not to say,14,0.3847,3639
+pgg_extended,PROLIFIC_Sex,DATA_EXPIRED,7,0.1924,3639
+pgg_extended,PROLIFIC_Ethnicity simplified,White,2535,69.662,3639
+pgg_extended,PROLIFIC_Ethnicity simplified,Asian,380,10.4424,3639
+pgg_extended,PROLIFIC_Ethnicity simplified,Black,311,8.5463,3639
+pgg_extended,PROLIFIC_Ethnicity simplified,Mixed,211,5.7983,3639
+pgg_extended,PROLIFIC_Ethnicity simplified,Other,97,2.6656,3639
+pgg_extended,PROLIFIC_Ethnicity simplified,CONSENT_REVOKED,80,2.1984,3639
+pgg_extended,PROLIFIC_Ethnicity simplified,DATA_EXPIRED,24,0.6595,3639
+pgg_extended,PROLIFIC_Ethnicity simplified,Prefer not to say,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,United States,1813,49.8214,3639
+pgg_extended,PROLIFIC_Country of birth,United Kingdom,1192,32.7563,3639
+pgg_extended,PROLIFIC_Country of birth,Canada,151,4.1495,3639
+pgg_extended,PROLIFIC_Country of birth,CONSENT_REVOKED,80,2.1984,3639
+pgg_extended,PROLIFIC_Country of birth,Nigeria,55,1.5114,3639
+pgg_extended,PROLIFIC_Country of birth,India,25,0.687,3639
+pgg_extended,PROLIFIC_Country of birth,China,24,0.6595,3639
+pgg_extended,PROLIFIC_Country of birth,Poland,19,0.5221,3639
+pgg_extended,PROLIFIC_Country of birth,Ghana,19,0.5221,3639
+pgg_extended,PROLIFIC_Country of birth,Philippines,18,0.4946,3639
+pgg_extended,PROLIFIC_Country of birth,Hong Kong,16,0.4397,3639
+pgg_extended,PROLIFIC_Country of birth,Germany,15,0.4122,3639
+pgg_extended,PROLIFIC_Country of birth,Romania,13,0.3572,3639
+pgg_extended,PROLIFIC_Country of birth,France,11,0.3023,3639
+pgg_extended,PROLIFIC_Country of birth,DATA_EXPIRED,10,0.2748,3639
+pgg_extended,PROLIFIC_Country of birth,Pakistan,10,0.2748,3639
+pgg_extended,PROLIFIC_Country of birth,Bulgaria,9,0.2473,3639
+pgg_extended,PROLIFIC_Country of birth,Italy,9,0.2473,3639
+pgg_extended,PROLIFIC_Country of birth,Ireland,8,0.2198,3639
+pgg_extended,PROLIFIC_Country of birth,Lithuania,5,0.1374,3639
+pgg_extended,PROLIFIC_Country of birth,South Africa,5,0.1374,3639
+pgg_extended,PROLIFIC_Country of birth,Turkey,5,0.1374,3639
+pgg_extended,PROLIFIC_Country of birth,Korea,5,0.1374,3639
+pgg_extended,PROLIFIC_Country of birth,Russian Federation,4,0.1099,3639
+pgg_extended,PROLIFIC_Country of birth,Croatia,4,0.1099,3639
+pgg_extended,PROLIFIC_Country of birth,Vietnam,4,0.1099,3639
+pgg_extended,PROLIFIC_Country of birth,Japan,4,0.1099,3639
+pgg_extended,PROLIFIC_Country of birth,Greece,4,0.1099,3639
+pgg_extended,PROLIFIC_Country of birth,Singapore,4,0.1099,3639
+pgg_extended,PROLIFIC_Country of birth,Malaysia,4,0.1099,3639
+pgg_extended,PROLIFIC_Country of birth,Brazil,4,0.1099,3639
+pgg_extended,PROLIFIC_Country of birth,Spain,4,0.1099,3639
+pgg_extended,PROLIFIC_Country of birth,Colombia,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Kuwait,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Thailand,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Bangladesh,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Latvia,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Australia,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Sweden,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Nepal,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Cyprus,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Portugal,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Sri Lanka,3,0.0824,3639
+pgg_extended,PROLIFIC_Country of birth,Trinidad and Tobago,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,"Venezuela, Bolivarian Republic of",2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,Norway,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,United States Minor Outlying Islands,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,Myanmar,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,Iran,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,Kenya,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,Mexico,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,United Arab Emirates,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,Hungary,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,Ukraine,2,0.055,3639
+pgg_extended,PROLIFIC_Country of birth,New Zealand,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Slovakia,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Jersey,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Nicaragua,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Indonesia,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Uzbekistan,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Taiwan,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Chile,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Zimbabwe,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Guyana,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Denmark,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Finland,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Cameroon,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Cuba,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Ethiopia,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Slovenia,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Egypt,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Netherlands,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Panama,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Switzerland,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Dominican Republic,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Jordan,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Zambia,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Iraq,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Israel,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Syrian Arab Republic,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Isle of Man,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Botswana,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Algeria,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Senegal,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of birth,Bosnia and Herzegovina,1,0.0275,3639
+pgg_extended,PROLIFIC_Country of residence,United States,1920,52.7617,3639
+pgg_extended,PROLIFIC_Country of residence,United Kingdom,1449,39.8186,3639
+pgg_extended,PROLIFIC_Country of residence,Canada,185,5.0838,3639
+pgg_extended,PROLIFIC_Country of residence,CONSENT_REVOKED,80,2.1984,3639
+pgg_extended,PROLIFIC_Country of residence,DATA_EXPIRED,5,0.1374,3639
+pgg_extended,PROLIFIC_Nationality,United States,1893,52.0198,3639
+pgg_extended,PROLIFIC_Nationality,United Kingdom,1265,34.7623,3639
+pgg_extended,PROLIFIC_Nationality,Canada,161,4.4243,3639
+pgg_extended,PROLIFIC_Nationality,CONSENT_REVOKED,80,2.1984,3639
+pgg_extended,PROLIFIC_Nationality,Nigeria,43,1.1816,3639
+pgg_extended,PROLIFIC_Nationality,Ireland,21,0.5771,3639
+pgg_extended,PROLIFIC_Nationality,Poland,17,0.4672,3639
+pgg_extended,PROLIFIC_Nationality,India,13,0.3572,3639
+pgg_extended,PROLIFIC_Nationality,China,10,0.2748,3639
+pgg_extended,PROLIFIC_Nationality,Romania,9,0.2473,3639
+pgg_extended,PROLIFIC_Nationality,France,9,0.2473,3639
+pgg_extended,PROLIFIC_Nationality,Bulgaria,8,0.2198,3639
+pgg_extended,PROLIFIC_Nationality,Germany,8,0.2198,3639
+pgg_extended,PROLIFIC_Nationality,Italy,7,0.1924,3639
+pgg_extended,PROLIFIC_Nationality,Lithuania,6,0.1649,3639
+pgg_extended,PROLIFIC_Nationality,Australia,5,0.1374,3639
+pgg_extended,PROLIFIC_Nationality,DATA_EXPIRED,5,0.1374,3639
+pgg_extended,PROLIFIC_Nationality,Vietnam,5,0.1374,3639
+pgg_extended,PROLIFIC_Nationality,Philippines,5,0.1374,3639
+pgg_extended,PROLIFIC_Nationality,Mexico,4,0.1099,3639
+pgg_extended,PROLIFIC_Nationality,Portugal,4,0.1099,3639
+pgg_extended,PROLIFIC_Nationality,Hong Kong,3,0.0824,3639
+pgg_extended,PROLIFIC_Nationality,Pakistan,3,0.0824,3639
+pgg_extended,PROLIFIC_Nationality,Spain,3,0.0824,3639
+pgg_extended,PROLIFIC_Nationality,Turkey,3,0.0824,3639
+pgg_extended,PROLIFIC_Nationality,Greece,3,0.0824,3639
+pgg_extended,PROLIFIC_Nationality,Puerto Rico,3,0.0824,3639
+pgg_extended,PROLIFIC_Nationality,Sweden,3,0.0824,3639
+pgg_extended,PROLIFIC_Nationality,Syrian Arab Republic,2,0.055,3639
+pgg_extended,PROLIFIC_Nationality,Hungary,2,0.055,3639
+pgg_extended,PROLIFIC_Nationality,Norway,2,0.055,3639
+pgg_extended,PROLIFIC_Nationality,Malaysia,2,0.055,3639
+pgg_extended,PROLIFIC_Nationality,Korea,2,0.055,3639
+pgg_extended,PROLIFIC_Nationality,Cyprus,2,0.055,3639
+pgg_extended,PROLIFIC_Nationality,Sri Lanka,2,0.055,3639
+pgg_extended,PROLIFIC_Nationality,Russian Federation,2,0.055,3639
+pgg_extended,PROLIFIC_Nationality,Croatia,2,0.055,3639
+pgg_extended,PROLIFIC_Nationality,Austria,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Thailand,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Nepal,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Myanmar,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Lebanon,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Czech Republic,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Slovenia,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Jersey,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Trinidad and Tobago,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Indonesia,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Tajikistan,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Denmark,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Bangladesh,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Netherlands,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Japan,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Afghanistan,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Colombia,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Egypt,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Malta,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Latvia,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,Jordan,1,0.0275,3639
+pgg_extended,PROLIFIC_Nationality,South Africa,1,0.0275,3639
+pgg_extended,PROLIFIC_Employment status,Full-Time,1802,49.5191,3639
+pgg_extended,PROLIFIC_Employment status,Part-Time,533,14.6469,3639
+pgg_extended,PROLIFIC_Employment status,DATA_EXPIRED,500,13.74,3639
+pgg_extended,PROLIFIC_Employment status,Unemployed (and job seeking),305,8.3814,3639
+pgg_extended,PROLIFIC_Employment status,"Not in paid work (e.g. homemaker', 'retired or disabled)",268,7.3647,3639
+pgg_extended,PROLIFIC_Employment status,Other,116,3.1877,3639
+pgg_extended,PROLIFIC_Employment status,CONSENT_REVOKED,80,2.1984,3639
+pgg_extended,PROLIFIC_Employment status,Due to start a new job within the next month,35,0.9618,3639
+pgg_extended,PROLIFIC_Student status,No,2492,68.4804,3639
+pgg_extended,PROLIFIC_Student status,Yes,660,18.1369,3639
+pgg_extended,PROLIFIC_Student status,DATA_EXPIRED,407,11.1844,3639
+pgg_extended,PROLIFIC_Student status,CONSENT_REVOKED,80,2.1984,3639

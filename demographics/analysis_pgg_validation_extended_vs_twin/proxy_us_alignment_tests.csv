@@ -1,0 +1,3 @@
+dimension,test,statistic,degrees_of_freedom,p_value,notes
+us_nationality_proxy,chi2,1350.726649,1,1.070952728369588e-295,Proxy only: Twin U.S. citizenship (QID16) vs PGG U.S. nationality derived from Prolific nationality.
+us_residence_proxy,chi2,1332.624529,1,9.194352311312746e-292,Proxy only: Twin current U.S. residence implied by region question (QID11) vs PGG country of residence.

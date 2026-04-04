@@ -15,22 +15,34 @@ from .analyze_vs_human_treatments import _wasserstein_distance_1d
 RUN_NAME_TO_LABEL = {
     "baseline_gpt_5_1": "gpt-5.1 baseline",
     "twin_sampled_seed_0_gpt_5_1": "gpt-5.1 twin",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1": "gpt-5.1 twin unadj",
+    "demographic_only_row_resampled_seed_0_gpt_5_1": "gpt-5.1 demo-only",
     "baseline_gpt_5_mini": "gpt-5-mini baseline",
     "twin_sampled_seed_0_gpt_5_mini": "gpt-5-mini twin",
+    "twin_sampled_unadjusted_seed_0_gpt_5_mini": "gpt-5-mini twin unadj",
+    "demographic_only_row_resampled_seed_0_gpt_5_mini": "gpt-5-mini demo-only",
 }
 
 MODEL_STYLE = {
     "gpt-5.1 baseline": {"color": "#1f77b4"},
     "gpt-5.1 twin": {"color": "#6baed6"},
+    "gpt-5.1 twin unadj": {"color": "#9ecae1"},
+    "gpt-5.1 demo-only": {"color": "#c6dbef"},
     "gpt-5-mini baseline": {"color": "#ff7f0e"},
     "gpt-5-mini twin": {"color": "#fdae6b"},
+    "gpt-5-mini twin unadj": {"color": "#fdd0a2"},
+    "gpt-5-mini demo-only": {"color": "#fee6ce"},
     "noise_ceiling": {"color": "#2ca02c"},
 }
 
 MODEL_PLOT_ORDER = [
     "gpt-5.1 baseline",
+    "gpt-5.1 demo-only",
+    "gpt-5.1 twin unadj",
     "gpt-5.1 twin",
     "gpt-5-mini baseline",
+    "gpt-5-mini demo-only",
+    "gpt-5-mini twin unadj",
     "gpt-5-mini twin",
     "noise_ceiling",
 ]
@@ -43,8 +55,6 @@ PLAYER_METRIC_SPECS = [
 ROUND_METRIC_SPECS = [
     ("round_total_contribution_rate", "Round contrib"),
     ("round_normalized_efficiency", "Round eff"),
-    ("delta_total_contribution_rate", "Round-to-round contrib change"),
-    ("delta_round_normalized_efficiency", "Round-to-round eff change"),
 ]
 
 
@@ -355,23 +365,22 @@ def _bootstrap_noise_ceiling(
     return bootstrap_df, pd.DataFrame(summary_rows), global_bootstrap_df
 
 
-def _plot_micro_panel(
+def _draw_micro_panel(
+    ax: plt.Axes,
     summary_df: pd.DataFrame,
     *,
     metric_family: str,
     metric_specs: list[tuple[str, str]],
     title: str,
-    output_path: Path,
 ) -> None:
     available_models = [model_name for model_name in MODEL_PLOT_ORDER if model_name in set(summary_df["model_name"])]
     metric_order = [metric for metric, _ in metric_specs]
     metric_labels = {metric: label for metric, label in metric_specs}
     x = np.arange(len(metric_order), dtype=float)
-    bar_width = min(0.15, 0.84 / len(available_models))
+    bar_width = min(0.11, 0.84 / len(available_models))
     center_offset = (len(available_models) - 1) / 2.0
     family_df = summary_df[summary_df["metric_family"] == metric_family].copy()
 
-    fig, ax = plt.subplots(1, 1, figsize=(13.5, 4.8), constrained_layout=True)
     for index, model_name in enumerate(available_models):
         model_df = family_df[family_df["model_name"] == model_name].set_index("metric").reindex(metric_order)
         positions = x + ((index - center_offset) * bar_width)
@@ -395,8 +404,37 @@ def _plot_micro_panel(
     ax.set_xticks(x)
     ax.set_xticklabels([metric_labels[metric] for metric in metric_order])
 
-    handles, labels = ax.get_legend_handles_labels()
-    fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(0.5, -0.04), ncol=len(available_models), frameon=False)
+
+def _plot_micro_combined_figure(
+    summary_df: pd.DataFrame,
+    *,
+    output_path: Path,
+) -> None:
+    fig, axes = plt.subplots(1, 2, figsize=(19.5, 5.8), constrained_layout=False)
+    fig.subplots_adjust(top=0.82, bottom=0.17, wspace=0.22)
+    _draw_micro_panel(
+        axes[0],
+        summary_df,
+        metric_family="player_within_config_wd",
+        metric_specs=PLAYER_METRIC_SPECS,
+        title="Between Players: Within-Config WD",
+    )
+    _draw_micro_panel(
+        axes[1],
+        summary_df,
+        metric_family="round_within_config_wd",
+        metric_specs=ROUND_METRIC_SPECS,
+        title="Between Rounds: Round-Matched WD",
+    )
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(
+        handles,
+        labels,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 0.98),
+        ncol=min(5, len(labels)),
+        frameon=False,
+    )
     fig.savefig(output_path, dpi=200, bbox_inches="tight")
     plt.close(fig)
 
@@ -492,9 +530,6 @@ def main() -> None:
         )
         generated_player_df = _build_player_game_summary(generated_actor_df, entity_col="custom_id")
         human_player_df = _build_player_game_summary(human_actor_df, entity_col="game_id")
-        generated_delta_df = _build_round_delta_summary(generated_round_df, entity_col="custom_id")
-        human_delta_df = _build_round_delta_summary(human_round_df, entity_col="game_id")
-
         for metric, metric_label in PLAYER_METRIC_SPECS:
             score_df = _per_treatment_player_wd(generated_player_df, human_player_df, metric)
             score_df["model_name"] = model_name
@@ -527,25 +562,19 @@ def main() -> None:
             )
 
         round_specs = [
-            ("round_total_contribution_rate", "Round contrib", generated_round_df, human_round_df, "total_contribution_rate"),
-            ("round_normalized_efficiency", "Round eff", generated_round_df, human_round_df, "round_normalized_efficiency"),
             (
-                "delta_total_contribution_rate",
-                "Round-to-round contrib change",
-                generated_delta_df,
-                human_delta_df,
-                "delta_total_contribution_rate",
+                "round_total_contribution_rate",
+                "Round contrib",
+                "total_contribution_rate",
             ),
             (
-                "delta_round_normalized_efficiency",
-                "Round-to-round eff change",
-                generated_delta_df,
-                human_delta_df,
-                "delta_round_normalized_efficiency",
+                "round_normalized_efficiency",
+                "Round eff",
+                "round_normalized_efficiency",
             ),
         ]
-        for metric_key, metric_label, generated_df, human_df, value_col in round_specs:
-            score_df = _per_treatment_round_matched_wd(generated_df, human_df, value_col)
+        for metric_key, metric_label, value_col in round_specs:
+            score_df = _per_treatment_round_matched_wd(generated_round_df, human_round_df, value_col)
             score_df["model_name"] = model_name
             score_df["metric_family"] = "round_within_config_wd"
             score_df["metric"] = metric_key
@@ -637,19 +666,9 @@ def main() -> None:
         args.output_dir / "micro_global_noise_ceiling_bootstrap.csv",
         index=False,
     )
-    _plot_micro_panel(
+    _plot_micro_combined_figure(
         plot_df,
-        metric_family="player_within_config_wd",
-        metric_specs=PLAYER_METRIC_SPECS,
-        title="Between Players: Within-Config WD",
-        output_path=args.output_dir / "micro_player_distribution_alignment.png",
-    )
-    _plot_micro_panel(
-        plot_df,
-        metric_family="round_within_config_wd",
-        metric_specs=ROUND_METRIC_SPECS,
-        title="Between Rounds: Round-Matched WD",
-        output_path=args.output_dir / "micro_round_distribution_alignment.png",
+        output_path=args.output_dir / "micro_distribution_alignment.png",
     )
 
     manifest = {

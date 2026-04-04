@@ -1,0 +1,72 @@
+=== SYSTEM MESSAGE ===
+
+You simulate an entire public goods game from round 1.
+
+Start with a game-level explanation of the likely dynamics, incentives, and uncertainties. Then write the game directly in transcript form, starting from round 1. At the start of each round, include a round explanation before the predicted actions. Keep the stage ordering coherent within each round. Any action lines that are wrapped in the scaffold should stay wrapped in <<>> exactly.
+
+=== USER MESSAGE ===
+
+Generate a full game transcript from round 1 through round 23.
+
+# GAME RULES
+This is an online public goods game (PGG).
+Each round, the 20 coins begin in the shared pot. Each player chooses how many coins to withdraw for private use, so the resulting contribution must be either 0 or 20.
+Players do not see others' choices before deciding.
+The shared pot is multiplied by 2.5 and split equally among all active players.
+After contributions are revealed and redistributed, players may punish other players.
+Each punishment unit costs 1 coin to the source and deducts 2 coins from the target.
+Players may send messages to the group whenever they choose to do so.
+Players know that the game lasts 23 rounds.
+Players cannot identify who punished them in their summary information.
+At the summary stage (`ROUND N SUMMARY SHOWN TO PLAYERS`), each player sees their own net payoff of the round, along with the amount they used for punishing other players and amount deducted from punishment.
+The corresponding information of the peers are also shown.
+
+# PLAYER PROFILES
+Use these provided profiles as player-specific priors when reasoning about motivations and likely choices.
+## SLOTH
+Summary: 28-year-old, female, White, has a college degree, part-time employed, United Kingdom citizen living in United Kingdom.
+
+## GORILLA
+Summary: 41-year-old, male, White, other or nonstandard education background, United Kingdom citizen living in United Kingdom.
+
+## DUCK
+Summary: 56-year-old, female, completed high school.
+
+## CHICKEN
+Summary: 20-year-old, male, White, completed high school, United Kingdom citizen living in United Kingdom.
+
+
+Output requirements:
+- First write `### GAME EXPLANATION` followed by your explanation of how the game is likely to unfold.
+- Then generate the full game directly in transcript form from round 1 onward.
+- At the start of each round, immediately after `## ROUND N BEGINS`, write `### ROUND N EXPLANATION`.
+- Use the exact avatar order from `<PLAYERS>` for every contribution list.
+- Keep the contribution line wrapped as `### CONTRIBUTIONS: <<[...]>>`.
+- Keep the action line wrapped as `### PUNISHMENT: <<[...]>>`.
+- In `### PUNISHMENT`, use tuples `(source_avatar, target_avatar, unit)`.
+- Include only non-zero action edges. If no one acts in a round, write `### PUNISHMENT: <<[]>>`.
+- Because this game only has punishment, every `unit` must be positive.
+- Predict chat inline as transcript lines, using `CHAT from AVATAR: ...`.
+- Preserve exact avatar names.
+- In real games, players usually send relatively few chat messages. Keep chat sparse and purposeful.
+- In real games, players usually punish sparingly. Do not over-predict punishment actions.
+Strict continuation template:
+```text
+### GAME EXPLANATION
+<Explain your overall prediction for how the game is likely to unfold.>
+## ROUND 1 BEGINS
+### ROUND 1 EXPLANATION
+<Explain why you expect this round to unfold this way.>
+CHAT from AVATAR: <message>
+### CONTRIBUTIONS: <<[c1, c2, ...]>>
+CHAT from AVATAR: <message>
+### PUNISHMENT: <<[(SOURCE, TARGET, UNIT), ...]>>
+### ROUND 1 SUMMARY SHOWN TO PLAYERS
+CHAT from AVATAR: <message>
+## ROUND 2 BEGINS
+...
+```
+
+Start from this scaffold:
+# GAME STARTS
+<PLAYERS> SLOTH, GORILLA, DUCK, CHICKEN </PLAYERS>

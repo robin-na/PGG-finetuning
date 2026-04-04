@@ -1,0 +1,5 @@
+dimension,category,pgg_count,twin_count,pgg_pct,twin_pct,pct_point_diff_pgg_minus_twin
+us_nationality_proxy,yes,1893,2054,53.2639,99.8056,-46.5417
+us_nationality_proxy,no,1661,4,46.7361,0.1944,46.5417
+us_residence_proxy,yes,1920,2058,54.0236,100.0,-45.9764
+us_residence_proxy,no,1634,0,45.9764,0.0,45.9764

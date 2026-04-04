@@ -1,0 +1,46 @@
+field,category,count,pct,n_used
+PROLIFIC_Country of birth,United States,2930,46.0041,6369
+PROLIFIC_Country of birth,United Kingdom,2422,38.0279,6369
+PROLIFIC_Country of birth,Canada,253,3.9724,6369
+PROLIFIC_Country of birth,Nigeria,76,1.1933,6369
+PROLIFIC_Country of birth,Poland,58,0.9107,6369
+PROLIFIC_Country of birth,India,40,0.628,6369
+PROLIFIC_Country of birth,China,39,0.6123,6369
+PROLIFIC_Country of birth,Germany,28,0.4396,6369
+PROLIFIC_Country of birth,Italy,28,0.4396,6369
+PROLIFIC_Country of birth,Ghana,26,0.4082,6369
+PROLIFIC_Country of birth,Hong Kong,25,0.3925,6369
+PROLIFIC_Country of birth,Philippines,24,0.3768,6369
+PROLIFIC_Country of birth,Portugal,21,0.3297,6369
+PROLIFIC_Country of birth,South Africa,20,0.314,6369
+PROLIFIC_Country of birth,Romania,19,0.2983,6369
+PROLIFIC_Country of residence,United States,3114,48.8241,6378
+PROLIFIC_Country of residence,United Kingdom,2857,44.7946,6378
+PROLIFIC_Country of residence,Canada,318,4.9859,6378
+PROLIFIC_Country of residence,Poland,23,0.3606,6378
+PROLIFIC_Country of residence,Portugal,15,0.2352,6378
+PROLIFIC_Country of residence,South Africa,11,0.1725,6378
+PROLIFIC_Country of residence,Italy,8,0.1254,6378
+PROLIFIC_Country of residence,Spain,7,0.1098,6378
+PROLIFIC_Country of residence,Greece,6,0.0941,6378
+PROLIFIC_Country of residence,Mexico,5,0.0784,6378
+PROLIFIC_Country of residence,Germany,4,0.0627,6378
+PROLIFIC_Country of residence,Hungary,2,0.0314,6378
+PROLIFIC_Country of residence,Korea,1,0.0157,6378
+PROLIFIC_Country of residence,Slovenia,1,0.0157,6378
+PROLIFIC_Country of residence,Israel,1,0.0157,6378
+PROLIFIC_Nationality,United States,3083,48.376,6373
+PROLIFIC_Nationality,United Kingdom,2558,40.1381,6373
+PROLIFIC_Nationality,Canada,277,4.3465,6373
+PROLIFIC_Nationality,Nigeria,58,0.9101,6373
+PROLIFIC_Nationality,Poland,52,0.8159,6373
+PROLIFIC_Nationality,Ireland,33,0.5178,6373
+PROLIFIC_Nationality,Portugal,22,0.3452,6373
+PROLIFIC_Nationality,India,22,0.3452,6373
+PROLIFIC_Nationality,Italy,20,0.3138,6373
+PROLIFIC_Nationality,France,15,0.2354,6373
+PROLIFIC_Nationality,Romania,14,0.2197,6373
+PROLIFIC_Nationality,China,14,0.2197,6373
+PROLIFIC_Nationality,Germany,13,0.204,6373
+PROLIFIC_Nationality,Spain,13,0.204,6373
+PROLIFIC_Nationality,South Africa,12,0.1883,6373

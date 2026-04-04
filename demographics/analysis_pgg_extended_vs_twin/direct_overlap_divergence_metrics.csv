@@ -1,0 +1,6 @@
+dimension,pgg_n_used,twin_n_used,total_variation_distance,total_variation_distance_pct_points
+age,6689,2058,0.2756735,27.5674
+sex_male_female,6681,2058,0.016644,1.6644
+education_completed,6662,2058,0.051712,5.1712
+race_ethnicity_harmonized,6343,2058,0.1170955,11.7096
+employment_harmonized,5127,2058,0.2306715,23.0672

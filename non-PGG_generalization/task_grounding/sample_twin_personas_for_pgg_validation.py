@@ -33,6 +33,12 @@ DEFAULT_TWIN_CARDS_JSONL = (
     / "twin_extended_profile_cards.jsonl"
 )
 DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "output" / "twin_to_pgg_validation_persona_sampling"
+DEFAULT_UNADJUSTED_OUTPUT_DIR = (
+    SCRIPT_DIR / "output" / "twin_to_pgg_validation_persona_sampling_unadjusted"
+)
+
+SAMPLING_MODE_ADJUSTED = "adjusted_joint_demographics"
+SAMPLING_MODE_UNADJUSTED = "unadjusted_random"
 
 AGE_ORDER = ["18-29", "30-49", "50-64", "65+"]
 EDUCATION_ORDER = ["high school", "college/postsecondary", "postgraduate"]
@@ -52,16 +58,21 @@ def repo_rooted_path(path: Path) -> str:
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
-            "Sample Twin personas for the validation-wave PGG games using the aggregate "
-            "PGG age-by-education-by-sex distribution, not individual-level matching."
+            "Sample Twin personas for the validation-wave PGG games, either with aggregate "
+            "PGG demographic correction or as an unadjusted random baseline."
         )
     )
     parser.add_argument("--analysis-csv", type=Path, default=DEFAULT_ANALYSIS_CSV)
     parser.add_argument("--player-inputs-csv", type=Path, default=DEFAULT_PLAYER_INPUTS_CSV)
     parser.add_argument("--twin-profiles-jsonl", type=Path, default=DEFAULT_TWIN_PROFILES_JSONL)
     parser.add_argument("--twin-cards-jsonl", type=Path, default=DEFAULT_TWIN_CARDS_JSONL)
+    parser.add_argument(
+        "--sampling-mode",
+        choices=[SAMPLING_MODE_ADJUSTED, SAMPLING_MODE_UNADJUSTED],
+        default=SAMPLING_MODE_ADJUSTED,
+    )
     parser.add_argument("--seed", type=int, default=0)
-    parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument("--output-dir", type=Path, default=None)
     return parser.parse_args()
 
 
@@ -259,6 +270,15 @@ def expand_games_to_config_seats(valid_games: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
+def assign_unadjusted_metadata_to_seats(seats: pd.DataFrame) -> pd.DataFrame:
+    out = seats.copy()
+    out["target_age_bracket"] = None
+    out["target_education_harmonized"] = None
+    out["target_sex"] = None
+    out["target_source"] = "unadjusted_random_full_pool"
+    return out
+
+
 def load_observed_pgg_demographics(path: Path, valid_game_ids: set[str]) -> Dict[str, Any]:
     df = pd.read_csv(
         path,
@@ -371,7 +391,10 @@ def choose_pid(
     candidate_pids: Sequence[str],
     reuse_counter: Counter[str],
     rng: np.random.Generator,
+    weighted_by_inverse_reuse: bool,
 ) -> str:
+    if not weighted_by_inverse_reuse:
+        return str(candidate_pids[int(rng.integers(len(candidate_pids)))])
     weights = np.array(
         [1.0 / (1.0 + float(reuse_counter.get(pid, 0))) for pid in candidate_pids],
         dtype=float,
@@ -526,6 +549,104 @@ def build_distribution_checks(
     return pd.DataFrame(rows), metrics
 
 
+def make_observed_assigned_rows(
+    dimension: str,
+    categories: Iterable[Any],
+    observed_counts: Counter[Any],
+    assigned_counts: Counter[Any],
+) -> List[Dict[str, Any]]:
+    rows: List[Dict[str, Any]] = []
+    observed_total = sum(observed_counts.values())
+    assigned_total = sum(assigned_counts.values())
+    for category in categories:
+        observed_count = int(observed_counts.get(category, 0))
+        assigned_count = int(assigned_counts.get(category, 0))
+        rows.append(
+            {
+                "dimension": dimension,
+                "category": category if not isinstance(category, tuple) else " | ".join(category),
+                "observed_count": observed_count,
+                "observed_pct": round((observed_count / observed_total * 100.0) if observed_total else 0.0, 4),
+                "assigned_count": assigned_count,
+                "assigned_pct": round((assigned_count / assigned_total * 100.0) if assigned_total else 0.0, 4),
+                "assigned_minus_observed_pp": round(
+                    (
+                        ((assigned_count / assigned_total) if assigned_total else 0.0)
+                        - ((observed_count / observed_total) if observed_total else 0.0)
+                    )
+                    * 100.0,
+                    4,
+                ),
+            }
+        )
+    return rows
+
+
+def build_unadjusted_distribution_checks(
+    observed_targetable: pd.DataFrame,
+    assignments: pd.DataFrame,
+) -> Tuple[pd.DataFrame, Dict[str, float]]:
+    observed_age = Counter(observed_targetable["age_bracket"])
+    observed_education = Counter(observed_targetable["education_harmonized"])
+    observed_sex = Counter(observed_targetable["sex_label"])
+    observed_joint3 = Counter(
+        zip(
+            observed_targetable["age_bracket"],
+            observed_targetable["education_harmonized"],
+            observed_targetable["sex_label"],
+        )
+    )
+
+    assigned_age = Counter(assignments["twin_age_bracket"])
+    assigned_education = Counter(assignments["twin_education_harmonized"])
+    assigned_sex = Counter(assignments["twin_sex_assigned_at_birth"])
+    assigned_joint3 = Counter(
+        zip(
+            assignments["twin_age_bracket"],
+            assignments["twin_education_harmonized"],
+            assignments["twin_sex_assigned_at_birth"],
+        )
+    )
+
+    rows: List[Dict[str, Any]] = []
+    rows.extend(make_observed_assigned_rows("age", AGE_ORDER, observed_age, assigned_age))
+    rows.extend(
+        make_observed_assigned_rows(
+            "education",
+            EDUCATION_ORDER,
+            observed_education,
+            assigned_education,
+        )
+    )
+    rows.extend(make_observed_assigned_rows("sex_male_female", SEX_ORDER, observed_sex, assigned_sex))
+    joint3_categories = [
+        (age, education, sex)
+        for age in AGE_ORDER
+        for education in EDUCATION_ORDER
+        for sex in SEX_ORDER
+    ]
+    rows.extend(
+        make_observed_assigned_rows(
+            "age_x_education_x_sex",
+            joint3_categories,
+            observed_joint3,
+            assigned_joint3,
+        )
+    )
+
+    metrics = {
+        "age_observed_to_assigned_tvd": round(total_variation_distance(observed_age, assigned_age), 8),
+        "education_observed_to_assigned_tvd": round(
+            total_variation_distance(observed_education, assigned_education), 8
+        ),
+        "sex_observed_to_assigned_tvd": round(total_variation_distance(observed_sex, assigned_sex), 8),
+        "age_x_education_x_sex_observed_to_assigned_tvd": round(
+            total_variation_distance(observed_joint3, assigned_joint3), 8
+        ),
+    }
+    return pd.DataFrame(rows), metrics
+
+
 def assign_personas(
     seats: pd.DataFrame,
     personas: List[Dict[str, Any]],
@@ -537,6 +658,7 @@ def assign_personas(
     age_sex_to_pids: Dict[Tuple[str, str], List[str]],
     edu_sex_to_pids: Dict[Tuple[str, str], List[str]],
     rng: np.random.Generator,
+    sampling_mode: str,
 ) -> pd.DataFrame:
     persona_by_pid = {row["twin_pid"]: row for row in personas}
     all_pids = [row["twin_pid"] for row in personas]
@@ -549,33 +671,38 @@ def assign_personas(
             target_age = getattr(row, "target_age_bracket")
             target_education = getattr(row, "target_education_harmonized")
             target_sex = getattr(row, "target_sex")
-
-            search_specs: List[Tuple[str, Sequence[str], bool]] = [
-                (
-                    "exact_joint3_no_within_game",
-                    joint3_to_pids.get((target_age, target_education, target_sex), []),
-                    False,
-                ),
-                (
-                    "exact_joint3_allow_within_game",
-                    joint3_to_pids.get((target_age, target_education, target_sex), []),
-                    True,
-                ),
-                ("age_education_no_within_game", age_edu_to_pids.get((target_age, target_education), []), False),
-                ("age_education_allow_within_game", age_edu_to_pids.get((target_age, target_education), []), True),
-                ("age_sex_no_within_game", age_sex_to_pids.get((target_age, target_sex), []), False),
-                ("age_sex_allow_within_game", age_sex_to_pids.get((target_age, target_sex), []), True),
-                ("education_sex_no_within_game", edu_sex_to_pids.get((target_education, target_sex), []), False),
-                ("education_sex_allow_within_game", edu_sex_to_pids.get((target_education, target_sex), []), True),
-                ("age_only_no_within_game", age_to_pids.get(target_age, []), False),
-                ("age_only_allow_within_game", age_to_pids.get(target_age, []), True),
-                ("education_only_no_within_game", education_to_pids.get(target_education, []), False),
-                ("education_only_allow_within_game", education_to_pids.get(target_education, []), True),
-                ("sex_only_no_within_game", sex_to_pids.get(target_sex, []), False),
-                ("sex_only_allow_within_game", sex_to_pids.get(target_sex, []), True),
-                ("full_pool_no_within_game", all_pids, False),
-                ("full_pool_allow_within_game", all_pids, True),
-            ]
+            if sampling_mode == SAMPLING_MODE_ADJUSTED:
+                search_specs: List[Tuple[str, Sequence[str], bool]] = [
+                    (
+                        "exact_joint3_no_within_game",
+                        joint3_to_pids.get((target_age, target_education, target_sex), []),
+                        False,
+                    ),
+                    (
+                        "exact_joint3_allow_within_game",
+                        joint3_to_pids.get((target_age, target_education, target_sex), []),
+                        True,
+                    ),
+                    ("age_education_no_within_game", age_edu_to_pids.get((target_age, target_education), []), False),
+                    ("age_education_allow_within_game", age_edu_to_pids.get((target_age, target_education), []), True),
+                    ("age_sex_no_within_game", age_sex_to_pids.get((target_age, target_sex), []), False),
+                    ("age_sex_allow_within_game", age_sex_to_pids.get((target_age, target_sex), []), True),
+                    ("education_sex_no_within_game", edu_sex_to_pids.get((target_education, target_sex), []), False),
+                    ("education_sex_allow_within_game", edu_sex_to_pids.get((target_education, target_sex), []), True),
+                    ("age_only_no_within_game", age_to_pids.get(target_age, []), False),
+                    ("age_only_allow_within_game", age_to_pids.get(target_age, []), True),
+                    ("education_only_no_within_game", education_to_pids.get(target_education, []), False),
+                    ("education_only_allow_within_game", education_to_pids.get(target_education, []), True),
+                    ("sex_only_no_within_game", sex_to_pids.get(target_sex, []), False),
+                    ("sex_only_allow_within_game", sex_to_pids.get(target_sex, []), True),
+                    ("full_pool_no_within_game", all_pids, False),
+                    ("full_pool_allow_within_game", all_pids, True),
+                ]
+            else:
+                search_specs = [
+                    ("full_pool_random_no_within_game", all_pids, False),
+                    ("full_pool_random_allow_within_game", all_pids, True),
+                ]
 
             chosen_pid: Optional[str] = None
             match_level = ""
@@ -588,7 +715,12 @@ def assign_personas(
                 ]
                 if not candidates:
                     continue
-                chosen_pid = choose_pid(candidates, reuse_counter, rng)
+                chosen_pid = choose_pid(
+                    candidates,
+                    reuse_counter,
+                    rng,
+                    weighted_by_inverse_reuse=(sampling_mode == SAMPLING_MODE_ADJUSTED),
+                )
                 match_level = level
                 within_game_reuse = allow_within_game_reuse and chosen_pid in used_in_game
                 break
@@ -642,28 +774,51 @@ def write_jsonl(path: Path, rows: Iterable[Dict[str, Any]]) -> None:
 
 
 def write_sampling_note(path: Path, summary: Dict[str, Any]) -> None:
-    lines = [
-        "# Twin-to-PGG Validation Persona Sampling",
-        "",
-        "- Sampling targets the aggregate validation-wave PGG age-by-education-by-male/female distribution rather than matching Twin personas to individual PGG participants.",
-        f"- Valid-start games used: {summary['num_games']}. Configured seat total: {summary['configured_player_count_total']}.",
-        f"- Observed valid-game PGG rows with complete age+education: {summary['observed_complete_age_education_rows']}.",
-        f"- Observed valid-game PGG rows used for age+education+male/female targeting: {summary['observed_targetable_age_education_sex_rows']}.",
-        "- Target quotas were allocated from the observed PGG joint age x education x male/female distribution using largest-remainder rounding, then Twin personas were sampled within each target cell with inverse-reuse weighting.",
-        "- Within-game Twin reuse was disallowed unless the pool forced a fallback.",
-        "",
-        "## Data Notes",
-        "",
-        "- Twin only provides sex assigned at birth with `Male/Female`, so PGG rows normalized to `non_binary` or `unknown` are excluded from the sex-targeted quota estimation.",
-        "- One game (`pJFEFMc5YWW7XyLuN`) is marked as a valid-start game with `CONFIG_playerCount = 19` but only `18` listed `playerIds` in `df_analysis_val.csv`.",
-        "- Per user instruction, this sampler uses the configured count (`19`) for that game and leaves the extra seat without a roster-linked `pgg_roster_playerId`.",
-    ]
+    if summary["sampling_mode"] == SAMPLING_MODE_ADJUSTED:
+        lines = [
+            "# Twin-to-PGG Validation Persona Sampling",
+            "",
+            "- Sampling targets the aggregate validation-wave PGG age-by-education-by-male/female distribution rather than matching Twin personas to individual PGG participants.",
+            f"- Valid-start games used: {summary['num_games']}. Configured seat total: {summary['configured_player_count_total']}.",
+            f"- Observed valid-game PGG rows with complete age+education: {summary['observed_complete_age_education_rows']}.",
+            f"- Observed valid-game PGG rows used for age+education+male/female targeting: {summary['observed_targetable_age_education_sex_rows']}.",
+            "- Target quotas were allocated from the observed PGG joint age x education x male/female distribution using largest-remainder rounding, then personas were sampled within each target cell with inverse-reuse weighting.",
+            "- Within-game persona reuse was disallowed unless the pool forced a fallback.",
+            "",
+            "## Data Notes",
+            "",
+            "- The source profile pool only provides sex assigned at birth with `Male/Female`, so PGG rows normalized to `non_binary` or `unknown` are excluded from the sex-targeted quota estimation.",
+            "- One game (`pJFEFMc5YWW7XyLuN`) is marked as a valid-start game with `CONFIG_playerCount = 19` but only `18` listed `playerIds` in `df_analysis_val.csv`.",
+            "- Per user instruction, this sampler uses the configured count (`19`) for that game and leaves the extra seat without a roster-linked `pgg_roster_playerId`.",
+        ]
+    else:
+        lines = [
+            "# Twin-to-PGG Validation Persona Sampling",
+            "",
+            "- Sampling is an unadjusted random baseline: no age, education, or male/female targeting is applied.",
+            f"- Valid-start games used: {summary['num_games']}. Configured seat total: {summary['configured_player_count_total']}.",
+            f"- Personas are drawn uniformly from the full pool across games, with reuse allowed across games and disallowed within a game unless forced.",
+            "- The observed PGG demographic subset is retained only for downstream comparison against the unadjusted sampled pool.",
+            "",
+            "## Data Notes",
+            "",
+            "- One game (`pJFEFMc5YWW7XyLuN`) is marked as a valid-start game with `CONFIG_playerCount = 19` but only `18` listed `playerIds` in `df_analysis_val.csv`.",
+            "- Per user instruction, this sampler uses the configured count (`19`) for that game and leaves the extra seat without a roster-linked `pgg_roster_playerId`.",
+        ]
     path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def resolve_output_dir(args: argparse.Namespace) -> Path:
+    if args.output_dir is not None:
+        return args.output_dir
+    if args.sampling_mode == SAMPLING_MODE_UNADJUSTED:
+        return DEFAULT_UNADJUSTED_OUTPUT_DIR
+    return DEFAULT_OUTPUT_DIR
 
 
 def main() -> None:
     args = parse_args()
-    output_dir = args.output_dir / f"seed_{int(args.seed)}"
+    output_dir = resolve_output_dir(args) / f"seed_{int(args.seed)}"
     output_dir.mkdir(parents=True, exist_ok=True)
     for legacy_name in [
         "target_distribution_final_with_imputation.csv",
@@ -684,12 +839,17 @@ def main() -> None:
     )
     observed_complete_age_education = observed_info["complete_age_education_rows_frame"]
     observed_targetable = observed_info["targetable_rows_frame"]
-    target_joint_counts = allocate_joint_counts(
-        observed_targetable=observed_targetable,
-        total_seats=int(seats["CONFIG_playerCount"].groupby(seats["gameId"]).first().sum()),
-        rng=rng,
-    )
-    seats = assign_target_cells_to_seats(seats, target_joint_counts, rng)
+    total_seats = int(seats["CONFIG_playerCount"].groupby(seats["gameId"]).first().sum())
+    if args.sampling_mode == SAMPLING_MODE_ADJUSTED:
+        target_joint_counts = allocate_joint_counts(
+            observed_targetable=observed_targetable,
+            total_seats=total_seats,
+            rng=rng,
+        )
+        seats = assign_target_cells_to_seats(seats, target_joint_counts, rng)
+    else:
+        target_joint_counts = None
+        seats = assign_unadjusted_metadata_to_seats(seats)
 
     (
         personas,
@@ -715,6 +875,7 @@ def main() -> None:
         age_sex_to_pids=age_sex_to_pids,
         edu_sex_to_pids=edu_sex_to_pids,
         rng=rng,
+        sampling_mode=args.sampling_mode,
     )
 
     seat_csv = output_dir / "seat_assignments.csv"
@@ -759,20 +920,21 @@ def main() -> None:
     )
     observed_targetable_dist.to_csv(output_dir / "observed_pgg_distribution_targetable_rows.csv", index=False)
 
-    target_dist = (
-        assignments.groupby(["target_age_bracket", "target_education_harmonized", "target_sex"])
-        .size()
-        .reset_index(name="count")
-        .rename(
-            columns={
-                "target_age_bracket": "age_bracket",
-                "target_education_harmonized": "education_harmonized",
-                "target_sex": "sex_label",
-            }
+    if args.sampling_mode == SAMPLING_MODE_ADJUSTED and target_joint_counts is not None:
+        target_dist = (
+            assignments.groupby(["target_age_bracket", "target_education_harmonized", "target_sex"])
+            .size()
+            .reset_index(name="count")
+            .rename(
+                columns={
+                    "target_age_bracket": "age_bracket",
+                    "target_education_harmonized": "education_harmonized",
+                    "target_sex": "sex_label",
+                }
+            )
+            .sort_values(["age_bracket", "education_harmonized", "sex_label"])
         )
-        .sort_values(["age_bracket", "education_harmonized", "sex_label"])
-    )
-    target_dist.to_csv(output_dir / "target_distribution_allocated.csv", index=False)
+        target_dist.to_csv(output_dir / "target_distribution_allocated.csv", index=False)
 
     assigned_dist = (
         assignments.groupby(
@@ -801,21 +963,40 @@ def main() -> None:
     )
     twin_usage.to_csv(output_dir / "twin_usage_summary.csv", index=False)
 
-    distribution_checks, divergence_metrics = build_distribution_checks(
-        observed_targetable=observed_targetable,
-        assignments=assignments,
-    )
+    if args.sampling_mode == SAMPLING_MODE_ADJUSTED:
+        distribution_checks, divergence_metrics = build_distribution_checks(
+            observed_targetable=observed_targetable,
+            assignments=assignments,
+        )
+    else:
+        distribution_checks, divergence_metrics = build_unadjusted_distribution_checks(
+            observed_targetable=observed_targetable,
+            assignments=assignments,
+        )
     distribution_checks.to_csv(output_dir / "distribution_checks.csv", index=False)
 
     summary = {
         "seed": int(args.seed),
+        "sampling_mode": args.sampling_mode,
         "analysis_csv": repo_rooted_path(args.analysis_csv),
         "player_inputs_csv": repo_rooted_path(args.player_inputs_csv),
         "twin_profiles_jsonl": repo_rooted_path(args.twin_profiles_jsonl),
         "twin_cards_jsonl": repo_rooted_path(args.twin_cards_jsonl),
-        "matching_unit": "aggregate_population_distribution_not_individuals",
-        "quota_method": "largest_remainder_from_observed_joint_distribution",
-        "target_dimensions": ["age_bracket", "education_harmonized", "sex_male_female"],
+        "matching_unit": (
+            "aggregate_population_distribution_not_individuals"
+            if args.sampling_mode == SAMPLING_MODE_ADJUSTED
+            else "configured_game_seats_with_random_persona_draws"
+        ),
+        "quota_method": (
+            "largest_remainder_from_observed_joint_distribution"
+            if args.sampling_mode == SAMPLING_MODE_ADJUSTED
+            else "none_unadjusted_random_sampling"
+        ),
+        "target_dimensions": (
+            ["age_bracket", "education_harmonized", "sex_male_female"]
+            if args.sampling_mode == SAMPLING_MODE_ADJUSTED
+            else []
+        ),
         "num_games": int(assignments["gameId"].nunique()),
         "configured_player_count_total": int(assignments.drop_duplicates("gameId")["CONFIG_playerCount"].sum()),
         "actual_player_id_count_total": int(assignments.drop_duplicates("gameId")["actual_player_id_count"].sum()),
@@ -842,11 +1023,19 @@ def main() -> None:
             str(key): int(value) for key, value in assignments["match_level"].value_counts().items()
         },
         "distribution_divergence": divergence_metrics,
-        "notes": [
-            "Sampling targets the aggregate validation-wave PGG age x education x male/female distribution, not individual PGG participants.",
-            "PGG rows normalized to non_binary or unknown are excluded from the sex-targeted quota estimation because Twin only provides Male/Female sex assigned at birth.",
-            "Game pJFEFMc5YWW7XyLuN is valid-start with CONFIG_playerCount=19 but only 18 listed playerIds; this sampler uses 19 seats per user instruction.",
-        ],
+        "notes": (
+            [
+                "Sampling targets the aggregate validation-wave PGG age x education x male/female distribution, not individual PGG participants.",
+                "PGG rows normalized to non_binary or unknown are excluded from the sex-targeted quota estimation because the source pool only provides Male/Female sex assigned at birth.",
+                "Game pJFEFMc5YWW7XyLuN is valid-start with CONFIG_playerCount=19 but only 18 listed playerIds; this sampler uses 19 seats per user instruction.",
+            ]
+            if args.sampling_mode == SAMPLING_MODE_ADJUSTED
+            else [
+                "Sampling is an unadjusted random baseline from the full source profile pool.",
+                "No age, education, or male/female quota targeting is applied in this mode.",
+                "Game pJFEFMc5YWW7XyLuN is valid-start with CONFIG_playerCount=19 but only 18 listed playerIds; this sampler uses 19 seats per user instruction.",
+            ]
+        ),
     }
     summary_path = output_dir / "summary.json"
     summary_path.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -856,6 +1045,7 @@ def main() -> None:
 
     manifest = {
         "seed_dir": repo_rooted_path(output_dir),
+        "sampling_mode": args.sampling_mode,
         "seat_assignments_csv": repo_rooted_path(seat_csv),
         "seat_assignments_jsonl": repo_rooted_path(seat_jsonl),
         "game_assignments_jsonl": repo_rooted_path(game_jsonl),
@@ -864,15 +1054,16 @@ def main() -> None:
         "observed_pgg_distribution_targetable_rows_csv": repo_rooted_path(
             output_dir / "observed_pgg_distribution_targetable_rows.csv"
         ),
-        "target_distribution_allocated_csv": repo_rooted_path(
-            output_dir / "target_distribution_allocated.csv"
-        ),
         "assigned_twin_distribution_csv": repo_rooted_path(
             output_dir / "assigned_twin_distribution.csv"
         ),
         "twin_usage_summary_csv": repo_rooted_path(output_dir / "twin_usage_summary.csv"),
         "distribution_checks_csv": repo_rooted_path(output_dir / "distribution_checks.csv"),
     }
+    if args.sampling_mode == SAMPLING_MODE_ADJUSTED:
+        manifest["target_distribution_allocated_csv"] = repo_rooted_path(
+            output_dir / "target_distribution_allocated.csv"
+        )
     manifest_path = output_dir / "manifest.json"
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=2))

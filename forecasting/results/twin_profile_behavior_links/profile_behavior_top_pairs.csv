@@ -1,0 +1,9 @@
+cue,cue_label,outcome,outcome_label,gpt-5-mini twin,gpt-5.1 twin,min_abs_beta,mean_abs_beta
+generosity_without_return,Generosity without return,player_mean_contribution_rate,Mean contribution,0.7159765713218994,0.5476606216296515,0.5476606216296515,0.6318185964757754
+cooperation_orientation,Cooperation orientation,player_mean_contribution_rate,Mean contribution,0.7125819888567018,0.5468529428084393,0.5468529428084393,0.6297174658325706
+generosity_without_return,Generosity without return,player_mean_normalized_payoff,Mean normalized payoff,-0.525139735459775,-0.49842664991633523,0.49842664991633523,0.5117831926880552
+cooperation_orientation,Cooperation orientation,player_mean_normalized_payoff,Mean normalized payoff,-0.5272842314236402,-0.49557094499904786,0.49557094499904786,0.511427588211344
+norm_enforcement,Norm enforcement,player_punish_round_rate,Punish rate,0.46177611963356596,0.3856395459951936,0.3856395459951936,0.4237078328143798
+conditional_cooperation,Conditional cooperation,player_punish_round_rate,Punish rate,0.43093747788024367,0.36774830514511736,0.36774830514511736,0.39934289151268054
+cooperation_orientation,Cooperation orientation,player_reward_round_rate,Reward rate,0.4970339671533359,0.3512812453035933,0.3512812453035933,0.4241576062284646
+cooperation_orientation,Cooperation orientation,player_message_rate,Message rate,0.20362104538158068,0.2999034009436901,0.20362104538158068,0.2517622231626354

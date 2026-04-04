@@ -2,23 +2,50 @@
 
 ## Purpose
 
-This sampler builds a Twin persona assignment for the PGG validation wave at the seat level while matching the **aggregate** validation-wave PGG demographic distribution. It does **not** attempt to map Twin personas to individual PGG participants.
+This sampler builds seat-level persona assignments for the PGG validation wave. It supports two modes:
+
+- `adjusted_joint_demographics`: match the **aggregate** validation-wave PGG demographic distribution
+- `unadjusted_random`: draw a random baseline with no demographic correction
+
+It does **not** attempt to map source personas to individual PGG participants in either mode.
 
 The intended use is:
 
 - preserve the actual validation-wave game/config structure
 - preserve the configured number of seats per game
-- correct the Twin-to-PGG demographic shift before using Twin personas in PGG simulations
+- support both corrected and uncorrected persona sampling before using these personas in PGG simulations
 
-## Target Distribution
+## Sampling Modes
 
-The current sampler targets the joint distribution over:
+### `adjusted_joint_demographics`
+
+This is the corrected sampler. It targets the joint distribution over:
 
 - `age_bracket`
 - `education_harmonized`
 - `sex_male_female`
 
-These dimensions are matched jointly, not marginally.
+### `unadjusted_random`
+
+This is the baseline sampler. It:
+
+- uses the same valid-start games
+- uses the same configured seat counts
+- allows reuse across games
+- disallows within-game reuse unless forced
+- samples uniformly from the full source persona pool
+
+It does **not** allocate demographic quotas and does **not** constrain sampling by age, education, or male/female.
+
+## Target Distribution
+
+The corrected sampler targets the joint distribution over:
+
+- `age_bracket`
+- `education_harmonized`
+- `sex_male_female`
+
+These dimensions are matched jointly, not marginally. The unadjusted baseline does not use target dimensions.
 
 Implementation:
 
@@ -103,7 +130,7 @@ Concretely:
 - a Twin persona may appear in multiple different games
 - the same Twin persona is not reused inside the same game unless the candidate pool is exhausted
 
-In the current `seed_0` run:
+In the current corrected `seed_0` run:
 
 - `within_game_reuse_count = 0`
 - global replacement is active
@@ -129,9 +156,13 @@ Fallback order:
 7. sex only
 8. full pool
 
-In the current `seed_0` run, every seat matched at the strictest level:
+In the current corrected `seed_0` run, every seat matched at the strictest level:
 
 - `exact_joint3_no_within_game = 3583`
+
+In the current unadjusted `seed_0` run:
+
+- `full_pool_random_no_within_game = 3583`
 
 ## Card Mode
 
@@ -174,6 +205,8 @@ Per explicit user instruction, the sampler uses the configured count and creates
 
 ## Current Seed-0 Outputs
 
+### Corrected sampler
+
 Base directory:
 
 - `PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_to_pgg_validation_persona_sampling/seed_0`
@@ -197,6 +230,25 @@ Demographic validation files:
 - `demographic_validation/sampled_twin_vs_pgg_demographics.csv`
 - `demographic_validation/validation_metrics.csv`
 - `demographic_validation/validation_meta.json`
+
+### Unadjusted baseline
+
+Base directory:
+
+- `PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_to_pgg_validation_persona_sampling_unadjusted/seed_0`
+
+Main files:
+
+- `seat_assignments.csv`
+- `seat_assignments.jsonl`
+- `game_assignments.jsonl`
+- `summary.json`
+- `manifest.json`
+- `sampling_notes.md`
+- `observed_pgg_distribution_targetable_rows.csv`
+- `assigned_twin_distribution.csv`
+- `distribution_checks.csv`
+- `twin_usage_summary.csv`
 
 ## Prompt Assembly
 
@@ -265,6 +317,8 @@ Add the PGG game context separately:
 
 ## Current Seed-0 Summary
 
+### Corrected sampler
+
 From `summary.json`:
 
 - valid games: `417`
@@ -289,14 +343,45 @@ Distribution checks:
 
 Observed-to-target TVDs are nonzero but tiny because `3260` observed targetable PGG rows are being scaled to `3583` configured seats with integer rounding.
 
+### Unadjusted baseline
+
+From `summary.json`:
+
+- valid games: `417`
+- configured seats: `3583`
+- actual listed roster seats: `3582`
+- observed valid PGG player-input rows: `3334`
+- observed targetable age+education+male/female rows: `3260`
+- unique personas used: `1696`
+- max reuse count: `8`
+- within-game reuse: `0`
+
+Observed-to-assigned TVDs:
+
+- age: `0.28129870`
+- education: `0.07175294`
+- sex: `0.00269704`
+- full `age x education x sex`: `0.28129870`
+
 ## Regeneration
 
-Run:
+Corrected mode:
 
 ```bash
 python PGG-finetuning/non-PGG_generalization/task_grounding/sample_twin_personas_for_pgg_validation.py
 ```
 
-This writes the current default run to:
+This writes the default corrected run to:
 
 - `PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_to_pgg_validation_persona_sampling/seed_0`
+
+Unadjusted baseline:
+
+```bash
+python PGG-finetuning/non-PGG_generalization/task_grounding/sample_twin_personas_for_pgg_validation.py \
+  --sampling-mode unadjusted_random
+```
+
+This writes to:
+
+- `PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_to_pgg_validation_persona_sampling_unadjusted/seed_0`

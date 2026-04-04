@@ -2,8 +2,12 @@
   "run_names": [
     "baseline_gpt_5_1",
     "twin_sampled_seed_0_gpt_5_1",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1",
+    "demographic_only_row_resampled_seed_0_gpt_5_1",
     "baseline_gpt_5_mini",
-    "twin_sampled_seed_0_gpt_5_mini"
+    "twin_sampled_seed_0_gpt_5_mini",
+    "twin_sampled_unadjusted_seed_0_gpt_5_mini",
+    "demographic_only_row_resampled_seed_0_gpt_5_mini"
   ],
   "bootstrap_iters": 0,
   "random_seed": 7,
@@ -13,8 +17,6 @@
   ],
   "round_metrics": [
     "round_total_contribution_rate",
-    "round_normalized_efficiency",
-    "delta_total_contribution_rate",
-    "delta_round_normalized_efficiency"
+    "round_normalized_efficiency"
   ]
 }

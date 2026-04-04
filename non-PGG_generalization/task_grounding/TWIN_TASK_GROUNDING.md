@@ -35,6 +35,14 @@
 - Sampling uses replacement across games but disallows reuse within a game unless forced.
 - Detailed method and output notes are in `TWIN_TO_PGG_VALIDATION_PERSONA_SAMPLING.md`.
 
+## Validation-Wave Demographic-Only Sampling
+
+- `sample_pgg_demographic_only_profiles_for_validation.py` builds synthetic demographic-only cards for the same valid-start validation games.
+- It uses only PGG-side demographic fields from the merged validation demographic file.
+- It uses no Twin data, no behavioral-task information, and no actual player-to-game linkage.
+- It supports both independent fieldwise sampling and row-resampled whole-profile sampling.
+- Detailed method and output notes are in `PGG_VALIDATION_DEMOGRAPHIC_ONLY_PROFILES.md`.
+
 ## Files
 
 - `twin_question_inventory.csv`
@@ -49,7 +57,9 @@
 - `render_twin_extended_profile_cards.py`
 - `analyze_twin_profile_card_distributions.py`
 - `sample_twin_personas_for_pgg_validation.py`
+- `sample_pgg_demographic_only_profiles_for_validation.py`
 - `TWIN_TO_PGG_VALIDATION_PERSONA_SAMPLING.md`
+- `PGG_VALIDATION_DEMOGRAPHIC_ONLY_PROFILES.md`
 - `output/twin_extended_profiles/twin_extended_profiles.jsonl`
 - `output/twin_extended_profile_cards/compact/twin_extended_profile_cards.jsonl`
 - `output/twin_extended_profile_cards/standard/twin_extended_profile_cards.jsonl`
@@ -60,3 +70,9 @@
 - `output/twin_extended_profile_cards/pgg_prompt_min/shared_prompt_notes.md`
 - `output/twin_to_pgg_validation_persona_sampling/seed_0/seat_assignments.jsonl`
 - `output/twin_to_pgg_validation_persona_sampling/seed_0/summary.json`
+- `output/pgg_validation_demographic_only_sampling/seed_0/demographic_profile_cards.jsonl`
+- `output/pgg_validation_demographic_only_sampling/seed_0/seat_assignments.jsonl`
+- `output/pgg_validation_demographic_only_sampling/seed_0/summary.json`
+- `output/pgg_validation_demographic_only_sampling_row_resampled/seed_0/demographic_profile_cards.jsonl`
+- `output/pgg_validation_demographic_only_sampling_row_resampled/seed_0/seat_assignments.jsonl`
+- `output/pgg_validation_demographic_only_sampling_row_resampled/seed_0/summary.json`

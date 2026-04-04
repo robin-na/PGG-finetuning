@@ -1,0 +1,11 @@
+metric,value,notes
+pgg_extended_rows,6689.0,One row per merged PGG participant/session.
+twin_rows,2058.0,
+pgg_extended_unique_games,773.0,
+pgg_extended_validation_games_covered,470.0,Out of 470 validation games in df_analysis_val.csv.
+pgg_extended_learning_games_covered,298.0,Out of 366 learning games in df_analysis_learn.csv.
+pgg_extended_mean_age_best,37.5427,"Best available: Prolific profile first, player-input fallback."
+twin_mean_age_midpoint,46.7259,Approximate: Twin age is reported in brackets and mapped to bracket midpoints.
+pgg_extended_us_residence_pct,46.554,Among rows with non-missing country of residence.
+pgg_extended_us_nationality_pct,46.0906,Among rows with non-missing nationality.
+pgg_extended_us_birth_pct,43.8033,Among rows with non-missing country of birth.

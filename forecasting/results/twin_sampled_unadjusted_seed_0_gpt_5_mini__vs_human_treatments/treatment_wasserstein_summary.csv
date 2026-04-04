@@ -1,0 +1,7 @@
+metric,num_treatments,mean_wasserstein_distance,median_wasserstein_distance
+final_round_normalized_efficiency,40,0.45704610337118845,0.43131336093483974
+final_total_contribution_rate,40,0.3101761450705905,0.26991873866873867
+first_round_normalized_efficiency,40,0.1002167318178023,0.08451328166401695
+first_round_total_contribution_rate,40,0.07537885771027218,0.06579861111111111
+mean_round_normalized_efficiency,40,0.22979944584917486,0.18138832705907548
+mean_total_contribution_rate,40,0.16426988399159625,0.11813301860176859
