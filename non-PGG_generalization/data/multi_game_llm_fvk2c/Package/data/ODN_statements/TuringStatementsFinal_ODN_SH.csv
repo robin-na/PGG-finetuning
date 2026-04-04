@@ -1,0 +1,277 @@
+StatementID,TreatmentCode,SubjectID,ID,SH,SH_JUS,AI_SH,AI_SH_JUS
+1,ODU,2,36,X,We both make maximum money using X.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+2,ODU,22,63,X,A little bit of something is better than nothing.,X,I choose X because I will get more ECU in two out of the four possible combinations of choices.
+3,ODU,38,45,X,"Hopefully, we can work together and choose X.",X,"Choosing option X results in a higher payout in two of the four possible outcomes, so it seems like the safer choice."
+4,ODU,49,31,X,Seems sensible given the information to maximize the reward.,X,Maximizing expected payout.
+5,ODU,56,18,Y,More chance of getting ECUs.,X,Maximize expected payout.
+6,ODU,58,35,X,Because I already know that the odds are better if  X is chosen.,X,Choosing X results in a higher payout in three of the four possible scenarios.
+7,ODU,73,53,X,It's the best for everyone.,X,I choose X because the expected payout is higher.
+8,ODU,102,19,X,There is no reason for the other person to select option Y. Option X gives max rewards to both of us with no real risk.,X,"Choose X, best outcome when paired with either choice."
+9,ODU,105,62,X,Best chance of fairness.,X,I choose X because I believe that my chances of earning more ECU are higher with this option.
+10,ODU,129,48,X,Most return for both.,X,"Choosing option X results in a higher payout on average compared to choosing option Y, regardless of what the other person chooses."
+11,ODU,134,12,X,It could lead to the highest payment available.,X,Choosing X guarantees a higher payout (1 ECU) compared to choosing Y (0 ECU) if the other person chooses the other option.
+12,ODU,139,35,X,As this is the fairest option for both parties.,X,Choosing X results in a higher payout in three of the four possible scenarios.
+13,ODU,163,56,X,It can give the highest payoff to both.,X,"The best option is X, as it provides the highest expected return regardless of the other person's choice."
+14,ODU,174,16,X,I want to choose independently so that I am making the decision.,X,Maximizing expected payout.
+15,ODU,175,20,X,I can see no reason to choose Y for either of us.,X,"Option X yields the highest expected payout, regardless of the other player's choice."
+16,ODU,184,31,X,Hoping that the other picks X as well so we both get money.,X,Maximizing expected payout.
+17,ODU,194,27,X,It's a nice letter.,X,I choose X because it provides a higher expected payout than Y.
+18,ODU,204,2,X,We both end up with significantly more if we both choose X.,X,"Choosing X gives you the highest expected payoff (4 ECU) and has a higher chance of both players getting 8 ECU, which is the highest payout possible."
+19,ODU,206,25,X,More likely that we will both choose X as we will get the most reward.,X,"Choosing option X results in either 8 ECU for both of us, or 1 ECU for me and 5 ECU for the other person. This is better than the 4 ECU we would both get if we both choose Y, and there's a chance we could both get 8 ECU."
+20,ODU,223,58,X,Let's hope we both choose X to get maximum ECUs.,X,Choosing X leads to a higher payout on average.
+21,ODU,232,47,X,I feel the other person is more likely to choose X.,X,"I choose X because it seems to be the safer option with a guaranteed payout of at least 1 ECU, regardless of the other person's choice."
+22,ODU,236,30,X,Hoping they'd think this way.,X,Choosing X results in a higher payout in all scenarios except for when the other person also chooses X.
+23,ODU,239,43,X,Best for both parties.,X,I'll maximize my expected earnings by choosing X.
+24,ODU,242,34,X,More money for both of us.,X,"Choosing option X results in higher payouts for both choices made by the other person, whereas choosing Y results in lower payouts."
+25,ODU,265,55,X,This is the best scenario for everyone to get the most.,X,"Choosing option X gives us the best chance of getting 8 ECU. If the other person chooses Y, we'll still get 1 ECU, which is better than getting 4 ECU if we both choose Y."
+26,ODU,269,12,Y,To get the best payout for myself.,X,Choosing X guarantees a higher payout (1 ECU) compared to choosing Y (0 ECU) if the other person chooses the other option.
+27,ODU,280,31,X,Choosing X is best for us both and we both will realise this.,X,Maximizing expected payout.
+28,ODU,303,4,X,We get the highest amount.,X,Choosing X results in the higher payout in 2 out of the 4 possible outcomes.
+29,ODU,319,47,X,Assuming other player will choose option X to gain the highest.,X,"I choose X because it seems to be the safer option with a guaranteed payout of at least 1 ECU, regardless of the other person's choice."
+30,ODU,321,48,X,Seems the most beneficial to both.,X,"Choosing option X results in a higher payout on average compared to choosing option Y, regardless of what the other person chooses."
+31,ODU,326,36,X,So we both get ECU.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+32,ODU,333,44,X,Highest potential returns with the maximum certainty possible.,X,I'm going for option X because the expected payout is higher.
+33,ODU,334,53,Y,I get at least 4 ECU.,X,I choose X because the expected payout is higher.
+34,ODU,362,34,Y,Seems the better option.,X,"Choosing option X results in higher payouts for both choices made by the other person, whereas choosing Y results in lower payouts."
+35,ODU,383,57,X,I think we both want the max amount.,X,"Choosing X results in higher payouts on average, regardless of the other player's choice."
+36,ODU,386,53,X,X is the obvious most prosperous choice for both parties.,X,I choose X because the expected payout is higher.
+37,ODU,387,39,X,A good opportunity to get at least 5 ECU.,X,"Choosing X results in a higher payout in all possible combinations of choices, so it is the more advantageous option."
+38,ODU,429,58,X,I am most likely to benefit from choosing option X.,X,Choosing X leads to a higher payout on average.
+39,ODU,448,47,X,I’d like to get 8 ECU.,X,"I choose X because it seems to be the safer option with a guaranteed payout of at least 1 ECU, regardless of the other person's choice."
+40,ODU,451,42,X,It's the way to earn (potentially) more money.,X,Choosing X results in a higher payout in two out of four possible scenarios.
+41,ODU,463,34,X,Preferred picking first option.,X,"Choosing option X results in higher payouts for both choices made by the other person, whereas choosing Y results in lower payouts."
+42,ODU,471,42,Y,There is less risk of only ending up with 1 ECU.,X,Choosing X results in a higher payout in two out of four possible scenarios.
+43,ODU,478,6,Y,Better chance for ECU.,X,I choose option X because it gives me the best outcome no matter what the other person chooses.
+44,ODU,481,22,X,I think this is the decision that the other person is most likely to go for.,X,I maximize my expected payout by choosing X.
+45,ODU,490,18,X,This makes us both the most ECU.,X,Maximize expected payout.
+46,ODU,514,60,X,This brings us both the best reward.,X,I prefer option X because it gives me a higher payout in all scenarios.
+47,ODU,531,15,X,Seems like the best offer.,X,I'd rather take a chance to get 8 ECU than 4 ECU.
+48,ODU,551,49,X,"It's most rewarding for us both to choose X. We'll both lose out if one of us chooses Y, so it seems like a good choice for us both to make.",X,"Sure, choosing X results in the highest payout on average, regardless of the other person's choice."
+49,ODU,556,31,X,It’s likely that the other person will also choose X as we both can get the highest amount.,X,Maximizing expected payout.
+50,ODU,558,22,Y,I find this option fair.,X,I maximize my expected payout by choosing X.
+51,ODU,566,16,X,Decision made on the possible greater gain.,X,Maximizing expected payout.
+52,ODU,574,6,X,It's a win-win.,X,I choose option X because it gives me the best outcome no matter what the other person chooses.
+53,ODU,597,36,X,It gives both of us the chance of the highest possible payout.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+54,ODU,602,38,Y,I get more for choosing Y no matter what the other person chooses.,X,"I'd rather take the risk of earning less money (1 ECU) if the other person chooses Y, than earn 4 ECU if we both choose Y."
+55,ODU,604,39,Y,Will end up with either 5 or 4 ECU.,X,"Choosing X results in a higher payout in all possible combinations of choices, so it is the more advantageous option."
+56,ODU,633,32,X,I'd hope they would also choose X.,X,8 ECU for choosing X with another X. 1 ECU for choosing X and the other Y. 5 ECU for choosing Y and the other X.
+57,ODU,636,25,X,The reward is higher and I am assuming they will think the same.,X,"Choosing option X results in either 8 ECU for both of us, or 1 ECU for me and 5 ECU for the other person. This is better than the 4 ECU we would both get if we both choose Y, and there's a chance we could both get 8 ECU."
+58,ODU,644,61,X,It's a no-brainer. We both get the max amount.,X,I choose X because it maximizes my expected outcome regardless of the other person's choice.
+59,ODU,645,36,X,"Hopefully, if we both choose X we will both get a higher payment.",X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+60,ODU,647,58,X,No logic to my decision as there were no criteria on which to base it.,X,Choosing X leads to a higher payout on average.
+61,ODU,655,52,X,Best option to earn.,X,"Choosing option X provides the best expected outcome, regardless of the other person's choice."
+62,ODU,656,15,X,More reward than risk.,X,I'd rather take a chance to get 8 ECU than 4 ECU.
+63,ODU,682,43,Y,I honestly don't really know why.,X,I'll maximize my expected earnings by choosing X.
+64,ODU,698,33,X,It seems like the best option.,X,"Choosing option X guarantees a minimum payout of 1 ECU, while choosing option Y guarantees only a minimum payout of 4 ECU."
+65,ODU,706,54,Y,Feel like a guaranteed 4 or 5 is more valuable than the high variance 1 or 8.,X,"I choose option X because it offers a higher average payout compared to option Y, regardless of what the other player chooses."
+66,ODU,717,10,X,The highest outcome for both players.,X,"8 ECU is the highest reward, so I will choose X to maximize my earning potential."
+67,ODU,723,15,X,By far the best option for both to choose.,X,I'd rather take a chance to get 8 ECU than 4 ECU.
+68,ODU,736,51,X,I think we would both choose the highest amount.,X,"I choose X because it gives me the best expected payout, regardless of the other person's choice."
+69,ODU,755,14,X,"This maximises gain, so I don't think the other party would not choose similarly.",X,I'll choose option X because it gives me a better payoff regardless of what the other person chooses.
+70,ODU,768,54,X,We both get the highest amount.,X,"I choose option X because it offers a higher average payout compared to option Y, regardless of what the other player chooses."
+71,ODU,776,47,Y,"Because if he chooses the same, it is win-win for both of us.",X,"I choose X because it seems to be the safer option with a guaranteed payout of at least 1 ECU, regardless of the other person's choice."
+72,ODU,786,36,X,So that we can both try to get the highest amount.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+73,ODU,793,61,X,I think it's likely the best outcome - both get max if both pick it.,X,I choose X because it maximizes my expected outcome regardless of the other person's choice.
+74,ODU,798,52,X,"Although the chances of earning more are higher when selecting Y, I felt like taking a risk and choosing X.",X,"Choosing option X provides the best expected outcome, regardless of the other person's choice."
+75,ODU,803,33,X,We both should get the same amount.,X,"Choosing option X guarantees a minimum payout of 1 ECU, while choosing option Y guarantees only a minimum payout of 4 ECU."
+76,ODU,809,9,X,X means more money.,X,"Choosing X yields a higher payout in 3 out of 4 possible scenarios, so it's the safer bet."
+77,ODU,812,34,X,Since that is the best for both of us.,X,"Choosing option X results in higher payouts for both choices made by the other person, whereas choosing Y results in lower payouts."
+78,ODU,813,60,Y,I trust human touch.,X,I prefer option X because it gives me a higher payout in all scenarios.
+79,ODU,828,56,X,There’s only two options and we would both want the 8 ECU.,X,"The best option is X, as it provides the highest expected return regardless of the other person's choice."
+80,ODU,832,64,X,The highest equal amount for us both to enjoy.,X,I choose X because I want to maximize my earnings regardless of the other's choice. Choosing X guarantees me at least 1 ECU and has the potential to earn me 8 ECU if the other person chooses X as well.
+81,ODU,844,13,X,It has the biggest reward.,X,X is the dominant strategy as it gives the highest expected payout of 4 ECU no matter what the other person chooses
+82,ODU,852,13,X,I assume the other person will choose the same.,X,X is the dominant strategy as it gives the highest expected payout of 4 ECU no matter what the other person chooses
+83,ODU,855,24,Y,Because then I am guaranteed at least 4 ECU.,X,I will maximize my expected value.
+84,ODU,856,57,X,X returns the most money.,X,"Choosing X results in higher payouts on average, regardless of the other player's choice."
+85,ODU,881,61,Y,Y is a better option for me.,X,I choose X because it maximizes my expected outcome regardless of the other person's choice.
+86,ODU,882,18,X,Both see the biggest benefit so you would hope they pick X.,X,Maximize expected payout.
+87,ODU,892,32,X,"Surely makes sense to everyone to just select A, but if someone clicks B once then I'd do the same.",X,8 ECU for choosing X with another X. 1 ECU for choosing X and the other Y. 5 ECU for choosing Y and the other X.
+88,ODU,896,31,Y,Has the highest potential return.,X,Maximizing expected payout.
+89,ODU,901,34,X,"Hopefully, we both would like to profit the most from the situation.",X,"Choosing option X results in higher payouts for both choices made by the other person, whereas choosing Y results in lower payouts."
+90,ODU,917,10,Y,Better odds I get a higher pay.,X,"8 ECU is the highest reward, so I will choose X to maximize my earning potential."
+91,ODU,945,44,X,It has the most money available for both of us.,X,I'm going for option X because the expected payout is higher.
+92,ODU,946,36,X,It makes sense to pick the one that will benefit both people.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+93,ODU,960,40,X,Trying to possibly maximise my amount.,X,"Choosing option X results in a higher expected payout than choosing option Y, regardless of the other player's choice."
+94,ODU,968,9,Y,It is the safest option for me to earn.,X,"Choosing X yields a higher payout in 3 out of 4 possible scenarios, so it's the safer bet."
+95,ODU,971,20,Y,I thought it's likely we might not choose the same option so I am trying to minimise my losses.,X,"Option X yields the highest expected payout, regardless of the other player's choice."
+96,ODU,979,40,X,I'm sure to have at least something back.,X,"Choosing option X results in a higher expected payout than choosing option Y, regardless of the other player's choice."
+97,ODU,987,55,X,"If we both choose X, we both win the largest amount. It is most likely we will both pick this.",X,"Choosing option X gives us the best chance of getting 8 ECU. If the other person chooses Y, we'll still get 1 ECU, which is better than getting 4 ECU if we both choose Y."
+98,ODU,994,45,X,"I believe most people will go for the option that gives them the most reward, in this case X.",X,"Choosing option X results in a higher payout in two of the four possible outcomes, so it seems like the safer choice."
+99,ODU,998,48,X,Would rather we both get 8 and presume other person would feel the same.,X,"Choosing option X results in a higher payout on average compared to choosing option Y, regardless of what the other person chooses."
+100,ODU,1004,43,X,Hope they press X too.,X,I'll maximize my expected earnings by choosing X.
+101,ODU,1025,36,X,By far best chance if co-operated with.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+102,ODU,1043,39,X,"You get the most ECU if both of you choose X, so it makes the most sense to pick it.",X,"Choosing X results in a higher payout in all possible combinations of choices, so it is the more advantageous option."
+103,ODU,1059,48,X,Make the most money.,X,"Choosing option X results in a higher payout on average compared to choosing option Y, regardless of what the other person chooses."
+104,ODU,1088,5,X,Seems the best option for both parties.,X,"I'll get 8 ECU if the other person chooses X, 1 ECU if they choose Y, so X is the better choice."
+105,ODU,1097,59,Y,X and Y have the same payoff but this choice is more consistent with the amount earnt.,X,Choosing option X leads to the higher payout in 2 out of the 4 possible outcomes.
+106,ODU,1109,5,X,This seems best and fairest for both of us.,X,"I'll get 8 ECU if the other person chooses X, 1 ECU if they choose Y, so X is the better choice."
+107,ODU,1110,43,X,So that we both benefit.,X,I'll maximize my expected earnings by choosing X.
+108,ODU,1122,31,X,Makes most sense to share.,X,Maximizing expected payout.
+109,ODU,1141,36,X,X is best for both of us to get most money.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+110,ODU,1143,56,X,There’s no logic to not choosing X each as it’s the best outcome for both  - so I’d rather choose the best option myself.,X,"The best option is X, as it provides the highest expected return regardless of the other person's choice."
+111,ODU,1151,59,Y,Safest option to choose.,X,Choosing option X leads to the higher payout in 2 out of the 4 possible outcomes.
+112,ODU,1161,64,X,"Always best to start cooperatively,.",X,I choose X because I want to maximize my earnings regardless of the other's choice. Choosing X guarantees me at least 1 ECU and has the potential to earn me 8 ECU if the other person chooses X as well.
+113,ODU,1167,33,X,It's the only option here.,X,"Choosing option X guarantees a minimum payout of 1 ECU, while choosing option Y guarantees only a minimum payout of 4 ECU."
+114,ODU,1168,45,X,I am hoping the other person wants to make the most too.,X,"Choosing option X results in a higher payout in two of the four possible outcomes, so it seems like the safer choice."
+115,ODU,1169,64,X,Choosing X gives the best payout for both parties.,X,I choose X because I want to maximize my earnings regardless of the other's choice. Choosing X guarantees me at least 1 ECU and has the potential to earn me 8 ECU if the other person chooses X as well.
+116,ODU,1180,33,X,Hoping they will also choose X.,X,"Choosing option X guarantees a minimum payout of 1 ECU, while choosing option Y guarantees only a minimum payout of 4 ECU."
+117,ODU,1182,25,X,I think it will earn me the most ECU.,X,"Choosing option X results in either 8 ECU for both of us, or 1 ECU for me and 5 ECU for the other person. This is better than the 4 ECU we would both get if we both choose Y, and there's a chance we could both get 8 ECU."
+118,ODU,1213,43,X,We both get maximum ECU if we both select this option.,X,I'll maximize my expected earnings by choosing X.
+119,ODU,1216,22,X,I want us to both get the most ECU.,X,I maximize my expected payout by choosing X.
+120,ODU,1218,33,X,Might get 8 ECU.,X,"Choosing option X guarantees a minimum payout of 1 ECU, while choosing option Y guarantees only a minimum payout of 4 ECU."
+121,ODU,1239,22,X,"It is clearly the best choice for both of us to choose X, I assume they realise this.",X,I maximize my expected payout by choosing X.
+122,ODU,1246,38,Y,I'm guaranteed to get more with Y.,X,"I'd rather take the risk of earning less money (1 ECU) if the other person chooses Y, than earn 4 ECU if we both choose Y."
+123,ODU,1249,52,X,We both win with 8 ECU.,X,"Choosing option X provides the best expected outcome, regardless of the other person's choice."
+124,ODU,1280,47,X,The best outcome for us both.,X,"I choose X because it seems to be the safer option with a guaranteed payout of at least 1 ECU, regardless of the other person's choice."
+125,ODU,1313,4,Y,This way we both gain a fair amount.,X,Choosing X results in the higher payout in 2 out of the 4 possible outcomes.
+126,ODU,1340,6,X,I like choosing by myself and want to maximise our earnings.,X,I choose option X because it gives me the best outcome no matter what the other person chooses.
+127,ODU,1360,5,X,Best outcome for both.,X,"I'll get 8 ECU if the other person chooses X, 1 ECU if they choose Y, so X is the better choice."
+128,ODU,1382,13,X,The most beneficial for everyone.,X,X is the dominant strategy as it gives the highest expected payout of 4 ECU no matter what the other person chooses
+129,ODU,1385,49,X,Gamble on both benefiting from max payment.,X,"Sure, choosing X results in the highest payout on average, regardless of the other person's choice."
+130,ODU,1402,58,X,Makes the most sense for both of us.,X,Choosing X leads to a higher payout on average.
+131,ODU,1423,55,X,Offers the highest possible reward.,X,"Choosing option X gives us the best chance of getting 8 ECU. If the other person chooses Y, we'll still get 1 ECU, which is better than getting 4 ECU if we both choose Y."
+132,ODU,1434,54,X,X is the no brainer here.,X,"I choose option X because it offers a higher average payout compared to option Y, regardless of what the other player chooses."
+133,ODU,1436,56,X,I would risk for the higher amount.,X,"The best option is X, as it provides the highest expected return regardless of the other person's choice."
+134,ODU,1437,56,X,To get the most ECU.,X,"The best option is X, as it provides the highest expected return regardless of the other person's choice."
+135,ODU,1440,9,X,Hope both choose X.,X,"Choosing X yields a higher payout in 3 out of 4 possible scenarios, so it's the safer bet."
+136,ODU,1445,62,Y,Risk/reward is higher for Y.,X,I choose X because I believe that my chances of earning more ECU are higher with this option.
+137,ODU,1459,51,X,We both receive 8 if both select the same answer.,X,"I choose X because it gives me the best expected payout, regardless of the other person's choice."
+138,ODU,1488,64,X,I feel that with this choice I’m more likely to come off with more.,X,I choose X because I want to maximize my earnings regardless of the other's choice. Choosing X guarantees me at least 1 ECU and has the potential to earn me 8 ECU if the other person chooses X as well.
+139,ODU,1492,4,X,Best for both all round.,X,Choosing X results in the higher payout in 2 out of the 4 possible outcomes.
+140,ODU,1500,13,X,Want to earn maximum ECU in case I've lost out in other rounds.,X,X is the dominant strategy as it gives the highest expected payout of 4 ECU no matter what the other person chooses
+141,ODU,1513,5,X,Best option for everyone.,X,"I'll get 8 ECU if the other person chooses X, 1 ECU if they choose Y, so X is the better choice."
+142,ODU,1533,38,X,Greatest reward for both parties.,X,"I'd rather take the risk of earning less money (1 ECU) if the other person chooses Y, than earn 4 ECU if we both choose Y."
+143,ODU,1552,61,X,"Choosing X benefits both of us the most, there are no downsides.",X,I choose X because it maximizes my expected outcome regardless of the other person's choice.
+144,ODU,1562,43,X,It allows us both to get the highest pay.,X,I'll maximize my expected earnings by choosing X.
+145,ODU,1563,6,X,This is the better deal for all concerned and I would hope that the other party will come to the same conclusion.,X,I choose option X because it gives me the best outcome no matter what the other person chooses.
+146,ODU,1581,36,Y,I would rather be in control.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+147,ODU,1589,22,Y,"It's the best decision for me, we both get something or I get the most.",X,I maximize my expected payout by choosing X.
+148,ODU,1605,6,Y,We both get 4 ECU which is an equal payment and a good outcome.,X,I choose option X because it gives me the best outcome no matter what the other person chooses.
+149,ODU,1606,46,X,It seems to be the most logical way for the best odds.,X,I choose option X because it gives me the highest expected payout.
+150,ODU,1612,13,X,This is the best outcome for both of us.,X,X is the dominant strategy as it gives the highest expected payout of 4 ECU no matter what the other person chooses
+151,ODU,1622,41,Y,"I think this scenario is a version of the coordination game, in which case my best strategy is to choose Y as it minimises my potential losses (assuming minimal collaboration from my partner).",X,The expected value of option X is higher.
+152,ODU,1635,44,X,Better to split the pot for a potential to get something instead of nothing.,X,I'm going for option X because the expected payout is higher.
+153,ODU,1641,33,X,This option jumped out to me first.,X,"Choosing option X guarantees a minimum payout of 1 ECU, while choosing option Y guarantees only a minimum payout of 4 ECU."
+154,ODU,1646,15,X,Best result for both of us.,X,I'd rather take a chance to get 8 ECU than 4 ECU.
+155,ODU,1657,14,X,X would be the higher return so I would expect the other person to select this too.,X,I'll choose option X because it gives me a better payoff regardless of what the other person chooses.
+156,ODU,1677,25,X,"Makes sense to maximise, therefore choose X (8 points each).",X,"Choosing option X results in either 8 ECU for both of us, or 1 ECU for me and 5 ECU for the other person. This is better than the 4 ECU we would both get if we both choose Y, and there's a chance we could both get 8 ECU."
+157,ODU,1688,14,Y,Feels like the best option for me.,X,I'll choose option X because it gives me a better payoff regardless of what the other person chooses.
+158,ODU,1702,43,X,The option I chose maximises both of our return and makes the most sense to me.,X,I'll maximize my expected earnings by choosing X.
+159,ODU,1703,47,X,Largest amount of reward.,X,"I choose X because it seems to be the safer option with a guaranteed payout of at least 1 ECU, regardless of the other person's choice."
+160,ODU,1704,30,X,We both get the highest amount - 8.,X,Choosing X results in a higher payout in all scenarios except for when the other person also chooses X.
+161,ODU,1711,57,X,Hoping both pick X for mutual 8.,X,"Choosing X results in higher payouts on average, regardless of the other player's choice."
+162,ODU,1718,16,X,Best possible chance for maximum reward.,X,Maximizing expected payout.
+163,ODU,1719,19,X,It’s the most anyone can earn and we both can.,X,"Choose X, best outcome when paired with either choice."
+164,ODU,1728,7,X,It seems like the most logical choice.,X,"Choosing option X results in a higher payout on average, regardless of the other person's choice."
+165,ODU,1734,25,X,It's logical to maximise both outcomes.,X,"Choosing option X results in either 8 ECU for both of us, or 1 ECU for me and 5 ECU for the other person. This is better than the 4 ECU we would both get if we both choose Y, and there's a chance we could both get 8 ECU."
+166,ODU,1739,53,X,Think that is the most fair.,X,I choose X because the expected payout is higher.
+167,ODU,1745,44,X,We would both have a chance to get equal payment.,X,I'm going for option X because the expected payout is higher.
+168,ODU,1747,52,X,The best decision for both of us.,X,"Choosing option X provides the best expected outcome, regardless of the other person's choice."
+169,ODU,1748,47,X,It seems an obvious choice for us both to choose X and receive 8 ECU so I am hoping the other person thinks this also.,X,"I choose X because it seems to be the safer option with a guaranteed payout of at least 1 ECU, regardless of the other person's choice."
+170,ODU,1750,18,X,Seems the best choice for both of us.,X,Maximize expected payout.
+171,ODU,1761,4,X,This is the highest value for both.,X,Choosing X results in the higher payout in 2 out of the 4 possible outcomes.
+172,ODU,1765,5,X,I like to make my own decisions in a luck based game.,X,"I'll get 8 ECU if the other person chooses X, 1 ECU if they choose Y, so X is the better choice."
+173,ODU,1796,45,X,Because I want to get the most ECU.,X,"Choosing option X results in a higher payout in two of the four possible outcomes, so it seems like the safer choice."
+174,ODU,1809,38,X,We both get the maximum amount if we choose this option.,X,"I'd rather take the risk of earning less money (1 ECU) if the other person chooses Y, than earn 4 ECU if we both choose Y."
+175,ODU,1812,62,X,We both get an even outcome.,X,I choose X because I believe that my chances of earning more ECU are higher with this option.
+176,ODU,1841,36,X,It would make sense for both of us to choose X to maximize income.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+177,ODU,1854,2,X,It gives the highest reward.,X,"Choosing X gives you the highest expected payoff (4 ECU) and has a higher chance of both players getting 8 ECU, which is the highest payout possible."
+178,ODU,1867,12,Y,I believe this will maximise profit and has a lower risk.,X,Choosing X guarantees a higher payout (1 ECU) compared to choosing Y (0 ECU) if the other person chooses the other option.
+179,ODU,1871,2,X,Maximises earnings for both of us.,X,"Choosing X gives you the highest expected payoff (4 ECU) and has a higher chance of both players getting 8 ECU, which is the highest payout possible."
+180,ODU,1879,43,X,This guarantees we both get a high payment.,X,I'll maximize my expected earnings by choosing X.
+181,ODU,1892,5,Y,Y seems like the choice most likely to earn more ECU.,X,"I'll get 8 ECU if the other person chooses X, 1 ECU if they choose Y, so X is the better choice."
+182,ODU,1896,16,X,It's the best option overall for both of us.,X,Maximizing expected payout.
+183,ODU,1916,35,X,It's the highest amount.,X,Choosing X results in a higher payout in three of the four possible scenarios.
+184,ODU,1931,35,Y,"I will get either 4 or 4 ECU, as opposed to risking getting just 1.",X,Choosing X results in a higher payout in three of the four possible scenarios.
+185,ODU,1945,9,X,I would hope to get the maximum.,X,"Choosing X yields a higher payout in 3 out of 4 possible scenarios, so it's the safer bet."
+186,ODU,1955,45,X,I'm relying on the self-interest of the other person to earn their potential maximum bonus.,X,"Choosing option X results in a higher payout in two of the four possible outcomes, so it seems like the safer choice."
+187,ODU,1959,58,X,"I feel that the other person is sure to choose this answer, too.",X,Choosing X leads to a higher payout on average.
+188,ODU,1966,24,X,We would both receive the most with X.,X,I will maximize my expected value.
+189,ODU,1990,30,X,This is the most profitable for both of us.,X,Choosing X results in a higher payout in all scenarios except for when the other person also chooses X.
+190,ODU,1999,42,X,I would like to make the choice myself.,X,Choosing X results in a higher payout in two out of four possible scenarios.
+191,ODU,2011,4,X,X is always correct giving us both the highest ECU for both of us and even if the other gives the wrong answer it still gives me more than if I chose Y.,X,Choosing X results in the higher payout in 2 out of the 4 possible outcomes.
+192,ODU,2013,43,X,It's the best option to be guaranteed the highest pay out for both of us.,X,I'll maximize my expected earnings by choosing X.
+193,ODU,2030,36,X,I might get more money.,X,"Sure, choosing X maximizes my expected payout regardless of the other person's choice."
+194,ODU,2034,47,X,More potential to earn.,X,"I choose X because it seems to be the safer option with a guaranteed payout of at least 1 ECU, regardless of the other person's choice."
+195,ODU,2041,16,X,I feel it is likely that the other person picks the first available option.,X,Maximizing expected payout.
+196,ODU,2049,56,X,X gives the maximum potential bonus.,X,"The best option is X, as it provides the highest expected return regardless of the other person's choice."
+197,ODU,2052,2,X,Feel you can gamble and get more.,X,"Choosing X gives you the highest expected payoff (4 ECU) and has a higher chance of both players getting 8 ECU, which is the highest payout possible."
+198,ODU,2091,30,X,I think they will also choose X.,X,Choosing X results in a higher payout in all scenarios except for when the other person also chooses X.
+199,ODU,2101,27,X,Provides best outcome for all.,X,I choose X because it provides a higher expected payout than Y.
+200,ODU,2105,32,Y,Looked like a good pay-off whether both or one of us select it.,X,8 ECU for choosing X with another X. 1 ECU for choosing X and the other Y. 5 ECU for choosing Y and the other X.
+201,ODU,2138,5,X,I think this is the best option.,X,"I'll get 8 ECU if the other person chooses X, 1 ECU if they choose Y, so X is the better choice."
+202,ODU,2142,54,Y,I feel that y offers the best return for either outcome.,X,"I choose option X because it offers a higher average payout compared to option Y, regardless of what the other player chooses."
+203,ODU,2144,31,X,X would give us both more money if both pick it.,X,Maximizing expected payout.
+204,ODU,2151,58,X,Because it's the highest option for us both.,X,Choosing X leads to a higher payout on average.
+205,ODU,2155,9,X,We both get an equal share of 8 ECU.,X,"Choosing X yields a higher payout in 3 out of 4 possible scenarios, so it's the safer bet."
+206,ODU,2180,38,Y,Would choose this to try and be fair.,X,"I'd rather take the risk of earning less money (1 ECU) if the other person chooses Y, than earn 4 ECU if we both choose Y."
+207,ODU,2199,10,X,It will attract both of us to get 8 if it means we’ll be rewarded 8 ECU.,X,"8 ECU is the highest reward, so I will choose X to maximize my earning potential."
+208,ODU,2231,4,Y,Odds of having more ECU for myself on average.,X,Choosing X results in the higher payout in 2 out of the 4 possible outcomes.
+209,ODU,2239,25,X,I am wondering if the other person would go for the most profitable option like me.,X,"Choosing option X results in either 8 ECU for both of us, or 1 ECU for me and 5 ECU for the other person. This is better than the 4 ECU we would both get if we both choose Y, and there's a chance we could both get 8 ECU."
+210,ODU,2269,63,X,Would make sense for us both to choose X.,X,I choose X because I will get more ECU in two out of the four possible combinations of choices.
+211,ODU,2278,54,X,It's the obvious option that maximises both of our revenues.,X,"I choose option X because it offers a higher average payout compared to option Y, regardless of what the other player chooses."
+212,ODU,2287,14,X,Both players will expect solid outcome.,X,I'll choose option X because it gives me a better payoff regardless of what the other person chooses.
+213,ODU,2305,64,Y,Fairer for everyone if we both choose Y.,X,I choose X because I want to maximize my earnings regardless of the other's choice. Choosing X guarantees me at least 1 ECU and has the potential to earn me 8 ECU if the other person chooses X as well.
+214,ODU,2306,56,X,"If both players choose X that gives us the best outcome, so I have to have some faith that the other person thinks the same way.",X,"The best option is X, as it provides the highest expected return regardless of the other person's choice."
+215,ODU,2313,34,X,Fairest way for us to get most ECU.,X,"Choosing option X results in higher payouts for both choices made by the other person, whereas choosing Y results in lower payouts."
+216,ODU,2340,25,X,This option will give us both the highest reward.,X,"Choosing option X results in either 8 ECU for both of us, or 1 ECU for me and 5 ECU for the other person. This is better than the 4 ECU we would both get if we both choose Y, and there's a chance we could both get 8 ECU."
+217,ODU,2347,24,Y,"Because the outcomes for me choosing Y are either 5 ECU or 4 ECU, whereas if I choose X I either get 8 ECU or 1 ECU.",X,I will maximize my expected value.
+218,ODU,2349,18,X,Biggest bonus for each of us.,X,Maximize expected payout.
+219,ODU,2351,53,X,Highest potential of reward.,X,I choose X because the expected payout is higher.
+220,ODU,2357,31,X,I think that this is the decision with the best result for both of us.,X,Maximizing expected payout.
+221,ODU,2372,62,X,Both get the highest equal amount of ECU.,X,I choose X because I believe that my chances of earning more ECU are higher with this option.
+222,ODU,2396,55,Y,Y no matter what the other person puts is the most likely to have a high outcome.,X,"Choosing option X gives us the best chance of getting 8 ECU. If the other person chooses Y, we'll still get 1 ECU, which is better than getting 4 ECU if we both choose Y."
+223,ODU,2399,22,X,We make the most this way.,X,I maximize my expected payout by choosing X.
+224,ODU,2416,56,X,I think they will choose X.,X,"The best option is X, as it provides the highest expected return regardless of the other person's choice."
+225,ODU,2421,15,X,Chance of more ECU.,X,I'd rather take a chance to get 8 ECU than 4 ECU.
+226,ODU,2427,30,X,"Hopefully, they will pick X, too, so we both get higher amount.",X,Choosing X results in a higher payout in all scenarios except for when the other person also chooses X.
+227,ODU,2439,43,X,"Regardless of what the other person chooses, this generates the most ECU.",X,I'll maximize my expected earnings by choosing X.
+228,ODU,2451,32,X,This seems the fairest option for us both with the opportunity to receive the biggest number of ECU each.,X,8 ECU for choosing X with another X. 1 ECU for choosing X and the other Y. 5 ECU for choosing Y and the other X.
+229,ODU,2477,38,X,Just seeing the first result.,X,"I'd rather take the risk of earning less money (1 ECU) if the other person chooses Y, than earn 4 ECU if we both choose Y."
+230,ODU,2481,59,X,"It seems the logical answer, as we would both get 8.",X,Choosing option X leads to the higher payout in 2 out of the 4 possible outcomes.
+231,ODU,2489,18,X,People should work together for the best reward.,X,Maximize expected payout.
+232,ODU,2490,24,X,It is more advantageous for us both to choose this option and I hope the other person does the same.,X,I will maximize my expected value.
+233,ODU,2503,20,X,To see if I get the highest amount.,X,"Option X yields the highest expected payout, regardless of the other player's choice."
+234,ODU,2529,13,Y,I would rather have a range of 4-5 for my reward than 1-8.,X,X is the dominant strategy as it gives the highest expected payout of 4 ECU no matter what the other person chooses
+235,ODU,2540,58,Y,I don't know the other person.,X,Choosing X leads to a higher payout on average.
+236,ODU,2566,25,X,We both get a good amount.,X,"Choosing option X results in either 8 ECU for both of us, or 1 ECU for me and 5 ECU for the other person. This is better than the 4 ECU we would both get if we both choose Y, and there's a chance we could both get 8 ECU."
+237,ODU,2590,37,Y,Best chance at getting most each.,X,"Choosing X results in the highest expected payout, regardless of the other person's choice."
+238,ODU,2623,35,X,This would be fair and the maximum return for both of us.,X,Choosing X results in a higher payout in three of the four possible scenarios.
+239,ODU,2637,13,X,It pays the highest.,X,X is the dominant strategy as it gives the highest expected payout of 4 ECU no matter what the other person chooses
+240,ODU,2646,59,X,"There isn't any reason to choose Y, you both win.",X,Choosing option X leads to the higher payout in 2 out of the 4 possible outcomes.
+241,ODU,2658,19,X,It would be silly for either of us not to choose X.,X,"Choose X, best outcome when paired with either choice."
+242,ODU,2659,22,Y,Y gives me a better chance of earning more money either £4 or £5. There is not a big difference so the risk is lower.,X,I maximize my expected payout by choosing X.
+243,ODU,2682,27,X,I like the idea of going for an option which would be fair.,X,I choose X because it provides a higher expected payout than Y.
+244,ODU,2684,48,X,Possibility of receiving 8 ECU.,X,"Choosing option X results in a higher payout on average compared to choosing option Y, regardless of what the other person chooses."
+245,ODU,2688,57,X,Maximise the benefit for both of us.,X,"Choosing X results in higher payouts on average, regardless of the other player's choice."
+246,ODU,2709,27,Y,By picking Y I would get either 4 or 5 ECU which I feel is the best outcome.,X,I choose X because it provides a higher expected payout than Y.
+247,ODU,2719,59,Y,Aim is to get 4 ECUs as a minimum.,X,Choosing option X leads to the higher payout in 2 out of the 4 possible outcomes.
+248,ODU,2727,2,X,We both walk away with the biggest endowment. So it was the logical option for both of us.,X,"Choosing X gives you the highest expected payoff (4 ECU) and has a higher chance of both players getting 8 ECU, which is the highest payout possible."
+249,ODU,2730,55,X,This gives the biggest payout so the most likely option.,X,"Choosing option X gives us the best chance of getting 8 ECU. If the other person chooses Y, we'll still get 1 ECU, which is better than getting 4 ECU if we both choose Y."
+250,ODU,2736,25,X,"Choosing Y seems worse for both sides. If opponent chooses X it reduces my score from 8 to 5, and if the opponent chooses Y it only increases my score from 4 to 5.",X,"Choosing option X results in either 8 ECU for both of us, or 1 ECU for me and 5 ECU for the other person. This is better than the 4 ECU we would both get if we both choose Y, and there's a chance we could both get 8 ECU."
+251,ODU,2746,5,X,Overall if both parties choose X it will be to their mutual benefit.,X,"I'll get 8 ECU if the other person chooses X, 1 ECU if they choose Y, so X is the better choice."
+252,ODU,2761,63,X,Seems sensible to both choose X.,X,I choose X because I will get more ECU in two out of the four possible combinations of choices.
+253,ODU,2769,44,X,"Hopefully, this works out best.",X,I'm going for option X because the expected payout is higher.
+254,ODU,2774,47,X,I think it would be silly of anyone not to take an easy option and get the most ECU shared rather then cheating someone over to get less.,X,"I choose X because it seems to be the safer option with a guaranteed payout of at least 1 ECU, regardless of the other person's choice."
+255,ODU,2786,22,Y,Hopping the other chooses Y.,X,I maximize my expected payout by choosing X.
+256,ODU,2802,24,X,"We would both be incentivised to pick X, as that would give us more ECU than any other option.",X,I will maximize my expected value.
+257,ODU,2828,22,X,Because we can both see this leads to the biggest gain.,X,I maximize my expected payout by choosing X.
+258,ODU,2830,19,Y,Answer Y is the most sensible answer as it can be more positive for both of us.,X,"Choose X, best outcome when paired with either choice."
+259,ODU,2835,52,X,Hoping for max gain.,X,"Choosing option X provides the best expected outcome, regardless of the other person's choice."
+260,ODU,2847,27,Y,I don't fully trust the other person to choose the most logical answer.,X,I choose X because it provides a higher expected payout than Y.
+261,ODU,2850,38,X,X is the smartest choice.,X,"I'd rather take the risk of earning less money (1 ECU) if the other person chooses Y, than earn 4 ECU if we both choose Y."
+262,ODU,2863,5,X,This is the highest option for both of us.,X,"I'll get 8 ECU if the other person chooses X, 1 ECU if they choose Y, so X is the better choice."
+263,ODU,2876,44,Y,I either would get 4 or 5 ECU which is better than risking option X and only getting 1 ECU.,X,I'm going for option X because the expected payout is higher.
+264,ODU,2878,16,X,Fair for both of us.,X,Maximizing expected payout.
+265,ODU,2894,30,X,I want us both to get the maximum amount.,X,Choosing X results in a higher payout in all scenarios except for when the other person also chooses X.
+266,ODU,2905,35,Y,"The outcome reduces risk for me, while ensuring a reasonably positive outcome under all scenarios.",X,Choosing X results in a higher payout in three of the four possible scenarios.
+267,ODU,2938,49,Y,I think it is a good choice.,X,"Sure, choosing X results in the highest payout on average, regardless of the other person's choice."
+268,ODU,2943,59,X,"This is more profitable for both sides and I hope the other person sees it, too.",X,Choosing option X leads to the higher payout in 2 out of the 4 possible outcomes.
+269,ODU,2945,27,X,That is the best option for both of us.,X,I choose X because it provides a higher expected payout than Y.
+270,ODU,2950,2,Y,Just seems like better odds.,X,"Choosing X gives you the highest expected payoff (4 ECU) and has a higher chance of both players getting 8 ECU, which is the highest payout possible."
+271,ODU,2952,59,X,I believe that they will also choose X as it is equally the most mutually beneficial financial option.,X,Choosing option X leads to the higher payout in 2 out of the 4 possible outcomes.
+272,ODU,2957,50,X,"Clearly, it is the best solution for both parties.",X,Choosing X is the better option because it gives a higher payout in more scenarios.
+273,ODU,2968,63,X,So we both earn more money.,X,I choose X because I will get more ECU in two out of the four possible combinations of choices.
+274,ODU,2975,32,X,Most beneficial for both parties.,X,8 ECU for choosing X with another X. 1 ECU for choosing X and the other Y. 5 ECU for choosing Y and the other X.
+275,ODU,2981,45,Y,I will get more if other will choose Y.,X,"Choosing option X results in a higher payout in two of the four possible outcomes, so it seems like the safer choice."
+276,ODU,2987,64,Y,It's the more safer choice to secure a decent payment.,X,I choose X because I want to maximize my earnings regardless of the other's choice. Choosing X guarantees me at least 1 ECU and has the potential to earn me 8 ECU if the other person chooses X as well.

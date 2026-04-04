@@ -275,6 +275,97 @@ These MobLab analysis outputs are intentionally kept under the ignored
 `non-PGG_generalization/pgg_transfer_eval/output/` tree. This analysis workflow does
 not depend on slide-deck or PDF-generation utilities.
 
+## MobLab LLM Inference
+
+The MobLab LLM workflow supports two tasks and multiple prompting baselines.
+
+### Tasks
+
+1. `task1`
+   - Use observed first-round behavior from other games to predict a target game's
+     first-round behavior.
+   - This includes ultimatum because it is effectively one-shot in the MobLab data.
+2. `task2`
+   - Use round-1 behavior from the same session to predict later behavior in that
+     session.
+   - `--task2-mode future_mean` predicts the future mean share over rounds `2..T`,
+     which lines up with the `k=1 persistence` statistical baseline.
+   - `--task2-mode trajectory` predicts the full remaining sequence of round-level
+     shares over rounds `2..T`.
+
+### LLM baselines
+
+- `direct`
+  - Feed observed behavior directly to the model.
+- `persona`
+  - First generate a compact persona from the observed behavior, then predict from
+    that persona.
+- `meta_persona`
+  - Same as `persona`, but the prediction prompt explicitly asks the model to infer
+    a decision policy from the persona before predicting.
+- `retrieval`
+  - Generate a retrieval query, retrieve analogous repeated-PGG persona cards from
+    the PGG oracle library with the OpenAI Retrieval API, then predict from those
+    retrieved cards.
+
+### Scripts
+
+- `build_moblab_task_manifest.py`
+  - Builds a stratified sample of MobLab task instances, typically `100` examples.
+  - For `task2`, use `--task2-mode future_mean` or `--task2-mode trajectory`.
+- `build_moblab_persona_batch.py`
+  - Builds Batch JSONL for the persona-generation stage.
+  - Output filenames are keyed by the task manifest stem, so different task files
+    do not overwrite each other.
+- `build_moblab_retrieval_query_batch.py`
+  - Builds Batch JSONL for writing retrieval queries against the PGG library.
+- `retrieve_moblab_pgg_candidates.py`
+  - Calls `client.vector_stores.search(...)` and stores the top retrieved PGG cards.
+- `build_moblab_prediction_batch.py`
+  - Builds Batch JSONL for `direct`, `persona`, `meta_persona`, or `retrieval`
+    prediction baselines.
+  - Output filenames are keyed by the task manifest stem, so `task1`, `task2`,
+    and `task2 trajectory` batches can coexist in one output directory.
+- `evaluate_moblab_llm_outputs.py`
+  - Scores LLM outputs and compares them against the statistical baselines in
+    `output/moblab_statistical_baselines/`.
+  - Supports both scalar targets and `task2 trajectory` sequence targets.
+- `evaluate_moblab_retrieval_diversity.py`
+  - Reports retrieval concentration and flags possible mode collapse when many
+    queries retrieve the same top persona.
+- `submit_openai_batch.py`
+  - Uploads a local JSONL file and creates an OpenAI Batch job.
+- `download_openai_batch_output.py`
+  - Downloads the output or error file for a completed Batch job.
+
+### Typical run order
+
+1. Build a sample of task instances
+   - `python non-PGG_generalization/pgg_transfer_eval/build_moblab_task_manifest.py --task task1 --sample-size 100`
+   - `python non-PGG_generalization/pgg_transfer_eval/build_moblab_task_manifest.py --task task2 --task2-mode future_mean --sample-size 100`
+   - `python non-PGG_generalization/pgg_transfer_eval/build_moblab_task_manifest.py --task task2 --task2-mode trajectory --sample-size 100`
+2. Build the direct baseline prediction batch
+   - `python non-PGG_generalization/pgg_transfer_eval/build_moblab_prediction_batch.py --tasks-jsonl <tasks.jsonl> --baseline direct`
+3. Build the persona-generation batch
+   - `python non-PGG_generalization/pgg_transfer_eval/build_moblab_persona_batch.py --tasks-jsonl <tasks.jsonl>`
+4. After the persona batch finishes, build the persona or meta-persona prediction batch
+   - `python non-PGG_generalization/pgg_transfer_eval/build_moblab_prediction_batch.py --tasks-jsonl <tasks.jsonl> --baseline persona --persona-responses-jsonl <persona_outputs.jsonl>`
+   - `python non-PGG_generalization/pgg_transfer_eval/build_moblab_prediction_batch.py --tasks-jsonl <tasks.jsonl> --baseline meta_persona --persona-responses-jsonl <persona_outputs.jsonl>`
+5. Build the retrieval-query batch
+   - `python non-PGG_generalization/pgg_transfer_eval/build_moblab_retrieval_query_batch.py --tasks-jsonl <tasks.jsonl> --persona-responses-jsonl <persona_outputs.jsonl>`
+6. After the retrieval-query batch finishes, retrieve PGG persona cards
+   - `python non-PGG_generalization/pgg_transfer_eval/retrieve_moblab_pgg_candidates.py --vector-store-id <id> --responses-jsonl <retrieval_query_outputs.jsonl> --manifest-jsonl <retrieval_query_manifest.jsonl>`
+7. Build the retrieval-augmented prediction batch
+   - `python non-PGG_generalization/pgg_transfer_eval/build_moblab_prediction_batch.py --tasks-jsonl <tasks.jsonl> --baseline retrieval --retrieval-candidates-jsonl <moblab_pgg_candidates.jsonl>`
+8. Submit any request JSONL file to Batch
+   - `python non-PGG_generalization/pgg_transfer_eval/submit_openai_batch.py --requests-jsonl <requests.jsonl>`
+9. Download the completed output JSONL
+   - `python non-PGG_generalization/pgg_transfer_eval/download_openai_batch_output.py --batch-id <batch_id> --output-path <outputs.jsonl>`
+10. Score the predictions and compare them with the statistical baselines
+   - `python non-PGG_generalization/pgg_transfer_eval/evaluate_moblab_llm_outputs.py --responses-jsonl <outputs.jsonl> --manifest-jsonl <prediction_manifest.jsonl> --tasks-jsonl <tasks.jsonl>`
+11. Inspect retrieval concentration
+   - `python non-PGG_generalization/pgg_transfer_eval/evaluate_moblab_retrieval_diversity.py --candidates-jsonl <moblab_pgg_candidates.jsonl>`
+
 ## One-Step Hosted Retrieval Run Order
 
 1. Build the local oracle corpus

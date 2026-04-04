@@ -1,0 +1,404 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumerate}
+
+\newtheorem{definition}{Definition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\fhat}{\hat{f}}
+\newcommand{\Sbic}{\mathcal{S}_{\textsc{bic}}}
+
+\title{The Simulable Treatment Effect:\\ A Credibility Framework for LLM Agent Simulation\\ in Experimental Social Science}
+
+\author{
+  Kehang Zhu\thanks{MIT Sloan School of Management. Email: \texttt{kehangzh@mit.edu}.}
+}
+
+\date{Draft: \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A growing literature uses large language models (LLMs) as synthetic participants in economic experiments, yet there is limited guidance on when such simulations support valid inference about human behavior. We propose a formal framework---the \textit{Simulable Treatment Effect} (STE)---that clarifies what LLM agent simulations identify, for whom, and under what conditions. Analogous to how \citet{imbens1994identification} introduced the Local Average Treatment Effect (LATE) to give precise meaning to instrumental variable estimates, the STE defines the component of human behavioral variation that an LLM can credibly approximate. The key identification criterion is that the target of simulation must be \textit{incentive-compatible behavior}---decisions made under real economic incentives with transparent mechanisms---where observed actions reveal true preferences. We establish identification assumptions, show how the STE relates to existing statistical calibration methods (prediction-powered inference, plug-in bias correction), and demonstrate that credible simulation requires two complementary data types: rich persona/interview data capturing \textit{who} decision-makers are, and incentive-compatible behavioral data capturing \textit{what} they do. The framework unifies existing approaches to LLM-based prediction \citep{manning2026general} and augmentation \citep{broska2025mixed, ludwig2025large} under a common set of assumptions and provides a credibility hierarchy for evaluating simulation-based evidence.
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+%=============================================================================
+\section{Introduction}
+\label{sec:intro}
+%=============================================================================
+
+The promise of using large language models (LLMs) as synthetic participants in social science experiments has generated enormous excitement. If an LLM can be prompted with a demographic profile and an experimental scenario to produce responses that approximate those of real human subjects, then the cost of behavioral research drops by orders of magnitude, the scale expands commensurately, and the speed approaches real-time \citep{horton2023large, argyle2023out, park2024generative}. A growing empirical literature reports that LLM-simulated responses can, in many settings, reproduce qualitative patterns found in real survey and experimental data \citep{binz2023using, hewitt2024predicting, cui2025ai, manning2026general}.
+
+Yet this literature also reveals persistent gaps. LLMs systematically overestimate human effect sizes \citep{cui2025ai, hewitt2024predicting}. They exhibit lower response variance than humans \citep{bisbee2024synthetic}. Their predictions are less accurate for historically disadvantaged groups \citep{dominguez2024questioning}, and they sometimes produce significant effects for designs that yielded null results with human samples \citep{cui2025ai}. These findings raise a fundamental question: \textit{when can we treat LLM-generated behavioral data as credible evidence about human behavior?}
+
+We propose a framework that answers this question by drawing an analogy to one of the most influential clarifications in modern econometrics. Before \citet{imbens1994identification}, researchers used instrumental variables (IV) to estimate treatment effects but lacked a precise interpretation of \textit{whose} treatment effect was being estimated. Imbens and Angrist showed that IV estimates the treatment effect for \textit{compliers}---those whose treatment status is changed by the instrument---a quantity they termed the Local Average Treatment Effect (LATE). The key contribution was not a new estimator, but a \textit{framework for interpreting what existing estimators identify} and the \textit{assumptions under which they do so}.
+
+The situation with LLM agent simulation is analogous. Researchers are generating LLM-based behavioral data and drawing inferences from it, but without a clear framework for what these inferences identify. We introduce the \textbf{Simulable Treatment Effect (STE)}: the treatment effect of changing experimental configurations, identified through LLM simulation, when the target behavior is \textit{incentive-compatible}---decisions made under real economic incentives with transparent mechanisms where observed actions reveal true preferences.
+
+\paragraph{What makes behavior ``simulable''?}
+The critical demarcation is between incentive-compatible experimental behavior and everything else. An LLM can credibly predict or augment data from economic experiments where participants face real monetary consequences, the mechanism is transparent, and observed actions are revealed preferences. Survey responses, hypothetical choices, and self-reports are valuable as \textit{inputs} to persona construction, but the \textit{output} we seek to predict or augment must be incentive-compatible behavior.
+
+\paragraph{Three contributions.}
+First, we provide a formal definition of the STE and establish identification assumptions that parallel the LATE framework (Section~\ref{sec:formal}). Second, we show that credible LLM simulation requires two complementary types of data---rich persona/interview data (``who they are'') and incentive-compatible behavioral data (``what they do'')---and that a generative language model serves as the bridge between them (Section~\ref{sec:two_data}). Third, we unify existing approaches to LLM-based prediction \citep{manning2026general} and augmentation \citep{broska2025mixed, ludwig2025large} under a common framework with a credibility hierarchy (Section~\ref{sec:pred_aug}).
+
+\begin{table}[h!]
+\centering
+\small
+\caption{The LATE analogy: IV estimation vs.\ LLM agent simulation.}
+\label{tab:late_parallel}
+\begin{tabular}{@{}p{5.5cm}p{7.5cm}@{}}
+\toprule
+\textbf{IV / LATE} & \textbf{LLM Simulation / STE} \\
+\midrule
+Instrument $Z$ & Persona information $W$ (demographics, interview, personality) \\
+Treatment $D$ & Behavioral type $\tau(W)$ (cooperation orientation, risk attitude, strategic sophistication) \\
+Outcome $Y$ & Incentive-compatible behavior (contribution, trust, cooperation) \\
+Exclusion restriction & No training leakage \citep{ludwig2025large} \\
+Independence & Moment preservation: LLM errors uncorrelated with covariates \\
+Monotonicity & Behavioral invariance: theory in prompts is stable across configurations \citep{manning2026general} \\
+Compliers & Incentive-compatible tasks: where observed actions reveal true preferences \\
+LATE $= \E[Y(1) - Y(0) \mid \text{complier}]$ & STE $= \E[Y^*(s') - Y^*(s)]$ for IC tasks \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Roadmap.}
+Section~\ref{sec:formal} defines the STE formally and establishes identification. Section~\ref{sec:two_data} argues that credible simulation requires two types of data. Section~\ref{sec:pred_aug} distinguishes prediction and augmentation as the two fundamental operations. Section~\ref{sec:application} illustrates the framework using public goods games and related experimental data.
+
+
+%=============================================================================
+\section{The Simulable Treatment Effect}
+\label{sec:formal}
+%=============================================================================
+
+\subsection{Setup and Notation}
+
+Consider a researcher studying human behavior in controlled experiments. The primitives are:
+
+\begin{definition}[Experimental Environment]
+An experimental environment is a tuple $(\mathcal{W}, \mathcal{S}, f^*, \fhat)$ where:
+\begin{itemize}
+  \item $\mathcal{W}$ is a space of \textbf{persona types}, each $w \in \mathcal{W}$ encoding observable characteristics of a decision-maker (demographics, personality traits, interview data, prior behavioral history).
+  \item $\mathcal{S}$ is a space of \textbf{experimental configurations} (stimuli), each $s \in \mathcal{S}$ specifying the rules, parameters, and framing of an economic game (e.g., group size, MPCR, punishment technology, instructions).
+  \item $f^*: \mathcal{W} \times \mathcal{S} \to \Delta(\mathcal{Y})$ is the \textbf{human data-generating process}, mapping persona-configuration pairs to distributions over behavioral outcomes $Y \in \mathcal{Y}$.
+  \item $\fhat: \mathcal{W} \times \mathcal{S} \to \Delta(\mathcal{Y})$ is the \textbf{LLM simulator}, a black-box text generator that, given a persona description and experimental scenario as input, produces a distribution over behavioral outcomes.
+\end{itemize}
+\end{definition}
+
+For a given persona $w$ and configuration $s$, we write:
+\begin{align}
+  V(w, s)   &\coloneqq \E_{f^*}[Y \mid W = w, S = s]   && \text{(human conditional mean)} \\
+  \hat{V}(w, s) &\coloneqq \E_{\fhat}[\hat{Y} \mid W = w, S = s]  && \text{(LLM conditional mean)}
+\end{align}
+
+The \textbf{conditional bias} of the LLM is:
+\begin{equation}
+  b(w, s) \coloneqq \hat{V}(w, s) - V(w, s) = \E[\hat{Y} - Y \mid W = w, S = s]
+\end{equation}
+
+\subsection{Incentive-Compatible Behavior as the Simulable Domain}
+
+Not all behavioral data is equally suitable as a simulation target. The critical distinction is between \textit{incentive-compatible} experimental behavior and other forms of data.
+
+\begin{definition}[Incentive-Compatible Configuration]
+\label{def:ic}
+A configuration $s \in \mathcal{S}$ is \textbf{incentive-compatible (IC)} if:
+\begin{enumerate}
+  \item Participants face real monetary consequences tied to their decisions;
+  \item The mechanism is transparent---the mapping from action to payoff is clear;
+  \item Observed actions are revealed preferences: $Y(w, s) \approx \sigma^*(w, s)$, where $\sigma^*$ is the type-optimal strategy.
+\end{enumerate}
+We denote the set of IC configurations as $\mathcal{S}_{\textsc{ic}} \subseteq \mathcal{S}$.
+\end{definition}
+
+For IC configurations, observed behavior is a clean signal of the individual's underlying type. For non-IC tasks (hypothetical surveys, complex mechanisms where participants cannot optimize), observed behavior is contaminated by noise, confusion, or cheap talk, and does not reliably reveal preferences.
+
+This is the simulable domain: \textbf{the STE is defined for, and only for, incentive-compatible behavior.}
+
+\subsection{Target Parameters}
+
+A researcher typically targets a parameter $\theta^* \in \Theta$ defined by a moment condition:
+\begin{equation}
+  \E\bigl[g\bigl(V(W, S),\, X;\, \theta\bigr)\bigr] = 0 \quad \text{at } \theta = \theta^*
+\end{equation}
+where $X = (W, S, A)$ collects persona, configuration, and treatment indicators, and $g$ is a known moment function. Common examples:
+\begin{itemize}
+  \item \textbf{Population mean}: $g(V, X; \mu) = V - \mu$, so $\theta^* = \E[Y]$.
+  \item \textbf{Average treatment effect}: $g(V, X; \tau) = V(w, s_1) - V(w, s_0) - \tau$, so $\theta^* = \E[Y(s_1) - Y(s_0)]$.
+  \item \textbf{Regression coefficient}: $g(V, X; \beta) = X'(V - X'\beta)$, yielding OLS identification.
+\end{itemize}
+
+\subsection{When Does Na\"ive Substitution Work?}
+
+Following \citet{ludwig2025large}, na\"ive substitution---replacing human outcomes $Y$ with LLM predictions $\hat{Y}$ without correction---yields valid inference only if the LLM preserves the moment conditions:
+
+\begin{assumption}[Moment Preservation]
+\label{ass:moment}
+For all $\theta \in \Theta$:
+\begin{equation}
+  \E\bigl[g\bigl(\hat{V}(W, S),\, X;\, \theta\bigr)\bigr] = \E\bigl[g\bigl(V(W, S),\, X;\, \theta\bigr)\bigr]
+\end{equation}
+\end{assumption}
+
+\begin{assumption}[No Training Leakage]
+\label{ass:leakage}
+The experimental configurations $s \in \mathcal{S}$ from which the researcher samples do not appear in the LLM's training data.
+\end{assumption}
+
+\begin{remark}
+Assumption~\ref{ass:moment} is demanding. Even when the LLM's prediction error $\varepsilon = \hat{Y} - Y$ has zero mean, if $\varepsilon$ is correlated with covariates of interest, downstream parameter estimates can be severely biased. \citet{egami2024using} show that 90\% prediction accuracy can produce 30\% relative bias in regression coefficients with 40\% coverage.
+\end{remark}
+
+\subsection{Defining the Simulable Treatment Effect}
+
+\begin{definition}[Simulable Treatment Effect]
+\label{def:ste}
+Given two incentive-compatible configurations $s, s' \in \mathcal{S}_{\textsc{ic}}$, the \textbf{Simulable Treatment Effect} is:
+\begin{equation}
+\boxed{
+  \text{STE}(s, s') \coloneqq \E\bigl[Y^*(s') - Y^*(s)\bigr]
+}
+\end{equation}
+where $Y^*(s) \equiv V(W, s)$ denotes the potential outcome under configuration $s$, and the expectation is over the population of types $W \sim P_W$.
+\end{definition}
+
+\begin{remark}[Parallel to LATE]
+The LATE is identified for compliers---the subpopulation whose treatment status responds to the instrument:
+\[
+  \text{LATE} = \E[Y(1) - Y(0) \mid D(1) > D(0)]
+\]
+The STE is identified for incentive-compatible configurations---the class of tasks where observed actions reveal true preferences. Just as the LATE equals the ATE when all units are compliers, the STE equals the full treatment effect when the LLM preserves moment conditions across the entire persona space.
+\end{remark}
+
+\subsection{Identification}
+
+\begin{proposition}[Identification of STE via LLM Predictions]
+\label{prop:ident}
+Under Assumptions~\ref{ass:moment}--\ref{ass:leakage}, for $s, s' \in \mathcal{S}_{\textsc{ic}}$:
+\begin{equation}
+  \text{STE}(s, s') = \E\bigl[\hat{V}(W, s') - \hat{V}(W, s)\bigr]
+\end{equation}
+That is, the STE can be estimated from LLM predictions when the target is incentive-compatible behavior and the LLM preserves the relevant moments.
+\end{proposition}
+
+\subsection{Statistical Calibration: When Moment Preservation Fails}
+
+When Assumption~\ref{ass:moment} does not hold globally, we can still recover unbiased estimates by combining a small human sample with a large LLM sample.
+
+\begin{definition}[Data Structure]
+\label{def:data}
+The researcher observes:
+\begin{align}
+  \mathcal{D}_{\text{shared}} &= \bigl\{(W_i, S_i, Y_i, \hat{Y}_i)\bigr\}_{i=1}^{n}  && \text{($n$ jointly labeled instances)} \\
+  \mathcal{D}_{\text{LLM}}    &= \bigl\{(\tilde{W}_j, \tilde{S}_j, \hat{Y}_j)\bigr\}_{j=1}^{N} && \text{($N \gg n$ LLM-only predictions)}
+\end{align}
+where $(W_i, S_i)$ and $(\tilde{W}_j, \tilde{S}_j)$ are drawn from the same distribution $P_{W,S}$, and $\fhat$ is independent of both samples.
+\end{definition}
+
+\paragraph{PPI Estimator.}
+The prediction-powered inference estimator for $\theta^* = \E[Y]$ \citep{angelopoulos2023prediction}:
+\begin{equation}
+  \hat{\theta}_{\text{PPI}}^{\lambda} = \underbrace{\frac{1}{n}\sum_{i=1}^{n} Y_i}_{\hat{\theta}_H} - \lambda \left(\underbrace{\frac{1}{n}\sum_{i=1}^{n} \hat{Y}_i - \frac{1}{N}\sum_{j=1}^{N} \hat{Y}_j}_{\text{rectifier}}\right)
+\end{equation}
+This estimator is consistent for $\theta^*$ regardless of LLM bias, and at least as precise as $\hat{\theta}_H$.
+
+\paragraph{Plug-in Bias Correction.}
+\citet{ludwig2025large} learn the conditional bias $b(w,s) = \E[\hat{Y} - Y \mid W=w, S=s]$ from $\mathcal{D}_{\text{shared}}$, constructing debiased pseudo-labels $\tilde{Y}_j \coloneqq \hat{Y}_j - \hat{b}(\tilde{W}_j, \tilde{S}_j)$ and the corrected estimator:
+\begin{equation}
+  \hat{\theta}_{\text{corrected}} = \frac{1}{N}\sum_{j=1}^{N} \bigl(\hat{Y}_j - \hat{b}(\tilde{W}_j, \tilde{S}_j)\bigr)
+\end{equation}
+
+\begin{remark}[The STE as a Decomposition]
+The population ATE can be decomposed as:
+\begin{equation}
+  \underbrace{\E[Y^*(s') - Y^*(s)]}_{\text{ATE}} = \underbrace{\text{STE}(s, s')}_{\text{identified by LLM for IC tasks}} + \underbrace{\text{calibration correction}}_{\text{recovered from } \mathcal{D}_{\text{shared}}}
+\end{equation}
+The calibration correction accounts for the gap between LLM predictions and human outcomes. The \textit{effective sample size gain} from augmentation depends on the LLM's predictive accuracy for IC behavior.
+\end{remark}
+
+
+%=============================================================================
+\section{Two Types of Data, One Generative Bridge}
+\label{sec:two_data}
+%=============================================================================
+
+We argue that credible LLM simulation requires two complementary data sources:
+
+\begin{definition}[Type A: Persona Data]
+Data capturing \textbf{who the decision-maker is}: demographics, personality inventories, interview transcripts, cognitive assessments, survey responses. This corresponds to observing the type indicator $w \in \mathcal{W}$ at high resolution.
+\end{definition}
+
+\begin{definition}[Type B: Incentive-Compatible Behavioral Data]
+Data capturing \textbf{what the decision-maker does} under incentive-compatible tasks: contributions in public goods games, trust decisions, dictator allocations, risk elicitation outcomes. Because the task is IC, observed actions reveal true preferences, making this data a clean calibration target.
+\end{definition}
+
+\paragraph{Why both are necessary.}
+Type A alone (persona without behavior) enables plausible but uncalibrated predictions---there is no ground truth anchoring the mapping $w \mapsto Y$. Type B alone (behavior without persona) provides precise measurements for observed $(w, s)$ pairs but cannot generalize to unseen types or configurations. Together, they enable a generative approach: the LLM learns $\fhat: \mathcal{W} \times \mathcal{S} \to \mathcal{Y}$ from the joint data and can generate predictions for new $(w, s)$ pairs.
+
+\paragraph{The IC constraint on Type B.}
+Critically, only incentive-compatible behavioral data should be used as simulation targets. Survey responses, personality tests, and hypothetical choices are Type A inputs (persona construction), not Type B targets. If the LLM is trained to predict non-IC behavior, it learns to reproduce cheap talk or mechanism artifacts rather than true preferences, and generalization to new configurations will fail.
+
+
+%=============================================================================
+\section{Prediction and Augmentation}
+\label{sec:pred_aug}
+%=============================================================================
+
+\subsection{Prediction: Fixed Bases, New BIC Stimuli}
+
+Following \citet{manning2026general}, prediction holds the agent population fixed and varies the experimental configuration:
+
+Given agent types calibrated on an IC ``seed'' configuration $s_{\text{train}}$, predict the distribution of behavior in a new IC configuration $s^*$. The assumption is \textbf{behavioral invariance}: the preference types $w$ that drive behavior in $s_{\text{train}}$ also drive behavior in $s^*$. Because both tasks are IC, the observed data in $s_{\text{train}}$ reveals true preferences, and the LLM can apply these learned types to $s^*$.
+
+\subsection{Augmentation: Expanding the Sample for a BIC Task}
+
+Given a small human sample in a BIC configuration $s$, generate additional LLM-predicted data for unseen persona types:
+\begin{itemize}
+  \item $\mathcal{D}_{\text{shared}} = \{(w_i, s, Y_i, \hat{Y}_i)\}_{i=1}^n$: jointly labeled data
+  \item $\mathcal{D}_{\text{LLM}} = \{(\tilde{w}_j, s, \hat{Y}_j)\}_{j=1}^N$: LLM-only predictions for new personas
+\end{itemize}
+Because $s$ is BIC, the human data in $\mathcal{D}_{\text{shared}}$ cleanly reveals the type$\to$action mapping, and the augmented data extends this mapping to the larger persona space.
+
+\subsection{The IC Frontier}
+
+A key empirical question is: \textit{which tasks are incentive-compatible in a way that supports credible simulation?} Tasks with real stakes, transparent mechanisms, and clean preference revelation (dictator games, PGG contributions, binary trust, BRET, simple ultimatum proposals, PD, Stag Hunt) are strong candidates. Tasks with opaque mechanisms, novel and unfamiliar decision formats, or purely hypothetical framing are not. The boundary cases---and the empirical determination of where simulation breaks down---are an important direction for future work.
+
+
+%=============================================================================
+\section{Application: Public Goods Games and Beyond}
+\label{sec:application}
+%=============================================================================
+
+We illustrate the framework using two datasets:
+
+\paragraph{Type A: Twin-2K-500.}
+2,058 US participants with 256 survey items across demographics, personality (Big Five, Need for Cognition), cognitive tests (CRT, financial literacy), economic preferences (trust, ultimatum, dictator, risk, time), and heuristics experiments \citep{toubia2025twin}.
+
+\paragraph{Type B: PGG high-throughput data.}
+7,354 participants in parameterized public goods games with punishment, reward, and contribution mechanisms. The core contribution decision---``How much of your endowment do you contribute to the public fund?''---is BIC: the payoff is linear in the contribution, the MPCR is clearly stated, and the dominant strategy for any given social preference type is transparent.
+
+\paragraph{Prediction test.}
+Calibrate agent types on observed PGG configurations (e.g., MPCR=0.4, punishment available) and predict behavior in novel PGG configurations (e.g., MPCR=0.6, reward only). Both are incentive-compatible $\Rightarrow$ the behavioral bases should transfer.
+
+\paragraph{Transfer test.}
+Test whether PGG-calibrated agents predict behavior in structurally different IC tasks: trust games (OSF ht863), minority games (OSF njzas), risk elicitation/BRET (OSF njzas), and multi-game batteries including ultimatum, Prisoner's Dilemma, Stag Hunt, and coordination (OSF fvk2c). All involve real stakes and transparent mechanisms $\Rightarrow$ the underlying preference types should predict across game families.
+
+
+%=============================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%=============================================================================
+
+We have proposed the Simulable Treatment Effect as a framework for understanding what LLM agent simulations identify. The core argument is that credible simulation targets \textit{incentive-compatible behavior}---decisions made under real economic incentives with transparent mechanisms. For such tasks, observed actions reveal true preferences, the LLM can learn the type-to-action mapping, and this mapping can be applied to new configurations.
+
+The framework implies a concrete research design for the LLM era: collect two types of data---rich persona/interview data (Type A) and incentive-compatible behavioral data (Type B)---and use a generative language model to bridge them. This is, we argue, the most general method for producing credible synthetic behavioral data at scale. Like the LATE framework, our contribution is not a new estimator but a new identification result: a clear statement of what LLM simulation identifies (the STE for IC tasks), and the conditions under which it does so.
+
+The size of the simulable domain---how many tasks, how many configurations---is an empirical question. The effective precision gains from augmentation depend on the LLM's predictive accuracy. And the conditions under which behavioral bases transfer across game families require extensive empirical validation. But by making the assumptions explicit and the target of inference precise, we hope to provide a foundation for the credible use of LLM simulation in experimental social science.
+
+
+%=============================================================================
+% References
+%=============================================================================
+\bibliographystyle{apalike}
+
+\begin{thebibliography}{99}
+
+\bibitem[Angelopoulos et al., 2023]{angelopoulos2023prediction}
+Angelopoulos, A.~N., Bates, S., Cand\`{e}s, E.~J., Jordan, M.~I., and Lei, L. (2023).
+\newblock Prediction-powered inference.
+\newblock \textit{Science}, 382(6671):669--674.
+
+\bibitem[Argyle et al., 2023]{argyle2023out}
+Argyle, L.~P., et al. (2023).
+\newblock Out of one, many: Using language models to simulate human samples.
+\newblock \textit{Political Analysis}, 31(3):337--351.
+
+\bibitem[Binz and Schulz, 2023]{binz2023using}
+Binz, M. and Schulz, E. (2023).
+\newblock Using cognitive psychology to understand {GPT}-3.
+\newblock \textit{PNAS}, 120(6):e2218523120.
+
+\bibitem[Bisbee et al., 2024]{bisbee2024synthetic}
+Bisbee, J., et al. (2024).
+\newblock Synthetic replacements for human survey data?
+\newblock \textit{Political Analysis}, 32(4):439--456.
+
+\bibitem[Broska et al., 2025]{broska2025mixed}
+Broska, D., Hullman, J., and Ugander, J. (2025).
+\newblock Mixed subjects design.
+\newblock SSRN 6343598.
+
+\bibitem[Cui et al., 2025]{cui2025ai}
+Cui, H., et al. (2025).
+\newblock {AI} as research participants.
+\newblock Working paper.
+
+\bibitem[Dom\'{\i}nguez-Olmedo et al., 2024]{dominguez2024questioning}
+Dom\'{\i}nguez-Olmedo, R., Hardt, M., and Mendler-D\"{u}nner, C. (2024).
+\newblock Questioning the survey responses of large language models.
+\newblock Working paper.
+
+\bibitem[Hewitt et al., 2024]{hewitt2024predicting}
+Hewitt, L., et al. (2024).
+\newblock Predicting results of social science experiments using large language models.
+\newblock Working paper.
+
+\bibitem[Horton, 2023]{horton2023large}
+Horton, J.~J. (2023).
+\newblock Large language models as simulated economic agents.
+\newblock NBER Working Paper 29945.
+
+\bibitem[Hullman et al., 2026]{hullman2026validating}
+Hullman, J., Broska, D., Sun, H., and Shaw, A. (2026).
+\newblock Validating {LLM} simulations as behavioral evidence.
+\newblock arXiv:2602.15785.
+
+\bibitem[Imbens and Angrist, 1994]{imbens1994identification}
+Imbens, G.~W. and Angrist, J.~D. (1994).
+\newblock Identification and estimation of local average treatment effects.
+\newblock \textit{Econometrica}, 62(2):467--475.
+
+\bibitem[Ludwig et al., 2025]{ludwig2025large}
+Ludwig, J., Mullainathan, S., and Rambachan, A. (2025).
+\newblock Large language models: An applied econometric framework.
+\newblock NBER Working Paper.
+
+\bibitem[Manning and Horton, 2026]{manning2026general}
+Manning, B.~S. and Horton, J.~J. (2026).
+\newblock General social agents.
+\newblock arXiv:2508.17407.
+
+\bibitem[Park et al., 2024]{park2024generative}
+Park, J.~S., et al. (2024).
+\newblock Generative agents: Interactive simulacra of human behavior.
+\newblock \textit{UIST 2023}.
+
+\bibitem[Toubia et al., 2025]{toubia2025twin}
+Toubia, O., et al. (2025).
+\newblock Twin-2K-500: A dataset for building digital twins.
+\newblock arXiv:2505.17479.
+
+\end{thebibliography}
+
+\end{document}

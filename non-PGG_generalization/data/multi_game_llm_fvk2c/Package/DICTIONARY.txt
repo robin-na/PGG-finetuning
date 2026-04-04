@@ -1,0 +1,133 @@
+#########################################################################################################################################################
+# Dictionaries for Variables
+# Adverse Reactions to the Use of Large Language Models in Social Interactions
+# F. Dvorak, R. Stumpf, S. Fehrler & U. Fischbacher
+# PNAS Nexus
+#########################################################################################################################################################
+#########################################################################################################################################################
+# MainData.csv
+#########################################################################################################################################################
+SubjectID: subject identifier (integer)
+TreatmentCode: treatment identifier (string: "ODP" "ODU" "TDP" "TRU" "TRP" "TDU")
+Treatment: treatment combination (string: "OpaqueDelegation" "TransparentDelegation" "TransparentRandom")
+PersonalizedTreatment: personalization of AI (dummy 1=personalized, 0 = unpersonalized)
+Scenario: role scenario (string: "AISupport" "NoAISupport")
+Case:interaction case (string: "AgainstHuman" "AgainstAI" "Opaque")
+Proposer: Offer in UG (number: 0-10)
+Responder: Min acceptance thereshold in UG (number: 0-10)
+Receiver: Backtransfer in Trust Game (number: 1-6)
+Sender: trust in Trust Game (dummy: 1=trust, 0=no trust)
+PD: cooperation in Prisoner's Dilemma Game (dummy: 1=cooperation, 0=defection)
+SH: cooperation in Stag Hunt Game (dummy: 1=cooperation, 0=no copperation)
+C: coordination (dummy: 1=coordination, 0=no coordination)
+Proposer_Delegation: delegation decision as proposer (dummy: 1=delegation, 0=no delegation)
+Responder_Delegation: delegation decision as responder (dummy: 1=delegation, 0=no delegation)
+Receiver_Delegation: delegation decision as receiver (dummy: 1=delegation, 0=no delegation)
+Sender_Delegation: delegation decision as sender (dummy: 1=delegation, 0=no delegation)
+PD_Delegation: delegation decision in PD (dummy: 1=delegation, 0=no delegation)
+SH_Delegation: delegation decision in SH (dummy: 1=delegation, 0=no delegation)
+C_Delegation: delegation decision in C (dummy: 1=delegation, 0=no delegation)
+count_ChangedBrowserWindow: number of times browser window is changed (number)
+DurationInSec: duration in seconds to complete experiment (number)
+KnowledgeChatGPT: if subject knows CHatGPT (string: "Yes" "No")
+UsageChatGPT: times ChatGPT used (string: "Never" "11 - 50 times" "6 - 10 times" "1 - 5 times" "Over 50 times")
+IntuitionThoughtfulness: binary preference for 1st or 2nd concept (number: 1 or 2)
+IntroversionExtraverison: binary preference for 1st or 2nd concept (number: 1 or 2)
+FairnessEfficiency: binary preference for 1st or 2nd concept (number: 1 or 2)
+ChaosBoredom: binary preference for 1st or 2nd concept (number: 1 or 2)
+SelfishnessAltruism: binary preference for 1st or 2nd concept (number: 1 or 2)
+NoveltyReliability: binary preference for 1st or 2nd concept (number: 1 or 2)
+TruthHarmony: binary preference for 1st or 2nd concept (number: 1 or 2)
+_DifficultyPredictionAI: AI difficult to predict (5-point Likert scale: "Strongly disagree" - "Strongly agree") 
+Q_DifficultyPredictionHuman: AI difficult to predict (5-point Likert scale: "Strongly disagree" - "Strongly agree") 
+Q_AITrustworthy: AI is trustworthy (5-point Likert scale: "Strongly disagree" - "Strongly agree") 
+Q_HumanTrustworthy: humans are trustworthy (5-point Likert scale: "Strongly disagree" - "Strongly agree") 
+Q_AIReflectsHuman: AI reflects human preferences (5-point Likert scale: "Strongly disagree" - "Strongly agree") 
+Q_DelegationBelief: others' will delegate to AI (5-point Likert scale: "Strongly disagree" - "Strongly agree") 
+Q_DelegationAppropriate: delegation to AI appropriate (5-point Likert scale: "Strongly disagree" - "Strongly agree") 
+Q_EqualityWithAI: equality concerns AI (5-point Likert scale: "Strongly disagree" - "Strongly agree") 
+Q_EqualityWithHuman: equality concerns human(5-point Likert scale: "Strongly disagree" - "Strongly agree") 
+Age: age in years (number)
+Gender: subjects gender (string: "Man" "Woman" "Non-binary" "Self-description")
+Education: highest degree or qualification (string) 
+Exclusion_Disturb: written statement 
+ExclusionUsageGPT: written statement
+personality_string: string of 1s and 2s indicating the subjects' personality
+
+#########################################################################################################################################################
+# TuringData.csv
+#########################################################################################################################################################
+SubjectID: subject identifier (integer)
+TreatmentCode: treatment identifier (string: "ODP" "ODU" "TDP" "TRU" "TRP" "TDU")
+Situation: game situation (string: "UG_P" "UG_R" "TG_S" "TG_R" "PD"   "SH"   "C")
+DecisionOrdering: order of decisions (number: 1-7)
+RatingIsAI: AI correctly identified (dummy: 1=correct guess, 0=false guess)
+Cert: certainty (number: 0-4)
+DurationInSec: duration in seconds to complete experiment (number)
+KnowledgeChatGPT: if subject knows CHatGPT (string: "Yes" "No")
+UsageChatGPT: times ChatGPT used (string: "Never" "11 - 50 times" "6 - 10 times" "1 - 5 times" "Over 50 times")
+Age: age in years (number)
+Gender: subjects gender (string: "Man" "Woman" "Non-binary" "Self-description")
+Education: highest degree or qualification (string) 
+StatementID: ID of statement shown (number)
+SubjectID_Statement: subject ID of person who made statement (number)
+count_ChangedBrowserWindow: number of times browser window is changed (number)
+AttentionCheck: attention check passed
+Exclusion_Disturb: written statement 
+ExclusionUsageGPT: written statement
+GeneralFeedback: written statement
+AI_JUS: AI justification shown (text)
+Human_JUS: human justification shown (text)
+AI_DEC: AI decision (number)
+Human_DEC: human decision (number)
+
+#########################################################################################################################################################
+# AIData.csv
+#########################################################################################################################################################
+Date: date when response was collected
+Version: Version of ChatGPT
+ID: id of the personality type (number: 1-128)
+DG.dictator: prompt used for decision in game (text)
+DEC.DG.dictator: decision in game (text)
+IJ.DG.dictator: prompt used for justification for decision in game (text)
+JUST.DG.dictator: justification for decision in game (text)
+UG.proposer: prompt used for decision in game (text)
+DEC.UG.proposer: decision in game (text)
+IJ.UG.proposer: prompt used for justification for decision in game (text)
+JUST.UG.proposer: justification for decision in game (text)
+UG.responder: prompt used for decision in game (text)
+DEC.UG.responder: decision in game (text)
+IJ.UG.responder: prompt used for justification for decision in game (text)
+JUST.UG.responder: justification for decision in game (text)
+TG.trustor: prompt used for decision in game (text)
+DEC.TG.trustor: decision in game (text)
+IJ.TG.trustor: prompt used for justification for decision in game (text)
+JUST.TG.trustor: justification for decision in game (text)
+TG.trustee: prompt used for decision in game (text)
+DEC.TG.trustee: decision in game (text)
+IJ.TG.trustee: prompt used for justification for decision in game (text)
+JUST.TG.trustee: justification for decision in game (text)
+PD: prompt used for decision in game (text)
+DEC.PD: decision in game (text)
+IJ.PD: prompt used for justification for decision in game (text)
+JUST.PD: justification for decision in game (text)
+C: prompt used for decision in game (text)
+DEC.C: decision in game (text)
+IJ.C: prompt used for justification for decision in game (text)
+JUST.C: justification for decision in game (text)
+DC: prompt used for decision in game (text)
+DEC.DC: decision in game (text)
+IJ.DC: prompt used for justification for decision in game (text)
+JUST.DC: justification for decision in game (text)
+BC: prompt used for decision in game (text)
+DEC.BC: decision in game (text)
+IJ.BC: prompt used for justification for decision in game (text)
+JUST.BC: justification for decision in game (text)
+SH: prompt used for decision in game (text)
+DEC.SH: decision in game (text)
+IJ.SH: prompt used for justification for decision in game (text)
+JUST.SH: justification for decision in game (text)
+Type: type of personalization (string: "personalized" "unpersonalized")
+C2: alternative in Coordination Game (number: 0=earth)
+Earth: dummy for earth (dummy: 1=earth chosen, 0=other planet chosen)
+Trust: dummy for trust (dummy: 1=trust, 0=no trust)

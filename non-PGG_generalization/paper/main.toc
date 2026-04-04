@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {paragraph}{What makes behavior ``simulable''?}{3}{section*.2}%
+\contentsline {paragraph}{Three contributions.}{3}{section*.3}%
+\contentsline {paragraph}{Roadmap.}{4}{section*.4}%
+\contentsline {section}{\numberline {2}The Simulable Treatment Effect}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Setup and Notation}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Incentive-Compatible Behavior as the Simulable Domain}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Target Parameters}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}When Does Na\"ive Substitution Work?}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Defining the Simulable Treatment Effect}{6}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Identification}{7}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Statistical Calibration: When Moment Preservation Fails}{7}{subsection.2.7}%
+\contentsline {paragraph}{PPI Estimator.}{7}{section*.5}%
+\contentsline {paragraph}{Plug-in Bias Correction.}{7}{section*.6}%
+\contentsline {section}{\numberline {3}Two Types of Data, One Generative Bridge}{8}{section.3}%
+\contentsline {paragraph}{Why both are necessary.}{8}{section*.7}%
+\contentsline {paragraph}{The IC constraint on Type B.}{8}{section*.8}%
+\contentsline {section}{\numberline {4}Prediction and Augmentation}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Prediction: Fixed Bases, New BIC Stimuli}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Augmentation: Expanding the Sample for a BIC Task}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}The IC Frontier}{9}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Application: Public Goods Games and Beyond}{9}{section.5}%
+\contentsline {paragraph}{Type A: Twin-2K-500.}{9}{section*.9}%
+\contentsline {paragraph}{Type B: PGG high-throughput data.}{9}{section*.10}%
+\contentsline {paragraph}{Prediction test.}{9}{section*.11}%
+\contentsline {paragraph}{Transfer test.}{9}{section*.12}%
+\contentsline {section}{\numberline {6}Conclusion}{9}{section.6}%

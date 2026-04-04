@@ -1,0 +1,269 @@
+StatementID,TreatmentCode,SubjectID,personality_string,PD,PD_JUS,AI_PD,AI_PD_JUS
+1,ODP,14,2112122,A,Fair to get equal.,A,Maximizing expected value.
+2,ODP,23,2112222,B,I will either get 8 or 3.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+3,ODP,40,2212121,A,This choice is fair.,A,"Choosing A results in the most reward for both players if they both choose it, and a lesser but still positive reward if only one chooses it. This option seems to be the most mutually beneficial."
+4,ODP,43,2211222,A,I hope they decide themselves and choose A.,A,"Choosing option A results in a fairer outcome for both parties, regardless of the other person's choice."
+5,ODP,50,1111221,A,Simply hoping I am faced with a fair person.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+6,ODP,71,1112221,A,This way we both win!,A,To earn a fair outcome for both parties.
+7,ODP,85,1112122,A,It's the most to expect without leaving it to the chance of only getting 1 ECU.,A,"Go with option A, it leads to mutual benefit and avoids taking advantage of the other person."
+8,ODP,86,2112211,B,I get 3 or 8 which is more than if I choose A.,A,"Choosing A maximizes the total payout for both players, leading to a fairer outcome."
+9,ODP,92,1111222,A,A is the first that came to my head.,A,"Option A values fairness and altruism over individual gain, leading to mutual benefit in the best case scenario and a less unequal outcome in the other scenarios."
+10,ODP,108,1111121,B,I think the other person would play safe and choose A.,A,Choose option A for a higher chance of receiving a lower but more equal payout.
+11,ODP,110,2112222,A,Choosing A seems the fairest decision and I hope the other person will think the same.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+12,ODP,131,2112221,A,I want both of us to benefit as much as possible.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+13,ODP,135,2112221,B,More chance of profit for me.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+14,ODP,137,1211221,A,This seems the best for me to gain the most.,A,"Going with option A maximizes the chance for both people to earn more ECU together, creating a situation where both people can benefit."
+15,ODP,143,2111222,B,Too much to risk on A.,A,I choose option A as it results in a fairer outcome for both parties in case the other person also chooses A.
+16,ODP,162,2212211,B,I am choosing the option that minimises the risk to me.,A,"Choosing A results in a more fair outcome in case the other person also chooses A. If the other person chooses B, I still receive a small amount of money which is better than receiving nothing."
+17,ODP,200,1221121,B,To try and get more money.,A,Maximize own earnings.
+18,ODP,201,2112222,B,The least I will receive is 3 ECUs and the most 8.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+19,ODP,203,1221222,A,Felt most likely to get a high payback.,A,"Choosing A gives a chance for both to get 5 ECU, which is a good outcome for both parties."
+20,ODP,220,2112222,A,Because this is the highest chance for both of us receiving the largest payout.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+21,ODP,221,2211221,B,I think the person will choose A.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+22,ODP,225,2221211,A,This is the fairest option for both players.,A,"I choose A because I think it gives me the best overall payout, regardless of the other person's choice."
+23,ODP,231,2111221,A,I feel like this is a fair option for both of us and assume the other person would choose this too.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+24,ODP,247,2111221,B,We can both get equal.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+25,ODP,252,2211212,B,More money if it’s me.,A,"The choice is based on fairness and altruism, as choosing A results in a more equal distribution of earnings compared to choosing B."
+26,ODP,262,2111221,A,"I would like us both to choose A, ideally.",A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+27,ODP,266,2112221,A,A is the best option for both of us.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+28,ODP,270,2122221,A,For this the total payout is the highest.,A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+29,ODP,277,2222211,A,Better outcome for us both.,A,Choosing A has a better average payout compared to choosing B.
+30,ODP,281,2111212,B,It gives me the most ECU.,A,I believe in reciprocity and mutual benefit.
+31,ODP,290,2111121,A,Feel confident in doing so.,A,I believe this option will yield a higher payout.
+32,ODP,295,2111221,A,Best case scenario for us both.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+33,ODP,300,1112221,A,Fair chance of success.,A,To earn a fair outcome for both parties.
+34,ODP,301,1111221,B,Choosing B has better outcomes.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+35,ODP,311,1111221,A,It is the fairest outcome for both.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+36,ODP,323,1121221,A,"This is the highest, equal option.",A,Get more by choosing A.
+37,ODP,327,1111221,B,This is the best outcome for me and I'm happy to risk us both choosing B.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+38,ODP,331,2211221,A,Because there is a better chance of getting more money.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+39,ODP,335,1122221,A,Highest chance of getting a significant sum (5 ECU).,A,"Option A is more likely to result in mutual benefit, increasing the chances of both people earning 5 ECU."
+40,ODP,347,2112121,A,We both get 5 ECU if we both pick A.,A,"To maximize my own earnings, I choose A."
+41,ODP,350,1111221,A,"Most fair, good amount.",A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+42,ODP,358,2111221,A,We are more likely to get the same points.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+43,ODP,364,2112222,A,Equal payment for both.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+44,ODP,374,1112221,B,Potential to get 8.,A,To earn a fair outcome for both parties.
+45,ODP,379,2211222,B,Likelihood of other person's choice but where both get money.,A,"Choosing option A results in a fairer outcome for both parties, regardless of the other person's choice."
+46,ODP,388,2111122,A,I think if the other person wants to receive more they would choose the option where we both get something.,A,I choose option A as it results in a fairer outcome for both parties compared to option B.
+47,ODP,391,2111212,A,I'd feel immoral trying to take more.,A,I believe in reciprocity and mutual benefit.
+48,ODP,398,2211222,B,Because I have an opportunity to increase my ECUs.,A,"Choosing option A results in a fairer outcome for both parties, regardless of the other person's choice."
+49,ODP,402,1222222,A,I hope the other person would make a similar decision.,A,"I want the most ECU possible, and choosing A maximizes the potential payout in two out of the four possible outcomes."
+50,ODP,413,2112221,B,I have a chance to get 8 ECU.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+51,ODP,432,2122222,B,Safer choice to get minimum of 3 ECU.,A,"Choosing option A results in a higher average payout compared to choosing option B, regardless of the other person's choice."
+52,ODP,440,2112212,B,Better average return rate.,A,"Option A results in more ECU if both players choose it, and less if only one player chooses it, which could be seen as a more fair outcome."
+53,ODP,461,2112221,A,I want to share the ECU.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+54,ODP,479,1111221,A,"Maximises total payout if both choose, more for me if only I choose, only 1 option where I'd get less.",A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+55,ODP,512,2211121,B,Minimum of 3 ECU.,A,I choose A because it results in the highest average payout and reduces the risk of getting the lowest payout.
+56,ODP,519,2112121,A,"I think my partner will choose A as the most mutually beneficial answer, i.e. will choose to cooperate with me.",A,"To maximize my own earnings, I choose A."
+57,ODP,533,2111211,B,"With option B, I have a 50% chance to get the maximum amount (8). I'd normally rather decide on my own as the decision is not too complex.",A,"I choose option A as it provides a more equal distribution of ECUs, with both parties receiving 5 ECUs if both choose A, compared to option B which gives one person 8 ECUs and the other only 3 ECUs if both choose B."
+58,ODP,534,1122221,B,I don’t trust them to pick A.,A,"Option A is more likely to result in mutual benefit, increasing the chances of both people earning 5 ECU."
+59,ODP,563,1111221,A,I want us both to earn.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+60,ODP,593,2212221,B,Because then I will receive more ECU.,A,"Choosing option A is a cooperative choice that leads to mutual benefit, while choosing option B is more selfish and leads to a winner-takes-all outcome."
+61,ODP,598,2111222,A,I decided to go for the max and hope the other person does the same.,A,I choose option A as it results in a fairer outcome for both parties in case the other person also chooses A.
+62,ODP,605,2112221,A,It had a question mark!,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+63,ODP,623,1121212,B,"Guess I'll just pick B and either get 3 or 8, both a good win and better odds than 5 or 1 I think.",A,Gaining 5 ECU is the best outcome in any scenario.
+64,ODP,630,2122211,A,For a first choice this is logically the best and I should make it.,A,I choose option A as it is the best option that gives me a higher payout regardless of the other person's choice.
+65,ODP,635,1112212,B,Seems to be the best option.,A,It's more cooperative.
+66,ODP,637,2121221,A,"It’s the first round, I’m hoping the other person will be feeling fair.",A,Choosing option A maximizes the outcome in two out of four possible scenarios.
+67,ODP,657,1211212,B,I could get more by choosing this option.,A,I choose option A for the potential of mutual benefit.
+68,ODP,663,2112221,A,Higher chance of earning more each.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+69,ODP,664,1112221,A,It’s the fairest way.,A,To earn a fair outcome for both parties.
+70,ODP,668,1111221,B,It would benefit me more.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+71,ODP,675,2221221,B,Chance of getting more ECU.,A,"Choosing A is the more consistent and predictable option, leading to a higher expected payout overall."
+72,ODP,694,1221221,A,"Random pick, hoping the other person decides on their own.",A,I choose A because it has a higher probability of both of us getting a higher payout.
+73,ODP,696,2112221,A,Most money for both of us.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+74,ODP,697,2111221,A,"Like split or steal. Hopefully, the other person would like to split rather than risking going for B.",A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+75,ODP,702,2112221,A,Sharing is caring.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+76,ODP,707,2212222,A,No reason in particular.,A,"I choose option A because it results in a more equal distribution of ECU, regardless of the other person's choice."
+77,ODP,713,2122221,A,"Because, I believe this is the right decision.",A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+78,ODP,715,2122121,B,"Hopefully, we both get the same amount.",A,"Choosing option A guarantees a payout of at least 1 ECU, whereas choosing option B only guarantees a payout of 3 ECU. It's the safer option, maximizing the minimum amount of ECU earned."
+79,ODP,726,2112221,B,I’d like us both to get the most out of it.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+80,ODP,728,2112221,A,That's the one I prefer.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+81,ODP,730,2221212,A,It seems the fairest option.,A,"I choose option A because it offers a greater reward if the other person also chooses A, and a lower penalty if the other person chooses B."
+82,ODP,732,2111221,A,I believe this is the best chance of more money for both of us.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+83,ODP,740,2112222,B,Even if we both choose B we will still get more than 1 ECU.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+84,ODP,749,2211221,A,"It makes sense for both of us to choose A, the fairer amount.",A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+85,ODP,750,2112222,A,I hope the other person is collaborative.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+86,ODP,757,1212221,A,I like to be fair.,A,I choose A because it benefits both parties more equally.
+87,ODP,784,2112221,B,We all want the best return.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+88,ODP,785,1111211,A,It's more likely in my opinion that the other person will also choose A as it's the safest option.,A,Choosing A supports fairness and altruism.
+89,ODP,801,2121221,B,I think the other person will choose B too.,A,Choosing option A maximizes the outcome in two out of four possible scenarios.
+90,ODP,817,2211111,B,B has the highest outcome probability for both of us.,A,"I choose A because it gives me a chance to earn more money, whether the other player chooses A or B. If both of us choose A, we both get a decent payout. If the other player chooses B, I still get a slightly higher payout than if we both choose B."
+91,ODP,829,2122222,A,It’s fair between me and the other person.,A,"Choosing option A results in a higher average payout compared to choosing option B, regardless of the other person's choice."
+92,ODP,833,2212222,A,My name starts with A.,A,"I choose option A because it results in a more equal distribution of ECU, regardless of the other person's choice."
+93,ODP,837,2222221,B,I think everyone wants the big amount.,A,I choose option A for the highest potential payout when paired with any other choice.
+94,ODP,839,1211222,A,There is a better return on choosing A.,A,I choose option A because I prioritize fairness and altruism. This option gives the best outcome for both players.
+95,ODP,853,2222222,A,Hope that my partner will also choose A and we both get 5 points.,A,Get 5 ECU if both choose A.
+96,ODP,864,2112222,A,I am hoping that we are both choosing option A.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+97,ODP,866,2211221,A,The best ECU outcome for both.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+98,ODP,868,1221121,B,Hoping for more money.,A,Maximize own earnings.
+99,ODP,872,2212221,A,This is the most fair and even answer.,A,"Choosing option A is a cooperative choice that leads to mutual benefit, while choosing option B is more selfish and leads to a winner-takes-all outcome."
+100,ODP,883,1112221,B,Maximise profit potential and reduce loss as I don't know what they will do.,A,To earn a fair outcome for both parties.
+101,ODP,911,2112221,A,Most equal and most money.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+102,ODP,918,1221221,B,More money potentially.,A,I choose A because it has a higher probability of both of us getting a higher payout.
+103,ODP,928,1121212,B,I feel more responsibility.,A,Gaining 5 ECU is the best outcome in any scenario.
+104,ODP,974,2111121,B,More likely to get more points.,A,I believe this option will yield a higher payout.
+105,ODP,995,2211221,A,It is equal.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+106,ODP,1010,2122122,B,I think this will on average get the most ECU.,A,"To maximize personal gain, option A is the better choice as it results in 5 ECU in the best-case scenario and only 1 ECU in the worst-case scenario."
+107,ODP,1036,2212222,B,Choosing B means that I would earn more money in both situations.,A,"I choose option A because it results in a more equal distribution of ECU, regardless of the other person's choice."
+108,ODP,1050,2111212,B,I felt I could still make some profit choosing this option.,A,I believe in reciprocity and mutual benefit.
+109,ODP,1066,2112221,A,It gets the most for both of us.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+110,ODP,1068,1121221,B,At this stage there is no pattern so the choice is random.,A,Get more by choosing A.
+111,ODP,1073,2112221,A,It was a random choice.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+112,ODP,1080,2211212,B,I'll either get 8 or 3.,A,"The choice is based on fairness and altruism, as choosing A results in a more equal distribution of earnings compared to choosing B."
+113,ODP,1081,2122221,A,I would like to split.,A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+114,ODP,1095,2112221,A,We would both want to make as much as possible and I rely on the other to feel the same.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+115,ODP,1113,1121221,A,Highest chance of me getting something good back.,A,Get more by choosing A.
+116,ODP,1114,2112221,A,Rather we both get the same.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+117,ODP,1124,2221221,B,Because 3 is better than 1 if the other person was to choose B.,A,"Choosing A is the more consistent and predictable option, leading to a higher expected payout overall."
+118,ODP,1175,2112121,A,I am hoping the other person chooses B so they get the 8 ECU. I'm not greedy.,A,"To maximize my own earnings, I choose A."
+119,ODP,1183,2111222,A,Both choosing A is the most beneficial.,A,I choose option A as it results in a fairer outcome for both parties in case the other person also chooses A.
+120,ODP,1214,2112221,B,Best outcome assuming other chooses A.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+121,ODP,1225,2112221,A,"More fair for everyone, if they are greedy they can take the extra money, worth risking.",A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+122,ODP,1235,1121221,A,It is the fairest.,A,Get more by choosing A.
+123,ODP,1266,2112221,A,Like making my own decision.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+124,ODP,1267,2122221,B,Either way I get 3 or 8 which is win-win.,A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+125,ODP,1269,1112221,B,I would like the most amount.,A,To earn a fair outcome for both parties.
+126,ODP,1281,2211221,A,It's fairer to choose A.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+127,ODP,1286,1221211,B,"If I choose B I will get more money, if I choose A the max money I will get is 5 or 1. If I choose B I can get 8 or minimum of 3. Makes sense to always pick B.",A,Because A seems like the better choice.
+128,ODP,1321,2111222,A,The best chance of both getting a fair amount.,A,I choose option A as it results in a fairer outcome for both parties in case the other person also chooses A.
+129,ODP,1329,1121122,A,"This option provides us with 5 ECU each, the highest amount where we can both get the same ECU.",A,5 is better than 3.
+130,ODP,1337,2111221,A,Best win for both sender and receiver.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+131,ODP,1362,2222222,B,Higher payment probability.,A,Get 5 ECU if both choose A.
+132,ODP,1363,2221221,B,Greater risk for reward.,A,"Choosing A is the more consistent and predictable option, leading to a higher expected payout overall."
+133,ODP,1392,2211221,A,This is the most fair choice.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+134,ODP,1397,1211221,A,Not going to lose my principles over a few pounds. Do the fair and right thing.,A,"Going with option A maximizes the chance for both people to earn more ECU together, creating a situation where both people can benefit."
+135,ODP,1398,2221221,B,This option is the less risky one.,A,"Choosing A is the more consistent and predictable option, leading to a higher expected payout overall."
+136,ODP,1401,2112221,A,This gives the fairest outcome for both of us.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+137,ODP,1409,2212222,B,Guarantee of at least 3 ECU.,A,"I choose option A because it results in a more equal distribution of ECU, regardless of the other person's choice."
+138,ODP,1421,2111221,B,I chose B as I get more money hopefully.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+139,ODP,1425,1112221,B,I will get 8 or 3 and not risk receiving 1.,A,To earn a fair outcome for both parties.
+140,ODP,1476,2122221,A,I’m hoping the other person will be genuine with me.,A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+141,ODP,1497,2112221,B,I don't want to risk only getting 1.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+142,ODP,1517,1211221,B,More chance of getting 8 and less of getting 1.,A,"Going with option A maximizes the chance for both people to earn more ECU together, creating a situation where both people can benefit."
+143,ODP,1540,2222211,A,Id like to decide myself without advice.,A,Choosing A has a better average payout compared to choosing B.
+144,ODP,1544,1111221,A,That is the fairest outcome for both.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+145,ODP,1572,2122221,B,Seems the best way to get something.,A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+146,ODP,1616,2111122,B,"If I choose B, and the other person chooses A, I get 8 ECU. If they choose A I get 3, which isn't a large difference from 5 ECU which is what I would get if we both had chosen A.",A,I choose option A as it results in a fairer outcome for both parties compared to option B.
+147,ODP,1621,1221221,A,"If the other person has a similar line of thinking, they would also select A because then we both get good outcomes and it is more fair.",A,I choose A because it has a higher probability of both of us getting a higher payout.
+148,ODP,1623,2112222,A,"It is likely we will both go for A, this has a high return.",A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+149,ODP,1661,1121222,B,Higher reward then risk.,A,I choose option A to increase my chances of earning more ECU in any combination of choices.
+150,ODP,1674,2212221,A,Equal if we both choose A.,A,"Choosing option A is a cooperative choice that leads to mutual benefit, while choosing option B is more selfish and leads to a winner-takes-all outcome."
+151,ODP,1675,2121221,A,It's the fairest choice where we both get the highest benefit.,A,Choosing option A maximizes the outcome in two out of four possible scenarios.
+152,ODP,1679,2212222,A,We both gain so win all around.,A,"I choose option A because it results in a more equal distribution of ECU, regardless of the other person's choice."
+153,ODP,1687,1112221,B,Try for a good profit this time.,A,To earn a fair outcome for both parties.
+154,ODP,1691,2111211,B,I want to ensure I get a benefit if possible.,A,"I choose option A as it provides a more equal distribution of ECUs, with both parties receiving 5 ECUs if both choose A, compared to option B which gives one person 8 ECUs and the other only 3 ECUs if both choose B."
+155,ODP,1705,2212221,B,I feel that I couldn't necessarily trust a stranger to do the fair thing and pick A in order to receive 5 ECU. Therefore if they were to pick B hoping I went for A at least we'd still get 3 ECU each.,A,"Choosing option A is a cooperative choice that leads to mutual benefit, while choosing option B is more selfish and leads to a winner-takes-all outcome."
+156,ODP,1710,2212221,A,Happy to take a risk.,A,"Choosing option A is a cooperative choice that leads to mutual benefit, while choosing option B is more selfish and leads to a winner-takes-all outcome."
+157,ODP,1732,2122221,A,Go for fairest option.,A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+158,ODP,1758,1122221,A,I wanted to try and see if the person has a team ethic.,A,"Option A is more likely to result in mutual benefit, increasing the chances of both people earning 5 ECU."
+159,ODP,1767,2112112,A,I’ll try my luck in fairness and hope the person is as reasonable as me.,A,I want to maximize our combined earnings and minimize the imbalance between our earnings.
+160,ODP,1803,1111221,A,Best outcome for both.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+161,ODP,1811,2111222,B,There is a higher reward for risking my choice.,A,I choose option A as it results in a fairer outcome for both parties in case the other person also chooses A.
+162,ODP,1821,2112221,A,Would rather both of us gain than one.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+163,ODP,1829,2111221,A,I know how the prisoner’s dilemma works and am being hopeful that the other person will choose the same as I have.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+164,ODP,1838,1122221,B,Seems like the most likely answer.,A,"Option A is more likely to result in mutual benefit, increasing the chances of both people earning 5 ECU."
+165,ODP,1846,2221111,B,There is less risk.,A,"I choose option A because it gives me a higher expected payout and a better chance of earning more ECUs, regardless of what the other person chooses."
+166,ODP,1866,1122121,B,I want at least 3 ECU.,A,Maximize my earnings.
+167,ODP,1874,1211211,B,Chance to maximise amount received.,A,Choose A because it benefits both parties and is fairer than the alternative.
+168,ODP,1881,2111221,B,Better chance of a positive outcome on 2 variants.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+169,ODP,1887,1212212,B,I will get 8 or we will both get 3. I'd like to pick A but don't want to risk only getting 1 if they pick B.,A,I choose option A because I believe that mutual cooperation leads to better outcomes.
+170,ODP,1888,2212221,A,Most likely to maximise option.,A,"Choosing option A is a cooperative choice that leads to mutual benefit, while choosing option B is more selfish and leads to a winner-takes-all outcome."
+171,ODP,1889,2112221,A,"Whilst we could gamble to hopefully get more credits, I am hoping the other person will take the safe option that benefits us both equally.",A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+172,ODP,1894,2211221,B,I want 8 points.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+173,ODP,1905,2211221,B,"With this option, I get more than 1 ECU regardless which is what I want.",A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+174,ODP,1913,2212221,A,Seems like the logical answer again.,A,"Choosing option A is a cooperative choice that leads to mutual benefit, while choosing option B is more selfish and leads to a winner-takes-all outcome."
+175,ODP,1933,2112221,A,In the hope that the other person also chooses this option so we both get the same amount.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+176,ODP,1973,2211221,B,I believe they will go A to maximise their money however by choosing B this will maximise my own.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+177,ODP,1987,2212222,A,I'm playing for fairness.,A,"I choose option A because it results in a more equal distribution of ECU, regardless of the other person's choice."
+178,ODP,1989,1112221,A,We both get a reward - guaranteed so opponent likely to also choose.,A,To earn a fair outcome for both parties.
+179,ODP,1992,1111221,B,It potentially offers the most money.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+180,ODP,2003,2112221,B,Best payoff if win.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+181,ODP,2051,2211121,A,Hoping the other person would want to maximise winnings.,A,I choose A because it results in the highest average payout and reduces the risk of getting the lowest payout.
+182,ODP,2061,1121211,A,Best for both worlds.,A,Get more money with A.
+183,ODP,2064,1212222,A,This will even out the ECU.,A,"Choosing A prioritizes fairness over efficiency and harmony over truth, leading to a win-win outcome where both parties earn 5 ECU."
+184,ODP,2067,2122121,B,Chance of biggest gain.,A,"Choosing option A guarantees a payout of at least 1 ECU, whereas choosing option B only guarantees a payout of 3 ECU. It's the safer option, maximizing the minimum amount of ECU earned."
+185,ODP,2089,1212221,A,This is the most correct way to choose.,A,I choose A because it benefits both parties more equally.
+186,ODP,2090,2221221,A,As it’s the first of the alphabet and seems like the better choice.,A,"Choosing A is the more consistent and predictable option, leading to a higher expected payout overall."
+187,ODP,2092,2111221,B,I'm hoping to win 8ECU.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+188,ODP,2107,1111212,B,"B provides the most beneficial scenario to myself, I expect them to choose the same.",A,"I choose option A because it benefits both parties equally, promoting fairness and promoting harmony."
+189,ODP,2115,2212222,A,It is the fairest option.,A,"I choose option A because it results in a more equal distribution of ECU, regardless of the other person's choice."
+190,ODP,2123,2112222,A,"I think this is the fairest decision. I would want a good outcome for both of us, so I would hope they think the same.",A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+191,ODP,2124,2122121,B,"A prisoner's dilemma, B is the optimal choice.",A,"Choosing option A guarantees a payout of at least 1 ECU, whereas choosing option B only guarantees a payout of 3 ECU. It's the safer option, maximizing the minimum amount of ECU earned."
+192,ODP,2127,2211221,A,If both of us do then it is the most assured.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+193,ODP,2130,1122221,A,Answer A is the most mutually beneficial answer.,A,"Option A is more likely to result in mutual benefit, increasing the chances of both people earning 5 ECU."
+194,ODP,2141,1121222,B,I would like to take the risk to earn 8ECU.,A,I choose option A to increase my chances of earning more ECU in any combination of choices.
+195,ODP,2150,2211212,B,Trying to get the most ECU points.,A,"The choice is based on fairness and altruism, as choosing A results in a more equal distribution of earnings compared to choosing B."
+196,ODP,2160,1111212,B,Guaranteed at least 3 ECU. Choosing A is less reliable as there is more risk and less reward.,A,"I choose option A because it benefits both parties equally, promoting fairness and promoting harmony."
+197,ODP,2183,2211212,A,I think it is likely the other player will pick b.,A,"The choice is based on fairness and altruism, as choosing A results in a more equal distribution of earnings compared to choosing B."
+198,ODP,2185,2222121,A,I would hope the other person would choose the highest reward and hope that I would do the same.,A,I choose option A because I believe it is the safer choice that provides a modest reward regardless of the other person's choice.
+199,ODP,2201,2112221,A,Want to be fair.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+200,ODP,2202,2211121,A,"In order to help us both out, I decided to go for option A.",A,I choose A because it results in the highest average payout and reduces the risk of getting the lowest payout.
+201,ODP,2218,1111221,A,It would be the fairest outcome for both parties.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+202,ODP,2219,2122121,A,Chance is 50/50 to get 8 so it is an open choice.,A,"Choosing option A guarantees a payout of at least 1 ECU, whereas choosing option B only guarantees a payout of 3 ECU. It's the safer option, maximizing the minimum amount of ECU earned."
+203,ODP,2262,1211221,B,Best way to earn more if other person's decision is incorrect.,A,"Going with option A maximizes the chance for both people to earn more ECU together, creating a situation where both people can benefit."
+204,ODP,2272,2111211,B,"I have a chance to get more, and even if we both choose B I still get a decent amount.",A,"I choose option A as it provides a more equal distribution of ECUs, with both parties receiving 5 ECUs if both choose A, compared to option B which gives one person 8 ECUs and the other only 3 ECUs if both choose B."
+205,ODP,2280,2112221,B,Higher payout on average.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+206,ODP,2294,2111221,B,I've tried to be fair and hopefully we both gain.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+207,ODP,2299,2112222,B,Higher chance of more.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+208,ODP,2316,2112222,A,It's better to share and get half each.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+209,ODP,2326,1111221,B,Least I can get is 3ECU.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+210,ODP,2328,2222212,B,"It would be most wise to pick A every time because both players will get 5ECU, and for this reason I pick B because if the other person picks A then I get 8 ECU and if the other player picks B which they are less likely to do we will both get 3 ECU, which is not much less than 5ECU.",A,"Choosing Option A maximizes the chance of both me and the other person earning a decent payout, as it offers a 5 ECU reward if we both choose it. Even if the other person chooses B, which results in a lower payout for me, the expected value of choosing A is still higher than choosing B. Therefore, it seems like the safest and most rational choice to pick Option A."
+211,ODP,2345,2121121,B,Bigger reward for a small risk.,A,Maximizing expected reward.
+212,ODP,2364,2111211,A,We both get the same amount - it's fair.,A,"I choose option A as it provides a more equal distribution of ECUs, with both parties receiving 5 ECUs if both choose A, compared to option B which gives one person 8 ECUs and the other only 3 ECUs if both choose B."
+213,ODP,2366,1112221,B,The payoff is greater if they go for A.,A,To earn a fair outcome for both parties.
+214,ODP,2375,2111221,B,I'll get more.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+215,ODP,2377,2112121,A,We both get equal 5ECU.,A,"To maximize my own earnings, I choose A."
+216,ODP,2388,2111221,A,I will risk that the other person will also choose 'A' in the name of fairness.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+217,ODP,2400,1112221,B,Hope for the most points.,A,To earn a fair outcome for both parties.
+218,ODP,2401,2111221,A,There is a chance we could earn more if we both choose A.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+219,ODP,2414,1112212,B,So we receive equal if they choose B.,A,It's more cooperative.
+220,ODP,2418,1112221,B,I was thinking that at least I'd get 3 ECUs.,A,To earn a fair outcome for both parties.
+221,ODP,2432,1112212,A,I would expect the other person to choose A as this pays the most.,A,It's more cooperative.
+222,ODP,2435,2122221,A,"Mutually beneficial, believe other person will choose the outcome best for both.",A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+223,ODP,2436,1112211,A,It's the best choice.,A,"Choosing option A aligns with the principles of fairness and altruism, as it gives both players an equal outcome of 5 ECU, rather than disproportionately benefiting one player over the other."
+224,ODP,2440,2111221,A,Hope that they maximise group profit by choosing A as well.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+225,ODP,2476,2122121,B,Seems to maximise my outcome.,A,"Choosing option A guarantees a payout of at least 1 ECU, whereas choosing option B only guarantees a payout of 3 ECU. It's the safer option, maximizing the minimum amount of ECU earned."
+226,ODP,2502,1222221,B,Just to play differently.,A,I'm going for option A because it seems like the safer choice.
+227,ODP,2512,2112221,B,Removed the chance of getting only 1 ECU.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+228,ODP,2513,2122222,A,If both parties pick A it gives the highest equal amount to both.,A,"Choosing option A results in a higher average payout compared to choosing option B, regardless of the other person's choice."
+229,ODP,2547,2111211,B,"We get more if we choose the same, it's Game Theory.",A,"I choose option A as it provides a more equal distribution of ECUs, with both parties receiving 5 ECUs if both choose A, compared to option B which gives one person 8 ECUs and the other only 3 ECUs if both choose B."
+230,ODP,2549,1222221,A,Better chance of getting more ECU.,A,I'm going for option A because it seems like the safer choice.
+231,ODP,2558,2112221,A,Fairness in this game of prisoner's dilemma.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+232,ODP,2565,2112221,A,Choosing A results in an even split of 5 ECU.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+233,ODP,2571,2122221,B,The worst scenario for me is I will get 3 ECU.,A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+234,ODP,2580,2111212,B,Low risk for a higher payoff.,A,I believe in reciprocity and mutual benefit.
+235,ODP,2598,2122121,B,I think the other person will try to get as much as they can . So I think this option will be the fairest.,A,"Choosing option A guarantees a payout of at least 1 ECU, whereas choosing option B only guarantees a payout of 3 ECU. It's the safer option, maximizing the minimum amount of ECU earned."
+236,ODP,2602,2111221,A,I wish to maximise the result for the contestants and me choosing A does that.,A,"Choosing option A helps to maintain fairness in the outcome, ensuring that both parties receive equal payouts if both make the same choice."
+237,ODP,2618,1122121,A,Best outcome for both.,A,Maximize my earnings.
+238,ODP,2622,2212221,A,It's right and fair we both gain.,A,"Choosing option A is a cooperative choice that leads to mutual benefit, while choosing option B is more selfish and leads to a winner-takes-all outcome."
+239,ODP,2627,2112222,B,I’m hoping the other chooses A.,A,"Choosing option A results in a more balanced and equal payout, regardless of the other person's choice."
+240,ODP,2636,2112221,A,"It is the fairest option, and if the other person chooses B then fair play to them.",A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+241,ODP,2652,1111221,B,I have a feeling that the other person would choose B so I also chose it.,A,"Choosing option A supports fairness and altruism, which are values that align with the traits described."
+242,ODP,2664,2212211,A,Fair result allowing for both parties to gain 5 ECU.,A,"Choosing A results in a more fair outcome in case the other person also chooses A. If the other person chooses B, I still receive a small amount of money which is better than receiving nothing."
+243,ODP,2685,2221221,B,They are likely to pick B as well.,A,"Choosing A is the more consistent and predictable option, leading to a higher expected payout overall."
+244,ODP,2703,2112221,A,We make more money if we both choose A so is reasonable to go with A.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+245,ODP,2705,2112221,A,Fair scale of balance.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+246,ODP,2723,2122221,A,"Both choosing A returns 10 EUC total split evenly, seems fair.",A,This choice maximizes the expected payout while also limiting the risk of a low payout.
+247,ODP,2749,1111111,B,Greatest personal level of income possible.,A,I prefer the option with the possibility of a better outcome for both parties.
+248,ODP,2752,2211222,B,Easier to take a loss if I haven’t chosen myself and going for risky option.,A,"Choosing option A results in a fairer outcome for both parties, regardless of the other person's choice."
+249,ODP,2753,2112221,B,"The risky option is A - if it were to fail - as you gain the lowest one. For B, there are two outcomes: 8 ECU or 3 ECU.",A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+250,ODP,2755,2112221,A,I made the choice in order to be on the  safe side.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+251,ODP,2782,2221221,B,I want to maximize the total amount of money that we both receive.,A,"Choosing A is the more consistent and predictable option, leading to a higher expected payout overall."
+252,ODP,2787,2111211,A,Both choosing the same letter gets the overall better result. A is the better letter of the two to choose.,A,"I choose option A as it provides a more equal distribution of ECUs, with both parties receiving 5 ECUs if both choose A, compared to option B which gives one person 8 ECUs and the other only 3 ECUs if both choose B."
+253,ODP,2799,2211221,B,Quite a high reward should the other person choose A.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+254,ODP,2801,2112221,A,Long term will earn the most ECU.,A,"Choosing A results in a fairer outcome, with both parties receiving 5 ECU if both choose A and a more equal distribution of rewards (1 and 8 ECU) if only one chooses A."
+255,ODP,2804,2122121,B,More in it for me - maybe.,A,"Choosing option A guarantees a payout of at least 1 ECU, whereas choosing option B only guarantees a payout of 3 ECU. It's the safer option, maximizing the minimum amount of ECU earned."
+256,ODP,2813,1122221,B,Make the decision based on your opponents basic humane nature - greed.,A,"Option A is more likely to result in mutual benefit, increasing the chances of both people earning 5 ECU."
+257,ODP,2833,1112221,B,We both gain with this option.,A,To earn a fair outcome for both parties.
+258,ODP,2841,1112221,A,I would hope that the other person would also choose A.,A,To earn a fair outcome for both parties.
+259,ODP,2846,1121121,B,I would like to try to win extra.,A,"I choose option A because it's a safer option, with the possibility of earning 5 ECU if the other person also chooses A."
+260,ODP,2867,2111211,A,It just feels intuitively to be the most human choice.,A,"I choose option A as it provides a more equal distribution of ECUs, with both parties receiving 5 ECUs if both choose A, compared to option B which gives one person 8 ECUs and the other only 3 ECUs if both choose B."
+261,ODP,2875,1211221,A,Hope they believe 5 is best for both of us.,A,"Going with option A maximizes the chance for both people to earn more ECU together, creating a situation where both people can benefit."
+262,ODP,2895,1211112,A,I will go for the win-win option that maximises the money for both of us.,A,"I'd rather have a chance to earn more by choosing A, even if it means potentially losing out if the other person also chooses A."
+263,ODP,2955,2111222,B,More chance of more.,A,I choose option A as it results in a fairer outcome for both parties in case the other person also chooses A.
+264,ODP,2967,2212211,A,It is fair to both parties if we both chose A and receive 5 ECU each.,A,"Choosing A results in a more fair outcome in case the other person also chooses A. If the other person chooses B, I still receive a small amount of money which is better than receiving nothing."
+265,ODP,2969,2211221,B,If we both know that one gets more if we choose differing options then we are more likely to choose B together to both get a better outcome of 3 ECU.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+266,ODP,2973,2211221,B,Chance of us both earning money.,A,"I choose option A as it leads to a more equal distribution of rewards, regardless of the other player's choice. This minimizes the potential for conflict and promotes fairness."
+267,ODP,2978,2121222,B,Statistically the best option.,A,I choose A because it's the safer option with a better average payout.
+268,ODP,2984,2211212,B,Picking B guarantees a win of at least 3 and potentially up to 8. Whereas A only guarantees a win of at least 1 and up to 5.,A,"The choice is based on fairness and altruism, as choosing A results in a more equal distribution of earnings compared to choosing B."

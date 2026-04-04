@@ -1,0 +1,244 @@
+StatementID,TreatmentCode,SubjectID,ID,PD,PD_JUS,AI_PD,AI_PD_JUS
+1,ODU,2,9,B,I can’t earn less (probably bad choice).,A,"I would choose option A as it offers a higher payout than option B when the other player also chooses A, and a slightly lower payout than option B when the other player chooses B."
+2,ODU,5,61,A,I want us both to do well.,A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU as well."
+3,ODU,17,24,B,Larger gain if other player chooses B.,A,Choosing A minimizes the potential loss and maximizes the potential gain in the interaction.
+4,ODU,25,24,B,Either way I will receive a higher amount than if I choose A and the other chooses B.,A,Choosing A minimizes the potential loss and maximizes the potential gain in the interaction.
+5,ODU,30,51,B,Safest option on pay.,A,"I choose A because, on average, I'll earn more ECU if I choose A compared to choosing B."
+6,ODU,38,35,A,It seems to be the fairest answer.,A,"Option A provides a better outcome if the other person chooses A as well, earning both 5 ECU, and a less severe loss if they choose B, earning 1 ECU instead of 3 ECU."
+7,ODU,73,63,A,It's the best result for us both.,A,I'll choose option A because it gives me a higher expected payout than option B regardless of the other person's choice.
+8,ODU,105,53,A,Best chance of fairness.,A,The expected value of A is greater than B.
+9,ODU,111,53,B,Either I get an ok amount or a lot.,A,The expected value of A is greater than B.
+10,ODU,129,51,A,We would both win a larger amount.,A,"I choose A because, on average, I'll earn more ECU if I choose A compared to choosing B."
+11,ODU,134,51,B,I would stand more chance of getting a good amount of ECU by choosing B.,A,"I choose A because, on average, I'll earn more ECU if I choose A compared to choosing B."
+12,ODU,163,33,A,It can be exploited but it is the best option for the two of us.,A,I prefer option A because it has the highest expected value.
+13,ODU,194,2,A,It's the first letter.,A,"Choosing A gives a guaranteed outcome of 5 ECU regardless of the other person's choice, while choosing B gives a best-case outcome of 3 ECU and a worst-case outcome of 1 ECU."
+14,ODU,204,10,B,I think the average result will be higher for me.,A,The expected payout for choosing A is higher than for choosing B.
+15,ODU,232,32,A,I feel it is the best outcome for both.,A,I choose option A because I would rather have a guaranteed payout of 5 ECU rather than a potential payout of 3 ECU.
+16,ODU,265,7,A,We both get the same this way. I’m not greedy.,A,I choose option A to maximize my expected payout.
+17,ODU,276,35,A,Best offer for both of us.,A,"Option A provides a better outcome if the other person chooses A as well, earning both 5 ECU, and a less severe loss if they choose B, earning 1 ECU instead of 3 ECU."
+18,ODU,280,36,A,"I thought that the self interested position was for me to choose B - and thought that the other party would think the same - and, like me, be mindful if we both go for A we both do pretty well and also can be a bit altruistic.",A,"I choose A because I want to minimize the chances of getting only 1 ECU, which happens if the other person chooses B and I choose A. By choosing A, I ensure that I will get at least 3 ECU even if the other person also chooses A."
+19,ODU,288,58,B,I would hope the other person is willing to share.,A,"Sure, option A is the safe choice as it guarantees a minimum payout of 1 ECU, whereas choosing option B could result in earning as little as 3 ECU."
+20,ODU,298,46,A,We both might get the same amount.,A,"I choose A because it gives me a higher expected payout than choosing B, no matter what the other person chooses."
+21,ODU,303,12,A,We both get 5; it’s a no brainer.,A,Because option A has higher expected value.
+22,ODU,317,12,B,Best chance to increase my balance.,A,Because option A has higher expected value.
+23,ODU,322,10,B,"Overall higher amount, less risk.",A,The expected payout for choosing A is higher than for choosing B.
+24,ODU,326,37,A,So we both get ECU.,A,"I choose option A because the expected payout is higher compared to option B. If both I and the other person choose option A, we both get 5 ECU, and if the other person chooses option B, I get 1 ECU and the other person gets 8 ECU. The average of these two outcomes is (5 + 1)/2 = 3 ECU. So the expected payout for option A is higher."
+25,ODU,333,39,A,This offers us both maximum payment though there is a risk I will get the smaller payment.,A,I would choose A because it offers the highest expected payout regardless of the other person's choice.
+26,ODU,334,33,B,I get at least 3 ECU.,A,I prefer option A because it has the highest expected value.
+27,ODU,337,18,A,Seems the best odds for gaining the bonus.,A,Choosing option A minimizes the risk of getting the lowest reward.
+28,ODU,362,36,B,I would prefer B as I can't split halfway.,A,"I choose A because I want to minimize the chances of getting only 1 ECU, which happens if the other person chooses B and I choose A. By choosing A, I ensure that I will get at least 3 ECU even if the other person also chooses A."
+29,ODU,370,62,B,Best chance of us both getting a fair share.,A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU. Therefore, I don't have a preference for either option, but I'll choose A because it's easier to type."
+30,ODU,376,57,B,This is the option where I am likely to get the best odds of having more ECU.,A,"Sure, I choose A because it gives me a better chance of earning at least 5 ECU, even if the other person chooses B."
+31,ODU,383,40,A,We will both want to receive ECU.,A,"I choose option A because it results in either both parties earning 5 ECU or me earning 1 ECU, which is a safer choice compared to choosing option B, where there is a risk of earning only 3 ECU."
+32,ODU,386,37,B,Attempt to take top money!,A,"I choose option A because the expected payout is higher compared to option B. If both I and the other person choose option A, we both get 5 ECU, and if the other person chooses option B, I get 1 ECU and the other person gets 8 ECU. The average of these two outcomes is (5 + 1)/2 = 3 ECU. So the expected payout for option A is higher."
+33,ODU,387,27,A,Hoping to choose the same as the other person.,A,Choosing A results in the highest average payout.
+34,ODU,429,2,A,We can both benefit from A.,A,"Choosing A gives a guaranteed outcome of 5 ECU regardless of the other person's choice, while choosing B gives a best-case outcome of 3 ECU and a worst-case outcome of 1 ECU."
+35,ODU,490,6,A,It’s the most profitable option for us both equally.,A,Option A provides a better expected return than option B.
+36,ODU,514,59,A,Fair to both of us.,A,5 ECU is the highest mutual payout.
+37,ODU,551,18,A,"This was hard. There's a good chance that someone else will choose B to gain the most personally at relatively little risk, but my experience with other prolific users suggests that people tend towards co-operation for maximum overall reward, so I'll guess that they will choose A. Making the same choice maximises our overall reward.",A,Choosing option A minimizes the risk of getting the lowest reward.
+38,ODU,564,35,A,It is the first option.,A,"Option A provides a better outcome if the other person chooses A as well, earning both 5 ECU, and a less severe loss if they choose B, earning 1 ECU instead of 3 ECU."
+39,ODU,566,6,A,I would hope the other person chooses A.,A,Option A provides a better expected return than option B.
+40,ODU,590,52,A,So we both have a chance of getting 5.,A,I'd rather have 5 ECU than 3 ECU.
+41,ODU,602,13,B,I stand to make more ECU with B.,A,"Mathematically speaking, Option A provides a higher expected value (5 ECU) compared to option B (3 ECU) regardless of the other person's choice."
+42,ODU,604,20,B,Will get either 3 or 8 ECU.,A,"Choose A as it leads to the highest expected payout (5 ECU) if the other person also chooses A, and the lowest payout (1 ECU) if the other person chooses B."
+43,ODU,619,37,A,If we both select A we'll get more than if we both select B.,A,"I choose option A because the expected payout is higher compared to option B. If both I and the other person choose option A, we both get 5 ECU, and if the other person chooses option B, I get 1 ECU and the other person gets 8 ECU. The average of these two outcomes is (5 + 1)/2 = 3 ECU. So the expected payout for option A is higher."
+44,ODU,633,39,A,I get a good amount.,A,I would choose A because it offers the highest expected payout regardless of the other person's choice.
+45,ODU,636,38,A,The reward is higher.,A,"Choosing option A maximizes the minimum payoff that can be earned, regardless of the other player's choice. This means that if the other player chooses A, both players will earn 5 ECU, and if the other player chooses B, the player choosing A will still earn 1 ECU, which is the highest possible payoff in that scenario."
+46,ODU,644,42,A,It's the best option in the interest of everybody.,A,"Sure. Option A is the dominant strategy because it leads to the highest minimum payoff, regardless of the other person's choice. If the other person chooses A, both receive 5 ECU. If the other person chooses B, I receive 1 ECU. So no matter what, I will receive at least 1 ECU."
+47,ODU,645,53,A,Hoping we both get 5.,A,The expected value of A is greater than B.
+48,ODU,654,2,A,I wanted the control over the situation.,A,"Choosing A gives a guaranteed outcome of 5 ECU regardless of the other person's choice, while choosing B gives a best-case outcome of 3 ECU and a worst-case outcome of 1 ECU."
+49,ODU,655,33,A,Better option to earn for us both.,A,I prefer option A because it has the highest expected value.
+50,ODU,656,18,B,I get more ECU with B.,A,Choosing option A minimizes the risk of getting the lowest reward.
+51,ODU,698,12,A,It seems the best bet.,A,Because option A has higher expected value.
+52,ODU,703,51,B,It seemed I would get more ECU on average when choosing B.,A,"I choose A because, on average, I'll earn more ECU if I choose A compared to choosing B."
+53,ODU,706,50,B,8 or 3 is objectively better than 1 or 5.,A,I prefer option A because it gives me a higher expected payout.
+54,ODU,717,61,A,The highest outcome for both players.,A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU as well."
+55,ODU,723,24,A,Hope the other person will do the same.,A,Choosing A minimizes the potential loss and maximizes the potential gain in the interaction.
+56,ODU,754,25,A,50/50 chance so went with gut instinct.,A,I choose option A because it gives me the best expected payout regardless of what the other person chooses.
+57,ODU,755,45,A,I think that it is fair to split the ECU equally.,A,"Choosing option A gives me the best expected payoff, regardless of what the other person chooses."
+58,ODU,768,30,B,I don't trust the other person to split.,A,"I want to maximize my earnings and in this case, choosing A leads to higher expected earnings."
+59,ODU,776,34,B,I like a risk.,A,5 ECU is the maximum I can earn.
+60,ODU,786,32,A,To give us both the higher option.,A,I choose option A because I would rather have a guaranteed payout of 5 ECU rather than a potential payout of 3 ECU.
+61,ODU,803,15,A,A is the fair option for both.,A,"Choosing option A is the dominant strategy in this situation, as it guarantees a positive payout no matter what the other person chooses. If the other person also chooses A, both of you get 5 ECU. If the other person chooses B, I still get a payout of 1 ECU, which is better than getting 0 ECU for choosing option B."
+62,ODU,828,6,B,We both get equal ECU.,A,Option A provides a better expected return than option B.
+63,ODU,832,58,A,I believe it would be unfair for one person to get 1 and the other 8 for no real reason.,A,"Sure, option A is the safe choice as it guarantees a minimum payout of 1 ECU, whereas choosing option B could result in earning as little as 3 ECU."
+64,ODU,855,33,B,"Because I will definitely get 3 ECU, and potentially 8.",A,I prefer option A because it has the highest expected value.
+65,ODU,882,60,A,Would hope the person would see the guaranteed benefit for both.,A,I prefer option A as it guarantees a payout of at least 1 ECU regardless of the other person's choice.
+66,ODU,927,30,A,We both get equal amount to be fair.,A,"I want to maximize my earnings and in this case, choosing A leads to higher expected earnings."
+67,ODU,946,27,A,I wanted to have the fairest choice.,A,Choosing A results in the highest average payout.
+68,ODU,960,41,A,Would prefer to make my own choice on this one.,A,"Option A provides a higher expected payout of 5 ECU, compared to 3 ECU for choosing option B. This makes option A the more favorable choice."
+69,ODU,975,37,A,Both choose the same to get equal ECU.,A,"I choose option A because the expected payout is higher compared to option B. If both I and the other person choose option A, we both get 5 ECU, and if the other person chooses option B, I get 1 ECU and the other person gets 8 ECU. The average of these two outcomes is (5 + 1)/2 = 3 ECU. So the expected payout for option A is higher."
+70,ODU,979,42,A,This maximises the possible gains.,A,"Sure. Option A is the dominant strategy because it leads to the highest minimum payoff, regardless of the other person's choice. If the other person chooses A, both receive 5 ECU. If the other person chooses B, I receive 1 ECU. So no matter what, I will receive at least 1 ECU."
+71,ODU,994,37,A,Option A is the most favorable option to us both based on statistics and represents what most people will go for when presented with this question.,A,"I choose option A because the expected payout is higher compared to option B. If both I and the other person choose option A, we both get 5 ECU, and if the other person chooses option B, I get 1 ECU and the other person gets 8 ECU. The average of these two outcomes is (5 + 1)/2 = 3 ECU. So the expected payout for option A is higher."
+72,ODU,998,18,A,Hoping for a fair opponent and best case for us both.,A,Choosing option A minimizes the risk of getting the lowest reward.
+73,ODU,1034,64,B,It get the most.,A,"The expected payout for choosing A is 4 ECU, which is higher than the expected payout for choosing B (3 ECU)."
+74,ODU,1059,39,A,Make the most guaranteed money - other options too risky.,A,I would choose A because it offers the highest expected payout regardless of the other person's choice.
+75,ODU,1070,10,A,Split it in half so it is fair.,A,The expected payout for choosing A is higher than for choosing B.
+76,ODU,1088,36,A,Seems the most likely outcome.,A,"I choose A because I want to minimize the chances of getting only 1 ECU, which happens if the other person chooses B and I choose A. By choosing A, I ensure that I will get at least 3 ECU even if the other person also chooses A."
+77,ODU,1097,57,B,This has the highest payout on average.,A,"Sure, I choose A because it gives me a better chance of earning at least 5 ECU, even if the other person chooses B."
+78,ODU,1109,48,A,In this scenario I'd hope the other person would do the fairest thing.,A,I prefer option A because it gives me a chance to earn a higher payout regardless of the other person's choice.
+79,ODU,1110,41,A,So that we both get a reasonable amount.,A,"Option A provides a higher expected payout of 5 ECU, compared to 3 ECU for choosing option B. This makes option A the more favorable choice."
+80,ODU,1130,46,A,Hope they know the prisoner's dilemma.,A,"I choose A because it gives me a higher expected payout than choosing B, no matter what the other person chooses."
+81,ODU,1140,62,A,"Again, I'd prefer to share the reward.",A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU. Therefore, I don't have a preference for either option, but I'll choose A because it's easier to type."
+82,ODU,1141,4,A,A is the better chance of us both getting extra money.,A,"Choosing A provides a higher payout on average compared to choosing B, regardless of the other person's choice."
+83,ODU,1148,43,A,We both gain more.,A,"Choosing A maximizes the payout in the worst-case scenario, where the other person chooses B, resulting in a payout of 1 ECU."
+84,ODU,1151,36,B,Gives me a chance of getting 8 ECU or 3.,A,"I choose A because I want to minimize the chances of getting only 1 ECU, which happens if the other person chooses B and I choose A. By choosing A, I ensure that I will get at least 3 ECU even if the other person also chooses A."
+85,ODU,1161,41,A,Always best to start cooperatively.,A,"Option A provides a higher expected payout of 5 ECU, compared to 3 ECU for choosing option B. This makes option A the more favorable choice."
+86,ODU,1167,30,B,It has the highest upside.,A,"I want to maximize my earnings and in this case, choosing A leads to higher expected earnings."
+87,ODU,1168,59,A,I wanted to pick what I felt was best.,A,5 ECU is the highest mutual payout.
+88,ODU,1169,48,A,It has the best average payout.,A,I prefer option A because it gives me a chance to earn a higher payout regardless of the other person's choice.
+89,ODU,1173,48,A,"Hopefully, both choose the best option.",A,I prefer option A because it gives me a chance to earn a higher payout regardless of the other person's choice.
+90,ODU,1182,55,A,I think this will earn the most.,A,I'd rather receive 5 ECU than 3 ECU.
+91,ODU,1212,22,B,I have no reason.,A,"I choose option A because it gives a higher expected payout, regardless of the other player's choice."
+92,ODU,1216,46,B,I want to maximise ECU.,A,"I choose A because it gives me a higher expected payout than choosing B, no matter what the other person chooses."
+93,ODU,1221,51,B,"I would like to be in on a shot at earning 8. But I am happy with 3, if need be.",A,"I choose A because, on average, I'll earn more ECU if I choose A compared to choosing B."
+94,ODU,1223,49,A,It gets us both a fair amount.,A,"I think option A is the better choice because it results in a higher payout in two of the possible combinations of choices, compared to option B."
+95,ODU,1232,46,A,"Hopefully, we both play fair.",A,"I choose A because it gives me a higher expected payout than choosing B, no matter what the other person chooses."
+96,ODU,1239,36,B,Least likely to get scammed but feel bad about scamming.,A,"I choose A because I want to minimize the chances of getting only 1 ECU, which happens if the other person chooses B and I choose A. By choosing A, I ensure that I will get at least 3 ECU even if the other person also chooses A."
+97,ODU,1249,18,A,It makes sense for us both to settle for 5 ECU.,A,Choosing option A minimizes the risk of getting the lowest reward.
+98,ODU,1280,56,A,The best outcome for us both.,A,"I would choose option A because it gives a higher average payout, regardless of the other person's choice."
+99,ODU,1313,39,A,Hoping the other person will do the same and we will both gain.,A,I would choose A because it offers the highest expected payout regardless of the other person's choice.
+100,ODU,1340,5,A,I want it to be fair and both of us to get the same.,A,Maximize expected payout.
+101,ODU,1341,62,B,I believe the other will choose A.,A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU. Therefore, I don't have a preference for either option, but I'll choose A because it's easier to type."
+102,ODU,1367,16,A,Is the most fair and equal.,A,"I want to maximize my payout regardless of the other person's choice. If I choose A, I'm guaranteed at least 1 ECU, and I have the potential to earn 5 ECU if the other person also chooses A."
+103,ODU,1381,24,B,I get either 3 or 8 and don't risk getting only 1.,A,Choosing A minimizes the potential loss and maximizes the potential gain in the interaction.
+104,ODU,1382,4,A,Best way for both to win.,A,"Choosing A provides a higher payout on average compared to choosing B, regardless of the other person's choice."
+105,ODU,1385,60,B,Feel the effort put in justifies this decision.,A,I prefer option A as it guarantees a payout of at least 1 ECU regardless of the other person's choice.
+106,ODU,1423,9,A,Odds are we will both choose A.,A,"I would choose option A as it offers a higher payout than option B when the other player also chooses A, and a slightly lower payout than option B when the other player chooses B."
+107,ODU,1431,20,B,Just took a random choice.,A,"Choose A as it leads to the highest expected payout (5 ECU) if the other person also chooses A, and the lowest payout (1 ECU) if the other person chooses B."
+108,ODU,1437,42,A,To get the most ECU.,A,"Sure. Option A is the dominant strategy because it leads to the highest minimum payoff, regardless of the other person's choice. If the other person chooses A, both receive 5 ECU. If the other person chooses B, I receive 1 ECU. So no matter what, I will receive at least 1 ECU."
+109,ODU,1440,40,A,Both parties may get 5.,A,"I choose option A because it results in either both parties earning 5 ECU or me earning 1 ECU, which is a safer choice compared to choosing option B, where there is a risk of earning only 3 ECU."
+110,ODU,1445,9,B,Better gain in both situations.,A,"I would choose option A as it offers a higher payout than option B when the other player also chooses A, and a slightly lower payout than option B when the other player chooses B."
+111,ODU,1459,64,B,It has the most likelihood of a higher amount.,A,"The expected payout for choosing A is 4 ECU, which is higher than the expected payout for choosing B (3 ECU)."
+112,ODU,1492,19,A,Fairest option for both.,A,I maximize my expected payout by choosing option A.
+113,ODU,1512,19,A,It’s a 50/50 chance.,A,I maximize my expected payout by choosing option A.
+114,ODU,1513,39,A,Better option for everybody.,A,I would choose A because it offers the highest expected payout regardless of the other person's choice.
+115,ODU,1520,47,A,A is in my name.,A,I'd choose option A because I think it gives me a better chance of getting a higher payout.
+116,ODU,1533,61,A,Fairest option for both parties.,A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU as well."
+117,ODU,1546,12,A,I chose the highest paying option.,A,Because option A has higher expected value.
+118,ODU,1548,5,A,I just thought I would choose the first letter which is A no other real reason.,A,Maximize expected payout.
+119,ODU,1552,32,A,It's logically best for both of us to choose A.,A,I choose option A because I would rather have a guaranteed payout of 5 ECU rather than a potential payout of 3 ECU.
+120,ODU,1562,15,B,I am guaranteed at least 3 ECU which is a good amount.,A,"Choosing option A is the dominant strategy in this situation, as it guarantees a positive payout no matter what the other person chooses. If the other person also chooses A, both of you get 5 ECU. If the other person chooses B, I still get a payout of 1 ECU, which is better than getting 0 ECU for choosing option B."
+121,ODU,1563,5,B,This seems like the fairer deal for both of us.,A,Maximize expected payout.
+122,ODU,1576,46,A,It seems a logical choice as we both gain.,A,"I choose A because it gives me a higher expected payout than choosing B, no matter what the other person chooses."
+123,ODU,1581,48,A,I would rather be in control of my decision.,A,I prefer option A because it gives me a chance to earn a higher payout regardless of the other person's choice.
+124,ODU,1589,43,B,"It's the best decision for me, we both get something or I get the most.",A,"Choosing A maximizes the payout in the worst-case scenario, where the other person chooses B, resulting in a payout of 1 ECU."
+125,ODU,1601,20,B,"Guaranteed minimum of 3 ECU, with the possibility of more.",A,"Choose A as it leads to the highest expected payout (5 ECU) if the other person also chooses A, and the lowest payout (1 ECU) if the other person chooses B."
+126,ODU,1605,53,A,We are both certain to receive 5 ECU which is a good result.,A,The expected value of A is greater than B.
+127,ODU,1622,59,B,Gives me the best chance at the highest earnings.,A,5 ECU is the highest mutual payout.
+128,ODU,1635,12,A,Better to split the pot for a potential to get something instead of nothing.,A,Because option A has higher expected value.
+129,ODU,1641,52,B,"Honestly, at this point I fancied the gamble.",A,I'd rather have 5 ECU than 3 ECU.
+130,ODU,1646,62,A,We will both be well rewarded.,A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU. Therefore, I don't have a preference for either option, but I'll choose A because it's easier to type."
+131,ODU,1655,19,A,I'm working on a sharing scheme.,A,I maximize my expected payout by choosing option A.
+132,ODU,1677,41,A,More return for less risk than some other options (for my reward potentially it feels).,A,"Option A provides a higher expected payout of 5 ECU, compared to 3 ECU for choosing option B. This makes option A the more favorable choice."
+133,ODU,1688,62,B,I like making my own decisions. It gives us both the chance to earn a decent amount.,A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU. Therefore, I don't have a preference for either option, but I'll choose A because it's easier to type."
+134,ODU,1701,54,A,We both walk away happy.,A,"Choosing option A ensures that I receive a positive payoff regardless of the other person's choice. Additionally, it maximizes the likelihood of a positive payoff for both parties, since we both receive 5 ECU if we both choose A."
+135,ODU,1702,27,A,I am happy to split the money with the other person and also to take my chances on them doing the same.,A,Choosing A results in the highest average payout.
+136,ODU,1703,35,B,Risk is worth the reward.,A,"Option A provides a better outcome if the other person chooses A as well, earning both 5 ECU, and a less severe loss if they choose B, earning 1 ECU instead of 3 ECU."
+137,ODU,1704,55,B,"I don't want to risk only getting 1 ECU if the other person chooses B, so it'll be either 8 or 3 ECU which is either very good or just OK.",A,I'd rather receive 5 ECU than 3 ECU.
+138,ODU,1718,59,A,It's considerably better for me to choose A.,A,5 ECU is the highest mutual payout.
+139,ODU,1719,2,A,I want to enable both of us to get the amount.,A,"Choosing A gives a guaranteed outcome of 5 ECU regardless of the other person's choice, while choosing B gives a best-case outcome of 3 ECU and a worst-case outcome of 1 ECU."
+140,ODU,1724,16,B,My maiden name began with B.,A,"I want to maximize my payout regardless of the other person's choice. If I choose A, I'm guaranteed at least 1 ECU, and I have the potential to earn 5 ECU if the other person also chooses A."
+141,ODU,1728,41,A,I am hoping to share. I think choosing B is a safer bet but I am hoping for a fair split.,A,"Option A provides a higher expected payout of 5 ECU, compared to 3 ECU for choosing option B. This makes option A the more favorable choice."
+142,ODU,1734,41,A,"It's fairest for us both to get the same amount, or at least for me to try to.",A,"Option A provides a higher expected payout of 5 ECU, compared to 3 ECU for choosing option B. This makes option A the more favorable choice."
+143,ODU,1740,40,B,Best outcome for me.,A,"I choose option A because it results in either both parties earning 5 ECU or me earning 1 ECU, which is a safer choice compared to choosing option B, where there is a risk of earning only 3 ECU."
+144,ODU,1747,51,A,This is the best situation for both of us.,A,"I choose A because, on average, I'll earn more ECU if I choose A compared to choosing B."
+145,ODU,1748,25,A,This seems fair because there is a chance we both win 5 if the other person chooses A.,A,I choose option A because it gives me the best expected payout regardless of what the other person chooses.
+146,ODU,1750,44,A,Win-win situation for both without gambling..,A,"Sure, if both of us choose A, we'll get 5 ECU each which is the most equitable outcome. And even if the other person chooses B, I'll still get 1 ECU, which is better than getting 3 ECU if we both choose B."
+147,ODU,1762,63,B,I don’t know why.,A,I'll choose option A because it gives me a higher expected payout than option B regardless of the other person's choice.
+148,ODU,1765,12,A,I like to make my own decisions in a luck based game.,A,Because option A has higher expected value.
+149,ODU,1775,14,B,There is a better chance that I will receive more ECU than by choosing A.,A,"I choose A because it guarantees that I earn at least 1 ECU, regardless of the other person's choice."
+150,ODU,1796,24,A,Want both parties to get as much ECU.,A,Choosing A minimizes the potential loss and maximizes the potential gain in the interaction.
+151,ODU,1801,46,B,I have 8 or 3 to win.,A,"I choose A because it gives me a higher expected payout than choosing B, no matter what the other person chooses."
+152,ODU,1809,42,B,I prefer the chance for both of us to benefit.,A,"Sure. Option A is the dominant strategy because it leads to the highest minimum payoff, regardless of the other person's choice. If the other person chooses A, both receive 5 ECU. If the other person chooses B, I receive 1 ECU. So no matter what, I will receive at least 1 ECU."
+153,ODU,1812,14,A,It means we both get a minimum of 5.,A,"I choose A because it guarantees that I earn at least 1 ECU, regardless of the other person's choice."
+154,ODU,1841,53,B,"I decided to choose B, because the minimum I would earn is 3 as opposed to 1.",A,The expected value of A is greater than B.
+155,ODU,1854,33,A,This is the most likely option for both of us to earn more than 1 ECU each.,A,I prefer option A because it has the highest expected value.
+156,ODU,1860,34,A,Maximum return for both.,A,5 ECU is the maximum I can earn.
+157,ODU,1867,53,B,I believe this will maximise profit and has a lower risk.,A,The expected value of A is greater than B.
+158,ODU,1909,15,A,Best case scenario given the conditions.,A,"Choosing option A is the dominant strategy in this situation, as it guarantees a positive payout no matter what the other person chooses. If the other person also chooses A, both of you get 5 ECU. If the other person chooses B, I still get a payout of 1 ECU, which is better than getting 0 ECU for choosing option B."
+159,ODU,1916,48,A,I want us both to win 5 ECU's.,A,I prefer option A because it gives me a chance to earn a higher payout regardless of the other person's choice.
+160,ODU,1920,53,B,Fair for both involved.,A,The expected value of A is greater than B.
+161,ODU,1932,37,B,I'm using a gamble situation to see how it turns out.,A,"I choose option A because the expected payout is higher compared to option B. If both I and the other person choose option A, we both get 5 ECU, and if the other person chooses option B, I get 1 ECU and the other person gets 8 ECU. The average of these two outcomes is (5 + 1)/2 = 3 ECU. So the expected payout for option A is higher."
+162,ODU,1961,7,B,I feel this gives me an acceptable return with a possibility of the 8.,A,I choose option A to maximize my expected payout.
+163,ODU,1966,49,A,Had to make a decision and assume the other person would go A also.,A,"I think option A is the better choice because it results in a higher payout in two of the possible combinations of choices, compared to option B."
+164,ODU,1978,57,B,"Win-Win situation. If other person selects B then we both get same amount, if it selects A, then I get more.",A,"Sure, I choose A because it gives me a better chance of earning at least 5 ECU, even if the other person chooses B."
+165,ODU,2011,39,A,"Beneficial overall to both of us if we both have A, unfortunate if they choose to betray me.",A,I would choose A because it offers the highest expected payout regardless of the other person's choice.
+166,ODU,2013,2,A,There is a fairly safe chance we both earn a good amount between us if we both pick A.,A,"Choosing A gives a guaranteed outcome of 5 ECU regardless of the other person's choice, while choosing B gives a best-case outcome of 3 ECU and a worst-case outcome of 1 ECU."
+167,ODU,2030,57,A,I might end up with more money.,A,"Sure, I choose A because it gives me a better chance of earning at least 5 ECU, even if the other person chooses B."
+168,ODU,2034,33,A,The obvious decision to earn a safe 5 ECU.,A,I prefer option A because it has the highest expected value.
+169,ODU,2041,24,B,I believe in the initial choice that both will choose to get the maximum amount possible.,A,Choosing A minimizes the potential loss and maximizes the potential gain in the interaction.
+170,ODU,2042,62,A,"Hopefully, we both get 5.",A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU. Therefore, I don't have a preference for either option, but I'll choose A because it's easier to type."
+171,ODU,2049,51,B,"Decided that B might give me a good chance of a good bonus, the minimum I can get is 3.",A,"I choose A because, on average, I'll earn more ECU if I choose A compared to choosing B."
+172,ODU,2138,27,A,I think this is an option based on chance response.,A,Choosing A results in the highest average payout.
+173,ODU,2142,27,B,I feel this offers the best outcome of either 8 or 3 points.,A,Choosing A results in the highest average payout.
+174,ODU,2151,34,B,Because the minimum is lower with this option.,A,5 ECU is the maximum I can earn.
+175,ODU,2153,57,B,Either way I would get 3 or 8.,A,"Sure, I choose A because it gives me a better chance of earning at least 5 ECU, even if the other person chooses B."
+176,ODU,2155,10,B,The opportunity to earn 8 ECU in bonus.,A,The expected payout for choosing A is higher than for choosing B.
+177,ODU,2180,36,B,Fairest on both if we choose the same.,A,"I choose A because I want to minimize the chances of getting only 1 ECU, which happens if the other person chooses B and I choose A. By choosing A, I ensure that I will get at least 3 ECU even if the other person also chooses A."
+178,ODU,2198,48,A,"I am hoping the other person will think the same as me, and opt for the option which results in the larger combined payout.",A,I prefer option A because it gives me a chance to earn a higher payout regardless of the other person's choice.
+179,ODU,2199,60,A,I prefer to share in half and  hope for the best.,A,I prefer option A as it guarantees a payout of at least 1 ECU regardless of the other person's choice.
+180,ODU,2239,18,A,It seems to be the most fair choice.,A,Choosing option A minimizes the risk of getting the lowest reward.
+181,ODU,2269,57,B,Felt that I can't lose either way.,A,"Sure, I choose A because it gives me a better chance of earning at least 5 ECU, even if the other person chooses B."
+182,ODU,2287,31,A,Best outcome for me.,A,Choosing A yields a higher expected payout compared to choosing B.
+183,ODU,2305,20,A,Fairer for both of us.,A,"Choose A as it leads to the highest expected payout (5 ECU) if the other person also chooses A, and the lowest payout (1 ECU) if the other person chooses B."
+184,ODU,2306,62,A,I hope that the other person also chooses A as that gives both of us the best outcome.,A,"The expected value of choosing A is 4 ECU, while the expected value of choosing B is 4 ECU. Therefore, I don't have a preference for either option, but I'll choose A because it's easier to type."
+185,ODU,2313,60,A,"Hopefully, the other person will pick the same, and it's the fairest way for us both to earn most ECU.",A,I prefer option A as it guarantees a payout of at least 1 ECU regardless of the other person's choice.
+186,ODU,2322,19,A,I wanted us to both have an equal amount.,A,I maximize my expected payout by choosing option A.
+187,ODU,2347,57,B,I think choosing B should optimise my earnings.,A,"Sure, I choose A because it gives me a better chance of earning at least 5 ECU, even if the other person chooses B."
+188,ODU,2349,57,A,I wish for both of us to get a good bonus.,A,"Sure, I choose A because it gives me a better chance of earning at least 5 ECU, even if the other person chooses B."
+189,ODU,2372,20,A,Fairest scenario as both will get equal ECU.,A,"Choose A as it leads to the highest expected payout (5 ECU) if the other person also chooses A, and the lowest payout (1 ECU) if the other person chooses B."
+190,ODU,2396,20,B,"As was with the other situation, B is more than likely to come back with a good return compared to A, A is risker.",A,"Choose A as it leads to the highest expected payout (5 ECU) if the other person also chooses A, and the lowest payout (1 ECU) if the other person chooses B."
+191,ODU,2399,40,B,I make money whatever but chance to make more.,A,"I choose option A because it results in either both parties earning 5 ECU or me earning 1 ECU, which is a safer choice compared to choosing option B, where there is a risk of earning only 3 ECU."
+192,ODU,2416,12,A,I think they will choose A.,A,Because option A has higher expected value.
+193,ODU,2417,5,A,It is the first option so the other person may think along those lines too and click the quickest/nearest one to their cursor.,A,Maximize expected payout.
+194,ODU,2425,59,B,Have to choose something.,A,5 ECU is the highest mutual payout.
+195,ODU,2451,37,A,This is the option that gives us potentially the most ECU each.,A,"I choose option A because the expected payout is higher compared to option B. If both I and the other person choose option A, we both get 5 ECU, and if the other person chooses option B, I get 1 ECU and the other person gets 8 ECU. The average of these two outcomes is (5 + 1)/2 = 3 ECU. So the expected payout for option A is higher."
+196,ODU,2462,49,A,Best way to ensure we get decent returns.,A,"I think option A is the better choice because it results in a higher payout in two of the possible combinations of choices, compared to option B."
+197,ODU,2466,22,B,Think will make a better decision myself.,A,"I choose option A because it gives a higher expected payout, regardless of the other player's choice."
+198,ODU,2467,27,B,Going to get either the most (8) and avoid the least (1).,A,Choosing A results in the highest average payout.
+199,ODU,2481,36,A,It seems only right to divide equally.,A,"I choose A because I want to minimize the chances of getting only 1 ECU, which happens if the other person chooses B and I choose A. By choosing A, I ensure that I will get at least 3 ECU even if the other person also chooses A."
+200,ODU,2490,30,A,I think this is the fairer choice where we would both benefit equally.,A,"I want to maximize my earnings and in this case, choosing A leads to higher expected earnings."
+201,ODU,2503,43,A,I would like us to fairly get a decent amount.,A,"Choosing A maximizes the payout in the worst-case scenario, where the other person chooses B, resulting in a payout of 1 ECU."
+202,ODU,2529,63,B,I am happier with a range of 3-8 ECU than a range of 1-5 ECU.,A,I'll choose option A because it gives me a higher expected payout than option B regardless of the other person's choice.
+203,ODU,2532,60,B,From the instructions it appears I'm going to maximize returns by choosing option B.,A,I prefer option A as it guarantees a payout of at least 1 ECU regardless of the other person's choice.
+204,ODU,2540,41,A,I'm hoping that A is the usual go to for people.,A,"Option A provides a higher expected payout of 5 ECU, compared to 3 ECU for choosing option B. This makes option A the more favorable choice."
+205,ODU,2566,64,A,I like to share.,A,"The expected payout for choosing A is 4 ECU, which is higher than the expected payout for choosing B (3 ECU)."
+206,ODU,2570,10,A,Largest amount of coins for both.,A,The expected payout for choosing A is higher than for choosing B.
+207,ODU,2590,48,B,Best chance at getting most each.,A,I prefer option A because it gives me a chance to earn a higher payout regardless of the other person's choice.
+208,ODU,2597,18,B,Better in all options.,A,Choosing option A minimizes the risk of getting the lowest reward.
+209,ODU,2619,15,A,Better odds of maximising return.,A,"Choosing option A is the dominant strategy in this situation, as it guarantees a positive payout no matter what the other person chooses. If the other person also chooses A, both of you get 5 ECU. If the other person chooses B, I still get a payout of 1 ECU, which is better than getting 0 ECU for choosing option B."
+210,ODU,2623,53,A,"I'm, again, hoping for equality.",A,The expected value of A is greater than B.
+211,ODU,2646,54,A,I feel like this will be best for both parties.,A,"Choosing option A ensures that I receive a positive payoff regardless of the other person's choice. Additionally, it maximizes the likelihood of a positive payoff for both parties, since we both receive 5 ECU if we both choose A."
+212,ODU,2658,13,A,I'm betting on fairness.,A,"Mathematically speaking, Option A provides a higher expected value (5 ECU) compared to option B (3 ECU) regardless of the other person's choice."
+213,ODU,2682,12,A,I have gone for the fairest option which is to get 5 ECU each.,A,Because option A has higher expected value.
+214,ODU,2688,45,B,To be a little more selfish on this last one.,A,"Choosing option A gives me the best expected payoff, regardless of what the other person chooses."
+215,ODU,2709,32,B,"If I pick A, I get 1 or 8, but B, the least I get is 3 so taking less risk.",A,I choose option A because I would rather have a guaranteed payout of 5 ECU rather than a potential payout of 3 ECU.
+216,ODU,2719,40,B,"I’m hoping they’ll choose A, so I get more!",A,"I choose option A because it results in either both parties earning 5 ECU or me earning 1 ECU, which is a safer choice compared to choosing option B, where there is a risk of earning only 3 ECU."
+217,ODU,2727,38,A,I put my faith in the other person not being greedy.,A,"Choosing option A maximizes the minimum payoff that can be earned, regardless of the other player's choice. This means that if the other player chooses A, both players will earn 5 ECU, and if the other player chooses B, the player choosing A will still earn 1 ECU, which is the highest possible payoff in that scenario."
+218,ODU,2730,4,B,The gap in potential payouts is quite large and most people are greedy.,A,"Choosing A provides a higher payout on average compared to choosing B, regardless of the other person's choice."
+219,ODU,2736,58,B,"Choosing A scores 1 or 5, choosing B scores 3 or 8. It improves both best and worst case scenarios.",A,"Sure, option A is the safe choice as it guarantees a minimum payout of 1 ECU, whereas choosing option B could result in earning as little as 3 ECU."
+220,ODU,2746,36,A,Overall maximisation for the collective.,A,"I choose A because I want to minimize the chances of getting only 1 ECU, which happens if the other person chooses B and I choose A. By choosing A, I ensure that I will get at least 3 ECU even if the other person also chooses A."
+221,ODU,2769,53,A,Makes sense to choose this for max gain.,A,The expected value of A is greater than B.
+222,ODU,2786,14,B,Hopping the other chooses B.,A,"I choose A because it guarantees that I earn at least 1 ECU, regardless of the other person's choice."
+223,ODU,2802,39,A,I think it makes sense to pick B as I’ll get at least 3 ECU rather than a minimum of 1.,A,I would choose A because it offers the highest expected payout regardless of the other person's choice.
+224,ODU,2810,13,A,The decision potentially gives the greatest reward for least risk.,A,"Mathematically speaking, Option A provides a higher expected value (5 ECU) compared to option B (3 ECU) regardless of the other person's choice."
+225,ODU,2828,2,B,Well if they're sensible we both get 3 ECU.,A,"Choosing A gives a guaranteed outcome of 5 ECU regardless of the other person's choice, while choosing B gives a best-case outcome of 3 ECU and a worst-case outcome of 1 ECU."
+226,ODU,2830,30,B,"I am trying to get the best outcome I can, therefore, B is the best choice for me.",A,"I want to maximize my earnings and in this case, choosing A leads to higher expected earnings."
+227,ODU,2847,14,B,I don't entirely trust the other person to not choose B in hopes of gaining the majority.,A,"I choose A because it guarantees that I earn at least 1 ECU, regardless of the other person's choice."
+228,ODU,2850,7,A,A is the least risk.,A,I choose option A to maximize my expected payout.
+229,ODU,2863,39,A,I choose the equal  win/win option.,A,I would choose A because it offers the highest expected payout regardless of the other person's choice.
+230,ODU,2876,10,B,"I don't need A.I., with B I will either get 8 or 3 ECU. There is better chance of me gaining more than with option A which is 1 or 5 ECU.",A,The expected payout for choosing A is higher than for choosing B.
+231,ODU,2878,9,B,Hoping other chooses A.,A,"I would choose option A as it offers a higher payout than option B when the other player also chooses A, and a slightly lower payout than option B when the other player chooses B."
+232,ODU,2893,48,B,"I think B is much better, because if the other chose A.",A,I prefer option A because it gives me a chance to earn a higher payout regardless of the other person's choice.
+233,ODU,2898,60,A,As I feel it would be the best outcome.,A,I prefer option A as it guarantees a payout of at least 1 ECU regardless of the other person's choice.
+234,ODU,2912,36,A,In this case we'd both get 5 ECU which I think is a fair amount for us both. Making any other choice risks one of us getting significantly less. So A is the optimal choice.,A,"I choose A because I want to minimize the chances of getting only 1 ECU, which happens if the other person chooses B and I choose A. By choosing A, I ensure that I will get at least 3 ECU even if the other person also chooses A."
+235,ODU,2926,40,A,Try to get the highest reward but still being fair.,A,"I choose option A because it results in either both parties earning 5 ECU or me earning 1 ECU, which is a safer choice compared to choosing option B, where there is a risk of earning only 3 ECU."
+236,ODU,2938,48,B,I hope he chooses A.,A,I prefer option A because it gives me a chance to earn a higher payout regardless of the other person's choice.
+237,ODU,2945,4,A,That is the best option as long as we both pick the same.,A,"Choosing A provides a higher payout on average compared to choosing B, regardless of the other person's choice."
+238,ODU,2952,47,A,I trust that they will choose fairly (A) also.,A,I'd choose option A because I think it gives me a better chance of getting a higher payout.
+239,ODU,2957,53,A,It has to be A as we both benefit clearly from this with little risk of gaining little.,A,The expected value of A is greater than B.
+240,ODU,2968,64,A,So that I maximize my profits.,A,"The expected payout for choosing A is 4 ECU, which is higher than the expected payout for choosing B (3 ECU)."
+241,ODU,2975,46,A,Most beneficial for both parties.,A,"I choose A because it gives me a higher expected payout than choosing B, no matter what the other person chooses."
+242,ODU,2981,37,B,There is more probability of choosing B by the other one.,A,"I choose option A because the expected payout is higher compared to option B. If both I and the other person choose option A, we both get 5 ECU, and if the other person chooses option B, I get 1 ECU and the other person gets 8 ECU. The average of these two outcomes is (5 + 1)/2 = 3 ECU. So the expected payout for option A is higher."
+243,ODU,2987,12,B,It's the more safer choice to secure a decent payment.,A,Because option A has higher expected value.

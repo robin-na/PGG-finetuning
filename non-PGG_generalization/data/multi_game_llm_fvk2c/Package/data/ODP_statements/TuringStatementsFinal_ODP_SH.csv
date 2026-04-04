@@ -1,0 +1,261 @@
+StatementID,TreatmentCode,SubjectID,personality_string,SH,SH_JUS,AI_SH,AI_SH_JUS
+1,ODP,1,2212221,X,X is the best option if both are chosen.,X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+2,ODP,23,2112222,Y,5 or 4 ECU is better than 8 or 1 ECU.,X,Choosing X maximizes the joint payout and ensures that both parties earn a minimum of 4 ECU.
+3,ODP,43,2211222,X,I hope the receiver will choose the same.,X,"Choosing X gives a better chance of getting 8 ECU, which is more money."
+4,ODP,50,1111221,X,"I think it's a win win situation if the other person chooses the same option, as long as they are not entirely selfish.",X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+5,ODP,55,2112221,Y,"Out of all the scenarios, this would lead to the most ECU.",X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+6,ODP,92,1111222,Y,Y first for a change.,X,"Choosing option X results in a fairer outcome for both parties, regardless of the other's choice."
+7,ODP,110,2112222,X,"I would choose the option that gives us both the most, hoping the other person would have the same thinking.",X,Choosing X maximizes the joint payout and ensures that both parties earn a minimum of 4 ECU.
+8,ODP,131,2112221,X,We'd both benefit from choosing X.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+9,ODP,137,1211221,X,This is the win win for both parties.,X,"I choose option X because it has the highest expected payout, regardless of the other person's choice."
+10,ODP,143,2111222,X,Hope they are fair.,X,I'm choosing option X because it gives a higher payout in the case where the other person chooses Y and it results in a fair outcome if both of us choose X.
+11,ODP,162,2212211,X,This is the best option for both players.,X,"Choosing option X results in a better outcome in two of the four scenarios, and the worst possible outcome is still receiving 4 ECU, which is better than choosing option Y in all scenarios."
+12,ODP,190,2112212,X,I feel that this is a fair decision for both parties.,X,"The option X is the dominant strategy, as choosing it results in a higher payout regardless of the other person's choice."
+13,ODP,192,1211212,X,We will both get the most if we choose X.,X,Choose X to maximize benefit in case the other person chooses X and minimize loss in case the other person chooses Y.
+14,ODP,210,1112222,X,On the one hand Y has a more certain chance of at least getting some money. But X has a higher payout assuming the other person agrees.,X,"Option X results in a better outcome for both players, regardless of the other player's choice, compared to option Y."
+15,ODP,221,2211221,Y,It’s the safe choice.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+16,ODP,225,2221211,X,This is the best option for both players.,X,"Choosing X gives the best average payout, regardless of what the other person chooses."
+17,ODP,226,2111121,X,"If the other also chooses this, we will both get the most ECU.",X,The decision is based on maximizing the earnings.
+18,ODP,231,2111221,X,It seems like the surest way for us to both benefit.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+19,ODP,247,2111221,X,We can both benefit the most from this choice.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+20,ODP,248,1112212,Y,"If both choose Y, both receive an equal amount.",X,Earn more in all scenarios.
+21,ODP,258,2222221,X,It would be stupid to choose anything different from X in this situation.,X,Maximizes own payout.
+22,ODP,277,2222211,X,Best outcome is both of us to get 8 so choose 8.,X,"Choosing option X maximizes the potential payout for both parties, as it offers the highest combined payout of 16 ECU (8 ECU each). In contrast, option Y offers a combined payout of 8 ECU (4 ECU each). Therefore, option X seems to be the more rational and mutually beneficial choice."
+23,ODP,278,2122222,X,We both get more by choosing X.,X,"I choose option X because it gives the highest expected value in all possible scenarios, regardless of what the other person chooses."
+24,ODP,281,2111212,X,It offers the highest amount of ECU.,X,"I choose option X because it results in the most ECU for both parties in the case where both parties choose X, and also provides a better payout than option Y in the case where the other party chooses Y."
+25,ODP,290,2111121,X,More points and hope they have done the same.,X,The decision is based on maximizing the earnings.
+26,ODP,300,1112221,X,Seems like a fair offer.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+27,ODP,301,1111221,Y,The minimum amount I receive this way is 4 ECU.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+28,ODP,307,2122222,X,Go for the one that benefits both.,X,"I choose option X because it gives the highest expected value in all possible scenarios, regardless of what the other person chooses."
+29,ODP,323,1121221,X,"This is the highest, equal option.",X,Higher payoff.
+30,ODP,324,2111221,X,Highest value to me.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+31,ODP,327,1111221,X,This is the best outcome for us both.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+32,ODP,330,1112121,X,I would assume the other will choose X also.,X,Maximize earning potential.
+33,ODP,331,2211221,X,This has a higher chance of getting more money.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+34,ODP,335,1122221,X,"Best answer for both parties, most to win.",X,I'd prefer to maximize potential rewards while minimizing potential losses.
+35,ODP,347,2112121,X,"Seems fairer, not benefiting if someone gets something 'wrong'.",X,"Choosing option X results in the highest payout in both scenarios where you choose X. Additionally, even if the other person chooses Y, you still earn more than if you both choose Y."
+36,ODP,350,1111221,X,Makes most sense to both to choose the best option X.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+37,ODP,357,2111221,X,It's the best opportunity.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+38,ODP,374,1112221,X,Get the most if they also chose X.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+39,ODP,384,2122121,X,Expect both to choose X as that is the best payoff.,X,Maximizing individual gain.
+40,ODP,388,2111122,Y,We would both be better off if we choose Y.,X,"The option X leads to a higher payout in the event that the other person chooses Y, and still results in a decent payout even if the other person chooses X."
+41,ODP,390,2211221,Y,It would be easier to go for the first choice. This has become a thoughtful response that may be picked up on.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+42,ODP,391,2111212,X,This is the highest offer for both - it makes no sense to choose another as far as I can tell.,X,"I choose option X because it results in the most ECU for both parties in the case where both parties choose X, and also provides a better payout than option Y in the case where the other party chooses Y."
+43,ODP,405,2111211,X,Both receive the best bonus.,X,"I choose option X because it has the potential to yield the highest payout for both parties, if the other person also chooses X. It's a win-win situation."
+44,ODP,413,2112221,X,I have a chance to get 8 ECU.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+45,ODP,414,2212221,Y,Y has better returns.,X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+46,ODP,440,2112212,Y,Balance of risk for lower guaranteed return (4 or 5) rather than a riskier 1 or 8.,X,"The option X is the dominant strategy, as choosing it results in a higher payout regardless of the other person's choice."
+47,ODP,441,1111211,X,"Hopefully, the other person also would like to choose X so we can both win.",X,Choose X to maximize mutual benefit and minimize harm.
+48,ODP,455,2212221,X,Both get the same.,X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+49,ODP,461,2112221,X,Best outcome for both.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+50,ODP,479,1111221,X,No Y option is better than both X so makes no sense for other person to choose Y.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+51,ODP,508,2122221,X,We both get lots.,X,"The option X results in a better outcome in three out of four possible combinations, so it is the more optimal choice."
+52,ODP,509,1121122,X,We can both make the most ECU.,X,I choose X because it has a higher payout in more combinations of choices.
+53,ODP,512,2211121,X,"It's the Nash equilibrium, as both people benefit the most from X.",X,"Choosing X results in the best outcome in the case where the other person also chooses X. And even if the other person chooses Y, it still results in a higher payout for me than choosing Y."
+54,ODP,522,1121121,X,If the other person also chooses X then that is maximum profit.,X,I'll choose option X to maximize my earnings and minimize my potential losses.
+55,ODP,533,2111211,X,Choose X because there is 50% chance to get maximum payment.,X,"I choose option X because it has the potential to yield the highest payout for both parties, if the other person also chooses X. It's a win-win situation."
+56,ODP,534,1122221,X,Surely they will pick this.,X,I'd prefer to maximize potential rewards while minimizing potential losses.
+57,ODP,563,1111221,X,I want us both to be rewarded.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+58,ODP,591,2111222,X,Best result for all.,X,I'm choosing option X because it gives a higher payout in the case where the other person chooses Y and it results in a fair outcome if both of us choose X.
+59,ODP,598,2111222,X,I’m hoping the other person will also go for the highest paying option and we both win big.,X,I'm choosing option X because it gives a higher payout in the case where the other person chooses Y and it results in a fair outcome if both of us choose X.
+60,ODP,620,2112221,X,"I figure that even though this is a risk, the other person is also more likely to pick X.",X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+61,ODP,623,1121212,X,"Please surely people will just pick X so we can both profit ... :,).",X,"Earn more if other chooses Y, and I earn enough if they choose X."
+62,ODP,630,2122211,X,I gain no matter what but we both gain most by doing this and I think most people are going to trust in common sense.,X,"I choose option X because it gives the highest average payout, regardless of the other person's choice."
+63,ODP,635,1112212,X,I would hope it is the best option.,X,Earn more in all scenarios.
+64,ODP,657,1211212,X,We could both get most money with this option.,X,Choose X to maximize benefit in case the other person chooses X and minimize loss in case the other person chooses Y.
+65,ODP,663,2112221,X,X marks the spot.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+66,ODP,664,1112221,X,We both end up winners.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+67,ODP,675,2221221,Y,Y will get more ECU.,X,"Opting for X maximizes the potential payout in all scenarios, so it seems like the best choice."
+68,ODP,679,2221222,X,I like to make my own decisions.,X,"I choose option X because it provides a higher payout in the scenario where the other player chooses Y, and the payouts are still relatively decent if both players choose X."
+69,ODP,684,2221221,Y,Y is the better choice based on outcomes.,X,"Opting for X maximizes the potential payout in all scenarios, so it seems like the best choice."
+70,ODP,694,1221221,X,Choosing this hoping the other chooses X.,X,"I choose option X because it has the highest average payout, regardless of the other person's choice."
+71,ODP,696,2112221,X,Most money least risk.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+72,ODP,697,2111221,X,"Hoping the other person would go for a split, knowing it earns more than either person selecting Y.",X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+73,ODP,713,2122221,Y,"Because, it's the most relevant solution.",X,"The option X results in a better outcome in three out of four possible combinations, so it is the more optimal choice."
+74,ODP,715,2122121,X,Most money to be earned.,X,Maximizing individual gain.
+75,ODP,724,2211212,X,Because the benefits if we both pick X is greater.,X,"Choosing X provides a higher payout in the scenario where the other player chooses Y, and a lower payout if both players choose X. This choice maximizes potential earnings."
+76,ODP,726,2112221,X,I’d like us both to get the most out of it.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+77,ODP,730,2221212,X,"Hopefully, the obvious choice for both of us.",X,"Choosing option X gives a higher payout in 3 out of the 4 possible scenarios, making it a safer and more profitable choice."
+78,ODP,731,2111221,X,"Higher reward, hoping the other chose the same.",X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+79,ODP,740,2112222,X,Higher profit for both.,X,Choosing X maximizes the joint payout and ensures that both parties earn a minimum of 4 ECU.
+80,ODP,749,2211221,X,"We both get 8, which is more than the other options.",X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+81,ODP,750,2112222,X,It is obviously the response with greatest benefit for both.,X,Choosing X maximizes the joint payout and ensures that both parties earn a minimum of 4 ECU.
+82,ODP,757,1212221,X,It is a logical choice.,X,I choose X for the higher payout if both choose X and for a slightly better payout if the other chooses Y.
+83,ODP,785,1111211,X,It's the safest option.,X,Choose X to maximize mutual benefit and minimize harm.
+84,ODP,795,2112221,X,I would like us both to get the most and equal amounts.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+85,ODP,817,2211111,Y,Higher chance for more money.,X,"I'm choosing option X because it gives me a higher chance of earning more money, compared to option Y."
+86,ODP,829,2122222,X,It’s a good outcome for both of us.,X,"I choose option X because it gives the highest expected value in all possible scenarios, regardless of what the other person chooses."
+87,ODP,837,2222221,X,I think both of us will choose the big amount.,X,Maximizes own payout.
+88,ODP,839,1211222,X,This way we both get the highest bonus possible.,X,"By choosing X, I will earn more ECU regardless of the other person's choice."
+89,ODP,853,2222222,X,I choose X in hope that my partner also chooses X and then we both get 8 ECU each!,X,Maximize potential earnings.
+90,ODP,866,2211221,X,Highly likely the other person will also choose X = 8 ECU.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+91,ODP,868,1221121,Y,Trying to get more ECU.,X,Choosing X is more profitable.
+92,ODP,872,2212221,X,This is the answer that has the potential to earn the most.,X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+93,ODP,874,2112221,X,It gets both of us the most ECU.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+94,ODP,883,1112221,Y,Maximise profit potential and reduce loss as I don't know what they will do.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+95,ODP,885,1111221,X,Biggest benefit to both - it’s very clear.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+96,ODP,911,2112221,X,More ECU for both people.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+97,ODP,924,1112121,X,I would expect that given the instructions we would both choose X and make the most amount each.,X,Maximize earning potential.
+98,ODP,928,1121212,X,Hope we both choose X to get the best outcome.,X,"Earn more if other chooses Y, and I earn enough if they choose X."
+99,ODP,959,1112222,X,Best for both of us.,X,"Option X results in a better outcome for both players, regardless of the other player's choice, compared to option Y."
+100,ODP,970,2211112,X,Happy to make my own choice with this.,X,"Choosing X gives the best average payouts in any scenario, making it the more rational choice."
+101,ODP,974,2111121,X,More likely to get more points.,X,The decision is based on maximizing the earnings.
+102,ODP,995,2211221,X,So we can receive equal amounts.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+103,ODP,997,1112211,X,By choosing X it seems that we would both gain the most.,X,I choose option X because it maximizes potential mutual benefit and minimizes potential mutual harm.
+104,ODP,1010,2122122,Y,I am always choosing to minimise losses.,X,"I choose option X because it results in the highest possible payout, regardless of what the other person chooses. By choosing X, I maximize my own potential earnings."
+105,ODP,1035,2112221,X,"There are no downsides to choosing X, so both parties should do so.",X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+106,ODP,1036,2212222,Y,"The outcome is good for Y, receiving more money.",X,I choose option X because it leads to a higher payout in most scenarios and it promotes fairness by rewarding both parties more equally.
+107,ODP,1038,1112221,X,I want to go for the best option for both of us.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+108,ODP,1066,2112221,X,It makes the most for both of us.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+109,ODP,1073,2112221,Y,It's a halfway point.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+110,ODP,1080,2211212,X,I either get 5 or 8.,X,"Choosing X provides a higher payout in the scenario where the other player chooses Y, and a lower payout if both players choose X. This choice maximizes potential earnings."
+111,ODP,1095,2112221,X,I like making my own choices.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+112,ODP,1175,2112121,X,I am hoping the other person chooses Y so they get the 5 ECU.,X,"Choosing option X results in the highest payout in both scenarios where you choose X. Additionally, even if the other person chooses Y, you still earn more than if you both choose Y."
+113,ODP,1183,2111222,X,My understanding is that both choosing X is the most profitable.,X,I'm choosing option X because it gives a higher payout in the case where the other person chooses Y and it results in a fair outcome if both of us choose X.
+114,ODP,1225,2112221,X,Better reward for both involved.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+115,ODP,1254,2112221,X,This is better for both of us.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+116,ODP,1262,2111221,X,We both get the most ECU if we both chose X.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+117,ODP,1267,2122221,X,"We would both get more, the other person has no reason to chose Y.",X,"The option X results in a better outcome in three out of four possible combinations, so it is the more optimal choice."
+118,ODP,1281,2211221,X,It's a better outcome if we both choose X.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+119,ODP,1286,1221211,X,Makes sense to trust the humanity in the other and go for 8 so we both get the most money.,X,"Gotta go with my gut and choose X, seems like the better option."
+120,ODP,1304,2112121,X,This is the best option for both of us.,X,"Choosing option X results in the highest payout in both scenarios where you choose X. Additionally, even if the other person chooses Y, you still earn more than if you both choose Y."
+121,ODP,1306,1222211,X,"If the other is smart, he will choose X.",X,I pick X for the potential payout of 8 ECUs.
+122,ODP,1310,1112221,X,Nobody loses this way.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+123,ODP,1321,2111222,Y,It gives me the best chance of a good bonus.,X,I'm choosing option X because it gives a higher payout in the case where the other person chooses Y and it results in a fair outcome if both of us choose X.
+124,ODP,1329,1121122,X,"This option provides us with 8 ECU each, the highest amount where we can both get the same ECU.",X,I choose X because it has a higher payout in more combinations of choices.
+125,ODP,1332,1211221,Y,Risk free decision.,X,"I choose option X because it has the highest expected payout, regardless of the other person's choice."
+126,ODP,1351,2211222,X,Clearly it is the maximum we can both get.,X,"Choosing X gives a better chance of getting 8 ECU, which is more money."
+127,ODP,1362,2222222,Y,Higher payment probability.,X,Maximize potential earnings.
+128,ODP,1380,1122221,X,I just decided to choose this option.,X,I'd prefer to maximize potential rewards while minimizing potential losses.
+129,ODP,1392,2211221,X,This is the most fair and lucrative choice.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+130,ODP,1401,2112221,X,This gives us both the highest amount possible.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+131,ODP,1409,2212222,Y,Guarantee of at least 4 ECU.,X,I choose option X because it leads to a higher payout in most scenarios and it promotes fairness by rewarding both parties more equally.
+132,ODP,1421,2111221,Y,I want to hope for the most money.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+133,ODP,1425,1112221,Y,Because I will receive 5 or 4. there is no risk that I will only receive 1.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+134,ODP,1443,2222221,X,Best outcome by my calculations.,X,Maximizes own payout.
+135,ODP,1461,2112221,X,This gives the best chance of higher payment. I would expect the other person to make the same decision.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+136,ODP,1485,2111212,X,We will both get the most we can get and both have the same amount.,X,"I choose option X because it results in the most ECU for both parties in the case where both parties choose X, and also provides a better payout than option Y in the case where the other party chooses Y."
+137,ODP,1497,2112221,Y,I would rather be guaranteed to get 4 than risk only getting 1.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+138,ODP,1517,1211221,X,More than possible to get from Y.,X,"I choose option X because it has the highest expected payout, regardless of the other person's choice."
+139,ODP,1522,2221121,Y,X has a high reward but also a high loss. Therefore Y is better.,X,"I choose X because it results in more ECU for me in two out of the four possible scenarios, and the risk of getting only 4 ECU instead of 8 is worth taking."
+140,ODP,1544,1111221,X,The largest possible payout.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+141,ODP,1560,1111222,Y,Hoping the other person chooses the same way.,X,"Choosing option X results in a fairer outcome for both parties, regardless of the other's choice."
+142,ODP,1608,1111212,X,Hoping we both get 8 ECU.,X,"Option X seems to result in a better outcome overall, regardless of the other player's choice."
+143,ODP,1621,1221221,X,"It’s an obvious choice - both of us get high rewards if we both select X, much higher than if either of us selects Y.",X,"I choose option X because it has the highest average payout, regardless of the other person's choice."
+144,ODP,1623,2112222,X,Maximum outcome and X seems a desirable symbol.,X,Choosing X maximizes the joint payout and ensures that both parties earn a minimum of 4 ECU.
+145,ODP,1639,2112221,Y,The classic prisoner's dilemma! Y is the safer option.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+146,ODP,1664,2112221,Y,Best odds whatever the outcome.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+147,ODP,1674,2212221,X,Equal amount if they choose X.,X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+148,ODP,1675,2121221,X,There would be no reason not to choose X as it's the highest reward.,X,Maximizing the outcome regardless of the other person's choice.
+149,ODP,1679,2212222,X,Less of a gamble than the other options.,X,I choose option X because it leads to a higher payout in most scenarios and it promotes fairness by rewarding both parties more equally.
+150,ODP,1687,1112221,X,50/50 chance that the other person chooses the same and we both do well.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+151,ODP,1705,2212221,X,"This seems pretty much a selection of pure luck as I have no idea what the other person will pick. I'd hope though that if they have read the same instructions as me, they'd realise by picking X it can maximise what we both could earn.",X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+152,ODP,1710,2212221,X,Makes sense to take the higher offer and hope the other person is fair in return.,X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+153,ODP,1732,2122221,X,Hope for the best scenario.,X,"The option X results in a better outcome in three out of four possible combinations, so it is the more optimal choice."
+154,ODP,1758,1122221,X,"Hopefully, this will be seen as the best outcome for all.",X,I'd prefer to maximize potential rewards while minimizing potential losses.
+155,ODP,1767,2112112,X,"I’m trying be fair, in order to earn more and hope that the other will think same as me.",X,I choose option X because it gives the best payoff in all possible combinations of choices.
+156,ODP,1803,1111221,X,Best outcome for both.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+157,ODP,1811,2111222,X,If they choose X too we both benefit the most.,X,I'm choosing option X because it gives a higher payout in the case where the other person chooses Y and it results in a fair outcome if both of us choose X.
+158,ODP,1818,2111222,X,It would make logical sense to both pick X.,X,I'm choosing option X because it gives a higher payout in the case where the other person chooses Y and it results in a fair outcome if both of us choose X.
+159,ODP,1821,2112221,X,We both win this way.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+160,ODP,1825,2112221,X,"I trust the other will choose X too, as it guarantees the highest earnings.",X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+161,ODP,1829,2111221,X,They both have the same expected value so I am being optimistic and going for the option which could yield me the highest payout.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+162,ODP,1838,1122221,Y,Don't see the need for the delegation.,X,I'd prefer to maximize potential rewards while minimizing potential losses.
+163,ODP,1846,2221111,Y,My outcome is not overly impacted by the other person if I choose Y.,X,"Choosing X provides a higher payout in the event that the other player chooses Y, and also results in a higher payout if both players choose X."
+164,ODP,1855,2211211,Y,I am more likely to gain more.,X,"Choosing X results in the highest payout if both players choose the same option and the lowest payout if the other player chooses the opposite option, so it's a safe choice with potential for a big payout."
+165,ODP,1866,1122121,X,"Why not try and receive the maximum reward? Hopefully, the other would feel the same.",X,I choose option X as it gives me the highest average pay.
+166,ODP,1874,1211211,X,Makes most sense for both to choose X.,X,I choose X for a better outcome in two of the four possible scenarios.
+167,ODP,1881,2111221,Y,Better chance of winning more with 2 positive outcomes.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+168,ODP,1888,2212221,X,Hope the other person is fair and we both get the maximum fairly.,X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+169,ODP,1889,2112221,X,"It is not just the best outcome for both of us, it does not hurt the other person.",X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+170,ODP,1890,1212221,X,More likely to get more.,X,I choose X for the higher payout if both choose X and for a slightly better payout if the other chooses Y.
+171,ODP,1897,2221222,Y,"X is a good option if both players choose it, but if they don't Y is a better option as I either get 4 or 5 ECU as opposed to 1 if  I choose X and the other Y.",X,"I choose option X because it provides a higher payout in the scenario where the other player chooses Y, and the payouts are still relatively decent if both players choose X."
+172,ODP,1913,2212221,X,Seems like the logical answer.,X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+173,ODP,1933,2112221,X,If the other person also chooses X we both get the highest share.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+174,ODP,1964,2111221,Y,I simply don’t trust the other party enough to work with me and pick X.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+175,ODP,1973,2211221,X,I think they are going to try and be generous so by doing this I will get the lion share of the credit.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+176,ODP,1987,2212222,X,Out of fairness and hope that the other person is a giving one.,X,I choose option X because it leads to a higher payout in most scenarios and it promotes fairness by rewarding both parties more equally.
+177,ODP,1992,1111221,X,X potentially offers the best reward for both of us.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+178,ODP,1997,2111221,X,The best chance for us to both get the best outcome.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+179,ODP,2003,2112221,Y,I'll risk it for the big one.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+180,ODP,2051,2211121,X,"Well, no reason other than that I'm hoping the other person would choose X.",X,"Choosing X results in the best outcome in the case where the other person also chooses X. And even if the other person chooses Y, it still results in a higher payout for me than choosing Y."
+181,ODP,2064,1212222,X,This is the most money that both of us can get.,X,"Choosing X leads to a better outcome, regardless of the other person's choice."
+182,ODP,2090,2221221,X,"As X is more, I think they would also choose.",X,"Opting for X maximizes the potential payout in all scenarios, so it seems like the best choice."
+183,ODP,2092,2111221,X,I'm trying to maximise my rewards here.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+184,ODP,2108,1221211,X,I think the high value will cause them to choose X also.,X,"Gotta go with my gut and choose X, seems like the better option."
+185,ODP,2110,2111122,X,"8 ECUs for both that's the highest there, it's only a win win.",X,"The option X leads to a higher payout in the event that the other person chooses Y, and still results in a decent payout even if the other person chooses X."
+186,ODP,2115,2212222,X,Maximises the payment for both parties.,X,I choose option X because it leads to a higher payout in most scenarios and it promotes fairness by rewarding both parties more equally.
+187,ODP,2117,2122121,X,Mathematically the best case scenario.,X,Maximizing individual gain.
+188,ODP,2123,2112222,X,"The best outcome for both of us would be to both choose X, and so I think it would be a clear decision for the other person to also choose X.",X,Choosing X maximizes the joint payout and ensures that both parties earn a minimum of 4 ECU.
+189,ODP,2127,2211221,X,It should give the highest yield to both.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+190,ODP,2130,1122221,X,Choosing X will benefit both of us the most.,X,I'd prefer to maximize potential rewards while minimizing potential losses.
+191,ODP,2141,1121222,X,I think the other person will also choose X as we both get the best outcome if we both choose X.,X,Higher potential payout.
+192,ODP,2143,1111212,X,"Both choose same so get 8, trust myself so not delegated.",X,"Option X seems to result in a better outcome overall, regardless of the other player's choice."
+193,ODP,2160,1111212,X,We both benefit the most from choosing X.,X,"Option X seems to result in a better outcome overall, regardless of the other player's choice."
+194,ODP,2185,2222121,X,I would hope that the other person would choose this in the hope that we both get maximum ECU.,X,"In this scenario, choosing option X gives the best outcome in all cases except if the other person also chooses X, in which case both options give the same outcome. So choosing X maximizes the potential payoff."
+195,ODP,2219,2122121,X,"If both of us choose X the return is better, so worth a try.",X,Maximizing individual gain.
+196,ODP,2221,2112221,Y,Guarantees at least 4.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+197,ODP,2222,2111221,Y,Y is the option where I will likely get a good amount regardless of what the other player chooses.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+198,ODP,2254,1221122,X,To maximise the money that both earn it makes the most sense to pick X.,X,Go for option X for more ECU.
+199,ODP,2262,1211221,X,Best way to earn more.,X,"I choose option X because it has the highest expected payout, regardless of the other person's choice."
+200,ODP,2272,2111211,X,It makes sense for both of us.,X,"I choose option X because it has the potential to yield the highest payout for both parties, if the other person also chooses X. It's a win-win situation."
+201,ODP,2273,2112221,X,Makes more reasonable sense to choose.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+202,ODP,2299,2112222,X,Higher reward if both choose it.,X,Choosing X maximizes the joint payout and ensures that both parties earn a minimum of 4 ECU.
+203,ODP,2317,2212221,X,The most payout if both choose this option.,X,I choose X because it gives me the opportunity to earn more money regardless of the other person's choice.
+204,ODP,2336,2121221,X,We can maximise our winning if we both choose X.,X,Maximizing the outcome regardless of the other person's choice.
+205,ODP,2339,2112221,X,I will go with X I prefer overall.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+206,ODP,2345,2121121,X,Bigger risk for bigger reward.,X,Maximize potential earnings.
+207,ODP,2350,1112221,X,I know the best option.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+208,ODP,2355,2221221,X,"This way we both do the best as a team, not just as an individual.",X,"Opting for X maximizes the potential payout in all scenarios, so it seems like the best choice."
+209,ODP,2364,2111211,X,"Hopefully, they will be fair and choose X, too.",X,"I choose option X because it has the potential to yield the highest payout for both parties, if the other person also chooses X. It's a win-win situation."
+210,ODP,2366,1112221,Y,I am guaranteed a relatively high payment.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+211,ODP,2375,2111221,X,Hoping we  both do well.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+212,ODP,2377,2112121,X,Get the most ECU.,X,"Choosing option X results in the highest payout in both scenarios where you choose X. Additionally, even if the other person chooses Y, you still earn more than if you both choose Y."
+213,ODP,2388,2111221,X,'X' is the obvious choice if both of us wish to split credits equally.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+214,ODP,2401,2111221,X,"Because there is a chance that we could both earn 8 ECU if we both choose X, whereas if we both choose Y we earn less.",X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+215,ODP,2402,1111221,X,Maximum payout which I am sure the other person will go for.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+216,ODP,2414,1112212,Y,If other person chooses Y we get same reward.,X,Earn more in all scenarios.
+217,ODP,2435,2122221,X,Should be most mutually beneficial outcome.,X,"The option X results in a better outcome in three out of four possible combinations, so it is the more optimal choice."
+218,ODP,2436,1112211,X,Is the best option.,X,I choose option X because it maximizes potential mutual benefit and minimizes potential mutual harm.
+219,ODP,2472,1122222,X,"Hopefully, the other will also choose X to maximise profit.",X,To maximize earnings and avoid the risk of getting only 4 ECU.
+220,ODP,2476,2122121,Y,Seems to maximise my outcome.,X,Maximizing individual gain.
+221,ODP,2513,2122222,X,It's the one where both parties get the highest amount. It seems inconceivable that the other party wouldn't also pick X.,X,"I choose option X because it gives the highest expected value in all possible scenarios, regardless of what the other person chooses."
+222,ODP,2519,2221112,X,I wish to make the choice.,X,"Go for the higher payout, choose X."
+223,ODP,2534,2212121,X,Time to share the ECU.,X,"I choose X because it provides the best payout in all scenarios, with the worst payout still being 4 ECU."
+224,ODP,2546,2212212,X,If we both choose this we both do well so I feel it is worth the risk and the other person may feel this too.,X,"Choosing option X results in a higher payout in two out of the four possible scenarios, making it the safer choice financially."
+225,ODP,2547,2111211,X,The highest chance of a return.,X,"I choose option X because it has the potential to yield the highest payout for both parties, if the other person also chooses X. It's a win-win situation."
+226,ODP,2558,2112221,X,Assume we both want 8ECU.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+227,ODP,2565,2112221,X,Choosing X results in an even split of 8 ECU.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+228,ODP,2571,2122221,X,At the very worst I can make 1 ECU with a decent chance the other person will realise the mutual benefit of picking X.,X,"The option X results in a better outcome in three out of four possible combinations, so it is the more optimal choice."
+229,ODP,2580,2111212,X,The decision is arbitrary but I want to feel like I am in control.,X,"I choose option X because it results in the most ECU for both parties in the case where both parties choose X, and also provides a better payout than option Y in the case where the other party chooses Y."
+230,ODP,2585,1211222,X,X comes first in the alphabet.,X,"By choosing X, I will earn more ECU regardless of the other person's choice."
+231,ODP,2598,2122121,Y,"I feel like the other person will pick Y, too.",X,Maximizing individual gain.
+232,ODP,2602,2111221,X,I wish to maximise the result for the contestants and me choosing X does that.,X,"Choosing option X maximizes the payout for both parties, which could be seen as more fair."
+233,ODP,2606,2221222,X,"I have a 50/50 chance of getting this right, so I thought I'd have a go.",X,"I choose option X because it provides a higher payout in the scenario where the other player chooses Y, and the payouts are still relatively decent if both players choose X."
+234,ODP,2627,2112222,X,I’m hoping both of us will choose X.,X,Choosing X maximizes the joint payout and ensures that both parties earn a minimum of 4 ECU.
+235,ODP,2636,2112221,X,We both get the maximum ECU.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+236,ODP,2643,2112221,X,Makes sense to take as much as possible.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+237,ODP,2652,1111221,X,Choosing option X is the most profitable option if the other person also chooses option X.,X,I choose option X as it is the option that is most beneficial for both parties and has the highest reward if both parties choose it.
+238,ODP,2664,2212211,X,It provides the most ECU without suffering any penalties.,X,"Choosing option X results in a better outcome in two of the four scenarios, and the worst possible outcome is still receiving 4 ECU, which is better than choosing option Y in all scenarios."
+239,ODP,2675,2112221,Y,I used my gut instinct and went with Y.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+240,ODP,2685,2221221,Y,Most likely to get a decent amount.,X,"Opting for X maximizes the potential payout in all scenarios, so it seems like the best choice."
+241,ODP,2703,2112221,X,"X earns us more ECU. It makes sense to choose it and hopefully, the other person will reason like that too and we'll both get 8ECU.",X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+242,ODP,2723,2122221,X,"Hopefully, the other person chooses X and we're both rewarded 8 ECU.",X,"The option X results in a better outcome in three out of four possible combinations, so it is the more optimal choice."
+243,ODP,2749,1111111,X,The greatest amount of earnings is from this choice.,X,I think option X gives a better payout.
+244,ODP,2755,2112221,X,I am looking for the maximum benefit and I believe the other person will do same.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+245,ODP,2782,2221221,X,I want to maximize the total amount of money that we both receive.,X,"Opting for X maximizes the potential payout in all scenarios, so it seems like the best choice."
+246,ODP,2787,2111211,X,"If we both pick X, we both get the highest amount possible.",X,"I choose option X because it has the potential to yield the highest payout for both parties, if the other person also chooses X. It's a win-win situation."
+247,ODP,2798,1112221,X,Fairest decision for both parties.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+248,ODP,2799,2211221,X,Optimistic the other person will choose what is best for both of us.,X,Choosing option X maximizes the payout for both parties in case the other person also chooses X.
+249,ODP,2801,2112221,X,Maximise the possible return.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+250,ODP,2833,1112221,X,We both gain if we both go with X.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+251,ODP,2841,1112221,X,It is most beneficial for both parties.,X,"I choose option X because it results in a fairer outcome for both parties, even though the other person's choice is unknown."
+252,ODP,2846,1121121,X,I would think they would choose this due to higher earning.,X,I'll choose option X to maximize my earnings and minimize my potential losses.
+253,ODP,2867,2111211,X,This maximises payout for both parties.,X,"I choose option X because it has the potential to yield the highest payout for both parties, if the other person also chooses X. It's a win-win situation."
+254,ODP,2875,1211221,X,"Hopefully, they see 8 each as the best option.",X,"I choose option X because it has the highest expected payout, regardless of the other person's choice."
+255,ODP,2885,2212212,X,I will earn the maximum if we both choose the same. The benefit outweighs the risk.,X,"Choosing option X results in a higher payout in two out of the four possible scenarios, making it the safer choice financially."
+256,ODP,2895,1211112,X,"I have chosen the win-win option, which is the best option for both of us.",X,"Sure, I'll choose X because it gives a higher payout in the two cases where my choice differs from the other person's."
+257,ODP,2927,2112221,Y,I would get more.,X,"Choosing X results in a higher payout in 2 out of the 4 possible scenarios, and the payouts in the other 2 scenarios are not much lower than choosing Y."
+258,ODP,2955,2111222,Y,More chance of more.,X,I'm choosing option X because it gives a higher payout in the case where the other person chooses Y and it results in a fair outcome if both of us choose X.
+259,ODP,2967,2212211,X,I think choosing X would benefit both parties more in terms of ECU earned.,X,"Choosing option X results in a better outcome in two of the four scenarios, and the worst possible outcome is still receiving 4 ECU, which is better than choosing option Y in all scenarios."
+260,ODP,2984,2211212,Y,Choosing Y guarantees a minimum win of 4 and a maximum win of 5. Choosing X guarantees a minimum win of 1 and a maximum of 8. Y is therefore less risky.,X,"Choosing X provides a higher payout in the scenario where the other player chooses Y, and a lower payout if both players choose X. This choice maximizes potential earnings."
