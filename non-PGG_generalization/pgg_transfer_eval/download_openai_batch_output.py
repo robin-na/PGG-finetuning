@@ -9,6 +9,8 @@ from pathlib import Path
 
 from openai import OpenAI
 
+from repo_env import require_env_var
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -20,7 +22,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    client = OpenAI()
+    client = OpenAI(api_key=require_env_var("OPENAI_API_KEY"))
     batch = client.batches.retrieve(args.batch_id)
     payload = batch.model_dump() if hasattr(batch, "model_dump") else {}
     file_id = payload.get("output_file_id") if args.which == "output" else payload.get("error_file_id")

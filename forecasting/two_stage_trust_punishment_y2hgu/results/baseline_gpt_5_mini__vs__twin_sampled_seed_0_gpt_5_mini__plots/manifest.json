@@ -1,0 +1,11 @@
+{
+  "runs": [
+    "baseline_gpt_5_mini",
+    "twin_sampled_seed_0_gpt_5_mini"
+  ],
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/results/baseline_gpt_5_mini__vs__twin_sampled_seed_0_gpt_5_mini__plots",
+  "random_iters": 500,
+  "seed": 0,
+  "random_baseline": "Uniform independent sampling over each schema's valid response space.",
+  "primary_metric_family": "distribution_distance"
+}

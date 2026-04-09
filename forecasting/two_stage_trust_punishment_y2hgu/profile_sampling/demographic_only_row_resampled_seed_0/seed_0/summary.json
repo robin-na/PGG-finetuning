@@ -1,0 +1,10 @@
+{
+  "dataset_key": "two_stage_trust_punishment_y2hgu",
+  "variant": "demographic_only_row_resampled_seed_0",
+  "seed": 0,
+  "unit_count": 1000,
+  "source_row_count": 13073,
+  "unique_source_rows_used": 965,
+  "cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/demographic_profile_cards.jsonl",
+  "assignments_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/unit_assignments.jsonl"
+}

@@ -1,0 +1,135 @@
+=== SYSTEM MESSAGE ===
+
+You forecast one participant's full decision battery in a multi-game experiment with possible AI delegation. Use the treatment description, scenario structure, and any provided profile as priors. Return only valid JSON.
+
+=== USER MESSAGE ===
+
+Forecast one participant's full decision battery for this experimental run.
+
+# TREATMENT
+- Treatment code: ODP
+- OpaqueDelegation: the participant can voluntarily delegate each role to AI.
+- If the participant delegates a role, the counterpart does not know whether AI was used.
+- The AI support is personalized to the participant.
+
+# SCENARIOS TO PREDICT
+- Predict the participant's outputs for every scenario below in the listed order.
+- 1. scenario `AISupport`, case `AgainstHuman`. AI support is present. The counterpart is human.
+- 2. scenario `NoAISupport`, case `Opaque`. AI support is not present. The interaction is opaque with respect to whether the counterpart used AI.
+
+# GAME RULES
+- Ultimatum Game proposer: choose an offer from 0 to 10.
+- Ultimatum Game responder: choose a minimum acceptable offer from 0 to 10.
+- Trust Game sender: choose `YES` or `NO` for sending 2 ECU. If sent, it becomes 6 ECU for the receiver.
+- Trust Game receiver: if the sender sends, choose how much of 6 ECU to return, from 0 to 6.
+- Prisoner's Dilemma: choose `A` or `B` with payoffs (A,A)=5/5, (A,B)=1/8, (B,A)=8/1, (B,B)=3/3.
+- Stag Hunt: choose `X` or `Y` with payoffs (X,X)=8/8, (X,Y)=1/5, (Y,X)=5/1, (Y,Y)=4/4.
+- Coordination Game: choose one of Mercury, Venus, Earth, Mars, or Saturn. Matching the counterpart yields 5 each; mismatch yields 2 each.
+
+# PARTICIPANT PERSONA
+Use this sampled persona as a prior about likely tendencies. It was sampled from Twin to match the target study's observed demographic distribution and is not the real participant.
+
+# Shared Prompt Notes
+
+## General Interpretation Note
+
+- These profiles summarize prior survey and behavioral-task evidence about each participant.
+- Treat the cues as relative tendencies, not deterministic predictions for any single decision in this study.
+- Unless a player-specific limit is listed, shared methodological caveats apply to all profiles.
+
+## Shared Caveats
+
+- Twin overlaps closely with trust, ultimatum, and dictator-style evidence, but it does not directly observe AI delegation, stag-hunt choice, or five-option coordination choice.
+- AI-use decisions in this benchmark are therefore transfer tasks from broader social and decision-style evidence, not direct matches to Twin items.
+- Communication/coordination remains indirect because Twin does not directly observe interactive AI-supported social play.
+
+## Cue Glossary
+
+### Cooperation orientation
+- Meaning: blend of one-shot sharing behavior and cooperation/prosocial self-report.
+- Built from: trust-game sending, dictator giving, cooperation/competition items, agreeableness/helpfulness items, and prosocial values.
+
+### Conditional cooperation
+- Meaning: reciprocity and fairness-threshold sensitivity rather than a repeated-game reaction function.
+- Built from: trust-game return behavior and ultimatum acceptance-threshold signals.
+
+### Norm enforcement
+- Meaning: resistance to unfair splits and revenge/low-forgiveness cues in ultimatum-like contexts.
+- Built from: ultimatum minimum acceptable amounts plus revenge/forgiveness self-report.
+
+### Generosity without return
+- Meaning: willingness to give when repayment incentives are weak or absent.
+- Built from: dictator giving, trust-game sending, and prosocial/helpfulness cues.
+
+### Exploitation caution
+- Meaning: guardedness against being taken advantage of.
+- Built from: lower trustingness, stricter acceptance thresholds, uncertainty aversion, self-reliance, and revenge tendency.
+
+### Communication/coordination
+- Meaning: indirect cue for likely social expressiveness and coordination readiness.
+- Built from: empathy, social-sensitivity/self-monitoring, and extraversion-related self-report.
+
+### Behavioral stability
+- Meaning: rule-like internal consistency across self-regulation items.
+- Built from: conscientiousness-related items, self-concept clarity, and lower volatility-related personality items.
+
+Headline: Behaviorally stable, empathic, cooperation-oriented
+Summary: Strongest supported tendencies are behaviorally stable, empathic, and cooperation-oriented. Social evidence is mixed between self-report and direct allocation tasks.
+Background: Age: 50-64; Sex assigned at birth: Female; Completed education: College graduate/some postgrad.
+Behavioral Signature:
+- Looks more tolerant of unequal outcomes than a strong norm-enforcement type.
+- Prefers structure, closure, and predictability over open-ended uncertainty.
+- Has self-report cues consistent with reading others and adapting socially.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $2/$5, mean trust return 27%, ultimatum offer $1/$5, minimum acceptable $1/$5, dictator give $2/$5.
+- Self-report pattern: Self-report block emphasizes empathy very high, cooperation orientation very high, uncertainty aversion high.
+- Time and risk profile: Time/risk tasks: later-choice rate 42%, gain-lottery choice 79%, loss-lottery choice 100%, mental-accounting endorsement 25%.
+- Cognitive performance: Cognitive tasks: financial literacy 100%, numeracy 50%, cognitive reflection 29%, logical reasoning 59%.
+Transfer-Relevant Cues:
+- Cooperation orientation: high (69), confidence medium
+- Conditional cooperation: mixed (44), confidence medium
+- Norm enforcement: mixed (38), confidence medium
+- Generosity without return: medium (56), confidence medium
+- Exploitation caution: medium (59), confidence medium
+- Communication/coordination: high (79), confidence low
+- Behavioral stability: very high (88), confidence medium
+Limits:
+- Prosociality mismatch: Cooperative self-report and direct one-shot giving behavior do not fully align for this participant.
+- Communication uncertainty: Communication/coordination is distinctive here but remains indirect because it comes from self-report and social-sensitivity items rather than observed group discussion.
+
+# OUTPUT
+Return only JSON in this exact schema:
+{
+  "UGProposer_delegated": 0,
+  "UGResponder_delegated": 0,
+  "TGSender_delegated": 0,
+  "TGReceiver_delegated": 0,
+  "PD_delegated": 0,
+  "SH_delegated": 0,
+  "C_delegated": 0,
+  "scenario_outputs": [
+    {
+      "scenario": "AISupport",
+      "case": "AgainstHuman",
+      "UGProposer_decision": 5,
+      "UGResponder_decision": 3,
+      "TGSender_decision": "YES",
+      "TGReceiver_decision": 2,
+      "PD_decision": "A",
+      "SH_decision": "X",
+      "C_decision": "Earth"
+    }
+  ]
+}
+- In voluntary-delegation treatments, each `*_delegated` field records whether the participant delegated that role in the AI-support version of the treatment and must be `0` or `1`.
+- In `TransparentRandom`, every `*_delegated` field must be `null` because delegation is not the participant's choice.
+- `scenario_outputs` must contain exactly 2 objects in the order listed under `# SCENARIOS TO PREDICT`.
+- Each scenario object must repeat the exact `scenario` and `case` labels it is predicting.
+- In `AISupport` scenarios, if a role is delegated, set the corresponding `*_decision` field to `null`.
+- In `NoAISupport` scenarios, direct decisions may still be non-null even when the corresponding `*_delegated` field is `1`, because the row asks for the participant's own no-AI choice in that scenario.
+- `UGProposer_decision` and `UGResponder_decision` must be integers from 0 to 10 or `null`.
+- `TGSender_decision` must be `YES`, `NO`, or `null`.
+- `TGReceiver_decision` must be an integer from 0 to 6 or `null`.
+- `PD_decision` must be `A`, `B`, or `null`.
+- `SH_decision` must be `X`, `Y`, or `null`.
+- `C_decision` must be one of Mercury, Venus, Earth, Mars, Saturn, or `null`.

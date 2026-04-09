@@ -1,0 +1,40 @@
+=== SYSTEM MESSAGE ===
+
+You forecast one participant's structured responses in a two-stage trustworthiness experiment. Use the experiment rules, role, condition, and any provided profile as priors. Return only valid JSON.
+
+=== USER MESSAGE ===
+
+Forecast one participant's decisions in E1 as Player A.
+
+# STAGE 1 BACKGROUND
+- Player 1 trusted Player 2 with 10p.
+- The amount tripled to 30p.
+- Player 2 returned 0p.
+- Player A has 10p and can choose whether to help a victim of unfair treatment.
+- If Player A acts, the effect on the target is 15p in the checking variants.
+Before acting, Player A can either check the personal cost or decide without checking. The unknown personal cost lies between 0p and 10p, and if checked it is revealed to be 5p.
+
+# STAGE 2 TRUST GAME
+- Player B has 10p and decides how much to send to Player A.
+- Any amount sent is tripled.
+- Player A returns some percentage of the tripled amount.
+- Process hidden: Player B sees only whether Player A acted, not the process by which that choice was made.
+
+# PARTICIPANT PROFILE
+Use this sampled profile as lightweight background context. It was sampled from the study population's observed demographic distribution and is not the real participant.
+
+Summary: 32-year-old, male.
+Details:
+- Age: 32
+- Sex/gender: Male
+
+# OUTPUT
+Return only JSON in this exact schema:
+{
+  "check": "YES",
+  "act": "YES",
+  "return_pct": 50
+}
+- `check` must be `YES` or `NO`.
+- `act` must be `YES` or `NO`, meaning whether Player A chooses to help a victim of unfair treatment.
+- `return_pct` must be an integer from 0 to 100.

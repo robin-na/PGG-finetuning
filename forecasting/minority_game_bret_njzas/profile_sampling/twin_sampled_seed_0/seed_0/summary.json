@@ -1,0 +1,23 @@
+{
+  "dataset_key": "minority_game_bret_njzas",
+  "variant": "twin_sampled_seed_0",
+  "seed": 0,
+  "unit_count": 2003,
+  "twin_pool_size": 2058,
+  "unique_twin_profiles_used": 1315,
+  "mean_reuse_count": 1.54518222666001,
+  "match_level_counts": {
+    "matching_age_bracket+matching_sex+matching_education": 1992,
+    "full_pool": 8,
+    "matching_age_bracket+matching_sex": 3
+  },
+  "assignments_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/minority_game_bret_njzas/profile_sampling/twin_sampled_seed_0/seed_0/unit_assignments.jsonl",
+  "source_profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl",
+  "source_profiles_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profiles/twin_extended_profiles.jsonl",
+  "source_row_count": 2003,
+  "matching_fields": [
+    "matching_age_bracket",
+    "matching_sex",
+    "matching_education"
+  ]
+}

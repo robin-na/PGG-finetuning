@@ -1,0 +1,10 @@
+{
+  "dataset_key": "longitudinal_trust_game_ht863",
+  "variant": "demographic_only_row_resampled_seed_0",
+  "seed": 0,
+  "unit_count": 155,
+  "source_row_count": 155,
+  "unique_source_rows_used": 96,
+  "cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/demographic_profile_cards.jsonl",
+  "assignments_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/unit_assignments.jsonl"
+}

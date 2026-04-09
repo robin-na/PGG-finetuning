@@ -12,6 +12,8 @@ import requests
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, LogitsProcessor, LogitsProcessorList
 
+from repo_env import get_env_var
+
 
 def _apply_stop_sequences(text: str, stop: Optional[List[str]]) -> str:
     if not stop:
@@ -29,12 +31,12 @@ def _apply_stop_sequences(text: str, stop: Optional[List[str]]) -> str:
 
 
 def _require_openai_key(env_name: str) -> str:
-    api_key = os.getenv(env_name)
+    api_key = get_env_var(env_name)
     if api_key:
         return api_key
     print(f"ERROR: {env_name} environment variable not set!")
     print()
-    print("Please set your API key:")
+    print("Please set your API key or add it to .api_keys.env:")
     print(f"  export {env_name}='your-api-key-here'")
     print()
     sys.exit(1)
@@ -187,7 +189,7 @@ class LLMClient:
             self.vllm_api_key = None
         elif self.provider == "vllm":
             self.openai_api_key = None
-            self.vllm_api_key = vllm_api_key or os.getenv(vllm_api_key_env) or "EMPTY"
+            self.vllm_api_key = vllm_api_key or get_env_var(vllm_api_key_env) or "EMPTY"
             if not self.vllm_model:
                 raise ValueError("Missing vLLM model name: set --vllm_model or --base_model.")
         elif self.provider == "local":

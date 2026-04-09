@@ -1,0 +1,17 @@
+{
+  "dataset_key": "multi_game_llm_fvk2c",
+  "display_name": "Multi-Game Battery with LLM Delegation",
+  "run_name": "baseline_gpt_5_mini",
+  "variant_name": "baseline",
+  "model": "gpt-5-mini",
+  "record_count": 300,
+  "unit_count": 300,
+  "max_records_per_treatment": 50,
+  "sampling_seed": 0,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/batch_input/baseline_gpt_5_mini.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/batch_output/baseline_gpt_5_mini.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/baseline_gpt_5_mini",
+  "profile_assignment_file": null,
+  "profile_cards_file": null,
+  "profile_shared_notes_file": null
+}

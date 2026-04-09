@@ -8,8 +8,14 @@ from typing import Any
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.lines import Line2D
 
 from .analyze_vs_human_treatments import _wasserstein_distance_1d
+from .random_action_baseline import (
+    build_uniform_random_rollout_tables,
+    select_shared_game_skeletons,
+    summarize_random_baseline_draws,
+)
 
 
 RUN_NAME_TO_LABEL = {
@@ -210,6 +216,70 @@ def _mean_stderr(scores_df: pd.DataFrame) -> tuple[float, float]:
     return mean, stderr
 
 
+def _build_uniform_random_micro_score_table(
+    human_game_df: pd.DataFrame,
+    human_round_df: pd.DataFrame,
+    human_actor_df: pd.DataFrame,
+    shared_counts: pd.DataFrame,
+    *,
+    random_iters: int,
+    random_seed: int,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    selected_game_df, selected_round_df, selected_actor_df = select_shared_game_skeletons(
+        human_game_df,
+        human_round_df,
+        human_actor_df,
+        shared_counts,
+    )
+    human_player_df = _build_player_game_summary(human_actor_df, entity_col="game_id")
+
+    rng = np.random.default_rng(random_seed)
+    draw_rows: list[dict[str, Any]] = []
+    for draw_index in range(random_iters):
+        _, random_actor_df, random_round_df = build_uniform_random_rollout_tables(
+            selected_game_df,
+            selected_round_df,
+            selected_actor_df,
+            rng=rng,
+        )
+        random_player_df = _build_player_game_summary(random_actor_df, entity_col="game_id")
+        for metric, metric_label in PLAYER_METRIC_SPECS:
+            score_df = _per_treatment_player_wd(random_player_df, human_player_df, metric)
+            mean, _ = _mean_stderr(score_df)
+            draw_rows.append(
+                {
+                    "metric_family": "player_within_config_wd",
+                    "metric": metric,
+                    "metric_label": metric_label,
+                    "draw_index": draw_index,
+                    "score": mean,
+                }
+            )
+        round_specs = [
+            ("round_total_contribution_rate", "Round contrib", "total_contribution_rate"),
+            ("round_normalized_efficiency", "Round eff", "round_normalized_efficiency"),
+        ]
+        for metric_key, metric_label, value_col in round_specs:
+            score_df = _per_treatment_round_matched_wd(random_round_df, human_round_df, value_col)
+            mean, _ = _mean_stderr(score_df)
+            draw_rows.append(
+                {
+                    "metric_family": "round_within_config_wd",
+                    "metric": metric_key,
+                    "metric_label": metric_label,
+                    "draw_index": draw_index,
+                    "score": mean,
+                }
+            )
+
+    draws_df = pd.DataFrame(draw_rows)
+    summary_df = summarize_random_baseline_draws(
+        draws_df,
+        score_cols=["metric_family", "metric", "metric_label"],
+    )
+    return draws_df, summary_df
+
+
 def _resample_entity_tables(
     actor_df: pd.DataFrame,
     round_df: pd.DataFrame,
@@ -396,6 +466,20 @@ def _draw_micro_panel(
             capsize=3,
             label="Noise ceiling" if model_name == "noise_ceiling" else model_name,
         )
+    line_df = family_df.drop_duplicates("metric").set_index("metric").reindex(metric_order)
+    cluster_half_width = ((len(available_models) - 1) * bar_width) / 2.0
+    for metric_index, metric in enumerate(metric_order):
+        line_y = line_df.loc[metric, "uniform_random_mean"]
+        if pd.isna(line_y):
+            continue
+        ax.hlines(
+            y=float(line_y),
+            xmin=x[metric_index] - cluster_half_width - (0.18 * bar_width),
+            xmax=x[metric_index] + cluster_half_width + (0.18 * bar_width),
+            colors="#4d4d4d",
+            linestyles=(0, (5, 3)),
+            linewidth=1.8,
+        )
     ax.set_title(title, pad=10)
     ax.set_ylabel("Lower is better")
     ax.grid(axis="y", alpha=0.2)
@@ -427,6 +511,17 @@ def _plot_micro_combined_figure(
         title="Between Rounds: Round-Matched WD",
     )
     handles, labels = axes[0].get_legend_handles_labels()
+    handles.append(
+        Line2D(
+            [0],
+            [0],
+            color="#4d4d4d",
+            linestyle=(0, (5, 3)),
+            linewidth=1.8,
+            label="Uniform random contrib baseline",
+        )
+    )
+    labels.append("Uniform random contrib baseline")
     fig.legend(
         handles,
         labels,
@@ -474,6 +569,7 @@ def main() -> None:
         default=list(RUN_NAME_TO_LABEL.keys()),
     )
     parser.add_argument("--bootstrap-iters", type=int, default=0)
+    parser.add_argument("--random-baseline-iters", type=int, default=200)
     parser.add_argument("--random-seed", type=int, default=7)
     parser.add_argument("--output-dir", type=Path, default=None)
     args = parser.parse_args()
@@ -505,6 +601,8 @@ def main() -> None:
             human_round_df = run_human_round_df
 
     assert human_actor_df is not None and human_round_df is not None
+    result_human_game_df = next(iter(result_dirs.values())) / "human_game_summary.csv"
+    human_game_df = pd.read_csv(result_human_game_df)
     shared_counts = (
         human_round_df.groupby("treatment_name")["game_id"]
         .nunique()
@@ -594,6 +692,19 @@ def main() -> None:
             )
 
     summary_df = pd.DataFrame(summary_rows)
+    uniform_random_draws_df, uniform_random_df = _build_uniform_random_micro_score_table(
+        human_game_df,
+        human_round_df,
+        human_actor_df,
+        shared_counts,
+        random_iters=args.random_baseline_iters,
+        random_seed=args.random_seed + 2000,
+    )
+    summary_df = summary_df.merge(
+        uniform_random_df,
+        on=["metric_family", "metric", "metric_label"],
+        how="left",
+    )
     plot_df = summary_df.copy()
     bootstrap_df = _empty_noise_ceiling_bootstrap_df()
     global_bootstrap_df = _empty_global_noise_ceiling_bootstrap_df()
@@ -652,6 +763,14 @@ def main() -> None:
     )
     summary_df.sort_values(["metric_family", "metric", "model_name"]).to_csv(
         args.output_dir / "micro_within_config_summary.csv",
+        index=False,
+    )
+    uniform_random_draws_df.sort_values(["metric_family", "metric", "draw_index"]).to_csv(
+        args.output_dir / "micro_uniform_random_baseline_draws.csv",
+        index=False,
+    )
+    uniform_random_df.sort_values(["metric_family", "metric"]).to_csv(
+        args.output_dir / "micro_uniform_random_baseline.csv",
         index=False,
     )
     global_df.sort_values(["metric", "model_name"]).to_csv(

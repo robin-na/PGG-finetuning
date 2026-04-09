@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/batch_input/demographic_only_row_resampled_seed_0_gpt_5_mini.jsonl",
+  "num_requests": 1000,
+  "total_input_tokens_estimate": 356350,
+  "mean_input_tokens_estimate": 356.35,
+  "median_input_tokens_estimate": 360.5,
+  "max_input_tokens_estimate": 407,
+  "min_input_tokens_estimate": 292
+}

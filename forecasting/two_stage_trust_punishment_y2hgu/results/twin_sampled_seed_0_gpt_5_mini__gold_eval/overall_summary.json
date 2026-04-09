@@ -1,0 +1,11 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_seed_0_gpt_5_mini/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_seed_0_gpt_5_mini/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_seed_0_gpt_5_mini/gold_targets.jsonl",
+  "note": "Row-level exact-match and absolute-error metrics are secondary diagnostics. Use the treatment-level distribution-distance analysis as the primary benchmark.",
+  "generated_parse_success_rate": 1.0,
+  "generated_parsed_count": 1000,
+  "human_gold_count": 1000,
+  "evaluated_row_count": 1000,
+  "exact_match_rate": 0.066
+}

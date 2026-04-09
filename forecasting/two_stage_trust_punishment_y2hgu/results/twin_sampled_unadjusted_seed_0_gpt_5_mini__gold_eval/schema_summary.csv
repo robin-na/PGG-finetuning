@@ -1,0 +1,7 @@
+schema_type,n_rows,exact_match_rate,mean_return_abs_error,mean_check_match,mean_act_match,mean_joint_pattern_match,mean_decision_time_bucket_match,mean_mean_send_abs_error
+role_a_check,400,0.1125,19.1325,0.6625,0.67,0.45,,
+role_a_time,100,0.07,15.37,,0.63,0.31,0.43,
+role_b_hidden_check,200,0.025,,,,,,3.16
+role_b_hidden_time,50,0.0,,,,,,3.16
+role_b_observable_check,200,0.01,,,,,,3.2725
+role_b_observable_time,50,0.0,,,,,,3.49

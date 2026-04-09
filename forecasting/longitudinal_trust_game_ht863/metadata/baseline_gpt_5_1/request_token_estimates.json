@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/batch_input/baseline_gpt_5_1.jsonl",
+  "num_requests": 155,
+  "total_input_tokens_estimate": 163990,
+  "mean_input_tokens_estimate": 1058.0,
+  "median_input_tokens_estimate": 1058.0,
+  "max_input_tokens_estimate": 1058,
+  "min_input_tokens_estimate": 1058
+}

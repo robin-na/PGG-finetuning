@@ -9,6 +9,8 @@ from pathlib import Path
 
 from openai import OpenAI
 
+from repo_env import require_env_var
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -21,7 +23,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> int:
     args = parse_args()
-    client = OpenAI()
+    client = OpenAI(api_key=require_env_var("OPENAI_API_KEY"))
     metadata = None
     if args.metadata_json is not None:
         metadata = json.loads(args.metadata_json.read_text(encoding="utf-8"))

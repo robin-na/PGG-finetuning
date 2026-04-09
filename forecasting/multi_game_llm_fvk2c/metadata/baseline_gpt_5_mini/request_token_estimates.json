@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/batch_input/baseline_gpt_5_mini.jsonl",
+  "num_requests": 300,
+  "total_input_tokens_estimate": 282000,
+  "mean_input_tokens_estimate": 940.0,
+  "median_input_tokens_estimate": 944.0,
+  "max_input_tokens_estimate": 947,
+  "min_input_tokens_estimate": 929
+}

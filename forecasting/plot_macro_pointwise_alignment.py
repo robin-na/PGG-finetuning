@@ -7,11 +7,17 @@ from typing import Any
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.lines import Line2D
 
 from .analyze_vs_human_treatments import _wasserstein_distance_1d
 from .compare_models_with_noise_ceiling import (
     _build_shared_count_table,
     _subset_generated_to_shared_count,
+)
+from .random_action_baseline import (
+    build_uniform_random_rollout_tables,
+    select_shared_game_skeletons,
+    summarize_random_baseline_draws,
 )
 
 
@@ -152,6 +158,64 @@ def _build_model_score_table(
                 }
             )
     return pd.DataFrame(rows)
+
+
+def _build_uniform_random_score_table(
+    human_game_df: pd.DataFrame,
+    human_round_df: pd.DataFrame,
+    human_actor_df: pd.DataFrame,
+    shared_counts: pd.DataFrame,
+    *,
+    random_iters: int,
+    random_seed: int,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    selected_game_df, selected_round_df, selected_actor_df = select_shared_game_skeletons(
+        human_game_df,
+        human_round_df,
+        human_actor_df,
+        shared_counts,
+    )
+
+    rng = np.random.default_rng(random_seed)
+    draw_rows: list[dict[str, Any]] = []
+    for draw_index in range(random_iters):
+        random_game_df, _, _ = build_uniform_random_rollout_tables(
+            selected_game_df,
+            selected_round_df,
+            selected_actor_df,
+            rng=rng,
+        )
+        for metric, metric_label in MACRO_METRICS:
+            rmse_components = _per_config_rmse_components(random_game_df, human_game_df, metric)
+            rmse_score, _ = _rmse_from_mse_components(rmse_components["mse_component"])
+            draw_rows.append(
+                {
+                    "score_family": "rmse_of_config_means",
+                    "metric": metric,
+                    "metric_label": metric_label,
+                    "draw_index": draw_index,
+                    "score": rmse_score,
+                }
+            )
+
+            wd_components = _per_config_wasserstein_components(random_game_df, human_game_df, metric)
+            wd_score, _ = _mean_with_stderr(wd_components["wd_component"])
+            draw_rows.append(
+                {
+                    "score_family": "mean_wasserstein_distance",
+                    "metric": metric,
+                    "metric_label": metric_label,
+                    "draw_index": draw_index,
+                    "score": wd_score,
+                }
+            )
+
+    draws_df = pd.DataFrame(draw_rows)
+    summary_df = summarize_random_baseline_draws(
+        draws_df,
+        score_cols=["score_family", "metric", "metric_label"],
+    )
+    return draws_df, summary_df
 
 
 def _bootstrap_noise_ceiling(
@@ -311,6 +375,21 @@ def _plot_comparison_figure(
                     label=model_name if score_family == SCORE_FAMILY_SPECS[0][0] else None,
                 )
 
+        family_line_df = family_df.drop_duplicates("metric").set_index("metric").reindex(metric_order)
+        cluster_half_width = ((len(model_order) - 1) * bar_width) / 2.0
+        for metric_index, metric in enumerate(metric_order):
+            line_y = family_line_df.loc[metric, "uniform_random_mean"]
+            if pd.isna(line_y):
+                continue
+            ax.hlines(
+                y=float(line_y),
+                xmin=x[metric_index] - cluster_half_width - (0.18 * bar_width),
+                xmax=x[metric_index] + cluster_half_width + (0.18 * bar_width),
+                colors="#4d4d4d",
+                linestyles=(0, (5, 3)),
+                linewidth=1.8,
+            )
+
         ax.set_title(title, pad=10)
         ax.set_ylabel("Lower is better")
         ax.grid(axis="y", alpha=0.2)
@@ -320,6 +399,17 @@ def _plot_comparison_figure(
     axes[-1].set_xticks(np.arange(len(MACRO_METRICS), dtype=float))
     axes[-1].set_xticklabels([metric_labels[metric] for metric, _ in MACRO_METRICS], rotation=20, ha="right")
     handles, labels = axes[0].get_legend_handles_labels()
+    handles.append(
+        Line2D(
+            [0],
+            [0],
+            color="#4d4d4d",
+            linestyle=(0, (5, 3)),
+            linewidth=1.8,
+            label="Uniform random contrib baseline",
+        )
+    )
+    labels.append("Uniform random contrib baseline")
     fig.legend(
         handles,
         labels,
@@ -343,6 +433,7 @@ def main() -> None:
         default=list(RUN_NAME_TO_LABEL.keys()),
     )
     parser.add_argument("--bootstrap-iters", type=int, default=1000)
+    parser.add_argument("--random-baseline-iters", type=int, default=200)
     parser.add_argument("--random-seed", type=int, default=7)
     parser.add_argument("--output-dir", type=Path, default=None)
     args = parser.parse_args()
@@ -356,16 +447,21 @@ def main() -> None:
         for run_name in args.run_names
     }
     generated_by_model: dict[str, pd.DataFrame] = {}
-    human_tables: list[pd.DataFrame] = []
+    human_game_df: pd.DataFrame | None = None
+    human_round_df: pd.DataFrame | None = None
+    human_actor_df: pd.DataFrame | None = None
     for run_name, result_dir in result_dirs.items():
         if not result_dir.exists():
             raise FileNotFoundError(f"Missing result directory: {result_dir}")
         generated_by_model[RUN_NAME_TO_LABEL.get(run_name, run_name)] = pd.read_csv(
             result_dir / "generated_game_summary.csv"
         )
-        human_tables.append(pd.read_csv(result_dir / "human_game_summary.csv"))
+        if human_game_df is None:
+            human_game_df = pd.read_csv(result_dir / "human_game_summary.csv")
+            human_round_df = pd.read_csv(result_dir / "human_round_summary.csv")
+            human_actor_df = pd.read_csv(result_dir / "human_actor_summary.csv")
 
-    human_game_df = human_tables[0].copy()
+    assert human_game_df is not None and human_round_df is not None and human_actor_df is not None
     shared_counts = _build_shared_count_table(human_game_df, generated_by_model)
     trimmed_generated_by_model = {
         model_name: _subset_generated_to_shared_count(generated_game_df, shared_counts)
@@ -373,6 +469,14 @@ def main() -> None:
     }
 
     model_scores_df = _build_model_score_table(trimmed_generated_by_model, human_game_df)
+    uniform_random_draws_df, uniform_random_df = _build_uniform_random_score_table(
+        human_game_df,
+        human_round_df,
+        human_actor_df,
+        shared_counts,
+        random_iters=args.random_baseline_iters,
+        random_seed=args.random_seed + 1000,
+    )
     bootstrap_df, noise_ceiling_df = _bootstrap_noise_ceiling(
         human_game_df,
         shared_counts,
@@ -381,6 +485,10 @@ def main() -> None:
     )
     combined_df = model_scores_df.merge(
         noise_ceiling_df.drop(columns=["bootstrap_iters"], errors="ignore"),
+        on=["score_family", "metric", "metric_label"],
+        how="left",
+    ).merge(
+        uniform_random_df,
         on=["score_family", "metric", "metric_label"],
         how="left",
     )
@@ -406,6 +514,14 @@ def main() -> None:
         args.output_dir / "macro_pointwise_alignment_bootstrap.csv",
         index=False,
     )
+    uniform_random_draws_df.sort_values(["score_family", "metric", "draw_index"]).to_csv(
+        args.output_dir / "macro_uniform_random_baseline_draws.csv",
+        index=False,
+    )
+    uniform_random_df.sort_values(["score_family", "metric"]).to_csv(
+        args.output_dir / "macro_uniform_random_baseline.csv",
+        index=False,
+    )
 
     table_df = combined_df[
         [
@@ -416,6 +532,8 @@ def main() -> None:
             "stderr",
             "noise_ceiling_mean",
             "noise_ceiling_stderr",
+            "uniform_random_mean",
+            "uniform_random_stderr",
             "gap_to_noise_ceiling",
             "ratio_to_noise_ceiling",
         ]

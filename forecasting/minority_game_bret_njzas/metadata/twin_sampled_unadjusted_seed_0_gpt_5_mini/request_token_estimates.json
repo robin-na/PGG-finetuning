@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/minority_game_bret_njzas/batch_input/twin_sampled_unadjusted_seed_0_gpt_5_mini.jsonl",
+  "num_requests": 2003,
+  "total_input_tokens_estimate": 2547178,
+  "mean_input_tokens_estimate": 1271.681477783325,
+  "median_input_tokens_estimate": 1270.0,
+  "max_input_tokens_estimate": 1334,
+  "min_input_tokens_estimate": 1225
+}

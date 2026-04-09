@@ -1,0 +1,10 @@
+{
+  "dataset_key": "minority_game_bret_njzas",
+  "variant": "demographic_only_row_resampled_seed_0",
+  "seed": 0,
+  "unit_count": 2003,
+  "source_row_count": 2003,
+  "unique_source_rows_used": 1253,
+  "cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/minority_game_bret_njzas/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/demographic_profile_cards.jsonl",
+  "assignments_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/minority_game_bret_njzas/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/unit_assignments.jsonl"
+}

@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/minority_game_bret_njzas/batch_input/baseline_gpt_5_mini.jsonl",
+  "num_requests": 2003,
+  "total_input_tokens_estimate": 874319,
+  "mean_input_tokens_estimate": 436.5047428856715,
+  "median_input_tokens_estimate": 437.0,
+  "max_input_tokens_estimate": 437,
+  "min_input_tokens_estimate": 436
+}

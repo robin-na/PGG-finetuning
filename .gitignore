@@ -1,7 +1,9 @@
 # Environment & secrets
 .env
+.api_keys.env
 .claude
 .edsl_model_archive.json
+**/openai_batch_state.json
 
 # Python
 __pycache__/

@@ -1,0 +1,15 @@
+{
+  "dataset_key": "longitudinal_trust_game_ht863",
+  "display_name": "Longitudinal Trust Game",
+  "run_name": "twin_sampled_unadjusted_seed_0_gpt_5_mini",
+  "variant_name": "twin_sampled_unadjusted_seed_0",
+  "model": "gpt-5-mini",
+  "record_count": 155,
+  "unit_count": 155,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/batch_input/twin_sampled_unadjusted_seed_0_gpt_5_mini.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/batch_output/twin_sampled_unadjusted_seed_0_gpt_5_mini.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini",
+  "profile_assignment_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/profile_sampling/twin_sampled_unadjusted_seed_0/seed_0/unit_assignments.jsonl",
+  "profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl",
+  "profile_shared_notes_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/profile_sampling/twin_prompt_assets/shared_prompt_notes.md"
+}

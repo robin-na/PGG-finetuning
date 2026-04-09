@@ -1,0 +1,15 @@
+{
+  "dataset_key": "multi_game_llm_fvk2c",
+  "variant": "twin_sampled_unadjusted_seed_0",
+  "seed": 0,
+  "unit_count": 300,
+  "twin_pool_size": 2058,
+  "unique_twin_profiles_used": 279,
+  "mean_reuse_count": 1.0766666666666667,
+  "match_level_counts": {
+    "full_pool_unadjusted": 300
+  },
+  "assignments_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/profile_sampling/twin_sampled_unadjusted_seed_0/seed_0/unit_assignments.jsonl",
+  "source_profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl",
+  "source_profiles_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profiles/twin_extended_profiles.jsonl"
+}

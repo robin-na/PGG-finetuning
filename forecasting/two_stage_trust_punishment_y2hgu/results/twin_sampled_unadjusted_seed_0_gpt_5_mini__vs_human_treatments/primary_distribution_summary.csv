@@ -1,0 +1,14 @@
+metric_family,metric,distance_kind,n_treatments,mean_value,median_value
+distribution_distance,mean_send_field_distance,mean_wasserstein_1d,10,1.9449999999999998,2.01
+distribution_distance,return_pct,wasserstein_1d,10,6.096,5.4799999999999995
+distribution_distance,send_if_act,wasserstein_1d,5,1.8399999999999999,1.86
+distribution_distance,send_if_act_after_check,wasserstein_1d,4,1.9849999999999999,1.99
+distribution_distance,send_if_act_fast,wasserstein_1d,1,1.9000000000000001,1.9000000000000001
+distribution_distance,send_if_act_slow,wasserstein_1d,1,2.0,2.0
+distribution_distance,send_if_act_without_check,wasserstein_1d,4,2.185,2.26
+distribution_distance,send_if_no_act,wasserstein_1d,5,2.088,2.1
+distribution_distance,send_if_no_act_after_check,wasserstein_1d,4,1.67,1.67
+distribution_distance,send_if_no_act_fast,wasserstein_1d,1,1.7600000000000002,1.7600000000000002
+distribution_distance,send_if_no_act_slow,wasserstein_1d,1,1.0999999999999999,1.0999999999999999
+distribution_distance,send_if_no_act_without_check,wasserstein_1d,4,2.1,2.21
+distribution_distance,joint_pattern_distribution,total_variation,10,0.198,0.21000000000000002

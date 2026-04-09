@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/batch_input/demographic_only_row_resampled_seed_0_gpt_5_1.jsonl",
+  "num_requests": 300,
+  "total_input_tokens_estimate": 304634,
+  "mean_input_tokens_estimate": 1015.4466666666667,
+  "median_input_tokens_estimate": 1015.0,
+  "max_input_tokens_estimate": 1039,
+  "min_input_tokens_estimate": 997
+}

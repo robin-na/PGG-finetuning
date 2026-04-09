@@ -1,0 +1,64 @@
+=== SYSTEM MESSAGE ===
+
+You forecast one participant's full decision battery in a multi-game experiment with possible AI delegation. Use the treatment description, scenario structure, and any provided profile as priors. Return only valid JSON.
+
+=== USER MESSAGE ===
+
+Forecast one participant's full decision battery for this experimental run.
+
+# TREATMENT
+- Treatment code: ODP
+- OpaqueDelegation: the participant can voluntarily delegate each role to AI.
+- If the participant delegates a role, the counterpart does not know whether AI was used.
+- The AI support is personalized to the participant.
+
+# SCENARIOS TO PREDICT
+- Predict the participant's outputs for every scenario below in the listed order.
+- 1. scenario `AISupport`, case `AgainstHuman`. AI support is present. The counterpart is human.
+- 2. scenario `NoAISupport`, case `Opaque`. AI support is not present. The interaction is opaque with respect to whether the counterpart used AI.
+
+# GAME RULES
+- Ultimatum Game proposer: choose an offer from 0 to 10.
+- Ultimatum Game responder: choose a minimum acceptable offer from 0 to 10.
+- Trust Game sender: choose `YES` or `NO` for sending 2 ECU. If sent, it becomes 6 ECU for the receiver.
+- Trust Game receiver: if the sender sends, choose how much of 6 ECU to return, from 0 to 6.
+- Prisoner's Dilemma: choose `A` or `B` with payoffs (A,A)=5/5, (A,B)=1/8, (B,A)=8/1, (B,B)=3/3.
+- Stag Hunt: choose `X` or `Y` with payoffs (X,X)=8/8, (X,Y)=1/5, (Y,X)=5/1, (Y,Y)=4/4.
+- Coordination Game: choose one of Mercury, Venus, Earth, Mars, or Saturn. Matching the counterpart yields 5 each; mismatch yields 2 each.
+
+# OUTPUT
+Return only JSON in this exact schema:
+{
+  "UGProposer_delegated": 0,
+  "UGResponder_delegated": 0,
+  "TGSender_delegated": 0,
+  "TGReceiver_delegated": 0,
+  "PD_delegated": 0,
+  "SH_delegated": 0,
+  "C_delegated": 0,
+  "scenario_outputs": [
+    {
+      "scenario": "AISupport",
+      "case": "AgainstHuman",
+      "UGProposer_decision": 5,
+      "UGResponder_decision": 3,
+      "TGSender_decision": "YES",
+      "TGReceiver_decision": 2,
+      "PD_decision": "A",
+      "SH_decision": "X",
+      "C_decision": "Earth"
+    }
+  ]
+}
+- In voluntary-delegation treatments, each `*_delegated` field records whether the participant delegated that role in the AI-support version of the treatment and must be `0` or `1`.
+- In `TransparentRandom`, every `*_delegated` field must be `null` because delegation is not the participant's choice.
+- `scenario_outputs` must contain exactly 2 objects in the order listed under `# SCENARIOS TO PREDICT`.
+- Each scenario object must repeat the exact `scenario` and `case` labels it is predicting.
+- In `AISupport` scenarios, if a role is delegated, set the corresponding `*_decision` field to `null`.
+- In `NoAISupport` scenarios, direct decisions may still be non-null even when the corresponding `*_delegated` field is `1`, because the row asks for the participant's own no-AI choice in that scenario.
+- `UGProposer_decision` and `UGResponder_decision` must be integers from 0 to 10 or `null`.
+- `TGSender_decision` must be `YES`, `NO`, or `null`.
+- `TGReceiver_decision` must be an integer from 0 to 6 or `null`.
+- `PD_decision` must be `A`, `B`, or `null`.
+- `SH_decision` must be `X`, `Y`, or `null`.
+- `C_decision` must be one of Mercury, Venus, Earth, Mars, Saturn, or `null`.

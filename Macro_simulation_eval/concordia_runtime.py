@@ -11,6 +11,8 @@ from typing import Any, Dict, Optional, Sequence, Tuple
 import numpy as np
 import requests
 
+from repo_env import get_env_var
+
 
 _TOKEN_RE = re.compile(r"[A-Za-z0-9_]+")
 
@@ -135,7 +137,7 @@ def build_sentence_embedder(args: Any, client: Any) -> Any:
         api_key = (
             getattr(args, "openai_api_key", None)
             or getattr(client, "openai_api_key", None)
-            or os.getenv(str(getattr(args, "openai_api_key_env", "OPENAI_API_KEY")))
+            or get_env_var(str(getattr(args, "openai_api_key_env", "OPENAI_API_KEY")))
         )
         if not api_key:
             raise ValueError(

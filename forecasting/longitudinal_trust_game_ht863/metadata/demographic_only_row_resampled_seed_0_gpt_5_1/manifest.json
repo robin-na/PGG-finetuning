@@ -1,0 +1,15 @@
+{
+  "dataset_key": "longitudinal_trust_game_ht863",
+  "display_name": "Longitudinal Trust Game",
+  "run_name": "demographic_only_row_resampled_seed_0_gpt_5_1",
+  "variant_name": "demographic_only_row_resampled_seed_0",
+  "model": "gpt-5.1",
+  "record_count": 155,
+  "unit_count": 155,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/batch_input/demographic_only_row_resampled_seed_0_gpt_5_1.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/batch_output/demographic_only_row_resampled_seed_0_gpt_5_1.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/metadata/demographic_only_row_resampled_seed_0_gpt_5_1",
+  "profile_assignment_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/unit_assignments.jsonl",
+  "profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/demographic_profile_cards.jsonl",
+  "profile_shared_notes_file": null
+}

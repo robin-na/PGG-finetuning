@@ -1,0 +1,15 @@
+{
+  "dataset_key": "longitudinal_trust_game_ht863",
+  "display_name": "Longitudinal Trust Game",
+  "run_name": "baseline_gpt_5_1",
+  "variant_name": "baseline",
+  "model": "gpt-5.1",
+  "record_count": 155,
+  "unit_count": 155,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/batch_input/baseline_gpt_5_1.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/batch_output/baseline_gpt_5_1.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/metadata/baseline_gpt_5_1",
+  "profile_assignment_file": null,
+  "profile_cards_file": null,
+  "profile_shared_notes_file": null
+}

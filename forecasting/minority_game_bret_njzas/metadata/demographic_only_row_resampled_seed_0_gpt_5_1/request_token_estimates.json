@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/minority_game_bret_njzas/batch_input/demographic_only_row_resampled_seed_0_gpt_5_1.jsonl",
+  "num_requests": 2003,
+  "total_input_tokens_estimate": 1144451,
+  "mean_input_tokens_estimate": 571.3684473290065,
+  "median_input_tokens_estimate": 569.0,
+  "max_input_tokens_estimate": 604,
+  "min_input_tokens_estimate": 472
+}

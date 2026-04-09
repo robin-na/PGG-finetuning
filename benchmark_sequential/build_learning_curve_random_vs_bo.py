@@ -25,6 +25,7 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 from benchmark_sequential.code import llm_prompting, plot_utils
+from repo_env import get_env_var
 
 def _import_llm_client():
     try:
@@ -192,7 +193,7 @@ def resolve_methods_for_env(methods: list[str], args: argparse.Namespace) -> tup
     if "llm" not in methods:
         return methods, None
 
-    if args.llm_provider.lower() == "openai" and not os.getenv(args.llm_api_key_env):
+    if args.llm_provider.lower() == "openai" and not get_env_var(args.llm_api_key_env):
         resolved = [m for m in methods if m != "llm"]
         reason = f"llm_skipped_missing_api_key_env:{args.llm_api_key_env}"
         return resolved, reason
@@ -482,7 +483,7 @@ def init_llm_client(args: argparse.Namespace) -> tuple[Optional[Any], Optional[s
     if LLMClient is None:
         return None, f"llm_client_import_error: {LLM_IMPORT_ERROR}"
     if args.llm_provider.lower() == "openai":
-        if not os.getenv(args.llm_api_key_env):
+        if not get_env_var(args.llm_api_key_env):
             return None, f"missing_api_key_env:{args.llm_api_key_env}"
     try:
         client = LLMClient(

@@ -1,0 +1,17 @@
+{
+  "dataset_key": "two_stage_trust_punishment_y2hgu",
+  "display_name": "Two-Stage Trust / Punishment / Helping",
+  "run_name": "twin_sampled_seed_0_gpt_5_1",
+  "variant_name": "twin_sampled_seed_0",
+  "model": "gpt-5.1",
+  "record_count": 1000,
+  "unit_count": 1000,
+  "max_records_per_treatment": 50,
+  "sampling_seed": 0,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/batch_input/twin_sampled_seed_0_gpt_5_1.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/batch_output/twin_sampled_seed_0_gpt_5_1.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_seed_0_gpt_5_1",
+  "profile_assignment_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/profile_sampling/twin_sampled_seed_0/seed_0/unit_assignments.jsonl",
+  "profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl",
+  "profile_shared_notes_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/profile_sampling/twin_prompt_assets/shared_prompt_notes.md"
+}

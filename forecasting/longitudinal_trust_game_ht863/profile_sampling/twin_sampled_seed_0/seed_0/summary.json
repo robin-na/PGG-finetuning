@@ -1,0 +1,20 @@
+{
+  "dataset_key": "longitudinal_trust_game_ht863",
+  "variant": "twin_sampled_seed_0",
+  "seed": 0,
+  "unit_count": 155,
+  "twin_pool_size": 2058,
+  "unique_twin_profiles_used": 150,
+  "mean_reuse_count": 1.032258064516129,
+  "match_level_counts": {
+    "matching_age_bracket+matching_sex": 155
+  },
+  "assignments_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/profile_sampling/twin_sampled_seed_0/seed_0/unit_assignments.jsonl",
+  "source_profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl",
+  "source_profiles_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profiles/twin_extended_profiles.jsonl",
+  "source_row_count": 155,
+  "matching_fields": [
+    "matching_age_bracket",
+    "matching_sex"
+  ]
+}

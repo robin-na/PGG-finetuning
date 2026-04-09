@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/longitudinal_trust_game_ht863/batch_input/twin_sampled_seed_0_gpt_5_mini.jsonl",
+  "num_requests": 155,
+  "total_input_tokens_estimate": 297564,
+  "mean_input_tokens_estimate": 1919.7677419354839,
+  "median_input_tokens_estimate": 1918.0,
+  "max_input_tokens_estimate": 1980,
+  "min_input_tokens_estimate": 1875
+}

@@ -1,0 +1,102 @@
+=== SYSTEM MESSAGE ===
+
+You forecast one participant's structured responses in a two-stage trustworthiness experiment. Use the experiment rules, role, condition, and any provided profile as priors. Return only valid JSON.
+
+=== USER MESSAGE ===
+
+Forecast one participant's decisions in E1 as Player A.
+
+# STAGE 1 BACKGROUND
+- Player 1 trusted Player 2 with 10p.
+- The amount tripled to 30p.
+- Player 2 returned 0p.
+- Player A has 10p and can choose whether to help a victim of unfair treatment.
+- If Player A acts, the effect on the target is 15p in the checking variants.
+Before acting, Player A can either check the personal cost or decide without checking. The unknown personal cost lies between 0p and 10p, and if checked it is revealed to be 5p.
+
+# STAGE 2 TRUST GAME
+- Player B has 10p and decides how much to send to Player A.
+- Any amount sent is tripled.
+- Player A returns some percentage of the tripled amount.
+- Process hidden: Player B sees only whether Player A acted, not the process by which that choice was made.
+
+# PARTICIPANT PERSONA
+Use this sampled persona as a prior about likely tendencies. It was sampled from the Twin pool without demographic correction and is not the real participant.
+
+# Shared Prompt Notes
+
+## General Interpretation Note
+
+- These profiles summarize prior survey and behavioral-task evidence about each participant.
+- Treat the cues as relative tendencies, not deterministic predictions for any single decision in this study.
+- Unless a player-specific limit is listed, shared methodological caveats apply to all profiles.
+
+## Shared Caveats
+
+- Twin has relevant trust, fairness, dictator, empathy, and uncertainty-aversion evidence, but it does not directly observe checking a cost or impact before acting.
+- Twin also does not directly observe deliberation-speed signaling, so fast versus slow should be treated as a coarse behavioral style inference rather than a measured trait.
+- Norm-enforcement and generosity cues are especially relevant here, but they are still indirect priors rather than exact predictions for punishment or helping in this design.
+
+## Cue Glossary
+
+### Cooperation orientation
+- Meaning: blend of one-shot sharing behavior and cooperation/prosocial self-report.
+- Built from: trust-game sending, dictator giving, cooperation/competition items, agreeableness/helpfulness items, and prosocial values.
+
+### Conditional cooperation
+- Meaning: reciprocity and fairness-threshold sensitivity rather than a repeated-game reaction function.
+- Built from: trust-game return behavior and ultimatum acceptance-threshold signals.
+
+### Norm enforcement
+- Meaning: resistance to unfair splits and revenge/low-forgiveness cues in ultimatum-like contexts.
+- Built from: ultimatum minimum acceptable amounts plus revenge/forgiveness self-report.
+
+### Generosity without return
+- Meaning: willingness to give when repayment incentives are weak or absent.
+- Built from: dictator giving, trust-game sending, and prosocial/helpfulness cues.
+
+### Exploitation caution
+- Meaning: guardedness against being taken advantage of.
+- Built from: lower trustingness, stricter acceptance thresholds, uncertainty aversion, self-reliance, and revenge tendency.
+
+### Communication/coordination
+- Meaning: indirect cue for likely social expressiveness and coordination readiness.
+- Built from: empathy, social-sensitivity/self-monitoring, and extraversion-related self-report.
+
+### Behavioral stability
+- Meaning: rule-like internal consistency across self-regulation items.
+- Built from: conscientiousness-related items, self-concept clarity, and lower volatility-related personality items.
+
+Headline: Reflective, structure-seeking, inequality-tolerant
+Summary: Strongest supported tendencies are reflective, structure-seeking, and inequality-tolerant. Social evidence is mixed between self-report and direct allocation tasks. Fairness-enforcement signals are relatively weak.
+Background: Age: 30-49; Sex assigned at birth: Female; Completed education: College graduate/some postgrad.
+Behavioral Signature:
+- Looks more tolerant of unequal outcomes than a strong norm-enforcement type.
+- Prefers structure, closure, and predictability over open-ended uncertainty.
+- Cognitive reflection looks very high rather than neutral.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $5/$5, mean trust return 30%, ultimatum offer $2/$5, minimum acceptable $1/$5, dictator give $2/$5.
+- Self-report pattern: Self-report block emphasizes empathy high, cooperation orientation low, uncertainty aversion high.
+- Time and risk profile: Time/risk tasks: later-choice rate 57%, gain-lottery choice 10%, loss-lottery choice 50%, mental-accounting endorsement 75%.
+- Cognitive performance: Cognitive tasks: financial literacy 71%, numeracy 100%, cognitive reflection 100%, logical reasoning 94%.
+Transfer-Relevant Cues:
+- Cooperation orientation: medium (57), confidence medium
+- Conditional cooperation: low (34), confidence medium
+- Norm enforcement: low (27), confidence medium
+- Generosity without return: medium (63), confidence medium
+- Exploitation caution: low (33), confidence medium
+- Communication/coordination: low (34), confidence low
+- Behavioral stability: mixed (42), confidence medium
+Limits:
+- Communication uncertainty: Communication/coordination is distinctive here but remains indirect because it comes from self-report and social-sensitivity items rather than observed group discussion.
+
+# OUTPUT
+Return only JSON in this exact schema:
+{
+  "check": "YES",
+  "act": "YES",
+  "return_pct": 50
+}
+- `check` must be `YES` or `NO`.
+- `act` must be `YES` or `NO`, meaning whether Player A chooses to help a victim of unfair treatment.
+- `return_pct` must be an integer from 0 to 100.

@@ -1,0 +1,15 @@
+{
+  "dataset_key": "minority_game_bret_njzas",
+  "display_name": "Minority Game + BRET",
+  "run_name": "baseline_gpt_5_mini",
+  "variant_name": "baseline",
+  "model": "gpt-5-mini",
+  "record_count": 2003,
+  "unit_count": 2003,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/minority_game_bret_njzas/batch_input/baseline_gpt_5_mini.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/minority_game_bret_njzas/batch_output/baseline_gpt_5_mini.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/minority_game_bret_njzas/metadata/baseline_gpt_5_mini",
+  "profile_assignment_file": null,
+  "profile_cards_file": null,
+  "profile_shared_notes_file": null
+}

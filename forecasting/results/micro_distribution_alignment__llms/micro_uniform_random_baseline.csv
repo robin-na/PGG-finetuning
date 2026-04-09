@@ -1,0 +1,5 @@
+metric_family,metric,metric_label,uniform_random_mean,uniform_random_stderr,uniform_random_iters
+player_within_config_wd,player_mean_contribution_rate,Player mean contrib,0.26672300641986685,0.00022178256005704597,120
+player_within_config_wd,player_mean_normalized_payoff,Player mean payoff,0.3057592337729413,0.00020357244155888216,120
+round_within_config_wd,round_normalized_efficiency,Round eff,0.31499363804400743,0.0002034703457346795,120
+round_within_config_wd,round_total_contribution_rate,Round contrib,0.25646306565605687,0.00022696916913205614,120

@@ -1,0 +1,15 @@
+{
+  "dataset_key": "two_stage_trust_punishment_y2hgu",
+  "variant": "twin_sampled_unadjusted_seed_0",
+  "seed": 0,
+  "unit_count": 1000,
+  "twin_pool_size": 2058,
+  "unique_twin_profiles_used": 792,
+  "mean_reuse_count": 1.244,
+  "match_level_counts": {
+    "full_pool_unadjusted": 1000
+  },
+  "assignments_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/profile_sampling/twin_sampled_unadjusted_seed_0/seed_0/unit_assignments.jsonl",
+  "source_profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl",
+  "source_profiles_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/task_grounding/output/twin_extended_profiles/twin_extended_profiles.jsonl"
+}

@@ -1,0 +1,11 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/results/twin_sampled_unadjusted_seed_0_gpt_5_mini__vs_human_treatments",
+  "generated_count": 1000,
+  "human_count": 1000,
+  "evaluated_treatments": 20,
+  "primary_metric_family": "distribution_distance",
+  "secondary_metric_family": "mean_alignment_abs_error"
+}

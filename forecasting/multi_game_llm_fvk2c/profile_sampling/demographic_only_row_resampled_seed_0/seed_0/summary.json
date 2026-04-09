@@ -1,0 +1,10 @@
+{
+  "dataset_key": "multi_game_llm_fvk2c",
+  "variant": "demographic_only_row_resampled_seed_0",
+  "seed": 0,
+  "unit_count": 300,
+  "source_row_count": 2989,
+  "unique_source_rows_used": 287,
+  "cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/demographic_profile_cards.jsonl",
+  "assignments_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/profile_sampling/demographic_only_row_resampled_seed_0/seed_0/unit_assignments.jsonl"
+}

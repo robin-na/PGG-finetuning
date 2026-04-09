@@ -4,6 +4,10 @@ Full-rollout (`k=0`) public-goods-game forecasting lives here.
 
 This package is separate from `trajectory_completion`, which is for within-game continuation from an observed prefix.
 
+For the end-to-end experiment story, including why the four augmentation modes exist and how `demographics/`, `task_grounding/`, and `forecasting/` connect, start with [PIPELINE_OVERVIEW.md](PIPELINE_OVERVIEW.md).
+For the evaluation layer, including macro vs micro comparisons, human noise-ceiling construction, and current analysis caveats, see [ANALYSIS_OVERVIEW.md](ANALYSIS_OVERVIEW.md).
+For a read-only index of canonical runs, legacy manifests, and existing analysis outputs, see [registry/README.md](registry/README.md).
+
 ## Layout
 
 - `batch_input/`: raw OpenAI Batch request JSONL files
@@ -17,6 +21,16 @@ The convention is:
 - batch output file: `forecasting/batch_output/<run_name>.jsonl`
 - default run names are intentionally short, typically `<variant>_<model>`, with extra suffixes only when you deviate from the standard baseline settings
 - the baseline direct-transcript variant is shortened to `baseline`, so the default files are things like `baseline_gpt_5_1.jsonl`
+
+## API Key Loading
+
+OpenAI-facing scripts now auto-load `OPENAI_API_KEY` from the repo-root `.api_keys.env` if the variable is not already exported in your shell.
+
+Example:
+
+```bash
+echo "OPENAI_API_KEY=sk-..." >> .api_keys.env
+```
 
 ## Build A Batch
 
@@ -39,6 +53,34 @@ Notes:
 - This builder is reserved for the `k=0` full-rollout task.
 - `--repeat-count-mode match_valid_start_treatment_counts` repeats each treatment prompt to the number of validation-wave games with `valid_number_of_starting_players == True` for that treatment.
 - The builder writes the request JSONL into `batch_input/` and the sidecar files into `metadata/<run_name>/`.
+
+## Submit / Poll / Download A Batch
+
+Submit a run from its manifest:
+
+```bash
+python -m forecasting.manage_openai_batch submit --run-name <run_name>
+```
+
+Check status:
+
+```bash
+python -m forecasting.manage_openai_batch status --run-name <run_name>
+```
+
+One-shot sync that submits if needed, refreshes the batch, and downloads the completed output into the manifest's expected `batch_output/<run_name>.jsonl` path:
+
+```bash
+python -m forecasting.manage_openai_batch sync --run-name <run_name>
+```
+
+Wait until completion and then download:
+
+```bash
+python -m forecasting.manage_openai_batch sync --run-name <run_name> --wait --poll-interval-sec 60
+```
+
+The batch manager writes local job state to `metadata/<run_name>/openai_batch_state.json`.
 
 ## Parse A Completed Batch
 

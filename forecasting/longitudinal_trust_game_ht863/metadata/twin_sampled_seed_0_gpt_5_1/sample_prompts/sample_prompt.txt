@@ -1,0 +1,124 @@
+=== SYSTEM MESSAGE ===
+
+You forecast one participant's full response panel in a repeated trust-game study. Use the task rules, repeated design, and any provided profile as priors. Return only valid JSON.
+
+=== USER MESSAGE ===
+
+Forecast one participant's full 10-session response panel.
+
+# TASK RULES
+- The same participant completes 10 sessions over 3 weeks.
+- Each session contains the same 16 trust-game trials.
+- On each trial, the participant sees a partner's past sharing rate and the number of tokens they would need to give.
+- The participant responds on a 1 to 9 scale: `1 = Not at all` and `9 = Extremely`.
+- If the participant does not play, both sides keep 5 tokens.
+- If the participant plays, they give `Y` tokens to the partner and the partner receives `2Y`.
+- If the partner shares, both sides end with `5 + Y / 2`.
+- If the partner keeps everything, the participant ends with `5 - Y`.
+
+# TRIAL ORDER
+Each day must use this exact 16-trial order:
+1.  partner shared 80%, stake 1
+2.  partner shared 80%, stake 2
+3.  partner shared 80%, stake 4
+4.  partner shared 80%, stake 5
+5.  partner shared 75%, stake 1
+6.  partner shared 75%, stake 2
+7.  partner shared 75%, stake 4
+8.  partner shared 75%, stake 5
+9.  partner shared 70%, stake 1
+10. partner shared 70%, stake 2
+11. partner shared 70%, stake 4
+12. partner shared 70%, stake 5
+13. partner shared 65%, stake 1
+14. partner shared 65%, stake 2
+15. partner shared 65%, stake 4
+16. partner shared 65%, stake 5
+
+# PARTICIPANT PERSONA
+Use this sampled persona as a prior about likely tendencies. It was sampled from Twin to match the target study's observed demographic distribution and is not the real participant.
+
+# Shared Prompt Notes
+
+## General Interpretation Note
+
+- These profiles summarize prior survey and behavioral-task evidence about each participant.
+- Treat the cues as relative tendencies, not deterministic predictions for any single decision in this study.
+- Unless a player-specific limit is listed, shared methodological caveats apply to all profiles.
+
+## Shared Caveats
+
+- Twin includes direct one-shot trust-game evidence, which is relevant here, but this benchmark asks for repeated 1-9 willingness-to-play ratings rather than a single binary trust choice.
+- Norm-enforcement cues are secondary in this task because the focal decision is whether to enter a trust interaction, not whether to punish unfairness.
+- The repeated ten-session format is not directly observed in Twin, so use these cues as priors for the participant rather than as a literal trajectory template.
+
+## Cue Glossary
+
+### Cooperation orientation
+- Meaning: blend of one-shot sharing behavior and cooperation/prosocial self-report.
+- Built from: trust-game sending, dictator giving, cooperation/competition items, agreeableness/helpfulness items, and prosocial values.
+
+### Conditional cooperation
+- Meaning: reciprocity and fairness-threshold sensitivity rather than a repeated-game reaction function.
+- Built from: trust-game return behavior and ultimatum acceptance-threshold signals.
+
+### Norm enforcement
+- Meaning: resistance to unfair splits and revenge/low-forgiveness cues in ultimatum-like contexts.
+- Built from: ultimatum minimum acceptable amounts plus revenge/forgiveness self-report.
+
+### Generosity without return
+- Meaning: willingness to give when repayment incentives are weak or absent.
+- Built from: dictator giving, trust-game sending, and prosocial/helpfulness cues.
+
+### Exploitation caution
+- Meaning: guardedness against being taken advantage of.
+- Built from: lower trustingness, stricter acceptance thresholds, uncertainty aversion, self-reliance, and revenge tendency.
+
+### Communication/coordination
+- Meaning: indirect cue for likely social expressiveness and coordination readiness.
+- Built from: empathy, social-sensitivity/self-monitoring, and extraversion-related self-report.
+
+### Behavioral stability
+- Meaning: rule-like internal consistency across self-regulation items.
+- Built from: conscientiousness-related items, self-concept clarity, and lower volatility-related personality items.
+
+Headline: Short-horizon, inequality-tolerant, moderately reflective
+Summary: Strongest supported tendencies are short-horizon, inequality-tolerant, and moderately reflective. Social evidence is mixed between self-report and direct allocation tasks. Fairness-enforcement signals are relatively weak.
+Background: Age: 30-49; Sex assigned at birth: Male; Completed education: Associate's degree.
+Behavioral Signature:
+- Looks more tolerant of unequal outcomes than a strong norm-enforcement type.
+- Frequently prefers sooner rewards, indicating a shorter time horizon.
+- Reciprocity looks mixed rather than neutral.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $2/$5, mean trust return 49%, ultimatum offer $3/$5, minimum acceptable $0/$5, dictator give $2/$5.
+- Self-report pattern: Self-report block emphasizes empathy medium, cooperation orientation medium, uncertainty aversion mixed.
+- Time and risk profile: Time/risk tasks: later-choice rate 32%, gain-lottery choice 14%, loss-lottery choice 66%, mental-accounting endorsement 25%.
+- Cognitive performance: Cognitive tasks: financial literacy 43%, numeracy 33%, cognitive reflection 57%, logical reasoning 53%.
+Transfer-Relevant Cues:
+- Cooperation orientation: mixed (43), confidence medium
+- Conditional cooperation: low (34), confidence medium
+- Norm enforcement: low (33), confidence medium
+- Generosity without return: mixed (42), confidence medium
+- Exploitation caution: medium (45), confidence medium
+- Communication/coordination: medium (48), confidence low
+- Behavioral stability: medium (49), confidence medium
+
+# OUTPUT
+Return only JSON in this exact schema:
+{
+  "days": [
+    {"day": 1, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+    {"day": 2, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+    {"day": 3, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+    {"day": 4, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+    {"day": 5, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+    {"day": 6, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+    {"day": 7, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+    {"day": 8, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+    {"day": 9, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},
+    {"day": 10, "ratings": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}
+  ]
+}
+- There must be exactly 10 day objects, for days 1 through 10.
+- Each `ratings` list must contain exactly 16 integers.
+- Every rating must be an integer from 1 to 9.

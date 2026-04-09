@@ -1,0 +1,17 @@
+{
+  "dataset_key": "two_stage_trust_punishment_y2hgu",
+  "display_name": "Two-Stage Trust / Punishment / Helping",
+  "run_name": "baseline_gpt_5_mini",
+  "variant_name": "baseline",
+  "model": "gpt-5-mini",
+  "record_count": 1000,
+  "unit_count": 1000,
+  "max_records_per_treatment": 50,
+  "sampling_seed": 0,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/batch_input/baseline_gpt_5_mini.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/batch_output/baseline_gpt_5_mini.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/baseline_gpt_5_mini",
+  "profile_assignment_file": null,
+  "profile_cards_file": null,
+  "profile_shared_notes_file": null
+}
