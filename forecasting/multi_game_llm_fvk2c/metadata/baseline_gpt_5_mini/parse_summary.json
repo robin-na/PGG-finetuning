@@ -1,0 +1,9 @@
+{
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/batch_output/baseline_gpt_5_mini.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/baseline_gpt_5_mini/request_manifest.csv",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/baseline_gpt_5_mini/parsed_output.jsonl",
+  "num_raw_rows": 300,
+  "num_parsed_rows": 300,
+  "parse_success_count": 298,
+  "parse_success_rate": 0.9933333333333333
+}

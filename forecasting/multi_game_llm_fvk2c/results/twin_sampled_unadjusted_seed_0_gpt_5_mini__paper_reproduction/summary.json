@@ -1,0 +1,7 @@
+{
+  "run_name": "twin_sampled_unadjusted_seed_0_gpt_5_mini",
+  "table1_mean_abs_effect_error": 0.04903153495440737,
+  "table1_direction_match_rate": 0.75,
+  "figure1_mean_abs_effect_error": 0.08208333333333338,
+  "figure1_direction_match_rate": 1.0
+}

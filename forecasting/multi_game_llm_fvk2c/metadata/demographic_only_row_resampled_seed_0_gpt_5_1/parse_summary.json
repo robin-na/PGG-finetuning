@@ -1,0 +1,9 @@
+{
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/batch_output/demographic_only_row_resampled_seed_0_gpt_5_1.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/demographic_only_row_resampled_seed_0_gpt_5_1/request_manifest.csv",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/demographic_only_row_resampled_seed_0_gpt_5_1/parsed_output.jsonl",
+  "num_raw_rows": 300,
+  "num_parsed_rows": 300,
+  "parse_success_count": 300,
+  "parse_success_rate": 1.0
+}

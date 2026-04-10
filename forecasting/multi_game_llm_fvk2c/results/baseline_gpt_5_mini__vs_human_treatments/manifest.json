@@ -1,0 +1,15 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/baseline_gpt_5_mini/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/baseline_gpt_5_mini/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/baseline_gpt_5_mini/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/results/baseline_gpt_5_mini__vs_human_treatments",
+  "generated_session_count": 298,
+  "human_session_count": 300,
+  "generated_scenario_count": 794,
+  "human_scenario_count": 800,
+  "primary_metric_families": [
+    "delegation_distribution_distance",
+    "scenario_state_distribution_distance",
+    "scenario_direct_value_distance"
+  ]
+}

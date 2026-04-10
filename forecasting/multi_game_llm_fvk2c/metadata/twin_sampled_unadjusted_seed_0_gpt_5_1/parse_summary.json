@@ -1,0 +1,9 @@
+{
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/batch_output/twin_sampled_unadjusted_seed_0_gpt_5_1.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1/request_manifest.csv",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1/parsed_output.jsonl",
+  "num_raw_rows": 300,
+  "num_parsed_rows": 300,
+  "parse_success_count": 300,
+  "parse_success_rate": 1.0
+}

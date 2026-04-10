@@ -1,0 +1,9 @@
+{
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/batch_output/demographic_only_row_resampled_seed_0_gpt_5_1.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/demographic_only_row_resampled_seed_0_gpt_5_1/request_manifest.csv",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/demographic_only_row_resampled_seed_0_gpt_5_1/parsed_output.jsonl",
+  "num_raw_rows": 1000,
+  "num_parsed_rows": 1000,
+  "parse_success_count": 1000,
+  "parse_success_rate": 1.0
+}

@@ -1,0 +1,15 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/baseline_gpt_5_1/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/baseline_gpt_5_1/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/baseline_gpt_5_1/gold_targets.jsonl",
+  "note": "Row-level exact-match and field-match metrics are secondary diagnostics. Use the treatment-level distribution-distance analysis as the primary benchmark.",
+  "generated_parse_success_rate": 1.0,
+  "generated_parsed_count": 300,
+  "human_gold_count": 300,
+  "evaluated_row_count": 300,
+  "exact_match_rate": 0.0,
+  "delegation_match_rate": 0.6076190476190476,
+  "scenario_exact_match_rate": 0.013333333333333334,
+  "scenario_field_match_rate": 0.436031746031746,
+  "numeric_direct_abs_error_mean": 1.257857142857143
+}

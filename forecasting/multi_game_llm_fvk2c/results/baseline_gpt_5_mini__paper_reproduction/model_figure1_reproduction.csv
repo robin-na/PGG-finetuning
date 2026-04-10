@@ -1,0 +1,8 @@
+metric_id,metric_label,variable_code,cond1_label,cond2_label,direction,cond1_mean,cond1_sd,cond1_n,cond2_mean,cond2_sd,cond2_n,effect,supports_direction
+trust_in_llm,Less trust in LLM,TGSender_raw,AgainstAI,AgainstHuman,less,0.3888888888888889,0.4887337599340425,198,0.9848484848484849,0.1224650671116757,198,-0.595959595959596,True
+trustworthy_against_llm,Less trustworthy against LLM,TGReceiver_raw,AgainstAI,AgainstHuman,less,1.6414141414141414,0.7658325619190224,198,2.4292929292929295,0.49622995431953093,198,-0.7878787878787881,True
+pd_against_llm,Less cooperation in PD,PD_raw,AgainstAI,AgainstHuman,less,0.24242424242424243,0.4296358767810758,198,0.8636363636363636,0.3440441907203717,198,-0.6212121212121212,True
+sh_against_llm,Less cooperation in SH,SH_raw,AgainstAI,AgainstHuman,less,0.2727272727272727,0.4464907004035345,198,0.8383838383838383,0.36903140353269914,198,-0.5656565656565656,True
+coordination_against_llm,Less predictability in C,Earth,AgainstAI,AgainstHuman,less,0.7878787878787878,0.40984650519660876,198,0.9949494949494949,0.07106690545187017,198,-0.20707070707070707,True
+ug_offer_against_llm,Lower offers against LLM,UGProposer_raw,AgainstAI,AgainstHuman,less,3.419191919191919,0.6615129202749664,198,4.191919191919192,0.4432635699238984,198,-0.7727272727272729,True
+ug_threshold_against_llm,Tolerate less inequality,UGResponder_raw,AgainstAI,AgainstHuman,less,2.1313131313131315,0.4862884324370919,198,2.8686868686868685,0.353272292458058,198,-0.737373737373737,True

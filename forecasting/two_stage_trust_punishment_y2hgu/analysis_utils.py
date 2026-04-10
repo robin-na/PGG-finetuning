@@ -34,8 +34,17 @@ _DISTANCE_KIND_SORT_ORDER = {
 }
 _METRIC_SORT_ORDER = {
     "mean_send_field_distance": 0,
-    "return_pct": 1,
-    "joint_pattern_distribution": 2,
+    "mean_process_premium_distance": 1,
+    "return_pct": 2,
+    "mean_action_premium_distance": 3,
+    "joint_pattern_distribution": 4,
+    "process_premium_if_act": 5,
+    "process_premium_if_no_act": 6,
+    "action_premium": 7,
+    "action_premium_without_check": 8,
+    "action_premium_after_check": 9,
+    "action_premium_fast": 10,
+    "action_premium_slow": 11,
 }
 
 
@@ -151,6 +160,14 @@ def _distribution_metrics_for_schema(
             "send_if_no_act_without_check",
             "send_if_no_act_after_check",
         ]
+        action_premium_fields = [
+            "action_premium_without_check",
+            "action_premium_after_check",
+        ]
+        process_premium_fields = [
+            "process_premium_if_act",
+            "process_premium_if_no_act",
+        ]
     elif schema_type == ROLE_B_OBSERVABLE_TIME:
         fields = [
             "send_if_act_fast",
@@ -158,8 +175,18 @@ def _distribution_metrics_for_schema(
             "send_if_act_slow",
             "send_if_no_act_slow",
         ]
+        action_premium_fields = [
+            "action_premium_fast",
+            "action_premium_slow",
+        ]
+        process_premium_fields = [
+            "process_premium_if_act",
+            "process_premium_if_no_act",
+        ]
     elif schema_type in {ROLE_B_HIDDEN_CHECK, ROLE_B_HIDDEN_TIME}:
         fields = ["send_if_act", "send_if_no_act"]
+        action_premium_fields = ["action_premium"]
+        process_premium_fields = []
     else:
         raise ValueError(f"Unsupported schema_type: {schema_type}")
 
@@ -181,6 +208,46 @@ def _distribution_metrics_for_schema(
             "score": float(np.mean(field_scores)),
         }
     )
+
+    action_premium_scores: list[float] = []
+    for field_name in action_premium_fields:
+        score = wasserstein_distance_1d(generated[field_name], human[field_name])
+        action_premium_scores.append(score)
+        rows.append(
+            {
+                "metric": field_name,
+                "distance_kind": "wasserstein_1d",
+                "score": score,
+            }
+        )
+    if action_premium_scores:
+        rows.append(
+            {
+                "metric": "mean_action_premium_distance",
+                "distance_kind": "mean_wasserstein_1d",
+                "score": float(np.mean(action_premium_scores)),
+            }
+        )
+
+    process_premium_scores: list[float] = []
+    for field_name in process_premium_fields:
+        score = wasserstein_distance_1d(generated[field_name], human[field_name])
+        process_premium_scores.append(score)
+        rows.append(
+            {
+                "metric": field_name,
+                "distance_kind": "wasserstein_1d",
+                "score": score,
+            }
+        )
+    if process_premium_scores:
+        rows.append(
+            {
+                "metric": "mean_process_premium_distance",
+                "distance_kind": "mean_wasserstein_1d",
+                "score": float(np.mean(process_premium_scores)),
+            }
+        )
     return rows
 
 

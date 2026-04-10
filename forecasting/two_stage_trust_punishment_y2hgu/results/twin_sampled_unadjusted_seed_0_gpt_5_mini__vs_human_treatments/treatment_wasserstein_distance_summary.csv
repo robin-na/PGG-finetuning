@@ -1,6 +1,15 @@
 metric,distance_kind,n_treatments,mean_score,median_score
+mean_action_premium_distance,mean_wasserstein_1d,10,2.646,2.65
+mean_process_premium_distance,mean_wasserstein_1d,5,1.592,1.4700000000000002
 mean_send_field_distance,mean_wasserstein_1d,10,1.9449999999999998,2.01
 joint_pattern_distribution,total_variation,10,0.198,0.21000000000000002
+action_premium,wasserstein_1d,5,2.816,2.56
+action_premium_after_check,wasserstein_1d,4,2.245,2.35
+action_premium_fast,wasserstein_1d,1,2.74,2.74
+action_premium_slow,wasserstein_1d,1,1.54,1.54
+action_premium_without_check,wasserstein_1d,4,2.875,3.1399999999999997
+process_premium_if_act,wasserstein_1d,5,1.5480000000000003,1.5
+process_premium_if_no_act,wasserstein_1d,5,1.636,1.3000000000000003
 return_pct,wasserstein_1d,10,6.096,5.4799999999999995
 send_if_act,wasserstein_1d,5,1.8399999999999999,1.86
 send_if_act_after_check,wasserstein_1d,4,1.9849999999999999,1.99

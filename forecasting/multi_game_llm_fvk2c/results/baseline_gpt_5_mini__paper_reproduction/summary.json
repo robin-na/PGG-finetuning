@@ -1,0 +1,7 @@
+{
+  "run_name": "baseline_gpt_5_mini",
+  "table1_mean_abs_effect_error": 0.11194897959183675,
+  "table1_direction_match_rate": 0.5,
+  "figure1_mean_abs_effect_error": 0.46041125541125566,
+  "figure1_direction_match_rate": 1.0
+}

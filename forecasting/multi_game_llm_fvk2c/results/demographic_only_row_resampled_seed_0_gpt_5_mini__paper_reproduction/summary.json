@@ -1,0 +1,7 @@
+{
+  "run_name": "demographic_only_row_resampled_seed_0_gpt_5_mini",
+  "table1_mean_abs_effect_error": 0.08468746539313404,
+  "table1_direction_match_rate": 0.5,
+  "figure1_mean_abs_effect_error": 0.49408002991772637,
+  "figure1_direction_match_rate": 1.0
+}

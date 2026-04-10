@@ -1,0 +1,181 @@
+role_slice,game,n_case_groups,mean_abs_error_relative_payoff_diff_pct,median_abs_error_relative_payoff_diff_pct,summary_scope,run_name,run_label
+both,Sender,4,2.9745134495037293,2.947968870379858,by_game,baseline_gpt_5_mini,Baseline
+both,Receiver,4,0.0948137408480959,0.0712011233955034,by_game,baseline_gpt_5_mini,Baseline
+both,PD,4,16.580654788061636,16.39416023851212,by_game,baseline_gpt_5_mini,Baseline
+both,SH,4,4.581582051695616,2.670060120747491,by_game,baseline_gpt_5_mini,Baseline
+both,C,4,7.299601889797483,7.323466768609044,by_game,baseline_gpt_5_mini,Baseline
+both,Proposer,4,27.966598506388,28.4066709346928,by_game,baseline_gpt_5_mini,Baseline
+both,Responder,4,15.57725207952333,10.527884093286904,by_game,baseline_gpt_5_mini,Baseline
+no,Sender,4,3.793152775128744,3.4144889098475573,by_game,baseline_gpt_5_mini,Baseline
+no,Receiver,4,0.064068537639203,0.0702042773240319,by_game,baseline_gpt_5_mini,Baseline
+no,PD,4,17.43146977214056,19.67435405376954,by_game,baseline_gpt_5_mini,Baseline
+no,SH,4,8.567100478816807,4.3911805946003355,by_game,baseline_gpt_5_mini,Baseline
+no,C,4,8.76940257835426,9.0355524001966,by_game,baseline_gpt_5_mini,Baseline
+no,Proposer,4,56.07563902896658,57.17055303031042,by_game,baseline_gpt_5_mini,Baseline
+no,Responder,4,22.3984943519638,17.894233422466186,by_game,baseline_gpt_5_mini,Baseline
+yes,Sender,4,2.1558741238787067,2.5516962248877895,by_game,baseline_gpt_5_mini,Baseline
+yes,Receiver,4,0.2368576288419049,0.1840827197242545,by_game,baseline_gpt_5_mini,Baseline
+yes,PD,4,15.729839803982742,17.632861672424404,by_game,baseline_gpt_5_mini,Baseline
+yes,SH,4,1.829336407547907,1.4622626755497132,by_game,baseline_gpt_5_mini,Baseline
+yes,C,4,5.8396647938843484,5.6113811370214535,by_game,baseline_gpt_5_mini,Baseline
+yes,Proposer,4,4.156835568911671,3.927839078215001,by_game,baseline_gpt_5_mini,Baseline
+yes,Responder,4,9.173122980020883,4.882532023665918,by_game,baseline_gpt_5_mini,Baseline
+both,Sender,3,2.8502194902539766,2.69519464272574,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+both,Receiver,3,0.0485303197444442,0.0415339886473686,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+both,PD,3,14.48923897797251,15.60503525625857,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+both,SH,3,5.814866470375532,4.458391445839116,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+both,C,3,5.264985137739228,5.160832286603691,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+both,Proposer,3,26.944157363010415,25.779419932864844,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+both,Responder,3,9.234781163955178,8.90014314970282,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+no,Sender,3,3.989296064293702,3.624254912061242,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+no,Receiver,3,0.0479443845139685,0.0279675576331572,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+no,PD,3,17.216411906677404,21.272064739009046,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+no,SH,3,10.571577751159452,6.2286925274118055,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+no,C,3,6.795625245893237,7.7985910108677725,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+no,Proposer,3,51.45606577318173,44.40674726429971,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+no,Responder,3,15.587606533548977,17.371005881282976,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+yes,Sender,3,1.7111429162142475,1.685186547943207,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+yes,Receiver,3,0.1248266814167157,0.0548331505561439,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+yes,PD,3,11.76206604926766,13.094505702522373,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+yes,SH,3,0.9790122298332794,0.2689937756091378,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+yes,C,3,3.747496486443408,2.5230735623395617,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+yes,Proposer,3,2.638553712667554,1.1082902060345567,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+yes,Responder,3,3.293823704448742,2.550404962950225,by_game_non_benchmark,baseline_gpt_5_mini,Baseline
+both,ALL,4,10.725002357973985,7.774359227497273,overall,baseline_gpt_5_mini,Baseline
+no,ALL,4,16.728475360429993,9.655683329858078,overall,baseline_gpt_5_mini,Baseline
+yes,ALL,4,5.588790186724024,2.5367392626448932,overall,baseline_gpt_5_mini,Baseline
+both,Sender,4,2.8133867567416844,2.8031115988287336,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,Receiver,4,0.0960106723442155,0.0451418599793862,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,PD,4,16.120923584484228,14.305995930150017,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,SH,4,4.134949584740372,1.8383050391418465,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,C,4,8.180117217717573,9.142045764840818,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,Proposer,4,24.722727102644512,27.511272566695297,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,Responder,4,15.252568651335698,9.789982891864796,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,Sender,4,3.4797961990912256,3.0626945355770263,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,Receiver,4,0.0798085210167193,0.0717190037578419,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,PD,4,17.733515833463787,20.289913106154657,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,SH,4,7.029411357707684,1.4650327098498117,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,C,4,8.340689947374461,8.609578941619795,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,Proposer,4,48.862752624639185,53.63117314663165,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,Responder,4,21.792761897654884,15.73824526289208,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,Sender,4,2.1682048909953844,2.5435286620804187,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,Receiver,4,0.1686851062144695,0.1011443514968291,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,PD,4,14.53672563771471,15.299796507500837,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,SH,4,1.6798877829186627,1.1432235463388785,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,C,4,8.019544488060674,9.674512588061813,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,Proposer,4,3.2373507266095833,2.8642141961153778,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,Responder,4,9.39537084203636,4.896892411970821,by_game,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,Sender,3,2.6931460131106992,2.432114210022829,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,Receiver,3,0.0399836182356394,0.0447941133449814,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,PD,3,13.066050728726418,14.145094884293218,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,SH,3,4.710788462531827,1.2691771269176866,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,C,3,6.499876072810384,8.945442630113057,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,Proposer,3,22.48017785944323,23.572170301142258,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,Responder,3,8.810127791308856,8.943425166656848,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,Sender,3,3.70299237397627,3.315181396717959,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,Receiver,3,0.0692529998535011,0.0319629230093099,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,PD,3,15.95116665392564,19.3507169561308,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,SH,3,9.166318186865505,1.9625909886667348,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,C,3,6.41390721124215,6.946644093714161,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,Proposer,3,42.79358684672395,40.19209633487841,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,Responder,3,14.902115205274123,14.79668697276167,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,Sender,3,1.711603087716133,1.5490470233276987,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,Receiver,3,0.0870128357203237,0.0887057482701791,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,PD,3,10.218793873140571,9.583076995882834,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,SH,3,0.8301593832231022,0.5630102280191567,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,C,3,6.5858449343785965,8.40478400961171,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,Proposer,3,2.66867039154901,0.7850366604394532,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,Responder,3,3.4905106764489795,4.882532023665931,by_game_non_benchmark,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,ALL,4,10.188669081429754,7.896921378426913,overall,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+no,ALL,4,15.331248054421136,8.773093769496521,overall,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+yes,ALL,4,5.600824210649977,2.6307235827458695,overall,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only
+both,Sender,4,0.727687222508408,0.4582444133735597,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,Receiver,4,0.0399888253792501,0.022415168476364,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,PD,4,14.032626827883204,13.972362879182237,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,SH,4,0.8345924376259031,0.5665969316596853,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,C,4,9.013963601114089,10.059527060237029,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,Proposer,4,24.96832914744782,24.02849219573845,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,Responder,4,30.449469549485777,33.17933553575995,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,Sender,4,1.0972033139549142,0.7603423111830598,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,Receiver,4,0.0270103346784428,0.0120693329071663,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,PD,4,17.464171911725266,17.46012966731343,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,SH,4,1.0636779897007482,0.6872139807733713,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,C,4,9.121395609196655,8.527660968816559,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,Proposer,4,36.52787069336264,36.483868527102146,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,Responder,4,47.49015996685462,51.74985852583925,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,Sender,4,0.7310983761375539,0.7526001422719197,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,Receiver,4,0.064543187633817,0.056220298710119,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,PD,4,10.621983105390187,10.484596091051063,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,SH,4,0.915119691804036,0.9070720340308474,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,C,4,8.906531593031518,10.690636775708606,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,Proposer,4,13.157640448523908,15.87165966865215,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,Responder,4,14.305399984682245,13.02487219254407,by_game,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,Sender,3,0.7382145280905417,0.2203835209851123,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,Receiver,3,0.0495825724262729,0.033622752714546,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,PD,3,11.950484806419214,12.043916520751484,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,SH,3,0.8231959295418093,0.2644119014411861,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,C,3,7.4421340542115,9.772814155425712,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,Proposer,3,23.812791636815405,23.914889677767317,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,Responder,3,28.19827083292367,29.155605372347782,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,Sender,3,1.273701768587343,0.952976672308492,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,Receiver,3,0.0292993460918674,0.0039953653761637,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,PD,3,16.925173126370414,17.438833940655908,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,SH,3,1.3887609160805523,0.847691882428836,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,C,3,7.044945661078039,6.782808148107689,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,Proposer,3,34.605679531493074,30.673292875232953,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,Responder,3,48.78391169317623,59.890812263788675,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,Sender,3,0.6999636143612838,0.6806976230774753,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,Receiver,3,0.0720773060386019,0.0704997650007754,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,PD,3,7.00366496826674,6.6489991008471065,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,SH,3,0.6056269744455974,0.5348597166181852,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,C,3,7.839322447344952,9.273114521325995,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,Proposer,3,12.78541320834554,17.468997168245295,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,Responder,3,8.69577357816199,5.031880062036855,by_game_non_benchmark,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,ALL,4,11.438093944492064,8.839771408159441,overall,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+no,ALL,4,16.11306997421047,8.527660968816559,overall,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+yes,ALL,4,6.957473769600467,1.3166603521880145,overall,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled
+both,Sender,4,0.9540965038858236,1.0118478180881851,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,Receiver,4,0.084121375557547,0.0809181849216966,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,PD,4,14.229300450810982,13.203350527660774,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,SH,4,0.7048625849790185,0.6217195911574658,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,C,4,8.858627387196577,9.867019824149423,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,Proposer,4,20.61185501576532,21.387390054882005,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,Responder,4,34.9229107940278,32.87192239524153,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,Sender,4,1.1318297728021676,1.2979647860961618,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,Receiver,4,0.0301823797438482,0.0219745095689005,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,PD,4,17.95944758679295,17.52556001588436,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,SH,4,1.3335323032301227,1.059214242505585,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,C,4,9.090045660365709,8.527660968816559,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,Proposer,4,28.28969648114252,30.704560989443635,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,Responder,4,54.53815716285435,48.78288285675873,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,Sender,4,0.9149823866490464,0.8536316138052724,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,Receiver,4,0.1487476925801423,0.1343582477913441,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,PD,4,10.499153314829025,9.736879466187116,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,SH,4,0.3930532153459789,0.4129421636183905,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,C,4,8.687044850683714,10.056321574344718,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,Proposer,4,12.76720174235702,14.580989458400374,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,Responder,4,16.339749305082062,12.967430639324458,by_game,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,Sender,3,0.701894435076981,0.4249760835970617,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,Receiver,3,0.073379579666862,0.045489606613791,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,PD,3,11.676608101703724,11.6558610572145,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,SH,3,0.7249970241905324,0.5989799149704544,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,C,3,7.199402592407041,9.084703183878547,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,Proposer,3,18.509348769311163,19.772534221189055,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,Responder,3,31.537449374539907,29.1103769689104,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,Sender,3,1.0141941318692356,1.1111928765913603,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,Receiver,3,0.0146496730459337,0.0199768268808187,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,PD,3,16.84989221824657,17.21003347647079,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,SH,3,1.4383253411532495,1.099275295550428,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,C,3,6.9677765562633995,6.782808148107689,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,Proposer,3,25.449821082673168,24.59979930233669,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,Responder,3,55.6627888687076,46.40150366822289,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,Sender,3,0.5744202738574752,0.2612407093972813,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,Receiver,3,0.14661907648712,0.113582954723479,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,PD,3,6.503323985160887,7.813165491458051,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,SH,3,0.4364462540554266,0.5630102280191451,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,C,3,7.510809610759033,7.8968925782316735,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,Proposer,3,11.418085020569492,12.347427009081148,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,Responder,3,8.681499907177761,12.258027457062411,by_game_non_benchmark,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+both,ALL,4,11.480824873174724,8.853913216834085,overall,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+no,ALL,4,16.05327019241881,8.527660968816559,overall,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted
+yes,ALL,4,7.107133215360998,1.0514338921178037,overall,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted

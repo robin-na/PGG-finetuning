@@ -1,0 +1,19 @@
+{
+  "runs": [
+    "baseline_gpt_5_1",
+    "demographic_only_row_resampled_seed_0_gpt_5_1",
+    "twin_sampled_seed_0_gpt_5_1",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1"
+  ],
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/results/baseline_gpt_5_1__vs__demographic_only_row_resampled_seed_0_gpt_5_1__vs__twin_sampled_seed_0_gpt_5_1__vs__twin_sampled_unadjusted_seed_0_gpt_5_1__plots",
+  "headline_metrics": [
+    "fairness_offer_wd",
+    "inequality_tolerance_wd",
+    "trust_send_wd",
+    "trustworthiness_return_wd",
+    "cooperation_pd_wd",
+    "cooperation_sh_wd",
+    "coordination_earth_wd",
+    "delegation_index_wd"
+  ]
+}

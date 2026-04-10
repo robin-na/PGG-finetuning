@@ -1,0 +1,5 @@
+run_name,table1_mean_abs_effect_error,table1_direction_match_rate,figure1_mean_abs_effect_error,figure1_direction_match_rate,run_label
+baseline_gpt_5_mini,0.11194897959183675,0.5,0.46041125541125566,1.0,Baseline
+demographic_only_row_resampled_seed_0_gpt_5_mini,0.08468746539313404,0.5,0.49408002991772637,1.0,Demographic Only
+twin_sampled_seed_0_gpt_5_mini,0.060768766534391616,0.5,0.0850291545189505,1.0,Twin-Sampled
+twin_sampled_unadjusted_seed_0_gpt_5_mini,0.04903153495440737,0.75,0.08208333333333338,1.0,Twin Unadjusted

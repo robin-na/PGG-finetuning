@@ -1,0 +1,15 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_seed_0_gpt_5_1/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_seed_0_gpt_5_1/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_seed_0_gpt_5_1/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/results/twin_sampled_seed_0_gpt_5_1__vs_human_treatments",
+  "generated_session_count": 300,
+  "human_session_count": 300,
+  "generated_scenario_count": 800,
+  "human_scenario_count": 800,
+  "primary_metric_families": [
+    "delegation_distribution_distance",
+    "scenario_state_distribution_distance",
+    "scenario_direct_value_distance"
+  ]
+}

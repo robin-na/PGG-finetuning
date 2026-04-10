@@ -6,6 +6,8 @@ This package is separate from `trajectory_completion`, which is for within-game 
 
 For the end-to-end experiment story, including why the four augmentation modes exist and how `demographics/`, `task_grounding/`, and `forecasting/` connect, start with [PIPELINE_OVERVIEW.md](PIPELINE_OVERVIEW.md).
 For the evaluation layer, including macro vs micro comparisons, human noise-ceiling construction, and current analysis caveats, see [ANALYSIS_OVERVIEW.md](ANALYSIS_OVERVIEW.md).
+For the stable project-level framing across PGG and non-PGG benchmarks, see [CORE_NARRATIVE.md](CORE_NARRATIVE.md).
+For dated benchmark decisions and changes to the sampling / evaluation rules, see [DECISION_LOG.md](DECISION_LOG.md).
 For a read-only index of canonical runs, legacy manifests, and existing analysis outputs, see [registry/README.md](registry/README.md).
 
 ## Layout

@@ -1,0 +1,16 @@
+{
+  "runs": [
+    "baseline_gpt_5_mini",
+    "demographic_only_row_resampled_seed_0_gpt_5_mini",
+    "twin_sampled_seed_0_gpt_5_mini"
+  ],
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/results/baseline_gpt_5_mini__vs__demographic_only_row_resampled_seed_0_gpt_5_mini__vs__twin_sampled_seed_0_gpt_5_mini__plots",
+  "random_iters": 500,
+  "seed": 0,
+  "random_baseline": "Uniform independent sampling over each session's valid response space.",
+  "headline_metrics": [
+    "mean_delegation_wd",
+    "mean_role_state_tv",
+    "mean_numeric_direct_value_wd"
+  ]
+}

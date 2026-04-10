@@ -1,6 +1,15 @@
 metric_family,metric,distance_kind,n_treatments,random_mean,random_median,random_p05,random_p95
+distribution_distance,action_premium,wasserstein_1d,5,2.166968,2.1759999999999997,1.8079999999999998,2.5282
+distribution_distance,action_premium_after_check,wasserstein_1d,4,2.7449899999999996,2.7449999999999997,2.34475,3.1314999999999986
+distribution_distance,action_premium_fast,wasserstein_1d,1,1.49324,1.46,1.12,1.960999999999999
+distribution_distance,action_premium_slow,wasserstein_1d,1,1.5839199999999998,1.5799999999999996,1.08,2.12
+distribution_distance,action_premium_without_check,wasserstein_1d,4,2.68552,2.69,2.29425,3.08525
 distribution_distance,joint_pattern_distribution,total_variation,10,0.324804,0.32399999999999995,0.292,0.36
+distribution_distance,mean_action_premium_distance,mean_wasserstein_1d,10,2.323444,2.3265000000000002,2.1138999999999997,2.5290999999999997
+distribution_distance,mean_process_premium_distance,mean_wasserstein_1d,5,2.208664,2.2199999999999998,2.0179,2.388
 distribution_distance,mean_send_field_distance,mean_wasserstein_1d,10,1.2826199999999999,1.2825,1.1874500000000001,1.3837
+distribution_distance,process_premium_if_act,wasserstein_1d,5,2.214944,2.216,1.968,2.468
+distribution_distance,process_premium_if_no_act,wasserstein_1d,5,2.202384,2.192,1.9638,2.4682
 distribution_distance,return_pct,wasserstein_1d,10,15.589392,15.555999999999997,14.4878,16.881999999999998
 distribution_distance,send_if_act,wasserstein_1d,5,1.095064,1.0879999999999999,0.8796000000000002,1.3203999999999996
 distribution_distance,send_if_act_after_check,wasserstein_1d,4,1.2978600000000002,1.2975,1.01,1.60025

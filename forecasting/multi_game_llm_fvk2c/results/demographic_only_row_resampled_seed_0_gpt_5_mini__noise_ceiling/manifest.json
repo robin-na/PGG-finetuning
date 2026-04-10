@@ -1,0 +1,10 @@
+{
+  "run_name": "demographic_only_row_resampled_seed_0_gpt_5_mini",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/demographic_only_row_resampled_seed_0_gpt_5_mini/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/demographic_only_row_resampled_seed_0_gpt_5_mini/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/demographic_only_row_resampled_seed_0_gpt_5_mini/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/results/demographic_only_row_resampled_seed_0_gpt_5_mini__noise_ceiling",
+  "bootstrap_iters": 200,
+  "seed": 0,
+  "sampling_unit": "subject_session_row_with_nested_scenarios"
+}

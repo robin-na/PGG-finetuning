@@ -1,0 +1,28 @@
+{
+  "run_names": [
+    "baseline_gpt_5_mini",
+    "demographic_only_row_resampled_seed_0_gpt_5_mini",
+    "twin_sampled_seed_0_gpt_5_mini",
+    "twin_sampled_unadjusted_seed_0_gpt_5_mini"
+  ],
+  "headline_metrics": [
+    "sender_expected_payoff",
+    "receiver_expected_payoff",
+    "pd_expected_payoff",
+    "sh_expected_payoff",
+    "c_expected_payoff",
+    "proposer_expected_payoff",
+    "responder_expected_payoff"
+  ],
+  "full_metrics": [
+    "sender_expected_payoff",
+    "receiver_expected_payoff",
+    "pd_expected_payoff",
+    "sh_expected_payoff",
+    "c_expected_payoff",
+    "proposer_expected_payoff",
+    "responder_expected_payoff",
+    "mean_expected_payoff"
+  ],
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/results/baseline_gpt_5_mini__vs__demographic_only_row_resampled_seed_0_gpt_5_mini__vs__twin_sampled_seed_0_gpt_5_mini__vs__twin_sampled_unadjusted_seed_0_gpt_5_mini__payoff_plots"
+}

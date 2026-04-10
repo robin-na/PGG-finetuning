@@ -1,0 +1,15 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini/gold_targets.jsonl",
+  "note": "Row-level exact-match and field-match metrics are secondary diagnostics. Use the treatment-level distribution-distance analysis as the primary benchmark.",
+  "generated_parse_success_rate": 0.9733333333333334,
+  "generated_parsed_count": 292,
+  "human_gold_count": 300,
+  "evaluated_row_count": 292,
+  "exact_match_rate": 0.0,
+  "delegation_match_rate": 0.6751467710371819,
+  "scenario_exact_match_rate": 0.001141552511415525,
+  "scenario_field_match_rate": 0.40190802348336596,
+  "numeric_direct_abs_error_mean": 1.629412644053055
+}

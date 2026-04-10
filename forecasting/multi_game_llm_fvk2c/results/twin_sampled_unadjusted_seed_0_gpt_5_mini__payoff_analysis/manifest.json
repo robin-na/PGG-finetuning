@@ -1,0 +1,23 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/metadata/twin_sampled_unadjusted_seed_0_gpt_5_mini/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/multi_game_llm_fvk2c/results/twin_sampled_unadjusted_seed_0_gpt_5_mini__payoff_analysis",
+  "repo_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning",
+  "seed": 0,
+  "generated_session_count": 292,
+  "human_session_count": 300,
+  "generated_expected_payoff_rows": 8064,
+  "human_expected_payoff_rows": 8400,
+  "case_groups": [
+    "Benchmark",
+    "AIR",
+    "TD",
+    "OD"
+  ],
+  "role_slices": [
+    "both",
+    "no",
+    "yes"
+  ]
+}

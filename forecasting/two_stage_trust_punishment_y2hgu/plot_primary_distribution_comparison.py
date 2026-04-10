@@ -31,24 +31,32 @@ from common import (
 RUN_COLORS = ["#4C78A8", "#F58518", "#54A24B", "#B279A2"]
 NOISE_CEILING_COLOR = "#2CA02C"
 PRETTY_METRIC_LABELS = {
-    "mean_send_field_distance": "Mean Send WD",
-    "return_pct": "Return % WD",
-    "joint_pattern_distribution": "Joint Pattern TV",
-    "send_if_act": "WD: Send if Act",
-    "send_if_act_after_check": "WD: Send if Act After Check",
-    "send_if_act_fast": "WD: Send if Act Fast",
-    "send_if_act_slow": "WD: Send if Act Slow",
-    "send_if_act_without_check": "WD: Send if Act Without Check",
-    "send_if_no_act": "WD: Send if No Act",
-    "send_if_no_act_after_check": "WD: Send if No Act After Check",
-    "send_if_no_act_fast": "WD: Send if No Act Fast",
-    "send_if_no_act_slow": "WD: Send if No Act Slow",
-    "send_if_no_act_without_check": "WD: Send if No Act Without Check",
+    "mean_send_field_distance": "Send",
+    "mean_process_premium_distance": "Process Signal",
+    "mean_action_premium_distance": "Act Signal",
+    "return_pct": "Return %",
+    "joint_pattern_distribution": "Joint Pattern",
+    "process_premium_if_act": "Process Premium if Act",
+    "process_premium_if_no_act": "Process Premium if No Act",
+    "action_premium": "Act Premium",
+    "action_premium_without_check": "Act Premium Without Check",
+    "action_premium_after_check": "Act Premium After Check",
+    "action_premium_fast": "Act Premium Fast",
+    "action_premium_slow": "Act Premium Slow",
+    "send_if_act": "Send if Act",
+    "send_if_act_after_check": "Send if Act After Check",
+    "send_if_act_fast": "Send if Act Fast",
+    "send_if_act_slow": "Send if Act Slow",
+    "send_if_act_without_check": "Send if Act Without Check",
+    "send_if_no_act": "Send if No Act",
+    "send_if_no_act_after_check": "Send if No Act After Check",
+    "send_if_no_act_fast": "Send if No Act Fast",
+    "send_if_no_act_slow": "Send if No Act Slow",
+    "send_if_no_act_without_check": "Send if No Act Without Check",
 }
 HEADLINE_METRICS = [
     "mean_send_field_distance",
     "return_pct",
-    "joint_pattern_distribution",
 ]
 
 
@@ -164,12 +172,22 @@ def _pretty_run_label(run_name: str) -> str:
 def _plot_metric_panels(
     *,
     comparison_df: pd.DataFrame,
-    random_df: pd.DataFrame,
     noise_df: pd.DataFrame,
     metrics: list[str],
     output_path: Path,
     title: str,
 ) -> None:
+    def distance_axis_label(metric: str) -> str:
+        distance_kinds = comparison_df.loc[comparison_df["metric"] == metric, "distance_kind"].dropna().unique().tolist()
+        if not distance_kinds:
+            return "Distance"
+        distance_kind = str(distance_kinds[0])
+        if distance_kind in {"wasserstein_1d", "mean_wasserstein_1d"}:
+            return "Wasserstein Distance"
+        if distance_kind == "total_variation":
+            return "Total Variation Distance"
+        return "Distance"
+
     n_metrics = len(metrics)
     ncols = 3 if n_metrics <= 3 else 4
     nrows = math.ceil(n_metrics / ncols)
@@ -194,21 +212,10 @@ def _plot_metric_panels(
     for ax, metric in zip(axes_list, metrics):
         metric_df = comparison_df[comparison_df["metric"] == metric].copy()
         metric_df = metric_df.set_index("run_name").reindex(run_names).reset_index()
-        random_row = random_df[random_df["metric"] == metric]
         noise_row = noise_df[noise_df["metric"] == metric]
-        random_mean = float(random_row["random_mean"].iloc[0]) if not random_row.empty else float("nan")
         noise_mean = float(noise_row["bootstrap_mean"].iloc[0]) if not noise_row.empty else float("nan")
         noise_p05 = float(noise_row["bootstrap_p05"].iloc[0]) if not noise_row.empty else float("nan")
         noise_p95 = float(noise_row["bootstrap_p95"].iloc[0]) if not noise_row.empty else float("nan")
-
-        if math.isfinite(random_mean):
-            ax.axhline(
-                random_mean,
-                linestyle="--",
-                color="0.35",
-                linewidth=1.4,
-                label="Uniform random" if metric == metrics[0] else None,
-            )
 
         upper_candidates: list[float] = [0.0]
         for index, run_name in enumerate(run_names):
@@ -263,12 +270,10 @@ def _plot_metric_panels(
                 fontsize=8,
             )
 
-        if math.isfinite(random_mean):
-            upper_candidates.append(random_mean)
-
         upper = max(upper_candidates)
         ax.set_ylim(0.0, upper * 1.18 + 1e-9)
         ax.set_title(PRETTY_METRIC_LABELS.get(metric, metric), fontsize=10)
+        ax.set_ylabel(distance_axis_label(metric))
         ax.set_xticks([x[metrics.index(metric)]])
         ax.set_xticklabels([PRETTY_METRIC_LABELS.get(metric, metric)], rotation=0)
         ax.grid(axis="y", linestyle=":", linewidth=0.7, alpha=0.55)
@@ -293,7 +298,7 @@ def _plot_metric_panels(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Plot primary two-stage distribution-alignment metrics against a uniform random baseline."
+        description="Plot primary two-stage distribution-alignment metrics against the human noise ceiling."
     )
     parser.add_argument("--forecasting-root", type=Path, default=Path(__file__).resolve().parent)
     parser.add_argument(
@@ -349,16 +354,6 @@ def main() -> None:
     comparison_df = pd.concat(comparison_parts, ignore_index=True)
     noise_comparison_df = pd.concat(noise_parts, ignore_index=True)
 
-    reference_run = args.runs[0]
-    human_records = build_human_records_df(
-        gold_targets_jsonl=args.forecasting_root / "metadata" / reference_run / "gold_targets.jsonl",
-        request_manifest_csv=args.forecasting_root / "metadata" / reference_run / "request_manifest.csv",
-    )
-    random_df = _simulate_random_distribution_summary(
-        human_records=human_records,
-        iters=args.random_iters,
-        seed=args.seed,
-    )
     noise_df = (
         noise_comparison_df.groupby(["metric_family", "metric", "distance_kind"], as_index=False)
         .agg(
@@ -376,22 +371,17 @@ def main() -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     write_csv(output_dir / "run_primary_distribution_comparison.csv", comparison_df)
     write_csv(output_dir / "noise_ceiling_primary_distribution_summary.csv", noise_df)
-    write_csv(output_dir / "uniform_random_primary_distribution_summary.csv", random_df)
     write_json(
         output_dir / "manifest.json",
         {
             "runs": args.runs,
             "output_dir": str(output_dir),
-            "random_iters": args.random_iters,
-            "seed": args.seed,
-            "random_baseline": "Uniform independent sampling over each schema's valid response space.",
             "primary_metric_family": PRIMARY_METRIC_FAMILY,
         },
     )
 
     _plot_metric_panels(
         comparison_df=comparison_df,
-        random_df=random_df,
         noise_df=noise_df,
         metrics=headline_metrics,
         output_path=output_dir / "headline_primary_distribution_comparison.png",
@@ -399,7 +389,6 @@ def main() -> None:
     )
     _plot_metric_panels(
         comparison_df=comparison_df,
-        random_df=random_df,
         noise_df=noise_df,
         metrics=metrics,
         output_path=output_dir / "all_primary_distribution_metrics.png",

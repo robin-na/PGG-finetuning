@@ -1,6 +1,15 @@
 metric_family,metric,distance_kind,bootstrap_mean,bootstrap_median,bootstrap_p05,bootstrap_p95,n_treatments,model_score,median_value
 distribution_distance,mean_send_field_distance,mean_wasserstein_1d,0.69585,0.69125,0.5788249999999999,0.8296,10,1.9449999999999998,2.01
+distribution_distance,mean_process_premium_distance,mean_wasserstein_1d,0.654,0.6479999999999999,0.5178,0.8200999999999999,5,1.592,1.4700000000000002
+distribution_distance,mean_action_premium_distance,mean_wasserstein_1d,0.9548399999999999,0.9444999999999999,0.7559499999999999,1.188,10,2.646,2.65
 distribution_distance,return_pct,wasserstein_1d,4.01695,3.944,3.0639000000000003,5.1015,10,6.096,5.4799999999999995
+distribution_distance,process_premium_if_act,wasserstein_1d,0.625,0.6139999999999999,0.4398000000000001,0.8480000000000001,5,1.5480000000000003,1.5
+distribution_distance,process_premium_if_no_act,wasserstein_1d,0.6829999999999999,0.666,0.4916,0.9245999999999999,5,1.636,1.3000000000000003
+distribution_distance,action_premium,wasserstein_1d,0.9136,0.8820000000000001,0.6636000000000001,1.2604000000000002,5,2.816,2.56
+distribution_distance,action_premium_without_check,wasserstein_1d,1.0351,0.9949999999999999,0.715,1.4349999999999998,4,2.875,3.1399999999999997
+distribution_distance,action_premium_after_check,wasserstein_1d,0.9660249999999999,0.9649999999999999,0.6499999999999999,1.3005,4,2.245,2.35
+distribution_distance,action_premium_fast,wasserstein_1d,1.1248,1.0099999999999998,0.4789999999999998,2.1249999999999982,1,2.74,2.74
+distribution_distance,action_premium_slow,wasserstein_1d,0.8314999999999999,0.76,0.36000000000000015,1.5809999999999997,1,1.54,1.54
 distribution_distance,send_if_act,wasserstein_1d,0.68934,0.6719999999999999,0.4598,0.9691999999999995,5,1.8399999999999999,1.86
 distribution_distance,send_if_act_after_check,wasserstein_1d,0.69435,0.6849999999999998,0.42000000000000004,1.04025,4,1.9849999999999999,1.99
 distribution_distance,send_if_act_fast,wasserstein_1d,0.7681,0.67,0.28000000000000014,1.6039999999999988,1,1.9000000000000001,1.9000000000000001

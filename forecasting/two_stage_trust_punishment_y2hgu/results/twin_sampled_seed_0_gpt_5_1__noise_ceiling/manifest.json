@@ -1,0 +1,10 @@
+{
+  "run_name": "twin_sampled_seed_0_gpt_5_1",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_seed_0_gpt_5_1/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_seed_0_gpt_5_1/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/metadata/twin_sampled_seed_0_gpt_5_1/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/two_stage_trust_punishment_y2hgu/results/twin_sampled_seed_0_gpt_5_1__noise_ceiling",
+  "bootstrap_iters": 200,
+  "seed": 0,
+  "primary_metric_family": "distribution_distance"
+}
