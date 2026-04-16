@@ -1,163 +1,35 @@
 # Forecasting
 
-Full-rollout (`k=0`) public-goods-game forecasting lives here.
+This directory is the forecasting benchmark root.
 
-This package is separate from `trajectory_completion`, which is for within-game continuation from an observed prefix.
+Each target experiment now has its own subfolder:
 
-For the end-to-end experiment story, including why the four augmentation modes exist and how `demographics/`, `task_grounding/`, and `forecasting/` connect, start with [PIPELINE_OVERVIEW.md](PIPELINE_OVERVIEW.md).
-For the evaluation layer, including macro vs micro comparisons, human noise-ceiling construction, and current analysis caveats, see [ANALYSIS_OVERVIEW.md](ANALYSIS_OVERVIEW.md).
-For the stable project-level framing across PGG and non-PGG benchmarks, see [CORE_NARRATIVE.md](CORE_NARRATIVE.md).
-For dated benchmark decisions and changes to the sampling / evaluation rules, see [DECISION_LOG.md](DECISION_LOG.md).
-For a read-only index of canonical runs, legacy manifests, and existing analysis outputs, see [registry/README.md](registry/README.md).
+- [pgg](./pgg/README.md): public goods game full-rollout forecasting
+- [minority_game_bret_njzas](./minority_game_bret_njzas/README.md)
+- [longitudinal_trust_game_ht863](./longitudinal_trust_game_ht863/README.md)
+- [two_stage_trust_punishment_y2hgu](./two_stage_trust_punishment_y2hgu/README.md)
+- [multi_game_llm_fvk2c](./multi_game_llm_fvk2c/README.md)
 
-## Layout
+Shared infrastructure lives at the top level:
 
-- `batch_input/`: raw OpenAI Batch request JSONL files
-- `batch_output/`: raw completed OpenAI Batch output JSONL files
-- `metadata/<run_name>/`: request manifest, selected games, gold transcript scaffold, parsed outputs, sample prompt, token estimates
-- `results/`: evaluation outputs and treatment-level comparison outputs
+- `common/`: shared profile and run-writing code
+- `datasets/`: canonical dataset adapters for non-PGG benchmarks
+- `prompts/`: shared prompt builders for non-PGG benchmarks
+- `non_pgg_batch_builder.py`: thin CLI entrypoint for non-PGG batch generation
+- `kl_divergence_utils.py`: shared KL helpers used by multiple benchmarks
 
-The convention is:
+Project-level documents:
 
-- request file: `forecasting/batch_input/<run_name>.jsonl`
-- batch output file: `forecasting/batch_output/<run_name>.jsonl`
-- default run names are intentionally short, typically `<variant>_<model>`, with extra suffixes only when you deviate from the standard baseline settings
-- the baseline direct-transcript variant is shortened to `baseline`, so the default files are things like `baseline_gpt_5_1.jsonl`
+- [CORE_NARRATIVE.md](./CORE_NARRATIVE.md)
+- [DECISION_LOG.md](./DECISION_LOG.md)
+- [REFACTOR_PLAN.md](./REFACTOR_PLAN.md)
 
-## API Key Loading
+The active PGG pipeline no longer lives directly in `forecasting/`. Use `forecasting/pgg/` as the canonical home for:
 
-OpenAI-facing scripts now auto-load `OPENAI_API_KEY` from the repo-root `.api_keys.env` if the variable is not already exported in your shell.
+- batch construction
+- batch management
+- parsing
+- evaluation
+- PGG metadata, batch files, and results
 
-Example:
-
-```bash
-echo "OPENAI_API_KEY=sk-..." >> .api_keys.env
-```
-
-## Build A Batch
-
-Example:
-
-```bash
-python -m forecasting.build_batch_inputs \
-  --split val \
-  --selection-mode one_per_treatment \
-  --require-valid-starting-players \
-  --k-values 0 \
-  --min-num-rounds-exclusive 0 \
-  --variant-name baseline_direct_transcript \
-  --repeat-count-mode match_valid_start_treatment_counts \
-  --model gpt-5.1
-```
-
-Notes:
-
-- This builder is reserved for the `k=0` full-rollout task.
-- `--repeat-count-mode match_valid_start_treatment_counts` repeats each treatment prompt to the number of validation-wave games with `valid_number_of_starting_players == True` for that treatment.
-- The builder writes the request JSONL into `batch_input/` and the sidecar files into `metadata/<run_name>/`.
-
-## Submit / Poll / Download A Batch
-
-Submit a run from its manifest:
-
-```bash
-python -m forecasting.manage_openai_batch submit --run-name <run_name>
-```
-
-Check status:
-
-```bash
-python -m forecasting.manage_openai_batch status --run-name <run_name>
-```
-
-One-shot sync that submits if needed, refreshes the batch, and downloads the completed output into the manifest's expected `batch_output/<run_name>.jsonl` path:
-
-```bash
-python -m forecasting.manage_openai_batch sync --run-name <run_name>
-```
-
-Wait until completion and then download:
-
-```bash
-python -m forecasting.manage_openai_batch sync --run-name <run_name> --wait --poll-interval-sec 60
-```
-
-The batch manager writes local job state to `metadata/<run_name>/openai_batch_state.json`.
-
-## Parse A Completed Batch
-
-```bash
-python -m forecasting.parse_outputs --run-name <run_name>
-```
-
-This expects:
-
-- input at `forecasting/batch_output/<run_name>.jsonl`
-- manifest at `forecasting/metadata/<run_name>/request_manifest.csv`
-
-and writes:
-
-- `forecasting/metadata/<run_name>/parsed_output.jsonl`
-
-## Evaluate Against The Selected Gold Game
-
-```bash
-python -m forecasting.evaluate_outputs --run-name <run_name>
-```
-
-This writes:
-
-- `forecasting/results/<run_name>__gold_eval/`
-
-## Compare Against Human Treatment Distributions
-
-```bash
-python -m forecasting.analyze_vs_human_treatments --run-name <run_name>
-```
-
-This writes:
-
-- `forecasting/results/<run_name>__vs_human_treatments/`
-
-and compares each generated rollout to the distribution of real validation-wave games from the same `CONFIG_treatmentName`.
-
-Key outputs now include:
-
-- `generated_game_summary.csv` and `human_game_summary.csv` with per-game aggregate metrics, including decay slopes and mean within-round contribution variance
-- `treatment_metric_comparison.csv` and `overall_metric_summary.csv` for generated-game-vs-human-distribution comparisons
-- `treatment_mean_alignment.csv` and `treatment_mean_alignment_summary.csv` for treatment-mean MAE/RMSE/Spearman
-- `treatment_dispersion.csv` and `treatment_dispersion_summary.csv` for across-game SD/IQR calibration within treatment
-- `treatment_wasserstein_distance.csv` and `treatment_wasserstein_summary.csv` for per-treatment 1-Wasserstein distances
-
-## Compare Models Against A Noise Ceiling
-
-```bash
-python -m forecasting.compare_models_with_noise_ceiling \
-  --run-names baseline_gpt_5_1 baseline_gpt_5_mini
-```
-
-This writes:
-
-- `forecasting/results/model_comparison__noise_ceiling/`
-
-Key outputs include:
-
-- `model_vs_noise_ceiling.png` with grouped bars for `gpt-5.1`, `gpt-5-mini`, and the matched human noise ceiling
-- `model_vs_noise_ceiling_summary.csv` with raw scores, gap-to-ceiling, and ratio-to-ceiling values
-- `noise_ceiling_summary.csv` and `noise_ceiling_bootstrap.csv` for the bootstrap human-vs-human reference
-
-## Plot Macro Pointwise Alignment
-
-```bash
-python -m forecasting.plot_macro_pointwise_alignment
-```
-
-This writes:
-
-- `forecasting/results/macro_pointwise_alignment__llms/`
-
-Key outputs include:
-
-- `macro_pointwise_alignment.png` with grouped bars for the four LLM runs plus the matched human noise ceiling, shown for RMSE of config means and mean within-config Wasserstein distance across the 40 validation configs
-- `macro_pointwise_alignment_summary.csv` with model scores, standard errors, matched noise-ceiling summaries, and gap-to-ceiling values for mean, first-round, and final-round contribution / normalized efficiency
-- `macro_pointwise_alignment_bootstrap.csv` with the matched human-vs-human bootstrap resamples used to estimate the noise-ceiling components
+Secondary or non-mainline PGG analyses now live under `forecasting/pgg/exploratory/`.

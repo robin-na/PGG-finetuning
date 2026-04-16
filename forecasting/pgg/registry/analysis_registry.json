@@ -1,0 +1,57 @@
+[
+  {
+    "analysis_id": "vs_human_treatments_per_run",
+    "script": "forecasting/pgg/analyze_vs_human_treatments.py",
+    "output_location": "forecasting/pgg/results/<run_name>__vs_human_treatments/",
+    "analysis_level": "macro / per-treatment game-distribution comparison",
+    "unit_of_comparison": "generated games vs human validation games within CONFIG_treatmentName",
+    "metrics_or_outputs": "game, actor, and round summaries; treatment means; treatment dispersion; treatment Wasserstein distance; typicality",
+    "noise_ceiling_method": "none in this step",
+    "current_scope": "All available core runs have per-run treatment-comparison outputs.",
+    "risk_or_note": "Human reference selection is valid-start validation games, but still allows incomplete games; that should be treated as an explicit design choice."
+  },
+  {
+    "analysis_id": "model_comparison_noise_ceiling",
+    "script": "forecasting/pgg/compare_models_with_noise_ceiling.py",
+    "output_location": "forecasting/pgg/results/model_comparison__noise_ceiling/",
+    "analysis_level": "macro / model-level summary against human noise ceiling",
+    "unit_of_comparison": "treatment-level scalar metric summaries",
+    "metrics_or_outputs": "RMSE of treatment means, mean Wasserstein distance, mean |log SD ratio|, mean |log IQR ratio|",
+    "noise_ceiling_method": "For each CONFIG_treatmentName, bootstrap two independent human resamples with replacement; one pseudo-model sample uses the shared generated count and one pseudo-human sample uses the human count.",
+    "current_scope": "Current committed output compares runs ['baseline_gpt_5_1', 'twin_sampled_seed_0_gpt_5_1', 'baseline_gpt_5_mini', 'twin_sampled_seed_0_gpt_5_mini'].",
+    "risk_or_note": "Scores are computed after trimming each model to the shared generated-game count within each treatment."
+  },
+  {
+    "analysis_id": "macro_pointwise_alignment",
+    "script": "forecasting/pgg/exploratory/plot_macro_pointwise_alignment.py",
+    "output_location": "forecasting/pgg/results/macro_pointwise_alignment__llms/",
+    "analysis_level": "macro / pointwise across the 40 validation configs",
+    "unit_of_comparison": "config-level means and within-config distribution distances",
+    "metrics_or_outputs": "RMSE of config means and mean within-config Wasserstein distance for mean, first-round, and final-round contribution and efficiency",
+    "noise_ceiling_method": "Within each CONFIG_treatmentName, bootstrap two independent human resamples with replacement and compare their config means and within-config Wasserstein distances.",
+    "current_scope": "Current committed manifest covers runs missing.",
+    "risk_or_note": "Macro output directory exists, but no manifest was found."
+  },
+  {
+    "analysis_id": "micro_distribution_alignment",
+    "script": "forecasting/pgg/exploratory/analyze_micro_distribution_alignment.py",
+    "output_location": "forecasting/pgg/results/micro_distribution_alignment__llms/",
+    "analysis_level": "micro / within-config player and round distributions",
+    "unit_of_comparison": "within-treatment Wasserstein distances over player-level and round-level summaries",
+    "metrics_or_outputs": "player mean contribution, player mean payoff, round contribution, round efficiency, and optional round-to-round delta distributions",
+    "noise_ceiling_method": "Optional bootstrap: resample whole human games within each CONFIG_treatmentName, derive pseudo-generated and pseudo-human player/round summaries, then compute within-config Wasserstein distances.",
+    "current_scope": "Current committed manifest has bootstrap_iters=0.",
+    "risk_or_note": "Current committed micro output has no materialized noise ceiling because bootstrap_iters is 0."
+  },
+  {
+    "analysis_id": "twin_profile_behavior_links",
+    "script": "forecasting/pgg/exploratory/analyze_twin_profile_behavior_links.py",
+    "output_location": "forecasting/pgg/results/twin_profile_behavior_links/",
+    "analysis_level": "exploratory / profile-to-behavior linkage",
+    "unit_of_comparison": "Twin cue scores vs simulated player-level outcomes",
+    "metrics_or_outputs": "top cue-outcome associations for contribution, payoff, volatility, punishment, reward, and messaging",
+    "noise_ceiling_method": "none",
+    "current_scope": "Current committed output covers Twin-corrected runs only.",
+    "risk_or_note": "This is exploratory analysis, not a primary forecasting benchmark."
+  }
+]

@@ -1,9 +1,0 @@
-{
-  "request_file": "forecasting/batch_input/baseline_gpt_5_mini.jsonl",
-  "num_requests": 417,
-  "total_input_tokens_estimate": 285698,
-  "mean_input_tokens_estimate": 685.1270983213429,
-  "median_input_tokens_estimate": 720,
-  "max_input_tokens_estimate": 816,
-  "min_input_tokens_estimate": 461
-}

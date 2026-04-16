@@ -1,9 +1,0 @@
-{
-  "request_file": "forecasting/batch_input/baseline_direct_transcript__val__k0__one_per_treatment__validstart__games_40__minrounds_gt_0__repeat_match_valid_start_counts__gpt_5_mini.jsonl",
-  "num_requests": 417,
-  "total_input_tokens_estimate": 285698,
-  "mean_input_tokens_estimate": 685.1270983213429,
-  "median_input_tokens_estimate": 720,
-  "max_input_tokens_estimate": 816,
-  "min_input_tokens_estimate": 461
-}

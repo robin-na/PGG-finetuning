@@ -303,7 +303,7 @@ Step 4: TRANSFER (PGG → non-PGG games)
 
 ### 6.3 Existing MobLab Inference Pipeline
 
-The repo's `pgg_transfer_eval/` already implements a 3-stage LLM-based transfer pipeline:
+The repo's archived [`archive/pgg_transfer_eval/`](./archive/pgg_transfer_eval/) folder preserves a 3-stage LLM-based transfer pipeline:
 
 | Stage | Script | What it does |
 |-------|--------|-------------|

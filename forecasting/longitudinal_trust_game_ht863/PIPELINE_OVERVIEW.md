@@ -150,7 +150,7 @@ As in the PGG pipeline, there are two non-baseline augmentation families:
 - dataset-side demographic-only cards
 - Twin-derived cards
 
-The existing top-level `forecasting/` docs and `non-PGG_generalization/task_grounding/` outputs are the analogue to follow, but the assignment unit here is a participant rather than a seat in a group game.
+The existing top-level `forecasting/` docs and `non-PGG_generalization/twin_profiles/` outputs are the analogue to follow, but the assignment unit here is a participant rather than a seat in a group game.
 
 ## Stage 4: Assign One Card Per Forecast Record
 

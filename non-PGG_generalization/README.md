@@ -1,44 +1,72 @@
 # non-PGG_generalization
 
-This folder stores non-PGG generalization assets, benchmark specs, and evaluation code for Twin-based transfer experiments.
+This folder is the upstream data and Twin-artifact side of the transportability pipeline.
 
-## Main folders
+Use it for:
 
-- `data/`
-  - Source-specific local assets and scratch space.
-  - `PGG/`: consolidated PGG demographics and oracle archetype JSONL files.
-  - `Twin-2k-500/`: local Twin-related assets when needed.
-- `task_grounding/`
-  - Benchmark definitions and Twin question inventories.
-  - Start with:
-    - `TWIN_TASK_GROUNDING.md`
-    - `PGG_TRANSFER_BENCHMARK.md`
-- `pgg_transfer_eval/`
-  - Batch builders, evaluators, and comparison baselines for the Twin social-game benchmark.
-  - Includes random, human-consistency, kNN allowed-input, and trait-heuristic comparison baselines.
-  - See:
-    - `pgg_transfer_eval/README.md`
-- `legacy_demographicsOnly/`
-  - Archived demographics-only PGG-to-Twin prototype. This is preserved for reference and is not the active benchmark.
+- raw target datasets used by the current forecasting benchmarks
+- raw Twin source data and derived deterministic Twin profile artifacts
+- older or historical non-PGG experiments that are preserved for reference
 
-## PGG profile extraction
+Do not treat this folder as the active benchmark runner. The current forecasting and evaluation pipeline lives in:
 
-The new transfer-oriented PGG profile/card extraction pipeline lives under:
+- [`../forecasting/README.md`](../forecasting/README.md)
 
-- `Persona/transfer_profiles/README.md`
+## Start Here
 
-The request builder is:
+If you are trying to understand the current active pipeline, read these in order:
 
-```bash
-python Persona/misc/build_transfer_profile_requests.py
-```
+1. [`ACTIVE_PATHS.md`](./ACTIVE_PATHS.md)
+2. [`data/README.md`](./data/README.md)
+3. [`twin_profiles/README.md`](./twin_profiles/README.md)
+4. [`../forecasting/README.md`](../forecasting/README.md)
 
-It now builds a combined learn+validation-wave raw profile bank before creating the LLM batch requests.
+## Current Role In The Pipeline
 
-## Regenerate consolidated PGG assets
+The split is:
 
-From repo root:
+- `non-PGG_generalization/`
+  - upstream raw data
+  - Twin profile/card construction
+  - historical non-mainline experiments
+- `forecasting/`
+  - active benchmark assembly
+  - prompt construction
+  - batch input generation
+  - parsing, evaluation, and plotting
 
-```bash
-python non-PGG_generalization/build_consolidated_data.py
-```
+## Main Folders
+
+- [`data/`](./data/README.md)
+  - raw target datasets and Twin source snapshots
+- [`twin_profiles/`](./twin_profiles/README.md)
+  - deterministic Twin profile/card build pipeline and related specifications
+- [`archive/`](./archive/README.md)
+  - historical prototype work, older transfer experiments, and draft paper assets that are not part of the active pipeline
+
+## Active vs Historical
+
+Active for the current forecasting pipeline:
+
+- Twin source data under `data/Twin-2k-500/`
+- deterministic Twin artifacts under `twin_profiles/output/`
+- target datasets under:
+  - `data/minority_game_bret_njzas/`
+  - `data/longitudinal_trust_game_ht863/`
+  - `data/two_stage_trust_punishment_y2hgu/`
+  - `data/multi_game_llm_fvk2c/`
+
+Historical or not on the active path:
+
+- `archive/legacy_demographicsOnly/`
+- `archive/pgg_transfer_eval/`
+- `archive/pgg_archetype_transfer/`
+- `archive/twin-20k-500/`
+- `archive/paper/`
+- the other parked datasets under `data/` that are not yet wired into `forecasting/`
+
+## Notes
+
+- Keep raw dataset locations stable unless the active adapters in `forecasting/datasets/` are updated too.
+- `task_grounding/` is kept as a compatibility symlink to `twin_profiles/` so older generated artifacts do not need path rewrites.
+- The active PGG benchmark does not read `non-PGG_generalization/data/PGG/`; it reads the repo-root [`../data/`](../data/) tree through [`../forecasting/pgg/`](../forecasting/pgg/).

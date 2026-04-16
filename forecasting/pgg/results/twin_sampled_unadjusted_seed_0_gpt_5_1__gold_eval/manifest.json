@@ -1,0 +1,12 @@
+{
+  "repo_root": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning",
+  "split": "val",
+  "wave_name": "validation_wave",
+  "processed_suffix": "val",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/pgg/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/pgg/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1/request_manifest.csv",
+  "baseline_name": "compact_observer_llm",
+  "records_in_input": 417,
+  "evaluated_requests": 249,
+  "skipped_requests": 168
+}
