@@ -1,0 +1,641 @@
+treatment_name,metric,generated_game_count,human_game_count,wasserstein_distance,run_name,run_label,treatment_label,score,family_name
+VALIDATION_0_C,mean_round_normalized_efficiency,10,10,0.4660777210013018,baseline_gpt_5_mini,Baseline,0-C,0.4660777210013018,gpt-5-mini
+VALIDATION_0_T,mean_round_normalized_efficiency,12,12,0.1618735407672817,baseline_gpt_5_mini,Baseline,0-T,0.1618735407672817,gpt-5-mini
+VALIDATION_10_C,mean_round_normalized_efficiency,10,10,0.5402861807356188,baseline_gpt_5_mini,Baseline,10-C,0.5402861807356188,gpt-5-mini
+VALIDATION_10_T,mean_round_normalized_efficiency,10,10,0.4008931143762604,baseline_gpt_5_mini,Baseline,10-T,0.4008931143762604,gpt-5-mini
+VALIDATION_11_C,mean_round_normalized_efficiency,10,10,0.4251333097580503,baseline_gpt_5_mini,Baseline,11-C,0.4251333097580503,gpt-5-mini
+VALIDATION_11_T,mean_round_normalized_efficiency,11,11,0.3416722606268886,baseline_gpt_5_mini,Baseline,11-T,0.3416722606268886,gpt-5-mini
+VALIDATION_12_C,mean_round_normalized_efficiency,12,12,0.4624997568471832,baseline_gpt_5_mini,Baseline,12-C,0.4624997568471832,gpt-5-mini
+VALIDATION_12_T,mean_round_normalized_efficiency,12,12,0.2196376589299383,baseline_gpt_5_mini,Baseline,12-T,0.2196376589299383,gpt-5-mini
+VALIDATION_13_C,mean_round_normalized_efficiency,10,10,0.5793422368553339,baseline_gpt_5_mini,Baseline,13-C,0.5793422368553339,gpt-5-mini
+VALIDATION_13_T,mean_round_normalized_efficiency,11,11,0.478143779659489,baseline_gpt_5_mini,Baseline,13-T,0.478143779659489,gpt-5-mini
+VALIDATION_14_C,mean_round_normalized_efficiency,12,12,0.5919407894736841,baseline_gpt_5_mini,Baseline,14-C,0.5919407894736841,gpt-5-mini
+VALIDATION_14_T,mean_round_normalized_efficiency,10,10,0.5320504385964913,baseline_gpt_5_mini,Baseline,14-T,0.5320504385964913,gpt-5-mini
+VALIDATION_15_C,mean_round_normalized_efficiency,11,11,0.3848246207255948,baseline_gpt_5_mini,Baseline,15-C,0.3848246207255948,gpt-5-mini
+VALIDATION_15_T,mean_round_normalized_efficiency,9,9,0.2089801336229908,baseline_gpt_5_mini,Baseline,15-T,0.2089801336229908,gpt-5-mini
+VALIDATION_16_C,mean_round_normalized_efficiency,10,10,0.7730816278140219,baseline_gpt_5_mini,Baseline,16-C,0.7730816278140219,gpt-5-mini
+VALIDATION_16_T,mean_round_normalized_efficiency,8,8,0.1171926036274628,baseline_gpt_5_mini,Baseline,16-T,0.1171926036274628,gpt-5-mini
+VALIDATION_17_C,mean_round_normalized_efficiency,11,11,0.4546076990351784,baseline_gpt_5_mini,Baseline,17-C,0.4546076990351784,gpt-5-mini
+VALIDATION_17_T,mean_round_normalized_efficiency,8,8,0.1667770346328607,baseline_gpt_5_mini,Baseline,17-T,0.1667770346328607,gpt-5-mini
+VALIDATION_18_C,mean_round_normalized_efficiency,12,12,0.2987664421246322,baseline_gpt_5_mini,Baseline,18-C,0.2987664421246322,gpt-5-mini
+VALIDATION_18_T,mean_round_normalized_efficiency,10,10,0.1828181505570282,baseline_gpt_5_mini,Baseline,18-T,0.1828181505570282,gpt-5-mini
+VALIDATION_19_C,mean_round_normalized_efficiency,10,10,0.3347034072249589,baseline_gpt_5_mini,Baseline,19-C,0.3347034072249589,gpt-5-mini
+VALIDATION_19_T,mean_round_normalized_efficiency,10,10,0.5298645320197044,baseline_gpt_5_mini,Baseline,19-T,0.5298645320197044,gpt-5-mini
+VALIDATION_1_C,mean_round_normalized_efficiency,8,8,0.5611850247524752,baseline_gpt_5_mini,Baseline,1-C,0.5611850247524752,gpt-5-mini
+VALIDATION_1_T,mean_round_normalized_efficiency,8,8,0.4937906474470975,baseline_gpt_5_mini,Baseline,1-T,0.4937906474470975,gpt-5-mini
+VALIDATION_2_C,mean_round_normalized_efficiency,9,9,0.1768261316872428,baseline_gpt_5_mini,Baseline,2-C,0.1768261316872428,gpt-5-mini
+VALIDATION_2_T,mean_round_normalized_efficiency,11,11,0.1078493265993265,baseline_gpt_5_mini,Baseline,2-T,0.1078493265993265,gpt-5-mini
+VALIDATION_3_C,mean_round_normalized_efficiency,9,9,0.2177111473580449,baseline_gpt_5_mini,Baseline,3-C,0.2177111473580449,gpt-5-mini
+VALIDATION_3_T,mean_round_normalized_efficiency,10,10,0.338784668150989,baseline_gpt_5_mini,Baseline,3-T,0.338784668150989,gpt-5-mini
+VALIDATION_4_C,mean_round_normalized_efficiency,12,12,0.0915284436539849,baseline_gpt_5_mini,Baseline,4-C,0.0915284436539849,gpt-5-mini
+VALIDATION_4_T,mean_round_normalized_efficiency,9,9,0.1049455679443306,baseline_gpt_5_mini,Baseline,4-T,0.1049455679443306,gpt-5-mini
+VALIDATION_5_C,mean_round_normalized_efficiency,9,9,0.453317901234568,baseline_gpt_5_mini,Baseline,5-C,0.453317901234568,gpt-5-mini
+VALIDATION_5_T,mean_round_normalized_efficiency,12,12,0.2511574074074074,baseline_gpt_5_mini,Baseline,5-T,0.2511574074074074,gpt-5-mini
+VALIDATION_6_C,mean_round_normalized_efficiency,12,12,0.5837483425641212,baseline_gpt_5_mini,Baseline,6-C,0.5837483425641212,gpt-5-mini
+VALIDATION_6_T,mean_round_normalized_efficiency,11,11,0.1861457075678428,baseline_gpt_5_mini,Baseline,6-T,0.1861457075678428,gpt-5-mini
+VALIDATION_7_C,mean_round_normalized_efficiency,11,11,0.6978803895957052,baseline_gpt_5_mini,Baseline,7-C,0.6978803895957052,gpt-5-mini
+VALIDATION_7_T,mean_round_normalized_efficiency,12,12,0.2061633798324212,baseline_gpt_5_mini,Baseline,7-T,0.2061633798324212,gpt-5-mini
+VALIDATION_8_C,mean_round_normalized_efficiency,12,12,0.2626192006857388,baseline_gpt_5_mini,Baseline,8-C,0.2626192006857388,gpt-5-mini
+VALIDATION_8_T,mean_round_normalized_efficiency,11,11,0.248875690365565,baseline_gpt_5_mini,Baseline,8-T,0.248875690365565,gpt-5-mini
+VALIDATION_9_C,mean_round_normalized_efficiency,11,11,0.3279595138307259,baseline_gpt_5_mini,Baseline,9-C,0.3279595138307259,gpt-5-mini
+VALIDATION_9_T,mean_round_normalized_efficiency,11,11,0.1953698546122788,baseline_gpt_5_mini,Baseline,9-T,0.1953698546122788,gpt-5-mini
+VALIDATION_0_C,mean_total_contribution_rate,10,10,0.4064814814814815,baseline_gpt_5_mini,Baseline,0-C,0.4064814814814815,gpt-5-mini
+VALIDATION_0_T,mean_total_contribution_rate,12,12,0.1484182098765432,baseline_gpt_5_mini,Baseline,0-T,0.1484182098765432,gpt-5-mini
+VALIDATION_10_C,mean_total_contribution_rate,10,10,0.4155555555555556,baseline_gpt_5_mini,Baseline,10-C,0.4155555555555556,gpt-5-mini
+VALIDATION_10_T,mean_total_contribution_rate,10,10,0.2105555555555555,baseline_gpt_5_mini,Baseline,10-T,0.2105555555555555,gpt-5-mini
+VALIDATION_11_C,mean_total_contribution_rate,10,10,0.3401864801864802,baseline_gpt_5_mini,Baseline,11-C,0.3401864801864802,gpt-5-mini
+VALIDATION_11_T,mean_total_contribution_rate,11,11,0.2792540792540793,baseline_gpt_5_mini,Baseline,11-T,0.2792540792540793,gpt-5-mini
+VALIDATION_12_C,mean_total_contribution_rate,12,12,0.4421296296296296,baseline_gpt_5_mini,Baseline,12-C,0.4421296296296296,gpt-5-mini
+VALIDATION_12_T,mean_total_contribution_rate,12,12,0.067824074074074,baseline_gpt_5_mini,Baseline,12-T,0.067824074074074,gpt-5-mini
+VALIDATION_13_C,mean_total_contribution_rate,10,10,0.4968153145873734,baseline_gpt_5_mini,Baseline,13-C,0.4968153145873734,gpt-5-mini
+VALIDATION_13_T,mean_total_contribution_rate,11,11,0.4599715113318053,baseline_gpt_5_mini,Baseline,13-T,0.4599715113318053,gpt-5-mini
+VALIDATION_14_C,mean_total_contribution_rate,12,12,0.4133771929824561,baseline_gpt_5_mini,Baseline,14-C,0.4133771929824561,gpt-5-mini
+VALIDATION_14_T,mean_total_contribution_rate,10,10,0.4137280701754386,baseline_gpt_5_mini,Baseline,14-T,0.4137280701754386,gpt-5-mini
+VALIDATION_15_C,mean_total_contribution_rate,11,11,0.2799541367723185,baseline_gpt_5_mini,Baseline,15-C,0.2799541367723185,gpt-5-mini
+VALIDATION_15_T,mean_total_contribution_rate,9,9,0.3169235702569036,baseline_gpt_5_mini,Baseline,15-T,0.3169235702569036,gpt-5-mini
+VALIDATION_16_C,mean_total_contribution_rate,10,10,0.5732063492063492,baseline_gpt_5_mini,Baseline,16-C,0.5732063492063492,gpt-5-mini
+VALIDATION_16_T,mean_total_contribution_rate,8,8,0.1235185185185185,baseline_gpt_5_mini,Baseline,16-T,0.1235185185185185,gpt-5-mini
+VALIDATION_17_C,mean_total_contribution_rate,11,11,0.4198044688369765,baseline_gpt_5_mini,Baseline,17-C,0.4198044688369765,gpt-5-mini
+VALIDATION_17_T,mean_total_contribution_rate,8,8,0.1736806571481493,baseline_gpt_5_mini,Baseline,17-T,0.1736806571481493,gpt-5-mini
+VALIDATION_18_C,mean_total_contribution_rate,12,12,0.2373188405797101,baseline_gpt_5_mini,Baseline,18-C,0.2373188405797101,gpt-5-mini
+VALIDATION_18_T,mean_total_contribution_rate,10,10,0.1445652173913043,baseline_gpt_5_mini,Baseline,18-T,0.1445652173913043,gpt-5-mini
+VALIDATION_19_C,mean_total_contribution_rate,10,10,0.2732040229885057,baseline_gpt_5_mini,Baseline,19-C,0.2732040229885057,gpt-5-mini
+VALIDATION_19_T,mean_total_contribution_rate,10,10,0.3917816091954023,baseline_gpt_5_mini,Baseline,19-T,0.3917816091954023,gpt-5-mini
+VALIDATION_1_C,mean_total_contribution_rate,8,8,0.5683593750000001,baseline_gpt_5_mini,Baseline,1-C,0.5683593750000001,gpt-5-mini
+VALIDATION_1_T,mean_total_contribution_rate,8,8,0.2177083333333333,baseline_gpt_5_mini,Baseline,1-T,0.2177083333333333,gpt-5-mini
+VALIDATION_2_C,mean_total_contribution_rate,9,9,0.1579166666666666,baseline_gpt_5_mini,Baseline,2-C,0.1579166666666666,gpt-5-mini
+VALIDATION_2_T,mean_total_contribution_rate,11,11,0.1167045454545454,baseline_gpt_5_mini,Baseline,2-T,0.1167045454545454,gpt-5-mini
+VALIDATION_3_C,mean_total_contribution_rate,9,9,0.1406196581196581,baseline_gpt_5_mini,Baseline,3-C,0.1406196581196581,gpt-5-mini
+VALIDATION_3_T,mean_total_contribution_rate,10,10,0.3548076923076923,baseline_gpt_5_mini,Baseline,3-T,0.3548076923076923,gpt-5-mini
+VALIDATION_4_C,mean_total_contribution_rate,12,12,0.1113591269841269,baseline_gpt_5_mini,Baseline,4-C,0.1113591269841269,gpt-5-mini
+VALIDATION_4_T,mean_total_contribution_rate,9,9,0.0357142857142857,baseline_gpt_5_mini,Baseline,4-T,0.0357142857142857,gpt-5-mini
+VALIDATION_5_C,mean_total_contribution_rate,9,9,0.25,baseline_gpt_5_mini,Baseline,5-C,0.25,gpt-5-mini
+VALIDATION_5_T,mean_total_contribution_rate,12,12,0.1805555555555555,baseline_gpt_5_mini,Baseline,5-T,0.1805555555555555,gpt-5-mini
+VALIDATION_6_C,mean_total_contribution_rate,12,12,0.5315289311383061,baseline_gpt_5_mini,Baseline,6-C,0.5315289311383061,gpt-5-mini
+VALIDATION_6_T,mean_total_contribution_rate,11,11,0.220665295878364,baseline_gpt_5_mini,Baseline,6-T,0.220665295878364,gpt-5-mini
+VALIDATION_7_C,mean_total_contribution_rate,11,11,0.6541380914407231,baseline_gpt_5_mini,Baseline,7-C,0.6541380914407231,gpt-5-mini
+VALIDATION_7_T,mean_total_contribution_rate,12,12,0.2211787280701754,baseline_gpt_5_mini,Baseline,7-T,0.2211787280701754,gpt-5-mini
+VALIDATION_8_C,mean_total_contribution_rate,12,12,0.2670138888888889,baseline_gpt_5_mini,Baseline,8-C,0.2670138888888889,gpt-5-mini
+VALIDATION_8_T,mean_total_contribution_rate,11,11,0.1661363636363636,baseline_gpt_5_mini,Baseline,8-T,0.1661363636363636,gpt-5-mini
+VALIDATION_9_C,mean_total_contribution_rate,11,11,0.2707304732304732,baseline_gpt_5_mini,Baseline,9-C,0.2707304732304732,gpt-5-mini
+VALIDATION_9_T,mean_total_contribution_rate,11,11,0.2665850101077374,baseline_gpt_5_mini,Baseline,9-T,0.2665850101077374,gpt-5-mini
+VALIDATION_0_C,mean_round_normalized_efficiency,10,10,0.4612700286936095,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,0-C,0.4612700286936095,gpt-5-mini
+VALIDATION_0_T,mean_round_normalized_efficiency,12,12,0.1213820877758286,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,0-T,0.1213820877758286,gpt-5-mini
+VALIDATION_10_C,mean_round_normalized_efficiency,10,10,0.5349803130702007,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,10-C,0.5349803130702007,gpt-5-mini
+VALIDATION_10_T,mean_round_normalized_efficiency,10,10,0.3880966100067223,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,10-T,0.3880966100067223,gpt-5-mini
+VALIDATION_11_C,mean_round_normalized_efficiency,10,10,0.4034475487105872,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,11-C,0.4034475487105872,gpt-5-mini
+VALIDATION_11_T,mean_round_normalized_efficiency,11,11,0.2656124604979397,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,11-T,0.2656124604979397,gpt-5-mini
+VALIDATION_12_C,mean_round_normalized_efficiency,12,12,0.4656911375661375,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,12-C,0.4656911375661375,gpt-5-mini
+VALIDATION_12_T,mean_round_normalized_efficiency,12,12,0.2117230347469318,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,12-T,0.2117230347469318,gpt-5-mini
+VALIDATION_13_C,mean_round_normalized_efficiency,10,10,0.5320816300263954,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,13-C,0.5320816300263954,gpt-5-mini
+VALIDATION_13_T,mean_round_normalized_efficiency,11,11,0.4295323484098732,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,13-T,0.4295323484098732,gpt-5-mini
+VALIDATION_14_C,mean_round_normalized_efficiency,12,12,0.4956779970760233,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,14-C,0.4956779970760233,gpt-5-mini
+VALIDATION_14_T,mean_round_normalized_efficiency,10,10,0.4525,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,14-T,0.4525,gpt-5-mini
+VALIDATION_15_C,mean_round_normalized_efficiency,11,11,0.2760271681781422,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,15-C,0.2760271681781422,gpt-5-mini
+VALIDATION_15_T,mean_round_normalized_efficiency,9,9,0.1162714071642643,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,15-T,0.1162714071642643,gpt-5-mini
+VALIDATION_16_C,mean_round_normalized_efficiency,10,10,0.8078964426288368,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,16-C,0.8078964426288368,gpt-5-mini
+VALIDATION_16_T,mean_round_normalized_efficiency,8,8,0.0909158691465029,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,16-T,0.0909158691465029,gpt-5-mini
+VALIDATION_17_C,mean_round_normalized_efficiency,11,11,0.4540948924242654,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,17-C,0.4540948924242654,gpt-5-mini
+VALIDATION_17_T,mean_round_normalized_efficiency,8,8,0.1309842140162788,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,17-T,0.1309842140162788,gpt-5-mini
+VALIDATION_18_C,mean_round_normalized_efficiency,12,12,0.3244714950035982,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,18-C,0.3244714950035982,gpt-5-mini
+VALIDATION_18_T,mean_round_normalized_efficiency,10,10,0.2060628626604359,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,18-T,0.2060628626604359,gpt-5-mini
+VALIDATION_19_C,mean_round_normalized_efficiency,10,10,0.2476883210180623,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,19-C,0.2476883210180623,gpt-5-mini
+VALIDATION_19_T,mean_round_normalized_efficiency,10,10,0.4898860837438423,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,19-T,0.4898860837438423,gpt-5-mini
+VALIDATION_1_C,mean_round_normalized_efficiency,8,8,0.5074257425742574,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,1-C,0.5074257425742574,gpt-5-mini
+VALIDATION_1_T,mean_round_normalized_efficiency,8,8,0.4993341705494077,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,1-T,0.4993341705494077,gpt-5-mini
+VALIDATION_2_C,mean_round_normalized_efficiency,9,9,0.1244855967078189,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,2-C,0.1244855967078189,gpt-5-mini
+VALIDATION_2_T,mean_round_normalized_efficiency,11,11,0.0859638047138047,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,2-T,0.0859638047138047,gpt-5-mini
+VALIDATION_3_C,mean_round_normalized_efficiency,9,9,0.2484814029484444,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,3-C,0.2484814029484444,gpt-5-mini
+VALIDATION_3_T,mean_round_normalized_efficiency,10,10,0.1995230005619833,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,3-T,0.1995230005619833,gpt-5-mini
+VALIDATION_4_C,mean_round_normalized_efficiency,12,12,0.0707581691043259,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,4-C,0.0707581691043259,gpt-5-mini
+VALIDATION_4_T,mean_round_normalized_efficiency,9,9,0.1591658933910712,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,4-T,0.1591658933910712,gpt-5-mini
+VALIDATION_5_C,mean_round_normalized_efficiency,9,9,0.3472222222222223,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,5-C,0.3472222222222223,gpt-5-mini
+VALIDATION_5_T,mean_round_normalized_efficiency,12,12,0.238136574074074,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,5-T,0.238136574074074,gpt-5-mini
+VALIDATION_6_C,mean_round_normalized_efficiency,12,12,0.5176198741251004,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,6-C,0.5176198741251004,gpt-5-mini
+VALIDATION_6_T,mean_round_normalized_efficiency,11,11,0.2590030455214262,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,6-T,0.2590030455214262,gpt-5-mini
+VALIDATION_7_C,mean_round_normalized_efficiency,11,11,0.6992858919880498,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,7-C,0.6992858919880498,gpt-5-mini
+VALIDATION_7_T,mean_round_normalized_efficiency,12,12,0.1727971662073779,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,7-T,0.1727971662073779,gpt-5-mini
+VALIDATION_8_C,mean_round_normalized_efficiency,12,12,0.1907371691846137,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,8-C,0.1907371691846137,gpt-5-mini
+VALIDATION_8_T,mean_round_normalized_efficiency,11,11,0.2249685865404284,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,8-T,0.2249685865404284,gpt-5-mini
+VALIDATION_9_C,mean_round_normalized_efficiency,11,11,0.3158015707636919,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,9-C,0.3158015707636919,gpt-5-mini
+VALIDATION_9_T,mean_round_normalized_efficiency,11,11,0.1135700382670079,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,9-T,0.1135700382670079,gpt-5-mini
+VALIDATION_0_C,mean_total_contribution_rate,10,10,0.4014814814814815,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,0-C,0.4014814814814815,gpt-5-mini
+VALIDATION_0_T,mean_total_contribution_rate,12,12,0.0984182098765432,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,0-T,0.0984182098765432,gpt-5-mini
+VALIDATION_10_C,mean_total_contribution_rate,10,10,0.4119444444444445,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,10-C,0.4119444444444445,gpt-5-mini
+VALIDATION_10_T,mean_total_contribution_rate,10,10,0.1444444444444444,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,10-T,0.1444444444444444,gpt-5-mini
+VALIDATION_11_C,mean_total_contribution_rate,10,10,0.319032634032634,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,11-C,0.319032634032634,gpt-5-mini
+VALIDATION_11_T,mean_total_contribution_rate,11,11,0.2026223776223776,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,11-T,0.2026223776223776,gpt-5-mini
+VALIDATION_12_C,mean_total_contribution_rate,12,12,0.4456018518518519,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,12-C,0.4456018518518519,gpt-5-mini
+VALIDATION_12_T,mean_total_contribution_rate,12,12,0.0631944444444444,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,12-T,0.0631944444444444,gpt-5-mini
+VALIDATION_13_C,mean_total_contribution_rate,10,10,0.4489292851756087,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,13-C,0.4489292851756087,gpt-5-mini
+VALIDATION_13_T,mean_total_contribution_rate,11,11,0.4063451744334096,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,13-T,0.4063451744334096,gpt-5-mini
+VALIDATION_14_C,mean_total_contribution_rate,12,12,0.3164473684210527,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,14-C,0.3164473684210527,gpt-5-mini
+VALIDATION_14_T,mean_total_contribution_rate,10,10,0.3179824561403508,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,14-T,0.3179824561403508,gpt-5-mini
+VALIDATION_15_C,mean_total_contribution_rate,11,11,0.1725615293797111,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,15-C,0.1725615293797111,gpt-5-mini
+VALIDATION_15_T,mean_total_contribution_rate,9,9,0.1667404200737534,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,15-T,0.1667404200737534,gpt-5-mini
+VALIDATION_16_C,mean_total_contribution_rate,10,10,0.6078730158730158,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,16-C,0.6078730158730158,gpt-5-mini
+VALIDATION_16_T,mean_total_contribution_rate,8,8,0.0518518518518518,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,16-T,0.0518518518518518,gpt-5-mini
+VALIDATION_17_C,mean_total_contribution_rate,11,11,0.419325999937455,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,17-C,0.419325999937455,gpt-5-mini
+VALIDATION_17_T,mean_total_contribution_rate,8,8,0.1203546337563365,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,17-T,0.1203546337563365,gpt-5-mini
+VALIDATION_18_C,mean_total_contribution_rate,12,12,0.2626811594202899,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,18-C,0.2626811594202899,gpt-5-mini
+VALIDATION_18_T,mean_total_contribution_rate,10,10,0.152536231884058,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,18-T,0.152536231884058,gpt-5-mini
+VALIDATION_19_C,mean_total_contribution_rate,10,10,0.1852298850574712,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,19-C,0.1852298850574712,gpt-5-mini
+VALIDATION_19_T,mean_total_contribution_rate,10,10,0.356867816091954,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,19-T,0.356867816091954,gpt-5-mini
+VALIDATION_1_C,mean_total_contribution_rate,8,8,0.512890625,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,1-C,0.512890625,gpt-5-mini
+VALIDATION_1_T,mean_total_contribution_rate,8,8,0.2173177083333333,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,1-T,0.2173177083333333,gpt-5-mini
+VALIDATION_2_C,mean_total_contribution_rate,9,9,0.1022222222222222,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,2-C,0.1022222222222222,gpt-5-mini
+VALIDATION_2_T,mean_total_contribution_rate,11,11,0.0792045454545454,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,2-T,0.0792045454545454,gpt-5-mini
+VALIDATION_3_C,mean_total_contribution_rate,9,9,0.1623789173789173,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,3-C,0.1623789173789173,gpt-5-mini
+VALIDATION_3_T,mean_total_contribution_rate,10,10,0.2077884615384615,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,3-T,0.2077884615384615,gpt-5-mini
+VALIDATION_4_C,mean_total_contribution_rate,12,12,0.0786210317460317,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,4-C,0.0786210317460317,gpt-5-mini
+VALIDATION_4_T,mean_total_contribution_rate,9,9,0.0793650793650793,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,4-T,0.0793650793650793,gpt-5-mini
+VALIDATION_5_C,mean_total_contribution_rate,9,9,0.1666666666666666,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,5-C,0.1666666666666666,gpt-5-mini
+VALIDATION_5_T,mean_total_contribution_rate,12,12,0.125,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,5-T,0.125,gpt-5-mini
+VALIDATION_6_C,mean_total_contribution_rate,12,12,0.465463226010101,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,6-C,0.465463226010101,gpt-5-mini
+VALIDATION_6_T,mean_total_contribution_rate,11,11,0.2934581280461962,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,6-T,0.2934581280461962,gpt-5-mini
+VALIDATION_7_C,mean_total_contribution_rate,11,11,0.6554538809144074,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,7-C,0.6554538809144074,gpt-5-mini
+VALIDATION_7_T,mean_total_contribution_rate,12,12,0.177626096491228,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,7-T,0.177626096491228,gpt-5-mini
+VALIDATION_8_C,mean_total_contribution_rate,12,12,0.1881944444444444,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,8-C,0.1881944444444444,gpt-5-mini
+VALIDATION_8_T,mean_total_contribution_rate,11,11,0.1521212121212121,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,8-T,0.1521212121212121,gpt-5-mini
+VALIDATION_9_C,mean_total_contribution_rate,11,11,0.2586429311429311,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,9-C,0.2586429311429311,gpt-5-mini
+VALIDATION_9_T,mean_total_contribution_rate,11,11,0.1865513400740673,demographic_only_row_resampled_seed_0_gpt_5_mini,Demographic Only,9-T,0.1865513400740673,gpt-5-mini
+VALIDATION_0_C,mean_round_normalized_efficiency,10,10,0.1893149004884813,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,0-C,0.1893149004884813,gpt-5-mini
+VALIDATION_0_T,mean_round_normalized_efficiency,12,12,0.0890270883356764,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,0-T,0.0890270883356764,gpt-5-mini
+VALIDATION_10_C,mean_round_normalized_efficiency,10,10,0.3174397387880533,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,10-C,0.3174397387880533,gpt-5-mini
+VALIDATION_10_T,mean_round_normalized_efficiency,10,10,0.3200566599443003,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,10-T,0.3200566599443003,gpt-5-mini
+VALIDATION_11_C,mean_round_normalized_efficiency,10,10,0.2446573141224802,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,11-C,0.2446573141224802,gpt-5-mini
+VALIDATION_11_T,mean_round_normalized_efficiency,11,11,0.1677925056301125,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,11-T,0.1677925056301125,gpt-5-mini
+VALIDATION_12_C,mean_round_normalized_efficiency,12,12,0.278165606520386,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,12-C,0.278165606520386,gpt-5-mini
+VALIDATION_12_T,mean_round_normalized_efficiency,12,12,0.17557532913691,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,12-T,0.17557532913691,gpt-5-mini
+VALIDATION_13_C,mean_round_normalized_efficiency,10,10,0.4945668396274772,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,13-C,0.4945668396274772,gpt-5-mini
+VALIDATION_13_T,mean_round_normalized_efficiency,11,11,0.4510120413842415,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,13-T,0.4510120413842415,gpt-5-mini
+VALIDATION_14_C,mean_round_normalized_efficiency,12,12,0.3872624269005847,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,14-C,0.3872624269005847,gpt-5-mini
+VALIDATION_14_T,mean_round_normalized_efficiency,10,10,0.424484649122807,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,14-T,0.424484649122807,gpt-5-mini
+VALIDATION_15_C,mean_round_normalized_efficiency,11,11,0.1561782670792412,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,15-C,0.1561782670792412,gpt-5-mini
+VALIDATION_15_T,mean_round_normalized_efficiency,9,9,0.1144284254105682,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,15-T,0.1144284254105682,gpt-5-mini
+VALIDATION_16_C,mean_round_normalized_efficiency,10,10,0.4816001463325405,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,16-C,0.4816001463325405,gpt-5-mini
+VALIDATION_16_T,mean_round_normalized_efficiency,8,8,0.0836936469242807,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,16-T,0.0836936469242807,gpt-5-mini
+VALIDATION_17_C,mean_round_normalized_efficiency,11,11,0.327045360275583,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,17-C,0.327045360275583,gpt-5-mini
+VALIDATION_17_T,mean_round_normalized_efficiency,8,8,0.2127579057409039,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,17-T,0.2127579057409039,gpt-5-mini
+VALIDATION_18_C,mean_round_normalized_efficiency,12,12,0.1783199086346204,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,18-C,0.1783199086346204,gpt-5-mini
+VALIDATION_18_T,mean_round_normalized_efficiency,10,10,0.1168794236602628,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,18-T,0.1168794236602628,gpt-5-mini
+VALIDATION_19_C,mean_round_normalized_efficiency,10,10,0.2241430623973727,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,19-C,0.2241430623973727,gpt-5-mini
+VALIDATION_19_T,mean_round_normalized_efficiency,10,10,0.4599291871921181,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,19-T,0.4599291871921181,gpt-5-mini
+VALIDATION_1_C,mean_round_normalized_efficiency,8,8,0.4045482673267326,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,1-C,0.4045482673267326,gpt-5-mini
+VALIDATION_1_T,mean_round_normalized_efficiency,8,8,0.4145053751698699,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,1-T,0.4145053751698699,gpt-5-mini
+VALIDATION_2_C,mean_round_normalized_efficiency,9,9,0.042309670781893,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,2-C,0.042309670781893,gpt-5-mini
+VALIDATION_2_T,mean_round_normalized_efficiency,11,11,0.0840698653198653,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,2-T,0.0840698653198653,gpt-5-mini
+VALIDATION_3_C,mean_round_normalized_efficiency,9,9,0.2012883881295303,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,3-C,0.2012883881295303,gpt-5-mini
+VALIDATION_3_T,mean_round_normalized_efficiency,10,10,0.2394141645538668,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,3-T,0.2394141645538668,gpt-5-mini
+VALIDATION_4_C,mean_round_normalized_efficiency,12,12,0.0966030647489432,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,4-C,0.0966030647489432,gpt-5-mini
+VALIDATION_4_T,mean_round_normalized_efficiency,9,9,0.1934825550662235,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,4-T,0.1934825550662235,gpt-5-mini
+VALIDATION_5_C,mean_round_normalized_efficiency,9,9,0.2816358024691359,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,5-C,0.2816358024691359,gpt-5-mini
+VALIDATION_5_T,mean_round_normalized_efficiency,12,12,0.2181712962962963,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,5-T,0.2181712962962963,gpt-5-mini
+VALIDATION_6_C,mean_round_normalized_efficiency,12,12,0.4324467699629734,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,6-C,0.4324467699629734,gpt-5-mini
+VALIDATION_6_T,mean_round_normalized_efficiency,11,11,0.1483422397891625,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,6-T,0.1483422397891625,gpt-5-mini
+VALIDATION_7_C,mean_round_normalized_efficiency,11,11,0.4660707518650149,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,7-C,0.4660707518650149,gpt-5-mini
+VALIDATION_7_T,mean_round_normalized_efficiency,12,12,0.156472747000341,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,7-T,0.156472747000341,gpt-5-mini
+VALIDATION_8_C,mean_round_normalized_efficiency,12,12,0.1027931801135754,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,8-C,0.1027931801135754,gpt-5-mini
+VALIDATION_8_T,mean_round_normalized_efficiency,11,11,0.1333764355220478,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,8-T,0.1333764355220478,gpt-5-mini
+VALIDATION_9_C,mean_round_normalized_efficiency,11,11,0.180680664733695,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,9-C,0.180680664733695,gpt-5-mini
+VALIDATION_9_T,mean_round_normalized_efficiency,11,11,0.0538969391999695,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,9-T,0.0538969391999695,gpt-5-mini
+VALIDATION_0_C,mean_total_contribution_rate,10,10,0.1298148148148147,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,0-C,0.1298148148148147,gpt-5-mini
+VALIDATION_0_T,mean_total_contribution_rate,12,12,0.0657021604938271,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,0-T,0.0657021604938271,gpt-5-mini
+VALIDATION_10_C,mean_total_contribution_rate,10,10,0.1930555555555556,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,10-C,0.1930555555555556,gpt-5-mini
+VALIDATION_10_T,mean_total_contribution_rate,10,10,0.1369444444444444,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,10-T,0.1369444444444444,gpt-5-mini
+VALIDATION_11_C,mean_total_contribution_rate,10,10,0.1590967365967366,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,11-C,0.1590967365967366,gpt-5-mini
+VALIDATION_11_T,mean_total_contribution_rate,11,11,0.1009006145369781,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,11-T,0.1009006145369781,gpt-5-mini
+VALIDATION_12_C,mean_total_contribution_rate,12,12,0.2581018518518518,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,12-C,0.2581018518518518,gpt-5-mini
+VALIDATION_12_T,mean_total_contribution_rate,12,12,0.0805555555555555,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,12-T,0.0805555555555555,gpt-5-mini
+VALIDATION_13_C,mean_total_contribution_rate,10,10,0.411466049881491,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,13-C,0.411466049881491,gpt-5-mini
+VALIDATION_13_T,mean_total_contribution_rate,11,11,0.4269835434173669,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,13-T,0.4269835434173669,gpt-5-mini
+VALIDATION_14_C,mean_total_contribution_rate,12,12,0.2099780701754386,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,14-C,0.2099780701754386,gpt-5-mini
+VALIDATION_14_T,mean_total_contribution_rate,10,10,0.2978508771929824,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,14-T,0.2978508771929824,gpt-5-mini
+VALIDATION_15_C,mean_total_contribution_rate,11,11,0.0926414494596312,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,15-C,0.0926414494596312,gpt-5-mini
+VALIDATION_15_T,mean_total_contribution_rate,9,9,0.1069113602446935,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,15-T,0.1069113602446935,gpt-5-mini
+VALIDATION_16_C,mean_total_contribution_rate,10,10,0.2765396825396826,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,16-C,0.2765396825396826,gpt-5-mini
+VALIDATION_16_T,mean_total_contribution_rate,8,8,0.0418518518518518,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,16-T,0.0418518518518518,gpt-5-mini
+VALIDATION_17_C,mean_total_contribution_rate,11,11,0.2920532726647278,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,17-C,0.2920532726647278,gpt-5-mini
+VALIDATION_17_T,mean_total_contribution_rate,8,8,0.2019099313139561,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,17-T,0.2019099313139561,gpt-5-mini
+VALIDATION_18_C,mean_total_contribution_rate,12,12,0.1268115942028985,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,18-C,0.1268115942028985,gpt-5-mini
+VALIDATION_18_T,mean_total_contribution_rate,10,10,0.0597826086956521,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,18-T,0.0597826086956521,gpt-5-mini
+VALIDATION_19_C,mean_total_contribution_rate,10,10,0.1612212643678161,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,19-C,0.1612212643678161,gpt-5-mini
+VALIDATION_19_T,mean_total_contribution_rate,10,10,0.2930316091954023,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,19-T,0.2930316091954023,gpt-5-mini
+VALIDATION_1_C,mean_total_contribution_rate,8,8,0.4105468749999999,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,1-C,0.4105468749999999,gpt-5-mini
+VALIDATION_1_T,mean_total_contribution_rate,8,8,0.1141927083333333,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,1-T,0.1141927083333333,gpt-5-mini
+VALIDATION_2_C,mean_total_contribution_rate,9,9,0.03875,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,2-C,0.03875,gpt-5-mini
+VALIDATION_2_T,mean_total_contribution_rate,11,11,0.0837499999999999,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,2-T,0.0837499999999999,gpt-5-mini
+VALIDATION_3_C,mean_total_contribution_rate,9,9,0.1211396011396011,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,3-C,0.1211396011396011,gpt-5-mini
+VALIDATION_3_T,mean_total_contribution_rate,10,10,0.2544551282051282,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,3-T,0.2544551282051282,gpt-5-mini
+VALIDATION_4_C,mean_total_contribution_rate,12,12,0.1044146825396825,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,4-C,0.1044146825396825,gpt-5-mini
+VALIDATION_4_T,mean_total_contribution_rate,9,9,0.1362433862433862,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,4-T,0.1362433862433862,gpt-5-mini
+VALIDATION_5_C,mean_total_contribution_rate,9,9,0.1157407407407407,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,5-C,0.1157407407407407,gpt-5-mini
+VALIDATION_5_T,mean_total_contribution_rate,12,12,0.1076388888888889,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,5-T,0.1076388888888889,gpt-5-mini
+VALIDATION_6_C,mean_total_contribution_rate,12,12,0.380327008061383,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,6-C,0.380327008061383,gpt-5-mini
+VALIDATION_6_T,mean_total_contribution_rate,11,11,0.1667148429222293,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,6-T,0.1667148429222293,gpt-5-mini
+VALIDATION_7_C,mean_total_contribution_rate,11,11,0.4224156034024454,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,7-C,0.4224156034024454,gpt-5-mini
+VALIDATION_7_T,mean_total_contribution_rate,12,12,0.1718146929824561,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,7-T,0.1718146929824561,gpt-5-mini
+VALIDATION_8_C,mean_total_contribution_rate,12,12,0.0898611111111111,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,8-C,0.0898611111111111,gpt-5-mini
+VALIDATION_8_T,mean_total_contribution_rate,11,11,0.091060606060606,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,8-T,0.091060606060606,gpt-5-mini
+VALIDATION_9_C,mean_total_contribution_rate,11,11,0.1317931142931143,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,9-C,0.1317931142931143,gpt-5-mini
+VALIDATION_9_T,mean_total_contribution_rate,11,11,0.0790765925993198,twin_sampled_seed_0_gpt_5_mini,Twin-Sampled,9-T,0.0790765925993198,gpt-5-mini
+VALIDATION_0_C,mean_round_normalized_efficiency,10,10,0.1688020799756607,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,0-C,0.1688020799756607,gpt-5-mini
+VALIDATION_0_T,mean_round_normalized_efficiency,12,12,0.0809608490194371,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,0-T,0.0809608490194371,gpt-5-mini
+VALIDATION_10_C,mean_round_normalized_efficiency,10,10,0.3221213867281283,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,10-C,0.3221213867281283,gpt-5-mini
+VALIDATION_10_T,mean_round_normalized_efficiency,10,10,0.253265149332565,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,10-T,0.253265149332565,gpt-5-mini
+VALIDATION_11_C,mean_round_normalized_efficiency,10,10,0.2214371831895834,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,11-C,0.2214371831895834,gpt-5-mini
+VALIDATION_11_T,mean_round_normalized_efficiency,11,11,0.1777194138282973,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,11-T,0.1777194138282973,gpt-5-mini
+VALIDATION_12_C,mean_round_normalized_efficiency,12,12,0.1135329131652661,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,12-C,0.1135329131652661,gpt-5-mini
+VALIDATION_12_T,mean_round_normalized_efficiency,12,12,0.1810219522305919,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,12-T,0.1810219522305919,gpt-5-mini
+VALIDATION_13_C,mean_round_normalized_efficiency,10,10,0.4385165100128727,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,13-C,0.4385165100128727,gpt-5-mini
+VALIDATION_13_T,mean_round_normalized_efficiency,11,11,0.3283621781474108,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,13-T,0.3283621781474108,gpt-5-mini
+VALIDATION_14_C,mean_round_normalized_efficiency,12,12,0.3365497076023391,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,14-C,0.3365497076023391,gpt-5-mini
+VALIDATION_14_T,mean_round_normalized_efficiency,10,10,0.349375,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,14-T,0.349375,gpt-5-mini
+VALIDATION_15_C,mean_round_normalized_efficiency,11,11,0.1767514439024179,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,15-C,0.1767514439024179,gpt-5-mini
+VALIDATION_15_T,mean_round_normalized_efficiency,9,9,0.1344482534661105,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,15-T,0.1344482534661105,gpt-5-mini
+VALIDATION_16_C,mean_round_normalized_efficiency,10,10,0.6512297759621701,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,16-C,0.6512297759621701,gpt-5-mini
+VALIDATION_16_T,mean_round_normalized_efficiency,8,8,0.0989714247020584,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,16-T,0.0989714247020584,gpt-5-mini
+VALIDATION_17_C,mean_round_normalized_efficiency,11,11,0.1427022820986577,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,17-C,0.1427022820986577,gpt-5-mini
+VALIDATION_17_T,mean_round_normalized_efficiency,8,8,0.2065156654496426,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,17-T,0.2065156654496426,gpt-5-mini
+VALIDATION_18_C,mean_round_normalized_efficiency,12,12,0.1977823058144089,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,18-C,0.1977823058144089,gpt-5-mini
+VALIDATION_18_T,mean_round_normalized_efficiency,10,10,0.1301358866449867,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,18-T,0.1301358866449867,gpt-5-mini
+VALIDATION_19_C,mean_round_normalized_efficiency,10,10,0.129369355500821,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,19-C,0.129369355500821,gpt-5-mini
+VALIDATION_19_T,mean_round_normalized_efficiency,10,10,0.3573429802955664,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,19-T,0.3573429802955664,gpt-5-mini
+VALIDATION_1_C,mean_round_normalized_efficiency,8,8,0.4376804867986797,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,1-C,0.4376804867986797,gpt-5-mini
+VALIDATION_1_T,mean_round_normalized_efficiency,8,8,0.3914288487672296,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,1-T,0.3914288487672296,gpt-5-mini
+VALIDATION_2_C,mean_round_normalized_efficiency,9,9,0.0264917695473251,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,2-C,0.0264917695473251,gpt-5-mini
+VALIDATION_2_T,mean_round_normalized_efficiency,11,11,0.0999579124579124,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,2-T,0.0999579124579124,gpt-5-mini
+VALIDATION_3_C,mean_round_normalized_efficiency,9,9,0.1431436933903902,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,3-C,0.1431436933903902,gpt-5-mini
+VALIDATION_3_T,mean_round_normalized_efficiency,10,10,0.2844819564741766,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,3-T,0.2844819564741766,gpt-5-mini
+VALIDATION_4_C,mean_round_normalized_efficiency,12,12,0.0808797943086916,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,4-C,0.0808797943086916,gpt-5-mini
+VALIDATION_4_T,mean_round_normalized_efficiency,9,9,0.1751438538091801,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,4-T,0.1751438538091801,gpt-5-mini
+VALIDATION_5_C,mean_round_normalized_efficiency,9,9,0.2935956790123458,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,5-C,0.2935956790123458,gpt-5-mini
+VALIDATION_5_T,mean_round_normalized_efficiency,11,12,0.23253367003367,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,5-T,0.23253367003367,gpt-5-mini
+VALIDATION_6_C,mean_round_normalized_efficiency,12,12,0.4463244984078052,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,6-C,0.4463244984078052,gpt-5-mini
+VALIDATION_6_T,mean_round_normalized_efficiency,11,11,0.2430743920219512,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,6-T,0.2430743920219512,gpt-5-mini
+VALIDATION_7_C,mean_round_normalized_efficiency,11,11,0.5589236226784121,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,7-C,0.5589236226784121,gpt-5-mini
+VALIDATION_7_T,mean_round_normalized_efficiency,12,12,0.1817547018875591,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,7-T,0.1817547018875591,gpt-5-mini
+VALIDATION_8_C,mean_round_normalized_efficiency,12,12,0.0589634897674916,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,8-C,0.0589634897674916,gpt-5-mini
+VALIDATION_8_T,mean_round_normalized_efficiency,11,11,0.1013968031325794,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,8-T,0.1013968031325794,gpt-5-mini
+VALIDATION_9_C,mean_round_normalized_efficiency,11,11,0.1748771752938419,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,9-C,0.1748771752938419,gpt-5-mini
+VALIDATION_9_T,mean_round_normalized_efficiency,11,11,0.0644117891087588,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,9-T,0.0644117891087588,gpt-5-mini
+VALIDATION_0_C,mean_total_contribution_rate,10,10,0.1098148148148148,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,0-C,0.1098148148148148,gpt-5-mini
+VALIDATION_0_T,mean_total_contribution_rate,12,12,0.0655478395061728,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,0-T,0.0655478395061728,gpt-5-mini
+VALIDATION_10_C,mean_total_contribution_rate,10,10,0.1977777777777778,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,10-C,0.1977777777777778,gpt-5-mini
+VALIDATION_10_T,mean_total_contribution_rate,10,10,0.0533333333333333,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,10-T,0.0533333333333333,gpt-5-mini
+VALIDATION_11_C,mean_total_contribution_rate,10,10,0.1579020979020979,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,11-C,0.1579020979020979,gpt-5-mini
+VALIDATION_11_T,mean_total_contribution_rate,11,11,0.1155011655011655,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,11-T,0.1155011655011655,gpt-5-mini
+VALIDATION_12_C,mean_total_contribution_rate,12,12,0.0960648148148148,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,12-C,0.0960648148148148,gpt-5-mini
+VALIDATION_12_T,mean_total_contribution_rate,12,12,0.0319444444444444,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,12-T,0.0319444444444444,gpt-5-mini
+VALIDATION_13_C,mean_total_contribution_rate,10,10,0.3554550204697263,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,13-C,0.3554550204697263,gpt-5-mini
+VALIDATION_13_T,mean_total_contribution_rate,11,11,0.3109407626687037,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,13-T,0.3109407626687037,gpt-5-mini
+VALIDATION_14_C,mean_total_contribution_rate,12,12,0.1570175438596491,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,14-C,0.1570175438596491,gpt-5-mini
+VALIDATION_14_T,mean_total_contribution_rate,10,10,0.1971929824561403,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,14-T,0.1971929824561403,gpt-5-mini
+VALIDATION_15_C,mean_total_contribution_rate,11,11,0.1530810098991916,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,15-C,0.1530810098991916,gpt-5-mini
+VALIDATION_15_T,mean_total_contribution_rate,9,9,0.0222230855564189,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,15-T,0.0222230855564189,gpt-5-mini
+VALIDATION_16_C,mean_total_contribution_rate,10,10,0.4472063492063492,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,16-C,0.4472063492063492,gpt-5-mini
+VALIDATION_16_T,mean_total_contribution_rate,8,8,0.0662037037037036,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,16-T,0.0662037037037036,gpt-5-mini
+VALIDATION_17_C,mean_total_contribution_rate,11,11,0.1173839791099852,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,17-C,0.1173839791099852,gpt-5-mini
+VALIDATION_17_T,mean_total_contribution_rate,8,8,0.1946365395010905,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,17-T,0.1946365395010905,gpt-5-mini
+VALIDATION_18_C,mean_total_contribution_rate,12,12,0.134963768115942,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,18-C,0.134963768115942,gpt-5-mini
+VALIDATION_18_T,mean_total_contribution_rate,10,10,0.0706521739130434,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,18-T,0.0706521739130434,gpt-5-mini
+VALIDATION_19_C,mean_total_contribution_rate,10,10,0.067471264367816,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,19-C,0.067471264367816,gpt-5-mini
+VALIDATION_19_T,mean_total_contribution_rate,10,10,0.2048419540229885,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,19-T,0.2048419540229885,gpt-5-mini
+VALIDATION_1_C,mean_total_contribution_rate,8,8,0.4438802083333333,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,1-C,0.4438802083333333,gpt-5-mini
+VALIDATION_1_T,mean_total_contribution_rate,8,8,0.1182291666666666,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,1-T,0.1182291666666666,gpt-5-mini
+VALIDATION_2_C,mean_total_contribution_rate,9,9,0.0302777777777777,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,2-C,0.0302777777777777,gpt-5-mini
+VALIDATION_2_T,mean_total_contribution_rate,11,11,0.0884090909090909,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,2-T,0.0884090909090909,gpt-5-mini
+VALIDATION_3_C,mean_total_contribution_rate,9,9,0.0791452991452991,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,3-C,0.0791452991452991,gpt-5-mini
+VALIDATION_3_T,mean_total_contribution_rate,10,10,0.3037179487179487,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,3-T,0.3037179487179487,gpt-5-mini
+VALIDATION_4_C,mean_total_contribution_rate,12,12,0.0999503968253968,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,4-C,0.0999503968253968,gpt-5-mini
+VALIDATION_4_T,mean_total_contribution_rate,9,9,0.0925925925925926,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,4-T,0.0925925925925926,gpt-5-mini
+VALIDATION_5_C,mean_total_contribution_rate,9,9,0.1157407407407407,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,5-C,0.1157407407407407,gpt-5-mini
+VALIDATION_5_T,mean_total_contribution_rate,11,12,0.1215277777777777,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,5-T,0.1215277777777777,gpt-5-mini
+VALIDATION_6_C,mean_total_contribution_rate,12,12,0.3938887067793318,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,6-C,0.3938887067793318,gpt-5-mini
+VALIDATION_6_T,mean_total_contribution_rate,11,11,0.2781609252489934,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,6-T,0.2781609252489934,gpt-5-mini
+VALIDATION_7_C,mean_total_contribution_rate,11,11,0.5151428761297182,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,7-C,0.5151428761297182,gpt-5-mini
+VALIDATION_7_T,mean_total_contribution_rate,12,12,0.1968804824561403,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,7-T,0.1968804824561403,gpt-5-mini
+VALIDATION_8_C,mean_total_contribution_rate,12,12,0.0502777777777778,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,8-C,0.0502777777777778,gpt-5-mini
+VALIDATION_8_T,mean_total_contribution_rate,11,11,0.0728787878787878,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,8-T,0.0728787878787878,gpt-5-mini
+VALIDATION_9_C,mean_total_contribution_rate,11,11,0.1180368705368705,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,9-C,0.1180368705368705,gpt-5-mini
+VALIDATION_9_T,mean_total_contribution_rate,11,11,0.1249015084242357,twin_sampled_unadjusted_seed_0_gpt_5_mini,Twin Unadjusted,9-T,0.1249015084242357,gpt-5-mini
+VALIDATION_0_C,mean_round_normalized_efficiency,10,10,0.2122315671551479,baseline_gpt_5_1,Baseline,0-C,0.2122315671551479,gpt-5.1
+VALIDATION_0_T,mean_round_normalized_efficiency,12,12,0.1101809344895225,baseline_gpt_5_1,Baseline,0-T,0.1101809344895225,gpt-5.1
+VALIDATION_10_C,mean_round_normalized_efficiency,10,10,0.2322337462786901,baseline_gpt_5_1,Baseline,10-C,0.2322337462786901,gpt-5.1
+VALIDATION_10_T,mean_round_normalized_efficiency,10,10,0.2797944876596562,baseline_gpt_5_1,Baseline,10-T,0.2797944876596562,gpt-5.1
+VALIDATION_11_C,mean_round_normalized_efficiency,10,10,0.2009448209419019,baseline_gpt_5_1,Baseline,11-C,0.2009448209419019,gpt-5.1
+VALIDATION_11_T,mean_round_normalized_efficiency,11,11,0.3732740807925386,baseline_gpt_5_1,Baseline,11-T,0.3732740807925386,gpt-5.1
+VALIDATION_12_C,mean_round_normalized_efficiency,12,12,0.2956969246031746,baseline_gpt_5_1,Baseline,12-C,0.2956969246031746,gpt-5.1
+VALIDATION_12_T,mean_round_normalized_efficiency,12,12,0.1933832335486747,baseline_gpt_5_1,Baseline,12-T,0.1933832335486747,gpt-5.1
+VALIDATION_13_C,mean_round_normalized_efficiency,10,10,0.2149807595057733,baseline_gpt_5_1,Baseline,13-C,0.2149807595057733,gpt-5.1
+VALIDATION_13_T,mean_round_normalized_efficiency,11,11,0.2232529596951395,baseline_gpt_5_1,Baseline,13-T,0.2232529596951395,gpt-5.1
+VALIDATION_14_C,mean_round_normalized_efficiency,12,12,0.3447733918128654,baseline_gpt_5_1,Baseline,14-C,0.3447733918128654,gpt-5.1
+VALIDATION_14_T,mean_round_normalized_efficiency,10,10,0.3341885964912281,baseline_gpt_5_1,Baseline,14-T,0.3341885964912281,gpt-5.1
+VALIDATION_15_C,mean_round_normalized_efficiency,11,11,0.097627442903417,baseline_gpt_5_1,Baseline,15-C,0.097627442903417,gpt-5.1
+VALIDATION_15_T,mean_round_normalized_efficiency,9,9,0.0613789616468187,baseline_gpt_5_1,Baseline,15-T,0.0613789616468187,gpt-5.1
+VALIDATION_16_C,mean_round_normalized_efficiency,10,10,0.6786371833695776,baseline_gpt_5_1,Baseline,16-C,0.6786371833695776,gpt-5.1
+VALIDATION_16_T,mean_round_normalized_efficiency,8,8,0.1745269802576139,baseline_gpt_5_1,Baseline,16-T,0.1745269802576139,gpt-5.1
+VALIDATION_17_C,mean_round_normalized_efficiency,11,11,0.3844522889030807,baseline_gpt_5_1,Baseline,17-C,0.3844522889030807,gpt-5.1
+VALIDATION_17_T,mean_round_normalized_efficiency,8,8,0.3156695901240836,baseline_gpt_5_1,Baseline,17-T,0.3156695901240836,gpt-5.1
+VALIDATION_18_C,mean_round_normalized_efficiency,12,12,0.1430672646863243,baseline_gpt_5_1,Baseline,18-C,0.1430672646863243,gpt-5.1
+VALIDATION_18_T,mean_round_normalized_efficiency,10,10,0.1967848472840889,baseline_gpt_5_1,Baseline,18-T,0.1967848472840889,gpt-5.1
+VALIDATION_19_C,mean_round_normalized_efficiency,10,10,0.1202098727422003,baseline_gpt_5_1,Baseline,19-C,0.1202098727422003,gpt-5.1
+VALIDATION_19_T,mean_round_normalized_efficiency,10,10,0.3778171182266009,baseline_gpt_5_1,Baseline,19-T,0.3778171182266009,gpt-5.1
+VALIDATION_1_C,mean_round_normalized_efficiency,8,8,0.3956528465346534,baseline_gpt_5_1,Baseline,1-C,0.3956528465346534,gpt-5.1
+VALIDATION_1_T,mean_round_normalized_efficiency,8,8,0.4574354494272955,baseline_gpt_5_1,Baseline,1-T,0.4574354494272955,gpt-5.1
+VALIDATION_2_C,mean_round_normalized_efficiency,9,9,0.0679012345679012,baseline_gpt_5_1,Baseline,2-C,0.0679012345679012,gpt-5.1
+VALIDATION_2_T,mean_round_normalized_efficiency,11,11,0.0985900673400673,baseline_gpt_5_1,Baseline,2-T,0.0985900673400673,gpt-5.1
+VALIDATION_3_C,mean_round_normalized_efficiency,9,9,0.2487282061022243,baseline_gpt_5_1,Baseline,3-C,0.2487282061022243,gpt-5.1
+VALIDATION_3_T,mean_round_normalized_efficiency,10,10,0.1010930361256611,baseline_gpt_5_1,Baseline,3-T,0.1010930361256611,gpt-5.1
+VALIDATION_4_C,mean_round_normalized_efficiency,12,12,0.2365582761354877,baseline_gpt_5_1,Baseline,4-C,0.2365582761354877,gpt-5.1
+VALIDATION_4_T,mean_round_normalized_efficiency,9,9,0.2294838528599741,baseline_gpt_5_1,Baseline,4-T,0.2294838528599741,gpt-5.1
+VALIDATION_5_C,mean_round_normalized_efficiency,9,9,0.4228395061728396,baseline_gpt_5_1,Baseline,5-C,0.4228395061728396,gpt-5.1
+VALIDATION_5_T,mean_round_normalized_efficiency,12,12,0.2280092592592592,baseline_gpt_5_1,Baseline,5-T,0.2280092592592592,gpt-5.1
+VALIDATION_6_C,mean_round_normalized_efficiency,12,12,0.4522745283707601,baseline_gpt_5_1,Baseline,6-C,0.4522745283707601,gpt-5.1
+VALIDATION_6_T,mean_round_normalized_efficiency,11,11,0.1160918237745822,baseline_gpt_5_1,Baseline,6-T,0.1160918237745822,gpt-5.1
+VALIDATION_7_C,mean_round_normalized_efficiency,11,11,0.5761613191924243,baseline_gpt_5_1,Baseline,7-C,0.5761613191924243,gpt-5.1
+VALIDATION_7_T,mean_round_normalized_efficiency,12,12,0.0877953857979164,baseline_gpt_5_1,Baseline,7-T,0.0877953857979164,gpt-5.1
+VALIDATION_8_C,mean_round_normalized_efficiency,12,12,0.1230251526840244,baseline_gpt_5_1,Baseline,8-C,0.1230251526840244,gpt-5.1
+VALIDATION_8_T,mean_round_normalized_efficiency,11,11,0.177726396072587,baseline_gpt_5_1,Baseline,8-T,0.177726396072587,gpt-5.1
+VALIDATION_9_C,mean_round_normalized_efficiency,11,11,0.0372791055745601,baseline_gpt_5_1,Baseline,9-C,0.0372791055745601,gpt-5.1
+VALIDATION_9_T,mean_round_normalized_efficiency,11,11,0.0617206306600246,baseline_gpt_5_1,Baseline,9-T,0.0617206306600246,gpt-5.1
+VALIDATION_0_C,mean_total_contribution_rate,10,10,0.1531481481481481,baseline_gpt_5_1,Baseline,0-C,0.1531481481481481,gpt-5.1
+VALIDATION_0_T,mean_total_contribution_rate,12,12,0.0918595679012345,baseline_gpt_5_1,Baseline,0-T,0.0918595679012345,gpt-5.1
+VALIDATION_10_C,mean_total_contribution_rate,10,10,0.1141666666666667,baseline_gpt_5_1,Baseline,10-C,0.1141666666666667,gpt-5.1
+VALIDATION_10_T,mean_total_contribution_rate,10,10,0.1508333333333333,baseline_gpt_5_1,Baseline,10-T,0.1508333333333333,gpt-5.1
+VALIDATION_11_C,mean_total_contribution_rate,10,10,0.1183916083916084,baseline_gpt_5_1,Baseline,11-C,0.1183916083916084,gpt-5.1
+VALIDATION_11_T,mean_total_contribution_rate,11,11,0.3153846153846155,baseline_gpt_5_1,Baseline,11-T,0.3153846153846155,gpt-5.1
+VALIDATION_12_C,mean_total_contribution_rate,12,12,0.2743055555555555,baseline_gpt_5_1,Baseline,12-C,0.2743055555555555,gpt-5.1
+VALIDATION_12_T,mean_total_contribution_rate,12,12,0.0555555555555555,baseline_gpt_5_1,Baseline,12-T,0.0555555555555555,gpt-5.1
+VALIDATION_13_C,mean_total_contribution_rate,10,10,0.1331388439991381,baseline_gpt_5_1,Baseline,13-C,0.1331388439991381,gpt-5.1
+VALIDATION_13_T,mean_total_contribution_rate,11,11,0.2077322065189712,baseline_gpt_5_1,Baseline,13-T,0.2077322065189712,gpt-5.1
+VALIDATION_14_C,mean_total_contribution_rate,12,12,0.1654605263157894,baseline_gpt_5_1,Baseline,14-C,0.1654605263157894,gpt-5.1
+VALIDATION_14_T,mean_total_contribution_rate,10,10,0.1991666666666666,baseline_gpt_5_1,Baseline,14-T,0.1991666666666666,gpt-5.1
+VALIDATION_15_C,mean_total_contribution_rate,11,11,0.0491849060030878,baseline_gpt_5_1,Baseline,15-C,0.0491849060030878,gpt-5.1
+VALIDATION_15_T,mean_total_contribution_rate,9,9,0.0959223492556826,baseline_gpt_5_1,Baseline,15-T,0.0959223492556826,gpt-5.1
+VALIDATION_16_C,mean_total_contribution_rate,10,10,0.4752063492063492,baseline_gpt_5_1,Baseline,16-C,0.4752063492063492,gpt-5.1
+VALIDATION_16_T,mean_total_contribution_rate,8,8,0.0360185185185185,baseline_gpt_5_1,Baseline,16-T,0.0360185185185185,gpt-5.1
+VALIDATION_17_C,mean_total_contribution_rate,11,11,0.370017512587172,baseline_gpt_5_1,Baseline,17-C,0.370017512587172,gpt-5.1
+VALIDATION_17_T,mean_total_contribution_rate,8,8,0.3271980290091745,baseline_gpt_5_1,Baseline,17-T,0.3271980290091745,gpt-5.1
+VALIDATION_18_C,mean_total_contribution_rate,12,12,0.0923913043478261,baseline_gpt_5_1,Baseline,18-C,0.0923913043478261,gpt-5.1
+VALIDATION_18_T,mean_total_contribution_rate,10,10,0.1572463768115942,baseline_gpt_5_1,Baseline,18-T,0.1572463768115942,gpt-5.1
+VALIDATION_19_C,mean_total_contribution_rate,10,10,0.078117816091954,baseline_gpt_5_1,Baseline,19-C,0.078117816091954,gpt-5.1
+VALIDATION_19_T,mean_total_contribution_rate,10,10,0.2022988505747126,baseline_gpt_5_1,Baseline,19-T,0.2022988505747126,gpt-5.1
+VALIDATION_1_C,mean_total_contribution_rate,8,8,0.4002604166666667,baseline_gpt_5_1,Baseline,1-C,0.4002604166666667,gpt-5.1
+VALIDATION_1_T,mean_total_contribution_rate,8,8,0.151171875,baseline_gpt_5_1,Baseline,1-T,0.151171875,gpt-5.1
+VALIDATION_2_C,mean_total_contribution_rate,9,9,0.0888888888888889,baseline_gpt_5_1,Baseline,2-C,0.0888888888888889,gpt-5.1
+VALIDATION_2_T,mean_total_contribution_rate,11,11,0.0789772727272727,baseline_gpt_5_1,Baseline,2-T,0.0789772727272727,gpt-5.1
+VALIDATION_3_C,mean_total_contribution_rate,9,9,0.2031125356125356,baseline_gpt_5_1,Baseline,3-C,0.2031125356125356,gpt-5.1
+VALIDATION_3_T,mean_total_contribution_rate,10,10,0.0279166666666667,baseline_gpt_5_1,Baseline,3-T,0.0279166666666667,gpt-5.1
+VALIDATION_4_C,mean_total_contribution_rate,12,12,0.2591765873015873,baseline_gpt_5_1,Baseline,4-C,0.2591765873015873,gpt-5.1
+VALIDATION_4_T,mean_total_contribution_rate,9,9,0.2301587301587301,baseline_gpt_5_1,Baseline,4-T,0.2301587301587301,gpt-5.1
+VALIDATION_5_C,mean_total_contribution_rate,9,9,0.2129629629629629,baseline_gpt_5_1,Baseline,5-C,0.2129629629629629,gpt-5.1
+VALIDATION_5_T,mean_total_contribution_rate,12,12,0.2708333333333333,baseline_gpt_5_1,Baseline,5-T,0.2708333333333333,gpt-5.1
+VALIDATION_6_C,mean_total_contribution_rate,12,12,0.4001587388306137,baseline_gpt_5_1,Baseline,6-C,0.4001587388306137,gpt-5.1
+VALIDATION_6_T,mean_total_contribution_rate,11,11,0.1349403673977537,baseline_gpt_5_1,Baseline,6-T,0.1349403673977537,gpt-5.1
+VALIDATION_7_C,mean_total_contribution_rate,11,11,0.532535220627326,baseline_gpt_5_1,Baseline,7-C,0.532535220627326,gpt-5.1
+VALIDATION_7_T,mean_total_contribution_rate,12,12,0.0387676656920078,baseline_gpt_5_1,Baseline,7-T,0.0387676656920078,gpt-5.1
+VALIDATION_8_C,mean_total_contribution_rate,12,12,0.1090277777777777,baseline_gpt_5_1,Baseline,8-C,0.1090277777777777,gpt-5.1
+VALIDATION_8_T,mean_total_contribution_rate,11,11,0.1406818181818181,baseline_gpt_5_1,Baseline,8-T,0.1406818181818181,gpt-5.1
+VALIDATION_9_C,mean_total_contribution_rate,11,11,0.0641307766307766,baseline_gpt_5_1,Baseline,9-C,0.0641307766307766,gpt-5.1
+VALIDATION_9_T,mean_total_contribution_rate,11,11,0.0617798153025425,baseline_gpt_5_1,Baseline,9-T,0.0617798153025425,gpt-5.1
+VALIDATION_0_C,mean_round_normalized_efficiency,10,10,0.1154366953602761,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,0-C,0.1154366953602761,gpt-5.1
+VALIDATION_0_T,mean_round_normalized_efficiency,12,12,0.1174993105578986,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,0-T,0.1174993105578986,gpt-5.1
+VALIDATION_10_C,mean_round_normalized_efficiency,10,10,0.2281763180639585,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,10-C,0.2281763180639585,gpt-5.1
+VALIDATION_10_T,mean_round_normalized_efficiency,10,10,0.2492077211178334,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,10-T,0.2492077211178334,gpt-5.1
+VALIDATION_11_C,mean_round_normalized_efficiency,10,10,0.2349907838442478,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,11-C,0.2349907838442478,gpt-5.1
+VALIDATION_11_T,mean_round_normalized_efficiency,10,11,0.4480428404017236,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,11-T,0.4480428404017236,gpt-5.1
+VALIDATION_12_C,mean_round_normalized_efficiency,12,12,0.2696978096794273,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,12-C,0.2696978096794273,gpt-5.1
+VALIDATION_12_T,mean_round_normalized_efficiency,12,12,0.2006170298449709,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,12-T,0.2006170298449709,gpt-5.1
+VALIDATION_13_C,mean_round_normalized_efficiency,10,10,0.3364310637654082,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,13-C,0.3364310637654082,gpt-5.1
+VALIDATION_13_T,mean_round_normalized_efficiency,11,11,0.3156510788173966,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,13-T,0.3156510788173966,gpt-5.1
+VALIDATION_14_C,mean_round_normalized_efficiency,12,12,0.4769005847953216,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,14-C,0.4769005847953216,gpt-5.1
+VALIDATION_14_T,mean_round_normalized_efficiency,10,10,0.3973464912280702,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,14-T,0.3973464912280702,gpt-5.1
+VALIDATION_15_C,mean_round_normalized_efficiency,11,11,0.1478896806656547,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,15-C,0.1478896806656547,gpt-5.1
+VALIDATION_15_T,mean_round_normalized_efficiency,9,9,0.1004632239453667,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,15-T,0.1004632239453667,gpt-5.1
+VALIDATION_16_C,mean_round_normalized_efficiency,10,10,0.5971557018880961,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,16-C,0.5971557018880961,gpt-5.1
+VALIDATION_16_T,mean_round_normalized_efficiency,8,8,0.2073973506279844,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,16-T,0.2073973506279844,gpt-5.1
+VALIDATION_17_C,mean_round_normalized_efficiency,11,11,0.2829448479154398,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,17-C,0.2829448479154398,gpt-5.1
+VALIDATION_17_T,mean_round_normalized_efficiency,8,8,0.1952351146865772,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,17-T,0.1952351146865772,gpt-5.1
+VALIDATION_18_C,mean_round_normalized_efficiency,12,12,0.2218348910082985,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,18-C,0.2218348910082985,gpt-5.1
+VALIDATION_18_T,mean_round_normalized_efficiency,10,10,0.144884836808497,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,18-T,0.144884836808497,gpt-5.1
+VALIDATION_19_C,mean_round_normalized_efficiency,10,10,0.088110632183908,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,19-C,0.088110632183908,gpt-5.1
+VALIDATION_19_T,mean_round_normalized_efficiency,10,10,0.3858451354679802,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,19-T,0.3858451354679802,gpt-5.1
+VALIDATION_1_C,mean_round_normalized_efficiency,8,8,0.3331270627062705,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,1-C,0.3331270627062705,gpt-5.1
+VALIDATION_1_T,mean_round_normalized_efficiency,8,8,0.46310789167152,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,1-T,0.46310789167152,gpt-5.1
+VALIDATION_2_C,mean_round_normalized_efficiency,9,9,0.0802469135802469,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,2-C,0.0802469135802469,gpt-5.1
+VALIDATION_2_T,mean_round_normalized_efficiency,11,11,0.1109006734006734,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,2-T,0.1109006734006734,gpt-5.1
+VALIDATION_3_C,mean_round_normalized_efficiency,9,9,0.2130236868315347,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,3-C,0.2130236868315347,gpt-5.1
+VALIDATION_3_T,mean_round_normalized_efficiency,10,10,0.0874357472876796,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,3-T,0.0874357472876796,gpt-5.1
+VALIDATION_4_C,mean_round_normalized_efficiency,12,12,0.3135291162810109,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,4-C,0.3135291162810109,gpt-5.1
+VALIDATION_4_T,mean_round_normalized_efficiency,9,9,0.300427797334695,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,4-T,0.300427797334695,gpt-5.1
+VALIDATION_5_C,mean_round_normalized_efficiency,9,9,0.2854938271604939,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,5-C,0.2854938271604939,gpt-5.1
+VALIDATION_5_T,mean_round_normalized_efficiency,12,12,0.1171875,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,5-T,0.1171875,gpt-5.1
+VALIDATION_6_C,mean_round_normalized_efficiency,12,12,0.4916094188697795,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,6-C,0.4916094188697795,gpt-5.1
+VALIDATION_6_T,mean_round_normalized_efficiency,11,11,0.151824504691399,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,6-T,0.151824504691399,gpt-5.1
+VALIDATION_7_C,mean_round_normalized_efficiency,11,11,0.5962313807098543,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,7-C,0.5962313807098543,gpt-5.1
+VALIDATION_7_T,mean_round_normalized_efficiency,12,12,0.1030671485462661,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,7-T,0.1030671485462661,gpt-5.1
+VALIDATION_8_C,mean_round_normalized_efficiency,12,12,0.0715110361084324,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,8-C,0.0715110361084324,gpt-5.1
+VALIDATION_8_T,mean_round_normalized_efficiency,11,11,0.1370532713830689,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,8-T,0.1370532713830689,gpt-5.1
+VALIDATION_9_C,mean_round_normalized_efficiency,11,11,0.1201229732669126,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,9-C,0.1201229732669126,gpt-5.1
+VALIDATION_9_T,mean_round_normalized_efficiency,9,11,0.0434860456914329,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,9-T,0.0434860456914329,gpt-5.1
+VALIDATION_0_C,mean_total_contribution_rate,10,10,0.0564814814814814,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,0-C,0.0564814814814814,gpt-5.1
+VALIDATION_0_T,mean_total_contribution_rate,12,12,0.1043595679012345,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,0-T,0.1043595679012345,gpt-5.1
+VALIDATION_10_C,mean_total_contribution_rate,10,10,0.1061111111111111,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,10-C,0.1061111111111111,gpt-5.1
+VALIDATION_10_T,mean_total_contribution_rate,10,10,0.0875,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,10-T,0.0875,gpt-5.1
+VALIDATION_11_C,mean_total_contribution_rate,10,10,0.1509236596736597,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,11-C,0.1509236596736597,gpt-5.1
+VALIDATION_11_T,mean_total_contribution_rate,10,11,0.3846445221445221,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,11-T,0.3846445221445221,gpt-5.1
+VALIDATION_12_C,mean_total_contribution_rate,12,12,0.2488425925925926,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,12-C,0.2488425925925926,gpt-5.1
+VALIDATION_12_T,mean_total_contribution_rate,12,12,0.0546296296296296,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,12-T,0.0546296296296296,gpt-5.1
+VALIDATION_13_C,mean_total_contribution_rate,10,10,0.255013843999138,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,13-C,0.255013843999138,gpt-5.1
+VALIDATION_13_T,mean_total_contribution_rate,11,11,0.3056934364654952,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,13-T,0.3056934364654952,gpt-5.1
+VALIDATION_14_C,mean_total_contribution_rate,12,12,0.2954312865497076,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,14-C,0.2954312865497076,gpt-5.1
+VALIDATION_14_T,mean_total_contribution_rate,10,10,0.280219298245614,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,14-T,0.280219298245614,gpt-5.1
+VALIDATION_15_C,mean_total_contribution_rate,11,11,0.0961379529561348,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,15-C,0.0961379529561348,gpt-5.1
+VALIDATION_15_T,mean_total_contribution_rate,9,9,0.053737990404657,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,15-T,0.053737990404657,gpt-5.1
+VALIDATION_16_C,mean_total_contribution_rate,10,10,0.3925396825396826,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,16-C,0.3925396825396826,gpt-5.1
+VALIDATION_16_T,mean_total_contribution_rate,8,8,0.0504629629629629,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,16-T,0.0504629629629629,gpt-5.1
+VALIDATION_17_C,mean_total_contribution_rate,11,11,0.2871526409606904,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,17-C,0.2871526409606904,gpt-5.1
+VALIDATION_17_T,mean_total_contribution_rate,8,8,0.1853701136324974,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,17-T,0.1853701136324974,gpt-5.1
+VALIDATION_18_C,mean_total_contribution_rate,12,12,0.1634963768115942,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,18-C,0.1634963768115942,gpt-5.1
+VALIDATION_18_T,mean_total_contribution_rate,10,10,0.0938405797101449,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,18-T,0.0938405797101449,gpt-5.1
+VALIDATION_19_C,mean_total_contribution_rate,10,10,0.0510201149425287,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,19-C,0.0510201149425287,gpt-5.1
+VALIDATION_19_T,mean_total_contribution_rate,10,10,0.2613936781609196,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,19-T,0.2613936781609196,gpt-5.1
+VALIDATION_1_C,mean_total_contribution_rate,8,8,0.3355468749999999,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,1-C,0.3355468749999999,gpt-5.1
+VALIDATION_1_T,mean_total_contribution_rate,8,8,0.1591145833333333,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,1-T,0.1591145833333333,gpt-5.1
+VALIDATION_2_C,mean_total_contribution_rate,9,9,0.0916666666666666,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,2-C,0.0916666666666666,gpt-5.1
+VALIDATION_2_T,mean_total_contribution_rate,11,11,0.0874999999999999,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,2-T,0.0874999999999999,gpt-5.1
+VALIDATION_3_C,mean_total_contribution_rate,9,9,0.1375213675213675,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,3-C,0.1375213675213675,gpt-5.1
+VALIDATION_3_T,mean_total_contribution_rate,10,10,0.0817948717948717,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,3-T,0.0817948717948717,gpt-5.1
+VALIDATION_4_C,mean_total_contribution_rate,12,12,0.2812996031746032,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,4-C,0.2812996031746032,gpt-5.1
+VALIDATION_4_T,mean_total_contribution_rate,9,9,0.3591269841269841,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,4-T,0.3591269841269841,gpt-5.1
+VALIDATION_5_C,mean_total_contribution_rate,9,9,0.111111111111111,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,5-C,0.111111111111111,gpt-5.1
+VALIDATION_5_T,mean_total_contribution_rate,12,12,0.1909722222222222,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,5-T,0.1909722222222222,gpt-5.1
+VALIDATION_6_C,mean_total_contribution_rate,12,12,0.4394215593434343,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,6-C,0.4394215593434343,gpt-5.1
+VALIDATION_6_T,mean_total_contribution_rate,11,11,0.1715225352299215,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,6-T,0.1715225352299215,gpt-5.1
+VALIDATION_7_C,mean_total_contribution_rate,11,11,0.5525830675172781,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,7-C,0.5525830675172781,gpt-5.1
+VALIDATION_7_T,mean_total_contribution_rate,12,12,0.0941392543859648,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,7-T,0.0941392543859648,gpt-5.1
+VALIDATION_8_C,mean_total_contribution_rate,12,12,0.061111111111111,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,8-C,0.061111111111111,gpt-5.1
+VALIDATION_8_T,mean_total_contribution_rate,11,11,0.1107575757575757,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,8-T,0.1107575757575757,gpt-5.1
+VALIDATION_9_C,mean_total_contribution_rate,11,11,0.0707156732156732,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,9-C,0.0707156732156732,gpt-5.1
+VALIDATION_9_T,mean_total_contribution_rate,9,11,0.0637335817007534,demographic_only_row_resampled_seed_0_gpt_5_1,Demographic Only,9-T,0.0637335817007534,gpt-5.1
+VALIDATION_0_C,mean_round_normalized_efficiency,10,10,0.0657077196214751,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,0-C,0.0657077196214751,gpt-5.1
+VALIDATION_0_T,mean_round_normalized_efficiency,12,12,0.0894277293613174,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,0-T,0.0894277293613174,gpt-5.1
+VALIDATION_10_C,mean_round_normalized_efficiency,10,10,0.2094497263036588,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,10-C,0.2094497263036588,gpt-5.1
+VALIDATION_10_T,mean_round_normalized_efficiency,10,10,0.3144386824162105,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,10-T,0.3144386824162105,gpt-5.1
+VALIDATION_11_C,mean_round_normalized_efficiency,10,10,0.3383220713510672,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,11-C,0.3383220713510672,gpt-5.1
+VALIDATION_11_T,mean_round_normalized_efficiency,11,11,0.2638223622982669,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,11-T,0.2638223622982669,gpt-5.1
+VALIDATION_12_C,mean_round_normalized_efficiency,12,12,0.2362095880018674,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,12-C,0.2362095880018674,gpt-5.1
+VALIDATION_12_T,mean_round_normalized_efficiency,12,12,0.1512782839299384,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,12-T,0.1512782839299384,gpt-5.1
+VALIDATION_13_C,mean_round_normalized_efficiency,10,10,0.2618029366524941,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,13-C,0.2618029366524941,gpt-5.1
+VALIDATION_13_T,mean_round_normalized_efficiency,11,11,0.2579733251140344,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,13-T,0.2579733251140344,gpt-5.1
+VALIDATION_14_C,mean_round_normalized_efficiency,12,12,0.2936494883040935,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,14-C,0.2936494883040935,gpt-5.1
+VALIDATION_14_T,mean_round_normalized_efficiency,10,10,0.2958662280701754,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,14-T,0.2958662280701754,gpt-5.1
+VALIDATION_15_C,mean_round_normalized_efficiency,11,11,0.1192152301162042,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,15-C,0.1192152301162042,gpt-5.1
+VALIDATION_15_T,mean_round_normalized_efficiency,9,9,0.122479402211545,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,15-T,0.122479402211545,gpt-5.1
+VALIDATION_16_C,mean_round_normalized_efficiency,10,10,0.463081627814022,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,16-C,0.463081627814022,gpt-5.1
+VALIDATION_16_T,mean_round_normalized_efficiency,8,8,0.1210481371132779,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,16-T,0.1210481371132779,gpt-5.1
+VALIDATION_17_C,mean_round_normalized_efficiency,11,11,0.1733978576563943,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,17-C,0.1733978576563943,gpt-5.1
+VALIDATION_17_T,mean_round_normalized_efficiency,8,8,0.1448935028334136,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,17-T,0.1448935028334136,gpt-5.1
+VALIDATION_18_C,mean_round_normalized_efficiency,12,12,0.2127157174869511,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,18-C,0.2127157174869511,gpt-5.1
+VALIDATION_18_T,mean_round_normalized_efficiency,10,10,0.1435392356461618,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,18-T,0.1435392356461618,gpt-5.1
+VALIDATION_19_C,mean_round_normalized_efficiency,10,10,0.1420848727422003,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,19-C,0.1420848727422003,gpt-5.1
+VALIDATION_19_T,mean_round_normalized_efficiency,10,10,0.445274014778325,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,19-T,0.445274014778325,gpt-5.1
+VALIDATION_1_C,mean_round_normalized_efficiency,8,8,0.338799504950495,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,1-C,0.338799504950495,gpt-5.1
+VALIDATION_1_T,mean_round_normalized_efficiency,8,8,0.3683523223645893,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,1-T,0.3683523223645893,gpt-5.1
+VALIDATION_2_C,mean_round_normalized_efficiency,9,9,0.1224279835390946,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,2-C,0.1224279835390946,gpt-5.1
+VALIDATION_2_T,mean_round_normalized_efficiency,11,11,0.0814393939393939,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,2-T,0.0814393939393939,gpt-5.1
+VALIDATION_3_C,mean_round_normalized_efficiency,9,9,0.1761580570932264,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,3-C,0.1761580570932264,gpt-5.1
+VALIDATION_3_T,mean_round_normalized_efficiency,10,10,0.1382912167582571,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,3-T,0.1382912167582571,gpt-5.1
+VALIDATION_4_C,mean_round_normalized_efficiency,12,12,0.2084342120444425,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,4-C,0.2084342120444425,gpt-5.1
+VALIDATION_4_T,mean_round_normalized_efficiency,9,9,0.1997270623546528,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,4-T,0.1997270623546528,gpt-5.1
+VALIDATION_5_C,mean_round_normalized_efficiency,9,9,0.2503858024691359,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,5-C,0.2503858024691359,gpt-5.1
+VALIDATION_5_T,mean_round_normalized_efficiency,12,12,0.0868055555555555,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,5-T,0.0868055555555555,gpt-5.1
+VALIDATION_6_C,mean_round_normalized_efficiency,12,12,0.3058617977468043,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,6-C,0.3058617977468043,gpt-5.1
+VALIDATION_6_T,mean_round_normalized_efficiency,11,11,0.1651623531036101,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,6-T,0.1651623531036101,gpt-5.1
+VALIDATION_7_C,mean_round_normalized_efficiency,11,11,0.3972054066838802,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,7-C,0.3972054066838802,gpt-5.1
+VALIDATION_7_T,mean_round_normalized_efficiency,12,12,0.1529718071507169,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,7-T,0.1529718071507169,gpt-5.1
+VALIDATION_8_C,mean_round_normalized_efficiency,12,12,0.0655342601521483,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,8-C,0.0655342601521483,gpt-5.1
+VALIDATION_8_T,mean_round_normalized_efficiency,11,11,0.1186062651588206,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,8-T,0.1186062651588206,gpt-5.1
+VALIDATION_9_C,mean_round_normalized_efficiency,11,11,0.0782452354043262,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,9-C,0.0782452354043262,gpt-5.1
+VALIDATION_9_T,mean_round_normalized_efficiency,11,11,0.0502492064613276,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,9-T,0.0502492064613276,gpt-5.1
+VALIDATION_0_C,mean_total_contribution_rate,10,10,0.0868518518518518,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,0-C,0.0868518518518518,gpt-5.1
+VALIDATION_0_T,mean_total_contribution_rate,12,12,0.0779706790123457,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,0-T,0.0779706790123457,gpt-5.1
+VALIDATION_10_C,mean_total_contribution_rate,10,10,0.0836111111111111,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,10-C,0.0836111111111111,gpt-5.1
+VALIDATION_10_T,mean_total_contribution_rate,10,10,0.0891666666666666,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,10-T,0.0891666666666666,gpt-5.1
+VALIDATION_11_C,mean_total_contribution_rate,10,10,0.253006993006993,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,11-C,0.253006993006993,gpt-5.1
+VALIDATION_11_T,mean_total_contribution_rate,11,11,0.2082644628099174,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,11-T,0.2082644628099174,gpt-5.1
+VALIDATION_12_C,mean_total_contribution_rate,12,12,0.2361111111111111,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,12-C,0.2361111111111111,gpt-5.1
+VALIDATION_12_T,mean_total_contribution_rate,12,12,0.0918981481481481,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,12-T,0.0918981481481481,gpt-5.1
+VALIDATION_13_C,mean_total_contribution_rate,10,10,0.1812270792932558,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,13-C,0.1812270792932558,gpt-5.1
+VALIDATION_13_T,mean_total_contribution_rate,11,11,0.2505965113318054,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,13-T,0.2505965113318054,gpt-5.1
+VALIDATION_14_C,mean_total_contribution_rate,12,12,0.1176900584795321,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,14-C,0.1176900584795321,gpt-5.1
+VALIDATION_14_T,mean_total_contribution_rate,10,10,0.182938596491228,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,14-T,0.182938596491228,gpt-5.1
+VALIDATION_15_C,mean_total_contribution_rate,11,11,0.1244747676565858,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,15-C,0.1244747676565858,gpt-5.1
+VALIDATION_15_T,mean_total_contribution_rate,9,9,0.0636540003206669,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,15-T,0.0636540003206669,gpt-5.1
+VALIDATION_16_C,mean_total_contribution_rate,10,10,0.2598730158730159,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,16-C,0.2598730158730159,gpt-5.1
+VALIDATION_16_T,mean_total_contribution_rate,8,8,0.1081481481481481,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,16-T,0.1081481481481481,gpt-5.1
+VALIDATION_17_C,mean_total_contribution_rate,11,11,0.1859797667073208,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,17-C,0.1859797667073208,gpt-5.1
+VALIDATION_17_T,mean_total_contribution_rate,8,8,0.1566850431130617,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,17-T,0.1566850431130617,gpt-5.1
+VALIDATION_18_C,mean_total_contribution_rate,12,12,0.1648550724637681,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,18-C,0.1648550724637681,gpt-5.1
+VALIDATION_18_T,mean_total_contribution_rate,10,10,0.0826086956521739,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,18-T,0.0826086956521739,gpt-5.1
+VALIDATION_19_C,mean_total_contribution_rate,10,10,0.0909770114942528,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,19-C,0.0909770114942528,gpt-5.1
+VALIDATION_19_T,mean_total_contribution_rate,10,10,0.2983333333333334,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,19-T,0.2983333333333334,gpt-5.1
+VALIDATION_1_C,mean_total_contribution_rate,8,8,0.3420572916666666,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,1-C,0.3420572916666666,gpt-5.1
+VALIDATION_1_T,mean_total_contribution_rate,8,8,0.08046875,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,1-T,0.08046875,gpt-5.1
+VALIDATION_2_C,mean_total_contribution_rate,9,9,0.1416666666666666,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,2-C,0.1416666666666666,gpt-5.1
+VALIDATION_2_T,mean_total_contribution_rate,11,11,0.0768181818181818,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,2-T,0.0768181818181818,gpt-5.1
+VALIDATION_3_C,mean_total_contribution_rate,9,9,0.1156837606837606,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,3-C,0.1156837606837606,gpt-5.1
+VALIDATION_3_T,mean_total_contribution_rate,10,10,0.1678205128205128,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,3-T,0.1678205128205128,gpt-5.1
+VALIDATION_4_C,mean_total_contribution_rate,12,12,0.2294146825396825,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,4-C,0.2294146825396825,gpt-5.1
+VALIDATION_4_T,mean_total_contribution_rate,9,9,0.1263227513227513,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,4-T,0.1263227513227513,gpt-5.1
+VALIDATION_5_C,mean_total_contribution_rate,9,9,0.1157407407407407,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,5-C,0.1157407407407407,gpt-5.1
+VALIDATION_5_T,mean_total_contribution_rate,12,12,0.1076388888888889,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,5-T,0.1076388888888889,gpt-5.1
+VALIDATION_6_C,mean_total_contribution_rate,12,12,0.2535441554972805,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,6-C,0.2535441554972805,gpt-5.1
+VALIDATION_6_T,mean_total_contribution_rate,11,11,0.1858363464187327,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,6-T,0.1858363464187327,gpt-5.1
+VALIDATION_7_C,mean_total_contribution_rate,11,11,0.3533007708665603,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,7-C,0.3533007708665603,gpt-5.1
+VALIDATION_7_T,mean_total_contribution_rate,12,12,0.1737883771929824,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,7-T,0.1737883771929824,gpt-5.1
+VALIDATION_8_C,mean_total_contribution_rate,12,12,0.0569444444444444,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,8-C,0.0569444444444444,gpt-5.1
+VALIDATION_8_T,mean_total_contribution_rate,11,11,0.0671969696969696,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,8-T,0.0671969696969696,gpt-5.1
+VALIDATION_9_C,mean_total_contribution_rate,11,11,0.0835150960150959,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,9-C,0.0835150960150959,gpt-5.1
+VALIDATION_9_T,mean_total_contribution_rate,11,11,0.0675951111178383,twin_sampled_seed_0_gpt_5_1,Twin-Sampled,9-T,0.0675951111178383,gpt-5.1
+VALIDATION_0_C,mean_round_normalized_efficiency,10,10,0.0691885883807281,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,0-C,0.0691885883807281,gpt-5.1
+VALIDATION_0_T,mean_round_normalized_efficiency,12,12,0.1132525156861037,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,0-T,0.1132525156861037,gpt-5.1
+VALIDATION_10_C,mean_round_normalized_efficiency,10,10,0.2656295015845577,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,10-C,0.2656295015845577,gpt-5.1
+VALIDATION_10_T,mean_round_normalized_efficiency,10,10,0.257010467684625,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,10-T,0.257010467684625,gpt-5.1
+VALIDATION_11_C,mean_round_normalized_efficiency,10,10,0.180009196282873,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,11-C,0.180009196282873,gpt-5.1
+VALIDATION_11_T,mean_round_normalized_efficiency,7,11,0.3520010276045918,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,11-T,0.3520010276045918,gpt-5.1
+VALIDATION_12_C,mean_round_normalized_efficiency,12,12,0.0491654995331466,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,12-C,0.0491654995331466,gpt-5.1
+VALIDATION_12_T,mean_round_normalized_efficiency,12,12,0.1969150282109841,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,12-T,0.1969150282109841,gpt-5.1
+VALIDATION_13_C,mean_round_normalized_efficiency,10,10,0.2561984319195665,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,13-C,0.2561984319195665,gpt-5.1
+VALIDATION_13_T,mean_round_normalized_efficiency,11,11,0.2977057149351667,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,13-T,0.2977057149351667,gpt-5.1
+VALIDATION_14_C,mean_round_normalized_efficiency,12,12,0.370906432748538,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,14-C,0.370906432748538,gpt-5.1
+VALIDATION_14_T,mean_round_normalized_efficiency,10,10,0.3853399122807017,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,14-T,0.3853399122807017,gpt-5.1
+VALIDATION_15_C,mean_round_normalized_efficiency,11,11,0.0856706496966238,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,15-C,0.0856706496966238,gpt-5.1
+VALIDATION_15_T,mean_round_normalized_efficiency,9,9,0.0918631930239073,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,15-T,0.0918631930239073,gpt-5.1
+VALIDATION_16_C,mean_round_normalized_efficiency,10,10,0.533081627814022,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,16-C,0.533081627814022,gpt-5.1
+VALIDATION_16_T,mean_round_normalized_efficiency,8,8,0.2697121654427992,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,16-T,0.2697121654427992,gpt-5.1
+VALIDATION_17_C,mean_round_normalized_efficiency,11,11,0.2030926962567726,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,17-C,0.2030926962567726,gpt-5.1
+VALIDATION_17_T,mean_round_normalized_efficiency,7,8,0.1179239054159639,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,17-T,0.1179239054159639,gpt-5.1
+VALIDATION_18_C,mean_round_normalized_efficiency,12,12,0.2245278013099045,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,18-C,0.2245278013099045,gpt-5.1
+VALIDATION_18_T,mean_round_normalized_efficiency,10,10,0.1657918978128786,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,18-T,0.1657918978128786,gpt-5.1
+VALIDATION_19_C,mean_round_normalized_efficiency,10,10,0.0854705459770114,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,19-C,0.0854705459770114,gpt-5.1
+VALIDATION_19_T,mean_round_normalized_efficiency,10,10,0.3348214285714285,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,19-T,0.3348214285714285,gpt-5.1
+VALIDATION_1_C,mean_round_normalized_efficiency,8,8,0.2814304867986799,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,1-C,0.2814304867986799,gpt-5.1
+VALIDATION_1_T,mean_round_normalized_efficiency,8,8,0.4123137497573286,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,1-T,0.4123137497573286,gpt-5.1
+VALIDATION_2_C,mean_round_normalized_efficiency,9,9,0.1481481481481481,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,2-C,0.1481481481481481,gpt-5.1
+VALIDATION_2_T,mean_round_normalized_efficiency,11,11,0.091540404040404,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,2-T,0.091540404040404,gpt-5.1
+VALIDATION_3_C,mean_round_normalized_efficiency,9,9,0.1976664913714448,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,3-C,0.1976664913714448,gpt-5.1
+VALIDATION_3_T,mean_round_normalized_efficiency,10,10,0.1540401560683475,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,3-T,0.1540401560683475,gpt-5.1
+VALIDATION_4_C,mean_round_normalized_efficiency,12,12,0.0999623641858021,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,4-C,0.0999623641858021,gpt-5.1
+VALIDATION_4_T,mean_round_normalized_efficiency,9,9,0.1748318841575879,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,4-T,0.1748318841575879,gpt-5.1
+VALIDATION_5_C,mean_round_normalized_efficiency,9,9,0.2010030864197531,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,5-C,0.2010030864197531,gpt-5.1
+VALIDATION_5_T,mean_round_normalized_efficiency,12,12,0.1041666666666666,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,5-T,0.1041666666666666,gpt-5.1
+VALIDATION_6_C,mean_round_normalized_efficiency,12,12,0.305112723874501,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,6-C,0.305112723874501,gpt-5.1
+VALIDATION_6_T,mean_round_normalized_efficiency,10,11,0.0962309773615319,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,6-T,0.0962309773615319,gpt-5.1
+VALIDATION_7_C,mean_round_normalized_efficiency,11,11,0.3742901640317954,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,7-C,0.3742901640317954,gpt-5.1
+VALIDATION_7_T,mean_round_normalized_efficiency,12,12,0.090548575981814,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,7-T,0.090548575981814,gpt-5.1
+VALIDATION_8_C,mean_round_normalized_efficiency,12,12,0.0584190506803814,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,8-C,0.0584190506803814,gpt-5.1
+VALIDATION_8_T,mean_round_normalized_efficiency,11,11,0.0667557932263814,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,8-T,0.0667557932263814,gpt-5.1
+VALIDATION_9_C,mean_round_normalized_efficiency,10,11,0.146678222731253,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,9-C,0.146678222731253,gpt-5.1
+VALIDATION_9_T,mean_round_normalized_efficiency,11,11,0.0414155933852903,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,9-T,0.0414155933852903,gpt-5.1
+VALIDATION_0_C,mean_total_contribution_rate,10,10,0.0907407407407407,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,0-C,0.0907407407407407,gpt-5.1
+VALIDATION_0_T,mean_total_contribution_rate,12,12,0.1029706790123457,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,0-T,0.1029706790123457,gpt-5.1
+VALIDATION_10_C,mean_total_contribution_rate,10,10,0.1411111111111111,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,10-C,0.1411111111111111,gpt-5.1
+VALIDATION_10_T,mean_total_contribution_rate,10,10,0.0402777777777777,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,10-T,0.0402777777777777,gpt-5.1
+VALIDATION_11_C,mean_total_contribution_rate,10,10,0.0992191142191142,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,11-C,0.0992191142191142,gpt-5.1
+VALIDATION_11_T,mean_total_contribution_rate,7,11,0.2948322510822511,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,11-T,0.2948322510822511,gpt-5.1
+VALIDATION_12_C,mean_total_contribution_rate,12,12,0.0581018518518519,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,12-C,0.0581018518518519,gpt-5.1
+VALIDATION_12_T,mean_total_contribution_rate,12,12,0.0601851851851852,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,12-T,0.0601851851851852,gpt-5.1
+VALIDATION_13_C,mean_total_contribution_rate,10,10,0.1761351675285499,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,13-C,0.1761351675285499,gpt-5.1
+VALIDATION_13_T,mean_total_contribution_rate,11,11,0.2907703081232492,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,13-T,0.2907703081232492,gpt-5.1
+VALIDATION_14_C,mean_total_contribution_rate,12,12,0.1914108187134503,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,14-C,0.1914108187134503,gpt-5.1
+VALIDATION_14_T,mean_total_contribution_rate,10,10,0.2859210526315789,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,14-T,0.2859210526315789,gpt-5.1
+VALIDATION_15_C,mean_total_contribution_rate,11,11,0.0623702055520237,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,15-C,0.0623702055520237,gpt-5.1
+VALIDATION_15_T,mean_total_contribution_rate,9,9,0.1221479754813087,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,15-T,0.1221479754813087,gpt-5.1
+VALIDATION_16_C,mean_total_contribution_rate,10,10,0.3292063492063493,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,16-C,0.3292063492063493,gpt-5.1
+VALIDATION_16_T,mean_total_contribution_rate,8,8,0.0823148148148148,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,16-T,0.0823148148148148,gpt-5.1
+VALIDATION_17_C,mean_total_contribution_rate,11,11,0.192944147355912,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,17-C,0.192944147355912,gpt-5.1
+VALIDATION_17_T,mean_total_contribution_rate,7,8,0.105706186658199,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,17-T,0.105706186658199,gpt-5.1
+VALIDATION_18_C,mean_total_contribution_rate,12,12,0.1777626811594202,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,18-C,0.1777626811594202,gpt-5.1
+VALIDATION_18_T,mean_total_contribution_rate,10,10,0.1387681159420289,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,18-T,0.1387681159420289,gpt-5.1
+VALIDATION_19_C,mean_total_contribution_rate,10,10,0.1053735632183908,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,19-C,0.1053735632183908,gpt-5.1
+VALIDATION_19_T,mean_total_contribution_rate,10,10,0.2226867816091954,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,19-T,0.2226867816091954,gpt-5.1
+VALIDATION_1_C,mean_total_contribution_rate,8,8,0.286328125,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,1-C,0.286328125,gpt-5.1
+VALIDATION_1_T,mean_total_contribution_rate,8,8,0.104296875,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,1-T,0.104296875,gpt-5.1
+VALIDATION_2_C,mean_total_contribution_rate,9,9,0.165,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,2-C,0.165,gpt-5.1
+VALIDATION_2_T,mean_total_contribution_rate,11,11,0.0770454545454545,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,2-T,0.0770454545454545,gpt-5.1
+VALIDATION_3_C,mean_total_contribution_rate,9,9,0.1423575498575498,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,3-C,0.1423575498575498,gpt-5.1
+VALIDATION_3_T,mean_total_contribution_rate,10,10,0.1691346153846153,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,3-T,0.1691346153846153,gpt-5.1
+VALIDATION_4_C,mean_total_contribution_rate,12,12,0.1237599206349206,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,4-C,0.1237599206349206,gpt-5.1
+VALIDATION_4_T,mean_total_contribution_rate,9,9,0.1726190476190476,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,4-T,0.1726190476190476,gpt-5.1
+VALIDATION_5_C,mean_total_contribution_rate,9,9,0.1157407407407407,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,5-C,0.1157407407407407,gpt-5.1
+VALIDATION_5_T,mean_total_contribution_rate,12,12,0.2361111111111111,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,5-T,0.2361111111111111,gpt-5.1
+VALIDATION_6_C,mean_total_contribution_rate,12,12,0.2531234824203574,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,6-C,0.2531234824203574,gpt-5.1
+VALIDATION_6_T,mean_total_contribution_rate,10,11,0.1167082869781733,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,6-T,0.1167082869781733,gpt-5.1
+VALIDATION_7_C,mean_total_contribution_rate,11,11,0.330693115364168,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,7-C,0.330693115364168,gpt-5.1
+VALIDATION_7_T,mean_total_contribution_rate,12,12,0.1069024122807017,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,7-T,0.1069024122807017,gpt-5.1
+VALIDATION_8_C,mean_total_contribution_rate,12,12,0.0440972222222222,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,8-C,0.0440972222222222,gpt-5.1
+VALIDATION_8_T,mean_total_contribution_rate,11,11,0.069090909090909,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,8-T,0.069090909090909,gpt-5.1
+VALIDATION_9_C,mean_total_contribution_rate,10,11,0.0981500166500166,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,9-C,0.0981500166500166,gpt-5.1
+VALIDATION_9_T,mean_total_contribution_rate,11,11,0.0776287811515084,twin_sampled_unadjusted_seed_0_gpt_5_1,Twin Unadjusted,9-T,0.0776287811515084,gpt-5.1

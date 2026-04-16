@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/batch_input/twin_sampled_unadjusted_seed_0_gpt_5_1_mechanism_v2.jsonl",
+  "num_requests": 144,
+  "total_input_tokens_estimate": 427596,
+  "mean_input_tokens_estimate": 2969.4166666666665,
+  "median_input_tokens_estimate": 2967.5,
+  "max_input_tokens_estimate": 3109,
+  "min_input_tokens_estimate": 2869
+}

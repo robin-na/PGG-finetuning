@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/batch_input/baseline_gpt_5_mini.jsonl",
+  "num_requests": 144,
+  "total_input_tokens_estimate": 133726,
+  "mean_input_tokens_estimate": 928.6527777777778,
+  "median_input_tokens_estimate": 926.0,
+  "max_input_tokens_estimate": 994,
+  "min_input_tokens_estimate": 865
+}

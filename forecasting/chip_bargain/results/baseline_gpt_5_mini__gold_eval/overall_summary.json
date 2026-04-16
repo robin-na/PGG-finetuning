@@ -1,0 +1,13 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_mini/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_mini/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_mini/gold_targets.jsonl",
+  "note": "Row-level exact-match diagnostics are secondary. Use treatment-level distribution-distance analysis as the primary benchmark.",
+  "generated_parse_success_rate": 0.9791666666666666,
+  "generated_parsed_count": 141,
+  "human_gold_count": 144,
+  "evaluated_row_count": 141,
+  "exact_match_rate": 0.0,
+  "turn_exact_match_rate": 0.012608353033884948,
+  "turn_field_match_rate": 0.38849487785657993
+}

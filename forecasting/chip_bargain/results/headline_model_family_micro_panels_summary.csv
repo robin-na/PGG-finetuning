@@ -1,0 +1,13 @@
+metric,run_name,mean_value,stderr,n_groups,family_name
+player_final_surplus,baseline_gpt_5_mini,1.1446759259259258,0.20512739720513848,6,gpt-5-mini
+player_proposer_mean_trade_ratio,baseline_gpt_5_mini,0.19579821958915802,0.029382163909873856,6,gpt-5-mini
+player_proposer_acceptance_rate,baseline_gpt_5_mini,0.3620169082125604,0.023834871327815123,6,gpt-5-mini
+round_end_surplus_ratio,baseline_gpt_5_mini,0.15730316468196257,0.015899046247032506,6,gpt-5-mini
+round_mean_trade_ratio,baseline_gpt_5_mini,0.1911899701791776,0.029075099228369473,6,gpt-5-mini
+round_acceptance_rate,baseline_gpt_5_mini,0.3620169082125604,0.023834871327815126,6,gpt-5-mini
+player_final_surplus,twin_sampled_unadjusted_seed_0_gpt_5_mini,1.142330002927829,0.19633729380138557,6,gpt-5-mini
+player_proposer_mean_trade_ratio,twin_sampled_unadjusted_seed_0_gpt_5_mini,0.20518365675740524,0.02094662710493674,6,gpt-5-mini
+player_proposer_acceptance_rate,twin_sampled_unadjusted_seed_0_gpt_5_mini,0.4156815741960669,0.014317737190906453,6,gpt-5-mini
+round_end_surplus_ratio,twin_sampled_unadjusted_seed_0_gpt_5_mini,0.15475307969494365,0.01609381338400142,6,gpt-5-mini
+round_mean_trade_ratio,twin_sampled_unadjusted_seed_0_gpt_5_mini,0.19909115343261527,0.02193434861826239,6,gpt-5-mini
+round_acceptance_rate,twin_sampled_unadjusted_seed_0_gpt_5_mini,0.4156815741960669,0.014317737190906453,6,gpt-5-mini

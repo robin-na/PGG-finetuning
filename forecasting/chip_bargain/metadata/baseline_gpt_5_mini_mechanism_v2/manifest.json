@@ -1,0 +1,16 @@
+{
+  "dataset_key": "chip_bargain",
+  "display_name": "Chip Bargaining",
+  "run_name": "baseline_gpt_5_mini_mechanism_v2",
+  "variant_name": "baseline",
+  "model": "gpt-5-mini",
+  "record_count": 144,
+  "unit_count": 144,
+  "max_records_per_treatment": null,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/batch_input/baseline_gpt_5_mini_mechanism_v2.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/batch_output/baseline_gpt_5_mini_mechanism_v2.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_mini_mechanism_v2",
+  "profile_assignment_file": null,
+  "profile_cards_file": null,
+  "profile_shared_notes_file": null
+}

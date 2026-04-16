@@ -1,0 +1,10 @@
+{
+  "run_name": "twin_sampled_unadjusted_seed_0_gpt_5_1_pgg_aligned_v3",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_pgg_aligned_v3/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_pgg_aligned_v3/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_pgg_aligned_v3/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/results/twin_sampled_unadjusted_seed_0_gpt_5_1_pgg_aligned_v3__noise_ceiling",
+  "bootstrap_iters": 200,
+  "seed": 0,
+  "primary_metric_family": "distribution_distance"
+}

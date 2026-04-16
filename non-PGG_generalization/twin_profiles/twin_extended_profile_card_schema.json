@@ -29,7 +29,9 @@
         "standard",
         "audit",
         "pgg_prompt",
-        "pgg_prompt_min"
+        "pgg_prompt_min",
+        "chip_bargain_prompt",
+        "chip_bargain_prompt_min"
       ]
     },
     "participant": {

@@ -14,6 +14,7 @@ class DatasetBundle:
     units: pd.DataFrame
     demographic_source: pd.DataFrame
     twin_matching_fields: list[str]
+    supported_variants: list[str] | None = None
 
 
 def clean_text(value: Any) -> str | None:
@@ -127,4 +128,3 @@ def first_present_value(row: pd.Series | dict[str, Any], *keys: str) -> Any:
             if key in row.index:
                 return row[key]
     raise KeyError(f"None of the requested keys were present: {keys}")
-

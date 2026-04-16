@@ -1,0 +1,7 @@
+metric,run_name,mean_value,stderr,n_groups,family_name
+final_surplus_ratio,baseline_gpt_5_mini,0.15529572309579118,0.02093685810103547,6,gpt-5-mini
+mean_trade_ratio,baseline_gpt_5_mini,0.1772071201506351,0.034250913408363365,6,gpt-5-mini
+mean_acceptance_rate,baseline_gpt_5_mini,0.3748322597960279,0.020996748288562905,6,gpt-5-mini
+final_surplus_ratio,twin_sampled_unadjusted_seed_0_gpt_5_mini,0.16317554977425133,0.024646556576507567,6,gpt-5-mini
+mean_trade_ratio,twin_sampled_unadjusted_seed_0_gpt_5_mini,0.19582000645172593,0.02336973277092178,6,gpt-5-mini
+mean_acceptance_rate,twin_sampled_unadjusted_seed_0_gpt_5_mini,0.41722478407261016,0.01381449964192934,6,gpt-5-mini

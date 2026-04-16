@@ -11,6 +11,12 @@ TWIN_TRANSFER_CUE_DISPLAY_NAMES = {
     "exploitation_caution": "Exploitation caution",
     "communication_coordination": "Communication/coordination",
     "behavioral_stability": "Behavioral stability",
+    "exchange_aggressiveness": "Exchange aggressiveness",
+    "acceptance_threshold": "Acceptance threshold",
+    "search_exploration": "Search/exploration",
+    "anchor_reference_sensitivity": "Anchor/reference sensitivity",
+    "bookkeeping_discipline": "Bookkeeping discipline",
+    "strategic_patience": "Strategic patience",
 }
 
 

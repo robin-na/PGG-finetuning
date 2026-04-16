@@ -1,0 +1,16 @@
+{
+  "dataset_key": "chip_bargain",
+  "display_name": "Chip Bargaining",
+  "run_name": "twin_sampled_unadjusted_seed_0_gpt_5_1_bargain_card_v1",
+  "variant_name": "twin_sampled_unadjusted_seed_0",
+  "model": "gpt-5.1",
+  "record_count": 144,
+  "unit_count": 144,
+  "max_records_per_treatment": null,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/batch_input/twin_sampled_unadjusted_seed_0_gpt_5_1_bargain_card_v1.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/batch_output/twin_sampled_unadjusted_seed_0_gpt_5_1_bargain_card_v1.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_bargain_card_v1",
+  "profile_assignment_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/profile_sampling/output/twin_to_chip_bargain_player_sampling_unadjusted_bargain_card_v1/seed_0/game_assignments.jsonl",
+  "profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_prompt_min/twin_extended_profile_cards.jsonl",
+  "profile_shared_notes_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_prompt_min/shared_prompt_notes.md"
+}

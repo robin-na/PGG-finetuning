@@ -33,6 +33,7 @@ Compatibility note:
 
 These raw datasets currently feed the active non-PGG forecasting benchmarks:
 
+- [`data/chip_bargain/`](./data/chip_bargain/)
 - [`data/minority_game_bret_njzas/`](./data/minority_game_bret_njzas/)
 - [`data/longitudinal_trust_game_ht863/`](./data/longitudinal_trust_game_ht863/)
 - [`data/two_stage_trust_punishment_y2hgu/`](./data/two_stage_trust_punishment_y2hgu/)
@@ -59,6 +60,7 @@ The active benchmark pipeline that consumes the above inputs lives in:
 
 Benchmark-specific entrypoints then live in each forecasting subfolder:
 
+- [`../forecasting/chip_bargain/`](../forecasting/chip_bargain/)
 - [`../forecasting/minority_game_bret_njzas/`](../forecasting/minority_game_bret_njzas/)
 - [`../forecasting/longitudinal_trust_game_ht863/`](../forecasting/longitudinal_trust_game_ht863/)
 - [`../forecasting/two_stage_trust_punishment_y2hgu/`](../forecasting/two_stage_trust_punishment_y2hgu/)

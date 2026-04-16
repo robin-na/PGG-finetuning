@@ -16,7 +16,19 @@ THIS_DIR = Path(__file__).resolve().parent
 DEFAULT_PROFILES_JSONL = THIS_DIR / "output" / "twin_extended_profiles" / "twin_extended_profiles.jsonl"
 DEFAULT_SCHEMA_JSON = THIS_DIR / "twin_extended_profile_card_schema.json"
 DEFAULT_OUTPUT_DIR = THIS_DIR / "output" / "twin_extended_profile_cards"
-DETAIL_MODES = ("compact", "standard", "audit", "pgg_prompt", "pgg_prompt_min")
+DETAIL_MODES = (
+    "compact",
+    "standard",
+    "audit",
+    "pgg_prompt",
+    "pgg_prompt_min",
+    "chip_bargain_prompt",
+    "chip_bargain_prompt_min",
+)
+
+PGG_PROMPT_MODES = {"pgg_prompt", "pgg_prompt_min"}
+CHIP_BARGAIN_PROMPT_MODES = {"chip_bargain_prompt", "chip_bargain_prompt_min"}
+PROMPT_MODES = PGG_PROMPT_MODES | CHIP_BARGAIN_PROMPT_MODES
 
 MODE_SETTINGS = {
     "compact": {
@@ -49,6 +61,18 @@ MODE_SETTINGS = {
         "anchors_max": 4,
         "limits_max": 2,
     },
+    "chip_bargain_prompt": {
+        "background_max": 4,
+        "signature_max": 5,
+        "anchors_max": 5,
+        "limits_max": 2,
+    },
+    "chip_bargain_prompt_min": {
+        "background_max": 3,
+        "signature_max": 4,
+        "anchors_max": 4,
+        "limits_max": 2,
+    },
 }
 
 CUE_ORDER = [
@@ -69,7 +93,23 @@ CUE_DISPLAY_NAMES = {
     "exploitation_caution": "Exploitation caution",
     "communication_coordination": "Communication/coordination",
     "behavioral_stability": "Behavioral stability",
+    "exchange_aggressiveness": "Exchange aggressiveness",
+    "acceptance_threshold": "Acceptance threshold",
+    "search_exploration": "Search/exploration",
+    "anchor_reference_sensitivity": "Anchor/reference sensitivity",
+    "bookkeeping_discipline": "Bookkeeping discipline",
+    "strategic_patience": "Strategic patience",
 }
+
+CHIP_BARGAIN_CUE_ORDER = [
+    "exchange_aggressiveness",
+    "acceptance_threshold",
+    "search_exploration",
+    "anchor_reference_sensitivity",
+    "bookkeeping_discipline",
+    "strategic_patience",
+    "exploitation_caution",
+]
 
 BACKGROUND_ORDER = [
     ("age_bracket", "Age"),
@@ -135,6 +175,184 @@ PGG_PROMPT_CUE_GLOSSARY = {
     ],
 }
 
+CHIP_BARGAIN_PROMPT_SHARED_NOTE = [
+    "These profiles summarize prior survey and behavioral-task evidence about each participant.",
+    "Treat the cues as relative bargaining priors, not deterministic predictions for any single chip-trading turn.",
+    "Unless a player-specific limit is listed, shared methodological caveats apply to all players.",
+]
+
+CHIP_BARGAIN_PROMPT_SHARED_CAVEATS = [
+    "Twin does not directly observe repeated three-player bargaining, offer-counteroffer dynamics, or inventory-constrained exchange.",
+    "Bookkeeping and strategic-calibration cues are inferred indirectly from numeracy, reasoning, search, pricing, and self-regulation evidence.",
+    "Acceptance-threshold and guardedness cues borrow from ultimatum/trust/consumer tasks, so they should be read as bargaining priors rather than literal trade rules.",
+]
+
+CHIP_BARGAIN_CUE_SPECS = {
+    "exchange_aggressiveness": {
+        "meaning": "Tendency to push for self-favoring exchange rates rather than settle quickly for balanced terms.",
+        "built_from": [
+            "Competition orientation, lower generosity/prosociality, and lower deal inhibition.",
+            "Proxy for opening toughness, not direct evidence from repeated bargaining rounds.",
+        ],
+        "scope_note": "Inferred from competition/prosociality and consumer-choice signals rather than observed bargaining offers.",
+        "components": [
+            {"path": ("derived_dimensions", "self_regulation_and_affect", "competition_orientation"), "weight": 0.35, "invert": False},
+            {"path": ("derived_dimensions", "self_regulation_and_affect", "cooperation_orientation"), "weight": 0.25, "invert": True},
+            {"path": ("pgg_relevant_cues", "generosity_without_return"), "weight": 0.20, "invert": True},
+            {"path": ("derived_dimensions", "consumer_style", "purchase_inhibition"), "weight": 0.20, "invert": True},
+        ],
+    },
+    "acceptance_threshold": {
+        "meaning": "How selective the participant is likely to be when deciding whether an incoming offer is good enough to take.",
+        "built_from": [
+            "Exploitation caution, fairness-threshold sensitivity, uncertainty aversion, and purchase inhibition.",
+            "Proxy for holdout and rejection tendency under weak terms.",
+        ],
+        "scope_note": "This is closer to ultimatum-style threshold sensitivity than to a fully strategic bargaining response rule.",
+        "components": [
+            {"path": ("pgg_relevant_cues", "exploitation_caution"), "weight": 0.35, "invert": False},
+            {"path": ("pgg_relevant_cues", "norm_enforcement"), "weight": 0.25, "invert": False},
+            {"path": ("derived_dimensions", "self_regulation_and_affect", "uncertainty_aversion"), "weight": 0.20, "invert": False},
+            {"path": ("derived_dimensions", "consumer_style", "purchase_inhibition"), "weight": 0.20, "invert": False},
+        ],
+    },
+    "search_exploration": {
+        "meaning": "Tendency to keep searching for alternatives rather than lock in the first workable deal.",
+        "built_from": [
+            "Search willingness, patience, and reflective cognition.",
+            "Proxy for bargaining exploration and willingness to test options.",
+        ],
+        "scope_note": "Derived from consumer-search and decision-style tasks, not observed offer-counteroffer search in bargaining.",
+        "components": [
+            {"path": ("derived_dimensions", "consumer_style", "willingness_to_search"), "weight": 0.50, "invert": False},
+            {"path": ("derived_dimensions", "decision_style", "patience"), "weight": 0.25, "invert": False},
+            {"path": ("derived_dimensions", "decision_style", "cognitive_reflection"), "weight": 0.25, "invert": False},
+        ],
+    },
+    "anchor_reference_sensitivity": {
+        "meaning": "How much the participant may be pulled by anchors, reference points, and framing of the terms on offer.",
+        "built_from": [
+            "Anchor susceptibility, framing susceptibility, and reference dependence.",
+            "Most relevant for initial offer interpretation and price-like framing effects.",
+        ],
+        "scope_note": "This is grounded in heuristics and consumer tasks, so it is more informative about framing susceptibility than about bargaining skill.",
+        "components": [
+            {"path": ("derived_dimensions", "decision_style", "anchor_susceptibility"), "weight": 0.35, "invert": False},
+            {"path": ("derived_dimensions", "decision_style", "framing_susceptibility"), "weight": 0.35, "invert": False},
+            {"path": ("derived_dimensions", "consumer_style", "reference_dependence"), "weight": 0.30, "invert": False},
+        ],
+    },
+    "bookkeeping_discipline": {
+        "meaning": "How reliably the participant is likely to track quantities, constraints, and payoff implications across turns.",
+        "built_from": [
+            "Numeracy, logical reasoning, cognitive reflection, and behavioral stability.",
+            "Proxy for state tracking and calibrated offer construction under inventory constraints.",
+        ],
+        "scope_note": "Twin does not directly test multi-turn inventory bookkeeping, so this remains an indirect state-discipline prior.",
+        "components": [
+            {"path": ("derived_dimensions", "decision_style", "numeracy"), "weight": 0.35, "invert": False},
+            {"path": ("derived_dimensions", "decision_style", "logical_reasoning"), "weight": 0.30, "invert": False},
+            {"path": ("derived_dimensions", "decision_style", "cognitive_reflection"), "weight": 0.20, "invert": False},
+            {"path": ("pgg_relevant_cues", "behavioral_stability"), "weight": 0.15, "invert": False},
+        ],
+    },
+    "strategic_patience": {
+        "meaning": "Willingness to wait for better terms rather than rush into a quick agreement.",
+        "built_from": [
+            "Patience, spending self-control, and purchase inhibition.",
+            "Proxy for deal timing rather than a literal round-by-round waiting strategy.",
+        ],
+        "scope_note": "This is about tolerance for waiting or foregoing immediate deals, not direct evidence from repeated negotiation timing.",
+        "components": [
+            {"path": ("derived_dimensions", "decision_style", "patience"), "weight": 0.45, "invert": False},
+            {"path": ("derived_dimensions", "self_regulation_and_affect", "spending_self_control"), "weight": 0.30, "invert": False},
+            {"path": ("derived_dimensions", "consumer_style", "purchase_inhibition"), "weight": 0.25, "invert": False},
+        ],
+    },
+    "exploitation_caution": {
+        "meaning": "Guardedness against deals that feel exploitative, one-sided, or strategically unsafe.",
+        "built_from": [
+            "Existing exploitation-caution cue, plus uncertainty aversion and fairness-threshold sensitivity.",
+            "Useful for bargaining friction and suspicion about counterpart terms.",
+        ],
+        "scope_note": "Most directly grounded in trust/ultimatum-style caution, then adapted as a bargaining prior.",
+        "components": [
+            {"path": ("pgg_relevant_cues", "exploitation_caution"), "weight": 0.60, "invert": False},
+            {"path": ("derived_dimensions", "self_regulation_and_affect", "uncertainty_aversion"), "weight": 0.20, "invert": False},
+            {"path": ("pgg_relevant_cues", "norm_enforcement"), "weight": 0.20, "invert": False},
+        ],
+    },
+}
+
+CHIP_BARGAIN_HEADLINE_FAMILIES = {
+    "exchange_aggressiveness": "aggressiveness",
+    "acceptance_threshold": "selectivity",
+    "search_exploration": "search",
+    "anchor_reference_sensitivity": "framing",
+    "bookkeeping_discipline": "bookkeeping",
+    "strategic_patience": "patience",
+    "exploitation_caution": "guardedness",
+}
+
+CHIP_BARGAIN_HEADLINE_PHRASES = {
+    "exchange_aggressiveness": {
+        "very_high": "aggressive in exchange",
+        "high": "aggressive in exchange",
+        "medium": "moderately tough bargainer",
+        "mixed": "mixed on bargaining toughness",
+        "low": "more conciliatory exchanger",
+        "very_low": "more conciliatory exchanger",
+    },
+    "acceptance_threshold": {
+        "very_high": "selective accepter",
+        "high": "selective accepter",
+        "medium": "moderately selective",
+        "mixed": "mixed on selectivity",
+        "low": "deal-ready accepter",
+        "very_low": "deal-ready accepter",
+    },
+    "search_exploration": {
+        "very_high": "search-oriented",
+        "high": "search-oriented",
+        "medium": "moderately exploratory",
+        "mixed": "mixed on search",
+        "low": "low-search",
+        "very_low": "low-search",
+    },
+    "anchor_reference_sensitivity": {
+        "very_high": "anchor-sensitive",
+        "high": "anchor-sensitive",
+        "medium": "moderately reference-sensitive",
+        "mixed": "mixed on framing sensitivity",
+        "low": "less anchor-driven",
+        "very_low": "less anchor-driven",
+    },
+    "bookkeeping_discipline": {
+        "very_high": "state-disciplined",
+        "high": "state-disciplined",
+        "medium": "moderately state-disciplined",
+        "mixed": "mixed on state discipline",
+        "low": "less state-disciplined",
+        "very_low": "less state-disciplined",
+    },
+    "strategic_patience": {
+        "very_high": "patient in negotiation",
+        "high": "patient in negotiation",
+        "medium": "moderately patient",
+        "mixed": "mixed on patience",
+        "low": "quick-deal oriented",
+        "very_low": "quick-deal oriented",
+    },
+    "exploitation_caution": {
+        "very_high": "guarded against exploitation",
+        "high": "guarded against exploitation",
+        "medium": "moderately guarded",
+        "mixed": "mixed on guardedness",
+        "low": "less guarded",
+        "very_low": "less guarded",
+    },
+}
+
 CUE_MEANINGS = {
     "cooperation_orientation": "Here, cooperation orientation means a blend of one-shot sharing behavior and cooperation/prosocial self-report. It is not a direct measure of repeated-group contribution.",
     "conditional_cooperation": "Here, conditional cooperation means how contingent the participant looks on reciprocity and fairness-threshold signals in the Twin tasks, rather than a round-by-round public-goods reaction function.",
@@ -184,7 +402,7 @@ def mode_setting(detail_mode: str, key: str) -> int:
 
 
 def social_style_construction(detail_mode: str) -> List[str]:
-    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+    if detail_mode in PROMPT_MODES:
         return []
     if detail_mode == "compact":
         return [
@@ -199,7 +417,7 @@ def social_style_construction(detail_mode: str) -> List[str]:
 
 
 def decision_style_construction(detail_mode: str) -> List[str]:
-    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+    if detail_mode in PROMPT_MODES:
         return []
     if detail_mode == "compact":
         return [
@@ -228,6 +446,10 @@ def cue_meaning_text(cue: str, payload: Dict[str, Any], detail_mode: str) -> str
             "behavioral_stability": " Rule-like consistency across self-regulation items.",
         }
         return base + prompt_meanings[cue]
+    if detail_mode == "chip_bargain_prompt_min":
+        return ""
+    if detail_mode == "chip_bargain_prompt":
+        return base + " " + CHIP_BARGAIN_CUE_SPECS[cue]["meaning"]
     if detail_mode == "compact":
         compact_meanings = {
             "cooperation_orientation": " Blend of one-shot sharing behavior and cooperation/prosocial self-report.",
@@ -243,8 +465,10 @@ def cue_meaning_text(cue: str, payload: Dict[str, Any], detail_mode: str) -> str
 
 
 def cue_components(cue: str, detail_mode: str) -> List[str]:
-    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+    if detail_mode in PGG_PROMPT_MODES:
         return []
+    if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
+        return CHIP_BARGAIN_CUE_SPECS[cue]["built_from"]
     if detail_mode == "compact":
         return CUE_COMPONENTS[cue][:2]
     if detail_mode == "audit":
@@ -411,6 +635,80 @@ def get_nested(obj: Dict[str, Any], path: Sequence[str]) -> Optional[Dict[str, A
     return cur
 
 
+def label_from_score(score_0_to_100: int) -> str:
+    if score_0_to_100 <= 19:
+        return "very_low"
+    if score_0_to_100 <= 39:
+        return "low"
+    if score_0_to_100 <= 59:
+        return "mixed"
+    if score_0_to_100 <= 74:
+        return "medium"
+    if score_0_to_100 <= 89:
+        return "high"
+    return "very_high"
+
+
+def confidence_from_rank(value: float) -> str:
+    if value >= 1.5:
+        return "high"
+    if value >= 0.75:
+        return "medium"
+    return "low"
+
+
+def bargaining_component_value(profile: Dict[str, Any], component: Dict[str, Any]) -> Dict[str, Any]:
+    payload = get_nested(profile, component["path"])
+    if payload is None:
+        raise KeyError(f"Missing bargaining component path: {component['path']}")
+    score = int(payload["score_0_to_100"])
+    if component.get("invert"):
+        score = 100 - score
+    return {
+        "score": score,
+        "confidence": payload.get("confidence", "low"),
+        "evidence_refs": payload.get("evidence_refs", []),
+        "path": component["path"],
+    }
+
+
+def build_chip_bargain_cue_payload(profile: Dict[str, Any], cue: str) -> Dict[str, Any]:
+    spec = CHIP_BARGAIN_CUE_SPECS[cue]
+    component_values = [bargaining_component_value(profile, component) for component in spec["components"]]
+    total_weight = sum(component["weight"] for component in spec["components"])
+    score = int(
+        round(
+            sum(value["score"] * component["weight"] for value, component in zip(component_values, spec["components"]))
+            / total_weight
+        )
+    )
+    confidence_rank_value = sum(
+        confidence_rank(value["confidence"]) * component["weight"]
+        for value, component in zip(component_values, spec["components"])
+    ) / total_weight
+    evidence_refs: List[str] = []
+    for value in component_values:
+        evidence_refs.extend(value["evidence_refs"])
+    return {
+        "cue": cue,
+        "label": label_from_score(score),
+        "score_0_to_100": score,
+        "confidence": confidence_from_rank(confidence_rank_value),
+        "meaning_here": spec["meaning"],
+        "constructed_from": spec["built_from"],
+        "scope_note": spec["scope_note"],
+        "evidence_refs": list(dict.fromkeys(evidence_refs)),
+    }
+
+
+def build_chip_bargain_transfer_relevance(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, Any]]:
+    out = [build_chip_bargain_cue_payload(profile, cue) for cue in CHIP_BARGAIN_CUE_ORDER]
+    if detail_mode == "chip_bargain_prompt_min":
+        for item in out:
+            item["meaning_here"] = ""
+    return out
+
+
 def feature_map(block: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
     return {item["name"]: item for item in block.get("summary_features", [])}
 
@@ -494,7 +792,43 @@ def pick_headline_descriptors(profile: Dict[str, Any]) -> List[str]:
     return chosen[:3]
 
 
-def build_headline(profile: Dict[str, Any]) -> str:
+def pick_chip_bargain_headline_descriptors(profile: Dict[str, Any]) -> List[str]:
+    payloads = build_chip_bargain_transfer_relevance(profile, "chip_bargain_prompt")
+    candidates: List[Tuple[int, int, int, str, str]] = []
+    for payload in payloads:
+        phrase = CHIP_BARGAIN_HEADLINE_PHRASES[payload["cue"]].get(payload["label"])
+        if not phrase:
+            continue
+        strength = 1 if payload["label"] in {"very_high", "high", "low", "very_low"} else 0
+        candidates.append(
+            (
+                strength,
+                score_distance(payload),
+                confidence_rank(payload.get("confidence", "low")),
+                CHIP_BARGAIN_HEADLINE_FAMILIES[payload["cue"]],
+                phrase,
+            )
+        )
+    candidates.sort(reverse=True)
+    chosen: List[str] = []
+    seen_families: set[str] = set()
+    for _, _, _, family, phrase in candidates:
+        if family in seen_families:
+            continue
+        if phrase not in chosen:
+            chosen.append(phrase)
+            seen_families.add(family)
+        if len(chosen) == 3:
+            break
+    while len(chosen) < 3:
+        chosen.append("mixed")
+    return chosen[:3]
+
+
+def build_headline(profile: Dict[str, Any], detail_mode: str) -> str:
+    if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
+        descriptors = pick_chip_bargain_headline_descriptors(profile)
+        return ", ".join([descriptors[0].capitalize(), descriptors[1], descriptors[2]])
     descriptors = pick_headline_descriptors(profile)
     return ", ".join([descriptors[0].capitalize(), descriptors[1], descriptors[2]])
 
@@ -573,7 +907,7 @@ def build_social_style_section(profile: Dict[str, Any], detail_mode: str) -> Dic
     if profile["pgg_relevant_cues"]["communication_coordination"]["confidence"] == "low":
         cautions.append("Communication-related readings are especially indirect because the source tasks do not observe repeated strategic group communication.")
 
-    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+    if detail_mode in PROMPT_MODES:
         cautions = []
 
     return {
@@ -602,7 +936,7 @@ def build_decision_style_section(profile: Dict[str, Any], detail_mode: str) -> D
     ]
     cautions.append("Anchoring/framing and pricing-related inferences are based on relatively sparse task sets and should be read as coarse tendencies.")
 
-    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+    if detail_mode in PROMPT_MODES:
         cautions = []
 
     return {
@@ -615,7 +949,23 @@ def build_decision_style_section(profile: Dict[str, Any], detail_mode: str) -> D
     }
 
 
-def build_summary(profile: Dict[str, Any]) -> str:
+def build_summary(profile: Dict[str, Any], detail_mode: str) -> str:
+    if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
+        payloads = build_chip_bargain_transfer_relevance(profile, "chip_bargain_prompt")
+        payloads.sort(
+            key=lambda item: (
+                score_distance(item),
+                confidence_rank(item.get("confidence", "low")),
+            ),
+            reverse=True,
+        )
+        descriptors = [CUE_DISPLAY_NAMES[item["cue"]].lower() for item in payloads[:3]]
+        descriptor_text = ", ".join(descriptors[:-1]) + f", and {descriptors[-1]}" if len(descriptors) >= 3 else ", ".join(descriptors)
+        return (
+            f"Strongest bargaining-relevant tendencies are in {descriptor_text}. "
+            "These cues are derived from Twin search, pricing, heuristics, self-regulation, and social-allocation tasks, "
+            "so they should be used as priors about bargaining style rather than as direct evidence from repeated three-player negotiation."
+        )
     descriptors = pick_headline_descriptors(profile)
     if len(descriptors) >= 3:
         descriptor_text = f"{descriptors[0]}, {descriptors[1]}, and {descriptors[2]}"
@@ -839,6 +1189,8 @@ def build_observed_anchors(profile: Dict[str, Any], detail_mode: str) -> List[Di
 
 
 def build_transfer_relevance(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, Any]]:
+    if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
+        return build_chip_bargain_transfer_relevance(profile, detail_mode)
     out: List[Dict[str, Any]] = []
     for cue in CUE_ORDER:
         payload = profile["pgg_relevant_cues"][cue]
@@ -850,7 +1202,7 @@ def build_transfer_relevance(profile: Dict[str, Any], detail_mode: str) -> List[
                 "confidence": payload["confidence"],
                 "meaning_here": cue_meaning_text(cue, payload, detail_mode),
                 "constructed_from": cue_components(cue, detail_mode),
-                "scope_note": "" if detail_mode in {"pgg_prompt", "pgg_prompt_min"} else payload["scope_note"],
+                "scope_note": "" if detail_mode in PGG_PROMPT_MODES else payload["scope_note"],
                 "evidence_refs": payload["evidence_refs"],
             }
         )
@@ -858,8 +1210,53 @@ def build_transfer_relevance(profile: Dict[str, Any], detail_mode: str) -> List[
 
 
 def build_limits(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, Any]]:
-    if detail_mode not in {"pgg_prompt", "pgg_prompt_min"}:
+    if detail_mode not in PROMPT_MODES:
         return profile["uncertainties"][: mode_setting(detail_mode, "limits_max")]
+
+    if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
+        limits: List[Dict[str, Any]] = []
+        cues = {item["cue"]: item for item in build_chip_bargain_transfer_relevance(profile, "chip_bargain_prompt")}
+        if (
+            cues["search_exploration"]["score_0_to_100"] >= 65
+            and cues["bookkeeping_discipline"]["score_0_to_100"] <= 45
+        ):
+            limits.append(
+                {
+                    "topic": "Search vs bookkeeping mismatch",
+                    "note": "Search/exploration looks stronger than bookkeeping discipline, so this participant may keep testing options without consistently tracking state constraints.",
+                    "evidence_refs": list(
+                        dict.fromkeys(
+                            cues["search_exploration"]["evidence_refs"]
+                            + cues["bookkeeping_discipline"]["evidence_refs"]
+                        )
+                    ),
+                }
+            )
+        if (
+            cues["exchange_aggressiveness"]["score_0_to_100"] >= 65
+            and cues["acceptance_threshold"]["score_0_to_100"] >= 65
+        ):
+            limits.append(
+                {
+                    "topic": "Tough on both sides",
+                    "note": "This participant looks both demanding in what they ask for and selective in what they accept, which can increase bargaining friction.",
+                    "evidence_refs": list(
+                        dict.fromkeys(
+                            cues["exchange_aggressiveness"]["evidence_refs"]
+                            + cues["acceptance_threshold"]["evidence_refs"]
+                        )
+                    ),
+                }
+            )
+        if cues["anchor_reference_sensitivity"]["score_0_to_100"] >= 70:
+            limits.append(
+                {
+                    "topic": "Indirect framing evidence",
+                    "note": "Anchor/reference sensitivity is distinctive here, but it comes from heuristics and consumer tasks rather than direct bargaining episodes.",
+                    "evidence_refs": cues["anchor_reference_sensitivity"]["evidence_refs"],
+                }
+            )
+        return limits[: mode_setting(detail_mode, "limits_max")]
 
     limits: List[Dict[str, Any]] = []
     cooperation_score = profile["derived_dimensions"]["self_regulation_and_affect"]["cooperation_orientation"]["score_0_to_100"]
@@ -900,8 +1297,8 @@ def build_card(profile: Dict[str, Any], detail_mode: str) -> Dict[str, Any]:
             "source_dataset": profile["participant"]["source_dataset"],
             "source_profile_version": profile["profile_spec_version"],
         },
-        "headline": build_headline(profile),
-        "summary": build_summary(profile),
+        "headline": build_headline(profile, detail_mode),
+        "summary": build_summary(profile, detail_mode),
         "background": build_background(profile, detail_mode),
         "behavioral_signature": profile["behavioral_signature"][: mode_setting(detail_mode, "signature_max")],
         "social_style": build_social_style_section(profile, detail_mode),
@@ -927,12 +1324,16 @@ def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: s
         lines.append("# Behavior Profile Cards For PGG Prompting")
     elif detail_mode == "pgg_prompt_min":
         lines.append("# Minimal Behavior Profile Cards For PGG Prompting")
+    elif detail_mode == "chip_bargain_prompt":
+        lines.append("# Behavior Profile Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_prompt_min":
+        lines.append("# Minimal Behavior Profile Cards For Chip-Bargaining Prompting")
     else:
         lines.append("# Twin Extended Profile Cards")
     lines.append("")
     lines.append(f"Detail mode: `{detail_mode}`")
     lines.append("")
-    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+    if detail_mode in PROMPT_MODES:
         lines.append("Shared prompt note is written separately to `shared_prompt_notes.md` in this output directory.")
         lines.append("")
     lines.append(f"Preview cards rendered: {len(cards)} of {total_count}")
@@ -996,28 +1397,59 @@ def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: s
     return "\n".join(lines)
 
 
-def build_shared_prompt_notes() -> str:
-    lines: List[str] = []
-    lines.append("# Shared Prompt Notes")
-    lines.append("")
-    lines.append("## General Interpretation Note")
-    lines.append("")
-    for item in PGG_PROMPT_SHARED_NOTE:
-        lines.append(f"- {item}")
-    lines.append("")
-    lines.append("## Shared Caveats")
-    lines.append("")
-    for item in PGG_PROMPT_SHARED_CAVEATS:
-        lines.append(f"- {item}")
-    lines.append("")
-    lines.append("## Cue Glossary")
-    lines.append("")
-    for cue in CUE_ORDER:
-        lines.append(f"### {CUE_DISPLAY_NAMES[cue]}")
-        for item in PGG_PROMPT_CUE_GLOSSARY[cue]:
+def build_shared_prompt_notes_for_mode(detail_mode: str) -> str:
+    if detail_mode in PGG_PROMPT_MODES:
+        lines: List[str] = []
+        lines.append("# Shared Prompt Notes")
+        lines.append("")
+        lines.append("## General Interpretation Note")
+        lines.append("")
+        for item in PGG_PROMPT_SHARED_NOTE:
             lines.append(f"- {item}")
         lines.append("")
-    return "\n".join(lines).rstrip() + "\n"
+        lines.append("## Shared Caveats")
+        lines.append("")
+        for item in PGG_PROMPT_SHARED_CAVEATS:
+            lines.append(f"- {item}")
+        lines.append("")
+        lines.append("## Cue Glossary")
+        lines.append("")
+        for cue in CUE_ORDER:
+            lines.append(f"### {CUE_DISPLAY_NAMES[cue]}")
+            for item in PGG_PROMPT_CUE_GLOSSARY[cue]:
+                lines.append(f"- {item}")
+            lines.append("")
+        return "\n".join(lines).rstrip() + "\n"
+
+    if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
+        lines = []
+        lines.append("# Shared Prompt Notes")
+        lines.append("")
+        lines.append("## General Interpretation Note")
+        lines.append("")
+        for item in CHIP_BARGAIN_PROMPT_SHARED_NOTE:
+            lines.append(f"- {item}")
+        lines.append("")
+        lines.append("## Shared Caveats")
+        lines.append("")
+        for item in CHIP_BARGAIN_PROMPT_SHARED_CAVEATS:
+            lines.append(f"- {item}")
+        lines.append("")
+        lines.append("## Cue Glossary")
+        lines.append("")
+        for cue in CHIP_BARGAIN_CUE_ORDER:
+            lines.append(f"### {CUE_DISPLAY_NAMES[cue]}")
+            for item in CHIP_BARGAIN_CUE_SPECS[cue]["built_from"]:
+                lines.append(f"- {item}")
+            lines.append(f"- Meaning: {CHIP_BARGAIN_CUE_SPECS[cue]['meaning']}")
+            lines.append("")
+        return "\n".join(lines).rstrip() + "\n"
+
+    raise ValueError(f"Shared prompt notes are only defined for prompt modes, got: {detail_mode}")
+
+
+def build_shared_prompt_notes() -> str:
+    return build_shared_prompt_notes_for_mode("pgg_prompt")
 
 
 def build_csv_rows(cards: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -1036,8 +1468,8 @@ def build_csv_rows(cards: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
             row[f"behavioral_signature_{idx + 1}"] = (
                 card["behavioral_signature"][idx] if idx < len(card["behavioral_signature"]) else ""
             )
-        for cue in CUE_ORDER:
-            payload = next(item for item in card["transfer_relevance"] if item["cue"] == cue)
+        for payload in card["transfer_relevance"]:
+            cue = payload["cue"]
             row[f"{cue}_label"] = payload["label"]
             row[f"{cue}_score"] = payload["score_0_to_100"]
         rows.append(row)
@@ -1092,14 +1524,14 @@ def write_mode_outputs(
     preview_json.write_text(json.dumps(cards[:3], ensure_ascii=False, indent=2), encoding="utf-8")
     output_md.write_text(build_markdown(cards[: markdown_limit], len(cards), detail_mode), encoding="utf-8")
     write_csv(build_csv_rows(cards), output_csv)
-    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
-        shared_prompt_notes.write_text(build_shared_prompt_notes(), encoding="utf-8")
+    if detail_mode in PROMPT_MODES:
+        shared_prompt_notes.write_text(build_shared_prompt_notes_for_mode(detail_mode), encoding="utf-8")
 
     print(f"[{detail_mode}] Wrote jsonl:   {output_jsonl}")
     print(f"[{detail_mode}] Wrote preview: {preview_json}")
     print(f"[{detail_mode}] Wrote md:      {output_md}")
     print(f"[{detail_mode}] Wrote csv:     {output_csv}")
-    if detail_mode in {"pgg_prompt", "pgg_prompt_min"}:
+    if detail_mode in PROMPT_MODES:
         print(f"[{detail_mode}] Wrote note:    {shared_prompt_notes}")
     print(f"[{detail_mode}] Cards:         {len(cards)}")
 

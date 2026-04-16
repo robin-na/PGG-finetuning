@@ -1,0 +1,200 @@
+=== SYSTEM MESSAGE ===
+
+You forecast one complete three-player bargaining game from the human chip-trading study. Use the game rules and the specific player valuations as priors, and return only valid JSON.
+
+=== USER MESSAGE ===
+
+Forecast one complete bargaining game from the chip-bargain study.
+
+# SESSION
+- Chip family: 2-Chip Bargaining (chip2)
+- Cohort: Cohort 01-m7xia7
+- Stage: First negotiation game-negotiation1
+- Experiment label: 🟢 2p2 (n=20)
+
+# PLAYERS
+- `dog-orange-384`
+- `buffalo-red-6989`
+- `cat-pink-8143`
+
+# CHIP TYPES
+- red (`RED`): start with 10; common public range $0.10 to $1.00
+- green (`GREEN`): start with 10; common public range $0.50 to $0.50
+
+# PLAYER-SPECIFIC CHIP VALUES
+Green chips are common-value. Red/blue/purple values differ by player as shown below.
+- `dog-orange-384`: GREEN=$0.50, RED=$0.30
+- `buffalo-red-6989`: GREEN=$0.50, RED=$0.10
+- `cat-pink-8143`: GREEN=$0.50, RED=$0.40
+
+# RULES
+- This is one standalone game. Treat it independently from any other game.
+- There are 3 rounds.
+- Each round has 3 turns, one proposal per player, in the same order every round.
+- Turn order each round: `dog-orange-384`, `buffalo-red-6989`, `cat-pink-8143`
+- On a turn, the sender proposes one trade: request a quantity of one chip color and offer a quantity of a different chip color.
+- The sender cannot offer more chips than they currently hold.
+- Other active players respond simultaneously and privately with accept or decline.
+- If nobody accepts, the trade is declined.
+- If one player accepts, that player is the recipient and the trade executes.
+- If multiple players accept, one accepting player is chosen at random as the recipient and the trade executes.
+- Players see the public trade history and current chip holdings, but each player only knows their own private chip values.
+- The behavioral goal is to maximize the total value of chips held by the acting player.
+
+# PLAYER PERSONAS
+Use these provided personas as player-specific priors when reasoning about motivations and likely choices.
+
+## Shared Prompt Notes
+
+### General Interpretation Note
+
+- These profiles summarize prior survey and behavioral-task evidence about each participant.
+- Treat the cues as relative tendencies, not deterministic predictions for any single public-goods-game decision.
+- Unless a player-specific limit is listed, shared methodological caveats apply to all players.
+
+### Shared Caveats
+
+- Communication/coordination is indirect: the source tasks do not directly observe repeated group discussion.
+- Norm-enforcement cues mainly reflect unfair-split resistance and revenge/forgiveness items, not direct repeated-game sanction use.
+- Pricing, anchoring, and framing signals are secondary and relatively coarse compared with direct social-allocation behavior.
+
+### Cue Glossary
+
+### Cooperation orientation
+- Meaning: blend of one-shot sharing behavior and cooperation/prosocial self-report.
+- Built from: trust-game sending, dictator giving, cooperation/competition items, agreeableness/helpfulness items, and prosocial values.
+
+### Conditional cooperation
+- Meaning: reciprocity and fairness-threshold sensitivity rather than a repeated-game reaction function.
+- Built from: trust-game return behavior and ultimatum acceptance-threshold signals.
+
+### Norm enforcement
+- Meaning: resistance to unfair splits and revenge/low-forgiveness cues in ultimatum-like contexts.
+- Built from: ultimatum minimum acceptable amounts plus revenge/forgiveness self-report.
+
+### Generosity without return
+- Meaning: willingness to give when repayment incentives are weak or absent.
+- Built from: dictator giving, trust-game sending, and prosocial/helpfulness cues.
+
+### Exploitation caution
+- Meaning: guardedness against being taken advantage of.
+- Built from: lower trustingness, stricter acceptance thresholds, uncertainty aversion, self-reliance, and revenge tendency.
+
+### Communication/coordination
+- Meaning: indirect cue for likely social expressiveness and coordination readiness.
+- Built from: empathy, social-sensitivity/self-monitoring, and extraversion-related self-report.
+
+### Behavioral stability
+- Meaning: rule-like internal consistency across self-regulation items.
+- Built from: conscientiousness-related items, self-concept clarity, and lower volatility-related personality items.
+
+## dog-orange-384
+Headline: Cooperation-oriented, behaviorally stable, moderately empathic
+Summary: Strongest supported tendencies are cooperation-oriented, behaviorally stable, and moderately empathic. Social evidence is mixed between self-report and direct allocation tasks.
+Background: Age: 50-64; Sex assigned at birth: Female; Completed education: Some college, no degree.
+Behavioral Signature:
+- Looks more tolerant of unequal outcomes than a strong norm-enforcement type.
+- Cooperation orientation looks high rather than neutral.
+- Behavioral stability looks high rather than neutral.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $2/$5, mean trust return 62%, ultimatum offer $2/$5, minimum acceptable $0/$5, dictator give $2/$5.
+- Self-report pattern: Self-report block emphasizes empathy medium, cooperation orientation very high, uncertainty aversion medium.
+- Time and risk profile: Time/risk tasks: later-choice rate 38%, gain-lottery choice 36%, loss-lottery choice 82%, mental-accounting endorsement 50%.
+- Cognitive performance: Cognitive tasks: financial literacy 71%, numeracy 50%, cognitive reflection 57%, logical reasoning 47%.
+Transfer-Relevant Cues:
+- Cooperation orientation: medium (63), confidence medium
+- Conditional cooperation: medium (51), confidence medium
+- Norm enforcement: mixed (43), confidence medium
+- Generosity without return: medium (51), confidence medium
+- Exploitation caution: medium (48), confidence medium
+- Communication/coordination: medium (58), confidence low
+- Behavioral stability: high (67), confidence medium
+Limits:
+- Prosociality mismatch: Cooperative self-report and direct one-shot giving behavior do not fully align for this participant.
+
+## buffalo-red-6989
+Headline: Reflective, guarded against exploitation, structure-seeking
+Summary: Strongest supported tendencies are reflective, guarded against exploitation, and structure-seeking. Social evidence is mixed between self-report and direct allocation tasks.
+Background: Age: 50-64; Sex assigned at birth: Male; Completed education: College graduate/some postgrad.
+Behavioral Signature:
+- Prefers structure, closure, and predictability over open-ended uncertainty.
+- Cognitive reflection looks very high rather than neutral.
+- Logical reasoning looks high rather than neutral.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $0/$5, mean trust return 45%, ultimatum offer $2/$5, minimum acceptable $2/$5, dictator give $2/$5.
+- Self-report pattern: Self-report block emphasizes empathy medium, cooperation orientation high, uncertainty aversion high.
+- Time and risk profile: Time/risk tasks: later-choice rate 63%, gain-lottery choice 100%, loss-lottery choice 12%, mental-accounting endorsement 0%.
+- Cognitive performance: Cognitive tasks: financial literacy 100%, numeracy 92%, cognitive reflection 86%, logical reasoning 82%.
+Transfer-Relevant Cues:
+- Cooperation orientation: medium (46), confidence medium
+- Conditional cooperation: medium (50), confidence medium
+- Norm enforcement: mixed (42), confidence medium
+- Generosity without return: mixed (35), confidence medium
+- Exploitation caution: high (79), confidence medium
+- Communication/coordination: medium (51), confidence low
+- Behavioral stability: medium (58), confidence medium
+## cat-pink-8143
+Headline: More intuitive, structure-seeking, behaviorally stable
+Summary: Strongest supported tendencies are more intuitive, structure-seeking, and behaviorally stable. Social evidence is mixed between self-report and direct allocation tasks. Fairness-enforcement signals are relatively weak.
+Background: Age: 30-49; Sex assigned at birth: Male; Completed education: College graduate/some postgrad.
+Behavioral Signature:
+- Looks more tolerant of unequal outcomes than a strong norm-enforcement type.
+- Frequently prefers sooner rewards, indicating a shorter time horizon.
+- Prefers structure, closure, and predictability over open-ended uncertainty.
+- Has self-report cues consistent with reading others and adapting socially.
+Observed Anchors:
+- Direct allocation tasks: Direct social-allocation tasks: trust send $2/$5, mean trust return 35%, ultimatum offer $0/$5, minimum acceptable $1/$5, dictator give $2/$5.
+- Self-report pattern: Self-report block emphasizes empathy high, cooperation orientation high, uncertainty aversion high.
+- Time and risk profile: Time/risk tasks: later-choice rate 35%, gain-lottery choice 12%, loss-lottery choice 100%, mental-accounting endorsement 25%.
+- Cognitive performance: Cognitive tasks: financial literacy 71%, numeracy 17%, cognitive reflection 0%, logical reasoning 47%.
+Transfer-Relevant Cues:
+- Cooperation orientation: medium (58), confidence medium
+- Conditional cooperation: mixed (38), confidence medium
+- Norm enforcement: low (28), confidence medium
+- Generosity without return: medium (51), confidence medium
+- Exploitation caution: medium (57), confidence medium
+- Communication/coordination: high (68), confidence low
+- Behavioral stability: high (80), confidence medium
+Limits:
+- Communication uncertainty: Communication/coordination is distinctive here but remains indirect because it comes from self-report and social-sensitivity items rather than observed group discussion.
+
+
+# OUTPUT
+Return only JSON with this schema:
+{
+  "rounds": [
+    {
+      "round": 0,
+      "turns": [
+        {
+          "turn_index": 0,
+          "sender_id": "dog-orange-384",
+          "buy": {"GREEN": 2},
+          "sell": {"RED": 1},
+          "status": "DECLINED",
+          "recipient_id": null,
+          "responses": {"buffalo-red-6989": {"accepted": false}, "cat-pink-8143": {"accepted": false}}
+        },
+        {
+          "turn_index": 1,
+          "sender_id": "buffalo-red-6989",
+          "buy": {"RED": 3},
+          "sell": {"GREEN": 2},
+          "status": "ACCEPTED",
+          "recipient_id": "cat-pink-8143",
+          "responses": {"dog-orange-384": {"accepted": false}, "cat-pink-8143": {"accepted": true}}
+        }
+      ]
+    }
+  ]
+}
+
+Requirements:
+- Include exactly 3 round objects with `"round"` equal to 0, 1, and 2.
+- Each round must contain exactly 3 turns with `"turn_index"` equal to 0, 1, and 2.
+- `"sender_id"` must follow the provided fixed turn order.
+- `"buy"` and `"sell"` must each contain at most one chip color and a positive integer quantity when present.
+- `"status"` must be either `"ACCEPTED"` or `"DECLINED"`.
+- `"recipient_id"` must be null for declined trades and a player id for accepted trades.
+- `"responses"` must include one entry for each non-sender player with an `"accepted"` boolean.
+- Do not include explanations or markdown outside the JSON.

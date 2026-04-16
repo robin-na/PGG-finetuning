@@ -11,6 +11,7 @@ The key distinction here is:
 
 These are the datasets currently wired into `forecasting/`:
 
+- [`chip_bargain/`](./chip_bargain/)
 - [`minority_game_bret_njzas/`](./minority_game_bret_njzas/)
 - [`longitudinal_trust_game_ht863/`](./longitudinal_trust_game_ht863/)
 - [`two_stage_trust_punishment_y2hgu/`](./two_stage_trust_punishment_y2hgu/)
@@ -18,6 +19,7 @@ These are the datasets currently wired into `forecasting/`:
 
 These are read by:
 
+- [`../../forecasting/datasets/chip_bargain.py`](../../forecasting/datasets/chip_bargain.py)
 - [`../../forecasting/datasets/minority_game_bret_njzas.py`](../../forecasting/datasets/minority_game_bret_njzas.py)
 - [`../../forecasting/datasets/longitudinal_trust_game_ht863.py`](../../forecasting/datasets/longitudinal_trust_game_ht863.py)
 - [`../../forecasting/datasets/two_stage_trust_punishment_y2hgu.py`](../../forecasting/datasets/two_stage_trust_punishment_y2hgu.py)
@@ -39,7 +41,6 @@ These folders are currently parked. They are kept in the repo, but they are not 
 
 - `MobLab/`
 - `PGG/`
-- `chip_bargain/`
 - `delay_discounting_age_income/`
 - `information_sharing_motives/`
 - `social_media_moral_judgment/`

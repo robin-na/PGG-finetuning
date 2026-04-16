@@ -1,0 +1,20 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_mini/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_mini/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_mini/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/results/baseline_gpt_5_mini__vs_human_treatments",
+  "generated_game_count": 141,
+  "human_game_count": 144,
+  "generated_turn_count": 1269,
+  "human_turn_count": 1296,
+  "generated_player_count": 423,
+  "human_player_count": 432,
+  "generated_round_count": 423,
+  "human_round_count": 432,
+  "primary_metric_families": [
+    "final_surplus_ratio",
+    "proposer_net_surplus",
+    "trade_ratio",
+    "acceptance_rate"
+  ]
+}

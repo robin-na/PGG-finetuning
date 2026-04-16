@@ -35,6 +35,8 @@ Detailed PGG forecasts, if needed, should be a separate downstream step that con
 - Audit cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/audit/`
 - PGG-prompt cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/pgg_prompt/`
 - Minimal PGG-prompt cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/pgg_prompt_min/`
+- Chip-bargaining-prompt cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_prompt/`
+- Minimal chip-bargaining-prompt cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_prompt_min/`
 - Standard-mode analysis: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/standard/analysis/`
 
 ## Generation
@@ -56,7 +58,7 @@ Current full-build status:
 - profiles written: `2058`
 - validation: each profile is checked against `twin_extended_profile_schema.json` during generation
 - cards written per mode: `2058`
-- card modes: `compact`, `standard`, `audit`, `pgg_prompt`, `pgg_prompt_min`
+- card modes: `compact`, `standard`, `audit`, `pgg_prompt`, `pgg_prompt_min`, `chip_bargain_prompt`, `chip_bargain_prompt_min`
 - card validation: each card is checked against `twin_extended_profile_card_schema.json`
 
 ## Card Layer
@@ -90,6 +92,8 @@ The detail modes are intended for downstream experimentation:
 - `audit`: broader background coverage, more anchors, and fuller construction notes
 - `pgg_prompt`: prompt-facing mode for PGG augmentation; shared methodological caveats move to a separate prompt note and per-player cards keep only player-specific limits when needed
 - `pgg_prompt_min`: more token-efficient PGG augmentation mode; cue definitions and shared caveats live in one shared prompt file while player cards mostly keep values, anchors, and player-specific limits only
+- `chip_bargain_prompt`: prompt-facing mode for chip bargaining augmentation; emphasizes bargaining-relevant priors like exchange aggressiveness, acceptance threshold, search, framing sensitivity, and bookkeeping discipline
+- `chip_bargain_prompt_min`: more token-efficient chip-bargaining augmentation mode; shared bargaining caveats and cue definitions live in one shared prompt file while per-player cards keep values, anchors, and player-specific limits only
 
 ## Inclusion Rule
 

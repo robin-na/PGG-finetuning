@@ -1,0 +1,9 @@
+{
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/batch_output/baseline_gpt_5_1_pgg_aligned_v3.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_pgg_aligned_v3/request_manifest.csv",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_pgg_aligned_v3/parsed_output.jsonl",
+  "num_raw_rows": 144,
+  "num_parsed_rows": 144,
+  "parse_success_count": 139,
+  "parse_success_rate": 0.9652777777777778
+}

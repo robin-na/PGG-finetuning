@@ -188,7 +188,18 @@ def _prepare_profile_assets(
     seed: int,
     *,
     repo_root: Path,
+    requested_variants: list[str],
 ) -> dict[str, dict[str, Any]]:
+    if set(requested_variants) <= {VARIANT_BASELINE}:
+        return {
+            VARIANT_BASELINE: {
+                "profile_block_by_unit": {},
+                "assignment_file": None,
+                "cards_file": None,
+                "shared_notes_file": None,
+            }
+        }
+
     profile_sampling_root = forecasting_root / "profile_sampling"
     twin_notes_path = profile_sampling_root / "twin_prompt_assets" / "shared_prompt_notes.md"
     write_shared_notes_file(bundle.dataset_key, twin_notes_path)
@@ -435,6 +446,12 @@ def build_dataset_runs(
         sampling_seed=seed,
     )
     bundle = build_dataset_bundle(dataset_key, repo_root)
+    supported_variants = bundle.supported_variants or ALL_VARIANTS
+    unsupported_variants = [variant for variant in variants if variant not in supported_variants]
+    if unsupported_variants:
+        raise ValueError(
+            f"{dataset_key} only supports variants {supported_variants}; unsupported variants requested: {unsupported_variants}"
+        )
     bundle = _maybe_sample_bundle(
         bundle,
         max_records_per_treatment=sampling_spec.max_records_per_treatment,
@@ -445,6 +462,7 @@ def build_dataset_runs(
         forecasting_root,
         seed,
         repo_root=repo_root,
+        requested_variants=variants,
     )
     for variant in variants:
         for model in models:

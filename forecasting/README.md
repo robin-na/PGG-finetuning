@@ -5,6 +5,7 @@ This directory is the forecasting benchmark root.
 Each target experiment now has its own subfolder:
 
 - [pgg](./pgg/README.md): public goods game full-rollout forecasting
+- [chip_bargain](./chip_bargain/README.md): full-game bargaining benchmark with a dedicated multi-player builder
 - [minority_game_bret_njzas](./minority_game_bret_njzas/README.md)
 - [longitudinal_trust_game_ht863](./longitudinal_trust_game_ht863/README.md)
 - [two_stage_trust_punishment_y2hgu](./two_stage_trust_punishment_y2hgu/README.md)

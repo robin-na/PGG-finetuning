@@ -20,6 +20,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--dataset-key",
         required=True,
         choices=[
+            "chip_bargain",
             "minority_game_bret_njzas",
             "longitudinal_trust_game_ht863",
             "two_stage_trust_punishment_y2hgu",
