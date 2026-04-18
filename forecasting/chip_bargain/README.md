@@ -57,6 +57,10 @@ Current support:
   - one sampled Twin persona per player
   - the same sampled persona is reused for that player across both game stages within the same chip family
   - the active Twin card path is `chip_bargain_prompt_min`, not the older `pgg_prompt_min`
+  - an experimental descriptive alternative also exists at `chip_bargain_descriptive_prompt_min`, which keeps direct Twin trust/ultimatum/dictator task summaries and avoids extra bargaining-specific cue weighting
+  - two ablation alternatives also exist for Twin-only chip-bargain runs:
+    - `chip_bargain_no_econ_games_prompt_min`: removes the direct trust/ultimatum/dictator task summaries
+    - `chip_bargain_ultimatum_only_prompt_min`: keeps only the direct ultimatum-task summaries
 
 Not supported yet:
 

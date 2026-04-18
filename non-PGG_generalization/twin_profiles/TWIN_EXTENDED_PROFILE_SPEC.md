@@ -37,6 +37,12 @@ Detailed PGG forecasts, if needed, should be a separate downstream step that con
 - Minimal PGG-prompt cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/pgg_prompt_min/`
 - Chip-bargaining-prompt cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_prompt/`
 - Minimal chip-bargaining-prompt cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_prompt_min/`
+- Descriptive chip-bargaining-prompt cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_descriptive_prompt/`
+- Minimal descriptive chip-bargaining-prompt cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_descriptive_prompt_min/`
+- No-economic-game ablation cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_no_econ_games_prompt/`
+- Minimal no-economic-game ablation cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_no_econ_games_prompt_min/`
+- Ultimatum-only ablation cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_ultimatum_only_prompt/`
+- Minimal ultimatum-only ablation cards: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_ultimatum_only_prompt_min/`
 - Standard-mode analysis: `non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/standard/analysis/`
 
 ## Generation
@@ -58,7 +64,7 @@ Current full-build status:
 - profiles written: `2058`
 - validation: each profile is checked against `twin_extended_profile_schema.json` during generation
 - cards written per mode: `2058`
-- card modes: `compact`, `standard`, `audit`, `pgg_prompt`, `pgg_prompt_min`, `chip_bargain_prompt`, `chip_bargain_prompt_min`
+- card modes: `compact`, `standard`, `audit`, `pgg_prompt`, `pgg_prompt_min`, `chip_bargain_prompt`, `chip_bargain_prompt_min`, `chip_bargain_descriptive_prompt`, `chip_bargain_descriptive_prompt_min`, `chip_bargain_no_econ_games_prompt`, `chip_bargain_no_econ_games_prompt_min`, `chip_bargain_ultimatum_only_prompt`, `chip_bargain_ultimatum_only_prompt_min`
 - card validation: each card is checked against `twin_extended_profile_card_schema.json`
 
 ## Card Layer
@@ -94,6 +100,12 @@ The detail modes are intended for downstream experimentation:
 - `pgg_prompt_min`: more token-efficient PGG augmentation mode; cue definitions and shared caveats live in one shared prompt file while player cards mostly keep values, anchors, and player-specific limits only
 - `chip_bargain_prompt`: prompt-facing mode for chip bargaining augmentation; emphasizes bargaining-relevant priors like exchange aggressiveness, acceptance threshold, search, framing sensitivity, and bookkeeping discipline
 - `chip_bargain_prompt_min`: more token-efficient chip-bargaining augmentation mode; shared bargaining caveats and cue definitions live in one shared prompt file while per-player cards keep values, anchors, and player-specific limits only
+- `chip_bargain_descriptive_prompt`: prompt-facing mode for chip bargaining augmentation that avoids new bargaining composites and instead surfaces direct Twin trust/ultimatum/dictator task summaries with scope notes
+- `chip_bargain_descriptive_prompt_min`: more token-efficient descriptive chip-bargaining mode; shared notes explain the direct task signals while per-player cards keep values, anchors, and player-specific limits only
+- `chip_bargain_no_econ_games_prompt`: ablation mode that removes the direct trust/ultimatum/dictator task summaries and leaves only broader non-social context, anchors, and limits
+- `chip_bargain_no_econ_games_prompt_min`: more token-efficient no-economic-game ablation mode
+- `chip_bargain_ultimatum_only_prompt`: ablation mode that keeps only the direct ultimatum-task summaries and removes trust/dictator task summaries
+- `chip_bargain_ultimatum_only_prompt_min`: more token-efficient ultimatum-only ablation mode
 
 ## Inclusion Rule
 

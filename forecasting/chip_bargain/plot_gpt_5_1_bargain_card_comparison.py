@@ -22,13 +22,19 @@ RUNS = [
     "baseline_gpt_5_1_pgg_aligned_v3",
     "twin_sampled_unadjusted_seed_0_gpt_5_1_pgg_aligned_v3",
     "twin_sampled_unadjusted_seed_0_gpt_5_1_bargain_card_v1",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1_descriptive_card_v1",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1_no_econ_games_v1",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1",
 ]
 RUN_LABELS = {
     "baseline_gpt_5_1_pgg_aligned_v3": "Baseline",
     "twin_sampled_unadjusted_seed_0_gpt_5_1_pgg_aligned_v3": "Twin Unadjusted",
     "twin_sampled_unadjusted_seed_0_gpt_5_1_bargain_card_v1": "Twin Bargain Card",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1_descriptive_card_v1": "Twin Descriptive",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1_no_econ_games_v1": "Twin No Econ Games",
+    "twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1": "Twin Ultimatum Only",
 }
-RUN_COLORS = ["#4C78A8", "#F4A3A3", "#E45756"]
+RUN_COLORS = ["#4C78A8", "#F4A3A3", "#E45756", "#72B7B2", "#54A24B", "#B279A2"]
 
 
 def _mean_and_stderr(values: pd.Series) -> tuple[float, float]:
@@ -267,7 +273,7 @@ def _render_figure(
     output_path: Path,
     title: str,
 ) -> None:
-    fig, axes = plt.subplots(len(metrics), 1, figsize=(7.6, 3.2 * len(metrics)), constrained_layout=False)
+    fig, axes = plt.subplots(len(metrics), 1, figsize=(10.8, 3.2 * len(metrics)), constrained_layout=False)
     axes = np.asarray(axes).reshape(len(metrics))
     fig.subplots_adjust(top=0.88, bottom=0.09, left=0.19, right=0.98, hspace=0.38)
 
@@ -297,14 +303,14 @@ def _render_figure(
             Line2D([0], [0], color=macro.RANDOM_BASELINE_COLOR, linestyle="--", linewidth=1.5)
         ]
         legend_labels = list(legend_labels) + ["Random Baseline"]
-        fig.legend(legend_handles, legend_labels, loc="upper center", bbox_to_anchor=(0.5, 0.95), ncol=5, frameon=False)
+        fig.legend(legend_handles, legend_labels, loc="upper center", bbox_to_anchor=(0.5, 0.95), ncol=8, frameon=False)
     fig.suptitle(title, fontsize=14, y=0.99)
     fig.savefig(output_path, dpi=220, bbox_inches="tight")
     plt.close(fig)
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Plot chip-bargain gpt-5.1 baseline vs old/new Twin-card comparisons.")
+    parser = argparse.ArgumentParser(description="Plot chip-bargain gpt-5.1 baseline vs Twin-card comparisons.")
     parser.add_argument("--bootstrap-iters", type=int, default=300)
     parser.add_argument("--ceiling-method", choices=["bootstrap", "split_half"], default="split_half")
     parser.add_argument("--rng-seed", type=int, default=29)

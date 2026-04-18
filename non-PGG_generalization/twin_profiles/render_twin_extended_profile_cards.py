@@ -24,10 +24,44 @@ DETAIL_MODES = (
     "pgg_prompt_min",
     "chip_bargain_prompt",
     "chip_bargain_prompt_min",
+    "chip_bargain_descriptive_prompt",
+    "chip_bargain_descriptive_prompt_min",
+    "chip_bargain_no_econ_games_prompt",
+    "chip_bargain_no_econ_games_prompt_min",
+    "chip_bargain_ultimatum_only_prompt",
+    "chip_bargain_ultimatum_only_prompt_min",
+    "chip_bargain_selective_prompt",
+    "chip_bargain_selective_prompt_min",
 )
 
 PGG_PROMPT_MODES = {"pgg_prompt", "pgg_prompt_min"}
-CHIP_BARGAIN_PROMPT_MODES = {"chip_bargain_prompt", "chip_bargain_prompt_min"}
+CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES = {
+    "chip_bargain_descriptive_prompt",
+    "chip_bargain_descriptive_prompt_min",
+}
+CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES = {
+    "chip_bargain_no_econ_games_prompt",
+    "chip_bargain_no_econ_games_prompt_min",
+}
+CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES = {
+    "chip_bargain_ultimatum_only_prompt",
+    "chip_bargain_ultimatum_only_prompt_min",
+}
+CHIP_BARGAIN_DIRECT_SIGNAL_PROMPT_MODES = (
+    CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES
+)
+CHIP_BARGAIN_COMPOSITE_PROMPT_MODES = {
+    "chip_bargain_prompt",
+    "chip_bargain_prompt_min",
+    "chip_bargain_selective_prompt",
+    "chip_bargain_selective_prompt_min",
+}
+CHIP_BARGAIN_PROMPT_MODES = {
+    *CHIP_BARGAIN_COMPOSITE_PROMPT_MODES,
+    *CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES,
+    *CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES,
+    *CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES,
+}
 PROMPT_MODES = PGG_PROMPT_MODES | CHIP_BARGAIN_PROMPT_MODES
 
 MODE_SETTINGS = {
@@ -73,6 +107,54 @@ MODE_SETTINGS = {
         "anchors_max": 4,
         "limits_max": 2,
     },
+    "chip_bargain_descriptive_prompt": {
+        "background_max": 4,
+        "signature_max": 5,
+        "anchors_max": 5,
+        "limits_max": 2,
+    },
+    "chip_bargain_descriptive_prompt_min": {
+        "background_max": 3,
+        "signature_max": 4,
+        "anchors_max": 4,
+        "limits_max": 2,
+    },
+    "chip_bargain_no_econ_games_prompt": {
+        "background_max": 4,
+        "signature_max": 5,
+        "anchors_max": 5,
+        "limits_max": 2,
+    },
+    "chip_bargain_no_econ_games_prompt_min": {
+        "background_max": 3,
+        "signature_max": 4,
+        "anchors_max": 4,
+        "limits_max": 2,
+    },
+    "chip_bargain_ultimatum_only_prompt": {
+        "background_max": 4,
+        "signature_max": 5,
+        "anchors_max": 5,
+        "limits_max": 2,
+    },
+    "chip_bargain_ultimatum_only_prompt_min": {
+        "background_max": 3,
+        "signature_max": 4,
+        "anchors_max": 4,
+        "limits_max": 2,
+    },
+    "chip_bargain_selective_prompt": {
+        "background_max": 4,
+        "signature_max": 5,
+        "anchors_max": 5,
+        "limits_max": 2,
+    },
+    "chip_bargain_selective_prompt_min": {
+        "background_max": 3,
+        "signature_max": 4,
+        "anchors_max": 4,
+        "limits_max": 2,
+    },
 }
 
 CUE_ORDER = [
@@ -99,6 +181,12 @@ CUE_DISPLAY_NAMES = {
     "anchor_reference_sensitivity": "Anchor/reference sensitivity",
     "bookkeeping_discipline": "Bookkeeping discipline",
     "strategic_patience": "Strategic patience",
+    "trust_send_amount": "Trust-game send amount",
+    "trust_return_share_mean": "Trust-game return share",
+    "ultimatum_offer_to_other": "Ultimatum offer to other",
+    "ultimatum_min_acceptable_to_self": "Ultimatum minimum acceptable to self",
+    "ultimatum_rejection_rate": "Ultimatum rejection rate",
+    "dictator_offer_to_other": "Dictator offer to other",
 }
 
 CHIP_BARGAIN_CUE_ORDER = [
@@ -109,6 +197,21 @@ CHIP_BARGAIN_CUE_ORDER = [
     "bookkeeping_discipline",
     "strategic_patience",
     "exploitation_caution",
+]
+
+CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_ORDER = [
+    "trust_send_amount",
+    "trust_return_share_mean",
+    "ultimatum_offer_to_other",
+    "ultimatum_min_acceptable_to_self",
+    "ultimatum_rejection_rate",
+    "dictator_offer_to_other",
+]
+
+CHIP_BARGAIN_ULTIMATUM_ONLY_SIGNAL_ORDER = [
+    "ultimatum_offer_to_other",
+    "ultimatum_min_acceptable_to_self",
+    "ultimatum_rejection_rate",
 ]
 
 BACKGROUND_ORDER = [
@@ -182,10 +285,97 @@ CHIP_BARGAIN_PROMPT_SHARED_NOTE = [
 ]
 
 CHIP_BARGAIN_PROMPT_SHARED_CAVEATS = [
-    "Twin does not directly observe repeated three-player bargaining, offer-counteroffer dynamics, or inventory-constrained exchange.",
+    "The source tasks do not directly observe repeated three-player bargaining, offer-counteroffer dynamics, or inventory-constrained exchange.",
     "Bookkeeping and strategic-calibration cues are inferred indirectly from numeracy, reasoning, search, pricing, and self-regulation evidence.",
     "Acceptance-threshold and guardedness cues borrow from ultimatum/trust/consumer tasks, so they should be read as bargaining priors rather than literal trade rules.",
 ]
+
+CHIP_BARGAIN_DESCRIPTIVE_PROMPT_SHARED_NOTE = [
+    "These profiles summarize prior survey and behavioral-task evidence about each participant.",
+    "The task signals below are direct summaries from one-shot trust, ultimatum, and dictator tasks, not bargaining forecasts.",
+    "Use them as descriptive priors about social allocation tendencies, not as literal chip-bargaining rules.",
+]
+
+CHIP_BARGAIN_DESCRIPTIVE_PROMPT_SHARED_CAVEATS = [
+    "The source tasks do not directly observe repeated three-player bargaining, offer-counteroffer dynamics, or inventory-constrained exchange.",
+    "A one-shot ultimatum threshold or trust choice should not be read as a fully strategic bargaining reservation value.",
+    "These signals are intentionally descriptive; they avoid extra bargaining-specific composite weighting.",
+]
+
+CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_SHARED_NOTE = [
+    "These profiles summarize prior survey and behavioral-task evidence about each participant.",
+    "This ablation intentionally omits the direct trust, ultimatum, and dictator task summaries.",
+    "Use the remaining context, anchors, and limits as weak prior background only.",
+]
+
+CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_SHARED_CAVEATS = [
+    "The direct one-shot trust, ultimatum, and dictator-game evidence is intentionally removed in this ablation.",
+    "Any remaining context comes from broader non-social economic tasks, cognitive tasks, heuristics, pricing, and questionnaire material.",
+    "Because the most direct social-allocation evidence is missing, this card should be interpreted as weak background context rather than a strong behavioral prior.",
+]
+
+CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_SHARED_NOTE = [
+    "These profiles summarize prior survey and behavioral-task evidence about each participant.",
+    "The task signals below are direct summaries from the one-shot ultimatum task only.",
+    "Use them as descriptive priors about offer fairness and rejection thresholds, not as literal chip-bargaining rules.",
+]
+
+CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_SHARED_CAVEATS = [
+    "The source task does not directly observe repeated three-player bargaining, offer-counteroffer dynamics, or inventory-constrained exchange.",
+    "A one-shot ultimatum threshold should not be read as a fully strategic bargaining reservation value.",
+    "This ablation removes trust-game and dictator-game summaries so only the ultimatum-style signal remains.",
+]
+
+CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_SPECS = {
+    "trust_send_amount": {
+        "meaning": "Observed amount sent in the one-shot trust game when acting as sender.",
+        "built_from": [
+            "Direct trust-game send choice only.",
+            "Higher values indicate more willingness to initiate a trusting transfer in that task.",
+        ],
+        "scope_note": "This is a direct one-shot trust task measure, not a repeated bargaining offer policy.",
+    },
+    "trust_return_share_mean": {
+        "meaning": "Average share returned in the one-shot trust game when acting as receiver.",
+        "built_from": [
+            "Direct trust-game return choices only.",
+            "Higher values indicate more reciprocity in that task.",
+        ],
+        "scope_note": "This is a direct one-shot reciprocity measure, not a bargaining acceptance rule.",
+    },
+    "ultimatum_offer_to_other": {
+        "meaning": "Observed ultimatum offer made to the other player in the one-shot ultimatum task.",
+        "built_from": [
+            "Direct ultimatum proposer choice only.",
+            "Higher values indicate offering the other player a larger share in that task.",
+        ],
+        "scope_note": "This is a direct one-shot ultimatum proposer measure, not a repeated bargaining opening strategy.",
+    },
+    "ultimatum_min_acceptable_to_self": {
+        "meaning": "Minimum amount to self that was accepted in the one-shot ultimatum responder task.",
+        "built_from": [
+            "Direct ultimatum responder choices only.",
+            "Higher values indicate a stricter unfair-split threshold in that task.",
+        ],
+        "scope_note": "This is a direct one-shot ultimatum threshold, not a literal chip-bargaining reservation value.",
+    },
+    "ultimatum_rejection_rate": {
+        "meaning": "Fraction of ultimatum offers rejected in the one-shot ultimatum responder task.",
+        "built_from": [
+            "Direct ultimatum responder choices only.",
+            "Higher values indicate more frequent rejection of offered splits in that task.",
+        ],
+        "scope_note": "This is a direct one-shot ultimatum rejection summary, not a repeated bargaining friction parameter.",
+    },
+    "dictator_offer_to_other": {
+        "meaning": "Observed amount given to the other player in the one-shot dictator task.",
+        "built_from": [
+            "Direct dictator allocation choice only.",
+            "Higher values indicate more unilateral giving in that task.",
+        ],
+        "scope_note": "This is a direct one-shot allocation measure, not a bargaining concession policy.",
+    },
+}
 
 CHIP_BARGAIN_CUE_SPECS = {
     "exchange_aggressiveness": {
@@ -282,6 +472,65 @@ CHIP_BARGAIN_CUE_SPECS = {
             {"path": ("pgg_relevant_cues", "norm_enforcement"), "weight": 0.20, "invert": False},
         ],
     },
+}
+
+CHIP_BARGAIN_SELECTIVE_CUE_SPECS = {
+    "exchange_aggressiveness": {
+        "meaning": "Tendency to push for self-favoring exchange rates rather than settle quickly for balanced terms.",
+        "built_from": [
+            "Competition orientation and direct low-offer behavior are emphasized more than generic prosociality.",
+            "Sharper proxy for opening toughness, still not direct evidence from repeated bargaining rounds.",
+        ],
+        "scope_note": "This selective variant reduces generic prosociality weight and leans more on direct ultimatum-style offer behavior.",
+        "components": [
+            {"path": ("derived_dimensions", "self_regulation_and_affect", "competition_orientation"), "weight": 0.35, "invert": False},
+            {"observed_feature": "ultimatum_offer_to_other", "weight": 0.30, "invert": True},
+            {"path": ("derived_dimensions", "consumer_style", "purchase_inhibition"), "weight": 0.20, "invert": True},
+            {"path": ("derived_dimensions", "self_regulation_and_affect", "cooperation_orientation"), "weight": 0.10, "invert": True},
+            {"path": ("pgg_relevant_cues", "generosity_without_return"), "weight": 0.05, "invert": True},
+        ],
+    },
+    "acceptance_threshold": {
+        "meaning": "How selective the participant is likely to be when deciding whether an incoming offer is good enough to take.",
+        "built_from": [
+            "Direct ultimatum minimum-acceptable and rejection behavior are emphasized over generic prosociality.",
+            "Sharper proxy for holdout and rejection tendency under weak terms.",
+        ],
+        "scope_note": "This selective variant is deliberately anchored more strongly to ultimatum-style thresholds and rejection behavior.",
+        "components": [
+            {"observed_feature": "ultimatum_min_acceptable_to_self", "weight": 0.45, "invert": False},
+            {"observed_feature": "ultimatum_rejection_rate", "weight": 0.25, "invert": False},
+            {"path": ("pgg_relevant_cues", "exploitation_caution"), "weight": 0.15, "invert": False},
+            {"path": ("derived_dimensions", "self_regulation_and_affect", "uncertainty_aversion"), "weight": 0.10, "invert": False},
+            {"path": ("derived_dimensions", "consumer_style", "purchase_inhibition"), "weight": 0.05, "invert": False},
+        ],
+    },
+    "search_exploration": CHIP_BARGAIN_CUE_SPECS["search_exploration"],
+    "anchor_reference_sensitivity": CHIP_BARGAIN_CUE_SPECS["anchor_reference_sensitivity"],
+    "bookkeeping_discipline": CHIP_BARGAIN_CUE_SPECS["bookkeeping_discipline"],
+    "strategic_patience": CHIP_BARGAIN_CUE_SPECS["strategic_patience"],
+    "exploitation_caution": {
+        "meaning": "Guardedness against deals that feel exploitative, one-sided, or strategically unsafe.",
+        "built_from": [
+            "Direct ultimatum threshold and rejection behavior are emphasized, together with uncertainty aversion.",
+            "Useful for bargaining friction and suspicion about counterpart terms.",
+        ],
+        "scope_note": "This selective variant puts more weight on direct threshold/rejection evidence from Twin social-game tasks.",
+        "components": [
+            {"observed_feature": "ultimatum_min_acceptable_to_self", "weight": 0.30, "invert": False},
+            {"observed_feature": "ultimatum_rejection_rate", "weight": 0.20, "invert": False},
+            {"path": ("derived_dimensions", "self_regulation_and_affect", "uncertainty_aversion"), "weight": 0.20, "invert": False},
+            {"path": ("pgg_relevant_cues", "exploitation_caution"), "weight": 0.15, "invert": False},
+            {"observed_feature": "trust_send_amount", "weight": 0.15, "invert": True},
+        ],
+    },
+}
+
+CHIP_BARGAIN_PROMPT_MODE_TO_SPECS = {
+    "chip_bargain_prompt": CHIP_BARGAIN_CUE_SPECS,
+    "chip_bargain_prompt_min": CHIP_BARGAIN_CUE_SPECS,
+    "chip_bargain_selective_prompt": CHIP_BARGAIN_SELECTIVE_CUE_SPECS,
+    "chip_bargain_selective_prompt_min": CHIP_BARGAIN_SELECTIVE_CUE_SPECS,
 }
 
 CHIP_BARGAIN_HEADLINE_FAMILIES = {
@@ -446,10 +695,10 @@ def cue_meaning_text(cue: str, payload: Dict[str, Any], detail_mode: str) -> str
             "behavioral_stability": " Rule-like consistency across self-regulation items.",
         }
         return base + prompt_meanings[cue]
-    if detail_mode == "chip_bargain_prompt_min":
+    if detail_mode in {"chip_bargain_prompt_min", "chip_bargain_selective_prompt_min"}:
         return ""
-    if detail_mode == "chip_bargain_prompt":
-        return base + " " + CHIP_BARGAIN_CUE_SPECS[cue]["meaning"]
+    if detail_mode in {"chip_bargain_prompt", "chip_bargain_selective_prompt"}:
+        return base + " " + chip_bargain_cue_specs_for_mode(detail_mode)[cue]["meaning"]
     if detail_mode == "compact":
         compact_meanings = {
             "cooperation_orientation": " Blend of one-shot sharing behavior and cooperation/prosocial self-report.",
@@ -468,7 +717,7 @@ def cue_components(cue: str, detail_mode: str) -> List[str]:
     if detail_mode in PGG_PROMPT_MODES:
         return []
     if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
-        return CHIP_BARGAIN_CUE_SPECS[cue]["built_from"]
+        return chip_bargain_cue_specs_for_mode(detail_mode)[cue]["built_from"]
     if detail_mode == "compact":
         return CUE_COMPONENTS[cue][:2]
     if detail_mode == "audit":
@@ -657,34 +906,102 @@ def confidence_from_rank(value: float) -> str:
     return "low"
 
 
-def bargaining_component_value(profile: Dict[str, Any], component: Dict[str, Any]) -> Dict[str, Any]:
-    payload = get_nested(profile, component["path"])
-    if payload is None:
-        raise KeyError(f"Missing bargaining component path: {component['path']}")
-    score = int(payload["score_0_to_100"])
+def social_game_feature_map(profile: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+    out: Dict[str, Dict[str, Any]] = {}
+    for item in profile["observed_in_twin"]["social_game_behavior"]["summary_features"]:
+        out[item["name"]] = item
+    return out
+
+
+def chip_bargain_cue_specs_for_mode(detail_mode: str) -> Dict[str, Dict[str, Any]]:
+    try:
+        return CHIP_BARGAIN_PROMPT_MODE_TO_SPECS[detail_mode]
+    except KeyError as exc:
+        raise ValueError(f"Unsupported chip-bargain detail mode: {detail_mode}") from exc
+
+
+def chip_bargain_reference_mode(detail_mode: str) -> str:
+    if detail_mode == "chip_bargain_prompt_min":
+        return "chip_bargain_prompt"
+    if detail_mode == "chip_bargain_descriptive_prompt_min":
+        return "chip_bargain_descriptive_prompt"
+    if detail_mode == "chip_bargain_no_econ_games_prompt_min":
+        return "chip_bargain_no_econ_games_prompt"
+    if detail_mode == "chip_bargain_ultimatum_only_prompt_min":
+        return "chip_bargain_ultimatum_only_prompt"
+    if detail_mode == "chip_bargain_selective_prompt_min":
+        return "chip_bargain_selective_prompt"
+    return detail_mode
+
+
+def is_chip_bargain_direct_signal_mode(detail_mode: str) -> bool:
+    return detail_mode in CHIP_BARGAIN_DIRECT_SIGNAL_PROMPT_MODES
+
+
+def bargaining_component_value(profile: Dict[str, Any], component: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    if "path" in component:
+        payload = get_nested(profile, component["path"])
+        if payload is None:
+            return None
+        score = int(payload["score_0_to_100"])
+        confidence = payload.get("confidence", "low")
+        evidence_refs = payload.get("evidence_refs", [])
+    elif "observed_feature" in component:
+        feature = social_game_feature_map(profile).get(component["observed_feature"])
+        if feature is None:
+            return None
+        value = feature.get("value", {})
+        if value.get("score_0_to_100") is None:
+            return None
+        score = int(value["score_0_to_100"])
+        confidence = component.get("confidence", "high")
+        evidence_refs = feature.get("evidence_refs", [])
+    else:
+        raise KeyError(f"Unsupported bargaining component: {component}")
     if component.get("invert"):
         score = 100 - score
     return {
         "score": score,
-        "confidence": payload.get("confidence", "low"),
-        "evidence_refs": payload.get("evidence_refs", []),
-        "path": component["path"],
+        "confidence": confidence,
+        "evidence_refs": evidence_refs,
+        "path": component.get("path", ("observed_in_twin", "social_game_behavior", component.get("observed_feature"))),
     }
 
 
 def build_chip_bargain_cue_payload(profile: Dict[str, Any], cue: str) -> Dict[str, Any]:
-    spec = CHIP_BARGAIN_CUE_SPECS[cue]
-    component_values = [bargaining_component_value(profile, component) for component in spec["components"]]
-    total_weight = sum(component["weight"] for component in spec["components"])
+    return build_chip_bargain_cue_payload_for_mode(profile, cue, "chip_bargain_prompt")
+
+
+def build_chip_bargain_cue_payload_for_mode(profile: Dict[str, Any], cue: str, detail_mode: str) -> Dict[str, Any]:
+    spec = chip_bargain_cue_specs_for_mode(detail_mode)[cue]
+    active_pairs = [
+        (bargaining_component_value(profile, component), component)
+        for component in spec["components"]
+    ]
+    active_pairs = [(value, component) for value, component in active_pairs if value is not None]
+    if not active_pairs:
+        return {
+            "cue": cue,
+            "label": "mixed",
+            "score_0_to_100": 50,
+            "confidence": "low",
+            "meaning_here": spec["meaning"],
+            "constructed_from": spec["built_from"],
+            "scope_note": spec["scope_note"],
+            "evidence_refs": [],
+        }
+    component_values = [value for value, _ in active_pairs]
+    components = [component for _, component in active_pairs]
+    total_weight = sum(component["weight"] for component in components)
     score = int(
         round(
-            sum(value["score"] * component["weight"] for value, component in zip(component_values, spec["components"]))
+            sum(value["score"] * component["weight"] for value, component in zip(component_values, components))
             / total_weight
         )
     )
     confidence_rank_value = sum(
         confidence_rank(value["confidence"]) * component["weight"]
-        for value, component in zip(component_values, spec["components"])
+        for value, component in zip(component_values, components)
     ) / total_weight
     evidence_refs: List[str] = []
     for value in component_values:
@@ -701,9 +1018,57 @@ def build_chip_bargain_cue_payload(profile: Dict[str, Any], cue: str) -> Dict[st
     }
 
 
+def build_chip_bargain_descriptive_signal_payloads(
+    profile: Dict[str, Any],
+    signal_order: Sequence[str] = CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_ORDER,
+) -> List[Dict[str, Any]]:
+    fmap = social_game_feature_map(profile)
+    out: List[Dict[str, Any]] = []
+    for feature_name in signal_order:
+        feature = fmap.get(feature_name)
+        if feature is None:
+            continue
+        value = feature.get("value", {})
+        score = value.get("score_0_to_100")
+        label = value.get("label")
+        if score is None or label in {None, "unknown"}:
+            continue
+        spec = CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_SPECS[feature_name]
+        out.append(
+            {
+                "cue": feature_name,
+                "label": label,
+                "score_0_to_100": int(score),
+                "confidence": "high",
+                "meaning_here": spec["meaning"],
+                "constructed_from": spec["built_from"],
+                "scope_note": spec["scope_note"],
+                "evidence_refs": feature.get("evidence_refs", []),
+            }
+        )
+    return out
+
+
 def build_chip_bargain_transfer_relevance(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, Any]]:
-    out = [build_chip_bargain_cue_payload(profile, cue) for cue in CHIP_BARGAIN_CUE_ORDER]
-    if detail_mode == "chip_bargain_prompt_min":
+    if detail_mode in CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES:
+        out = build_chip_bargain_descriptive_signal_payloads(profile)
+        if detail_mode == "chip_bargain_descriptive_prompt_min":
+            for item in out:
+                item["meaning_here"] = ""
+        return out
+    if detail_mode in CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES:
+        return []
+    if detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
+        out = build_chip_bargain_descriptive_signal_payloads(
+            profile,
+            signal_order=CHIP_BARGAIN_ULTIMATUM_ONLY_SIGNAL_ORDER,
+        )
+        if detail_mode == "chip_bargain_ultimatum_only_prompt_min":
+            for item in out:
+                item["meaning_here"] = ""
+        return out
+    out = [build_chip_bargain_cue_payload_for_mode(profile, cue, detail_mode) for cue in CHIP_BARGAIN_CUE_ORDER]
+    if detail_mode in {"chip_bargain_prompt_min", "chip_bargain_selective_prompt_min"}:
         for item in out:
             item["meaning_here"] = ""
     return out
@@ -793,7 +1158,37 @@ def pick_headline_descriptors(profile: Dict[str, Any]) -> List[str]:
 
 
 def pick_chip_bargain_headline_descriptors(profile: Dict[str, Any]) -> List[str]:
-    payloads = build_chip_bargain_transfer_relevance(profile, "chip_bargain_prompt")
+    return pick_chip_bargain_headline_descriptors_for_mode(profile, "chip_bargain_prompt")
+
+
+def build_headline(profile: Dict[str, Any], detail_mode: str) -> str:
+    if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
+        if detail_mode in CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES:
+            return "No direct social-game signals, broader context only, ablation card"
+        if detail_mode in (CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES):
+            payloads = build_chip_bargain_transfer_relevance(profile, chip_bargain_reference_mode(detail_mode))
+            payloads.sort(
+                key=lambda item: (
+                    score_distance(item),
+                    confidence_rank(item.get("confidence", "low")),
+                ),
+                reverse=True,
+            )
+            descriptors = [
+                f"{CUE_DISPLAY_NAMES[item['cue']].lower()} {label_pretty(item['label'])}"
+                for item in payloads[:3]
+            ]
+            while len(descriptors) < 3:
+                descriptors.append("mixed evidence")
+        else:
+            descriptors = pick_chip_bargain_headline_descriptors_for_mode(profile, chip_bargain_reference_mode(detail_mode))
+        return ", ".join([descriptors[0].capitalize(), descriptors[1], descriptors[2]])
+    descriptors = pick_headline_descriptors(profile)
+    return ", ".join([descriptors[0].capitalize(), descriptors[1], descriptors[2]])
+
+
+def pick_chip_bargain_headline_descriptors_for_mode(profile: Dict[str, Any], detail_mode: str) -> List[str]:
+    payloads = build_chip_bargain_transfer_relevance(profile, detail_mode)
     candidates: List[Tuple[int, int, int, str, str]] = []
     for payload in payloads:
         phrase = CHIP_BARGAIN_HEADLINE_PHRASES[payload["cue"]].get(payload["label"])
@@ -823,14 +1218,6 @@ def pick_chip_bargain_headline_descriptors(profile: Dict[str, Any]) -> List[str]
     while len(chosen) < 3:
         chosen.append("mixed")
     return chosen[:3]
-
-
-def build_headline(profile: Dict[str, Any], detail_mode: str) -> str:
-    if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
-        descriptors = pick_chip_bargain_headline_descriptors(profile)
-        return ", ".join([descriptors[0].capitalize(), descriptors[1], descriptors[2]])
-    descriptors = pick_headline_descriptors(profile)
-    return ", ".join([descriptors[0].capitalize(), descriptors[1], descriptors[2]])
 
 
 def build_background(profile: Dict[str, Any], detail_mode: str) -> Dict[str, Any]:
@@ -951,7 +1338,12 @@ def build_decision_style_section(profile: Dict[str, Any], detail_mode: str) -> D
 
 def build_summary(profile: Dict[str, Any], detail_mode: str) -> str:
     if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
-        payloads = build_chip_bargain_transfer_relevance(profile, "chip_bargain_prompt")
+        if detail_mode in CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES:
+            return (
+                "This ablation omits the direct trust, ultimatum, and dictator-task summaries. "
+                "Use the remaining background and non-social context only as weak prior evidence."
+            )
+        payloads = build_chip_bargain_transfer_relevance(profile, chip_bargain_reference_mode(detail_mode))
         payloads.sort(
             key=lambda item: (
                 score_distance(item),
@@ -961,9 +1353,19 @@ def build_summary(profile: Dict[str, Any], detail_mode: str) -> str:
         )
         descriptors = [CUE_DISPLAY_NAMES[item["cue"]].lower() for item in payloads[:3]]
         descriptor_text = ", ".join(descriptors[:-1]) + f", and {descriptors[-1]}" if len(descriptors) >= 3 else ", ".join(descriptors)
+        if detail_mode in CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES:
+            return (
+                f"Most visible direct task signals are in {descriptor_text}. "
+                "These are observed one-shot trust, ultimatum, and dictator-task summaries, so they should be used as descriptive priors rather than as literal bargaining rules."
+            )
+        if detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
+            return (
+                f"Most visible direct task signals are in {descriptor_text}. "
+                "These are observed one-shot ultimatum-task summaries only, so they should be used as descriptive priors rather than as literal bargaining rules."
+            )
         return (
             f"Strongest bargaining-relevant tendencies are in {descriptor_text}. "
-            "These cues are derived from Twin search, pricing, heuristics, self-regulation, and social-allocation tasks, "
+            "These cues are derived from search, pricing, heuristics, self-regulation, and social-allocation tasks, "
             "so they should be used as priors about bargaining style rather than as direct evidence from repeated three-player negotiation."
         )
     descriptors = pick_headline_descriptors(profile)
@@ -1042,6 +1444,32 @@ def anchor_from_social_game(block: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     )
     return {
         "title": "Direct allocation tasks",
+        "detail": detail,
+        "evidence_refs": list(dict.fromkeys(refs)),
+    }
+
+
+def anchor_from_ultimatum_only(block: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    fmap = feature_map(block)
+    ult_offer = fmap.get("ultimatum_offer_to_other", {}).get("value", {}).get("raw")
+    ult_min = fmap.get("ultimatum_min_acceptable_to_self", {}).get("value", {}).get("raw")
+    ult_reject = fmap.get("ultimatum_rejection_rate", {}).get("value", {}).get("raw")
+    if all(value is None for value in [ult_offer, ult_min, ult_reject]):
+        return None
+    refs: List[str] = []
+    for key in [
+        "ultimatum_offer_to_other",
+        "ultimatum_min_acceptable_to_self",
+        "ultimatum_rejection_rate",
+    ]:
+        if key in fmap:
+            refs.extend(fmap[key]["evidence_refs"])
+    detail = (
+        f"Direct ultimatum task: offer {money(ult_offer)}/$5, "
+        f"minimum acceptable {money(ult_min)}/$5, rejection rate {pct(ult_reject)}."
+    )
+    return {
+        "title": "Direct ultimatum task",
         "detail": detail,
         "evidence_refs": list(dict.fromkeys(refs)),
     }
@@ -1175,8 +1603,15 @@ def anchor_from_open_text(block: Dict[str, Any]) -> Optional[Dict[str, Any]]:
 
 def build_observed_anchors(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, Any]]:
     observed = profile["observed_in_twin"]
+    social_anchor = None
+    if detail_mode in CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES:
+        social_anchor = None
+    elif detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
+        social_anchor = anchor_from_ultimatum_only(observed["social_game_behavior"])
+    else:
+        social_anchor = anchor_from_social_game(observed["social_game_behavior"])
     anchors = [
-        anchor_from_social_game(observed["social_game_behavior"]),
+        social_anchor,
         anchor_from_personality(observed["personality_and_self_report"]),
         anchor_from_econ(observed["economic_preferences_non_social"]),
         anchor_from_cognition(observed["cognitive_performance"]),
@@ -1210,12 +1645,33 @@ def build_transfer_relevance(profile: Dict[str, Any], detail_mode: str) -> List[
 
 
 def build_limits(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, Any]]:
+    def chip_bargain_uncertainties() -> List[Dict[str, Any]]:
+        items: List[Dict[str, Any]] = []
+        for item in profile["uncertainties"][: mode_setting(detail_mode, "limits_max")]:
+            cloned = dict(item)
+            if cloned.get("topic") == "Transfer scope":
+                cloned["note"] = (
+                    "This profile stops at transfer-relevant cues. It does not directly predict how the participant "
+                    "would behave in a specific chip-bargaining game."
+                )
+            items.append(cloned)
+        return items
+
     if detail_mode not in PROMPT_MODES:
         return profile["uncertainties"][: mode_setting(detail_mode, "limits_max")]
 
     if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
+        if detail_mode in (
+            CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES
+            | CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES
+            | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES
+        ):
+            return chip_bargain_uncertainties()
         limits: List[Dict[str, Any]] = []
-        cues = {item["cue"]: item for item in build_chip_bargain_transfer_relevance(profile, "chip_bargain_prompt")}
+        cues = {
+            item["cue"]: item
+            for item in build_chip_bargain_transfer_relevance(profile, chip_bargain_reference_mode(detail_mode))
+        }
         if (
             cues["search_exploration"]["score_0_to_100"] >= 65
             and cues["bookkeeping_discipline"]["score_0_to_100"] <= 45
@@ -1289,6 +1745,9 @@ def build_limits(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, An
 
 
 def build_card(profile: Dict[str, Any], detail_mode: str) -> Dict[str, Any]:
+    behavioral_signature = []
+    if detail_mode not in (CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES):
+        behavioral_signature = profile["behavioral_signature"][: mode_setting(detail_mode, "signature_max")]
     return {
         "profile_card_version": "twin_extended_profile_card_v4",
         "detail_mode": detail_mode,
@@ -1300,7 +1759,7 @@ def build_card(profile: Dict[str, Any], detail_mode: str) -> Dict[str, Any]:
         "headline": build_headline(profile, detail_mode),
         "summary": build_summary(profile, detail_mode),
         "background": build_background(profile, detail_mode),
-        "behavioral_signature": profile["behavioral_signature"][: mode_setting(detail_mode, "signature_max")],
+        "behavioral_signature": behavioral_signature,
         "social_style": build_social_style_section(profile, detail_mode),
         "decision_style": build_decision_style_section(profile, detail_mode),
         "observed_anchors": build_observed_anchors(profile, detail_mode),
@@ -1328,6 +1787,22 @@ def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: s
         lines.append("# Behavior Profile Cards For Chip-Bargaining Prompting")
     elif detail_mode == "chip_bargain_prompt_min":
         lines.append("# Minimal Behavior Profile Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_descriptive_prompt":
+        lines.append("# Descriptive Behavior Profile Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_descriptive_prompt_min":
+        lines.append("# Minimal Descriptive Behavior Profile Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_no_econ_games_prompt":
+        lines.append("# No-Economic-Game Ablation Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_no_econ_games_prompt_min":
+        lines.append("# Minimal No-Economic-Game Ablation Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_ultimatum_only_prompt":
+        lines.append("# Ultimatum-Only Ablation Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_ultimatum_only_prompt_min":
+        lines.append("# Minimal Ultimatum-Only Ablation Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_selective_prompt":
+        lines.append("# Selectivity-Sharpened Behavior Profile Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_selective_prompt_min":
+        lines.append("# Minimal Selectivity-Sharpened Behavior Profile Cards For Chip-Bargaining Prompting")
     else:
         lines.append("# Twin Extended Profile Cards")
     lines.append("")
@@ -1349,10 +1824,11 @@ def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: s
         lines.append("")
         lines.append(f"**Background**: {card['background']['summary']}")
         lines.append("")
-        lines.append("**Behavioral Signature**")
-        for item in card["behavioral_signature"]:
-            lines.append(f"- {item}")
-        lines.append("")
+        if card["behavioral_signature"]:
+            lines.append("**Behavioral Signature**")
+            for item in card["behavioral_signature"]:
+                lines.append(f"- {item}")
+            lines.append("")
         lines.append("**Social Style**")
         lines.append(f"- {card['social_style']['summary']}")
         if card["social_style"]["constructed_from"]:
@@ -1375,20 +1851,25 @@ def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: s
         for item in card["observed_anchors"]:
             lines.append(f"- {item['title']}: {item['detail']}")
         lines.append("")
-        lines.append("**Transfer-Relevant Cues**")
-        for item in card["transfer_relevance"]:
+        if card["transfer_relevance"]:
             lines.append(
-                f"- `{CUE_DISPLAY_NAMES[item['cue']]}`: {label_pretty(item['label'])} ({item['score_0_to_100']}), confidence {item['confidence']}"
+                "**Observed Task Signals**"
+                if is_chip_bargain_direct_signal_mode(str(card.get("detail_mode", "")))
+                else "**Transfer-Relevant Cues**"
             )
-            if item["meaning_here"]:
-                lines.append(f"  Meaning here: {item['meaning_here']}")
-            if item["constructed_from"]:
-                lines.append("  Constructed from:")
-                for sub in item["constructed_from"]:
-                    lines.append(f"  - {sub}")
-            if item["scope_note"]:
-                lines.append(f"  Boundary: {item['scope_note']}")
-        lines.append("")
+            for item in card["transfer_relevance"]:
+                lines.append(
+                    f"- `{CUE_DISPLAY_NAMES[item['cue']]}`: {label_pretty(item['label'])} ({item['score_0_to_100']}), confidence {item['confidence']}"
+                )
+                if item["meaning_here"]:
+                    lines.append(f"  Meaning here: {item['meaning_here']}")
+                if item["constructed_from"]:
+                    lines.append("  Constructed from:")
+                    for sub in item["constructed_from"]:
+                        lines.append(f"  - {sub}")
+                if item["scope_note"]:
+                    lines.append(f"  Boundary: {item['scope_note']}")
+            lines.append("")
         if card["limits"]:
             lines.append("**Limits**")
             for item in card["limits"]:
@@ -1427,21 +1908,58 @@ def build_shared_prompt_notes_for_mode(detail_mode: str) -> str:
         lines.append("")
         lines.append("## General Interpretation Note")
         lines.append("")
-        for item in CHIP_BARGAIN_PROMPT_SHARED_NOTE:
+        if detail_mode in CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES:
+            shared_note = CHIP_BARGAIN_DESCRIPTIVE_PROMPT_SHARED_NOTE
+        elif detail_mode in CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES:
+            shared_note = CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_SHARED_NOTE
+        elif detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
+            shared_note = CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_SHARED_NOTE
+        else:
+            shared_note = CHIP_BARGAIN_PROMPT_SHARED_NOTE
+        for item in shared_note:
             lines.append(f"- {item}")
         lines.append("")
         lines.append("## Shared Caveats")
         lines.append("")
-        for item in CHIP_BARGAIN_PROMPT_SHARED_CAVEATS:
+        if detail_mode in CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES:
+            shared_caveats = CHIP_BARGAIN_DESCRIPTIVE_PROMPT_SHARED_CAVEATS
+        elif detail_mode in CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES:
+            shared_caveats = CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_SHARED_CAVEATS
+        elif detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
+            shared_caveats = CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_SHARED_CAVEATS
+        else:
+            shared_caveats = CHIP_BARGAIN_PROMPT_SHARED_CAVEATS
+        for item in shared_caveats:
             lines.append(f"- {item}")
-        lines.append("")
-        lines.append("## Cue Glossary")
-        lines.append("")
-        for cue in CHIP_BARGAIN_CUE_ORDER:
+        if detail_mode in {"chip_bargain_selective_prompt", "chip_bargain_selective_prompt_min"}:
+            lines.append(
+                "- This selectivity-sharpened variant intentionally gives more weight to direct ultimatum threshold/rejection evidence and less weight to generic prosociality when constructing bargaining cues."
+            )
+        if detail_mode in CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES:
+            cue_specs = CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_SPECS
+            cue_order = CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_ORDER
+        elif detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
+            cue_specs = CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_SPECS
+            cue_order = CHIP_BARGAIN_ULTIMATUM_ONLY_SIGNAL_ORDER
+        elif detail_mode in CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES:
+            cue_specs = {}
+            cue_order = []
+        else:
+            cue_specs = chip_bargain_cue_specs_for_mode(detail_mode)
+            cue_order = CHIP_BARGAIN_CUE_ORDER
+        if cue_order:
+            lines.append("")
+            lines.append(
+                "## Observed Task Signals"
+                if is_chip_bargain_direct_signal_mode(detail_mode)
+                else "## Cue Glossary"
+            )
+            lines.append("")
+        for cue in cue_order:
             lines.append(f"### {CUE_DISPLAY_NAMES[cue]}")
-            for item in CHIP_BARGAIN_CUE_SPECS[cue]["built_from"]:
+            for item in cue_specs[cue]["built_from"]:
                 lines.append(f"- {item}")
-            lines.append(f"- Meaning: {CHIP_BARGAIN_CUE_SPECS[cue]['meaning']}")
+            lines.append(f"- Meaning: {cue_specs[cue]['meaning']}")
             lines.append("")
         return "\n".join(lines).rstrip() + "\n"
 

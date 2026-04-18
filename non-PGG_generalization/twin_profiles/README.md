@@ -35,6 +35,7 @@ The forecasting pipeline currently consumes:
 - [`output/twin_extended_profiles/twin_extended_profiles.jsonl`](./output/twin_extended_profiles/twin_extended_profiles.jsonl)
 - [`output/twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl`](./output/twin_extended_profile_cards/pgg_prompt_min/twin_extended_profile_cards.jsonl)
 - [`output/twin_extended_profile_cards/chip_bargain_prompt_min/twin_extended_profile_cards.jsonl`](./output/twin_extended_profile_cards/chip_bargain_prompt_min/twin_extended_profile_cards.jsonl)
+- [`output/twin_extended_profile_cards/chip_bargain_descriptive_prompt_min/twin_extended_profile_cards.jsonl`](./output/twin_extended_profile_cards/chip_bargain_descriptive_prompt_min/twin_extended_profile_cards.jsonl)
 
 The active consumer side is:
 

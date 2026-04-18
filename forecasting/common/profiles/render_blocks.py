@@ -17,7 +17,19 @@ TWIN_TRANSFER_CUE_DISPLAY_NAMES = {
     "anchor_reference_sensitivity": "Anchor/reference sensitivity",
     "bookkeeping_discipline": "Bookkeeping discipline",
     "strategic_patience": "Strategic patience",
+    "trust_send_amount": "Trust-game send amount",
+    "trust_return_share_mean": "Trust-game return share",
+    "ultimatum_offer_to_other": "Ultimatum offer to other",
+    "ultimatum_min_acceptable_to_self": "Ultimatum minimum acceptable to self",
+    "ultimatum_rejection_rate": "Ultimatum rejection rate",
+    "dictator_offer_to_other": "Dictator offer to other",
 }
+
+
+def _is_chip_bargain_direct_signal_mode(detail_mode: str) -> bool:
+    return detail_mode.startswith("chip_bargain_descriptive_prompt") or detail_mode.startswith(
+        "chip_bargain_ultimatum_only_prompt"
+    )
 
 
 def render_demographic_profile_block(card: dict[str, Any]) -> str:
@@ -43,9 +55,9 @@ def render_twin_profile_block(
         "# PARTICIPANT PERSONA",
         (
             "Use this sampled persona as a prior about likely tendencies. "
-            "It was sampled from Twin to match the target study's observed demographic distribution and is not the real participant."
+            "It was sampled from a reference participant pool to match the target study's observed demographic distribution and is not the real participant."
             if corrected
-            else "Use this sampled persona as a prior about likely tendencies. It was sampled from the Twin pool without demographic correction and is not the real participant."
+            else "Use this sampled persona as a prior about likely tendencies. It was sampled from a reference participant pool without demographic correction and is not the real participant."
         ),
         "",
         shared_notes.strip(),
@@ -74,7 +86,12 @@ def render_twin_profile_block(
 
     transfer_relevance = card.get("transfer_relevance", [])
     if transfer_relevance:
-        lines.append("Transfer-Relevant Cues:")
+        section_title = (
+            "Observed Task Signals:"
+            if _is_chip_bargain_direct_signal_mode(str(card.get("detail_mode", "")))
+            else "Transfer-Relevant Cues:"
+        )
+        lines.append(section_title)
         for item in transfer_relevance:
             cue = str(item.get("cue", "")).strip()
             cue_name = TWIN_TRANSFER_CUE_DISPLAY_NAMES.get(
@@ -110,6 +127,16 @@ def render_pgg_persona_block(
     is_demographic_only_variant: bool,
 ) -> str:
     is_demographic_only = is_demographic_only_variant
+    cards_in_block = [
+        twin_profile_cards[(persona_assignments.get(player_id) or persona_assignments.get(f"seat:{seat_index}")).profile_id]
+        for seat_index, player_id in enumerate(raw_player_order, start=1)
+        if (persona_assignments.get(player_id) or persona_assignments.get(f"seat:{seat_index}")) is not None
+    ]
+    suppress_empty_glossary = (
+        not is_demographic_only
+        and cards_in_block
+        and all(not card.get("transfer_relevance") for card in cards_in_block)
+    )
     lines = (
         [
             "# PLAYER PROFILES",
@@ -125,6 +152,8 @@ def render_pgg_persona_block(
         note_lines = shared_prompt_notes.splitlines()
         if note_lines and note_lines[0].strip() == "# Shared Prompt Notes":
             note_lines = ["## Shared Prompt Notes", *note_lines[1:]]
+        if suppress_empty_glossary:
+            note_lines = [line for line in note_lines if line.strip() not in {"## Cue Glossary", "## Observed Task Signals"}]
         demoted_note_lines: list[str] = []
         for idx, line in enumerate(note_lines):
             if idx > 0 and line.startswith("## "):
@@ -171,7 +200,12 @@ def render_pgg_persona_block(
 
         transfer_relevance = card.get("transfer_relevance", [])
         if transfer_relevance:
-            lines.append("Transfer-Relevant Cues:")
+            section_title = (
+                "Observed Task Signals:"
+                if _is_chip_bargain_direct_signal_mode(str(card.get("detail_mode", "")))
+                else "Transfer-Relevant Cues:"
+            )
+            lines.append(section_title)
             for item in transfer_relevance:
                 cue = str(item.get("cue", "")).strip()
                 cue_name = TWIN_TRANSFER_CUE_DISPLAY_NAMES.get(

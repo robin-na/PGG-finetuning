@@ -1,0 +1,13 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_no_econ_games_v1/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_no_econ_games_v1/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_no_econ_games_v1/gold_targets.jsonl",
+  "note": "Row-level exact-match diagnostics are secondary. Use treatment-level distribution-distance analysis as the primary benchmark.",
+  "generated_parse_success_rate": 0.9583333333333334,
+  "generated_parsed_count": 138,
+  "human_gold_count": 144,
+  "evaluated_row_count": 138,
+  "exact_match_rate": 0.0,
+  "turn_exact_match_rate": 0.00885668276972625,
+  "turn_field_match_rate": 0.40190552871712293
+}

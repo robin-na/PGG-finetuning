@@ -35,6 +35,7 @@ VARIANT_BASELINE = "baseline"
 VARIANT_TWIN_UNADJUSTED = "twin_sampled_unadjusted_seed_0"
 ALL_VARIANTS = [VARIANT_BASELINE, VARIANT_TWIN_UNADJUSTED]
 ALL_MODELS = ["gpt-5.1", "gpt-5-mini"]
+DEFAULT_TWIN_CARDS_DIR_NAME = "chip_bargain_prompt_min"
 
 
 @dataclass(frozen=True)
@@ -66,26 +67,26 @@ def _batch_entry(custom_id: str, model: str, system_prompt: str, user_prompt: st
     }
 
 
-def _shared_twin_cards_path(repo_root: Path) -> Path:
+def _shared_twin_cards_path(repo_root: Path, cards_dir_name: str) -> Path:
     return (
         repo_root
         / "non-PGG_generalization"
         / "twin_profiles"
         / "output"
         / "twin_extended_profile_cards"
-        / "chip_bargain_prompt_min"
+        / cards_dir_name
         / "twin_extended_profile_cards.jsonl"
     )
 
 
-def _shared_twin_notes_path(repo_root: Path) -> Path:
+def _shared_twin_notes_path(repo_root: Path, cards_dir_name: str) -> Path:
     return (
         repo_root
         / "non-PGG_generalization"
         / "twin_profiles"
         / "output"
         / "twin_extended_profile_cards"
-        / "chip_bargain_prompt_min"
+        / cards_dir_name
         / "shared_prompt_notes.md"
     )
 
@@ -167,6 +168,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default="twin_to_chip_bargain_player_sampling_unadjusted",
         help="Profile-sampling output directory name under forecasting/chip_bargain/profile_sampling/output/.",
     )
+    parser.add_argument(
+        "--cards-dir-name",
+        type=str,
+        default=DEFAULT_TWIN_CARDS_DIR_NAME,
+        help="Twin profile-card directory name under non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/.",
+    )
     return parser.parse_args(argv)
 
 
@@ -207,8 +214,10 @@ def main(argv: list[str] | None = None) -> None:
     else:
         records = bundle.records.copy()
 
-    twin_cards = load_twin_cards(_shared_twin_cards_path(args.repo_root))
-    shared_prompt_notes = _shared_twin_notes_path(args.repo_root).read_text(encoding="utf-8").strip()
+    twin_cards_path = _shared_twin_cards_path(args.repo_root, args.cards_dir_name)
+    twin_notes_path = _shared_twin_notes_path(args.repo_root, args.cards_dir_name)
+    twin_cards = load_twin_cards(twin_cards_path)
+    shared_prompt_notes = twin_notes_path.read_text(encoding="utf-8").strip()
 
     variant_assignments: dict[str, dict[str, dict[str, PersonaAssignment]]] = {}
     for variant in variants:
@@ -369,12 +378,12 @@ def main(argv: list[str] | None = None) -> None:
                     else None
                 ),
                 "profile_cards_file": (
-                    str(_shared_twin_cards_path(args.repo_root))
+                    str(twin_cards_path)
                     if variant == VARIANT_TWIN_UNADJUSTED
                     else None
                 ),
                 "profile_shared_notes_file": (
-                    str(_shared_twin_notes_path(args.repo_root))
+                    str(twin_notes_path)
                     if variant == VARIANT_TWIN_UNADJUSTED
                     else None
                 ),

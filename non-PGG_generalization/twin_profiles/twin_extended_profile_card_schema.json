@@ -31,7 +31,15 @@
         "pgg_prompt",
         "pgg_prompt_min",
         "chip_bargain_prompt",
-        "chip_bargain_prompt_min"
+        "chip_bargain_prompt_min",
+        "chip_bargain_descriptive_prompt",
+        "chip_bargain_descriptive_prompt_min",
+        "chip_bargain_no_econ_games_prompt",
+        "chip_bargain_no_econ_games_prompt_min",
+        "chip_bargain_ultimatum_only_prompt",
+        "chip_bargain_ultimatum_only_prompt_min",
+        "chip_bargain_selective_prompt",
+        "chip_bargain_selective_prompt_min"
       ]
     },
     "participant": {
@@ -90,7 +98,7 @@
       "items": {
         "type": "string"
       },
-      "minItems": 3,
+      "minItems": 0,
       "maxItems": 6
     },
     "social_style": {
@@ -104,7 +112,7 @@
       "items": {
         "$ref": "#/$defs/anchorItem"
       },
-      "minItems": 4,
+      "minItems": 0,
       "maxItems": 8
     },
     "transfer_relevance": {
@@ -112,7 +120,7 @@
       "items": {
         "$ref": "#/$defs/transferCue"
       },
-      "minItems": 4,
+      "minItems": 0,
       "maxItems": 7
     },
     "limits": {

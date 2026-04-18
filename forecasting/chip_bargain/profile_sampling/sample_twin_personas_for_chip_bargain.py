@@ -20,6 +20,7 @@ from forecasting.datasets.chip_bargain import build_bundle as build_chip_bargain
 
 
 DEFAULT_OUTPUT_DIR = SCRIPT_DIR / "output" / "twin_to_chip_bargain_player_sampling_unadjusted"
+DEFAULT_CARDS_DIR_NAME = "chip_bargain_prompt_min"
 
 
 def parse_args() -> argparse.Namespace:
@@ -29,6 +30,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--repo-root", type=Path, default=PROJECT_ROOT)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument(
+        "--cards-dir-name",
+        type=str,
+        default=DEFAULT_CARDS_DIR_NAME,
+        help="Twin profile-card directory name under non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/.",
+    )
     return parser.parse_args()
 
 
@@ -43,14 +50,14 @@ def _twin_profiles_jsonl(repo_root: Path) -> Path:
     )
 
 
-def _twin_cards_jsonl(repo_root: Path) -> Path:
+def _twin_cards_jsonl(repo_root: Path, cards_dir_name: str) -> Path:
     return (
         repo_root
         / "non-PGG_generalization"
         / "twin_profiles"
         / "output"
         / "twin_extended_profile_cards"
-        / "chip_bargain_prompt_min"
+        / cards_dir_name
         / "twin_extended_profile_cards.jsonl"
     )
 
@@ -83,7 +90,7 @@ def main() -> None:
     )
 
     twin_profiles_jsonl = _twin_profiles_jsonl(args.repo_root)
-    twin_cards_jsonl = _twin_cards_jsonl(args.repo_root)
+    twin_cards_jsonl = _twin_cards_jsonl(args.repo_root, args.cards_dir_name)
     twin_personas, _ = load_twin_personas(twin_profiles_jsonl, twin_cards_jsonl)
 
     seed_dir = args.output_dir / f"seed_{args.seed}"
