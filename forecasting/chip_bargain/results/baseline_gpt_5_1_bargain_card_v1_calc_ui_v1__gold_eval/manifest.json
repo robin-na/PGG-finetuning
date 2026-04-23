@@ -1,0 +1,8 @@
+{
+  "parsed_output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_bargain_card_v1_calc_ui_v1/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_bargain_card_v1_calc_ui_v1/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_bargain_card_v1_calc_ui_v1/gold_targets.jsonl",
+  "output_dir": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/results/baseline_gpt_5_1_bargain_card_v1_calc_ui_v1__gold_eval",
+  "primary_metric_family": "distribution_distance",
+  "secondary_metric_family": "row_level_exact_or_match_rate"
+}

@@ -147,6 +147,7 @@ def build_prompt(row: pd.Series, profile_block: str | None) -> tuple[str, str]:
             "- After each turn, chip holdings update immediately before the next proposer acts.",
             "- Players observe the public trade history and current chip holdings, but each player knows only their own private chip values during play.",
             "- Each player's behavioral goal is to maximize their own total chip value, not group surplus.",
+            "- Each participant has an on-screen surplus calculator at proposal time. Whenever a proposer tentatively drafts a proposal (e.g. offer 4 RED in exchange for 5 BLUE), the UI immediately displays, for the proposer, the net surplus change they would realize if the trade were accepted, computed from their own private chip values: gains are shown in standard text and losses are shown in red. Non-sender players see the same calculator for their own side once a proposal is posted, so every player's accept/decline decision is made with full knowledge of their own private net gain or loss in dollars.",
             "",
             "# PROPOSAL SCHEDULE FOR THIS GAME",
             "Follow this proposer schedule exactly. It is the exogenous order of proposal turns in this game:",

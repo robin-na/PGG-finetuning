@@ -1,0 +1,9 @@
+{
+  "batch_output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/batch_output/baseline_gpt_5_1_pgg_aligned_v3_calc_ui_v1.jsonl",
+  "request_manifest_csv": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_pgg_aligned_v3_calc_ui_v1/request_manifest.csv",
+  "parsed_output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_pgg_aligned_v3_calc_ui_v1/parsed_output.jsonl",
+  "num_raw_rows": 48,
+  "num_parsed_rows": 48,
+  "parse_success_count": 46,
+  "parse_success_rate": 0.9583333333333334
+}

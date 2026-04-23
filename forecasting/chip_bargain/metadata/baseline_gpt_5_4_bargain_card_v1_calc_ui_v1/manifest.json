@@ -1,0 +1,25 @@
+{
+  "dataset_key": "chip_bargain",
+  "display_name": "Chip Bargaining",
+  "run_name": "baseline_gpt_5_4_bargain_card_v1_calc_ui_v1",
+  "variant_name": "baseline",
+  "model": "gpt-5.4",
+  "record_count": 48,
+  "unit_count": 48,
+  "max_records_per_treatment": null,
+  "batch_input_file": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/batch_input/baseline_gpt_5_4_bargain_card_v1_calc_ui_v1.jsonl",
+  "expected_batch_output_file": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/batch_output/baseline_gpt_5_4_bargain_card_v1_calc_ui_v1.jsonl",
+  "metadata_dir": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_4_bargain_card_v1_calc_ui_v1",
+  "profile_assignment_file": null,
+  "profile_cards_file": null,
+  "profile_shared_notes_file": null,
+  "derived_from": "baseline_gpt_5_1_bargain_card_v1_calc_ui_v1",
+  "filter": {
+    "chip_family_prefix": "CHIP3"
+  },
+  "prompt_patch": {
+    "description": "Inserted surplus-calculator UI rule into RULES section.",
+    "marker_after": "- Each player's behavioral goal is to maximize their own total chip value, not group surplus.",
+    "inserted_rule": "- Each participant has an on-screen surplus calculator at proposal time. Whenever a proposer tentatively drafts a proposal (e.g. offer 4 RED in exchange for 5 BLUE), the UI immediately displays, for the proposer, the net surplus change they would realize if the trade were accepted, computed from their own private chip values: gains are shown in standard text and losses are shown in red. Non-sender players see the same calculator for their own side once a proposal is posted, so every player's accept/decline decision is made with full knowledge of their own private net gain or loss in dollars."
+  }
+}

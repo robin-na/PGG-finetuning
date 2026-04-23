@@ -1,0 +1,25 @@
+{
+  "dataset_key": "chip_bargain",
+  "display_name": "Chip Bargaining",
+  "run_name": "twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1_calc_ui_v1",
+  "variant_name": "twin_sampled_unadjusted_seed_0",
+  "model": "gpt-5.1",
+  "record_count": 48,
+  "unit_count": 48,
+  "max_records_per_treatment": null,
+  "batch_input_file": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/batch_input/twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1_calc_ui_v1.jsonl",
+  "expected_batch_output_file": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/batch_output/twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1_calc_ui_v1.jsonl",
+  "metadata_dir": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1_calc_ui_v1",
+  "profile_assignment_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/chip_bargain/profile_sampling/output/twin_to_chip_bargain_player_sampling_unadjusted_descriptive_card_v1/seed_0/game_assignments.jsonl",
+  "profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_ultimatum_only_prompt_min/twin_extended_profile_cards.jsonl",
+  "profile_shared_notes_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/chip_bargain_ultimatum_only_prompt_min/shared_prompt_notes.md",
+  "derived_from": "twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1",
+  "filter": {
+    "chip_family_prefix": "CHIP3"
+  },
+  "prompt_patch": {
+    "description": "Inserted surplus-calculator UI rule into RULES section.",
+    "marker_after": "- Each player's behavioral goal is to maximize their own total chip value, not group surplus.",
+    "inserted_rule": "- Each participant has an on-screen surplus calculator at proposal time. Whenever a proposer tentatively drafts a proposal (e.g. offer 4 RED in exchange for 5 BLUE), the UI immediately displays, for the proposer, the net surplus change they would realize if the trade were accepted, computed from their own private chip values: gains are shown in standard text and losses are shown in red. Non-sender players see the same calculator for their own side once a proposal is posted, so every player's accept/decline decision is made with full knowledge of their own private net gain or loss in dollars."
+  }
+}

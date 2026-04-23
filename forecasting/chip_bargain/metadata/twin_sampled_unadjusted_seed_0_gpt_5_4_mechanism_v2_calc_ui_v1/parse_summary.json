@@ -1,0 +1,9 @@
+{
+  "batch_output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/batch_output/twin_sampled_unadjusted_seed_0_gpt_5_4_mechanism_v2_calc_ui_v1.jsonl",
+  "request_manifest_csv": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_4_mechanism_v2_calc_ui_v1/request_manifest.csv",
+  "parsed_output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_4_mechanism_v2_calc_ui_v1/parsed_output.jsonl",
+  "num_raw_rows": 48,
+  "num_parsed_rows": 48,
+  "parse_success_count": 42,
+  "parse_success_rate": 0.875
+}

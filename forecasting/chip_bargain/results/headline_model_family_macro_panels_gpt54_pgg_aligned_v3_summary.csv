@@ -1,0 +1,10 @@
+metric,run_name,mean_value,stderr,n_groups,family_name
+final_surplus_ratio,baseline_gpt_5_4_pgg_aligned_v3_calc_ui_v1,0.24308080316185837,0.014104641000491412,2,gpt-5.4
+mean_trade_ratio,baseline_gpt_5_4_pgg_aligned_v3_calc_ui_v1,0.2217187438277414,0.0068753696093671315,2,gpt-5.4
+mean_acceptance_rate,baseline_gpt_5_4_pgg_aligned_v3_calc_ui_v1,0.12093110190936279,0.01312686910512998,2,gpt-5.4
+final_surplus_ratio,twin_sampled_unadjusted_seed_0_gpt_5_4_pgg_aligned_v3_calc_ui_v1,0.2592865501831222,0.02746640427678251,2,gpt-5.4
+mean_trade_ratio,twin_sampled_unadjusted_seed_0_gpt_5_4_pgg_aligned_v3_calc_ui_v1,0.24087162529946343,0.015829646679586303,2,gpt-5.4
+mean_acceptance_rate,twin_sampled_unadjusted_seed_0_gpt_5_4_pgg_aligned_v3_calc_ui_v1,0.09982981993851558,0.021546991655687305,2,gpt-5.4
+final_surplus_ratio,random_baseline,0.6035507663775419,,2,gpt-5.4
+mean_trade_ratio,random_baseline,0.4872842242810028,,2,gpt-5.4
+mean_acceptance_rate,random_baseline,0.13755772005772005,,2,gpt-5.4

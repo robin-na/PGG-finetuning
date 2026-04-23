@@ -1,0 +1,5 @@
+metric_family,metric,distance_kind,n_treatments,mean_value,median_value
+distribution_distance,final_surplus_ratio,wasserstein_1d,2,0.24308080316185834,0.24308080316185834
+distribution_distance,proposer_net_surplus,wasserstein_1d,2,1.0766735679779156,1.0766735679779156
+distribution_distance,trade_ratio,wasserstein_1d,2,0.2245926926557965,0.2245926926557965
+distribution_distance,acceptance_rate,wasserstein_1d,2,0.1070422130204739,0.1070422130204739

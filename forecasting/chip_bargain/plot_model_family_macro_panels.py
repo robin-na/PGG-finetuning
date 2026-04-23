@@ -26,12 +26,20 @@ BASE_RUN_FAMILIES = {
             "twin_sampled_unadjusted_seed_0_gpt_5_1",
         ],
     },
+    "gpt-5.4": {
+        "runs": [
+            "baseline_gpt_5_4",
+            "twin_sampled_unadjusted_seed_0_gpt_5_4",
+        ],
+    },
 }
 BASE_RUN_LABELS = {
     "baseline_gpt_5_mini": "Baseline",
     "twin_sampled_unadjusted_seed_0_gpt_5_mini": "Twin Unadjusted",
     "baseline_gpt_5_1": "Baseline",
     "twin_sampled_unadjusted_seed_0_gpt_5_1": "Twin Unadjusted",
+    "baseline_gpt_5_4": "Baseline",
+    "twin_sampled_unadjusted_seed_0_gpt_5_4": "Twin Unadjusted",
 }
 RUN_COLORS = ["#4C78A8", "#F4A3A3"]
 NOISE_CEILING_COLOR = "#8C8C8C"
@@ -331,9 +339,21 @@ def main() -> None:
     parser.add_argument("--ceiling-method", choices=["bootstrap", "split_half"], default=DEFAULT_CEILING_METHOD)
     parser.add_argument("--rng-seed", type=int, default=DEFAULT_RNG_SEED)
     parser.add_argument("--random-baseline-iters", type=int, default=DEFAULT_RANDOM_BASELINE_ITERS)
+    parser.add_argument(
+        "--families",
+        type=str,
+        default="",
+        help="Comma-separated family names to include (default: all available).",
+    )
     args = parser.parse_args()
 
     run_families = _resolve_run_families(args.run_suffix)
+    if args.families:
+        selected = [name.strip() for name in args.families.split(",") if name.strip()]
+        missing = [name for name in selected if name not in run_families]
+        if missing:
+            raise ValueError(f"Unknown families requested: {missing}. Available: {list(run_families.keys())}")
+        run_families = {name: run_families[name] for name in selected}
     available_families = _available_families_for_run_set(run_families)
     family_tables: dict[str, dict[str, tuple[pd.DataFrame, pd.DataFrame]]] = {}
     family_scores: dict[str, pd.DataFrame] = {}

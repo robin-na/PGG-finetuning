@@ -1,0 +1,13 @@
+{
+  "parsed_output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_mechanism_v2_calc_ui_v1/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_mechanism_v2_calc_ui_v1/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/baseline_gpt_5_1_mechanism_v2_calc_ui_v1/gold_targets.jsonl",
+  "note": "Row-level exact-match diagnostics are secondary. Use treatment-level distribution-distance analysis as the primary benchmark.",
+  "generated_parse_success_rate": 0.9375,
+  "generated_parsed_count": 45,
+  "human_gold_count": 48,
+  "evaluated_row_count": 45,
+  "exact_match_rate": 0.0,
+  "turn_exact_match_rate": 0.0,
+  "turn_field_match_rate": 0.41769547325102874
+}

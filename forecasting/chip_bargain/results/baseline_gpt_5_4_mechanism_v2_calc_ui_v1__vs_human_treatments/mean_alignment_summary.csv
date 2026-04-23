@@ -1,0 +1,5 @@
+metric_scope,metric,n_groups,mean_abs_error,median_abs_error
+game,final_surplus_ratio,2,0.3658571229527056,0.3658571229527056
+turn,acceptance_rate,2,0.09415976535541751,0.09415976535541751
+turn,proposer_net_surplus,2,1.2916120312859443,1.2916120312859443
+turn,trade_ratio,2,0.5834433048276648,0.5834433048276648

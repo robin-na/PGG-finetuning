@@ -1,0 +1,11 @@
+metric_family,metric,distance_kind,n_treatments,mean_value,median_value
+distribution_distance,final_surplus_ratio,wasserstein_1d,2,0.34843667483481044,0.34843667483481044
+distribution_distance,proposer_net_surplus,wasserstein_1d,2,1.2646254208754208,1.2646254208754208
+distribution_distance,trade_ratio,wasserstein_1d,2,0.4425098371278927,0.4425098371278927
+distribution_distance,acceptance_rate,wasserstein_1d,2,0.12310606060606058,0.12310606060606058
+distribution_distance,accepted_proposer_net_surplus,wasserstein_1d,2,0.940045095707874,0.940045095707874
+distribution_distance,declined_proposer_net_surplus,wasserstein_1d,2,1.6703082264957265,1.6703082264957265
+distribution_distance,accepted_trade_ratio,wasserstein_1d,2,0.34475738231173014,0.34475738231173014
+distribution_distance,declined_trade_ratio,wasserstein_1d,2,0.5397048322048321,0.5397048322048321
+distribution_distance,final_total_surplus,wasserstein_1d,2,5.07651515151515,5.07651515151515
+distribution_distance,mean_player_final_surplus,wasserstein_1d,2,1.692171717171717,1.692171717171717

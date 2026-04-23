@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/batch_input/twin_sampled_unadjusted_seed_0_gpt_5_1_mechanism_v2_calc_ui_v1.jsonl",
+  "num_requests": 48,
+  "total_input_tokens_estimate": 167322,
+  "mean_input_tokens_estimate": 3485.875,
+  "median_input_tokens_estimate": 3492.0,
+  "max_input_tokens_estimate": 3591,
+  "min_input_tokens_estimate": 3344
+}

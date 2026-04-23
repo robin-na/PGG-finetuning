@@ -1,0 +1,20 @@
+{
+  "parsed_output_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1_calc_ui_v1/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1_calc_ui_v1/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/metadata/twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1_calc_ui_v1/gold_targets.jsonl",
+  "output_dir": "/Users/kehangzh/Desktop/PGG-finetuning/forecasting/chip_bargain/results/twin_sampled_unadjusted_seed_0_gpt_5_1_ultimatum_only_v1_calc_ui_v1__vs_human_treatments",
+  "generated_game_count": 42,
+  "human_game_count": 48,
+  "generated_turn_count": 378,
+  "human_turn_count": 432,
+  "generated_player_count": 126,
+  "human_player_count": 144,
+  "generated_round_count": 126,
+  "human_round_count": 144,
+  "primary_metric_families": [
+    "final_surplus_ratio",
+    "proposer_net_surplus",
+    "trade_ratio",
+    "acceptance_rate"
+  ]
+}
