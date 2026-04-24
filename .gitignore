@@ -36,6 +36,16 @@ outputs/benchmark/cache/
 outputs/default/runs/source_default/micro_behavior_eval/*/*/micro_behavior_debug.jsonl
 simulation_statistical/archetype_distribution_embedding/artifacts/intermediate/embedding_output_*.jsonl
 non-PGG_generalization/pgg_transfer_eval/output/
+forecasting/simbench/.mplconfig/
+forecasting/simbench/batch_input/*.jsonl
+forecasting/simbench/batch_output/*.jsonl
+forecasting/simbench/metadata/**/request_manifest.csv
+forecasting/simbench/metadata/**/selected_contexts.csv
+forecasting/simbench/metadata/**/selected_rows.csv
+forecasting/simbench/metadata/**/parsed_output.jsonl
+forecasting/simbench/results/**/request_level_predictions.csv
+forecasting/simbench/results/**/request_question_predictions.csv
+tmp/
 
 # Finetuning artifacts
 Finetuning/out_persona_types_lora

@@ -1,0 +1,19 @@
+{
+  "parsed_output_jsonl": "forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/parsed_output.jsonl",
+  "request_manifest_csv": "forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/request_manifest.csv",
+  "gold_targets_jsonl": "forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/gold_targets.jsonl",
+  "output_dir": "forecasting/simbench/results/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only__gold_eval",
+  "primary_metric_family": "distribution_distance_after_batched_prediction_aggregation",
+  "primary_metrics": [
+    "simbench_score",
+    "tvd",
+    "jsd"
+  ],
+  "secondary_metrics": [
+    "modal_match_rate",
+    "completion_rate",
+    "valid_prediction_rate",
+    "full_request_success_rate"
+  ],
+  "aggregation_note": "Each request may contain multiple question-level distributions. Question-level predictions are expanded first; Twin runs then average those distributions across sample_index within each simbench_row_id."
+}

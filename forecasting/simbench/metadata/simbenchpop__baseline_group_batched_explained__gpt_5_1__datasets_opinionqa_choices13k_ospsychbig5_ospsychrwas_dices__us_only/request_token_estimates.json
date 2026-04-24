@@ -1,0 +1,8 @@
+{
+  "request_file": "forecasting/simbench/batch_input/simbenchpop__baseline_group_batched_explained__gpt_5_1__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only.jsonl",
+  "num_requests": 8,
+  "total_input_tokens_estimate": 114018,
+  "mean_input_tokens_estimate": 14252.25,
+  "max_input_tokens_estimate": 44083,
+  "min_input_tokens_estimate": 1043
+}

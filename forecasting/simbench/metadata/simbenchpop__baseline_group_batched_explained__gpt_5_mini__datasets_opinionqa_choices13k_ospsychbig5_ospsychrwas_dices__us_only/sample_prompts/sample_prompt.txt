@@ -1,0 +1,529 @@
+=== SYSTEM MESSAGE ===
+
+You are a group of individuals with these shared characteristics:
+You are an Amazon Mechanical Turk worker based in the United States.
+
+=== USER MESSAGE ===
+
+You will answer 500 numbered multiple-choice questions for the same target group.
+Estimate what percentage of the group would choose each option for each item.
+Return JSON only.
+Output contract:
+- Use exactly two top-level keys: "explanation" and "answers".
+- "explanation" must be one short paragraph covering the main considerations across the batch.
+- "answers" must map every item id in ITEMS to a distribution object keyed by that item's option labels.
+- Use integer percentages from 0 to 100.
+- Each item's percentages must sum to exactly 100.
+- Do not include markdown or extra keys.
+- Example for one item only: {"explanation": "...", "answers": {"Q0001": {"A": 55, "B": 45}}}
+
+Shared task note:
+Each item is a separate gamble between Machine A and Machine B. Respondents choose the machine they would play; the original task pays 10% of the realized reward as bonus, with negative rewards floored at $0.
+
+Shared scales:
+S1={"A":"Machine A","B":"Machine B"}
+All items use scale S1.
+
+ITEMS:
+{"id":"Q0001","prompt":"Machine A: $10.0 with 1.0% chance, $-4.0 with 99.0% chance.\nMachine B: $75.0 with 12.5% chance, $61.0 with 3.12% chance, $-35.0 with 75.0% chance, $73.0 with 6.25% chance, $69.0 with 3.12% chance."}
+{"id":"Q0002","prompt":"Machine A: $-7.0 with 100.0% chance, $-7.0 with 0.0% chance.\nMachine B: $45.0 with 40.0% chance, $-31.0 with 60.0% chance."}
+{"id":"Q0003","prompt":"Machine A: $-19.0 with 75.0% chance, $93.0 with 25.0% chance.\nMachine B: $15.5 with 37.5% chance, $-22.0 with 25.0% chance, $16.5 with 37.5% chance."}
+{"id":"Q0004","prompt":"Machine A: $6.0 with 75.0% chance, $94.0 with 25.0% chance.\nMachine B: $55.0 with 2.5% chance, $53.0 with 1.25% chance, $49.0 with 0.62% chance, $34.0 with 95.0% chance, $41.0 with 0.62% chance."}
+{"id":"Q0005","prompt":"Machine A: $5.0 with 50.0% chance, $25.0 with 50.0% chance.\nMachine B: $37.0 with 10.0% chance, $16.0 with 90.0% chance."}
+{"id":"Q0006","prompt":"Machine A: $1.0 with 100.0% chance, $1.0 with 0.0% chance.\nMachine B: $-4.0 with 25.0% chance, $-1.0 with 75.0% chance."}
+{"id":"Q0007","prompt":"Machine A: $-9.0 with 50.0% chance, $57.0 with 50.0% chance.\nMachine B: $18.0 with 80.0% chance, $2.0 with 20.0% chance."}
+{"id":"Q0008","prompt":"Machine A: $1.0 with 0.0% chance, $1.0 with 100.0% chance.\nMachine B: $12.5 with 7.5% chance, $11.5 with 2.5% chance, $13.5 with 7.5% chance, $3.0 with 80.0% chance, $14.5 with 2.5% chance."}
+{"id":"Q0009","prompt":"Machine A: $15.0 with 100.0% chance, $15.0 with 0.0% chance.\nMachine B: $59.5 with 3.91% chance, $2.0 with 75.0% chance, $58.5 with 0.78% chance, $63.5 with 0.78% chance, $61.5 with 7.81% chance, $60.5 with 7.81% chance, $62.5 with 3.91% chance."}
+{"id":"Q0010","prompt":"Machine A: $73.0 with 25.0% chance, $-32.0 with 75.0% chance.\nMachine B: $73.0 with 3.12% chance, $61.0 with 6.25% chance, $-39.0 with 75.0% chance, $65.0 with 3.12% chance, $59.0 with 12.5% chance."}
+{"id":"Q0011","prompt":"Machine A: $0.0 with 20.0% chance, $11.0 with 80.0% chance.\nMachine B: $2.0 with 95.0% chance, $-36.0 with 5.0% chance."}
+{"id":"Q0012","prompt":"Machine A: $54.0 with 20.0% chance, $-10.0 with 80.0% chance.\nMachine B: $84.0 with 5.0% chance, $-4.0 with 95.0% chance."}
+{"id":"Q0013","prompt":"Machine A: $-10.0 with 0.0% chance, $-10.0 with 100.0% chance.\nMachine B: $-8.5 with 0.16% chance, $-6.5 with 0.01% chance, $-13.5 with 0.01% chance, $-12.5 with 0.05% chance, $-11.5 with 0.16% chance, $-9.5 with 0.27% chance, $-7.5 with 0.05% chance, $-18.0 with 99.0% chance, $-10.5 with 0.27% chance."}
+{"id":"Q0014","prompt":"Machine A: $0.0 with 100.0% chance, $0.0 with 0.0% chance.\nMachine B: $88.5 with 0.03% chance, $-6.0 with 99.0% chance, $84.5 with 0.16% chance, $83.5 with 0.03% chance, $87.5 with 0.16% chance, $86.5 with 0.31% chance, $85.5 with 0.31% chance."}
+{"id":"Q0015","prompt":"Machine A: $-7.0 with 0.0% chance, $-7.0 with 100.0% chance.\nMachine B: $-20.0 with 95.0% chance, $73.0 with 5.0% chance."}
+{"id":"Q0016","prompt":"Machine A: $16.0 with 99.0% chance, $46.0 with 1.0% chance.\nMachine B: $59.0 with 40.0% chance, $-7.0 with 60.0% chance."}
+{"id":"Q0017","prompt":"Machine A: $53.0 with 60.0% chance, $-17.0 with 40.0% chance.\nMachine B: $145.0 with 1.56% chance, $19.0 with 50.0% chance, $21.0 with 25.0% chance, $81.0 with 1.56% chance, $25.0 with 12.5% chance, $49.0 with 3.12% chance, $33.0 with 6.25% chance."}
+{"id":"Q0018","prompt":"Machine A: $6.0 with 0.0% chance, $6.0 with 100.0% chance.\nMachine B: $43.5 with 30.0% chance, $42.5 with 30.0% chance, $-45.0 with 40.0% chance."}
+{"id":"Q0019","prompt":"Machine A: $28.0 with 100.0% chance, $28.0 with 0.0% chance.\nMachine B: $35.0 with 75.0% chance, $-4.0 with 25.0% chance."}
+{"id":"Q0020","prompt":"Machine A: $1.0 with 0.0% chance, $1.0 with 100.0% chance.\nMachine B: $6.5 with 20.0% chance, $-10.0 with 60.0% chance, $5.5 with 20.0% chance."}
+{"id":"Q0021","prompt":"Machine A: $20.0 with 100.0% chance, $20.0 with 0.0% chance.\nMachine B: $34.5 with 9.38% chance, $33.5 with 3.12% chance, $36.5 with 3.12% chance, $7.0 with 75.0% chance, $35.5 with 9.38% chance."}
+{"id":"Q0022","prompt":"Machine A: $30.0 with 100.0% chance, $30.0 with 0.0% chance.\nMachine B: $27.5 with 14.06% chance, $28.5 with 28.12% chance, $29.5 with 28.12% chance, $31.5 with 2.81% chance, $26.5 with 2.81% chance, $30.5 with 14.06% chance, $19.0 with 10.0% chance."}
+{"id":"Q0023","prompt":"Machine A: $-5.0 with 100.0% chance, $-5.0 with 0.0% chance.\nMachine B: $42.0 with 1.25% chance, $46.0 with 0.62% chance, $54.0 with 0.31% chance, $-12.0 with 95.0% chance, $70.0 with 0.31% chance, $40.0 with 2.5% chance."}
+{"id":"Q0024","prompt":"Machine A: $10.0 with 0.0% chance, $10.0 with 100.0% chance.\nMachine B: $-10.0 with 60.0% chance, $19.0 with 40.0% chance."}
+{"id":"Q0025","prompt":"Machine A: $14.0 with 25.0% chance, $-10.0 with 75.0% chance.\nMachine B: $65.5 with 0.31% chance, $67.5 with 0.16% chance, $66.5 with 0.31% chance, $-3.0 with 99.0% chance, $64.5 with 0.16% chance, $68.5 with 0.03% chance, $63.5 with 0.03% chance."}
+{"id":"Q0026","prompt":"Machine A: $7.0 with 60.0% chance, $-35.0 with 40.0% chance.\nMachine B: $100.5 with 0.78% chance, $99.5 with 0.16% chance, $-25.0 with 95.0% chance, $101.5 with 1.56% chance, $103.5 with 0.78% chance, $102.5 with 1.56% chance, $104.5 with 0.16% chance."}
+{"id":"Q0027","prompt":"Machine A: $26.0 with 0.0% chance, $26.0 with 100.0% chance.\nMachine B: $53.0 with 50.0% chance, $5.0 with 50.0% chance."}
+{"id":"Q0028","prompt":"Machine A: $4.0 with 100.0% chance, $4.0 with 0.0% chance.\nMachine B: $66.0 with 5.0% chance, $1.0 with 95.0% chance."}
+{"id":"Q0029","prompt":"Machine A: $27.0 with 75.0% chance, $10.0 with 25.0% chance.\nMachine B: $117.0 with 0.31% chance, $105.0 with 1.25% chance, $133.0 with 0.16% chance, $24.0 with 95.0% chance, $229.0 with 0.08% chance, $109.0 with 0.62% chance, $103.0 with 2.5% chance, $165.0 with 0.08% chance."}
+{"id":"Q0030","prompt":"Machine A: $1.0 with 100.0% chance, $1.0 with 0.0% chance.\nMachine B: $52.5 with 0.2% chance, $45.5 with 0.2% chance, $46.5 with 1.37% chance, $47.5 with 4.1% chance, $-16.0 with 75.0% chance, $51.5 with 1.37% chance, $48.5 with 6.84% chance, $50.5 with 4.1% chance, $49.5 with 6.84% chance."}
+{"id":"Q0031","prompt":"Machine A: $25.0 with 60.0% chance, $-5.0 with 40.0% chance.\nMachine B: $69.0 with 1.56% chance, $21.0 with 6.25% chance, $9.0 with 25.0% chance, $133.0 with 1.56% chance, $7.0 with 50.0% chance, $13.0 with 12.5% chance, $37.0 with 3.12% chance."}
+{"id":"Q0032","prompt":"Machine A: $10.0 with 0.0% chance, $10.0 with 100.0% chance.\nMachine B: $-11.0 with 40.0% chance, $25.0 with 60.0% chance."}
+{"id":"Q0033","prompt":"Machine A: $29.0 with 0.0% chance, $29.0 with 100.0% chance.\nMachine B: $24.0 with 80.0% chance, $32.5 with 7.5% chance, $30.5 with 2.5% chance, $33.5 with 2.5% chance, $31.5 with 7.5% chance."}
+{"id":"Q0034","prompt":"Machine A: $-8.0 with 75.0% chance, $31.0 with 25.0% chance.\nMachine B: $9.0 with 80.0% chance, $24.5 with 0.16% chance, $26.5 with 3.28% chance, $27.5 with 5.47% chance, $28.5 with 5.47% chance, $29.5 with 3.28% chance, $25.5 with 1.09% chance, $31.5 with 0.16% chance, $30.5 with 1.09% chance."}
+{"id":"Q0035","prompt":"Machine A: $1.0 with 0.0% chance, $1.0 with 100.0% chance.\nMachine B: $28.0 with 5.0% chance, $42.0 with 0.62% chance, $34.0 with 1.25% chance, $58.0 with 0.31% chance, $-10.0 with 90.0% chance, $90.0 with 0.31% chance, $30.0 with 2.5% chance."}
+{"id":"Q0036","prompt":"Machine A: $7.0 with 100.0% chance, $7.0 with 0.0% chance.\nMachine B: $14.0 with 80.0% chance, $33.0 with 20.0% chance."}
+{"id":"Q0037","prompt":"Machine A: $-14.0 with 1.0% chance, $15.0 with 99.0% chance.\nMachine B: $15.5 with 31.25% chance, $16.5 with 15.62% chance, $12.5 with 3.12% chance, $13.5 with 15.62% chance, $14.5 with 31.25% chance, $17.5 with 3.12% chance."}
+{"id":"Q0038","prompt":"Machine A: $18.0 with 0.0% chance, $18.0 with 100.0% chance.\nMachine B: $17.0 with 25.0% chance, $15.0 with 50.0% chance, $29.0 with 12.5% chance, $21.0 with 12.5% chance."}
+{"id":"Q0039","prompt":"Machine A: $-7.0 with 100.0% chance, $-7.0 with 0.0% chance.\nMachine B: $6.0 with 0.5% chance, $0.0 with 0.12% chance, $-14.0 with 99.0% chance, $4.0 with 0.25% chance, $-8.0 with 0.12% chance."}
+{"id":"Q0040","prompt":"Machine A: $5.0 with 100.0% chance, $5.0 with 0.0% chance.\nMachine B: $-7.0 with 20.0% chance, $11.0 with 80.0% chance."}
+{"id":"Q0041","prompt":"Machine A: $1.0 with 100.0% chance, $1.0 with 0.0% chance.\nMachine B: $0.0 with 50.0% chance, $-4.0 with 50.0% chance."}
+{"id":"Q0042","prompt":"Machine A: $-2.0 with 100.0% chance, $-2.0 with 0.0% chance.\nMachine B: $41.0 with 20.0% chance, $39.0 with 20.0% chance, $-24.0 with 60.0% chance."}
+{"id":"Q0043","prompt":"Machine A: $6.0 with 50.0% chance, $46.0 with 50.0% chance.\nMachine B: $81.0 with 10.0% chance, $19.0 with 90.0% chance."}
+{"id":"Q0044","prompt":"Machine A: $-1.0 with 0.0% chance, $-1.0 with 100.0% chance.\nMachine B: $10.0 with 90.0% chance, $-16.0 with 10.0% chance."}
+{"id":"Q0045","prompt":"Machine A: $20.0 with 100.0% chance, $20.0 with 0.0% chance.\nMachine B: $33.5 with 0.31% chance, $34.5 with 2.19% chance, $36.5 with 10.94% chance, $39.5 with 2.19% chance, $12.0 with 60.0% chance, $37.5 with 10.94% chance, $40.5 with 0.31% chance, $35.5 with 6.56% chance, $38.5 with 6.56% chance."}
+{"id":"Q0046","prompt":"Machine A: $18.0 with 0.0% chance, $18.0 with 100.0% chance.\nMachine B: $-27.0 with 1.0% chance, $28.0 with 99.0% chance."}
+{"id":"Q0047","prompt":"Machine A: $-12.0 with 90.0% chance, $18.0 with 10.0% chance.\nMachine B: $-2.0 with 6.25% chance, $14.0 with 3.12% chance, $-10.0 with 12.5% chance, $46.0 with 1.56% chance, $110.0 with 0.78% chance, $-16.0 with 50.0% chance, $-14.0 with 25.0% chance, $238.0 with 0.78% chance."}
+{"id":"Q0048","prompt":"Machine A: $-32.0 with 5.0% chance, $28.0 with 95.0% chance.\nMachine B: $92.5 with 25.0% chance, $-18.0 with 50.0% chance, $93.5 with 25.0% chance."}
+{"id":"Q0049","prompt":"Machine A: $19.0 with 100.0% chance, $19.0 with 0.0% chance.\nMachine B: $76.0 with 3.12% chance, $84.0 with 6.25% chance, $28.0 with 0.78% chance, $-36.0 with 0.78% chance, $60.0 with 1.56% chance, $90.0 with 25.0% chance, $-46.0 with 50.0% chance, $88.0 with 12.5% chance."}
+{"id":"Q0050","prompt":"Machine A: $26.0 with 0.0% chance, $26.0 with 100.0% chance.\nMachine B: $10.0 with 75.0% chance, $89.0 with 25.0% chance."}
+{"id":"Q0051","prompt":"Machine A: $9.0 with 95.0% chance, $109.0 with 5.0% chance.\nMachine B: $13.0 with 90.0% chance, $34.0 with 10.0% chance."}
+{"id":"Q0052","prompt":"Machine A: $28.0 with 20.0% chance, $8.0 with 80.0% chance.\nMachine B: $10.5 with 25.0% chance, $7.5 with 2.5% chance, $12.5 with 2.5% chance, $11.5 with 12.5% chance, $-7.0 with 20.0% chance, $8.5 with 12.5% chance, $9.5 with 25.0% chance."}
+{"id":"Q0053","prompt":"Machine A: $42.0 with 75.0% chance, $-18.0 with 25.0% chance.\nMachine B: $32.5 with 20.51% chance, $34.5 with 12.3% chance, $23.0 with 25.0% chance, $29.5 with 0.59% chance, $30.5 with 4.1% chance, $33.5 with 20.51% chance, $31.5 with 12.3% chance, $36.5 with 0.59% chance, $35.5 with 4.1% chance."}
+{"id":"Q0054","prompt":"Machine A: $-8.0 with 75.0% chance, $49.0 with 25.0% chance.\nMachine B: $-17.0 with 75.0% chance, $90.0 with 25.0% chance."}
+{"id":"Q0055","prompt":"Machine A: $7.0 with 100.0% chance, $7.0 with 0.0% chance.\nMachine B: $-2.0 with 40.0% chance, $5.0 with 60.0% chance."}
+{"id":"Q0056","prompt":"Machine A: $11.0 with 100.0% chance, $11.0 with 0.0% chance.\nMachine B: $4.5 with 22.5% chance, $6.5 with 7.5% chance, $3.5 with 7.5% chance, $2.0 with 40.0% chance, $5.5 with 22.5% chance."}
+{"id":"Q0057","prompt":"Machine A: $-8.0 with 80.0% chance, $-10.0 with 20.0% chance.\nMachine B: $-5.0 with 90.0% chance, $61.0 with 10.0% chance."}
+{"id":"Q0058","prompt":"Machine A: $7.0 with 0.0% chance, $7.0 with 100.0% chance.\nMachine B: $3.0 with 80.0% chance, $49.0 with 10.0% chance, $47.0 with 5.0% chance, $43.0 with 5.0% chance."}
+{"id":"Q0059","prompt":"Machine A: $5.0 with 100.0% chance, $5.0 with 0.0% chance.\nMachine B: $14.0 with 95.0% chance, $20.0 with 5.0% chance."}
+{"id":"Q0060","prompt":"Machine A: $28.0 with 100.0% chance, $28.0 with 0.0% chance.\nMachine B: $11.0 with 80.0% chance, $91.0 with 20.0% chance."}
+{"id":"Q0061","prompt":"Machine A: $-5.0 with 100.0% chance, $-5.0 with 0.0% chance.\nMachine B: $-8.0 with 99.0% chance, $-1.0 with 1.0% chance."}
+{"id":"Q0062","prompt":"Machine A: $-25.0 with 10.0% chance, $19.0 with 90.0% chance.\nMachine B: $20.0 with 95.0% chance, $97.5 with 1.88% chance, $95.5 with 0.62% chance, $98.5 with 0.62% chance, $96.5 with 1.88% chance."}
+{"id":"Q0063","prompt":"Machine A: $11.0 with 25.0% chance, $-12.0 with 75.0% chance.\nMachine B: $3.0 with 60.0% chance, $1.0 with 40.0% chance."}
+{"id":"Q0064","prompt":"Machine A: $-1.0 with 0.0% chance, $-1.0 with 100.0% chance.\nMachine B: $81.5 with 5.0% chance, $3.0 with 90.0% chance, $82.5 with 5.0% chance."}
+{"id":"Q0065","prompt":"Machine A: $87.0 with 5.0% chance, $0.0 with 95.0% chance.\nMachine B: $11.0 with 25.0% chance, $1.0 with 75.0% chance."}
+{"id":"Q0066","prompt":"Machine A: $-4.0 with 50.0% chance, $64.0 with 50.0% chance.\nMachine B: $32.5 with 2.34% chance, $26.0 with 25.0% chance, $29.5 with 23.44% chance, $27.5 with 2.34% chance, $30.5 with 23.44% chance, $31.5 with 11.72% chance, $28.5 with 11.72% chance."}
+{"id":"Q0067","prompt":"Machine A: $103.0 with 5.0% chance, $7.0 with 95.0% chance.\nMachine B: $19.0 with 25.0% chance, $6.0 with 75.0% chance."}
+{"id":"Q0068","prompt":"Machine A: $-7.0 with 0.0% chance, $-7.0 with 100.0% chance.\nMachine B: $28.0 with 25.0% chance, $-20.0 with 75.0% chance."}
+{"id":"Q0069","prompt":"Machine A: $24.0 with 0.0% chance, $24.0 with 100.0% chance.\nMachine B: $19.0 with 50.0% chance, $21.0 with 25.0% chance, $81.0 with 3.12% chance, $25.0 with 12.5% chance, $33.0 with 6.25% chance, $49.0 with 3.12% chance."}
+{"id":"Q0070","prompt":"Machine A: $21.0 with 0.0% chance, $21.0 with 100.0% chance.\nMachine B: $33.5 with 9.38% chance, $30.5 with 9.38% chance, $31.5 with 28.12% chance, $32.5 with 28.12% chance, $7.0 with 25.0% chance."}
+{"id":"Q0071","prompt":"Machine A: $-9.0 with 50.0% chance, $57.0 with 50.0% chance.\nMachine B: $58.0 with 5.0% chance, $18.0 with 95.0% chance."}
+{"id":"Q0072","prompt":"Machine A: $26.0 with 0.0% chance, $26.0 with 100.0% chance.\nMachine B: $13.0 with 60.0% chance, $61.5 with 0.31% chance, $59.5 with 6.56% chance, $58.5 with 10.94% chance, $56.5 with 6.56% chance, $54.5 with 0.31% chance, $55.5 with 2.19% chance, $60.5 with 2.19% chance, $57.5 with 10.94% chance."}
+{"id":"Q0073","prompt":"Machine A: $17.0 with 0.0% chance, $17.0 with 100.0% chance.\nMachine B: $15.0 with 80.0% chance, $42.0 with 20.0% chance."}
+{"id":"Q0074","prompt":"Machine A: $22.0 with 0.0% chance, $22.0 with 100.0% chance.\nMachine B: $11.0 with 1.0% chance, $12.0 with 99.0% chance."}
+{"id":"Q0075","prompt":"Machine A: $24.0 with 0.0% chance, $24.0 with 100.0% chance.\nMachine B: $43.5 with 22.5% chance, $45.5 with 7.5% chance, $6.0 with 40.0% chance, $42.5 with 7.5% chance, $44.5 with 22.5% chance."}
+{"id":"Q0076","prompt":"Machine A: $24.0 with 0.0% chance, $24.0 with 100.0% chance.\nMachine B: $24.0 with 10.0% chance, $18.0 with 90.0% chance."}
+{"id":"Q0077","prompt":"Machine A: $13.0 with 0.0% chance, $13.0 with 100.0% chance.\nMachine B: $34.0 with 5.0% chance, $32.0 with 2.5% chance, $-4.0 with 90.0% chance, $28.0 with 1.25% chance, $20.0 with 1.25% chance."}
+{"id":"Q0078","prompt":"Machine A: $-29.0 with 50.0% chance, $53.0 with 50.0% chance.\nMachine B: $19.5 with 0.62% chance, $14.5 with 0.62% chance, $17.5 with 6.25% chance, $9.0 with 80.0% chance, $18.5 with 3.12% chance, $16.5 with 6.25% chance, $15.5 with 3.12% chance."}
+{"id":"Q0079","prompt":"Machine A: $11.0 with 0.0% chance, $11.0 with 100.0% chance.\nMachine B: $-10.0 with 50.0% chance, $34.0 with 25.0% chance, $40.0 with 6.25% chance, $48.0 with 3.12% chance, $96.0 with 1.56% chance, $64.0 with 1.56% chance, $36.0 with 12.5% chance."}
+{"id":"Q0080","prompt":"Machine A: $-10.0 with 75.0% chance, $15.0 with 25.0% chance.\nMachine B: $6.0 with 0.12% chance, $3.0 with 99.0% chance, $-2.0 with 0.06% chance, $12.0 with 0.5% chance, $-18.0 with 0.06% chance, $10.0 with 0.25% chance."}
+{"id":"Q0081","prompt":"Machine A: $-1.0 with 60.0% chance, $36.0 with 40.0% chance.\nMachine B: $35.5 with 37.5% chance, $-18.0 with 25.0% chance, $36.5 with 37.5% chance."}
+{"id":"Q0082","prompt":"Machine A: $16.0 with 50.0% chance, $34.0 with 50.0% chance.\nMachine B: $98.0 with 10.0% chance, $16.0 with 90.0% chance."}
+{"id":"Q0083","prompt":"Machine A: $39.0 with 75.0% chance, $-21.0 with 25.0% chance.\nMachine B: $9.0 with 20.0% chance, $23.0 with 40.0% chance, $21.0 with 40.0% chance."}
+{"id":"Q0084","prompt":"Machine A: $-6.0 with 10.0% chance, $-4.0 with 90.0% chance.\nMachine B: $-4.0 with 100.0% chance."}
+{"id":"Q0085","prompt":"Machine A: $18.0 with 0.0% chance, $18.0 with 100.0% chance.\nMachine B: $68.0 with 40.0% chance, $-6.0 with 60.0% chance."}
+{"id":"Q0086","prompt":"Machine A: $-9.0 with 100.0% chance, $-9.0 with 0.0% chance.\nMachine B: $84.0 with 25.0% chance, $-41.0 with 75.0% chance."}
+{"id":"Q0087","prompt":"Machine A: $38.0 with 60.0% chance, $-24.0 with 40.0% chance.\nMachine B: $33.0 with 75.0% chance, $-23.0 with 25.0% chance."}
+{"id":"Q0088","prompt":"Machine A: $-2.0 with 100.0% chance, $-2.0 with 0.0% chance.\nMachine B: $18.0 with 0.39% chance, $50.0 with 0.78% chance, $80.0 with 12.5% chance, $-15.0 with 75.0% chance, $78.0 with 6.25% chance, $-46.0 with 0.39% chance, $66.0 with 1.56% chance, $74.0 with 3.12% chance."}
+{"id":"Q0089","prompt":"Machine A: $53.0 with 50.0% chance, $-33.0 with 50.0% chance.\nMachine B: $0.0 with 80.0% chance, $38.0 with 20.0% chance."}
+{"id":"Q0090","prompt":"Machine A: $-7.0 with 100.0% chance, $-7.0 with 0.0% chance.\nMachine B: $59.0 with 12.5% chance, $-27.0 with 75.0% chance, $45.0 with 3.12% chance, $57.0 with 6.25% chance, $53.0 with 3.12% chance."}
+{"id":"Q0091","prompt":"Machine A: $-3.0 with 100.0% chance, $-3.0 with 0.0% chance.\nMachine B: $-11.0 with 75.0% chance, $20.0 with 25.0% chance."}
+{"id":"Q0092","prompt":"Machine A: $-9.0 with 100.0% chance, $-9.0 with 0.0% chance.\nMachine B: $-13.0 with 95.0% chance, $46.5 with 1.88% chance, $47.5 with 1.88% chance, $48.5 with 0.62% chance, $45.5 with 0.62% chance."}
+{"id":"Q0093","prompt":"Machine A: $1.0 with 80.0% chance, $46.0 with 20.0% chance.\nMachine B: $41.5 with 22.5% chance, $43.5 with 7.5% chance, $40.5 with 7.5% chance, $-38.0 with 40.0% chance, $42.5 with 22.5% chance."}
+{"id":"Q0094","prompt":"Machine A: $10.0 with 1.0% chance, $-10.0 with 99.0% chance.\nMachine B: $-10.0 with 95.0% chance, $6.0 with 5.0% chance."}
+{"id":"Q0095","prompt":"Machine A: $25.0 with 0.0% chance, $25.0 with 100.0% chance.\nMachine B: $29.0 with 5.0% chance, $22.0 with 95.0% chance."}
+{"id":"Q0096","prompt":"Machine A: $5.0 with 100.0% chance, $5.0 with 0.0% chance.\nMachine B: $-7.0 with 99.0% chance, $76.0 with 1.0% chance."}
+{"id":"Q0097","prompt":"Machine A: $13.0 with 0.0% chance, $13.0 with 100.0% chance.\nMachine B: $-31.0 with 1.0% chance, $12.0 with 99.0% chance."}
+{"id":"Q0098","prompt":"Machine A: $9.0 with 40.0% chance, $-4.0 with 60.0% chance.\nMachine B: $10.0 with 60.0% chance, $-16.0 with 40.0% chance."}
+{"id":"Q0099","prompt":"Machine A: $11.0 with 100.0% chance, $11.0 with 0.0% chance.\nMachine B: $4.0 with 40.0% chance, $18.0 with 60.0% chance."}
+{"id":"Q0100","prompt":"Machine A: $11.0 with 0.0% chance, $11.0 with 100.0% chance.\nMachine B: $-2.0 with 80.0% chance, $94.0 with 20.0% chance."}
+{"id":"Q0101","prompt":"Machine A: $34.0 with 20.0% chance, $-6.0 with 80.0% chance.\nMachine B: $2.0 with 100.0% chance."}
+{"id":"Q0102","prompt":"Machine A: $23.0 with 0.0% chance, $23.0 with 100.0% chance.\nMachine B: $31.0 with 99.0% chance, $-32.0 with 1.0% chance."}
+{"id":"Q0103","prompt":"Machine A: $1.0 with 60.0% chance, $39.0 with 40.0% chance.\nMachine B: $35.0 with 30.0% chance, $33.0 with 30.0% chance, $24.0 with 40.0% chance."}
+{"id":"Q0104","prompt":"Machine A: $21.0 with 100.0% chance, $21.0 with 0.0% chance.\nMachine B: $38.0 with 37.5% chance, $-38.0 with 25.0% chance, $36.0 with 18.75% chance, $24.0 with 4.69% chance, $32.0 with 9.38% chance, $8.0 with 4.69% chance."}
+{"id":"Q0105","prompt":"Machine A: $59.0 with 60.0% chance, $-23.0 with 40.0% chance.\nMachine B: $28.5 with 10.0% chance, $29.5 with 10.0% chance, $19.0 with 80.0% chance."}
+{"id":"Q0106","prompt":"Machine A: $-7.0 with 100.0% chance, $-7.0 with 0.0% chance.\nMachine B: $-4.0 with 90.0% chance, $42.0 with 10.0% chance."}
+{"id":"Q0107","prompt":"Machine A: $4.0 with 0.0% chance, $4.0 with 100.0% chance.\nMachine B: $57.0 with 1.0% chance, $2.0 with 99.0% chance."}
+{"id":"Q0108","prompt":"Machine A: $1.0 with 100.0% chance, $1.0 with 0.0% chance.\nMachine B: $4.5 with 30.94% chance, $-22.0 with 1.0% chance, $5.5 with 30.94% chance, $2.5 with 3.09% chance, $7.5 with 3.09% chance, $3.5 with 15.47% chance, $6.5 with 15.47% chance."}
+{"id":"Q0109","prompt":"Machine A: $-8.0 with 0.0% chance, $-8.0 with 100.0% chance.\nMachine B: $-13.0 with 99.0% chance, $28.0 with 1.0% chance."}
+{"id":"Q0110","prompt":"Machine A: $93.0 with 25.0% chance, $-22.0 with 75.0% chance.\nMachine B: $1.0 with 95.0% chance, $-17.0 with 5.0% chance."}
+{"id":"Q0111","prompt":"Machine A: $27.0 with 100.0% chance, $27.0 with 0.0% chance.\nMachine B: $92.5 with 8.2% chance, $87.5 with 0.39% chance, $89.5 with 8.2% chance, $91.5 with 13.67% chance, $90.5 with 13.67% chance, $88.5 with 2.73% chance, $-33.0 with 50.0% chance, $94.5 with 0.39% chance, $93.5 with 2.73% chance."}
+{"id":"Q0112","prompt":"Machine A: $25.0 with 75.0% chance, $30.0 with 25.0% chance.\nMachine B: $25.0 with 90.0% chance, $45.0 with 10.0% chance."}
+{"id":"Q0113","prompt":"Machine A: $-5.0 with 100.0% chance, $-5.0 with 0.0% chance.\nMachine B: $15.5 with 2.73% chance, $9.5 with 0.39% chance, $16.5 with 0.39% chance, $13.5 with 13.67% chance, $14.5 with 8.2% chance, $10.5 with 2.73% chance, $-33.0 with 50.0% chance, $12.5 with 13.67% chance, $11.5 with 8.2% chance."}
+{"id":"Q0114","prompt":"Machine A: $48.0 with 1.0% chance, $19.0 with 99.0% chance.\nMachine B: $19.5 with 50.0% chance, $18.5 with 50.0% chance."}
+{"id":"Q0115","prompt":"Machine A: $22.0 with 0.0% chance, $22.0 with 100.0% chance.\nMachine B: $60.0 with 25.0% chance, $122.0 with 0.78% chance, $74.0 with 3.12% chance, $-27.0 with 50.0% chance, $186.0 with 0.78% chance, $90.0 with 1.56% chance, $62.0 with 12.5% chance, $66.0 with 6.25% chance."}
+{"id":"Q0116","prompt":"Machine A: $9.0 with 20.0% chance, $-11.0 with 80.0% chance.\nMachine B: $-10.0 with 1.0% chance, $-9.0 with 99.0% chance."}
+{"id":"Q0117","prompt":"Machine A: $28.0 with 99.0% chance, $25.0 with 1.0% chance.\nMachine B: $62.0 with 0.5% chance, $41.0 with 99.0% chance, $64.0 with 0.5% chance."}
+{"id":"Q0118","prompt":"Machine A: $6.0 with 100.0% chance, $6.0 with 0.0% chance.\nMachine B: $68.0 with 25.0% chance, $-15.0 with 75.0% chance."}
+{"id":"Q0119","prompt":"Machine A: $10.0 with 100.0% chance, $10.0 with 0.0% chance.\nMachine B: $18.0 with 60.0% chance, $20.0 with 40.0% chance."}
+{"id":"Q0120","prompt":"Machine A: $5.0 with 0.0% chance, $5.0 with 100.0% chance.\nMachine B: $96.0 with 20.0% chance, $-13.0 with 80.0% chance."}
+{"id":"Q0121","prompt":"Machine A: $25.0 with 100.0% chance, $25.0 with 0.0% chance.\nMachine B: $79.0 with 5.0% chance, $19.0 with 95.0% chance."}
+{"id":"Q0122","prompt":"Machine A: $-3.0 with 0.0% chance, $-3.0 with 100.0% chance.\nMachine B: $42.5 with 12.5% chance, $-31.0 with 60.0% chance, $44.5 with 6.25% chance, $40.5 with 1.25% chance, $43.5 with 12.5% chance, $45.5 with 1.25% chance, $41.5 with 6.25% chance."}
+{"id":"Q0123","prompt":"Machine A: $25.0 with 1.0% chance, $15.0 with 99.0% chance.\nMachine B: $43.0 with 5.0% chance, $15.0 with 95.0% chance."}
+{"id":"Q0124","prompt":"Machine A: $14.0 with 100.0% chance, $14.0 with 0.0% chance.\nMachine B: $14.0 with 5.0% chance, $7.0 with 95.0% chance."}
+{"id":"Q0125","prompt":"Machine A: $14.0 with 0.0% chance, $14.0 with 100.0% chance.\nMachine B: $12.0 with 6.25% chance, $40.0 with 0.78% chance, $10.0 with 12.5% chance, $16.0 with 3.12% chance, $24.0 with 1.56% chance, $15.0 with 75.0% chance, $136.0 with 0.39% chance, $72.0 with 0.39% chance."}
+{"id":"Q0126","prompt":"Machine A: $29.0 with 0.0% chance, $29.0 with 100.0% chance.\nMachine B: $33.5 with 0.62% chance, $3.0 with 20.0% chance, $35.5 with 13.12% chance, $37.5 with 21.88% chance, $39.5 with 4.38% chance, $34.5 with 4.38% chance, $38.5 with 13.12% chance, $40.5 with 0.62% chance, $36.5 with 21.88% chance."}
+{"id":"Q0127","prompt":"Machine A: $-5.0 with 20.0% chance, $11.0 with 80.0% chance.\nMachine B: $25.5 with 3.75% chance, $12.0 with 90.0% chance, $26.5 with 1.25% chance, $24.5 with 3.75% chance, $23.5 with 1.25% chance."}
+{"id":"Q0128","prompt":"Machine A: $4.0 with 0.0% chance, $4.0 with 100.0% chance.\nMachine B: $-12.0 with 25.0% chance, $5.0 with 18.75% chance, $9.0 with 18.75% chance, $11.0 with 37.5% chance."}
+{"id":"Q0129","prompt":"Machine A: $-14.0 with 50.0% chance, $74.0 with 50.0% chance.\nMachine B: $60.0 with 30.0% chance, $58.0 with 30.0% chance, $-16.0 with 40.0% chance."}
+{"id":"Q0130","prompt":"Machine A: $5.0 with 75.0% chance, $42.0 with 25.0% chance.\nMachine B: $36.5 with 0.47% chance, $43.5 with 0.47% chance, $42.5 with 3.28% chance, $37.5 with 3.28% chance, $39.5 with 16.41% chance, $-20.0 with 40.0% chance, $41.5 with 9.84% chance, $38.5 with 9.84% chance, $40.5 with 16.41% chance."}
+{"id":"Q0131","prompt":"Machine A: $12.0 with 0.0% chance, $12.0 with 100.0% chance.\nMachine B: $91.0 with 20.0% chance, $-8.0 with 80.0% chance."}
+{"id":"Q0132","prompt":"Machine A: $-2.0 with 20.0% chance, $37.0 with 80.0% chance.\nMachine B: $-29.0 with 10.0% chance, $34.0 with 90.0% chance."}
+{"id":"Q0133","prompt":"Machine A: $9.0 with 90.0% chance, $-8.0 with 10.0% chance.\nMachine B: $87.0 with 40.0% chance, $-46.0 with 60.0% chance."}
+{"id":"Q0134","prompt":"Machine A: $66.0 with 40.0% chance, $-12.0 with 60.0% chance.\nMachine B: $37.0 with 10.0% chance, $35.0 with 10.0% chance, $6.0 with 80.0% chance."}
+{"id":"Q0135","prompt":"Machine A: $-22.0 with 50.0% chance, $24.0 with 50.0% chance.\nMachine B: $-14.0 with 10.0% chance, $6.0 with 90.0% chance."}
+{"id":"Q0136","prompt":"Machine A: $42.0 with 20.0% chance, $27.0 with 80.0% chance.\nMachine B: $35.0 with 25.0% chance, $21.0 with 75.0% chance."}
+{"id":"Q0137","prompt":"Machine A: $27.0 with 0.0% chance, $27.0 with 100.0% chance.\nMachine B: $20.0 with 90.0% chance, $74.0 with 10.0% chance."}
+{"id":"Q0138","prompt":"Machine A: $-19.0 with 60.0% chance, $48.0 with 40.0% chance.\nMachine B: $19.0 with 1.0% chance, $8.0 with 99.0% chance."}
+{"id":"Q0139","prompt":"Machine A: $1.0 with 100.0% chance, $1.0 with 0.0% chance.\nMachine B: $35.0 with 1.0% chance, $5.0 with 99.0% chance."}
+{"id":"Q0140","prompt":"Machine A: $15.0 with 0.0% chance, $15.0 with 100.0% chance.\nMachine B: $13.0 with 90.0% chance, $46.0 with 10.0% chance."}
+{"id":"Q0141","prompt":"Machine A: $11.0 with 40.0% chance, $-22.0 with 60.0% chance.\nMachine B: $-39.0 with 5.0% chance, $-6.0 with 11.88% chance, $2.0 with 5.94% chance, $18.0 with 2.97% chance, $50.0 with 2.97% chance, $-10.0 with 23.75% chance, $-12.0 with 47.5% chance."}
+{"id":"Q0142","prompt":"Machine A: $-8.0 with 0.0% chance, $-8.0 with 100.0% chance.\nMachine B: $-11.0 with 60.0% chance, $-11.0 with 40.0% chance."}
+{"id":"Q0143","prompt":"Machine A: $4.0 with 0.0% chance, $4.0 with 100.0% chance.\nMachine B: $-38.0 with 50.0% chance, $37.0 with 50.0% chance."}
+{"id":"Q0144","prompt":"Machine A: $66.0 with 10.0% chance, $13.0 with 90.0% chance.\nMachine B: $18.5 with 50.0% chance, $17.5 with 50.0% chance."}
+{"id":"Q0145","prompt":"Machine A: $22.0 with 100.0% chance, $22.0 with 0.0% chance.\nMachine B: $44.0 with 60.0% chance, $-24.0 with 40.0% chance."}
+{"id":"Q0146","prompt":"Machine A: $1.0 with 25.0% chance, $10.0 with 75.0% chance.\nMachine B: $75.0 with 5.0% chance, $6.0 with 95.0% chance."}
+{"id":"Q0147","prompt":"Machine A: $21.0 with 100.0% chance, $21.0 with 0.0% chance.\nMachine B: $-30.0 with 25.0% chance, $32.0 with 75.0% chance."}
+{"id":"Q0148","prompt":"Machine A: $7.0 with 100.0% chance, $7.0 with 0.0% chance.\nMachine B: $13.0 with 25.0% chance, $15.0 with 25.0% chance, $5.0 with 50.0% chance."}
+{"id":"Q0149","prompt":"Machine A: $2.0 with 100.0% chance, $2.0 with 0.0% chance.\nMachine B: $-1.0 with 95.0% chance, $4.0 with 5.0% chance."}
+{"id":"Q0150","prompt":"Machine A: $16.0 with 100.0% chance, $16.0 with 0.0% chance.\nMachine B: $19.0 with 75.0% chance, $17.0 with 25.0% chance."}
+{"id":"Q0151","prompt":"Machine A: $0.0 with 40.0% chance, $22.0 with 60.0% chance.\nMachine B: $12.0 with 40.0% chance, $18.0 with 7.5% chance, $12.0 with 30.0% chance, $26.0 with 3.75% chance, $42.0 with 3.75% chance, $14.0 with 15.0% chance."}
+{"id":"Q0152","prompt":"Machine A: $13.0 with 0.0% chance, $13.0 with 100.0% chance.\nMachine B: $115.0 with 5.0% chance, $0.0 with 95.0% chance."}
+{"id":"Q0153","prompt":"Machine A: $28.0 with 0.0% chance, $28.0 with 100.0% chance.\nMachine B: $21.0 with 1.56% chance, $45.0 with 3.12% chance, $37.0 with 1.56% chance, $34.0 with 75.0% chance, $51.0 with 12.5% chance, $49.0 with 6.25% chance."}
+{"id":"Q0154","prompt":"Machine A: $23.0 with 100.0% chance, $23.0 with 0.0% chance.\nMachine B: $31.0 with 5.0% chance, $23.0 with 95.0% chance."}
+{"id":"Q0155","prompt":"Machine A: $87.0 with 50.0% chance, $-47.0 with 50.0% chance.\nMachine B: $19.0 with 80.0% chance, $39.0 with 20.0% chance."}
+{"id":"Q0156","prompt":"Machine A: $3.0 with 0.0% chance, $3.0 with 100.0% chance.\nMachine B: $-15.0 with 50.0% chance, $24.0 with 50.0% chance."}
+{"id":"Q0157","prompt":"Machine A: $32.0 with 50.0% chance, $2.0 with 50.0% chance.\nMachine B: $94.5 with 7.81% chance, $93.5 with 3.91% chance, $96.5 with 3.91% chance, $-1.0 with 75.0% chance, $92.5 with 0.78% chance, $97.5 with 0.78% chance, $95.5 with 7.81% chance."}
+{"id":"Q0158","prompt":"Machine A: $-26.0 with 25.0% chance, $-2.0 with 75.0% chance.\nMachine B: $1.0 with 80.0% chance, $-43.0 with 20.0% chance."}
+{"id":"Q0159","prompt":"Machine A: $30.0 with 0.0% chance, $30.0 with 100.0% chance.\nMachine B: $80.5 with 12.5% chance, $7.0 with 75.0% chance, $79.5 with 12.5% chance."}
+{"id":"Q0160","prompt":"Machine A: $11.0 with 100.0% chance, $11.0 with 0.0% chance.\nMachine B: $21.0 with 50.0% chance, $2.0 with 50.0% chance."}
+{"id":"Q0161","prompt":"Machine A: $17.0 with 80.0% chance, $-43.0 with 20.0% chance.\nMachine B: $2.0 with 80.0% chance, $35.0 with 20.0% chance."}
+{"id":"Q0162","prompt":"Machine A: $69.0 with 50.0% chance, $-11.0 with 50.0% chance.\nMachine B: $12.0 with 50.0% chance, $30.0 with 6.25% chance, $38.0 with 6.25% chance, $42.0 with 12.5% chance, $44.0 with 25.0% chance."}
+{"id":"Q0163","prompt":"Machine A: $28.0 with 50.0% chance, $-20.0 with 50.0% chance.\nMachine B: $-18.0 with 25.0% chance, $9.5 with 28.12% chance, $10.5 with 9.38% chance, $7.5 with 9.38% chance, $8.5 with 28.12% chance."}
+{"id":"Q0164","prompt":"Machine A: $-7.0 with 100.0% chance, $-7.0 with 0.0% chance.\nMachine B: $-5.0 with 80.0% chance, $48.5 with 6.25% chance, $47.5 with 6.25% chance, $50.5 with 0.62% chance, $49.5 with 3.12% chance, $46.5 with 3.12% chance, $45.5 with 0.62% chance."}
+{"id":"Q0165","prompt":"Machine A: $-2.0 with 100.0% chance, $-2.0 with 0.0% chance.\nMachine B: $-10.0 with 90.0% chance, $49.0 with 1.25% chance, $43.0 with 5.0% chance, $57.0 with 1.25% chance, $45.0 with 2.5% chance."}
+{"id":"Q0166","prompt":"Machine A: $22.0 with 100.0% chance, $22.0 with 0.0% chance.\nMachine B: $-14.0 with 20.0% chance, $34.0 with 80.0% chance."}
+{"id":"Q0167","prompt":"Machine A: $30.0 with 0.0% chance, $30.0 with 100.0% chance.\nMachine B: $5.0 with 25.0% chance, $31.0 with 75.0% chance."}
+{"id":"Q0168","prompt":"Machine A: $10.0 with 0.0% chance, $10.0 with 100.0% chance.\nMachine B: $63.0 with 1.55% chance, $1.0 with 49.5% chance, $3.0 with 24.75% chance, $127.0 with 1.55% chance, $15.0 with 6.19% chance, $31.0 with 3.09% chance, $-20.0 with 1.0% chance, $7.0 with 12.38% chance."}
+{"id":"Q0169","prompt":"Machine A: $13.0 with 50.0% chance, $-23.0 with 50.0% chance.\nMachine B: $115.0 with 1.56% chance, $-11.0 with 50.0% chance, $51.0 with 1.56% chance, $-9.0 with 25.0% chance, $19.0 with 3.12% chance, $3.0 with 6.25% chance, $-5.0 with 12.5% chance."}
+{"id":"Q0170","prompt":"Machine A: $14.0 with 80.0% chance, $42.0 with 20.0% chance.\nMachine B: $58.5 with 0.55% chance, $59.5 with 1.64% chance, $61.5 with 2.73% chance, $57.5 with 0.08% chance, $60.5 with 2.73% chance, $64.5 with 0.08% chance, $19.0 with 90.0% chance, $62.5 with 1.64% chance, $63.5 with 0.55% chance."}
+{"id":"Q0171","prompt":"Machine A: $6.0 with 50.0% chance, $48.0 with 50.0% chance.\nMachine B: $98.5 with 6.25% chance, $99.5 with 18.75% chance, $100.5 with 18.75% chance, $101.5 with 6.25% chance, $-36.0 with 50.0% chance."}
+{"id":"Q0172","prompt":"Machine A: $25.0 with 20.0% chance, $-14.0 with 80.0% chance.\nMachine B: $-11.0 with 95.0% chance, $65.0 with 5.0% chance."}
+{"id":"Q0173","prompt":"Machine A: $-6.0 with 99.0% chance, $52.0 with 1.0% chance.\nMachine B: $156.0 with 0.62% chance, $36.0 with 5.0% chance, $30.0 with 20.0% chance, $32.0 with 10.0% chance, $60.0 with 1.25% chance, $44.0 with 2.5% chance, $-25.0 with 60.0% chance, $92.0 with 0.62% chance."}
+{"id":"Q0174","prompt":"Machine A: $-3.0 with 0.0% chance, $-3.0 with 100.0% chance.\nMachine B: $-31.0 with 60.0% chance, $34.0 with 40.0% chance."}
+{"id":"Q0175","prompt":"Machine A: $5.0 with 0.0% chance, $5.0 with 100.0% chance.\nMachine B: $66.5 with 0.05% chance, $71.5 with 0.05% chance, $68.5 with 0.27% chance, $70.5 with 0.16% chance, $69.5 with 0.27% chance, $65.5 with 0.01% chance, $72.5 with 0.01% chance, $67.5 with 0.16% chance, $-3.0 with 99.0% chance."}
+{"id":"Q0176","prompt":"Machine A: $27.0 with 0.0% chance, $27.0 with 100.0% chance.\nMachine B: $63.0 with 0.25% chance, $28.0 with 99.0% chance, $67.0 with 0.12% chance, $61.0 with 0.5% chance, $75.0 with 0.12% chance."}
+{"id":"Q0177","prompt":"Machine A: $18.0 with 0.0% chance, $18.0 with 100.0% chance.\nMachine B: $1.0 with 80.0% chance, $43.0 with 20.0% chance."}
+{"id":"Q0178","prompt":"Machine A: $29.0 with 0.0% chance, $29.0 with 100.0% chance.\nMachine B: $2.0 with 25.0% chance, $38.0 with 75.0% chance."}
+{"id":"Q0179","prompt":"Machine A: $5.0 with 80.0% chance, $44.0 with 20.0% chance.\nMachine B: $15.5 with 25.0% chance, $-1.0 with 20.0% chance, $18.5 with 2.5% chance, $16.5 with 25.0% chance, $13.5 with 2.5% chance, $14.5 with 12.5% chance, $17.5 with 12.5% chance."}
+{"id":"Q0180","prompt":"Machine A: $18.0 with 100.0% chance, $18.0 with 0.0% chance.\nMachine B: $12.0 with 25.0% chance, $13.0 with 75.0% chance."}
+{"id":"Q0181","prompt":"Machine A: $28.0 with 80.0% chance, $39.0 with 20.0% chance.\nMachine B: $51.0 with 60.0% chance, $-20.0 with 40.0% chance."}
+{"id":"Q0182","prompt":"Machine A: $-4.0 with 0.0% chance, $-4.0 with 100.0% chance.\nMachine B: $-20.0 with 40.0% chance, $4.5 with 7.5% chance, $2.5 with 22.5% chance, $3.5 with 22.5% chance, $1.5 with 7.5% chance."}
+{"id":"Q0183","prompt":"Machine A: $7.0 with 0.0% chance, $7.0 with 100.0% chance.\nMachine B: $8.0 with 75.0% chance, $10.5 with 0.78% chance, $15.5 with 0.78% chance, $13.5 with 7.81% chance, $11.5 with 3.91% chance, $14.5 with 3.91% chance, $12.5 with 7.81% chance."}
+{"id":"Q0184","prompt":"Machine A: $95.0 with 10.0% chance, $-13.0 with 90.0% chance.\nMachine B: $43.0 with 40.0% chance, $-28.0 with 60.0% chance."}
+{"id":"Q0185","prompt":"Machine A: $20.0 with 100.0% chance, $20.0 with 0.0% chance.\nMachine B: $5.0 with 20.0% chance, $25.0 with 80.0% chance."}
+{"id":"Q0186","prompt":"Machine A: $-2.0 with 100.0% chance, $-2.0 with 0.0% chance.\nMachine B: $4.0 with 50.0% chance, $5.0 with 50.0% chance."}
+{"id":"Q0187","prompt":"Machine A: $-7.0 with 100.0% chance, $-7.0 with 0.0% chance.\nMachine B: $-6.5 with 3.12% chance, $-11.0 with 75.0% chance, $-7.5 with 9.38% chance, $-8.5 with 9.38% chance, $-9.5 with 3.12% chance."}
+{"id":"Q0188","prompt":"Machine A: $13.0 with 100.0% chance, $13.0 with 0.0% chance.\nMachine B: $8.0 with 40.0% chance, $24.0 with 60.0% chance."}
+{"id":"Q0189","prompt":"Machine A: $30.0 with 0.0% chance, $30.0 with 100.0% chance.\nMachine B: $38.0 with 75.0% chance, $7.0 with 25.0% chance."}
+{"id":"Q0190","prompt":"Machine A: $16.0 with 20.0% chance, $27.0 with 80.0% chance.\nMachine B: $25.0 with 100.0% chance."}
+{"id":"Q0191","prompt":"Machine A: $6.0 with 0.0% chance, $6.0 with 100.0% chance.\nMachine B: $6.0 with 95.0% chance, $27.5 with 2.5% chance, $28.5 with 2.5% chance."}
+{"id":"Q0192","prompt":"Machine A: $12.0 with 0.0% chance, $12.0 with 100.0% chance.\nMachine B: $62.5 with 1.37% chance, $60.5 with 0.82% chance, $61.5 with 1.37% chance, $63.5 with 0.82% chance, $16.0 with 95.0% chance, $59.5 with 0.27% chance, $58.5 with 0.04% chance, $65.5 with 0.04% chance, $64.5 with 0.27% chance."}
+{"id":"Q0193","prompt":"Machine A: $6.0 with 100.0% chance, $6.0 with 0.0% chance.\nMachine B: $10.5 with 14.77% chance, $9.5 with 24.61% chance, $6.5 with 4.92% chance, $5.5 with 0.7% chance, $12.5 with 0.7% chance, $8.5 with 24.61% chance, $11.5 with 4.92% chance, $7.5 with 14.77% chance, $0.0 with 10.0% chance."}
+{"id":"Q0194","prompt":"Machine A: $-17.0 with 60.0% chance, $75.0 with 40.0% chance.\nMachine B: $16.0 with 45.0% chance, $18.0 with 45.0% chance, $-5.0 with 10.0% chance."}
+{"id":"Q0195","prompt":"Machine A: $25.0 with 0.0% chance, $25.0 with 100.0% chance.\nMachine B: $17.0 with 40.0% chance, $30.0 with 60.0% chance."}
+{"id":"Q0196","prompt":"Machine A: $14.0 with 0.0% chance, $14.0 with 100.0% chance.\nMachine B: $32.0 with 60.0% chance, $-11.0 with 40.0% chance."}
+{"id":"Q0197","prompt":"Machine A: $20.0 with 25.0% chance, $0.0 with 75.0% chance.\nMachine B: $3.0 with 95.0% chance, $80.0 with 5.0% chance."}
+{"id":"Q0198","prompt":"Machine A: $15.0 with 95.0% chance, $44.0 with 5.0% chance.\nMachine B: $16.5 with 3.12% chance, $17.5 with 0.62% chance, $14.5 with 6.25% chance, $13.5 with 3.12% chance, $14.0 with 80.0% chance, $15.5 with 6.25% chance, $12.5 with 0.62% chance."}
+{"id":"Q0199","prompt":"Machine A: $-7.0 with 5.0% chance, $-10.0 with 95.0% chance.\nMachine B: $-12.0 with 60.0% chance, $-1.0 with 40.0% chance."}
+{"id":"Q0200","prompt":"Machine A: $29.0 with 100.0% chance, $29.0 with 0.0% chance.\nMachine B: $111.0 with 40.0% chance, $-39.0 with 60.0% chance."}
+{"id":"Q0201","prompt":"Machine A: $-6.0 with 0.0% chance, $-6.0 with 100.0% chance.\nMachine B: $-8.0 with 20.0% chance, $-8.0 with 80.0% chance."}
+{"id":"Q0202","prompt":"Machine A: $0.0 with 0.0% chance, $0.0 with 100.0% chance.\nMachine B: $-19.0 with 80.0% chance, $50.0 with 10.0% chance, $52.0 with 10.0% chance."}
+{"id":"Q0203","prompt":"Machine A: $-29.0 with 10.0% chance, $25.0 with 90.0% chance.\nMachine B: $76.0 with 12.5% chance, $62.0 with 3.12% chance, $13.0 with 75.0% chance, $70.0 with 3.12% chance, $74.0 with 6.25% chance."}
+{"id":"Q0204","prompt":"Machine A: $24.0 with 0.0% chance, $24.0 with 100.0% chance.\nMachine B: $27.5 with 49.5% chance, $7.0 with 1.0% chance, $28.5 with 49.5% chance."}
+{"id":"Q0205","prompt":"Machine A: $24.0 with 0.0% chance, $24.0 with 100.0% chance.\nMachine B: $55.5 with 1.25% chance, $52.5 with 1.25% chance, $53.5 with 3.75% chance, $54.5 with 3.75% chance, $17.0 with 90.0% chance."}
+{"id":"Q0206","prompt":"Machine A: $21.0 with 100.0% chance, $21.0 with 0.0% chance.\nMachine B: $19.5 with 49.5% chance, $-7.0 with 1.0% chance, $20.5 with 49.5% chance."}
+{"id":"Q0207","prompt":"Machine A: $17.0 with 80.0% chance, $12.0 with 20.0% chance.\nMachine B: $16.0 with 100.0% chance."}
+{"id":"Q0208","prompt":"Machine A: $-14.0 with 20.0% chance, $26.0 with 80.0% chance.\nMachine B: $5.0 with 20.0% chance, $25.0 with 80.0% chance."}
+{"id":"Q0209","prompt":"Machine A: $4.0 with 50.0% chance, $56.0 with 50.0% chance.\nMachine B: $80.0 with 40.0% chance, $-7.0 with 60.0% chance."}
+{"id":"Q0210","prompt":"Machine A: $12.0 with 75.0% chance, $68.0 with 25.0% chance.\nMachine B: $-19.0 with 5.0% chance, $26.0 with 95.0% chance."}
+{"id":"Q0211","prompt":"Machine A: $86.0 with 5.0% chance, $-5.0 with 95.0% chance.\nMachine B: $40.0 with 6.25% chance, $38.0 with 12.5% chance, $-20.0 with 75.0% chance, $44.0 with 3.12% chance, $68.0 with 1.56% chance, $52.0 with 1.56% chance."}
+{"id":"Q0212","prompt":"Machine A: $-11.0 with 90.0% chance, $6.0 with 10.0% chance.\nMachine B: $12.0 with 60.0% chance, $-30.0 with 40.0% chance."}
+{"id":"Q0213","prompt":"Machine A: $20.0 with 100.0% chance, $20.0 with 0.0% chance.\nMachine B: $33.5 with 10.0% chance, $18.0 with 80.0% chance, $34.5 with 10.0% chance."}
+{"id":"Q0214","prompt":"Machine A: $14.0 with 100.0% chance, $14.0 with 0.0% chance.\nMachine B: $-3.0 with 40.0% chance, $28.0 with 60.0% chance."}
+{"id":"Q0215","prompt":"Machine A: $-7.0 with 0.0% chance, $-7.0 with 100.0% chance.\nMachine B: $-19.0 with 80.0% chance, $54.0 with 20.0% chance."}
+{"id":"Q0216","prompt":"Machine A: $18.0 with 75.0% chance, $19.0 with 25.0% chance.\nMachine B: $48.5 with 0.31% chance, $51.5 with 3.12% chance, $52.5 with 1.56% chance, $18.0 with 90.0% chance, $50.5 with 3.12% chance, $49.5 with 1.56% chance, $53.5 with 0.31% chance."}
+{"id":"Q0217","prompt":"Machine A: $45.0 with 20.0% chance, $25.0 with 80.0% chance.\nMachine B: $50.0 with 0.78% chance, $22.0 with 75.0% chance, $22.0 with 6.25% chance, $82.0 with 0.78% chance, $34.0 with 1.56% chance, $26.0 with 3.12% chance, $20.0 with 12.5% chance."}
+{"id":"Q0218","prompt":"Machine A: $8.0 with 80.0% chance, $84.0 with 20.0% chance.\nMachine B: $102.0 with 40.0% chance, $-18.0 with 60.0% chance."}
+{"id":"Q0219","prompt":"Machine A: $13.0 with 0.0% chance, $13.0 with 100.0% chance.\nMachine B: $-6.0 with 1.0% chance, $14.0 with 99.0% chance."}
+{"id":"Q0220","prompt":"Machine A: $19.0 with 40.0% chance, $1.0 with 60.0% chance.\nMachine B: $5.0 with 50.0% chance, $14.0 with 50.0% chance."}
+{"id":"Q0221","prompt":"Machine A: $2.0 with 80.0% chance, $16.0 with 20.0% chance.\nMachine B: $8.0 with 60.0% chance, $15.5 with 0.31% chance, $9.5 with 2.19% chance, $10.5 with 6.56% chance, $8.5 with 0.31% chance, $13.5 with 6.56% chance, $12.5 with 10.94% chance, $14.5 with 2.19% chance, $11.5 with 10.94% chance."}
+{"id":"Q0222","prompt":"Machine A: $20.0 with 60.0% chance, $18.0 with 40.0% chance.\nMachine B: $1.0 with 50.0% chance, $35.0 with 50.0% chance."}
+{"id":"Q0223","prompt":"Machine A: $14.0 with 100.0% chance, $14.0 with 0.0% chance.\nMachine B: $5.0 with 7.5% chance, $1.0 with 15.0% chance, $13.0 with 3.75% chance, $125.0 with 0.47% chance, $61.0 with 0.94% chance, $29.0 with 1.88% chance, $-1.0 with 30.0% chance, $2.0 with 40.0% chance, $253.0 with 0.47% chance."}
+{"id":"Q0224","prompt":"Machine A: $-3.0 with 1.0% chance, $27.0 with 99.0% chance.\nMachine B: $16.0 with 11.88% chance, $6.0 with 5.0% chance, $22.0 with 47.5% chance, $-8.0 with 2.97% chance, $20.0 with 23.75% chance, $-40.0 with 2.97% chance, $8.0 with 5.94% chance."}
+{"id":"Q0225","prompt":"Machine A: $-12.0 with 40.0% chance, $53.0 with 60.0% chance.\nMachine B: $26.0 with 99.0% chance, $94.5 with 0.5% chance, $95.5 with 0.5% chance."}
+{"id":"Q0226","prompt":"Machine A: $-24.0 with 40.0% chance, $51.0 with 60.0% chance.\nMachine B: $21.0 with 100.0% chance."}
+{"id":"Q0227","prompt":"Machine A: $8.0 with 100.0% chance, $8.0 with 0.0% chance.\nMachine B: $21.0 with 1.25% chance, $37.0 with 1.25% chance, $51.0 with 10.0% chance, $11.0 with 80.0% chance, $49.0 with 5.0% chance, $45.0 with 2.5% chance."}
+{"id":"Q0228","prompt":"Machine A: $-1.0 with 95.0% chance, $19.0 with 5.0% chance.\nMachine B: $82.0 with 1.25% chance, $-13.0 with 95.0% chance, $110.0 with 0.16% chance, $86.0 with 0.62% chance, $142.0 with 0.08% chance, $94.0 with 0.31% chance, $80.0 with 2.5% chance, $206.0 with 0.08% chance."}
+{"id":"Q0229","prompt":"Machine A: $19.0 with 20.0% chance, $29.0 with 80.0% chance.\nMachine B: $82.0 with 10.0% chance, $22.0 with 90.0% chance."}
+{"id":"Q0230","prompt":"Machine A: $15.0 with 100.0% chance, $15.0 with 0.0% chance.\nMachine B: $10.5 with 0.78% chance, $9.5 with 3.91% chance, $8.5 with 7.81% chance, $6.5 with 3.91% chance, $8.0 with 75.0% chance, $7.5 with 7.81% chance, $5.5 with 0.78% chance."}
+{"id":"Q0231","prompt":"Machine A: $14.0 with 1.0% chance, $-1.0 with 99.0% chance.\nMachine B: $-4.0 with 99.0% chance, $31.5 with 0.03% chance, $36.5 with 0.03% chance, $35.5 with 0.16% chance, $33.5 with 0.31% chance, $34.5 with 0.31% chance, $32.5 with 0.16% chance."}
+{"id":"Q0232","prompt":"Machine A: $25.0 with 99.0% chance, $-29.0 with 1.0% chance.\nMachine B: $29.0 with 12.5% chance, $31.0 with 12.5% chance, $17.0 with 75.0% chance."}
+{"id":"Q0233","prompt":"Machine A: $-42.0 with 25.0% chance, $2.0 with 75.0% chance.\nMachine B: $35.0 with 40.0% chance, $-35.0 with 60.0% chance."}
+{"id":"Q0234","prompt":"Machine A: $-3.0 with 0.0% chance, $-3.0 with 100.0% chance.\nMachine B: $1.0 with 5.0% chance, $-6.0 with 95.0% chance."}
+{"id":"Q0235","prompt":"Machine A: $32.0 with 1.0% chance, $27.0 with 99.0% chance.\nMachine B: $18.0 with 60.0% chance, $47.0 with 40.0% chance."}
+{"id":"Q0236","prompt":"Machine A: $32.0 with 20.0% chance, $-2.0 with 80.0% chance.\nMachine B: $-1.0 with 60.0% chance, $4.0 with 40.0% chance."}
+{"id":"Q0237","prompt":"Machine A: $3.0 with 0.0% chance, $3.0 with 100.0% chance.\nMachine B: $19.0 with 3.12% chance, $35.0 with 1.56% chance, $67.0 with 1.56% chance, $7.0 with 50.0% chance, $7.0 with 12.5% chance, $11.0 with 6.25% chance, $5.0 with 25.0% chance."}
+{"id":"Q0238","prompt":"Machine A: $-3.0 with 0.0% chance, $-3.0 with 100.0% chance.\nMachine B: $-11.0 with 95.0% chance, $36.0 with 5.0% chance."}
+{"id":"Q0239","prompt":"Machine A: $17.0 with 100.0% chance, $17.0 with 0.0% chance.\nMachine B: $54.5 with 18.75% chance, $53.5 with 18.75% chance, $55.5 with 6.25% chance, $-30.0 with 50.0% chance, $52.5 with 6.25% chance."}
+{"id":"Q0240","prompt":"Machine A: $27.0 with 40.0% chance, $-13.0 with 60.0% chance.\nMachine B: $7.0 with 1.0% chance, $1.0 with 99.0% chance."}
+{"id":"Q0241","prompt":"Machine A: $52.0 with 20.0% chance, $-24.0 with 80.0% chance.\nMachine B: $33.5 with 2.19% chance, $36.5 with 10.94% chance, $32.5 with 0.31% chance, $-25.0 with 60.0% chance, $38.5 with 2.19% chance, $35.5 with 10.94% chance, $37.5 with 6.56% chance, $39.5 with 0.31% chance, $34.5 with 6.56% chance."}
+{"id":"Q0242","prompt":"Machine A: $26.0 with 0.0% chance, $26.0 with 100.0% chance.\nMachine B: $40.0 with 10.0% chance, $24.0 with 90.0% chance."}
+{"id":"Q0243","prompt":"Machine A: $3.0 with 0.0% chance, $3.0 with 100.0% chance.\nMachine B: $4.0 with 10.0% chance, $-7.0 with 60.0% chance, $0.0 with 5.0% chance, $-24.0 with 2.5% chance, $6.0 with 20.0% chance, $-8.0 with 2.5% chance."}
+{"id":"Q0244","prompt":"Machine A: $-9.0 with 25.0% chance, $23.0 with 75.0% chance.\nMachine B: $-7.0 with 60.0% chance, $51.0 with 40.0% chance."}
+{"id":"Q0245","prompt":"Machine A: $9.0 with 0.0% chance, $9.0 with 100.0% chance.\nMachine B: $37.5 with 6.84% chance, $39.5 with 1.37% chance, $33.5 with 0.2% chance, $34.5 with 1.37% chance, $36.5 with 6.84% chance, $40.5 with 0.2% chance, $-8.0 with 75.0% chance, $35.5 with 4.1% chance, $38.5 with 4.1% chance."}
+{"id":"Q0246","prompt":"Machine A: $-1.0 with 0.0% chance, $-1.0 with 100.0% chance.\nMachine B: $14.5 with 1.25% chance, $17.5 with 1.25% chance, $15.5 with 3.75% chance, $-3.0 with 90.0% chance, $16.5 with 3.75% chance."}
+{"id":"Q0247","prompt":"Machine A: $-8.0 with 5.0% chance, $10.0 with 95.0% chance.\nMachine B: $19.5 with 2.5% chance, $16.0 with 95.0% chance, $18.5 with 2.5% chance."}
+{"id":"Q0248","prompt":"Machine A: $3.0 with 75.0% chance, $35.0 with 25.0% chance.\nMachine B: $-16.0 with 10.0% chance, $22.0 with 11.25% chance, $-2.0 with 5.62% chance, $28.0 with 45.0% chance, $14.0 with 5.62% chance, $26.0 with 22.5% chance."}
+{"id":"Q0249","prompt":"Machine A: $-7.0 with 100.0% chance, $-7.0 with 0.0% chance.\nMachine B: $30.5 with 9.38% chance, $-15.0 with 75.0% chance, $31.5 with 9.38% chance, $29.5 with 3.12% chance, $32.5 with 3.12% chance."}
+{"id":"Q0250","prompt":"Machine A: $19.0 with 100.0% chance, $19.0 with 0.0% chance.\nMachine B: $20.0 with 50.0% chance, $18.0 with 50.0% chance."}
+{"id":"Q0251","prompt":"Machine A: $-35.0 with 40.0% chance, $35.0 with 60.0% chance.\nMachine B: $-3.0 with 50.0% chance, $72.0 with 0.78% chance, $136.0 with 0.78% chance, $40.0 with 1.56% chance, $10.0 with 25.0% chance, $12.0 with 12.5% chance, $16.0 with 6.25% chance, $24.0 with 3.12% chance."}
+{"id":"Q0252","prompt":"Machine A: $29.0 with 100.0% chance, $29.0 with 0.0% chance.\nMachine B: $29.0 with 50.0% chance, $27.0 with 50.0% chance."}
+{"id":"Q0253","prompt":"Machine A: $7.0 with 60.0% chance, $52.0 with 40.0% chance.\nMachine B: $107.5 with 0.2% chance, $113.5 with 1.37% chance, $110.5 with 6.84% chance, $111.5 with 6.84% chance, $108.5 with 1.37% chance, $114.5 with 0.2% chance, $109.5 with 4.1% chance, $1.0 with 75.0% chance, $112.5 with 4.1% chance."}
+{"id":"Q0254","prompt":"Machine A: $-2.0 with 100.0% chance, $-2.0 with 0.0% chance.\nMachine B: $6.0 with 95.0% chance, $25.0 with 5.0% chance."}
+{"id":"Q0255","prompt":"Machine A: $35.0 with 75.0% chance, $-8.0 with 25.0% chance.\nMachine B: $101.0 with 1.56% chance, $-11.0 with 50.0% chance, $73.0 with 12.5% chance, $77.0 with 6.25% chance, $133.0 with 1.56% chance, $71.0 with 25.0% chance, $85.0 with 3.12% chance."}
+{"id":"Q0256","prompt":"Machine A: $6.0 with 0.0% chance, $6.0 with 100.0% chance.\nMachine B: $-15.0 with 20.0% chance, $19.5 with 30.0% chance, $18.5 with 30.0% chance, $17.5 with 10.0% chance, $20.5 with 10.0% chance."}
+{"id":"Q0257","prompt":"Machine A: $18.0 with 100.0% chance, $18.0 with 0.0% chance.\nMachine B: $9.0 with 75.0% chance, $46.0 with 25.0% chance."}
+{"id":"Q0258","prompt":"Machine A: $21.0 with 100.0% chance, $21.0 with 0.0% chance.\nMachine B: $22.0 with 1.0% chance, $28.0 with 24.75% chance, $22.0 with 49.5% chance, $24.0 with 24.75% chance."}
+{"id":"Q0259","prompt":"Machine A: $-10.0 with 100.0% chance, $-10.0 with 0.0% chance.\nMachine B: $-24.0 with 90.0% chance, $-7.0 with 10.0% chance."}
+{"id":"Q0260","prompt":"Machine A: $26.0 with 100.0% chance, $26.0 with 0.0% chance.\nMachine B: $23.0 with 60.0% chance, $29.0 with 40.0% chance."}
+{"id":"Q0261","prompt":"Machine A: $7.0 with 0.0% chance, $7.0 with 100.0% chance.\nMachine B: $15.0 with 5.0% chance, $15.5 with 47.5% chance, $14.5 with 47.5% chance."}
+{"id":"Q0262","prompt":"Machine A: $-1.0 with 20.0% chance, $5.0 with 80.0% chance.\nMachine B: $81.0 with 1.25% chance, $141.0 with 0.16% chance, $93.0 with 0.31% chance, $85.0 with 0.62% chance, $79.0 with 2.5% chance, $-9.0 with 95.0% chance, $109.0 with 0.16% chance."}
+{"id":"Q0263","prompt":"Machine A: $-7.0 with 100.0% chance, $-7.0 with 0.0% chance.\nMachine B: $15.0 with 1.0% chance, $-10.0 with 99.0% chance."}
+{"id":"Q0264","prompt":"Machine A: $28.0 with 100.0% chance, $28.0 with 0.0% chance.\nMachine B: $21.0 with 40.0% chance, $38.0 with 60.0% chance."}
+{"id":"Q0265","prompt":"Machine A: $31.0 with 60.0% chance, $-19.0 with 40.0% chance.\nMachine B: $78.0 with 25.0% chance, $92.0 with 3.12% chance, $84.0 with 6.25% chance, $-43.0 with 50.0% chance, $80.0 with 12.5% chance, $108.0 with 3.12% chance."}
+{"id":"Q0266","prompt":"Machine A: $-10.0 with 95.0% chance, $56.0 with 5.0% chance.\nMachine B: $-10.0 with 75.0% chance, $-1.0 with 25.0% chance."}
+{"id":"Q0267","prompt":"Machine A: $28.0 with 5.0% chance, $-1.0 with 95.0% chance.\nMachine B: $73.0 with 20.0% chance, $-15.0 with 80.0% chance."}
+{"id":"Q0268","prompt":"Machine A: $24.0 with 0.0% chance, $24.0 with 100.0% chance.\nMachine B: $-12.0 with 40.0% chance, $58.0 with 60.0% chance."}
+{"id":"Q0269","prompt":"Machine A: $23.0 with 0.0% chance, $23.0 with 100.0% chance.\nMachine B: $41.5 with 0.78% chance, $45.5 with 3.91% chance, $44.5 with 7.81% chance, $42.5 with 3.91% chance, $46.5 with 0.78% chance, $43.5 with 7.81% chance, $27.0 with 75.0% chance."}
+{"id":"Q0270","prompt":"Machine A: $28.0 with 100.0% chance, $28.0 with 0.0% chance.\nMachine B: $32.0 with 95.0% chance, $66.5 with 0.78% chance, $65.5 with 1.56% chance, $62.5 with 0.16% chance, $64.5 with 1.56% chance, $63.5 with 0.78% chance, $67.5 with 0.16% chance."}
+{"id":"Q0271","prompt":"Machine A: $12.0 with 0.0% chance, $12.0 with 100.0% chance.\nMachine B: $5.0 with 99.0% chance, $28.0 with 1.0% chance."}
+{"id":"Q0272","prompt":"Machine A: $18.0 with 95.0% chance, $-22.0 with 5.0% chance.\nMachine B: $23.5 with 5.41% chance, $-30.0 with 1.0% chance, $28.5 with 5.41% chance, $22.5 with 0.77% chance, $27.5 with 16.24% chance, $29.5 with 0.77% chance, $24.5 with 16.24% chance, $26.5 with 27.07% chance, $25.5 with 27.07% chance."}
+{"id":"Q0273","prompt":"Machine A: $-5.0 with 5.0% chance, $10.0 with 95.0% chance.\nMachine B: $-13.0 with 75.0% chance, $76.0 with 25.0% chance."}
+{"id":"Q0274","prompt":"Machine A: $87.0 with 1.0% chance, $16.0 with 99.0% chance.\nMachine B: $39.0 with 25.0% chance, $45.0 with 6.25% chance, $3.0 with 50.0% chance, $53.0 with 6.25% chance, $41.0 with 12.5% chance."}
+{"id":"Q0275","prompt":"Machine A: $-1.0 with 40.0% chance, $31.0 with 60.0% chance.\nMachine B: $-5.0 with 60.0% chance, $48.5 with 15.0% chance, $47.5 with 15.0% chance, $49.5 with 5.0% chance, $46.5 with 5.0% chance."}
+{"id":"Q0276","prompt":"Machine A: $16.0 with 75.0% chance, $60.0 with 25.0% chance.\nMachine B: $36.5 with 37.5% chance, $24.0 with 25.0% chance, $35.5 with 37.5% chance."}
+{"id":"Q0277","prompt":"Machine A: $7.0 with 50.0% chance, $-15.0 with 50.0% chance.\nMachine B: $-28.0 with 50.0% chance, $30.0 with 50.0% chance."}
+{"id":"Q0278","prompt":"Machine A: $-9.0 with 100.0% chance, $-9.0 with 0.0% chance.\nMachine B: $8.5 with 6.25% chance, $-27.0 with 50.0% chance, $10.5 with 18.75% chance, $9.5 with 18.75% chance, $11.5 with 6.25% chance."}
+{"id":"Q0279","prompt":"Machine A: $3.0 with 0.0% chance, $3.0 with 100.0% chance.\nMachine B: $-15.0 with 40.0% chance, $6.0 with 60.0% chance."}
+{"id":"Q0280","prompt":"Machine A: $-2.0 with 0.0% chance, $-2.0 with 100.0% chance.\nMachine B: $-38.0 with 60.0% chance, $44.0 with 40.0% chance."}
+{"id":"Q0281","prompt":"Machine A: $11.0 with 0.0% chance, $11.0 with 100.0% chance.\nMachine B: $88.5 with 0.62% chance, $83.5 with 0.62% chance, $-5.0 with 80.0% chance, $86.5 with 6.25% chance, $85.5 with 6.25% chance, $84.5 with 3.12% chance, $87.5 with 3.12% chance."}
+{"id":"Q0282","prompt":"Machine A: $-12.0 with 95.0% chance, $32.0 with 5.0% chance.\nMachine B: $36.0 with 20.0% chance, $-17.0 with 80.0% chance."}
+{"id":"Q0283","prompt":"Machine A: $57.0 with 1.0% chance, $9.0 with 99.0% chance.\nMachine B: $4.0 with 80.0% chance, $6.0 with 20.0% chance."}
+{"id":"Q0284","prompt":"Machine A: $20.0 with 0.0% chance, $20.0 with 100.0% chance.\nMachine B: $5.0 with 80.0% chance, $79.0 with 20.0% chance."}
+{"id":"Q0285","prompt":"Machine A: $14.0 with 0.0% chance, $14.0 with 100.0% chance.\nMachine B: $103.0 with 25.0% chance, $-6.0 with 75.0% chance."}
+{"id":"Q0286","prompt":"Machine A: $0.0 with 100.0% chance, $0.0 with 0.0% chance.\nMachine B: $67.0 with 5.0% chance, $191.0 with 0.31% chance, $79.0 with 1.25% chance, $-9.0 with 80.0% chance, $71.0 with 2.5% chance, $65.0 with 10.0% chance, $127.0 with 0.31% chance, $95.0 with 0.62% chance."}
+{"id":"Q0287","prompt":"Machine A: $-4.0 with 0.0% chance, $-4.0 with 100.0% chance.\nMachine B: $-9.0 with 95.0% chance, $3.0 with 1.25% chance, $7.0 with 1.25% chance, $1.0 with 2.5% chance."}
+{"id":"Q0288","prompt":"Machine A: $87.0 with 20.0% chance, $-23.0 with 80.0% chance.\nMachine B: $15.0 with 5.0% chance, $21.0 with 1.25% chance, $45.0 with 0.31% chance, $17.0 with 2.5% chance, $2.0 with 90.0% chance, $29.0 with 0.62% chance, $77.0 with 0.31% chance."}
+{"id":"Q0289","prompt":"Machine A: $21.0 with 1.0% chance, $15.0 with 99.0% chance.\nMachine B: $20.0 with 10.0% chance, $15.0 with 90.0% chance."}
+{"id":"Q0290","prompt":"Machine A: $-5.0 with 40.0% chance, $7.0 with 60.0% chance.\nMachine B: $-9.0 with 90.0% chance, $34.0 with 10.0% chance."}
+{"id":"Q0291","prompt":"Machine A: $21.0 with 0.0% chance, $21.0 with 100.0% chance.\nMachine B: $6.0 with 25.0% chance, $25.0 with 75.0% chance."}
+{"id":"Q0292","prompt":"Machine A: $7.0 with 100.0% chance, $7.0 with 0.0% chance.\nMachine B: $89.0 with 1.0% chance, $9.0 with 99.0% chance."}
+{"id":"Q0293","prompt":"Machine A: $22.0 with 25.0% chance, $10.0 with 75.0% chance.\nMachine B: $-3.0 with 1.0% chance, $22.0 with 6.19% chance, $10.0 with 24.75% chance, $70.0 with 1.55% chance, $8.0 with 49.5% chance, $38.0 with 3.09% chance, $134.0 with 1.55% chance, $14.0 with 12.38% chance."}
+{"id":"Q0294","prompt":"Machine A: $52.0 with 10.0% chance, $24.0 with 90.0% chance.\nMachine B: $-43.0 with 5.0% chance, $32.0 with 47.5% chance, $30.0 with 23.75% chance, $26.0 with 23.75% chance."}
+{"id":"Q0295","prompt":"Machine A: $24.0 with 0.0% chance, $24.0 with 100.0% chance.\nMachine B: $26.0 with 90.0% chance, $-8.0 with 10.0% chance."}
+{"id":"Q0296","prompt":"Machine A: $6.0 with 0.0% chance, $6.0 with 100.0% chance.\nMachine B: $2.0 with 10.0% chance, $19.0 with 90.0% chance."}
+{"id":"Q0297","prompt":"Machine A: $18.0 with 100.0% chance, $18.0 with 0.0% chance.\nMachine B: $47.5 with 18.75% chance, $48.5 with 18.75% chance, $-15.0 with 50.0% chance, $46.5 with 6.25% chance, $49.5 with 6.25% chance."}
+{"id":"Q0298","prompt":"Machine A: $14.0 with 0.0% chance, $14.0 with 100.0% chance.\nMachine B: $23.5 with 25.0% chance, $4.0 with 50.0% chance, $24.5 with 25.0% chance."}
+{"id":"Q0299","prompt":"Machine A: $29.0 with 99.0% chance, $1.0 with 1.0% chance.\nMachine B: $27.0 with 95.0% chance, $29.0 with 5.0% chance."}
+{"id":"Q0300","prompt":"Machine A: $-12.0 with 25.0% chance, $0.0 with 75.0% chance.\nMachine B: $25.0 with 2.34% chance, $121.0 with 1.17% chance, $9.0 with 4.69% chance, $-3.0 with 18.75% chance, $-5.0 with 37.5% chance, $57.0 with 1.17% chance, $1.0 with 9.38% chance, $-4.0 with 25.0% chance."}
+{"id":"Q0301","prompt":"Machine A: $-5.0 with 100.0% chance, $-5.0 with 0.0% chance.\nMachine B: $-12.0 with 25.0% chance, $-9.0 with 75.0% chance."}
+{"id":"Q0302","prompt":"Machine A: $-14.0 with 95.0% chance, $81.0 with 5.0% chance.\nMachine B: $49.0 with 10.0% chance, $-18.0 with 90.0% chance."}
+{"id":"Q0303","prompt":"Machine A: $-6.0 with 80.0% chance, $-11.0 with 20.0% chance.\nMachine B: $82.0 with 10.0% chance, $-21.0 with 90.0% chance."}
+{"id":"Q0304","prompt":"Machine A: $19.0 with 100.0% chance, $19.0 with 0.0% chance.\nMachine B: $19.0 with 37.5% chance, $21.0 with 25.0% chance, $21.0 with 18.75% chance, $25.0 with 18.75% chance."}
+{"id":"Q0305","prompt":"Machine A: $-1.0 with 100.0% chance, $-1.0 with 0.0% chance.\nMachine B: $9.0 with 10.0% chance, $2.0 with 90.0% chance."}
+{"id":"Q0306","prompt":"Machine A: $-10.0 with 0.0% chance, $-10.0 with 100.0% chance.\nMachine B: $-6.0 with 30.0% chance, $-8.0 with 15.0% chance, $-12.0 with 7.5% chance, $-20.0 with 3.75% chance, $-20.0 with 40.0% chance, $-36.0 with 3.75% chance."}
+{"id":"Q0307","prompt":"Machine A: $19.0 with 0.0% chance, $19.0 with 100.0% chance.\nMachine B: $3.0 with 50.0% chance, $35.0 with 50.0% chance."}
+{"id":"Q0308","prompt":"Machine A: $3.0 with 80.0% chance, $69.0 with 20.0% chance.\nMachine B: $25.5 with 12.38% chance, $23.5 with 37.12% chance, $22.5 with 12.38% chance, $24.5 with 37.12% chance, $-13.0 with 1.0% chance."}
+{"id":"Q0309","prompt":"Machine A: $21.0 with 100.0% chance, $21.0 with 0.0% chance.\nMachine B: $14.0 with 75.0% chance, $56.0 with 25.0% chance."}
+{"id":"Q0310","prompt":"Machine A: $-1.0 with 1.0% chance, $1.0 with 99.0% chance.\nMachine B: $-8.0 with 80.0% chance, $45.0 with 10.0% chance, $15.0 with 1.25% chance, $39.0 with 2.5% chance, $43.0 with 5.0% chance, $31.0 with 1.25% chance."}
+{"id":"Q0311","prompt":"Machine A: $-28.0 with 40.0% chance, $54.0 with 60.0% chance.\nMachine B: $15.0 with 99.0% chance, $34.0 with 1.0% chance."}
+{"id":"Q0312","prompt":"Machine A: $29.0 with 5.0% chance, $28.0 with 95.0% chance.\nMachine B: $33.0 with 50.0% chance, $8.0 with 50.0% chance."}
+{"id":"Q0313","prompt":"Machine A: $15.0 with 100.0% chance, $15.0 with 0.0% chance.\nMachine B: $55.0 with 12.5% chance, $51.0 with 12.5% chance, $57.0 with 25.0% chance, $-35.0 with 50.0% chance."}
+{"id":"Q0314","prompt":"Machine A: $1.0 with 90.0% chance, $-25.0 with 10.0% chance.\nMachine B: $4.5 with 2.97% chance, $1.5 with 29.69% chance, $3.5 with 14.84% chance, $0.5 with 14.84% chance, $-39.0 with 5.0% chance, $2.5 with 29.69% chance, $-0.5 with 2.97% chance."}
+{"id":"Q0315","prompt":"Machine A: $4.0 with 100.0% chance, $4.0 with 0.0% chance.\nMachine B: $-12.0 with 90.0% chance, $37.0 with 10.0% chance."}
+{"id":"Q0316","prompt":"Machine A: $26.0 with 100.0% chance, $26.0 with 0.0% chance.\nMachine B: $30.0 with 90.0% chance, $-2.0 with 10.0% chance."}
+{"id":"Q0317","prompt":"Machine A: $16.0 with 0.0% chance, $16.0 with 100.0% chance.\nMachine B: $-7.0 with 50.0% chance, $47.0 with 50.0% chance."}
+{"id":"Q0318","prompt":"Machine A: $-4.0 with 0.0% chance, $-4.0 with 100.0% chance.\nMachine B: $34.0 with 5.0% chance, $-3.0 with 95.0% chance."}
+{"id":"Q0319","prompt":"Machine A: $9.0 with 95.0% chance, $15.0 with 5.0% chance.\nMachine B: $25.5 with 2.5% chance, $16.0 with 95.0% chance, $24.5 with 2.5% chance."}
+{"id":"Q0320","prompt":"Machine A: $-28.0 with 60.0% chance, $29.0 with 40.0% chance.\nMachine B: $54.5 with 0.16% chance, $-7.0 with 99.0% chance, $50.5 with 0.03% chance, $55.5 with 0.03% chance, $52.5 with 0.31% chance, $51.5 with 0.16% chance, $53.5 with 0.31% chance."}
+{"id":"Q0321","prompt":"Machine A: $25.0 with 5.0% chance, $5.0 with 95.0% chance.\nMachine B: $-6.0 with 25.0% chance, $3.0 with 75.0% chance."}
+{"id":"Q0322","prompt":"Machine A: $-7.0 with 0.0% chance, $-7.0 with 100.0% chance.\nMachine B: $-11.5 with 45.0% chance, $-10.5 with 45.0% chance, $-27.0 with 10.0% chance."}
+{"id":"Q0323","prompt":"Machine A: $-7.0 with 0.0% chance, $-7.0 with 100.0% chance.\nMachine B: $-11.0 with 75.0% chance, $9.0 with 25.0% chance."}
+{"id":"Q0324","prompt":"Machine A: $-8.0 with 0.0% chance, $-8.0 with 100.0% chance.\nMachine B: $-16.0 with 20.0% chance, $-3.0 with 40.0% chance, $-1.0 with 20.0% chance, $59.0 with 1.25% chance, $11.0 with 5.0% chance, $251.0 with 0.62% chance, $3.0 with 10.0% chance, $123.0 with 0.62% chance, $27.0 with 2.5% chance."}
+{"id":"Q0325","prompt":"Machine A: $0.0 with 80.0% chance, $80.0 with 20.0% chance.\nMachine B: $16.5 with 37.5% chance, $15.5 with 37.5% chance, $14.5 with 12.5% chance, $17.5 with 12.5% chance."}
+{"id":"Q0326","prompt":"Machine A: $13.0 with 100.0% chance, $13.0 with 0.0% chance.\nMachine B: $8.0 with 90.0% chance, $90.0 with 10.0% chance."}
+{"id":"Q0327","prompt":"Machine A: $27.0 with 0.0% chance, $27.0 with 100.0% chance.\nMachine B: $16.0 with 50.0% chance, $29.0 with 50.0% chance."}
+{"id":"Q0328","prompt":"Machine A: $14.0 with 0.0% chance, $14.0 with 100.0% chance.\nMachine B: $-22.0 with 60.0% chance, $46.0 with 40.0% chance."}
+{"id":"Q0329","prompt":"Machine A: $-40.0 with 50.0% chance, $38.0 with 50.0% chance.\nMachine B: $2.5 with 35.62% chance, $1.5 with 11.88% chance, $4.5 with 11.88% chance, $3.5 with 35.62% chance, $-17.0 with 5.0% chance."}
+{"id":"Q0330","prompt":"Machine A: $-5.0 with 100.0% chance, $-5.0 with 0.0% chance.\nMachine B: $-17.0 with 80.0% chance, $27.0 with 5.0% chance, $15.0 with 1.25% chance, $23.0 with 2.5% chance, $-1.0 with 1.25% chance, $29.0 with 10.0% chance."}
+{"id":"Q0331","prompt":"Machine A: $-5.0 with 100.0% chance, $-5.0 with 0.0% chance.\nMachine B: $-13.0 with 99.0% chance, $22.5 with 0.31% chance, $21.5 with 0.16% chance, $23.5 with 0.31% chance, $20.5 with 0.03% chance, $24.5 with 0.16% chance, $25.5 with 0.03% chance."}
+{"id":"Q0332","prompt":"Machine A: $-39.0 with 60.0% chance, $76.0 with 40.0% chance.\nMachine B: $91.0 with 0.31% chance, $6.0 with 90.0% chance, $59.0 with 0.31% chance, $31.0 with 2.5% chance, $35.0 with 1.25% chance, $43.0 with 0.62% chance, $29.0 with 5.0% chance."}
+{"id":"Q0333","prompt":"Machine A: $15.0 with 0.0% chance, $15.0 with 100.0% chance.\nMachine B: $73.0 with 40.0% chance, $-18.0 with 60.0% chance."}
+{"id":"Q0334","prompt":"Machine A: $94.0 with 25.0% chance, $-26.0 with 75.0% chance.\nMachine B: $44.5 with 20.0% chance, $43.5 with 20.0% chance, $-22.0 with 60.0% chance."}
+{"id":"Q0335","prompt":"Machine A: $-30.0 with 20.0% chance, $40.0 with 80.0% chance.\nMachine B: $30.0 with 49.5% chance, $32.0 with 49.5% chance, $-6.0 with 1.0% chance."}
+{"id":"Q0336","prompt":"Machine A: $118.0 with 1.0% chance, $18.0 with 99.0% chance.\nMachine B: $38.5 with 0.62% chance, $36.5 with 1.88% chance, $35.5 with 0.62% chance, $37.5 with 1.88% chance, $19.0 with 95.0% chance."}
+{"id":"Q0337","prompt":"Machine A: $27.0 with 100.0% chance, $27.0 with 0.0% chance.\nMachine B: $23.0 with 80.0% chance, $30.0 with 20.0% chance."}
+{"id":"Q0338","prompt":"Machine A: $-9.0 with 0.0% chance, $-9.0 with 100.0% chance.\nMachine B: $-15.0 with 20.0% chance, $-1.0 with 80.0% chance."}
+{"id":"Q0339","prompt":"Machine A: $-10.0 with 100.0% chance, $-10.0 with 0.0% chance.\nMachine B: $44.0 with 5.0% chance, $-15.0 with 95.0% chance."}
+{"id":"Q0340","prompt":"Machine A: $18.0 with 80.0% chance, $2.0 with 20.0% chance.\nMachine B: $-6.0 with 80.0% chance, $70.0 with 20.0% chance."}
+{"id":"Q0341","prompt":"Machine A: $0.0 with 0.0% chance, $0.0 with 100.0% chance.\nMachine B: $2.0 with 75.0% chance, $2.0 with 25.0% chance."}
+{"id":"Q0342","prompt":"Machine A: $12.0 with 0.0% chance, $12.0 with 100.0% chance.\nMachine B: $84.0 with 25.0% chance, $-17.0 with 75.0% chance."}
+{"id":"Q0343","prompt":"Machine A: $2.0 with 0.0% chance, $2.0 with 100.0% chance.\nMachine B: $-34.0 with 5.0% chance, $9.0 with 95.0% chance."}
+{"id":"Q0344","prompt":"Machine A: $32.0 with 75.0% chance, $8.0 with 25.0% chance.\nMachine B: $56.0 with 20.0% chance, $6.0 with 60.0% chance, $54.0 with 20.0% chance."}
+{"id":"Q0345","prompt":"Machine A: $23.0 with 100.0% chance, $23.0 with 0.0% chance.\nMachine B: $14.0 with 80.0% chance, $29.5 with 10.0% chance, $28.5 with 10.0% chance."}
+{"id":"Q0346","prompt":"Machine A: $21.0 with 100.0% chance, $21.0 with 0.0% chance.\nMachine B: $-34.0 with 40.0% chance, $50.5 with 7.5% chance, $53.5 with 7.5% chance, $52.5 with 22.5% chance, $51.5 with 22.5% chance."}
+{"id":"Q0347","prompt":"Machine A: $3.0 with 100.0% chance, $3.0 with 0.0% chance.\nMachine B: $50.0 with 1.0% chance, $11.0 with 99.0% chance."}
+{"id":"Q0348","prompt":"Machine A: $27.0 with 100.0% chance, $27.0 with 0.0% chance.\nMachine B: $-40.0 with 20.0% chance, $40.0 with 10.0% chance, $48.0 with 10.0% chance, $52.0 with 20.0% chance, $54.0 with 40.0% chance."}
+{"id":"Q0349","prompt":"Machine A: $-7.0 with 99.0% chance, $58.0 with 1.0% chance.\nMachine B: $-3.5 with 3.28% chance, $-6.5 with 3.28% chance, $-12.0 with 80.0% chance, $-8.5 with 0.16% chance, $-7.5 with 1.09% chance, $-2.5 with 1.09% chance, $-4.5 with 5.47% chance, $-1.5 with 0.16% chance, $-5.5 with 5.47% chance."}
+{"id":"Q0350","prompt":"Machine A: $29.0 with 50.0% chance, $-39.0 with 50.0% chance.\nMachine B: $53.0 with 0.12% chance, $-4.0 with 99.0% chance, $39.0 with 0.5% chance, $41.0 with 0.25% chance, $45.0 with 0.12% chance."}
+{"id":"Q0351","prompt":"Machine A: $-14.0 with 80.0% chance, $19.0 with 20.0% chance.\nMachine B: $87.5 with 0.16% chance, $86.5 with 0.31% chance, $85.5 with 0.31% chance, $8.0 with 99.0% chance, $83.5 with 0.03% chance, $88.5 with 0.03% chance, $84.5 with 0.16% chance."}
+{"id":"Q0352","prompt":"Machine A: $21.0 with 25.0% chance, $5.0 with 75.0% chance.\nMachine B: $25.5 with 13.12% chance, $24.5 with 21.88% chance, $23.5 with 21.88% chance, $27.5 with 0.62% chance, $21.5 with 4.38% chance, $-40.0 with 20.0% chance, $20.5 with 0.62% chance, $26.5 with 4.38% chance, $22.5 with 13.12% chance."}
+{"id":"Q0353","prompt":"Machine A: $-9.0 with 0.0% chance, $-9.0 with 100.0% chance.\nMachine B: $-14.0 with 95.0% chance, $8.0 with 5.0% chance."}
+{"id":"Q0354","prompt":"Machine A: $-13.0 with 25.0% chance, $-8.0 with 75.0% chance.\nMachine B: $-28.0 with 90.0% chance, $97.0 with 10.0% chance."}
+{"id":"Q0355","prompt":"Machine A: $30.0 with 90.0% chance, $24.0 with 10.0% chance.\nMachine B: $-9.0 with 50.0% chance, $59.0 with 50.0% chance."}
+{"id":"Q0356","prompt":"Machine A: $-5.0 with 0.0% chance, $-5.0 with 100.0% chance.\nMachine B: $20.0 with 40.0% chance, $-17.0 with 60.0% chance."}
+{"id":"Q0357","prompt":"Machine A: $-8.0 with 0.0% chance, $-8.0 with 100.0% chance.\nMachine B: $-7.5 with 37.5% chance, $-9.5 with 12.5% chance, $-6.5 with 12.5% chance, $-8.5 with 37.5% chance."}
+{"id":"Q0358","prompt":"Machine A: $20.0 with 50.0% chance, $30.0 with 50.0% chance.\nMachine B: $27.0 with 80.0% chance, $44.0 with 20.0% chance."}
+{"id":"Q0359","prompt":"Machine A: $29.0 with 100.0% chance, $29.0 with 0.0% chance.\nMachine B: $114.0 with 20.0% chance, $11.0 with 80.0% chance."}
+{"id":"Q0360","prompt":"Machine A: $30.0 with 0.0% chance, $30.0 with 100.0% chance.\nMachine B: $-26.0 with 5.0% chance, $31.0 with 95.0% chance."}
+{"id":"Q0361","prompt":"Machine A: $-6.0 with 100.0% chance, $-6.0 with 0.0% chance.\nMachine B: $-10.0 with 99.0% chance, $-7.0 with 1.0% chance."}
+{"id":"Q0362","prompt":"Machine A: $77.0 with 1.0% chance, $30.0 with 99.0% chance.\nMachine B: $53.0 with 25.0% chance, $34.0 with 75.0% chance."}
+{"id":"Q0363","prompt":"Machine A: $4.0 with 100.0% chance, $4.0 with 0.0% chance.\nMachine B: $-19.0 with 50.0% chance, $53.0 with 50.0% chance."}
+{"id":"Q0364","prompt":"Machine A: $23.0 with 0.0% chance, $23.0 with 100.0% chance.\nMachine B: $42.0 with 60.0% chance, $-15.0 with 40.0% chance."}
+{"id":"Q0365","prompt":"Machine A: $12.0 with 1.0% chance, $2.0 with 99.0% chance.\nMachine B: $-20.0 with 20.0% chance, $8.0 with 80.0% chance."}
+{"id":"Q0366","prompt":"Machine A: $24.0 with 75.0% chance, $16.0 with 25.0% chance.\nMachine B: $13.0 with 99.0% chance, $26.0 with 1.0% chance."}
+{"id":"Q0367","prompt":"Machine A: $21.0 with 95.0% chance, $104.0 with 5.0% chance.\nMachine B: $27.5 with 23.44% chance, $25.5 with 11.72% chance, $26.5 with 23.44% chance, $24.5 with 2.34% chance, $28.5 with 11.72% chance, $29.5 with 2.34% chance, $0.0 with 25.0% chance."}
+{"id":"Q0368","prompt":"Machine A: $14.0 with 0.0% chance, $14.0 with 100.0% chance.\nMachine B: $-1.0 with 50.0% chance, $42.0 with 50.0% chance."}
+{"id":"Q0369","prompt":"Machine A: $3.0 with 0.0% chance, $3.0 with 100.0% chance.\nMachine B: $26.0 with 50.0% chance, $-33.0 with 50.0% chance."}
+{"id":"Q0370","prompt":"Machine A: $39.0 with 75.0% chance, $-49.0 with 25.0% chance.\nMachine B: $-3.0 with 50.0% chance, $32.0 with 50.0% chance."}
+{"id":"Q0371","prompt":"Machine A: $-2.0 with 0.0% chance, $-2.0 with 100.0% chance.\nMachine B: $12.0 with 60.0% chance, $-37.0 with 40.0% chance."}
+{"id":"Q0372","prompt":"Machine A: $5.0 with 0.0% chance, $5.0 with 100.0% chance.\nMachine B: $9.0 with 95.0% chance, $25.0 with 5.0% chance."}
+{"id":"Q0373","prompt":"Machine A: $15.0 with 90.0% chance, $58.0 with 10.0% chance.\nMachine B: $18.0 with 99.0% chance, $33.0 with 1.0% chance."}
+{"id":"Q0374","prompt":"Machine A: $4.0 with 90.0% chance, $12.0 with 10.0% chance.\nMachine B: $5.0 with 100.0% chance."}
+{"id":"Q0375","prompt":"Machine A: $15.0 with 95.0% chance, $31.0 with 5.0% chance.\nMachine B: $-6.0 with 40.0% chance, $31.5 with 9.38% chance, $32.5 with 18.75% chance, $30.5 with 1.88% chance, $35.5 with 1.88% chance, $34.5 with 9.38% chance, $33.5 with 18.75% chance."}
+{"id":"Q0376","prompt":"Machine A: $9.0 with 0.0% chance, $9.0 with 100.0% chance.\nMachine B: $8.0 with 60.0% chance, $6.0 with 40.0% chance."}
+{"id":"Q0377","prompt":"Machine A: $-29.0 with 25.0% chance, $39.0 with 75.0% chance.\nMachine B: $34.0 with 10.0% chance, $46.0 with 2.5% chance, $22.0 with 60.0% chance, $94.0 with 1.25% chance, $32.0 with 20.0% chance, $38.0 with 5.0% chance, $62.0 with 1.25% chance."}
+{"id":"Q0378","prompt":"Machine A: $15.0 with 0.0% chance, $15.0 with 100.0% chance.\nMachine B: $33.5 with 0.05% chance, $32.5 with 0.16% chance, $28.5 with 0.05% chance, $31.5 with 0.27% chance, $27.5 with 0.01% chance, $34.5 with 0.01% chance, $29.5 with 0.16% chance, $30.5 with 0.27% chance, $16.0 with 99.0% chance."}
+{"id":"Q0379","prompt":"Machine A: $93.0 with 40.0% chance, $-14.0 with 60.0% chance.\nMachine B: $29.0 with 100.0% chance."}
+{"id":"Q0380","prompt":"Machine A: $23.0 with 0.0% chance, $23.0 with 100.0% chance.\nMachine B: $15.0 with 90.0% chance, $39.5 with 1.56% chance, $41.5 with 3.12% chance, $40.5 with 3.12% chance, $43.5 with 0.31% chance, $38.5 with 0.31% chance, $42.5 with 1.56% chance."}
+{"id":"Q0381","prompt":"Machine A: $23.0 with 25.0% chance, $8.0 with 75.0% chance.\nMachine B: $44.5 with 0.27% chance, $43.5 with 0.82% chance, $40.5 with 0.82% chance, $38.5 with 0.04% chance, $42.5 with 1.37% chance, $41.5 with 1.37% chance, $45.5 with 0.04% chance, $39.5 with 0.27% chance, $17.0 with 95.0% chance."}
+{"id":"Q0382","prompt":"Machine A: $-5.0 with 0.0% chance, $-5.0 with 100.0% chance.\nMachine B: $-49.0 with 25.0% chance, $10.0 with 18.75% chance, $8.0 with 37.5% chance, $14.0 with 18.75% chance."}
+{"id":"Q0383","prompt":"Machine A: $-9.0 with 5.0% chance, $13.0 with 95.0% chance.\nMachine B: $10.0 with 99.0% chance, $2.0 with 1.0% chance."}
+{"id":"Q0384","prompt":"Machine A: $50.0 with 60.0% chance, $-25.0 with 40.0% chance.\nMachine B: $34.0 with 75.0% chance, $-50.0 with 25.0% chance."}
+{"id":"Q0385","prompt":"Machine A: $-9.0 with 75.0% chance, $51.0 with 25.0% chance.\nMachine B: $15.5 with 15.0% chance, $16.5 with 5.0% chance, $8.0 with 60.0% chance, $13.5 with 5.0% chance, $14.5 with 15.0% chance."}
+{"id":"Q0386","prompt":"Machine A: $19.0 with 99.0% chance, $63.0 with 1.0% chance.\nMachine B: $48.0 with 12.5% chance, $-2.0 with 50.0% chance, $50.0 with 25.0% chance, $44.0 with 12.5% chance."}
+{"id":"Q0387","prompt":"Machine A: $-9.0 with 50.0% chance, $51.0 with 50.0% chance.\nMachine B: $20.0 with 50.0% chance, $22.0 with 50.0% chance."}
+{"id":"Q0388","prompt":"Machine A: $7.0 with 10.0% chance, $-12.0 with 90.0% chance.\nMachine B: $-7.0 with 75.0% chance, $10.5 with 12.5% chance, $11.5 with 12.5% chance."}
+{"id":"Q0389","prompt":"Machine A: $7.0 with 0.0% chance, $7.0 with 100.0% chance.\nMachine B: $10.5 with 22.5% chance, $9.5 with 7.5% chance, $11.5 with 22.5% chance, $12.5 with 7.5% chance, $-9.0 with 40.0% chance."}
+{"id":"Q0390","prompt":"Machine A: $-8.0 with 100.0% chance, $-8.0 with 0.0% chance.\nMachine B: $11.0 with 0.5% chance, $-11.0 with 99.0% chance, $9.0 with 0.5% chance."}
+{"id":"Q0391","prompt":"Machine A: $24.0 with 100.0% chance, $24.0 with 0.0% chance.\nMachine B: $33.0 with 25.0% chance, $27.0 with 75.0% chance."}
+{"id":"Q0392","prompt":"Machine A: $13.0 with 100.0% chance, $13.0 with 0.0% chance.\nMachine B: $24.5 with 22.5% chance, $22.5 with 7.5% chance, $-3.0 with 40.0% chance, $23.5 with 22.5% chance, $25.5 with 7.5% chance."}
+{"id":"Q0393","prompt":"Machine A: $-5.0 with 60.0% chance, $-10.0 with 40.0% chance.\nMachine B: $-11.0 with 5.0% chance, $-9.0 with 23.75% chance, $-11.0 with 47.5% chance, $19.0 with 5.94% chance, $-5.0 with 11.88% chance, $3.0 with 5.94% chance."}
+{"id":"Q0394","prompt":"Machine A: $-4.0 with 100.0% chance, $-4.0 with 0.0% chance.\nMachine B: $-8.0 with 95.0% chance, $27.0 with 5.0% chance."}
+{"id":"Q0395","prompt":"Machine A: $-3.0 with 100.0% chance, $-3.0 with 0.0% chance.\nMachine B: $13.0 with 60.0% chance, $-33.0 with 40.0% chance."}
+{"id":"Q0396","prompt":"Machine A: $0.0 with 100.0% chance, $0.0 with 0.0% chance.\nMachine B: $-16.0 with 50.0% chance, $-3.0 with 50.0% chance."}
+{"id":"Q0397","prompt":"Machine A: $41.0 with 75.0% chance, $-3.0 with 25.0% chance.\nMachine B: $29.0 with 75.0% chance, $30.0 with 25.0% chance."}
+{"id":"Q0398","prompt":"Machine A: $8.0 with 0.0% chance, $8.0 with 100.0% chance.\nMachine B: $-22.0 with 5.0% chance, $13.0 with 95.0% chance."}
+{"id":"Q0399","prompt":"Machine A: $-3.0 with 100.0% chance, $-3.0 with 0.0% chance.\nMachine B: $3.0 with 49.5% chance, $5.0 with 49.5% chance, $-34.0 with 1.0% chance."}
+{"id":"Q0400","prompt":"Machine A: $12.0 with 100.0% chance, $12.0 with 0.0% chance.\nMachine B: $8.0 with 25.0% chance, $14.0 with 50.0% chance, $12.0 with 25.0% chance."}
+{"id":"Q0401","prompt":"Machine A: $-12.0 with 25.0% chance, $8.0 with 75.0% chance.\nMachine B: $3.0 with 100.0% chance."}
+{"id":"Q0402","prompt":"Machine A: $-17.0 with 75.0% chance, $15.0 with 25.0% chance.\nMachine B: $-6.0 with 50.0% chance, $-8.0 with 25.0% chance, $-20.0 with 12.5% chance, $-12.0 with 12.5% chance."}
+{"id":"Q0403","prompt":"Machine A: $-10.0 with 0.0% chance, $-10.0 with 100.0% chance.\nMachine B: $1.0 with 50.0% chance, $-34.0 with 50.0% chance."}
+{"id":"Q0404","prompt":"Machine A: $-10.0 with 40.0% chance, $15.0 with 60.0% chance.\nMachine B: $5.0 with 100.0% chance."}
+{"id":"Q0405","prompt":"Machine A: $64.0 with 10.0% chance, $24.0 with 90.0% chance.\nMachine B: $24.0 with 95.0% chance, $85.5 with 0.78% chance, $86.5 with 0.16% chance, $84.5 with 1.56% chance, $82.5 with 0.78% chance, $81.5 with 0.16% chance, $83.5 with 1.56% chance."}
+{"id":"Q0406","prompt":"Machine A: $26.0 with 0.0% chance, $26.0 with 100.0% chance.\nMachine B: $18.0 with 95.0% chance, $87.0 with 5.0% chance."}
+{"id":"Q0407","prompt":"Machine A: $-20.0 with 10.0% chance, $1.0 with 90.0% chance.\nMachine B: $65.0 with 25.0% chance, $-20.0 with 75.0% chance."}
+{"id":"Q0408","prompt":"Machine A: $36.0 with 1.0% chance, $9.0 with 99.0% chance.\nMachine B: $7.0 with 20.0% chance, $4.0 with 60.0% chance, $9.0 with 20.0% chance."}
+{"id":"Q0409","prompt":"Machine A: $8.0 with 20.0% chance, $-7.0 with 80.0% chance.\nMachine B: $12.0 with 30.0% chance, $-18.0 with 1.88% chance, $-50.0 with 1.88% chance, $-30.0 with 40.0% chance, $6.0 with 7.5% chance, $10.0 with 15.0% chance, $-2.0 with 3.75% chance."}
+{"id":"Q0410","prompt":"Machine A: $-5.0 with 0.0% chance, $-5.0 with 100.0% chance.\nMachine B: $4.5 with 25.0% chance, $3.5 with 25.0% chance, $-12.0 with 50.0% chance."}
+{"id":"Q0411","prompt":"Machine A: $9.0 with 100.0% chance, $9.0 with 0.0% chance.\nMachine B: $6.0 with 25.0% chance, $16.5 with 12.3% chance, $11.5 with 0.59% chance, $18.5 with 0.59% chance, $12.5 with 4.1% chance, $14.5 with 20.51% chance, $17.5 with 4.1% chance, $13.5 with 12.3% chance, $15.5 with 20.51% chance."}
+{"id":"Q0412","prompt":"Machine A: $13.0 with 100.0% chance, $13.0 with 0.0% chance.\nMachine B: $10.0 with 90.0% chance, $20.0 with 10.0% chance."}
+{"id":"Q0413","prompt":"Machine A: $26.0 with 0.0% chance, $26.0 with 100.0% chance.\nMachine B: $78.5 with 5.0% chance, $23.0 with 90.0% chance, $77.5 with 5.0% chance."}
+{"id":"Q0414","prompt":"Machine A: $6.0 with 0.0% chance, $6.0 with 100.0% chance.\nMachine B: $21.5 with 6.25% chance, $18.5 with 6.25% chance, $-5.0 with 50.0% chance, $20.5 with 18.75% chance, $19.5 with 18.75% chance."}
+{"id":"Q0415","prompt":"Machine A: $0.0 with 0.0% chance, $0.0 with 100.0% chance.\nMachine B: $-21.0 with 60.0% chance, $26.0 with 20.0% chance, $24.0 with 20.0% chance."}
+{"id":"Q0416","prompt":"Machine A: $13.0 with 5.0% chance, $-5.0 with 95.0% chance.\nMachine B: $-50.0 with 25.0% chance, $11.5 with 20.51% chance, $13.5 with 4.1% chance, $14.5 with 0.59% chance, $10.5 with 20.51% chance, $12.5 with 12.3% chance, $8.5 with 4.1% chance, $7.5 with 0.59% chance, $9.5 with 12.3% chance."}
+{"id":"Q0417","prompt":"Machine A: $30.0 with 0.0% chance, $30.0 with 100.0% chance.\nMachine B: $59.5 with 0.62% chance, $18.0 with 80.0% chance, $60.5 with 3.12% chance, $61.5 with 6.25% chance, $62.5 with 6.25% chance, $64.5 with 0.62% chance, $63.5 with 3.12% chance."}
+{"id":"Q0418","prompt":"Machine A: $22.0 with 100.0% chance, $22.0 with 0.0% chance.\nMachine B: $-20.0 with 50.0% chance, $70.0 with 50.0% chance."}
+{"id":"Q0419","prompt":"Machine A: $-7.0 with 50.0% chance, $55.0 with 50.0% chance.\nMachine B: $5.0 with 75.0% chance, $58.5 with 3.12% chance, $61.5 with 3.12% chance, $60.5 with 9.38% chance, $59.5 with 9.38% chance."}
+{"id":"Q0420","prompt":"Machine A: $85.0 with 50.0% chance, $-33.0 with 50.0% chance.\nMachine B: $13.5 with 0.7% chance, $18.5 with 14.77% chance, $14.5 with 4.92% chance, $-5.0 with 10.0% chance, $16.5 with 24.61% chance, $15.5 with 14.77% chance, $20.5 with 0.7% chance, $19.5 with 4.92% chance, $17.5 with 24.61% chance."}
+{"id":"Q0421","prompt":"Machine A: $5.0 with 0.0% chance, $5.0 with 100.0% chance.\nMachine B: $-1.0 with 60.0% chance, $27.0 with 40.0% chance."}
+{"id":"Q0422","prompt":"Machine A: $-15.0 with 50.0% chance, $33.0 with 50.0% chance.\nMachine B: $14.0 with 30.0% chance, $4.0 with 40.0% chance, $20.0 with 7.5% chance, $28.0 with 7.5% chance, $16.0 with 15.0% chance."}
+{"id":"Q0423","prompt":"Machine A: $46.0 with 60.0% chance, $-6.0 with 40.0% chance.\nMachine B: $23.5 with 12.5% chance, $26.5 with 12.5% chance, $25.5 with 37.5% chance, $24.5 with 37.5% chance."}
+{"id":"Q0424","prompt":"Machine A: $-49.0 with 50.0% chance, $41.0 with 50.0% chance.\nMachine B: $8.0 with 50.0% chance, $-25.0 with 50.0% chance."}
+{"id":"Q0425","prompt":"Machine A: $11.0 with 0.0% chance, $11.0 with 100.0% chance.\nMachine B: $24.5 with 10.0% chance, $4.0 with 80.0% chance, $25.5 with 10.0% chance."}
+{"id":"Q0426","prompt":"Machine A: $10.0 with 0.0% chance, $10.0 with 100.0% chance.\nMachine B: $29.0 with 0.39% chance, $91.0 with 12.5% chance, $89.0 with 6.25% chance, $61.0 with 0.78% chance, $85.0 with 3.12% chance, $-35.0 with 0.39% chance, $77.0 with 1.56% chance, $-21.0 with 75.0% chance."}
+{"id":"Q0427","prompt":"Machine A: $-19.0 with 1.0% chance, $14.0 with 99.0% chance.\nMachine B: $-10.0 with 25.0% chance, $22.0 with 75.0% chance."}
+{"id":"Q0428","prompt":"Machine A: $19.0 with 60.0% chance, $42.0 with 40.0% chance.\nMachine B: $33.0 with 60.0% chance, $28.0 with 40.0% chance."}
+{"id":"Q0429","prompt":"Machine A: $79.0 with 20.0% chance, $-16.0 with 80.0% chance.\nMachine B: $40.0 with 5.0% chance, $6.0 with 90.0% chance, $38.0 with 5.0% chance."}
+{"id":"Q0430","prompt":"Machine A: $24.0 with 75.0% chance, $1.0 with 25.0% chance.\nMachine B: $12.0 with 5.94% chance, $24.0 with 23.75% chance, $-4.0 with 5.94% chance, $-37.0 with 5.0% chance, $26.0 with 47.5% chance, $20.0 with 11.88% chance."}
+{"id":"Q0431","prompt":"Machine A: $3.0 with 100.0% chance, $3.0 with 0.0% chance.\nMachine B: $42.0 with 5.0% chance, $48.0 with 1.25% chance, $-8.0 with 90.0% chance, $56.0 with 1.25% chance, $44.0 with 2.5% chance."}
+{"id":"Q0432","prompt":"Machine A: $51.0 with 20.0% chance, $16.0 with 80.0% chance.\nMachine B: $57.5 with 12.5% chance, $15.0 with 75.0% chance, $56.5 with 12.5% chance."}
+{"id":"Q0433","prompt":"Machine A: $55.0 with 50.0% chance, $-5.0 with 50.0% chance.\nMachine B: $17.0 with 40.0% chance, $34.0 with 60.0% chance."}
+{"id":"Q0434","prompt":"Machine A: $48.0 with 5.0% chance, $13.0 with 95.0% chance.\nMachine B: $52.5 with 12.5% chance, $51.5 with 12.5% chance, $6.0 with 75.0% chance."}
+{"id":"Q0435","prompt":"Machine A: $8.0 with 100.0% chance, $8.0 with 0.0% chance.\nMachine B: $35.0 with 50.0% chance, $-20.0 with 50.0% chance."}
+{"id":"Q0436","prompt":"Machine A: $15.0 with 60.0% chance, $20.0 with 40.0% chance.\nMachine B: $16.0 with 25.0% chance, $14.0 with 50.0% chance, $20.0 with 12.5% chance, $28.0 with 12.5% chance."}
+{"id":"Q0437","prompt":"Machine A: $-3.0 with 80.0% chance, $22.0 with 20.0% chance.\nMachine B: $24.0 with 60.0% chance, $-16.0 with 40.0% chance."}
+{"id":"Q0438","prompt":"Machine A: $26.0 with 90.0% chance, $42.0 with 10.0% chance.\nMachine B: $40.5 with 3.12% chance, $30.0 with 90.0% chance, $41.5 with 1.56% chance, $37.5 with 0.31% chance, $38.5 with 1.56% chance, $39.5 with 3.12% chance, $42.5 with 0.31% chance."}
+{"id":"Q0439","prompt":"Machine A: $-2.0 with 0.0% chance, $-2.0 with 100.0% chance.\nMachine B: $-16.0 with 50.0% chance, $6.0 with 50.0% chance."}
+{"id":"Q0440","prompt":"Machine A: $-21.0 with 90.0% chance, $89.0 with 10.0% chance.\nMachine B: $33.5 with 0.31% chance, $35.5 with 3.12% chance, $36.5 with 3.12% chance, $-16.0 with 90.0% chance, $34.5 with 1.56% chance, $37.5 with 1.56% chance, $38.5 with 0.31% chance."}
+{"id":"Q0441","prompt":"Machine A: $11.0 with 100.0% chance, $11.0 with 0.0% chance.\nMachine B: $-37.0 with 25.0% chance, $33.0 with 75.0% chance."}
+{"id":"Q0442","prompt":"Machine A: $11.0 with 100.0% chance, $11.0 with 0.0% chance.\nMachine B: $-7.0 with 60.0% chance, $51.0 with 40.0% chance."}
+{"id":"Q0443","prompt":"Machine A: $8.0 with 60.0% chance, $11.0 with 40.0% chance.\nMachine B: $19.5 with 9.38% chance, $17.5 with 28.12% chance, $18.5 with 28.12% chance, $16.5 with 9.38% chance, $9.0 with 25.0% chance."}
+{"id":"Q0444","prompt":"Machine A: $-5.0 with 100.0% chance, $-5.0 with 0.0% chance.\nMachine B: $-16.0 with 10.0% chance, $-8.0 with 90.0% chance."}
+{"id":"Q0445","prompt":"Machine A: $23.0 with 0.0% chance, $23.0 with 100.0% chance.\nMachine B: $72.0 with 20.0% chance, $22.0 with 80.0% chance."}
+{"id":"Q0446","prompt":"Machine A: $16.0 with 90.0% chance, $84.0 with 10.0% chance.\nMachine B: $40.5 with 7.5% chance, $38.5 with 22.5% chance, $39.5 with 22.5% chance, $-14.0 with 40.0% chance, $37.5 with 7.5% chance."}
+{"id":"Q0447","prompt":"Machine A: $71.0 with 60.0% chance, $-32.0 with 40.0% chance.\nMachine B: $19.0 with 5.0% chance, $27.0 with 95.0% chance."}
+{"id":"Q0448","prompt":"Machine A: $28.0 with 0.0% chance, $28.0 with 100.0% chance.\nMachine B: $20.0 with 7.5% chance, $28.0 with 7.5% chance, $34.0 with 30.0% chance, $19.0 with 40.0% chance, $32.0 with 15.0% chance."}
+{"id":"Q0449","prompt":"Machine A: $2.0 with 0.0% chance, $2.0 with 100.0% chance.\nMachine B: $5.5 with 0.39% chance, $12.5 with 0.39% chance, $7.5 with 8.2% chance, $11.5 with 2.73% chance, $9.5 with 13.67% chance, $8.5 with 13.67% chance, $6.5 with 2.73% chance, $10.5 with 8.2% chance, $-8.0 with 50.0% chance."}
+{"id":"Q0450","prompt":"Machine A: $97.0 with 20.0% chance, $-3.0 with 80.0% chance.\nMachine B: $-36.0 with 1.0% chance, $16.0 with 12.38% chance, $12.0 with 24.75% chance, $72.0 with 1.55% chance, $24.0 with 6.19% chance, $136.0 with 1.55% chance, $10.0 with 49.5% chance, $40.0 with 3.09% chance."}
+{"id":"Q0451","prompt":"Machine A: $-6.0 with 40.0% chance, $-11.0 with 60.0% chance.\nMachine B: $-17.0 with 95.0% chance, $14.0 with 5.0% chance."}
+{"id":"Q0452","prompt":"Machine A: $0.0 with 0.0% chance, $0.0 with 100.0% chance.\nMachine B: $33.0 with 50.0% chance, $-41.0 with 50.0% chance."}
+{"id":"Q0453","prompt":"Machine A: $8.0 with 100.0% chance, $8.0 with 0.0% chance.\nMachine B: $21.0 with 75.0% chance, $-26.0 with 25.0% chance."}
+{"id":"Q0454","prompt":"Machine A: $16.0 with 0.0% chance, $16.0 with 100.0% chance.\nMachine B: $-13.0 with 50.0% chance, $47.0 with 50.0% chance."}
+{"id":"Q0455","prompt":"Machine A: $-18.0 with 60.0% chance, $29.0 with 40.0% chance.\nMachine B: $-1.5 with 2.97% chance, $-3.5 with 29.69% chance, $-5.5 with 14.84% chance, $-4.5 with 29.69% chance, $-2.5 with 14.84% chance, $-16.0 with 5.0% chance, $-6.5 with 2.97% chance."}
+{"id":"Q0456","prompt":"Machine A: $25.0 with 0.0% chance, $25.0 with 100.0% chance.\nMachine B: $75.0 with 10.0% chance, $16.0 with 90.0% chance."}
+{"id":"Q0457","prompt":"Machine A: $27.0 with 100.0% chance, $27.0 with 0.0% chance.\nMachine B: $57.5 with 10.0% chance, $24.0 with 80.0% chance, $58.5 with 10.0% chance."}
+{"id":"Q0458","prompt":"Machine A: $16.0 with 100.0% chance, $16.0 with 0.0% chance.\nMachine B: $25.5 with 5.0% chance, $28.5 with 5.0% chance, $26.5 with 15.0% chance, $4.0 with 60.0% chance, $27.5 with 15.0% chance."}
+{"id":"Q0459","prompt":"Machine A: $14.0 with 1.0% chance, $19.0 with 99.0% chance.\nMachine B: $33.0 with 1.25% chance, $37.0 with 1.25% chance, $22.0 with 95.0% chance, $39.0 with 2.5% chance."}
+{"id":"Q0460","prompt":"Machine A: $23.0 with 90.0% chance, $11.0 with 10.0% chance.\nMachine B: $-24.0 with 50.0% chance, $62.0 with 50.0% chance."}
+{"id":"Q0461","prompt":"Machine A: $4.0 with 0.0% chance, $4.0 with 100.0% chance.\nMachine B: $0.5 with 7.81% chance, $-1.5 with 3.91% chance, $2.5 with 0.78% chance, $-2.5 with 0.78% chance, $1.5 with 3.91% chance, $-0.5 with 7.81% chance, $-1.0 with 75.0% chance."}
+{"id":"Q0462","prompt":"Machine A: $12.0 with 90.0% chance, $41.0 with 10.0% chance.\nMachine B: $-29.0 with 20.0% chance, $17.5 with 10.0% chance, $19.5 with 30.0% chance, $18.5 with 30.0% chance, $20.5 with 10.0% chance."}
+{"id":"Q0463","prompt":"Machine A: $14.0 with 0.0% chance, $14.0 with 100.0% chance.\nMachine B: $56.0 with 25.0% chance, $-6.0 with 75.0% chance."}
+{"id":"Q0464","prompt":"Machine A: $3.0 with 80.0% chance, $-42.0 with 20.0% chance.\nMachine B: $-39.0 with 1.0% chance, $-5.0 with 99.0% chance."}
+{"id":"Q0465","prompt":"Machine A: $22.0 with 50.0% chance, $36.0 with 50.0% chance.\nMachine B: $29.0 with 75.0% chance, $41.5 with 9.38% chance, $39.5 with 3.12% chance, $42.5 with 3.12% chance, $40.5 with 9.38% chance."}
+{"id":"Q0466","prompt":"Machine A: $2.0 with 10.0% chance, $9.0 with 90.0% chance.\nMachine B: $6.0 with 80.0% chance, $18.0 with 20.0% chance."}
+{"id":"Q0467","prompt":"Machine A: $-31.0 with 20.0% chance, $16.0 with 80.0% chance.\nMachine B: $22.5 with 7.81% chance, $19.5 with 7.81% chance, $23.5 with 1.56% chance, $20.5 with 15.62% chance, $18.5 with 1.56% chance, $-17.0 with 50.0% chance, $21.5 with 15.62% chance."}
+{"id":"Q0468","prompt":"Machine A: $5.0 with 100.0% chance, $5.0 with 0.0% chance.\nMachine B: $6.0 with 95.0% chance, $8.0 with 5.0% chance."}
+{"id":"Q0469","prompt":"Machine A: $5.0 with 100.0% chance, $5.0 with 0.0% chance.\nMachine B: $10.0 with 80.0% chance, $21.0 with 20.0% chance."}
+{"id":"Q0470","prompt":"Machine A: $9.0 with 0.0% chance, $9.0 with 100.0% chance.\nMachine B: $90.0 with 20.0% chance, $-10.0 with 80.0% chance."}
+{"id":"Q0471","prompt":"Machine A: $55.0 with 10.0% chance, $-3.0 with 90.0% chance.\nMachine B: $37.0 with 25.0% chance, $-17.0 with 75.0% chance."}
+{"id":"Q0472","prompt":"Machine A: $2.0 with 50.0% chance, $-18.0 with 50.0% chance.\nMachine B: $-15.5 with 45.0% chance, $-16.5 with 45.0% chance, $-25.0 with 10.0% chance."}
+{"id":"Q0473","prompt":"Machine A: $11.0 with 20.0% chance, $-2.0 with 80.0% chance.\nMachine B: $-5.0 with 20.0% chance, $12.0 with 80.0% chance."}
+{"id":"Q0474","prompt":"Machine A: $29.0 with 75.0% chance, $21.0 with 25.0% chance.\nMachine B: $30.5 with 27.07% chance, $33.5 with 0.77% chance, $26.5 with 0.77% chance, $4.0 with 1.0% chance, $27.5 with 5.41% chance, $29.5 with 27.07% chance, $31.5 with 16.24% chance, $28.5 with 16.24% chance, $32.5 with 5.41% chance."}
+{"id":"Q0475","prompt":"Machine A: $-1.0 with 100.0% chance, $-1.0 with 0.0% chance.\nMachine B: $72.0 with 2.5% chance, $88.0 with 2.5% chance, $58.0 with 20.0% chance, $60.0 with 10.0% chance, $64.0 with 5.0% chance, $-45.0 with 60.0% chance."}
+{"id":"Q0476","prompt":"Machine A: $10.0 with 0.0% chance, $10.0 with 100.0% chance.\nMachine B: $-18.0 with 75.0% chance, $44.0 with 25.0% chance."}
+{"id":"Q0477","prompt":"Machine A: $12.0 with 1.0% chance, $20.0 with 99.0% chance.\nMachine B: $-12.0 with 60.0% chance, $73.0 with 40.0% chance."}
+{"id":"Q0478","prompt":"Machine A: $-1.0 with 0.0% chance, $-1.0 with 100.0% chance.\nMachine B: $0.0 with 50.0% chance, $-2.0 with 50.0% chance."}
+{"id":"Q0479","prompt":"Machine A: $37.0 with 5.0% chance, $24.0 with 95.0% chance.\nMachine B: $32.0 with 20.0% chance, $21.0 with 80.0% chance."}
+{"id":"Q0480","prompt":"Machine A: $26.0 with 100.0% chance, $26.0 with 0.0% chance.\nMachine B: $8.0 with 10.0% chance, $36.0 with 90.0% chance."}
+{"id":"Q0481","prompt":"Machine A: $13.0 with 100.0% chance, $13.0 with 0.0% chance.\nMachine B: $18.0 with 80.0% chance, $26.0 with 20.0% chance."}
+{"id":"Q0482","prompt":"Machine A: $-25.0 with 40.0% chance, $17.0 with 60.0% chance.\nMachine B: $-18.0 with 40.0% chance, $7.0 with 60.0% chance."}
+{"id":"Q0483","prompt":"Machine A: $9.0 with 0.0% chance, $9.0 with 100.0% chance.\nMachine B: $11.0 with 99.0% chance, $60.0 with 1.0% chance."}
+{"id":"Q0484","prompt":"Machine A: $22.0 with 0.0% chance, $22.0 with 100.0% chance.\nMachine B: $64.0 with 10.0% chance, $92.0 with 1.25% chance, $124.0 with 1.25% chance, $68.0 with 5.0% chance, $-7.0 with 60.0% chance, $76.0 with 2.5% chance, $62.0 with 20.0% chance."}
+{"id":"Q0485","prompt":"Machine A: $28.0 with 100.0% chance, $28.0 with 0.0% chance.\nMachine B: $31.0 with 12.5% chance, $27.0 with 25.0% chance, $25.0 with 50.0% chance, $39.0 with 12.5% chance."}
+{"id":"Q0486","prompt":"Machine A: $-6.0 with 90.0% chance, $97.0 with 10.0% chance.\nMachine B: $-5.0 with 95.0% chance, $-14.0 with 5.0% chance."}
+{"id":"Q0487","prompt":"Machine A: $12.0 with 0.0% chance, $12.0 with 100.0% chance.\nMachine B: $117.5 with 1.64% chance, $118.5 with 0.55% chance, $116.5 with 2.73% chance, $112.5 with 0.08% chance, $115.5 with 2.73% chance, $114.5 with 1.64% chance, $2.0 with 90.0% chance, $113.5 with 0.55% chance, $119.5 with 0.08% chance."}
+{"id":"Q0488","prompt":"Machine A: $-8.0 with 0.0% chance, $-8.0 with 100.0% chance.\nMachine B: $-0.5 with 0.62% chance, $1.5 with 6.25% chance, $3.5 with 3.12% chance, $4.5 with 0.62% chance, $0.0 with 80.0% chance, $2.5 with 6.25% chance, $0.5 with 3.12% chance."}
+{"id":"Q0489","prompt":"Machine A: $7.0 with 100.0% chance, $7.0 with 0.0% chance.\nMachine B: $26.5 with 0.16% chance, $10.0 with 95.0% chance, $31.5 with 0.16% chance, $29.5 with 1.56% chance, $30.5 with 0.78% chance, $27.5 with 0.78% chance, $28.5 with 1.56% chance."}
+{"id":"Q0490","prompt":"Machine A: $-21.0 with 40.0% chance, $22.0 with 60.0% chance.\nMachine B: $27.0 with 50.0% chance, $-2.0 with 50.0% chance."}
+{"id":"Q0491","prompt":"Machine A: $24.0 with 100.0% chance, $24.0 with 0.0% chance.\nMachine B: $97.5 with 9.38% chance, $2.0 with 75.0% chance, $98.5 with 9.38% chance, $99.5 with 3.12% chance, $96.5 with 3.12% chance."}
+{"id":"Q0492","prompt":"Machine A: $58.0 with 40.0% chance, $-20.0 with 60.0% chance.\nMachine B: $134.0 with 2.5% chance, $-38.0 with 60.0% chance, $110.0 with 5.0% chance, $118.0 with 2.5% chance, $104.0 with 20.0% chance, $106.0 with 10.0% chance."}
+{"id":"Q0493","prompt":"Machine A: $-33.0 with 5.0% chance, $11.0 with 95.0% chance.\nMachine B: $9.5 with 23.44% chance, $11.5 with 11.72% chance, $7.5 with 2.34% chance, $12.5 with 2.34% chance, $8.5 with 11.72% chance, $-2.0 with 25.0% chance, $10.5 with 23.44% chance."}
+{"id":"Q0494","prompt":"Machine A: $74.0 with 5.0% chance, $22.0 with 95.0% chance.\nMachine B: $48.0 with 2.5% chance, $29.0 with 95.0% chance, $50.0 with 2.5% chance."}
+{"id":"Q0495","prompt":"Machine A: $24.0 with 100.0% chance, $24.0 with 0.0% chance.\nMachine B: $37.0 with 95.0% chance, $14.0 with 5.0% chance."}
+{"id":"Q0496","prompt":"Machine A: $-3.0 with 0.0% chance, $-3.0 with 100.0% chance.\nMachine B: $70.5 with 0.5% chance, $9.0 with 99.0% chance, $71.5 with 0.5% chance."}
+{"id":"Q0497","prompt":"Machine A: $-9.0 with 80.0% chance, $4.0 with 20.0% chance.\nMachine B: $29.0 with 10.0% chance, $-14.0 with 90.0% chance."}
+{"id":"Q0498","prompt":"Machine A: $68.0 with 10.0% chance, $25.0 with 90.0% chance.\nMachine B: $27.0 with 50.0% chance, $31.5 with 25.0% chance, $32.5 with 25.0% chance."}
+{"id":"Q0499","prompt":"Machine A: $-21.0 with 1.0% chance, $-5.0 with 99.0% chance.\nMachine B: $43.5 with 5.0% chance, $-12.0 with 90.0% chance, $44.5 with 5.0% chance."}
+{"id":"Q0500","prompt":"Machine A: $-1.0 with 60.0% chance, $36.0 with 40.0% chance.\nMachine B: $-18.0 with 25.0% chance, $35.5 with 37.5% chance, $36.5 with 37.5% chance."}
+
+Answer:

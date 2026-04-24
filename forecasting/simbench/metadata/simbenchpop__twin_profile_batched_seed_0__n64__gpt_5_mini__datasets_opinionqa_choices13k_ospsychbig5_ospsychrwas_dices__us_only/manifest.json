@@ -1,0 +1,31 @@
+{
+  "run_name": "simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only",
+  "simbench_split": "SimBenchPop",
+  "variant": "twin_profile_batched_seed_0",
+  "model": "gpt-5-mini",
+  "num_simbench_rows": 1309,
+  "num_context_groups": 8,
+  "num_samples_per_context": 64,
+  "num_requests": 512,
+  "seed": 0,
+  "only_us_country_context": true,
+  "dataset_names_filter": [
+    "OpinionQA",
+    "Choices13k",
+    "OSPsychBig5",
+    "OSPsychRWAS",
+    "DICES"
+  ],
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_input/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_output/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only",
+  "selected_rows_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only/selected_rows.csv",
+  "selected_contexts_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only/selected_contexts.csv",
+  "gold_targets_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only/gold_targets.jsonl",
+  "twin_profiles_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/twin_profiles/output/twin_extended_profiles/twin_extended_profiles.jsonl",
+  "twin_profile_cards_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/twin_profiles/output/twin_extended_profile_cards/compact/twin_extended_profile_cards.jsonl",
+  "twin_sampling_scope": "global_panel_across_contexts",
+  "shared_twin_panel_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only/shared_twin_panel.json",
+  "shared_twin_panel_seed": 4242968982,
+  "aggregation_note": "For baseline variants, each request returns answers for all questions in one context group. For Twin-profile variants, the same sampled Twin panel is reused across all context groups in the run; average the returned distributions across sample_index within each context_id, then map question_id back to simbench_row_id using question_manifest_json."
+}

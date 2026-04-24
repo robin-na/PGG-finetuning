@@ -5,8 +5,9 @@ import ast
 import csv
 import hashlib
 import json
+import re
 import sys
-from itertools import combinations
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -23,40 +24,40 @@ from forecasting.common.profiles import load_twin_cards, load_twin_personas
 from forecasting.common.runs.non_pgg import MODEL_SLUGS, _estimate_input_tokens
 
 
-VARIANT_TWIN_CORRECTED = "twin_sampled_seed_0"
-VARIANT_TWIN_UNADJUSTED = "twin_sampled_unadjusted_seed_0"
-ALL_VARIANTS = [VARIANT_TWIN_CORRECTED, VARIANT_TWIN_UNADJUSTED]
+VARIANT_BASELINE_PAPER = "baseline_group_batched_paper"
+VARIANT_BASELINE_EXPLAINED = "baseline_group_batched_explained"
+VARIANT_TWIN_PROFILE = "twin_profile_batched_seed_0"
+ALL_VARIANTS = [VARIANT_BASELINE_EXPLAINED, VARIANT_TWIN_PROFILE]
+SUPPORTED_VARIANTS = [VARIANT_BASELINE_PAPER, VARIANT_BASELINE_EXPLAINED, VARIANT_TWIN_PROFILE]
 ALL_MODELS = ["gpt-5.1", "gpt-5-mini"]
 ALL_SPLITS = ["SimBenchPop", "SimBenchGrouped"]
 
-def _sanitize_token(value: str) -> str:
-    import re
+COUNTRY_KEYS = {
+    "country",
+    "country_name",
+    "Country",
+    "COUNTRY_NAME",
+    "UserCountry3",
+    "cntry",
+    "rater_locale",
+}
+US_MARKERS = {
+    "united states",
+    "united states of america",
+    "u.s.",
+    "usa",
+}
+OPTIONS_MARKER = "\n\nOptions:\n"
+OPTION_LINE_PATTERN = re.compile(r"^\(([A-Za-z0-9]+)\):\s*(.*)$")
 
+
+def _sanitize_token(value: str) -> str:
     sanitized = re.sub(r"[^A-Za-z0-9]+", "_", value.strip())
     return sanitized.strip("_").lower()
 
 
-def _batch_entry(custom_id: str, model: str, system_prompt: str, user_prompt: str) -> dict[str, Any]:
-    return {
-        "custom_id": custom_id,
-        "method": "POST",
-        "url": "/v1/chat/completions",
-        "body": {
-            "model": model,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
-        },
-    }
-
-
-def _write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as handle:
-        for row in rows:
-            handle.write(json.dumps(row, ensure_ascii=False))
-            handle.write("\n")
+def _normalize_text(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", " ", value.lower()).strip()
 
 
 def _parse_literal(raw: str | None, default: Any) -> Any:
@@ -85,6 +86,152 @@ def _normalize_distribution(raw: dict[str, Any]) -> dict[str, float]:
     if total <= 0:
         return {str(key): 0.0 for key in raw}
     return {key: value / total for key, value in cleaned.items()}
+
+
+def _compact_inline_whitespace(text: str) -> str:
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def _compact_multiline_text(text: str) -> str:
+    lines = [_compact_inline_whitespace(line) for line in str(text).splitlines()]
+    return "\n".join(line for line in lines if line).strip()
+
+
+def _split_question_and_options(input_template: str) -> tuple[str, dict[str, str]]:
+    if OPTIONS_MARKER not in input_template:
+        return _compact_multiline_text(input_template), {}
+
+    question_body, options_block = input_template.split(OPTIONS_MARKER, 1)
+    option_text_map: dict[str, str] = {}
+    current_label: str | None = None
+    current_lines: list[str] = []
+
+    for raw_line in options_block.splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        match = OPTION_LINE_PATTERN.match(line)
+        if match:
+            if current_label is not None:
+                option_text_map[current_label] = _compact_inline_whitespace(" ".join(current_lines))
+            current_label = match.group(1)
+            current_lines = [match.group(2).strip()]
+            continue
+        if current_label is not None:
+            current_lines.append(line)
+
+    if current_label is not None:
+        option_text_map[current_label] = _compact_inline_whitespace(" ".join(current_lines))
+
+    return _compact_multiline_text(question_body), option_text_map
+
+
+def _compact_question_payload(dataset_name: str, question_body: str) -> str:
+    compact_body = _compact_multiline_text(question_body)
+    if dataset_name == "Choices13k":
+        lines = [line for line in compact_body.splitlines() if line]
+        machine_lines = [line for line in lines if line.startswith("Machine A:") or line.startswith("Machine B:")]
+        if len(machine_lines) >= 2:
+            return "\n".join(machine_lines)
+    if dataset_name == "OSPsychBig5":
+        prefix = "Indicate your level of agreement with the following statement:"
+        if compact_body.startswith(prefix):
+            statement = compact_body[len(prefix) :].strip()
+            return f"Statement: {statement}"
+    if dataset_name == "OSPsychRWAS":
+        prefix = (
+            "Please rate your agreement with the following statement on a scale from very strongly disagree "
+            "to very strongly agree."
+        )
+        if compact_body.startswith(prefix):
+            statement = compact_body[len(prefix) :].strip()
+            if statement.startswith("Statement:"):
+                statement = statement[len("Statement:") :].strip()
+            return f"Statement: {statement}"
+    if dataset_name == "DICES":
+        marker = "Regarding the 'New AI chatbot response',"
+        if marker in compact_body:
+            conversation, _, _ = compact_body.partition(marker)
+            return conversation.strip()
+    return compact_body
+
+
+def _dataset_task_note(dataset_name: str) -> str | None:
+    notes = {
+        "Choices13k": (
+            "Each item is a separate gamble between Machine A and Machine B. Respondents choose the machine they "
+            "would play; the original task pays 10% of the realized reward as bonus, with negative rewards floored at $0."
+        ),
+        "DICES": (
+            "Each item shows a conversation and a new AI chatbot response. Judge whether the new response is unsafe "
+            "overall due to identity-related bias, including hatred, slurs or stereotypes, subhuman comparisons, "
+            "group superiority or inferiority claims, malicious identity-based accusations, or attraction-related insults."
+        ),
+        "OSPsychBig5": "Each item is a personality statement. Rate agreement using the shared five-point scale.",
+        "OSPsychRWAS": "Each item is a statement. Rate agreement using the shared nine-point scale.",
+    }
+    return notes.get(dataset_name)
+
+
+def _annotate_scales(question_manifest: list[dict[str, Any]]) -> dict[str, dict[str, str]]:
+    signature_to_scale_id: dict[tuple[tuple[str, str], ...], str] = {}
+    scale_definitions: dict[str, dict[str, str]] = {}
+    for item in question_manifest:
+        signature = tuple(
+            (str(label), str((item.get("option_text_map") or {}).get(label, label)))
+            for label in item["option_labels"]
+        )
+        scale_id = signature_to_scale_id.get(signature)
+        if scale_id is None:
+            scale_id = f"S{len(signature_to_scale_id) + 1}"
+            signature_to_scale_id[signature] = scale_id
+            scale_definitions[scale_id] = {label: text for label, text in signature}
+        item["scale_id"] = scale_id
+    return scale_definitions
+
+
+def _render_scales_block(scale_definitions: dict[str, dict[str, str]]) -> str:
+    lines = []
+    for scale_id in sorted(scale_definitions):
+        lines.append(
+            f"{scale_id}={json.dumps(scale_definitions[scale_id], ensure_ascii=False, separators=(',', ':'))}"
+        )
+    return "\n".join(lines)
+
+
+def _render_items_block(question_manifest: list[dict[str, Any]]) -> str:
+    unique_scale_ids = {item["scale_id"] for item in question_manifest}
+    one_scale = len(unique_scale_ids) == 1
+    lines = []
+    for item in question_manifest:
+        payload: dict[str, Any] = {"id": item["question_id"]}
+        if not one_scale:
+            payload["scale"] = item["scale_id"]
+        payload["prompt"] = item["question_payload"]
+        lines.append(json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
+    return "\n".join(lines)
+
+
+def _single_scale_note(question_manifest: list[dict[str, Any]]) -> str | None:
+    unique_scale_ids = sorted({item["scale_id"] for item in question_manifest})
+    if len(unique_scale_ids) == 1:
+        return f"All items use scale {unique_scale_ids[0]}."
+    return None
+
+
+def _write_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8") as handle:
+        for row in rows:
+            handle.write(json.dumps(row, ensure_ascii=False))
+            handle.write("\n")
+
+
+def _render_group_prompt(template: str, variable_map: dict[str, Any]) -> str:
+    rendered = str(template)
+    for variable, value in variable_map.items():
+        rendered = rendered.replace(f"{{{variable}}}", str(value))
+    return rendered.strip()
 
 
 def _simbench_csv_path(repo_root: Path, split: str) -> Path:
@@ -122,17 +269,24 @@ def _load_simbench_rows(path: Path, split: str) -> pd.DataFrame:
         for source_row_index, raw_row in enumerate(reader):
             gold_distribution = _normalize_distribution(_parse_literal(raw_row.get("human_answer"), {}))
             option_labels = list(gold_distribution.keys())
+            input_template = str(raw_row.get("input_template", "")).strip()
+            question_body, option_text_map = _split_question_and_options(input_template)
+            variable_map = _parse_literal(raw_row.get("group_prompt_variable_map"), {})
+            group_prompt_template = str(raw_row.get("group_prompt_template", "")).strip()
+            dataset_name = str(raw_row.get("dataset_name", "")).strip()
             rows.append(
                 {
                     "simbench_row_id": f"{_sanitize_token(split)}_{source_row_index:06d}",
                     "simbench_split": split,
                     "source_row_index": source_row_index,
-                    "dataset_name": str(raw_row.get("dataset_name", "")).strip(),
-                    "group_prompt_template": str(raw_row.get("group_prompt_template", "")).strip(),
-                    "group_prompt_variable_map": _parse_literal(raw_row.get("group_prompt_variable_map"), {}),
-                    "grouping_keys": _parse_literal(raw_row.get("grouping_keys"), raw_row.get("grouping_keys", "")),
-                    "num_grouping_vars": int(float(raw_row.get("num_grouping_vars", 0) or 0)),
-                    "input_template": str(raw_row.get("input_template", "")).strip(),
+                    "dataset_name": dataset_name,
+                    "group_prompt_template": group_prompt_template,
+                    "group_prompt_variable_map": variable_map,
+                    "rendered_group_prompt": _render_group_prompt(group_prompt_template, variable_map),
+                    "input_template": input_template,
+                    "question_body": question_body,
+                    "question_payload": _compact_question_payload(dataset_name, question_body),
+                    "option_text_map": option_text_map,
                     "option_labels": option_labels,
                     "gold_distribution": gold_distribution,
                     "group_size": int(float(raw_row.get("group_size", 0) or 0)),
@@ -145,445 +299,228 @@ def _load_simbench_rows(path: Path, split: str) -> pd.DataFrame:
     return frame
 
 
-def _opinionqa_education_to_twin(value: str) -> str | None:
-    mapping = {
-        "less than high school": "high school",
-        "high school graduate": "high school",
-        "some college, no degree": "college/postsecondary",
-        "associate's degree": "college/postsecondary",
-        "college graduate/some postgrad": "college/postsecondary",
-        "postgraduate": "postgraduate",
-    }
-    return mapping.get(value.strip().lower())
+def _has_country_context(row: dict[str, Any]) -> bool:
+    variable_map = row.get("group_prompt_variable_map") or {}
+    if any(key in COUNTRY_KEYS for key in variable_map):
+        return True
+    prompt = str(row.get("rendered_group_prompt", ""))
+    return any(marker in prompt for marker in ["You are from ", "You are from the ", "based in the "])
 
 
-def _ess_education_to_twin(value: str) -> str | None:
-    lowered = value.strip().lower()
-    if any(token in lowered for token in ["less than lower secondary", "lower secondary", "upper secondary"]):
-        return "high school"
-    if any(token in lowered for token in ["advanced vocational", "sub-degree", "bachelor"]):
-        return "college/postsecondary"
-    if "master" in lowered or "higher tertiary" in lowered:
-        return "postgraduate"
-    return None
+def _is_us_context(row: dict[str, Any]) -> bool:
+    variable_map = row.get("group_prompt_variable_map") or {}
+    for key, value in variable_map.items():
+        if key in COUNTRY_KEYS and _normalize_text(str(value)) in {_normalize_text(item) for item in US_MARKERS}:
+            return True
+    prompt = _normalize_text(str(row.get("rendered_group_prompt", "")))
+    return any(marker in prompt for marker in (_normalize_text(item) for item in US_MARKERS))
 
 
-def _afro_education_to_twin(value: str) -> str | None:
-    lowered = value.strip().lower()
-    if "post-secondary" in lowered or "polytechnic" in lowered or "college" in lowered:
-        return "college/postsecondary"
-    if any(
-        token in lowered
-        for token in [
-            "no formal schooling",
-            "primary",
-            "secondary",
-            "high school",
-            "intermediate school",
+def _apply_us_country_filter(frame: pd.DataFrame) -> pd.DataFrame:
+    keep_mask = []
+    for row in frame.to_dict(orient="records"):
+        keep_mask.append((not _has_country_context(row)) or _is_us_context(row))
+    return frame.loc[keep_mask].copy()
+
+
+def _build_context_groups(row_records: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    grouped: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
+    for row in row_records:
+        grouped[(row["simbench_split"], row["dataset_name"], row["rendered_group_prompt"])].append(row)
+
+    context_groups: list[dict[str, Any]] = []
+    for index, ((simbench_split, dataset_name, rendered_group_prompt), rows) in enumerate(
+        sorted(grouped.items(), key=lambda item: (item[0][1], item[0][2]))
+    ):
+        sorted_rows = sorted(rows, key=lambda row: row["simbench_row_id"])
+        question_manifest = [
+            {
+                "question_id": f"Q{question_index:04d}",
+                "simbench_row_id": row["simbench_row_id"],
+                "dataset_name": row["dataset_name"],
+                "option_labels": list(row["option_labels"]),
+                "input_template": row["input_template"],
+                "question_body": row["question_body"],
+                "question_payload": row["question_payload"],
+                "option_text_map": dict(row["option_text_map"]),
+            }
+            for question_index, row in enumerate(sorted_rows, start=1)
         ]
-    ):
-        return "high school"
-    return None
+        scale_definitions = _annotate_scales(question_manifest)
+        context_groups.append(
+            {
+                "context_id": f"{_sanitize_token(simbench_split)}__ctx_{index:03d}",
+                "simbench_split": simbench_split,
+                "dataset_name": dataset_name,
+                "rendered_group_prompt": rendered_group_prompt,
+                "dataset_task_note": _dataset_task_note(dataset_name),
+                "scale_definitions": scale_definitions,
+                "question_manifest": question_manifest,
+                "rows": sorted_rows,
+            }
+        )
+    return context_groups
 
 
-def _latino_education_to_twin(value: str) -> str | None:
-    lowered = value.strip().lower()
-    if "universitary" in lowered:
-        return "college/postsecondary"
-    if "basic education" in lowered or "secondary education" in lowered:
-        return "high school"
-    return None
-
-
-def _canonical_marital(value: str) -> str | None:
-    lowered = value.strip().lower()
-    if "living with a partner" in lowered:
-        return "living with a partner"
-    if "married" in lowered:
-        return "married"
-    if "widow" in lowered:
-        return "widowed"
-    if "divorc" in lowered:
-        return "divorced"
-    if "separat" in lowered:
-        return "separated"
-    if "never" in lowered or "single" in lowered:
-        return "never been married"
-    return None
-
-
-def _canonical_religion(value: str) -> str | None:
-    lowered = value.strip().lower()
-    if "roman catholic" in lowered or lowered == "catholic":
-        return "roman catholic"
-    if any(
-        token in lowered
-        for token in ["protestant", "anglican", "calvinist", "pentecostal", "evangelical", "christian"]
-    ):
-        return "protestant"
-    if "muslim" in lowered or "islam" in lowered:
-        return "muslim"
-    if "orthodox" in lowered:
-        return "orthodox"
-    if "agnostic" in lowered:
-        return "agnostic"
-    if "atheist" in lowered:
-        return "atheist"
-    if any(token in lowered for token in ["nothing in particular", "no religion"]):
-        return "nothing in particular"
-    if "jewish" in lowered:
-        return "jewish"
-    if "hindu" in lowered:
-        return "hindu"
-    if "buddhist" in lowered:
-        return "buddhist"
-    if "mormon" in lowered:
-        return "mormon"
-    return None
-
-
-def _canonical_party(value: str) -> str | None:
-    lowered = value.strip().lower()
-    mapping = {
-        "democrat": "Democrat",
-        "republican": "Republican",
-        "independent": "Independent",
-        "other": "Other",
-    }
-    return mapping.get(lowered)
-
-
-def _canonical_political_views(value: str) -> str | None:
-    lowered = value.strip().lower()
-    if lowered in {"very liberal", "liberal", "moderate", "conservative", "very conservative"}:
-        return lowered
-    return None
-
-
-def _ideology_from_numeric(value: str) -> str | None:
-    try:
-        numeric = float(value)
-    except (TypeError, ValueError):
-        return None
-    if numeric <= 3:
-        return "liberal"
-    if numeric >= 7:
-        return "conservative"
-    return "moderate"
-
-
-def _canonical_income(value: str) -> str | None:
-    allowed = {
-        "$100,000 or more",
-        "$30,000-$50,000",
-        "$50,000-$75,000",
-        "$75,000-$100,000",
-        "Less than $30,000",
-    }
-    return value if value in allowed else None
-
-
-def _canonical_religattend(value: str) -> str | None:
-    lowered = value.strip().lower()
-    allowed = {
-        "a few times a year",
-        "more than once a week",
-        "never",
-        "once a week",
-        "once or twice a month",
-        "seldom",
-    }
-    return lowered if lowered in allowed else None
-
-
-def _canonical_employment_broad(value: str) -> str | None:
-    lowered = value.strip().lower()
-    if any(token in lowered for token in ["paid work", "full time", "part time", "private company", "self-employed"]):
-        return "employed"
-    if "retired" in lowered:
-        return "retired"
-    if any(token in lowered for token in ["housework", "looking after children", "shopping and housework"]):
-        return "homemaker"
-    if "student" in lowered:
-        return "student"
-    if any(token in lowered for token in ["never had paid work", "not in paid work", "no (looking)", "no (not looking)"]):
-        return "unemployed"
-    return None
-
-
-def _derive_matching_criteria(row: dict[str, Any]) -> tuple[dict[str, str], dict[str, str]]:
-    if row["simbench_split"] != "SimBenchGrouped":
-        return {}, {}
-
-    dataset_name = str(row["dataset_name"])
-    variables = row["group_prompt_variable_map"] or {}
-    criteria: dict[str, str] = {}
-    unsupported: dict[str, str] = {}
-
-    for key, raw_value in variables.items():
-        value = str(raw_value).strip()
-        if dataset_name == "OpinionQA":
-            if key == "AGE":
-                criteria["matching_age_bracket"] = value
-            elif key == "SEX":
-                criteria["matching_sex"] = value.lower()
-            elif key == "EDUCATION":
-                mapped = _opinionqa_education_to_twin(value)
-                if mapped:
-                    criteria["matching_education"] = mapped
-            elif key == "RACE":
-                criteria["matching_race"] = value.lower()
-            elif key == "CREGION":
-                criteria["matching_region"] = value
-            elif key == "MARITAL":
-                mapped = _canonical_marital(value)
-                if mapped:
-                    criteria["matching_marital"] = mapped
-            elif key == "RELIG":
-                mapped = _canonical_religion(value)
-                if mapped:
-                    criteria["matching_religion"] = mapped
-            elif key == "RELIGATTEND":
-                mapped = _canonical_religattend(value)
-                if mapped:
-                    criteria["matching_religattend"] = mapped
-            elif key == "POLPARTY":
-                mapped = _canonical_party(value)
-                if mapped:
-                    criteria["matching_party"] = mapped
-            elif key == "POLIDEOLOGY":
-                mapped = _canonical_political_views(value)
-                if mapped:
-                    criteria["matching_political_views"] = mapped
-            elif key == "INCOME":
-                mapped = _canonical_income(value)
-                if mapped:
-                    criteria["matching_income"] = mapped
-        elif dataset_name == "ESS":
-            if key == "age_group":
-                criteria["matching_age_bracket"] = value
-            elif key == "gndr":
-                criteria["matching_sex"] = value.lower()
-            elif key == "eisced":
-                mapped = _ess_education_to_twin(value)
-                if mapped:
-                    criteria["matching_education"] = mapped
-            elif key == "maritalb":
-                mapped = _canonical_marital(value)
-                if mapped:
-                    criteria["matching_marital"] = mapped
-            elif key == "mnactic":
-                mapped = _canonical_employment_broad(value)
-                if mapped:
-                    criteria["matching_employment_broad"] = mapped
-            elif key == "lrscale":
-                mapped = _ideology_from_numeric(value)
-                if mapped:
-                    criteria["matching_ideology_broad"] = mapped
-        elif dataset_name == "Afrobarometer":
-            if key == "age_group":
-                criteria["matching_age_bracket"] = value
-            elif key == "gender":
-                criteria["matching_sex"] = value.lower()
-            elif key == "education":
-                mapped = _afro_education_to_twin(value)
-                if mapped:
-                    criteria["matching_education"] = mapped
-            elif key == "employment":
-                mapped = _canonical_employment_broad(value)
-                if mapped:
-                    criteria["matching_employment_broad"] = mapped
-            elif key == "religion":
-                mapped = _canonical_religion(value)
-                if mapped:
-                    criteria["matching_religion"] = mapped
-        elif dataset_name == "LatinoBarometro":
-            if key == "age_group":
-                criteria["matching_age_bracket"] = value
-            elif key == "gender":
-                criteria["matching_sex"] = value.lower()
-            elif key == "highest_education":
-                mapped = _latino_education_to_twin(value)
-                if mapped:
-                    criteria["matching_education"] = mapped
-            elif key == "employment_status":
-                mapped = _canonical_employment_broad(value)
-                if mapped:
-                    criteria["matching_employment_broad"] = mapped
-            elif key == "religion":
-                mapped = _canonical_religion(value)
-                if mapped:
-                    criteria["matching_religion"] = mapped
-            elif key == "political_group":
-                mapped = _ideology_from_numeric(value)
-                if mapped:
-                    criteria["matching_ideology_broad"] = mapped
-        elif dataset_name == "ISSP":
-            if key == "marital_status":
-                mapped = _canonical_marital(value)
-                if mapped:
-                    criteria["matching_marital"] = mapped
-            elif key == "religion":
-                mapped = _canonical_religion(value)
-                if mapped:
-                    criteria["matching_religion"] = mapped
-            elif key == "work_status":
-                mapped = _canonical_employment_broad(value)
-                if mapped:
-                    criteria["matching_employment_broad"] = mapped
-
-        if key not in {
-            "AGE",
-            "SEX",
-            "EDUCATION",
-            "RACE",
-            "CREGION",
-            "MARITAL",
-            "RELIG",
-            "RELIGATTEND",
-            "POLPARTY",
-            "POLIDEOLOGY",
-            "INCOME",
-            "age_group",
-            "gndr",
-            "eisced",
-            "maritalb",
-            "mnactic",
-            "lrscale",
-            "gender",
-            "education",
-            "employment",
-            "religion",
-            "highest_education",
-            "employment_status",
-            "political_group",
-            "marital_status",
-            "work_status",
-        }:
-            unsupported[key] = value
-
-    return criteria, unsupported
-
-
-def _best_candidate_pool(
-    criteria: dict[str, str],
-    twin_personas: pd.DataFrame,
-    all_pids: list[str],
-) -> tuple[list[str], str, list[str]]:
-    available_fields = sorted(criteria.keys())
-    for size in range(len(available_fields), 0, -1):
-        matches: list[tuple[int, tuple[str, ...], list[str]]] = []
-        for subset in combinations(available_fields, size):
-            subset_df = twin_personas
-            for field in subset:
-                subset_df = subset_df[subset_df[field] == criteria[field]]
-                if subset_df.empty:
-                    break
-            if not subset_df.empty:
-                candidates = subset_df["twin_pid"].astype(str).tolist()
-                matches.append((len(candidates), tuple(subset), candidates))
-        if matches:
-            _, subset, candidates = min(matches, key=lambda item: (item[0], item[1]))
-            return candidates, "+".join(subset), list(subset)
-    return list(all_pids), "full_pool_fallback", []
-
-
-def _row_seed(base_seed: int, split: str, variant: str, simbench_row_id: str) -> int:
-    payload = f"{base_seed}::{split}::{variant}::{simbench_row_id}".encode("utf-8")
+def _seed_from_parts(*parts: str | int) -> int:
+    payload = "::".join(str(part) for part in parts).encode("utf-8")
     digest = hashlib.sha256(payload).digest()
     return int.from_bytes(digest[:8], "big") % (2**32)
 
 
-def _sample_profiles_for_row(
+def _sample_twin_pids(
     *,
-    row: dict[str, Any],
-    variant: str,
+    twin_pids: list[str],
     num_samples: int,
-    seed: int,
-    twin_personas: pd.DataFrame,
-    all_pids: list[str],
-) -> list[dict[str, Any]]:
-    criteria, unsupported = _derive_matching_criteria(row)
-    if variant == VARIANT_TWIN_UNADJUSTED:
-        candidate_pool = list(all_pids)
-        match_level = "full_pool_unadjusted"
-        matched_fields: list[str] = []
-    else:
-        candidate_pool, match_level, matched_fields = _best_candidate_pool(criteria, twin_personas, all_pids)
-    rng = np.random.default_rng(_row_seed(seed, row["simbench_split"], variant, row["simbench_row_id"]))
-    replace = len(candidate_pool) < num_samples
-    sampled_indices = rng.choice(len(candidate_pool), size=num_samples, replace=replace)
-    assignments: list[dict[str, Any]] = []
-    for sample_index, pool_index in enumerate(sampled_indices, start=1):
-        twin_pid = str(candidate_pool[int(pool_index)])
-        assignments.append(
-            {
-                "sample_index": sample_index,
-                "twin_pid": twin_pid,
-                "match_level": match_level,
-                "matched_fields": list(matched_fields),
-                "candidate_pool_size": int(len(candidate_pool)),
-                "sampled_with_replacement": bool(replace),
-                "matched_criteria": dict(criteria),
-                "unsupported_criteria": dict(unsupported),
-            }
-        )
-    return assignments
+    seed_value: int,
+) -> list[str]:
+    rng = np.random.default_rng(seed_value)
+    replace = len(twin_pids) < num_samples
+    sampled_indices = rng.choice(len(twin_pids), size=num_samples, replace=replace)
+    return [str(twin_pids[int(index)]) for index in sampled_indices]
 
 
-def _build_prompt(
+def _batch_entry(
     *,
-    row: dict[str, Any],
-    variant: str,
-    assignment: dict[str, Any],
+    custom_id: str,
+    model: str,
+    system_prompt: str,
+    user_prompt: str,
+) -> dict[str, Any]:
+    body: dict[str, Any] = {
+        "model": model,
+        "response_format": {"type": "json_object"},
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+    }
+    if model != "gpt-5-mini":
+        body["temperature"] = 0
+    return {
+        "custom_id": custom_id,
+        "method": "POST",
+        "url": "/v1/chat/completions",
+        "body": body,
+    }
+
+
+def _build_batched_group_prompt(context_group: dict[str, Any]) -> tuple[str, str]:
+    question_manifest = context_group["question_manifest"]
+    system_prompt = (
+        "You are a group of individuals with these shared characteristics:\n"
+        f"{context_group['rendered_group_prompt']}"
+    )
+    task_note = context_group.get("dataset_task_note")
+    scales_block = _render_scales_block(context_group["scale_definitions"])
+    single_scale_note = _single_scale_note(question_manifest)
+    items_block = _render_items_block(question_manifest)
+
+    user_prompt = (
+        f"You will answer {len(question_manifest)} numbered multiple-choice questions for the same target group.\n"
+        "Estimate what percentage of the group would choose each option for each item.\n"
+        "Return JSON only.\n"
+        "Output contract:\n"
+        "- The top-level object keys must be exactly the item ids listed in ITEMS.\n"
+        "- Each value must be a distribution object keyed by the option labels for that item's scale.\n"
+        "- Use integer percentages from 0 to 100.\n"
+        "- Each item's percentages must sum to exactly 100.\n"
+        "- Do not include explanations, markdown, or extra keys.\n"
+        f"- Example for one item only: {json.dumps({'Q0001': {'A': 55, 'B': 45}})}\n"
+    )
+    if task_note:
+        user_prompt += f"\nShared task note:\n{task_note}\n"
+    user_prompt += f"\nShared scales:\n{scales_block}\n"
+    if single_scale_note:
+        user_prompt += f"{single_scale_note}\n"
+    user_prompt += f"\nITEMS:\n{items_block}\n\nAnswer:"
+    return system_prompt, user_prompt
+
+
+def _build_batched_explained_group_prompt(context_group: dict[str, Any]) -> tuple[str, str]:
+    question_manifest = context_group["question_manifest"]
+    system_prompt = (
+        "You are a group of individuals with these shared characteristics:\n"
+        f"{context_group['rendered_group_prompt']}"
+    )
+    task_note = context_group.get("dataset_task_note")
+    scales_block = _render_scales_block(context_group["scale_definitions"])
+    single_scale_note = _single_scale_note(question_manifest)
+    items_block = _render_items_block(question_manifest)
+
+    user_prompt = (
+        f"You will answer {len(question_manifest)} numbered multiple-choice questions for the same target group.\n"
+        "Estimate what percentage of the group would choose each option for each item.\n"
+        "Return JSON only.\n"
+        "Output contract:\n"
+        '- Use exactly two top-level keys: "explanation" and "answers".\n'
+        '- "explanation" must be one short paragraph covering the main considerations across the batch.\n'
+        '- "answers" must map every item id in ITEMS to a distribution object keyed by that item\'s option labels.\n'
+        "- Use integer percentages from 0 to 100.\n"
+        "- Each item's percentages must sum to exactly 100.\n"
+        "- Do not include markdown or extra keys.\n"
+        f"- Example for one item only: {json.dumps({'explanation': '...', 'answers': {'Q0001': {'A': 55, 'B': 45}}})}\n"
+    )
+    if task_note:
+        user_prompt += f"\nShared task note:\n{task_note}\n"
+    user_prompt += f"\nShared scales:\n{scales_block}\n"
+    if single_scale_note:
+        user_prompt += f"{single_scale_note}\n"
+    user_prompt += f"\nITEMS:\n{items_block}\n\nAnswer:"
+    return system_prompt, user_prompt
+
+
+def _build_batched_twin_prompt(
+    context_group: dict[str, Any],
     twin_card: dict[str, Any],
 ) -> tuple[str, str]:
-    option_labels = [str(label) for label in row["option_labels"]]
+    question_manifest = context_group["question_manifest"]
+    task_note = context_group.get("dataset_task_note")
+    scales_block = _render_scales_block(context_group["scale_definitions"])
+    single_scale_note = _single_scale_note(question_manifest)
+    items_block = _render_items_block(question_manifest)
+
+    headline = str(twin_card.get("headline", "")).strip()
+    summary = str(twin_card.get("summary", "")).strip()
+    background = str((twin_card.get("background") or {}).get("summary", "")).strip()
+    profile_lines = []
+    if headline:
+        profile_lines.append(f"Headline: {headline}")
+    if summary:
+        profile_lines.append(f"Summary: {summary}")
+    if background:
+        profile_lines.append(f"Background: {background}")
+    profile_block = "\n".join(profile_lines)
+
     system_prompt = (
-        "You answer one multiple-choice question as a single simulated human respondent. "
-        "Use the official target-group description as the primary context. "
-        "Use the sampled Twin profile only as a secondary prior about one individual drawn from that group. "
-        "Return exactly one option identifier and nothing else."
+        "You are simulating one individual respondent drawn from a target group.\n"
+        "Official target group:\n"
+        f"{context_group['rendered_group_prompt']}\n\n"
+        "Treat the official target group as the primary context. "
+        "Treat the sampled Twin profile as a secondary prior about the individual respondent you are simulating."
     )
-    sampling_note = (
-        "This sampled Twin profile was selected to match overlapping demographics from the target group."
-        if variant == VARIANT_TWIN_CORRECTED
-        else "This sampled Twin profile was drawn from the Twin pool without demographic correction."
+    user_prompt = (
+        f"You will answer {len(question_manifest)} numbered multiple-choice questions for the same target group.\n"
+        "Sampled Twin profile:\n"
+        f"{profile_block}\n\n"
+        "Estimate the probability that this individual would choose each option for each item if asked once.\n"
+        "Return JSON only.\n"
+        "Output contract:\n"
+        '- Use exactly two top-level keys: "explanation" and "answers".\n'
+        '- "explanation" must be one short paragraph covering the main considerations across the batch.\n'
+        '- "answers" must map every item id in ITEMS to a distribution object keyed by that item\'s option labels.\n'
+        "- Use integer percentages from 0 to 100.\n"
+        "- Each item's percentages must sum to exactly 100.\n"
+        "- Do not include markdown or extra keys.\n"
+        f"- Example for one item only: {json.dumps({'explanation': '...', 'answers': {'Q0001': {'A': 55, 'B': 45}}})}\n"
     )
-    lines = [
-        "Answer as one respondent sampled for this target population or group.",
-        "",
-        "# OFFICIAL TARGET GROUP",
-        str(row["group_prompt_template"]),
-        "",
-        "# SAMPLED TWIN PRIOR",
-        sampling_note,
-    ]
-    matched_fields = assignment.get("matched_fields") or []
-    if matched_fields and variant == VARIANT_TWIN_CORRECTED:
-        pretty_fields = ", ".join(str(field).replace("matching_", "") for field in matched_fields)
-        lines.append(f"Matched fields: {pretty_fields}.")
-    lines.extend(
-        [
-            f"Headline: {str(twin_card.get('headline', '')).strip()}",
-            f"Summary: {str(twin_card.get('summary', '')).strip()}",
-        ]
-    )
-    background_summary = str((twin_card.get("background") or {}).get("summary", "")).strip()
-    if background_summary:
-        lines.append(f"Background: {background_summary}")
-    lines.extend(
-        [
-            "",
-            "# QUESTION",
-            str(row["input_template"]),
-            "",
-            "# RESPONSE RULES",
-            f"- Select exactly one option identifier from: {', '.join(option_labels)}",
-            "- Return only the identifier, with no explanation.",
-        ]
-    )
-    return system_prompt, "\n".join(lines)
+    if task_note:
+        user_prompt += f"\nShared task note:\n{task_note}\n"
+    user_prompt += f"\nShared scales:\n{scales_block}\n"
+    if single_scale_note:
+        user_prompt += f"{single_scale_note}\n"
+    user_prompt += f"\nITEMS:\n{items_block}\n\nAnswer:"
+    return system_prompt, user_prompt
 
 
 def _default_run_name(
@@ -591,39 +528,33 @@ def _default_run_name(
     split: str,
     variant: str,
     model: str,
-    num_samples_per_row: int,
+    num_samples_per_context: int,
     dataset_names: list[str],
-    row_offset: int,
-    max_rows: int | None,
+    only_us_country_context: bool,
 ) -> str:
-    name_parts = [
-        _sanitize_token(split),
-        _sanitize_token(variant),
-        f"n{num_samples_per_row}",
-        MODEL_SLUGS[model],
-    ]
+    name_parts = [_sanitize_token(split), _sanitize_token(variant)]
+    if variant == VARIANT_TWIN_PROFILE:
+        name_parts.append(f"n{num_samples_per_context}")
+    name_parts.append(MODEL_SLUGS[model])
     if dataset_names:
         name_parts.append("datasets_" + "_".join(_sanitize_token(name) for name in dataset_names))
-    if row_offset:
-        name_parts.append(f"offset_{row_offset}")
-    if max_rows is not None:
-        name_parts.append(f"rows_{max_rows}")
+    if only_us_country_context:
+        name_parts.append("us_only")
     return "__".join(name_parts)
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Build SimBench individual-level Twin-sampled batch inputs."
+        description="Build batched SimBench inputs grouped by shared context."
     )
     parser.add_argument("--repo-root", type=Path, default=REPO_ROOT)
     parser.add_argument("--forecasting-root", type=Path, default=SCRIPT_DIR)
-    parser.add_argument("--split", type=str, choices=ALL_SPLITS, default="SimBenchGrouped")
-    parser.add_argument("--models", type=str, default=ALL_MODELS[0])
-    parser.add_argument("--variants", type=str, default=VARIANT_TWIN_UNADJUSTED)
-    parser.add_argument("--num-samples-per-row", type=int, default=200)
+    parser.add_argument("--split", type=str, choices=ALL_SPLITS, default="SimBenchPop")
+    parser.add_argument("--models", type=str, default="gpt-5.1")
+    parser.add_argument("--variants", type=str, default=",".join(ALL_VARIANTS))
+    parser.add_argument("--num-samples-per-context", type=int, default=64)
     parser.add_argument("--dataset-names", type=str, default="")
-    parser.add_argument("--row-offset", type=int, default=0)
-    parser.add_argument("--max-rows", type=int, default=None)
+    parser.add_argument("--only-us-country-context", action="store_true")
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--run-name", type=str, default="")
     return parser.parse_args(argv)
@@ -638,22 +569,20 @@ def main(argv: list[str] | None = None) -> None:
     unknown_models = [model for model in models if model not in MODEL_SLUGS]
     if unknown_models:
         raise ValueError(f"Unsupported model names: {unknown_models}")
-    unsupported_variants = [variant for variant in variants if variant not in ALL_VARIANTS]
+    unsupported_variants = [variant for variant in variants if variant not in SUPPORTED_VARIANTS]
     if unsupported_variants:
         raise ValueError(f"Unsupported variant names: {unsupported_variants}")
-    if args.num_samples_per_row <= 0:
-        raise ValueError("--num-samples-per-row must be positive.")
-    if args.max_rows is not None and args.max_rows <= 0:
-        raise ValueError("--max-rows must be positive when provided.")
+    if args.num_samples_per_context <= 0:
+        raise ValueError("--num-samples-per-context must be positive.")
+    if args.run_name.strip() and (len(models) != 1 or len(variants) != 1):
+        raise ValueError("--run-name can only be used when exactly one model and one variant are requested.")
 
     simbench_rows = _load_simbench_rows(_simbench_csv_path(args.repo_root, args.split), args.split)
     if dataset_names:
         simbench_rows = simbench_rows[simbench_rows["dataset_name"].isin(dataset_names)].copy()
+    if args.only_us_country_context:
+        simbench_rows = _apply_us_country_filter(simbench_rows)
     simbench_rows = simbench_rows.sort_values(["dataset_name", "simbench_row_id"]).reset_index(drop=True)
-    if args.row_offset:
-        simbench_rows = simbench_rows.iloc[args.row_offset :].copy()
-    if args.max_rows is not None:
-        simbench_rows = simbench_rows.iloc[: args.max_rows].copy()
     if simbench_rows.empty:
         raise ValueError("No SimBench rows selected after filtering.")
 
@@ -662,7 +591,7 @@ def main(argv: list[str] | None = None) -> None:
         _compact_twin_cards_path(args.repo_root),
     )
     twin_cards_by_pid = load_twin_cards(_compact_twin_cards_path(args.repo_root))
-    all_pids = twin_personas["twin_pid"].astype(str).tolist()
+    twin_pids = twin_personas["twin_pid"].astype(str).tolist()
 
     batch_input_dir = args.forecasting_root / "batch_input"
     batch_output_dir = args.forecasting_root / "batch_output"
@@ -672,6 +601,7 @@ def main(argv: list[str] | None = None) -> None:
         directory.mkdir(parents=True, exist_ok=True)
 
     row_records = simbench_rows.to_dict(orient="records")
+    context_groups = _build_context_groups(row_records)
     gold_rows = [
         {
             "simbench_row_id": row["simbench_row_id"],
@@ -685,18 +615,14 @@ def main(argv: list[str] | None = None) -> None:
     ]
 
     for variant in variants:
-        if variant == VARIANT_TWIN_CORRECTED and args.split != "SimBenchGrouped":
-            raise ValueError("Corrected Twin sampling is only supported for SimBenchGrouped.")
-
         for model in models:
             run_name = args.run_name.strip() or _default_run_name(
                 split=args.split,
                 variant=variant,
                 model=model,
-                num_samples_per_row=args.num_samples_per_row,
+                num_samples_per_context=args.num_samples_per_context,
                 dataset_names=dataset_names,
-                row_offset=args.row_offset,
-                max_rows=args.max_rows,
+                only_us_country_context=args.only_us_country_context,
             )
             batch_path = batch_input_dir / f"{run_name}.jsonl"
             metadata_dir = metadata_root / run_name
@@ -708,12 +634,15 @@ def main(argv: list[str] | None = None) -> None:
             token_csv_path = metadata_dir / "request_token_estimates.csv"
             gold_targets_path = metadata_dir / "gold_targets.jsonl"
             selected_rows_path = metadata_dir / "selected_rows.csv"
+            selected_contexts_path = metadata_dir / "selected_contexts.csv"
+            shared_twin_panel_path = metadata_dir / "shared_twin_panel.json"
 
             _write_jsonl(gold_targets_path, gold_rows)
             pd.DataFrame(row_records).assign(
                 option_labels_json=lambda df: df["option_labels"].map(json.dumps),
                 gold_distribution_json=lambda df: df["gold_distribution"].map(json.dumps),
                 group_prompt_variable_map_json=lambda df: df["group_prompt_variable_map"].map(json.dumps),
+                option_text_map_json=lambda df: df["option_text_map"].map(json.dumps),
             )[
                 [
                     "simbench_row_id",
@@ -723,13 +652,31 @@ def main(argv: list[str] | None = None) -> None:
                     "group_size",
                     "wave",
                     "group_prompt_template",
+                    "group_prompt_variable_map_json",
+                    "rendered_group_prompt",
                     "input_template",
+                    "question_body",
+                    "question_payload",
+                    "option_text_map_json",
                     "option_labels_json",
                     "gold_distribution_json",
-                    "group_prompt_variable_map_json",
-                    "num_grouping_vars",
                 ]
             ].to_csv(selected_rows_path, index=False)
+            pd.DataFrame(
+                [
+                    {
+                        "context_id": context_group["context_id"],
+                        "simbench_split": context_group["simbench_split"],
+                        "dataset_name": context_group["dataset_name"],
+                        "rendered_group_prompt": context_group["rendered_group_prompt"],
+                        "question_count": len(context_group["question_manifest"]),
+                        "dataset_task_note": context_group.get("dataset_task_note") or "",
+                        "scale_definitions_json": json.dumps(context_group["scale_definitions"]),
+                        "question_manifest_json": json.dumps(context_group["question_manifest"]),
+                    }
+                    for context_group in context_groups
+                ]
+            ).to_csv(selected_contexts_path, index=False)
 
             manifest_fieldnames = [
                 "custom_id",
@@ -737,24 +684,45 @@ def main(argv: list[str] | None = None) -> None:
                 "model",
                 "variant",
                 "simbench_split",
-                "simbench_row_id",
+                "context_id",
                 "dataset_name",
+                "question_count",
                 "sample_index",
-                "option_labels_json",
                 "twin_pid",
-                "match_level",
-                "matched_fields_json",
-                "matched_criteria_json",
-                "unsupported_criteria_json",
-                "candidate_pool_size",
-                "sampled_with_replacement",
+                "response_schema",
+                "prompt_level",
+                "question_manifest_json",
             ]
-            token_fieldnames = ["custom_id", "input_token_estimate"]
             sample_written = False
             total_input_tokens = 0
             token_count = 0
             min_tokens: int | None = None
             max_tokens: int | None = None
+            shared_twin_pids: list[str] | None = None
+            shared_twin_seed_value: int | None = None
+
+            if variant == VARIANT_TWIN_PROFILE:
+                shared_twin_seed_value = _seed_from_parts(args.seed, args.split, variant, "global_twin_panel")
+                shared_twin_pids = _sample_twin_pids(
+                    twin_pids=twin_pids,
+                    num_samples=args.num_samples_per_context,
+                    seed_value=shared_twin_seed_value,
+                )
+                shared_twin_panel_path.write_text(
+                    json.dumps(
+                        {
+                            "sampling_scope": "global_panel_across_contexts",
+                            "seed": int(args.seed),
+                            "derived_seed": int(shared_twin_seed_value),
+                            "variant": variant,
+                            "simbench_split": args.split,
+                            "num_samples": int(args.num_samples_per_context),
+                            "twin_pids": shared_twin_pids,
+                        },
+                        indent=2,
+                    ),
+                    encoding="utf-8",
+                )
 
             with (
                 batch_path.open("w", encoding="utf-8") as batch_handle,
@@ -763,62 +731,70 @@ def main(argv: list[str] | None = None) -> None:
             ):
                 manifest_writer = csv.DictWriter(manifest_handle, fieldnames=manifest_fieldnames)
                 manifest_writer.writeheader()
-                token_writer = csv.DictWriter(token_handle, fieldnames=token_fieldnames)
+                token_writer = csv.DictWriter(token_handle, fieldnames=["custom_id", "input_token_estimate"])
                 token_writer.writeheader()
 
-                for row in row_records:
-                    assignments = _sample_profiles_for_row(
-                        row=row,
-                        variant=variant,
-                        num_samples=args.num_samples_per_row,
-                        seed=args.seed,
-                        twin_personas=twin_personas,
-                        all_pids=all_pids,
-                    )
-                    for assignment in assignments:
-                        twin_pid = str(assignment["twin_pid"])
-                        twin_card = twin_cards_by_pid[twin_pid]
-                        system_prompt, user_prompt = _build_prompt(
-                            row=row,
-                            variant=variant,
-                            assignment=assignment,
-                            twin_card=twin_card,
+                for context_group in context_groups:
+                    requests_for_context: list[tuple[int, str | None, str, str, str, str]] = []
+                    if variant == VARIANT_BASELINE_PAPER:
+                        system_prompt, user_prompt = _build_batched_group_prompt(context_group)
+                        requests_for_context.append(
+                            (0, None, system_prompt, user_prompt, "batched_distribution_only", "group")
                         )
-                        custom_id = (
-                            f"{_sanitize_token(args.split)}__{row['simbench_row_id']}__"
-                            f"s{int(assignment['sample_index']):04d}"
+                    elif variant == VARIANT_BASELINE_EXPLAINED:
+                        system_prompt, user_prompt = _build_batched_explained_group_prompt(context_group)
+                        requests_for_context.append(
+                            (0, None, system_prompt, user_prompt, "batched_explanation_plus_answers", "group")
                         )
-                        batch_row = _batch_entry(custom_id, model, system_prompt, user_prompt)
-                        batch_handle.write(json.dumps(batch_row, ensure_ascii=False) + "\n")
+                    else:
+                        if shared_twin_pids is None:
+                            raise ValueError("Expected shared_twin_pids for Twin-profile variant.")
+                        sampled_twin_pids = shared_twin_pids
+                        for sample_index, twin_pid in enumerate(sampled_twin_pids, start=1):
+                            twin_card = twin_cards_by_pid[twin_pid]
+                            system_prompt, user_prompt = _build_batched_twin_prompt(context_group, twin_card)
+                            requests_for_context.append(
+                                (
+                                    sample_index,
+                                    twin_pid,
+                                    system_prompt,
+                                    user_prompt,
+                                    "batched_explanation_plus_answers",
+                                    "individual",
+                                )
+                            )
 
+                    for sample_index, twin_pid, system_prompt, user_prompt, response_schema, prompt_level in requests_for_context:
+                        custom_id = (
+                            f"{_sanitize_token(args.split)}__{context_group['context_id']}__"
+                            f"{_sanitize_token(variant)}__s{sample_index:04d}"
+                        )
+                        batch_row = _batch_entry(
+                            custom_id=custom_id,
+                            model=model,
+                            system_prompt=system_prompt,
+                            user_prompt=user_prompt,
+                        )
+                        batch_handle.write(json.dumps(batch_row, ensure_ascii=False) + "\n")
                         manifest_writer.writerow(
                             {
                                 "custom_id": custom_id,
                                 "run_name": run_name,
                                 "model": model,
                                 "variant": variant,
-                                "simbench_split": row["simbench_split"],
-                                "simbench_row_id": row["simbench_row_id"],
-                                "dataset_name": row["dataset_name"],
-                                "sample_index": int(assignment["sample_index"]),
-                                "option_labels_json": json.dumps(row["option_labels"]),
-                                "twin_pid": twin_pid,
-                                "match_level": assignment["match_level"],
-                                "matched_fields_json": json.dumps(assignment["matched_fields"]),
-                                "matched_criteria_json": json.dumps(assignment["matched_criteria"]),
-                                "unsupported_criteria_json": json.dumps(assignment["unsupported_criteria"]),
-                                "candidate_pool_size": int(assignment["candidate_pool_size"]),
-                                "sampled_with_replacement": int(bool(assignment["sampled_with_replacement"])),
+                                "simbench_split": context_group["simbench_split"],
+                                "context_id": context_group["context_id"],
+                                "dataset_name": context_group["dataset_name"],
+                                "question_count": len(context_group["question_manifest"]),
+                                "sample_index": sample_index,
+                                "twin_pid": twin_pid or "",
+                                "response_schema": response_schema,
+                                "prompt_level": prompt_level,
+                                "question_manifest_json": json.dumps(context_group["question_manifest"]),
                             }
                         )
-
                         input_tokens = int(_estimate_input_tokens(batch_row["body"]["messages"]))
-                        token_writer.writerow(
-                            {
-                                "custom_id": custom_id,
-                                "input_token_estimate": input_tokens,
-                            }
-                        )
+                        token_writer.writerow({"custom_id": custom_id, "input_token_estimate": input_tokens})
                         total_input_tokens += input_tokens
                         token_count += 1
                         min_tokens = input_tokens if min_tokens is None else min(min_tokens, input_tokens)
@@ -855,19 +831,35 @@ def main(argv: list[str] | None = None) -> None:
                 "variant": variant,
                 "model": model,
                 "num_simbench_rows": int(len(row_records)),
-                "num_samples_per_row": int(args.num_samples_per_row),
+                "num_context_groups": int(len(context_groups)),
+                "num_samples_per_context": int(args.num_samples_per_context),
                 "num_requests": int(token_count),
                 "seed": int(args.seed),
-                "row_offset": int(args.row_offset),
-                "max_rows": int(args.max_rows) if args.max_rows is not None else None,
+                "only_us_country_context": bool(args.only_us_country_context),
                 "dataset_names_filter": dataset_names,
                 "batch_input_file": str(batch_path),
                 "expected_batch_output_file": str(batch_output_dir / f"{run_name}.jsonl"),
                 "metadata_dir": str(metadata_dir),
                 "selected_rows_file": str(selected_rows_path),
+                "selected_contexts_file": str(selected_contexts_path),
                 "gold_targets_file": str(gold_targets_path),
                 "twin_profiles_file": str(_twin_profiles_path(args.repo_root)),
                 "twin_profile_cards_file": str(_compact_twin_cards_path(args.repo_root)),
+                "twin_sampling_scope": (
+                    "global_panel_across_contexts" if variant == VARIANT_TWIN_PROFILE else "not_applicable"
+                ),
+                "shared_twin_panel_file": (
+                    str(shared_twin_panel_path) if variant == VARIANT_TWIN_PROFILE else None
+                ),
+                "shared_twin_panel_seed": (
+                    int(shared_twin_seed_value) if shared_twin_seed_value is not None else None
+                ),
+                "aggregation_note": (
+                    "For baseline variants, each request returns answers for all questions in one context group. "
+                    "For Twin-profile variants, the same sampled Twin panel is reused across all context groups in the run; "
+                    "average the returned distributions across sample_index within each context_id, then map question_id back "
+                    "to simbench_row_id using question_manifest_json."
+                ),
             }
             (metadata_dir / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 

@@ -1,0 +1,14 @@
+{
+  "batch_output_jsonl": "forecasting/simbench/batch_output/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only.jsonl",
+  "request_manifest_csv": "forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/request_manifest.csv",
+  "parsed_output_jsonl": "forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/parsed_output.jsonl",
+  "num_raw_rows": 15,
+  "num_parsed_rows": 15,
+  "parse_success_count": 14,
+  "parse_success_rate": 0.9333333333333333,
+  "request_with_any_valid_answers_count": 15,
+  "request_with_any_valid_answers_rate": 1.0,
+  "expected_question_total": 1485,
+  "valid_question_total": 1485,
+  "valid_question_rate": 1.0
+}

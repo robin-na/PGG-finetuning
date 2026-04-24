@@ -1,0 +1,14 @@
+{
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_output/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only/request_manifest.csv",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only/parsed_output.jsonl",
+  "num_raw_rows": 512,
+  "num_parsed_rows": 512,
+  "parse_success_count": 294,
+  "parse_success_rate": 0.57421875,
+  "request_with_any_valid_answers_count": 512,
+  "request_with_any_valid_answers_rate": 1.0,
+  "expected_question_total": 83776,
+  "valid_question_total": 83659,
+  "valid_question_rate": 0.9986034186401833
+}

@@ -1,0 +1,10 @@
+{
+  "n_rows": 2604,
+  "mean_tvd_baseline": 0.24682284944893126,
+  "mean_tvd_twin": 0.22800975570930293,
+  "mean_delta_twin_minus_baseline": -0.01881309373962838,
+  "delta_ci95_low": -0.024968806758755305,
+  "delta_ci95_high": -0.012789581430584587,
+  "paired_ttest_pvalue": 1.7329533724998807e-09,
+  "wilcoxon_pvalue": 0.0007401334605334129
+}

@@ -1,0 +1,23 @@
+{
+  "base_run": [
+    "simbenchpop__baseline_group_batched_explained__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only",
+    "simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only"
+  ],
+  "twin_run": [
+    "simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only",
+    "simbenchpop__rest11__twin_profile_batched_seed_0__n64__gpt_5_mini__us_only"
+  ],
+  "n_overlap_rows": 2604,
+  "mean_tvd_baseline": 0.24682284944893126,
+  "mean_tvd_twin": 0.22800975570930293,
+  "weighted_mean_tvd_baseline": 0.18479600383835182,
+  "weighted_mean_tvd_twin": 0.1796719637682236,
+  "mean_normalized_predicted_entropy_baseline": 0.7409778436850045,
+  "mean_normalized_predicted_entropy_twin": 0.7749998942066644,
+  "mean_predicted_entropy_baseline": 0.7412692046645594,
+  "mean_predicted_entropy_twin": 0.7771923657317227,
+  "mean_jsd_baseline": 0.06974803078698744,
+  "mean_jsd_twin": 0.05681523254629917,
+  "modal_match_baseline": 0.6094470046082949,
+  "modal_match_twin": 0.6298003072196621
+}

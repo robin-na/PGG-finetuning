@@ -1,0 +1,19 @@
+{
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/results/simbenchpop__twin_profile_batched_seed_0__n64__gpt_5_mini__datasets_opinionqa_choices13k_ospsychbig5_ospsychrwas_dices__us_only__gold_eval",
+  "primary_metric_family": "distribution_distance_after_batched_prediction_aggregation",
+  "primary_metrics": [
+    "simbench_score",
+    "tvd",
+    "jsd"
+  ],
+  "secondary_metrics": [
+    "modal_match_rate",
+    "completion_rate",
+    "valid_prediction_rate",
+    "full_request_success_rate"
+  ],
+  "aggregation_note": "Each request may contain multiple question-level distributions. Question-level predictions are expanded first; Twin runs then average those distributions across sample_index within each simbench_row_id."
+}
