@@ -1,0 +1,122 @@
+=== SYSTEM MESSAGE ===
+
+You simulate an entire public goods game from round 1.
+
+Start with a game-level explanation of the likely dynamics, incentives, and uncertainties. Then write the game directly in transcript form, starting from round 1. At the start of each round, include a round explanation before the predicted actions. Keep the stage ordering coherent within each round. Any action lines that are wrapped in the scaffold should stay wrapped in <<>> exactly.
+
+=== USER MESSAGE ===
+
+Generate a full game transcript from round 1 through round 23.
+
+# GAME RULES
+This is an online public goods game (PGG).
+Each round, the 20 coins begin in the shared pot. Each player chooses how many coins to withdraw for private use, so the resulting contribution must be either 0 or 20.
+Players do not see others' choices before deciding.
+The shared pot is multiplied by 2.5 and split equally among all active players.
+After contributions are revealed and redistributed, players may punish other players.
+Each punishment unit costs 1 coin to the source and deducts 2 coins from the target.
+Players may send messages to the group whenever they choose to do so.
+Players know that the game lasts 23 rounds.
+Players cannot identify who punished them in their summary information.
+At the summary stage (`ROUND N SUMMARY SHOWN TO PLAYERS`), each player sees their own net payoff of the round, along with the amount they used for punishing other players and amount deducted from punishment.
+The corresponding information of the peers are also shown.
+
+# PLAYER PERSONAS
+Use these provided personas as player-specific priors when reasoning about motivations and likely choices.
+
+## Shared Prompt Notes
+
+### General Interpretation Note
+
+- These profiles summarize visible survey or behavioral-task evidence about sampled participants.
+- Treat visible cues as relative tendencies, not deterministic predictions for any single public-goods-game decision.
+- Scores use a 0-100 scale where higher values indicate more of the named cue; labels are coarse bins.
+
+### Visible Evidence Guide
+
+#### Direct Social-Allocation Tasks
+- Trust-game send amount: how much the participant sent to another person in a one-shot trust task.
+- Trust-game return share: how much the participant returned when placed in the responder role.
+- Ultimatum offer: how much the participant offered another person in an ultimatum-style split.
+- Ultimatum minimum acceptable amount and rejection rate: how willing the participant was to reject low offers.
+- Dictator offer: how much the participant gave when the other person could not reciprocate or reject.
+
+### Card Fields
+- Observed Anchors are concrete task or questionnaire summaries.
+- Transfer-Relevant Cues are compact labels and scores derived from the visible evidence.
+
+## SLOTH
+Observed Anchors:
+- Direct social-allocation tasks: Trust send $2/$5, mean trust return 37%, ultimatum offer $2/$5, minimum acceptable $2/$5, ultimatum rejection rate 40%, dictator give $2/$5.
+Transfer-Relevant Cues:
+- Trust-game send amount: mixed (40)
+- Trust-game return share: mixed (37)
+- Ultimatum offer to other: mixed (40)
+- Ultimatum minimum acceptable to self: medium (50)
+- Ultimatum rejection rate: mixed (40)
+- Dictator offer to other: mixed (40)
+## GORILLA
+Observed Anchors:
+- Direct social-allocation tasks: Trust send $5/$5, mean trust return 46%, ultimatum offer $3/$5, minimum acceptable $2/$5, ultimatum rejection rate 60%, dictator give $3/$5.
+Transfer-Relevant Cues:
+- Trust-game send amount: very high (100)
+- Trust-game return share: medium (46)
+- Ultimatum offer to other: medium (60)
+- Ultimatum minimum acceptable to self: medium (50)
+- Ultimatum rejection rate: medium (60)
+- Dictator offer to other: medium (60)
+## DUCK
+Observed Anchors:
+- Direct social-allocation tasks: Trust send $2/$5, mean trust return 67%, ultimatum offer $3/$5, minimum acceptable $2/$5, ultimatum rejection rate 40%, dictator give $3/$5.
+Transfer-Relevant Cues:
+- Trust-game send amount: mixed (40)
+- Trust-game return share: high (67)
+- Ultimatum offer to other: medium (60)
+- Ultimatum minimum acceptable to self: medium (50)
+- Ultimatum rejection rate: mixed (40)
+- Dictator offer to other: medium (60)
+## CHICKEN
+Observed Anchors:
+- Direct social-allocation tasks: Trust send $5/$5, mean trust return 34%, ultimatum offer $3/$5, minimum acceptable $1/$5, ultimatum rejection rate 20%, dictator give $2/$5.
+Transfer-Relevant Cues:
+- Trust-game send amount: very high (100)
+- Trust-game return share: low (34)
+- Ultimatum offer to other: medium (60)
+- Ultimatum minimum acceptable to self: low (25)
+- Ultimatum rejection rate: low (20)
+- Dictator offer to other: mixed (40)
+
+Output requirements:
+- First write `### GAME EXPLANATION` followed by your explanation of how the game is likely to unfold.
+- Then generate the full game directly in transcript form from round 1 onward.
+- At the start of each round, immediately after `## ROUND N BEGINS`, write `### ROUND N EXPLANATION`.
+- Use the exact avatar order from `<PLAYERS>` for every contribution list.
+- Keep the contribution line wrapped as `### CONTRIBUTIONS: <<[...]>>`.
+- Keep the action line wrapped as `### PUNISHMENT: <<[...]>>`.
+- In `### PUNISHMENT`, use tuples `(source_avatar, target_avatar, unit)`.
+- Include only non-zero action edges. If no one acts in a round, write `### PUNISHMENT: <<[]>>`.
+- Because this game only has punishment, every `unit` must be positive.
+- Predict chat inline as transcript lines, using `CHAT from AVATAR: ...`.
+- Preserve exact avatar names.
+- In real games, players usually send relatively few chat messages. Keep chat sparse and purposeful.
+- In real games, players usually punish sparingly. Do not over-predict punishment actions.
+Strict continuation template:
+```text
+### GAME EXPLANATION
+<Explain your overall prediction for how the game is likely to unfold.>
+## ROUND 1 BEGINS
+### ROUND 1 EXPLANATION
+<Explain why you expect this round to unfold this way.>
+CHAT from AVATAR: <message>
+### CONTRIBUTIONS: <<[c1, c2, ...]>>
+CHAT from AVATAR: <message>
+### PUNISHMENT: <<[(SOURCE, TARGET, UNIT), ...]>>
+### ROUND 1 SUMMARY SHOWN TO PLAYERS
+CHAT from AVATAR: <message>
+## ROUND 2 BEGINS
+...
+```
+
+Start from this scaffold:
+# GAME STARTS
+<PLAYERS> SLOTH, GORILLA, DUCK, CHICKEN </PLAYERS>

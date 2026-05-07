@@ -910,6 +910,7 @@ def _build_persona_block(
     avatar_order: list[str],
     persona_assignments: dict[str, PersonaAssignment],
     twin_profile_cards: dict[str, dict[str, Any]],
+    is_demographic_only_variant: bool,
 ) -> str:
     return _shared_render_pgg_persona_block(
         variant_slug=variant_slug,
@@ -918,8 +919,17 @@ def _build_persona_block(
         avatar_order=avatar_order,
         persona_assignments=persona_assignments,
         twin_profile_cards=twin_profile_cards,
-        is_demographic_only_variant=_is_demographic_only_variant(variant_slug),
+        is_demographic_only_variant=is_demographic_only_variant,
     )
+
+
+def _resolve_optional_path(repo_root: Path, path: Path | None) -> Path | None:
+    if path is None:
+        return None
+    expanded = path.expanduser()
+    if expanded.is_absolute():
+        return expanded
+    return repo_root / expanded
 
 
 def _build_user_prompt(
@@ -1048,12 +1058,52 @@ def main() -> None:
     parser.add_argument("--request-file-prefix", type=str, default="request_batch")
     parser.add_argument("--run-name", type=str, default=None)
     parser.add_argument("--forecasting-root", type=Path, default=Path(__file__).resolve().parent)
+    parser.add_argument(
+        "--persona-assignment-file",
+        type=Path,
+        default=None,
+        help=(
+            "Optional explicit game_assignments.jsonl file. Use this for PGG ablations "
+            "that reuse a locked Twin assignment while changing only card content."
+        ),
+    )
+    parser.add_argument(
+        "--persona-cards-file",
+        type=Path,
+        default=None,
+        help="Optional explicit persona cards JSONL file.",
+    )
+    parser.add_argument(
+        "--persona-shared-notes-file",
+        type=Path,
+        default=None,
+        help="Optional explicit shared prompt notes file for persona cards.",
+    )
+    parser.add_argument(
+        "--persona-profile-type",
+        type=str,
+        choices=["twin", "demographic_only"],
+        default="twin",
+        help="How to render explicit persona card overrides.",
+    )
     args = parser.parse_args()
     variant_slug = _canonical_variant_name(args.variant_name)
+    repo_root = args.repo_root
+    explicit_persona_assignment_path = _resolve_optional_path(
+        repo_root, args.persona_assignment_file
+    )
+    explicit_persona_cards_path = _resolve_optional_path(repo_root, args.persona_cards_file)
+    explicit_persona_shared_notes_path = _resolve_optional_path(
+        repo_root, args.persona_shared_notes_file
+    )
+    has_explicit_persona_assignment = explicit_persona_assignment_path is not None
+    assigned_profile_variant = (
+        _is_assigned_profile_variant(variant_slug) or has_explicit_persona_assignment
+    )
 
     if args.split != "val":
         raise ValueError("Only validation-wave generation is supported in this compact builder.")
-    if _is_assigned_profile_variant(variant_slug):
+    if assigned_profile_variant:
         if args.selection_mode != "full":
             raise ValueError(
                 f"{variant_slug} must be built with --selection-mode full so each request uses "
@@ -1069,11 +1119,14 @@ def main() -> None:
                 "--repeats-per-game 1 because the 417 assigned games already provide the "
                 "within-CONFIG sampling."
             )
+        if has_explicit_persona_assignment and explicit_persona_cards_path is None:
+            raise ValueError(
+                "--persona-cards-file is required when --persona-assignment-file is provided."
+            )
 
     k_values = _parse_k_values(args.k_values)
     if k_values != [0]:
         raise ValueError("forecasting/pgg/build_batch_inputs.py is reserved for the k=0 full-rollout task.")
-    repo_root = args.repo_root
     forecasting_root = args.forecasting_root
     batch_input_dir = forecasting_root / "batch_input"
     batch_output_dir = forecasting_root / "batch_output"
@@ -1097,9 +1150,17 @@ def main() -> None:
     avatar_map = _load_avatar_map(players_path)
     avatar_inventory = _load_avatar_inventory(players_path)
     game_rows = _load_game_rows(repo_root / "data/raw_data/validation_wave/games.csv")
-    twin_assignments_path = _twin_assignment_path_for_variant(repo_root, args.variant_name)
-    twin_cards_path = _twin_prompt_cards_path_for_variant(repo_root, args.variant_name)
-    twin_shared_notes_path = _twin_shared_notes_path_for_variant(repo_root, args.variant_name)
+    twin_assignments_path = explicit_persona_assignment_path or _twin_assignment_path_for_variant(
+        repo_root, args.variant_name
+    )
+    twin_cards_path = explicit_persona_cards_path or _twin_prompt_cards_path_for_variant(
+        repo_root, args.variant_name
+    )
+    twin_shared_notes_path = (
+        explicit_persona_shared_notes_path
+        if explicit_persona_shared_notes_path is not None
+        else _twin_shared_notes_path_for_variant(repo_root, args.variant_name)
+    )
     twin_assignments_by_game = (
         _load_twin_game_assignments(twin_assignments_path)
         if twin_assignments_path is not None
@@ -1221,6 +1282,13 @@ def main() -> None:
                     avatar_order=avatar_order,
                     persona_assignments=twin_assignments_by_game[game_id],
                     twin_profile_cards=twin_profile_cards,
+                    is_demographic_only_variant=(
+                        _is_demographic_only_variant(variant_slug)
+                        or (
+                            has_explicit_persona_assignment
+                            and args.persona_profile_type == "demographic_only"
+                        )
+                    ),
                 )
             chat_index = _index_chat_log(metadata.chat_log) if metadata.chat_enabled else _empty_chat_index()
             complete_game = complete_games_by_id.get(game_id)
@@ -1377,6 +1445,20 @@ def main() -> None:
         "persona_shared_notes_file": (
             str(twin_shared_notes_path) if twin_shared_notes_path is not None else None
         ),
+        "explicit_persona_assignment_file": (
+            str(explicit_persona_assignment_path)
+            if explicit_persona_assignment_path is not None
+            else None
+        ),
+        "explicit_persona_cards_file": (
+            str(explicit_persona_cards_path) if explicit_persona_cards_path is not None else None
+        ),
+        "explicit_persona_shared_notes_file": (
+            str(explicit_persona_shared_notes_path)
+            if explicit_persona_shared_notes_path is not None
+            else None
+        ),
+        "persona_profile_type": args.persona_profile_type,
         "request_file_prefix": args.request_file_prefix,
         "batch_input_file": str(batch_input_dir / f"{run_name}.jsonl"),
         "expected_batch_output_file": str(batch_output_dir / f"{run_name}.jsonl"),

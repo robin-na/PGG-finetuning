@@ -1,0 +1,9 @@
+run_name,label,family,variant,order,metrics_available,overall_mean_wd,overall_median_wd
+baseline_gpt_5_mini,Baseline,reference,baseline,0,6,0.3541484835638329,0.3028081093738275
+twin_sampled_seed_0_gpt_5_mini,Full Twin sampled,reference,full_twin_sampled,1,6,0.231924645343486,0.17052069860173363
+twin_pgg_background_only_seed_0_gpt_5_mini,Background only,ablation,twin_pgg_background_only,2,6,0.32702215337547247,0.27989103989019437
+twin_pgg_direct_social_only_seed_0_gpt_5_mini,Direct social only,ablation,twin_pgg_direct_social_only,3,6,0.31844152550996435,0.27348226559279487
+twin_pgg_self_report_social_only_seed_0_gpt_5_mini,Self-report social only,ablation,twin_pgg_self_report_social_only,4,6,0.2070236032825564,0.1737511673487209
+twin_pgg_non_social_econ_only_seed_0_gpt_5_mini,Non-social econ only,ablation,twin_pgg_non_social_econ_only,5,6,0.29166603063399515,0.23374555118573637
+twin_pgg_cognitive_only_seed_0_gpt_5_mini,Cognitive only,ablation,twin_pgg_cognitive_only,6,6,0.3146104238678991,0.2661181874745643
+twin_pgg_misc_heuristics_pricing_text_only_seed_0_gpt_5_mini,Misc heuristics/pricing/text only,ablation,twin_pgg_misc_heuristics_pricing_text_only,7,6,0.34165248771276896,0.28979806653605233

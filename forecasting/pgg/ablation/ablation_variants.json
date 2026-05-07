@@ -1,0 +1,48 @@
+{
+  "spec_version": "pgg_twin_six_category_ablation_v1",
+  "default_assignment": "forecasting/pgg/profile_sampling/output/twin_to_pgg_validation_persona_sampling/seed_0/game_assignments.jsonl",
+  "default_source_profiles": "non-PGG_generalization/twin_profiles/output/twin_extended_profiles/twin_extended_profiles.jsonl",
+  "note": "The active first-pass grid has six source-evidence categories. These categories come from the existing Twin catalog/profile mapping, not unsupervised clustering. Each prompt-facing card exposes only the named evidence category; demographic background appears only in the background-only category.",
+  "variants": [
+    {
+      "name": "twin_pgg_background_only",
+      "family": "single_source",
+      "included_evidence": ["background_context.demographics"],
+      "purpose": "Demographic/background lower bound."
+    },
+    {
+      "name": "twin_pgg_direct_social_only",
+      "family": "single_source",
+      "included_evidence": ["observed_in_twin.social_game_behavior"],
+      "purpose": "Direct trust, ultimatum, and dictator task evidence."
+    },
+    {
+      "name": "twin_pgg_self_report_social_only",
+      "family": "single_source",
+      "included_evidence": ["observed_in_twin.personality_and_self_report"],
+      "purpose": "Social/personality questionnaire evidence without direct game behavior."
+    },
+    {
+      "name": "twin_pgg_non_social_econ_only",
+      "family": "single_source",
+      "included_evidence": ["observed_in_twin.economic_preferences_non_social"],
+      "purpose": "Time, risk, and mental-accounting evidence."
+    },
+    {
+      "name": "twin_pgg_cognitive_only",
+      "family": "single_source",
+      "included_evidence": ["observed_in_twin.cognitive_performance"],
+      "purpose": "Cognitive performance evidence."
+    },
+    {
+      "name": "twin_pgg_misc_heuristics_pricing_text_only",
+      "family": "single_source",
+      "included_evidence": [
+        "observed_in_twin.heuristics_and_biases",
+        "observed_in_twin.pricing_and_consumer_choice",
+        "observed_in_twin.open_text_responses"
+      ],
+      "purpose": "Residual heuristics, pricing, and open-text evidence."
+    }
+  ]
+}

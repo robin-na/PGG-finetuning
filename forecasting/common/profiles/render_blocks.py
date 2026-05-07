@@ -100,7 +100,10 @@ def render_twin_profile_block(
             label = str(item.get("label", "")).replace("_", " ").strip()
             score = item.get("score_0_to_100", "")
             confidence = str(item.get("confidence", "")).strip()
-            lines.append(f"- {cue_name}: {label} ({score}), confidence {confidence}")
+            line = f"- {cue_name}: {label} ({score})"
+            if confidence:
+                line = f"{line}, confidence {confidence}"
+            lines.append(line)
 
     limits = card.get("limits", [])
     if limits:
@@ -175,8 +178,14 @@ def render_pgg_persona_block(
             lines.append("")
             continue
 
-        lines.append(f"Headline: {card.get('headline', assignment.headline)}")
-        lines.append(f"Summary: {card.get('summary', assignment.summary)}")
+        headline = str(
+            card["headline"] if "headline" in card else assignment.headline
+        ).strip()
+        summary = str(card["summary"] if "summary" in card else assignment.summary).strip()
+        if headline:
+            lines.append(f"Headline: {headline}")
+        if summary:
+            lines.append(f"Summary: {summary}")
 
         background = card.get("background", {})
         background_summary = str(background.get("summary", "")).strip()
@@ -214,7 +223,10 @@ def render_pgg_persona_block(
                 label = str(item.get("label", "")).replace("_", " ").strip()
                 score = item.get("score_0_to_100", "")
                 confidence = str(item.get("confidence", "")).strip()
-                lines.append(f"- {cue_name}: {label} ({score}), confidence {confidence}")
+                line = f"- {cue_name}: {label} ({score})"
+                if confidence:
+                    line = f"{line}, confidence {confidence}"
+                lines.append(line)
 
         limits = card.get("limits", [])
         if limits:
