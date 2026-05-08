@@ -21,10 +21,10 @@
   "mean_valid_prediction_rate": 0.8548510313216195,
   "mean_tvd": 0.1727820468643943,
   "median_tvd": 0.1266666666666667,
-  "weighted_mean_tvd_by_group_size": 0.1733327722809076,
-  "mean_simbench_score": 29.999202066481388,
-  "median_simbench_score": 0.0,
-  "weighted_mean_simbench_score_by_group_size": 39.57124386445593,
+  "weighted_mean_tvd_by_group_size": 0.17333277228090763,
+  "mean_simbench_score": 32.77847052999952,
+  "median_simbench_score": 52.15314548855242,
+  "weighted_mean_simbench_score_by_group_size": 48.533284098796535,
   "mean_jsd": 0.03809723605784644,
   "modal_match_rate": 0.612153708668454
 }

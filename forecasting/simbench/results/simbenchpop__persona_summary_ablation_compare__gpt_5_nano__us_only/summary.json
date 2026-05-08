@@ -1,0 +1,29 @@
+{
+  "common_row_count": 2694,
+  "best_by_metric": [
+    {
+      "scope": "common_rows",
+      "metric": "mean_simbench_score",
+      "best_label": "background_only",
+      "best_value": 12.15321878622147
+    },
+    {
+      "scope": "common_rows_no_choices13k",
+      "metric": "mean_simbench_score",
+      "best_label": "background_only",
+      "best_value": 15.683094462584174
+    },
+    {
+      "scope": "common_rows",
+      "metric": "mean_tvd",
+      "best_label": "baseline",
+      "best_value": 0.2811333740886936
+    },
+    {
+      "scope": "common_rows_no_choices13k",
+      "metric": "mean_tvd",
+      "best_label": "baseline",
+      "best_value": 0.30535307645322646
+    }
+  ]
+}

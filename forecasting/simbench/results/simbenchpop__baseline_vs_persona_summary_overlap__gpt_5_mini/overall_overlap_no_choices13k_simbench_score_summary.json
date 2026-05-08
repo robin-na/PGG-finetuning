@@ -1,0 +1,6 @@
+{
+  "rows_without_choices13k": 2104,
+  "baseline_mean_simbench_score_no_choices13k": 22.87719673682697,
+  "persona_summary_mean_simbench_score_no_choices13k": 31.319007816153164,
+  "delta_persona_summary_minus_baseline": 8.441811079326193
+}

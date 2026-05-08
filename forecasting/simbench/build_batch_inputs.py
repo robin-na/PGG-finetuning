@@ -29,7 +29,7 @@ VARIANT_BASELINE_EXPLAINED = "baseline_group_batched_explained"
 VARIANT_TWIN_PROFILE = "twin_profile_batched_seed_0"
 ALL_VARIANTS = [VARIANT_BASELINE_EXPLAINED, VARIANT_TWIN_PROFILE]
 SUPPORTED_VARIANTS = [VARIANT_BASELINE_PAPER, VARIANT_BASELINE_EXPLAINED, VARIANT_TWIN_PROFILE]
-ALL_MODELS = ["gpt-5.1", "gpt-5-mini"]
+ALL_MODELS = ["gpt-5.1", "gpt-5-mini", "gpt-5-nano"]
 ALL_SPLITS = ["SimBenchPop", "SimBenchGrouped"]
 
 COUNTRY_KEYS = {
@@ -395,7 +395,7 @@ def _batch_entry(
             {"role": "user", "content": user_prompt},
         ],
     }
-    if model != "gpt-5-mini":
+    if model not in {"gpt-5-mini", "gpt-5-nano"}:
         body["temperature"] = 0
     return {
         "custom_id": custom_id,

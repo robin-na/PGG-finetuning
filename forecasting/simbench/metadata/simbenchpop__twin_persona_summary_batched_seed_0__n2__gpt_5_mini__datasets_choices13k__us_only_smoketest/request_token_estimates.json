@@ -1,0 +1,9 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_input/simbenchpop__twin_persona_summary_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest.jsonl",
+  "num_requests": 2,
+  "total_input_tokens_estimate": 55366,
+  "mean_input_tokens_estimate": 27683.0,
+  "max_input_tokens_estimate": 27707,
+  "min_input_tokens_estimate": 27659,
+  "token_estimate_method": "char_div_4_heuristic"
+}

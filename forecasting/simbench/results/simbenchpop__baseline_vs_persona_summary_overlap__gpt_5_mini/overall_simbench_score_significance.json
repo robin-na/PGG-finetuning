@@ -1,0 +1,9 @@
+{
+  "n_rows": 2604,
+  "baseline_mean_simbench_score": 18.484493830370184,
+  "persona_summary_mean_simbench_score": 19.99848477451415,
+  "delta_persona_minus_baseline": 1.5139909441439705,
+  "p_value": 0.15284939542780723,
+  "ci95_low_delta": -0.5621192480317709,
+  "ci95_high_delta": 3.5901011363197117
+}

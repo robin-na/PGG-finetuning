@@ -32,8 +32,12 @@ ALL_VARIANTS = [
     VARIANT_TWIN_UNADJUSTED,
 ]
 
-MODEL_SLUGS = {"gpt-5.1": "gpt_5_1", "gpt-5-mini": "gpt_5_mini"}
-ALL_MODELS = ["gpt-5.1", "gpt-5-mini"]
+MODEL_SLUGS = {
+    "gpt-5.1": "gpt_5_1",
+    "gpt-5-mini": "gpt_5_mini",
+    "gpt-5-nano": "gpt_5_nano",
+}
+ALL_MODELS = ["gpt-5.1", "gpt-5-mini", "gpt-5-nano"]
 
 TOKEN_ENCODING = tiktoken.get_encoding("o200k_base")
 

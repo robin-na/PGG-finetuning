@@ -1,0 +1,114 @@
+[
+  {
+    "dataset_name": "OSPsychRWAS",
+    "delta_simbench_score_persona_summary_minus_baseline": 44.74141446784337,
+    "true_label": "positive",
+    "significant_bh_0_05": true,
+    "true_rank": 1
+  },
+  {
+    "dataset_name": "ChaosNLI",
+    "delta_simbench_score_persona_summary_minus_baseline": 28.92337511776489,
+    "true_label": "positive",
+    "significant_bh_0_05": true,
+    "true_rank": 2
+  },
+  {
+    "dataset_name": "MoralMachine",
+    "delta_simbench_score_persona_summary_minus_baseline": 25.119861302599034,
+    "true_label": "positive",
+    "significant_bh_0_05": true,
+    "true_rank": 3
+  },
+  {
+    "dataset_name": "ConspiracyCorr",
+    "delta_simbench_score_persona_summary_minus_baseline": 10.745967741935445,
+    "true_label": "insignificant",
+    "significant_bh_0_05": false,
+    "true_rank": 4
+  },
+  {
+    "dataset_name": "DICES",
+    "delta_simbench_score_persona_summary_minus_baseline": 3.519809509483224,
+    "true_label": "positive",
+    "significant_bh_0_05": true,
+    "true_rank": 5
+  },
+  {
+    "dataset_name": "WisdomOfCrowds",
+    "delta_simbench_score_persona_summary_minus_baseline": 3.182054241758891,
+    "true_label": "insignificant",
+    "significant_bh_0_05": false,
+    "true_rank": 6
+  },
+  {
+    "dataset_name": "OSPsychMGKT",
+    "delta_simbench_score_persona_summary_minus_baseline": 2.8563696644529273,
+    "true_label": "insignificant",
+    "significant_bh_0_05": false,
+    "true_rank": 7
+  },
+  {
+    "dataset_name": "OpinionQA",
+    "delta_simbench_score_persona_summary_minus_baseline": 2.4130516228343026,
+    "true_label": "insignificant",
+    "significant_bh_0_05": false,
+    "true_rank": 8
+  },
+  {
+    "dataset_name": "NumberGame",
+    "delta_simbench_score_persona_summary_minus_baseline": 2.2478513268267015,
+    "true_label": "insignificant",
+    "significant_bh_0_05": false,
+    "true_rank": 9
+  },
+  {
+    "dataset_name": "GlobalOpinionQA",
+    "delta_simbench_score_persona_summary_minus_baseline": -3.464182118851731,
+    "true_label": "insignificant",
+    "significant_bh_0_05": false,
+    "true_rank": 10
+  },
+  {
+    "dataset_name": "TISP",
+    "delta_simbench_score_persona_summary_minus_baseline": -11.160868125090083,
+    "true_label": "insignificant",
+    "significant_bh_0_05": false,
+    "true_rank": 11
+  },
+  {
+    "dataset_name": "Jester",
+    "delta_simbench_score_persona_summary_minus_baseline": -11.179131666330527,
+    "true_label": "negative",
+    "significant_bh_0_05": true,
+    "true_rank": 12
+  },
+  {
+    "dataset_name": "OSPsychMACH",
+    "delta_simbench_score_persona_summary_minus_baseline": -15.534790481117483,
+    "true_label": "insignificant",
+    "significant_bh_0_05": false,
+    "true_rank": 13
+  },
+  {
+    "dataset_name": "ISSP",
+    "delta_simbench_score_persona_summary_minus_baseline": -15.795488734428655,
+    "true_label": "insignificant",
+    "significant_bh_0_05": false,
+    "true_rank": 14
+  },
+  {
+    "dataset_name": "OSPsychBig5",
+    "delta_simbench_score_persona_summary_minus_baseline": -23.231877596976233,
+    "true_label": "negative",
+    "significant_bh_0_05": true,
+    "true_rank": 15
+  },
+  {
+    "dataset_name": "Choices13k",
+    "delta_simbench_score_persona_summary_minus_baseline": -27.638276184702796,
+    "true_label": "negative",
+    "significant_bh_0_05": true,
+    "true_rank": 16
+  }
+]

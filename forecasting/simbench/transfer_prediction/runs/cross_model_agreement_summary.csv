@@ -1,0 +1,9 @@
+model,ranking_spearman_vs_truth,ranking_pairwise_accuracy_vs_truth,classification_accuracy,classification_macro_f1,missing_from_raw_ranking
+gpt_5_1,-0.37058823529411766,0.35833333333333334,0.1875,0.19444444444444442,ISSP
+gpt_5_mini,0.026470588235294135,0.5166666666666667,0.375,0.27884615384615385,
+gpt_5_nano,-0.1264705882352941,0.4583333333333333,0.1875,0.14652014652014653,
+
+model_a,model_b,label_agreement,rank_spearman_between_models,rank_pairwise_agreement_between_models
+gpt_5_1,gpt_5_mini,0.5,0.2852941176470588,0.5916666666666667
+gpt_5_1,gpt_5_nano,0.4375,0.2382352941176471,0.5833333333333334
+gpt_5_mini,gpt_5_nano,0.5625,0.13235294117647056,0.575

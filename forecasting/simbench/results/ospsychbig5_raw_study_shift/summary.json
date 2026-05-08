@@ -1,0 +1,20 @@
+{
+  "openpsych_source": "public raw US slice from IPIP-FFM-data-8Nov2018.zip",
+  "openpsych_n_us": 546403,
+  "openpsych_n_us_with_complete_trait_scores": {
+    "big_five_extraversion": 529695,
+    "big_five_neuroticism": 525162,
+    "big_five_agreeableness": 526725,
+    "big_five_conscientiousness": 525171,
+    "big_five_openness": 525983
+  },
+  "twin_n_with_complete_big5_scores": 2058,
+  "mean_item_tvd_openpsych_us_vs_simbench_us40": 0.028439114167536715,
+  "trait_order": [
+    "big_five_extraversion",
+    "big_five_neuroticism",
+    "big_five_agreeableness",
+    "big_five_conscientiousness",
+    "big_five_openness"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "metrics": {
+    "ranking_spearman_vs_truth": 0.026470588235294135,
+    "ranking_pairwise_accuracy_vs_truth": 0.5166666666666667,
+    "classification_accuracy": 0.375,
+    "classification_macro_f1": 0.27884615384615385,
+    "missing_from_raw_ranking": [],
+    "raw_ranking_length": 16
+  },
+  "label_eval": {
+    "accuracy": 0.375,
+    "macro_f1": 0.27884615384615385,
+    "confusion_matrix": {
+      "positive": {
+        "positive": 3,
+        "insignificant": 1,
+        "negative": 0
+      },
+      "insignificant": {
+        "positive": 6,
+        "insignificant": 3,
+        "negative": 0
+      },
+      "negative": {
+        "positive": 3,
+        "insignificant": 0,
+        "negative": 0
+      }
+    },
+    "per_label": {
+      "positive": {
+        "precision": 0.25,
+        "recall": 0.75,
+        "f1": 0.375
+      },
+      "insignificant": {
+        "precision": 0.75,
+        "recall": 0.3333333333333333,
+        "f1": 0.46153846153846156
+      },
+      "negative": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    }
+  }
+}

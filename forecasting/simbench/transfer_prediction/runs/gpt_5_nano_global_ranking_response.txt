@@ -1,0 +1,30 @@
+Explanation
+The Twin-2K-500 source provides rich per-person priors (demographics, trait scores, cognitive summaries, economic preferences, and open-ended content) for a single twin, not access to held-out target answers. This makes the external persona most useful for tasks where individual-difference signals (personality, cognition, preferences) can meaningfully shape predictions about an individual’s responses or where there is a direct link between those priors and task outcomes. Consequently:
+- Strongly aligned tasks (where predictions depend on personality/traits or individual preferences) are most likely to benefit: Big Five (OSPsychBig5), RWAS (Open-Source Right-Wing Authoritarianism; political/ideology-oriented items), MACH-IV (Machiavellianism), MGKT (general knowledge with cultural context), and also risk-preference/analytic items like Choices13k and NumberGame.
+- Tasks involving interpretable distributions across many groups or country-specific context (GlobalOpinionQA, ISSP) or broad safety/commonsense distributions (DICES, ChaosNLI) are less likely to gain from a single individual's priors; some may even mislead if the persona mismatches the target population. To reflect the uncertainty, several of these are predicted as insignificant, with a couple of broader cross-national or ideology-focused tasks labeled negative due to potential mismatch with a single US twin profile.
+- Some tasks that are more problem-solving or generic ( WisdomOfCrowds, Jester, etc.) may see only modest, mixed effects.
+
+Ranking and labels are designed to reflect such relative alignment, not exact scores, given we cannot rely on actual benchmark results here.
+
+Final JSON
+{
+  "ranking_most_helpful_to_most_harmful": ["OSPsychBig5", "OSPsychRWAS", "OSPsychMACH", "OSPsychMGKT", "Choices13k", "NumberGame", "MoralMachine", "OpinionQA", "TISP", "ConspiracyCorr", "Jester", "WisdomOfCrowds", "DICES", "ChaosNLI", "GlobalOpinionQA", "ISSP"],
+  "task_predictions": [
+    {"dataset_name": "OSPsychBig5", "predicted_label": "positive", "confidence": 0.85},
+    {"dataset_name": "OSPsychRWAS", "predicted_label": "positive", "confidence": 0.80},
+    {"dataset_name": "OSPsychMACH", "predicted_label": "positive", "confidence": 0.78},
+    {"dataset_name": "OSPsychMGKT", "predicted_label": "positive", "confidence": 0.70},
+    {"dataset_name": "Choices13k", "predicted_label": "positive", "confidence": 0.65},
+    {"dataset_name": "NumberGame", "predicted_label": "positive", "confidence": 0.60},
+    {"dataset_name": "MoralMachine", "predicted_label": "positive", "confidence": 0.58},
+    {"dataset_name": "OpinionQA", "predicted_label": "positive", "confidence": 0.50},
+    {"dataset_name": "TISP", "predicted_label": "positive", "confidence": 0.45},
+    {"dataset_name": "ConspiracyCorr", "predicted_label": "positive", "confidence": 0.40},
+    {"dataset_name": "Jester", "predicted_label": "insignificant", "confidence": 0.40},
+    {"dataset_name": "WisdomOfCrowds", "predicted_label": "insignificant", "confidence": 0.35},
+    {"dataset_name": "DICES", "predicted_label": "insignificant", "confidence": 0.30},
+    {"dataset_name": "ChaosNLI", "predicted_label": "insignificant", "confidence": 0.28},
+    {"dataset_name": "GlobalOpinionQA", "predicted_label": "negative", "confidence": 0.25},
+    {"dataset_name": "ISSP", "predicted_label": "negative", "confidence": 0.25}
+  ]
+}

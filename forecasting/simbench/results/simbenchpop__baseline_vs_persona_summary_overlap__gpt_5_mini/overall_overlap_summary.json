@@ -1,0 +1,18 @@
+{
+  "rows_in_union": 2794,
+  "rows_in_overlap": 2604,
+  "baseline_mean_tvd": 0.24682284944893126,
+  "persona_summary_mean_tvd": 0.22935803312645747,
+  "baseline_weighted_mean_tvd": 0.18479579432600834,
+  "persona_summary_weighted_mean_tvd": 0.17309145376421556,
+  "baseline_mean_jsd": 0.06974803078698745,
+  "persona_summary_mean_jsd": 0.057771283739835984,
+  "baseline_modal_match": 0.6094470046082949,
+  "persona_summary_modal_match": 0.6336405529953917,
+  "baseline_mean_simbench_score": 18.484493830370184,
+  "persona_summary_mean_simbench_score": 19.99848477451415,
+  "baseline_median_simbench_score": 33.937956180919855,
+  "persona_summary_median_simbench_score": 38.191153670071174,
+  "baseline_weighted_mean_simbench_score": 43.50493707072213,
+  "persona_summary_weighted_mean_simbench_score": 45.41711738231755
+}

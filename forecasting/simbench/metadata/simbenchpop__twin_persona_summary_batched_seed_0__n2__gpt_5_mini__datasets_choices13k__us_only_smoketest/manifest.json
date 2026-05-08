@@ -1,0 +1,28 @@
+{
+  "run_name": "simbenchpop__twin_persona_summary_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest",
+  "simbench_split": "SimBenchPop",
+  "variant": "twin_persona_summary_batched_seed_0",
+  "model": "gpt-5-mini",
+  "num_simbench_rows": 500,
+  "num_context_groups": 1,
+  "num_samples_per_context": 2,
+  "num_requests": 2,
+  "seed": 0,
+  "only_us_country_context": true,
+  "dataset_names_filter": [
+    "Choices13k"
+  ],
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_input/simbenchpop__twin_persona_summary_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_output/simbenchpop__twin_persona_summary_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest",
+  "selected_rows_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/selected_rows.csv",
+  "selected_contexts_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/selected_contexts.csv",
+  "gold_targets_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/gold_targets.jsonl",
+  "twin_profiles_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/non-PGG_generalization/twin_profiles/output/twin_extended_profiles/twin_extended_profiles.jsonl",
+  "twin_persona_summary_cache_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/cache/twin_persona_summary_cache.jsonl",
+  "twin_summary_source": "Twin-2K-500 full_persona persona_summary",
+  "twin_sampling_scope": "global_panel_across_contexts",
+  "shared_twin_panel_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/shared_twin_panel.json",
+  "shared_twin_panel_seed": 536285825,
+  "aggregation_note": "The same sampled Twin persona_summary panel is reused across all context groups in the run; average the returned distributions across sample_index within each context_id, then map question_id back to simbench_row_id using question_manifest_json."
+}

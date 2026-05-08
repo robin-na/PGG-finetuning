@@ -1,8 +1,8 @@
 {
-  "parsed_output_jsonl": "forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/parsed_output.jsonl",
-  "request_manifest_csv": "forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/request_manifest.csv",
-  "gold_targets_jsonl": "forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/gold_targets.jsonl",
-  "output_dir": "forecasting/simbench/results/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only__gold_eval",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/parsed_output.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/request_manifest.csv",
+  "gold_targets_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only/gold_targets.jsonl",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/results/simbenchpop__rest11__baseline_group_batched_explained__gpt_5_mini__us_only__gold_eval",
   "primary_metric_family": "distribution_distance_after_batched_prediction_aggregation",
   "primary_metrics": [
     "simbench_score",

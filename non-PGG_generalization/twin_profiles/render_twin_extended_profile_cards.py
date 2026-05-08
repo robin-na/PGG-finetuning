@@ -30,6 +30,8 @@ DETAIL_MODES = (
     "chip_bargain_no_econ_games_prompt_min",
     "chip_bargain_ultimatum_only_prompt",
     "chip_bargain_ultimatum_only_prompt_min",
+    "chip_bargain_self_report_social_only_prompt",
+    "chip_bargain_self_report_social_only_prompt_min",
     "chip_bargain_selective_prompt",
     "chip_bargain_selective_prompt_min",
 )
@@ -47,8 +49,14 @@ CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES = {
     "chip_bargain_ultimatum_only_prompt",
     "chip_bargain_ultimatum_only_prompt_min",
 }
+CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES = {
+    "chip_bargain_self_report_social_only_prompt",
+    "chip_bargain_self_report_social_only_prompt_min",
+}
 CHIP_BARGAIN_DIRECT_SIGNAL_PROMPT_MODES = (
-    CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES
+    CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES
+    | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES
+    | CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES
 )
 CHIP_BARGAIN_COMPOSITE_PROMPT_MODES = {
     "chip_bargain_prompt",
@@ -61,6 +69,7 @@ CHIP_BARGAIN_PROMPT_MODES = {
     *CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES,
     *CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES,
     *CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES,
+    *CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES,
 }
 PROMPT_MODES = PGG_PROMPT_MODES | CHIP_BARGAIN_PROMPT_MODES
 
@@ -143,6 +152,18 @@ MODE_SETTINGS = {
         "anchors_max": 4,
         "limits_max": 2,
     },
+    "chip_bargain_self_report_social_only_prompt": {
+        "background_max": 4,
+        "signature_max": 5,
+        "anchors_max": 5,
+        "limits_max": 2,
+    },
+    "chip_bargain_self_report_social_only_prompt_min": {
+        "background_max": 3,
+        "signature_max": 4,
+        "anchors_max": 4,
+        "limits_max": 2,
+    },
     "chip_bargain_selective_prompt": {
         "background_max": 4,
         "signature_max": 5,
@@ -187,6 +208,17 @@ CUE_DISPLAY_NAMES = {
     "ultimatum_min_acceptable_to_self": "Ultimatum minimum acceptable to self",
     "ultimatum_rejection_rate": "Ultimatum rejection rate",
     "dictator_offer_to_other": "Dictator offer to other",
+    "big_five_agreeableness": "Agreeableness",
+    "big_five_extraversion": "Extraversion",
+    "big_five_conscientiousness": "Conscientiousness",
+    "big_five_neuroticism": "Neuroticism",
+    "prosocial_values": "Prosocial values",
+    "empathy": "Empathy",
+    "cooperation_orientation": "Cooperation/collectivism",
+    "social_sensitivity": "Social sensitivity",
+    "self_concept_clarity": "Self-concept clarity",
+    "uncertainty_aversion": "Uncertainty aversion",
+    "orderliness": "Orderliness",
 }
 
 CHIP_BARGAIN_CUE_ORDER = [
@@ -212,6 +244,20 @@ CHIP_BARGAIN_ULTIMATUM_ONLY_SIGNAL_ORDER = [
     "ultimatum_offer_to_other",
     "ultimatum_min_acceptable_to_self",
     "ultimatum_rejection_rate",
+]
+
+CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_SIGNAL_ORDER = [
+    "big_five_agreeableness",
+    "big_five_extraversion",
+    "big_five_conscientiousness",
+    "big_five_neuroticism",
+    "prosocial_values",
+    "empathy",
+    "cooperation_orientation",
+    "social_sensitivity",
+    "self_concept_clarity",
+    "uncertainty_aversion",
+    "orderliness",
 ]
 
 BACKGROUND_ORDER = [
@@ -326,6 +372,18 @@ CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_SHARED_CAVEATS = [
     "This ablation removes trust-game and dictator-game summaries so only the ultimatum-style signal remains.",
 ]
 
+CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_SHARED_NOTE = [
+    "These profiles summarize prior survey and behavioral-task evidence about each participant.",
+    "The cues below summarize self-reported personality, values, empathy, social sensitivity, clarity of self-concept, and comfort with uncertainty.",
+    "Use them as lightweight priors about social style under negotiation, not as literal bargaining rules.",
+]
+
+CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_SHARED_CAVEATS = [
+    "These cues come from prior survey responses, not from direct observation of repeated three-player bargaining, offer-counteroffer dynamics, or inventory-constrained exchange.",
+    "Some cues are more directly social, while others are broader style signals such as extraversion, conscientiousness, self-concept clarity, and uncertainty aversion.",
+    "Treat them as rough priors about social style rather than precise evidence about which specific offers someone will make or accept.",
+]
+
 CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_SPECS = {
     "trust_send_amount": {
         "meaning": "Observed amount sent in the one-shot trust game when acting as sender.",
@@ -374,6 +432,97 @@ CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_SPECS = {
             "Higher values indicate more unilateral giving in that task.",
         ],
         "scope_note": "This is a direct one-shot allocation measure, not a bargaining concession policy.",
+    },
+}
+
+CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_SIGNAL_SPECS = {
+    "big_five_agreeableness": {
+        "meaning": "Self-reported agreeableness/helpfulness from the Big Five block.",
+        "built_from": [
+            "Direct responses to the agreeableness/helpfulness personality items only.",
+            "Higher values indicate a more agreeable, considerate, and less antagonistic self-description.",
+        ],
+        "scope_note": "This is self-report only and should not be read as a literal bargaining acceptance rule.",
+    },
+    "big_five_extraversion": {
+        "meaning": "Self-reported extraversion from the Big Five block.",
+        "built_from": [
+            "Direct responses to the extraversion personality items only.",
+            "Higher values indicate a more outgoing, expressive, and socially energetic self-description.",
+        ],
+        "scope_note": "This is self-report only and is at most an indirect cue for bargaining assertiveness or communication style.",
+    },
+    "big_five_conscientiousness": {
+        "meaning": "Self-reported conscientiousness from the Big Five block.",
+        "built_from": [
+            "Direct responses to the conscientiousness personality items only.",
+            "Higher values indicate a more diligent, reliable, and planful self-description.",
+        ],
+        "scope_note": "This is self-report only and should not be read as direct evidence of multi-turn bargaining bookkeeping.",
+    },
+    "big_five_neuroticism": {
+        "meaning": "Self-reported neuroticism from the Big Five block.",
+        "built_from": [
+            "Direct responses to the neuroticism personality items only.",
+            "Higher values indicate a more emotionally reactive and stress-sensitive self-description.",
+        ],
+        "scope_note": "This is self-report only and is at most an indirect cue for bargaining reactivity or volatility.",
+    },
+    "prosocial_values": {
+        "meaning": "Self-reported prosocial value priorities.",
+        "built_from": [
+            "Direct responses about value priorities only.",
+            "Higher values indicate stronger endorsement of trust, humility, altruism, loyalty, politeness, harmony, honesty, compassion, and equality.",
+        ],
+        "scope_note": "This is self-report only and does not directly measure repeated bargaining concessions or acceptance behavior.",
+    },
+    "empathy": {
+        "meaning": "Self-reported empathy and perspective-taking.",
+        "built_from": [
+            "Direct responses about empathy and perspective-taking only.",
+            "Higher values indicate a stronger tendency to understand or feel others' emotions.",
+        ],
+        "scope_note": "This is self-report only and should not be read as direct evidence of strategic reciprocity under bargaining.",
+    },
+    "cooperation_orientation": {
+        "meaning": "Self-reported cooperation/collectivism orientation.",
+        "built_from": [
+            "Direct responses about cooperation, collectivism, and group duty only.",
+            "Higher values indicate stronger endorsement of cooperation, collective duty, and group-oriented well-being.",
+        ],
+        "scope_note": "This is self-report only and is not a direct measure of which bargains the participant would actually accept.",
+    },
+    "social_sensitivity": {
+        "meaning": "Self-reported social sensitivity and self-monitoring.",
+        "built_from": [
+            "Direct responses about social sensitivity and self-monitoring only.",
+            "Higher values indicate a stronger tendency to read social situations and adapt behavior to them.",
+        ],
+        "scope_note": "This is self-report only and is at most an indirect cue for negotiation reading or adaptation.",
+    },
+    "self_concept_clarity": {
+        "meaning": "Self-reported self-concept clarity.",
+        "built_from": [
+            "Direct responses about self-concept clarity only.",
+            "Higher values indicate a more stable, internally coherent, and settled sense of self.",
+        ],
+        "scope_note": "This is self-report only and is at most an indirect cue for consistency or firmness in bargaining.",
+    },
+    "uncertainty_aversion": {
+        "meaning": "Self-reported uncertainty aversion / need for closure.",
+        "built_from": [
+            "Direct responses about dislike of uncertainty and desire for closure only.",
+            "Higher values indicate stronger dislike of uncertainty, ambiguity, and open-ended unresolved situations.",
+        ],
+        "scope_note": "This is self-report only and should not be read as a literal bargaining threshold or patience parameter.",
+    },
+    "orderliness": {
+        "meaning": "Self-reported orderliness and systematicity.",
+        "built_from": [
+            "Direct responses about orderliness, organization, and systematicity only.",
+            "Higher values indicate a more organized, efficient, systematic, and careful self-description.",
+        ],
+        "scope_note": "This is self-report only and is at most an indirect cue for structured bargaining or state tracking.",
     },
 }
 
@@ -541,6 +690,17 @@ CHIP_BARGAIN_HEADLINE_FAMILIES = {
     "bookkeeping_discipline": "bookkeeping",
     "strategic_patience": "patience",
     "exploitation_caution": "guardedness",
+    "big_five_agreeableness": "agreeableness",
+    "big_five_extraversion": "extraversion",
+    "big_five_conscientiousness": "conscientiousness",
+    "big_five_neuroticism": "neuroticism",
+    "prosocial_values": "values",
+    "empathy": "empathy",
+    "cooperation_orientation": "cooperation",
+    "social_sensitivity": "social_sensitivity",
+    "self_concept_clarity": "clarity",
+    "uncertainty_aversion": "uncertainty",
+    "orderliness": "orderliness",
 }
 
 CHIP_BARGAIN_HEADLINE_PHRASES = {
@@ -599,6 +759,94 @@ CHIP_BARGAIN_HEADLINE_PHRASES = {
         "mixed": "mixed on guardedness",
         "low": "less guarded",
         "very_low": "less guarded",
+    },
+    "big_five_agreeableness": {
+        "very_high": "highly agreeable",
+        "high": "agreeable",
+        "medium": "moderately agreeable",
+        "mixed": "mixed on agreeableness",
+        "low": "less agreeable",
+        "very_low": "less agreeable",
+    },
+    "big_five_extraversion": {
+        "very_high": "highly extraverted",
+        "high": "extraverted",
+        "medium": "moderately extraverted",
+        "mixed": "mixed on extraversion",
+        "low": "more introverted",
+        "very_low": "more introverted",
+    },
+    "big_five_conscientiousness": {
+        "very_high": "highly conscientious",
+        "high": "conscientious",
+        "medium": "moderately conscientious",
+        "mixed": "mixed on conscientiousness",
+        "low": "less conscientious",
+        "very_low": "less conscientious",
+    },
+    "big_five_neuroticism": {
+        "very_high": "emotionally reactive",
+        "high": "emotionally reactive",
+        "medium": "moderately reactive",
+        "mixed": "mixed on emotional reactivity",
+        "low": "emotionally steadier",
+        "very_low": "emotionally steadier",
+    },
+    "prosocial_values": {
+        "very_high": "strongly prosocial values",
+        "high": "prosocial values",
+        "medium": "moderately prosocial values",
+        "mixed": "mixed on prosocial values",
+        "low": "less prosocial values",
+        "very_low": "less prosocial values",
+    },
+    "empathy": {
+        "very_high": "highly empathic",
+        "high": "empathic",
+        "medium": "moderately empathic",
+        "mixed": "mixed on empathy",
+        "low": "less empathic",
+        "very_low": "less empathic",
+    },
+    "cooperation_orientation": {
+        "very_high": "strongly cooperation-oriented",
+        "high": "cooperation-oriented",
+        "medium": "moderately cooperation-oriented",
+        "mixed": "mixed on cooperation",
+        "low": "less cooperation-oriented",
+        "very_low": "less cooperation-oriented",
+    },
+    "social_sensitivity": {
+        "very_high": "highly socially sensitive",
+        "high": "socially sensitive",
+        "medium": "moderately socially sensitive",
+        "mixed": "mixed on social sensitivity",
+        "low": "less socially sensitive",
+        "very_low": "less socially sensitive",
+    },
+    "self_concept_clarity": {
+        "very_high": "high self-concept clarity",
+        "high": "clear self-concept",
+        "medium": "moderately clear self-concept",
+        "mixed": "mixed on self-concept clarity",
+        "low": "less settled self-concept",
+        "very_low": "less settled self-concept",
+    },
+    "uncertainty_aversion": {
+        "very_high": "strongly uncertainty-averse",
+        "high": "uncertainty-averse",
+        "medium": "moderately uncertainty-averse",
+        "mixed": "mixed on uncertainty aversion",
+        "low": "comfortable with uncertainty",
+        "very_low": "comfortable with uncertainty",
+    },
+    "orderliness": {
+        "very_high": "highly orderly",
+        "high": "orderly",
+        "medium": "moderately orderly",
+        "mixed": "mixed on orderliness",
+        "low": "less orderly",
+        "very_low": "less orderly",
     },
 }
 
@@ -913,6 +1161,13 @@ def social_game_feature_map(profile: Dict[str, Any]) -> Dict[str, Dict[str, Any]
     return out
 
 
+def personality_feature_map(profile: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+    out: Dict[str, Dict[str, Any]] = {}
+    for item in profile["observed_in_twin"]["personality_and_self_report"]["summary_features"]:
+        out[item["name"]] = item
+    return out
+
+
 def chip_bargain_cue_specs_for_mode(detail_mode: str) -> Dict[str, Dict[str, Any]]:
     try:
         return CHIP_BARGAIN_PROMPT_MODE_TO_SPECS[detail_mode]
@@ -929,6 +1184,8 @@ def chip_bargain_reference_mode(detail_mode: str) -> str:
         return "chip_bargain_no_econ_games_prompt"
     if detail_mode == "chip_bargain_ultimatum_only_prompt_min":
         return "chip_bargain_ultimatum_only_prompt"
+    if detail_mode == "chip_bargain_self_report_social_only_prompt_min":
+        return "chip_bargain_self_report_social_only_prompt"
     if detail_mode == "chip_bargain_selective_prompt_min":
         return "chip_bargain_selective_prompt"
     return detail_mode
@@ -936,6 +1193,12 @@ def chip_bargain_reference_mode(detail_mode: str) -> str:
 
 def is_chip_bargain_direct_signal_mode(detail_mode: str) -> bool:
     return detail_mode in CHIP_BARGAIN_DIRECT_SIGNAL_PROMPT_MODES
+
+
+def chip_bargain_signal_section_title(detail_mode: str) -> str:
+    if detail_mode in CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES:
+        return "Self-Reported Social And Personality Cues"
+    return "Observed Task Signals"
 
 
 def bargaining_component_value(profile: Dict[str, Any], component: Dict[str, Any]) -> Optional[Dict[str, Any]]:
@@ -1049,6 +1312,37 @@ def build_chip_bargain_descriptive_signal_payloads(
     return out
 
 
+def build_chip_bargain_self_report_social_signal_payloads(
+    profile: Dict[str, Any],
+    signal_order: Sequence[str] = CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_SIGNAL_ORDER,
+) -> List[Dict[str, Any]]:
+    fmap = personality_feature_map(profile)
+    out: List[Dict[str, Any]] = []
+    for feature_name in signal_order:
+        feature = fmap.get(feature_name)
+        if feature is None:
+            continue
+        value = feature.get("value", {})
+        score = value.get("score_0_to_100")
+        label = value.get("label")
+        if score is None or label in {None, "unknown"}:
+            continue
+        spec = CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_SIGNAL_SPECS[feature_name]
+        out.append(
+            {
+                "cue": feature_name,
+                "label": label,
+                "score_0_to_100": int(score),
+                "confidence": "high",
+                "meaning_here": spec["meaning"],
+                "constructed_from": spec["built_from"],
+                "scope_note": spec["scope_note"],
+                "evidence_refs": feature.get("evidence_refs", []),
+            }
+        )
+    return out
+
+
 def build_chip_bargain_transfer_relevance(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, Any]]:
     if detail_mode in CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES:
         out = build_chip_bargain_descriptive_signal_payloads(profile)
@@ -1064,6 +1358,12 @@ def build_chip_bargain_transfer_relevance(profile: Dict[str, Any], detail_mode: 
             signal_order=CHIP_BARGAIN_ULTIMATUM_ONLY_SIGNAL_ORDER,
         )
         if detail_mode == "chip_bargain_ultimatum_only_prompt_min":
+            for item in out:
+                item["meaning_here"] = ""
+        return out
+    if detail_mode in CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES:
+        out = build_chip_bargain_self_report_social_signal_payloads(profile)
+        if detail_mode == "chip_bargain_self_report_social_only_prompt_min":
             for item in out:
                 item["meaning_here"] = ""
         return out
@@ -1165,7 +1465,11 @@ def build_headline(profile: Dict[str, Any], detail_mode: str) -> str:
     if detail_mode in CHIP_BARGAIN_PROMPT_MODES:
         if detail_mode in CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES:
             return "No direct social-game signals, broader context only, ablation card"
-        if detail_mode in (CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES):
+        if detail_mode in (
+            CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES
+            | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES
+            | CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES
+        ):
             payloads = build_chip_bargain_transfer_relevance(profile, chip_bargain_reference_mode(detail_mode))
             payloads.sort(
                 key=lambda item: (
@@ -1362,6 +1666,11 @@ def build_summary(profile: Dict[str, Any], detail_mode: str) -> str:
             return (
                 f"Most visible direct task signals are in {descriptor_text}. "
                 "These are observed one-shot ultimatum-task summaries only, so they should be used as descriptive priors rather than as literal bargaining rules."
+            )
+        if detail_mode in CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES:
+            return (
+                f"Most visible self-reported social cues are in {descriptor_text}. "
+                "These are questionnaire-based social and personality summaries only, so they should be used as weak descriptive priors rather than as literal bargaining rules."
             )
         return (
             f"Strongest bargaining-relevant tendencies are in {descriptor_text}. "
@@ -1608,17 +1917,24 @@ def build_observed_anchors(profile: Dict[str, Any], detail_mode: str) -> List[Di
         social_anchor = None
     elif detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
         social_anchor = anchor_from_ultimatum_only(observed["social_game_behavior"])
+    elif detail_mode in CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES:
+        social_anchor = None
     else:
         social_anchor = anchor_from_social_game(observed["social_game_behavior"])
-    anchors = [
-        social_anchor,
-        anchor_from_personality(observed["personality_and_self_report"]),
-        anchor_from_econ(observed["economic_preferences_non_social"]),
-        anchor_from_cognition(observed["cognitive_performance"]),
-        anchor_from_heuristics(observed["heuristics_and_biases"]),
-        anchor_from_pricing(observed["pricing_and_consumer_choice"]),
-        anchor_from_open_text(observed["open_text_responses"]),
-    ]
+    if detail_mode in CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES:
+        anchors = [
+            anchor_from_personality(observed["personality_and_self_report"]),
+        ]
+    else:
+        anchors = [
+            social_anchor,
+            anchor_from_personality(observed["personality_and_self_report"]),
+            anchor_from_econ(observed["economic_preferences_non_social"]),
+            anchor_from_cognition(observed["cognitive_performance"]),
+            anchor_from_heuristics(observed["heuristics_and_biases"]),
+            anchor_from_pricing(observed["pricing_and_consumer_choice"]),
+            anchor_from_open_text(observed["open_text_responses"]),
+        ]
     filtered = [anchor for anchor in anchors if anchor is not None]
     return filtered[: mode_setting(detail_mode, "anchors_max")]
 
@@ -1646,6 +1962,42 @@ def build_transfer_relevance(profile: Dict[str, Any], detail_mode: str) -> List[
 
 def build_limits(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, Any]]:
     def chip_bargain_uncertainties() -> List[Dict[str, Any]]:
+        if detail_mode in CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES:
+            return [
+                {
+                    "topic": "Transfer scope",
+                    "note": (
+                        "This profile is based on self-reported social and personality cues. It does not directly predict "
+                        "how the participant would behave in a specific chip-bargaining game."
+                    ),
+                    "evidence_refs": [
+                        "Personality::QID25",
+                        "Personality::QID29",
+                        "Personality::QID30",
+                        "Personality::QID232",
+                        "Personality::QID233",
+                        "Personality::QID236",
+                        "Personality::QID237",
+                        "Personality::QID238",
+                    ],
+                },
+                {
+                    "topic": "Source format",
+                    "note": (
+                        "These cues come from self-description rather than direct observed bargaining or allocation behavior."
+                    ),
+                    "evidence_refs": [
+                        "Personality::QID25",
+                        "Personality::QID29",
+                        "Personality::QID30",
+                        "Personality::QID232",
+                        "Personality::QID233",
+                        "Personality::QID236",
+                        "Personality::QID237",
+                        "Personality::QID238",
+                    ],
+                },
+            ][: mode_setting(detail_mode, "limits_max")]
         items: List[Dict[str, Any]] = []
         for item in profile["uncertainties"][: mode_setting(detail_mode, "limits_max")]:
             cloned = dict(item)
@@ -1665,6 +2017,7 @@ def build_limits(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, An
             CHIP_BARGAIN_DESCRIPTIVE_PROMPT_MODES
             | CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES
             | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES
+            | CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES
         ):
             return chip_bargain_uncertainties()
         limits: List[Dict[str, Any]] = []
@@ -1746,7 +2099,11 @@ def build_limits(profile: Dict[str, Any], detail_mode: str) -> List[Dict[str, An
 
 def build_card(profile: Dict[str, Any], detail_mode: str) -> Dict[str, Any]:
     behavioral_signature = []
-    if detail_mode not in (CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES):
+    if detail_mode not in (
+        CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES
+        | CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES
+        | CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES
+    ):
         behavioral_signature = profile["behavioral_signature"][: mode_setting(detail_mode, "signature_max")]
     return {
         "profile_card_version": "twin_extended_profile_card_v4",
@@ -1799,6 +2156,10 @@ def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: s
         lines.append("# Ultimatum-Only Ablation Cards For Chip-Bargaining Prompting")
     elif detail_mode == "chip_bargain_ultimatum_only_prompt_min":
         lines.append("# Minimal Ultimatum-Only Ablation Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_self_report_social_only_prompt":
+        lines.append("# Self-Reported-Social-Cue Ablation Cards For Chip-Bargaining Prompting")
+    elif detail_mode == "chip_bargain_self_report_social_only_prompt_min":
+        lines.append("# Minimal Self-Reported-Social-Cue Ablation Cards For Chip-Bargaining Prompting")
     elif detail_mode == "chip_bargain_selective_prompt":
         lines.append("# Selectivity-Sharpened Behavior Profile Cards For Chip-Bargaining Prompting")
     elif detail_mode == "chip_bargain_selective_prompt_min":
@@ -1853,7 +2214,7 @@ def build_markdown(cards: List[Dict[str, Any]], total_count: int, detail_mode: s
         lines.append("")
         if card["transfer_relevance"]:
             lines.append(
-                "**Observed Task Signals**"
+                f"**{chip_bargain_signal_section_title(str(card.get('detail_mode', '')))}**"
                 if is_chip_bargain_direct_signal_mode(str(card.get("detail_mode", "")))
                 else "**Transfer-Relevant Cues**"
             )
@@ -1914,6 +2275,8 @@ def build_shared_prompt_notes_for_mode(detail_mode: str) -> str:
             shared_note = CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_SHARED_NOTE
         elif detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
             shared_note = CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_SHARED_NOTE
+        elif detail_mode in CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES:
+            shared_note = CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_SHARED_NOTE
         else:
             shared_note = CHIP_BARGAIN_PROMPT_SHARED_NOTE
         for item in shared_note:
@@ -1927,6 +2290,8 @@ def build_shared_prompt_notes_for_mode(detail_mode: str) -> str:
             shared_caveats = CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_SHARED_CAVEATS
         elif detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
             shared_caveats = CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_SHARED_CAVEATS
+        elif detail_mode in CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES:
+            shared_caveats = CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_SHARED_CAVEATS
         else:
             shared_caveats = CHIP_BARGAIN_PROMPT_SHARED_CAVEATS
         for item in shared_caveats:
@@ -1941,6 +2306,9 @@ def build_shared_prompt_notes_for_mode(detail_mode: str) -> str:
         elif detail_mode in CHIP_BARGAIN_ULTIMATUM_ONLY_PROMPT_MODES:
             cue_specs = CHIP_BARGAIN_DESCRIPTIVE_SIGNAL_SPECS
             cue_order = CHIP_BARGAIN_ULTIMATUM_ONLY_SIGNAL_ORDER
+        elif detail_mode in CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_PROMPT_MODES:
+            cue_specs = CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_SIGNAL_SPECS
+            cue_order = CHIP_BARGAIN_SELF_REPORT_SOCIAL_ONLY_SIGNAL_ORDER
         elif detail_mode in CHIP_BARGAIN_NO_ECON_GAMES_PROMPT_MODES:
             cue_specs = {}
             cue_order = []
@@ -1950,7 +2318,7 @@ def build_shared_prompt_notes_for_mode(detail_mode: str) -> str:
         if cue_order:
             lines.append("")
             lines.append(
-                "## Observed Task Signals"
+                f"## {chip_bargain_signal_section_title(detail_mode)}"
                 if is_chip_bargain_direct_signal_mode(detail_mode)
                 else "## Cue Glossary"
             )

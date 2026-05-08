@@ -1,0 +1,53 @@
+{
+  "per_model": {
+    "gpt_5_1": {
+      "ranking_spearman_vs_truth": -0.37058823529411766,
+      "ranking_pairwise_accuracy_vs_truth": 0.35833333333333334,
+      "classification_accuracy": 0.1875,
+      "classification_macro_f1": 0.19444444444444442,
+      "missing_from_raw_ranking": [
+        "ISSP"
+      ],
+      "raw_ranking_length": 15
+    },
+    "gpt_5_mini": {
+      "ranking_spearman_vs_truth": 0.026470588235294135,
+      "ranking_pairwise_accuracy_vs_truth": 0.5166666666666667,
+      "classification_accuracy": 0.375,
+      "classification_macro_f1": 0.27884615384615385,
+      "missing_from_raw_ranking": [],
+      "raw_ranking_length": 16
+    },
+    "gpt_5_nano": {
+      "ranking_spearman_vs_truth": -0.1264705882352941,
+      "ranking_pairwise_accuracy_vs_truth": 0.4583333333333333,
+      "classification_accuracy": 0.1875,
+      "classification_macro_f1": 0.14652014652014653,
+      "missing_from_raw_ranking": [],
+      "raw_ranking_length": 16
+    }
+  },
+  "pairwise_agreement": [
+    {
+      "model_a": "gpt_5_1",
+      "model_b": "gpt_5_mini",
+      "label_agreement": 0.5,
+      "rank_spearman_between_models": 0.2852941176470588,
+      "rank_pairwise_agreement_between_models": 0.5916666666666667
+    },
+    {
+      "model_a": "gpt_5_1",
+      "model_b": "gpt_5_nano",
+      "label_agreement": 0.4375,
+      "rank_spearman_between_models": 0.2382352941176471,
+      "rank_pairwise_agreement_between_models": 0.5833333333333334
+    },
+    {
+      "model_a": "gpt_5_mini",
+      "model_b": "gpt_5_nano",
+      "label_agreement": 0.5625,
+      "rank_spearman_between_models": 0.13235294117647056,
+      "rank_pairwise_agreement_between_models": 0.575
+    }
+  ]
+}

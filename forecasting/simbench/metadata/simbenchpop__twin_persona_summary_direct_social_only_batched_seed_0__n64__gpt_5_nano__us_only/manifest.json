@@ -1,0 +1,17 @@
+{
+  "run_name": "simbenchpop__twin_persona_summary_direct_social_only_batched_seed_0__n64__gpt_5_nano__us_only",
+  "model": "gpt-5-nano",
+  "summary_variant": "twin_persona_summary_direct_social_only",
+  "simbench_split": "SimBenchPop",
+  "num_samples_per_context": 64,
+  "dataset_names": [],
+  "only_us_country_context": true,
+  "seed": 0,
+  "shared_twin_panel_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_direct_social_only_batched_seed_0__n64__gpt_5_nano__us_only/shared_twin_panel.json",
+  "request_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_direct_social_only_batched_seed_0__n64__gpt_5_nano__us_only/request_manifest.csv",
+  "request_token_estimates_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_direct_social_only_batched_seed_0__n64__gpt_5_nano__us_only/request_token_estimates.json",
+  "gold_targets_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_direct_social_only_batched_seed_0__n64__gpt_5_nano__us_only/gold_targets.jsonl",
+  "selected_rows_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_direct_social_only_batched_seed_0__n64__gpt_5_nano__us_only/selected_rows.csv",
+  "selected_contexts_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_direct_social_only_batched_seed_0__n64__gpt_5_nano__us_only/selected_contexts.csv",
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_input/simbenchpop__twin_persona_summary_direct_social_only_batched_seed_0__n64__gpt_5_nano__us_only.jsonl"
+}

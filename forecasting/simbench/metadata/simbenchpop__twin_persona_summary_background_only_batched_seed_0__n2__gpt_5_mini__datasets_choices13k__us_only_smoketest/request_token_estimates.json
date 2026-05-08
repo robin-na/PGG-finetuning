@@ -1,0 +1,11 @@
+{
+  "run_name": "simbenchpop__twin_persona_summary_background_only_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest",
+  "model": "gpt-5-mini",
+  "summary_variant": "twin_persona_summary_background_only",
+  "request_count": 2,
+  "total_input_tokens_estimate": 49144,
+  "mean_input_tokens_estimate": 24572.0,
+  "min_input_tokens_estimate": 24567,
+  "max_input_tokens_estimate": 24577,
+  "estimation_method": "heuristic_chars_div_4"
+}

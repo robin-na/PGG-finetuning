@@ -27,9 +27,17 @@ TWIN_TRANSFER_CUE_DISPLAY_NAMES = {
 
 
 def _is_chip_bargain_direct_signal_mode(detail_mode: str) -> bool:
-    return detail_mode.startswith("chip_bargain_descriptive_prompt") or detail_mode.startswith(
-        "chip_bargain_ultimatum_only_prompt"
+    return (
+        detail_mode.startswith("chip_bargain_descriptive_prompt")
+        or detail_mode.startswith("chip_bargain_ultimatum_only_prompt")
+        or detail_mode.startswith("chip_bargain_self_report_social_only_prompt")
     )
+
+
+def _chip_bargain_signal_section_title(detail_mode: str) -> str:
+    if detail_mode.startswith("chip_bargain_self_report_social_only_prompt"):
+        return "Self-Reported Social Cues:"
+    return "Observed Task Signals:"
 
 
 def render_demographic_profile_block(card: dict[str, Any]) -> str:
@@ -87,7 +95,7 @@ def render_twin_profile_block(
     transfer_relevance = card.get("transfer_relevance", [])
     if transfer_relevance:
         section_title = (
-            "Observed Task Signals:"
+            _chip_bargain_signal_section_title(str(card.get("detail_mode", "")))
             if _is_chip_bargain_direct_signal_mode(str(card.get("detail_mode", "")))
             else "Transfer-Relevant Cues:"
         )
@@ -210,7 +218,7 @@ def render_pgg_persona_block(
         transfer_relevance = card.get("transfer_relevance", [])
         if transfer_relevance:
             section_title = (
-                "Observed Task Signals:"
+                _chip_bargain_signal_section_title(str(card.get("detail_mode", "")))
                 if _is_chip_bargain_direct_signal_mode(str(card.get("detail_mode", "")))
                 else "Transfer-Relevant Cues:"
             )

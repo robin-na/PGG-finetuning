@@ -1,0 +1,17 @@
+dataset_name,true_rank,true_label,delta_simbench_score,gpt_5_1_label,gpt_5_mini_label,gpt_5_nano_label
+OSPsychRWAS,1,positive,44.74141446784337,positive,positive,positive
+ChaosNLI,2,positive,28.92337511776489,negative,insignificant,insignificant
+MoralMachine,3,positive,25.119861302599034,insignificant,positive,positive
+ConspiracyCorr,4,insignificant,10.745967741935445,positive,positive,positive
+DICES,5,positive,3.519809509483224,insignificant,positive,insignificant
+WisdomOfCrowds,6,insignificant,3.182054241758891,negative,positive,insignificant
+OSPsychMGKT,7,insignificant,2.8563696644529273,negative,insignificant,positive
+OpinionQA,8,insignificant,2.4130516228343026,positive,positive,positive
+NumberGame,9,insignificant,2.2478513268267015,negative,positive,positive
+GlobalOpinionQA,10,insignificant,-3.464182118851731,positive,positive,negative
+TISP,11,insignificant,-11.160868125090083,positive,positive,positive
+Jester,12,negative,-11.179131666330527,negative,positive,insignificant
+OSPsychMACH,13,insignificant,-15.534790481117483,insignificant,insignificant,positive
+ISSP,14,insignificant,-15.795488734428655,positive,insignificant,negative
+OSPsychBig5,15,negative,-23.231877596976233,positive,positive,positive
+Choices13k,16,negative,-27.638276184702796,positive,positive,positive

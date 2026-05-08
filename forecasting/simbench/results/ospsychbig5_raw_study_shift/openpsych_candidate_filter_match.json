@@ -1,0 +1,22 @@
+[
+  {
+    "candidate": "us",
+    "n": 546403,
+    "mean_item_tvd_to_simbench_us40": 0.028439114167536715
+  },
+  {
+    "candidate": "us_ipc1",
+    "n": 345443,
+    "mean_item_tvd_to_simbench_us40": 0.032981008864184674
+  },
+  {
+    "candidate": "us_complete",
+    "n": 472320,
+    "mean_item_tvd_to_simbench_us40": 0.03015335885441748
+  },
+  {
+    "candidate": "us_complete_ipc1",
+    "n": 300604,
+    "mean_item_tvd_to_simbench_us40": 0.035429408804402956
+  }
+]

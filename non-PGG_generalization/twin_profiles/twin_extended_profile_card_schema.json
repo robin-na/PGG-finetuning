@@ -38,6 +38,8 @@
         "chip_bargain_no_econ_games_prompt_min",
         "chip_bargain_ultimatum_only_prompt",
         "chip_bargain_ultimatum_only_prompt_min",
+        "chip_bargain_self_report_social_only_prompt",
+        "chip_bargain_self_report_social_only_prompt_min",
         "chip_bargain_selective_prompt",
         "chip_bargain_selective_prompt_min"
       ]
@@ -121,7 +123,7 @@
         "$ref": "#/$defs/transferCue"
       },
       "minItems": 0,
-      "maxItems": 7
+      "maxItems": 12
     },
     "limits": {
       "type": "array",

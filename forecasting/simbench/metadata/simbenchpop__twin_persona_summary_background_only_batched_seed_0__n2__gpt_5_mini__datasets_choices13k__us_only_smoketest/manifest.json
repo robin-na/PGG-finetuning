@@ -1,0 +1,19 @@
+{
+  "run_name": "simbenchpop__twin_persona_summary_background_only_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest",
+  "model": "gpt-5-mini",
+  "summary_variant": "twin_persona_summary_background_only",
+  "simbench_split": "SimBenchPop",
+  "num_samples_per_context": 2,
+  "dataset_names": [
+    "Choices13k"
+  ],
+  "only_us_country_context": true,
+  "seed": 0,
+  "shared_twin_panel_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_background_only_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/shared_twin_panel.json",
+  "request_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_background_only_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/request_manifest.csv",
+  "request_token_estimates_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_background_only_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/request_token_estimates.json",
+  "gold_targets_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_background_only_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/gold_targets.jsonl",
+  "selected_rows_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_background_only_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/selected_rows.csv",
+  "selected_contexts_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__twin_persona_summary_background_only_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest/selected_contexts.csv",
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_input/simbenchpop__twin_persona_summary_background_only_batched_seed_0__n2__gpt_5_mini__datasets_choices13k__us_only_smoketest.jsonl"
+}

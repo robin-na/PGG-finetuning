@@ -1,0 +1,17 @@
+dataset_name,true_rank,true_label,delta_simbench_score,predicted_label,confidence
+OSPsychRWAS,1,positive,44.74141446784337,positive,0.85
+ChaosNLI,2,positive,28.92337511776489,negative,0.65
+MoralMachine,3,positive,25.119861302599034,insignificant,0.65
+ConspiracyCorr,4,insignificant,10.745967741935445,positive,0.7
+DICES,5,positive,3.519809509483224,insignificant,0.6
+WisdomOfCrowds,6,insignificant,3.182054241758891,negative,0.7
+OSPsychMGKT,7,insignificant,2.8563696644529273,negative,0.7
+OpinionQA,8,insignificant,2.4130516228343026,positive,0.8
+NumberGame,9,insignificant,2.2478513268267015,negative,0.65
+GlobalOpinionQA,10,insignificant,-3.464182118851731,positive,0.7
+TISP,11,insignificant,-11.160868125090083,positive,0.8
+Jester,12,negative,-11.179131666330527,negative,0.7
+OSPsychMACH,13,insignificant,-15.534790481117483,insignificant,0.55
+ISSP,14,insignificant,-15.795488734428655,positive,0.75
+OSPsychBig5,15,negative,-23.231877596976233,positive,0.9
+Choices13k,16,negative,-27.638276184702796,positive,0.85

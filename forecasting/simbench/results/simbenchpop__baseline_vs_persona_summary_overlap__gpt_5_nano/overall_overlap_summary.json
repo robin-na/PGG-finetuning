@@ -1,0 +1,17 @@
+{
+  "base_run": "simbenchpop__baseline_group_batched_explained__gpt_5_nano__us_only",
+  "twin_run": "simbenchpop__twin_persona_summary_batched_seed_0__n64__gpt_5_nano__us_only",
+  "n_overlap_rows": 2694,
+  "mean_tvd_baseline": 0.2811333740886936,
+  "mean_tvd_twin": 0.29484093566348146,
+  "weighted_mean_tvd_baseline": 0.30467349328750937,
+  "weighted_mean_tvd_twin": 0.26244950524109506,
+  "mean_normalized_predicted_entropy_baseline": 0.7943750123522302,
+  "mean_normalized_predicted_entropy_twin": 0.9154727410300536,
+  "mean_predicted_entropy_baseline": 0.798182512505073,
+  "mean_predicted_entropy_twin": 0.9369577838988101,
+  "mean_jsd_baseline": 0.08575025549098608,
+  "mean_jsd_twin": 0.08365214146276491,
+  "modal_match_baseline": 0.4487750556792873,
+  "modal_match_twin": 0.5757238307349666
+}

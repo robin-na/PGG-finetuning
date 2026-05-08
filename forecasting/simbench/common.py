@@ -134,6 +134,8 @@ def extract_json_object_text(text: str) -> str:
 
 def load_request_manifest_df(path: Path) -> pd.DataFrame:
     frame = pd.read_csv(path)
+    if "variant" not in frame.columns and "summary_variant" in frame.columns:
+        frame["variant"] = frame["summary_variant"]
     for column in [
         "custom_id",
         "run_name",
@@ -202,9 +204,11 @@ def simbench_score(
     gold: dict[str, float],
     option_labels: list[str],
     *,
+    baseline_tvd: float | None = None,
     scale: float = 100.0,
 ) -> float:
-    baseline_tvd = uniform_baseline_tvd(gold, option_labels)
+    if baseline_tvd is None:
+        baseline_tvd = uniform_baseline_tvd(gold, option_labels)
     predicted_tvd = total_variation_distance(predicted, gold, option_labels)
     if baseline_tvd <= 0:
         if predicted_tvd <= 0:
@@ -374,7 +378,11 @@ def validate_batched_prediction_payload(
     question_errors: dict[str, list[str]] = {}
     explanation = ""
 
-    if response_schema == "batched_explanation_plus_answers":
+    normalized_schema = response_schema
+    if normalized_schema == "json_object":
+        normalized_schema = "batched_explanation_plus_answers"
+
+    if normalized_schema == "batched_explanation_plus_answers":
         top_level_keys = set(payload.keys())
         required_keys = {"explanation", "answers"}
         missing_keys = sorted(required_keys - top_level_keys)
@@ -398,7 +406,7 @@ def validate_batched_prediction_payload(
         if not isinstance(answers_payload, dict):
             errors.append("Top-level key 'answers' must be an object.")
             answers_payload = {}
-    elif response_schema == "batched_distribution_only":
+    elif normalized_schema == "batched_distribution_only":
         answers_payload = payload
     else:
         return None, [f"Unsupported response schema: {response_schema}"], {}

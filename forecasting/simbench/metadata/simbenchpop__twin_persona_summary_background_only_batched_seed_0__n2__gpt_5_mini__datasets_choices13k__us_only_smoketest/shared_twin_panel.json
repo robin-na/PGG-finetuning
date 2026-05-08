@@ -1,0 +1,12 @@
+{
+  "sampling_scope": "global_panel_across_contexts",
+  "seed": 0,
+  "derived_seed": 1330317528,
+  "summary_variant": "twin_persona_summary_background_only",
+  "simbench_split": "SimBenchPop",
+  "num_samples": 2,
+  "twin_pids": [
+    "926",
+    "754"
+  ]
+}

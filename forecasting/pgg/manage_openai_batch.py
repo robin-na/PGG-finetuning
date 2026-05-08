@@ -3,12 +3,18 @@ from __future__ import annotations
 import argparse
 import json
 import time
+import uuid
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+import urllib.error
+import urllib.request
 
-from openai import OpenAI
+try:
+    from openai import OpenAI as SDKOpenAI
+except ImportError:  # pragma: no cover
+    SDKOpenAI = None
 
 from repo_env import require_env_var
 
@@ -16,6 +22,7 @@ from repo_env import require_env_var
 TERMINAL_BATCH_STATUSES = {"completed", "failed", "expired", "cancelled"}
 BATCH_STATE_FILENAME = "openai_batch_state.json"
 ERROR_OUTPUT_FILENAME = "openai_batch_error.jsonl"
+OPENAI_API_BASE = "https://api.openai.com/v1"
 
 
 @dataclass(frozen=True)
@@ -26,6 +33,107 @@ class BatchPaths:
     output_jsonl: Path
     state_json: Path
     run_name: str
+
+
+class _BinaryContent:
+    def __init__(self, payload: bytes) -> None:
+        self._payload = payload
+
+    def read(self) -> bytes:
+        return self._payload
+
+
+class _RestFilesAPI:
+    def __init__(self, api_key: str, *, base_url: str = OPENAI_API_BASE) -> None:
+        self.api_key = api_key
+        self.base_url = base_url.rstrip("/")
+
+    def _headers(self, content_type: str | None = None) -> dict[str, str]:
+        headers = {"Authorization": f"Bearer {self.api_key}"}
+        if content_type:
+            headers["Content-Type"] = content_type
+        return headers
+
+    def create(self, *, file: Any, purpose: str) -> dict[str, Any]:
+        filename = Path(getattr(file, "name", "batch.jsonl")).name
+        payload = file.read()
+        boundary = f"----CodexBatch{uuid.uuid4().hex}"
+        parts = [
+            f"--{boundary}\r\n".encode("utf-8"),
+            b'Content-Disposition: form-data; name="purpose"\r\n\r\n',
+            purpose.encode("utf-8"),
+            b"\r\n",
+            f"--{boundary}\r\n".encode("utf-8"),
+            f'Content-Disposition: form-data; name="file"; filename="{filename}"\r\n'.encode("utf-8"),
+            b"Content-Type: application/jsonl\r\n\r\n",
+            payload,
+            b"\r\n",
+            f"--{boundary}--\r\n".encode("utf-8"),
+        ]
+        body = b"".join(parts)
+        request = urllib.request.Request(
+            f"{self.base_url}/files",
+            data=body,
+            headers=self._headers(f"multipart/form-data; boundary={boundary}"),
+            method="POST",
+        )
+        with urllib.request.urlopen(request, timeout=300) as response:
+            return json.loads(response.read().decode("utf-8"))
+
+    def content(self, file_id: str) -> _BinaryContent:
+        request = urllib.request.Request(
+            f"{self.base_url}/files/{file_id}/content",
+            headers=self._headers(),
+            method="GET",
+        )
+        with urllib.request.urlopen(request, timeout=300) as response:
+            return _BinaryContent(response.read())
+
+
+class _RestBatchesAPI:
+    def __init__(self, api_key: str, *, base_url: str = OPENAI_API_BASE) -> None:
+        self.api_key = api_key
+        self.base_url = base_url.rstrip("/")
+
+    def _headers(self) -> dict[str, str]:
+        return {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
+
+    def _json_request(self, method: str, url: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
+        data = json.dumps(payload).encode("utf-8") if payload is not None else None
+        request = urllib.request.Request(url, data=data, headers=self._headers(), method=method)
+        with urllib.request.urlopen(request, timeout=300) as response:
+            return json.loads(response.read().decode("utf-8"))
+
+    def create(
+        self,
+        *,
+        input_file_id: str,
+        endpoint: str,
+        completion_window: str,
+        metadata: dict[str, Any],
+    ) -> dict[str, Any]:
+        return self._json_request(
+            "POST",
+            f"{self.base_url}/batches",
+            {
+                "input_file_id": input_file_id,
+                "endpoint": endpoint,
+                "completion_window": completion_window,
+                "metadata": metadata,
+            },
+        )
+
+    def retrieve(self, batch_id: str) -> dict[str, Any]:
+        return self._json_request("GET", f"{self.base_url}/batches/{batch_id}")
+
+
+class _RestOpenAI:
+    def __init__(self, *, api_key: str, base_url: str = OPENAI_API_BASE) -> None:
+        self.files = _RestFilesAPI(api_key, base_url=base_url)
+        self.batches = _RestBatchesAPI(api_key, base_url=base_url)
 
 
 def _utc_now_iso() -> str:
@@ -101,9 +209,23 @@ def _detect_endpoint(requests_jsonl: Path) -> str:
     raise ValueError(f"No requests found in {requests_jsonl}")
 
 
-def _make_client() -> OpenAI:
+def _make_client() -> Any:
     api_key = require_env_var("OPENAI_API_KEY")
-    return OpenAI(api_key=api_key)
+    if SDKOpenAI is not None:
+        return SDKOpenAI(api_key=api_key)
+    return _RestOpenAI(api_key=api_key)
+
+
+def _object_id(payload: Any) -> str:
+    if isinstance(payload, dict):
+        value = payload.get("id")
+        if not value:
+            raise KeyError("Response payload did not include an id field.")
+        return str(value)
+    value = getattr(payload, "id", None)
+    if not value:
+        raise AttributeError("Response object did not include an id attribute.")
+    return str(value)
 
 
 def _batch_to_dict(batch: Any) -> dict[str, Any]:
@@ -205,7 +327,7 @@ def _submit_batch(args: argparse.Namespace) -> dict[str, Any]:
         "model": str(manifest.get("model") or ""),
     }
     batch = client.batches.create(
-        input_file_id=upload.id,
+        input_file_id=_object_id(upload),
         endpoint=endpoint,
         completion_window=args.completion_window,
         metadata=metadata,
@@ -217,7 +339,7 @@ def _submit_batch(args: argparse.Namespace) -> dict[str, Any]:
             "submitted_at": _utc_now_iso(),
             "completion_window": args.completion_window,
             "endpoint": endpoint,
-            "input_file_id": upload.id,
+            "input_file_id": _object_id(upload),
         },
         batch_payload=batch_payload,
     )

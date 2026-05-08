@@ -1,0 +1,9 @@
+{
+  "rows_in_overlap": 2604,
+  "baseline_mean_simbench_score": -15.616112692242387,
+  "persona_summary_mean_simbench_score": -43.75554892730762,
+  "baseline_median_simbench_score": 1.168415315438076,
+  "persona_summary_median_simbench_score": 40.81250000000001,
+  "baseline_weighted_mean_simbench_score": -91.84294344940044,
+  "persona_summary_weighted_mean_simbench_score": -83.5349341346706
+}

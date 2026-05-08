@@ -1,0 +1,14 @@
+{
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_output/simbenchpop__baseline_group_batched_explained__gpt_5_nano__us_only.jsonl",
+  "request_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__baseline_group_batched_explained__gpt_5_nano__us_only/request_manifest.csv",
+  "parsed_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/metadata/simbenchpop__baseline_group_batched_explained__gpt_5_nano__us_only/parsed_output.jsonl",
+  "num_raw_rows": 23,
+  "num_parsed_rows": 23,
+  "parse_success_count": 16,
+  "parse_success_rate": 0.6956521739130435,
+  "request_with_any_valid_answers_count": 23,
+  "request_with_any_valid_answers_rate": 1.0,
+  "expected_question_total": 2794,
+  "valid_question_total": 2694,
+  "valid_question_rate": 0.9642090193271295
+}

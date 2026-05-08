@@ -1,0 +1,8 @@
+{
+  "request_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/batch_input/simbenchpop__baseline_group_batched_explained__gpt_5_nano__us_only.jsonl",
+  "num_requests": 23,
+  "total_input_tokens_estimate": 222465,
+  "mean_input_tokens_estimate": 9672.391304347826,
+  "max_input_tokens_estimate": 44083,
+  "min_input_tokens_estimate": 288
+}

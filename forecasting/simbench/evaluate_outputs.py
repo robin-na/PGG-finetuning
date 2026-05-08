@@ -236,6 +236,24 @@ def main() -> None:
         for row_id, group in request_question_df.groupby("simbench_row_id", sort=False)
     }
 
+    row_uniform_baselines: list[dict[str, Any]] = []
+    for gold_row in gold_rows:
+        option_labels = [str(label) for label in gold_row["option_labels"]]
+        gold_distribution = normalize_distribution(gold_row["gold_distribution"])
+        row_uniform_baselines.append(
+            {
+                "simbench_row_id": str(gold_row["simbench_row_id"]),
+                "dataset_name": str(gold_row["dataset_name"]),
+                "uniform_baseline_tvd": uniform_baseline_tvd(gold_distribution, option_labels),
+            }
+        )
+    dataset_uniform_baseline_means = (
+        pd.DataFrame(row_uniform_baselines)
+        .groupby("dataset_name", sort=False)["uniform_baseline_tvd"]
+        .mean()
+        .to_dict()
+    )
+
     row_eval_rows: list[dict[str, Any]] = []
     for gold_row in gold_rows:
         simbench_row_id = str(gold_row["simbench_row_id"])
@@ -259,6 +277,7 @@ def main() -> None:
         gold_modal = modal_label(gold_distribution, option_labels)
         evaluated = bool(predicted_distribution)
         baseline_tvd = uniform_baseline_tvd(gold_distribution, option_labels)
+        dataset_baseline_tvd_mean = float(dataset_uniform_baseline_means.get(str(gold_row["dataset_name"]), float("nan")))
 
         row_eval_rows.append(
             {
@@ -307,6 +326,7 @@ def main() -> None:
                 ),
                 "gold_entropy": shannon_entropy(gold_distribution, option_labels),
                 "uniform_baseline_tvd": baseline_tvd,
+                "dataset_uniform_baseline_tvd_mean": dataset_baseline_tvd_mean,
                 "tvd": (
                     total_variation_distance(predicted_distribution, gold_distribution, option_labels)
                     if evaluated
@@ -318,12 +338,24 @@ def main() -> None:
                     else float("nan")
                 ),
                 "simbench_score_raw": (
-                    simbench_score(predicted_distribution, gold_distribution, option_labels, scale=1.0)
+                    simbench_score(
+                        predicted_distribution,
+                        gold_distribution,
+                        option_labels,
+                        baseline_tvd=dataset_baseline_tvd_mean,
+                        scale=1.0,
+                    )
                     if evaluated
                     else float("nan")
                 ),
                 "simbench_score": (
-                    simbench_score(predicted_distribution, gold_distribution, option_labels, scale=100.0)
+                    simbench_score(
+                        predicted_distribution,
+                        gold_distribution,
+                        option_labels,
+                        baseline_tvd=dataset_baseline_tvd_mean,
+                        scale=100.0,
+                    )
                     if evaluated
                     else float("nan")
                 ),

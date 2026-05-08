@@ -1,0 +1,28 @@
+{
+  "heterogeneity_plot": {
+    "mini_delta_mean_simbench_score": 1.5139909441439663,
+    "nano_delta_mean_simbench_score": 0.8602361084252219,
+    "delta_plot_rows": 32,
+    "grouped_plot_rows": 16,
+    "significance_side_by_side_rows": 32,
+    "baseline_heatmap_columns": 20
+  },
+  "prediction_plot": {
+    "gpt-5-mini": {
+      "spearman_rho_predicted_helpfulness_vs_actual_delta": -0.44117647058823534,
+      "p_value": 0.08715363626051087
+    },
+    "gpt-5-nano": {
+      "spearman_rho_predicted_helpfulness_vs_actual_delta": 0.23823529411764705,
+      "p_value": 0.37425412972798844
+    },
+    "gpt-5-mini_rank_scatter": {
+      "spearman_rho_predicted_rank_vs_actual_rank": -0.44117647058823534,
+      "p_value": 0.08715363626051087
+    },
+    "gpt-5-nano_rank_scatter": {
+      "spearman_rho_predicted_rank_vs_actual_rank": 0.23823529411764705,
+      "p_value": 0.37425412972798844
+    }
+  }
+}

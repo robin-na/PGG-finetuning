@@ -1,0 +1,14 @@
+{
+  "batch_output_jsonl": "forecasting/simbench/batch_output/simbenchpop__twin_persona_summary_non_social_econ_only_batched_seed_0__n64__gpt_5_nano__us_only.jsonl",
+  "request_manifest_csv": "forecasting/simbench/metadata/simbenchpop__twin_persona_summary_non_social_econ_only_batched_seed_0__n64__gpt_5_nano__us_only/request_manifest.csv",
+  "parsed_output_jsonl": "forecasting/simbench/metadata/simbenchpop__twin_persona_summary_non_social_econ_only_batched_seed_0__n64__gpt_5_nano__us_only/parsed_output.jsonl",
+  "num_raw_rows": 1472,
+  "num_parsed_rows": 1472,
+  "parse_success_count": 921,
+  "parse_success_rate": 0.6256793478260869,
+  "request_with_any_valid_answers_count": 1464,
+  "request_with_any_valid_answers_rate": 0.9945652173913043,
+  "expected_question_total": 178816,
+  "valid_question_total": 174412,
+  "valid_question_rate": 0.9753713314244811
+}

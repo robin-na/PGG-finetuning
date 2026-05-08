@@ -1,0 +1,11 @@
+{
+  "run_name": "simbenchpop__twin_persona_summary_background_only_batched_seed_0__n64__gpt_5_nano__us_only",
+  "model": "gpt-5-nano",
+  "summary_variant": "twin_persona_summary_background_only",
+  "request_count": 1472,
+  "total_input_tokens_estimate": 12824112,
+  "mean_input_tokens_estimate": 8712.032608695652,
+  "min_input_tokens_estimate": 436,
+  "max_input_tokens_estimate": 37675,
+  "estimation_method": "heuristic_chars_div_4"
+}

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Callable
+from typing import Optional, Tuple
 
 import pandas as pd
 
@@ -12,7 +13,7 @@ from .two_stage_trust_punishment_y2hgu import (
     build_prompt as build_two_stage_trust_punishment_y2hgu,
 )
 
-PromptBuilder = Callable[[pd.Series, str | None], tuple[str, str]]
+PromptBuilder = Callable[[pd.Series, Optional[str]], Tuple[str, str]]
 
 
 def get_prompt_builder(dataset_key: str) -> PromptBuilder:

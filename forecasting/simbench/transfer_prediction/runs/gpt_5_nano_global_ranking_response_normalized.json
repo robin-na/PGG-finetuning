@@ -1,0 +1,102 @@
+{
+  "ranking_most_helpful_to_most_harmful": [
+    "OSPsychBig5",
+    "OSPsychRWAS",
+    "OSPsychMACH",
+    "OSPsychMGKT",
+    "Choices13k",
+    "NumberGame",
+    "MoralMachine",
+    "OpinionQA",
+    "TISP",
+    "ConspiracyCorr",
+    "Jester",
+    "WisdomOfCrowds",
+    "DICES",
+    "ChaosNLI",
+    "GlobalOpinionQA",
+    "ISSP"
+  ],
+  "task_predictions": [
+    {
+      "dataset_name": "OSPsychBig5",
+      "predicted_label": "positive",
+      "confidence": 0.85
+    },
+    {
+      "dataset_name": "OSPsychRWAS",
+      "predicted_label": "positive",
+      "confidence": 0.8
+    },
+    {
+      "dataset_name": "OSPsychMACH",
+      "predicted_label": "positive",
+      "confidence": 0.78
+    },
+    {
+      "dataset_name": "OSPsychMGKT",
+      "predicted_label": "positive",
+      "confidence": 0.7
+    },
+    {
+      "dataset_name": "Choices13k",
+      "predicted_label": "positive",
+      "confidence": 0.65
+    },
+    {
+      "dataset_name": "NumberGame",
+      "predicted_label": "positive",
+      "confidence": 0.6
+    },
+    {
+      "dataset_name": "MoralMachine",
+      "predicted_label": "positive",
+      "confidence": 0.58
+    },
+    {
+      "dataset_name": "OpinionQA",
+      "predicted_label": "positive",
+      "confidence": 0.5
+    },
+    {
+      "dataset_name": "TISP",
+      "predicted_label": "positive",
+      "confidence": 0.45
+    },
+    {
+      "dataset_name": "ConspiracyCorr",
+      "predicted_label": "positive",
+      "confidence": 0.4
+    },
+    {
+      "dataset_name": "Jester",
+      "predicted_label": "insignificant",
+      "confidence": 0.4
+    },
+    {
+      "dataset_name": "WisdomOfCrowds",
+      "predicted_label": "insignificant",
+      "confidence": 0.35
+    },
+    {
+      "dataset_name": "DICES",
+      "predicted_label": "insignificant",
+      "confidence": 0.3
+    },
+    {
+      "dataset_name": "ChaosNLI",
+      "predicted_label": "insignificant",
+      "confidence": 0.28
+    },
+    {
+      "dataset_name": "GlobalOpinionQA",
+      "predicted_label": "negative",
+      "confidence": 0.25
+    },
+    {
+      "dataset_name": "ISSP",
+      "predicted_label": "negative",
+      "confidence": 0.25
+    }
+  ]
+}

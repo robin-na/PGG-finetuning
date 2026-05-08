@@ -1,0 +1,102 @@
+{
+  "ranking_most_helpful_to_most_harmful": [
+    "Choices13k",
+    "OSPsychBig5",
+    "OSPsychRWAS",
+    "OpinionQA",
+    "TISP",
+    "ISSP",
+    "GlobalOpinionQA",
+    "ConspiracyCorr",
+    "DICES",
+    "MoralMachine",
+    "OSPsychMACH",
+    "Jester",
+    "WisdomOfCrowds",
+    "NumberGame",
+    "ChaosNLI",
+    "OSPsychMGKT"
+  ],
+  "task_predictions": [
+    {
+      "dataset_name": "ChaosNLI",
+      "predicted_label": "negative",
+      "confidence": 0.65
+    },
+    {
+      "dataset_name": "Choices13k",
+      "predicted_label": "positive",
+      "confidence": 0.85
+    },
+    {
+      "dataset_name": "ConspiracyCorr",
+      "predicted_label": "positive",
+      "confidence": 0.7
+    },
+    {
+      "dataset_name": "DICES",
+      "predicted_label": "insignificant",
+      "confidence": 0.6
+    },
+    {
+      "dataset_name": "GlobalOpinionQA",
+      "predicted_label": "positive",
+      "confidence": 0.7
+    },
+    {
+      "dataset_name": "ISSP",
+      "predicted_label": "positive",
+      "confidence": 0.75
+    },
+    {
+      "dataset_name": "Jester",
+      "predicted_label": "negative",
+      "confidence": 0.7
+    },
+    {
+      "dataset_name": "MoralMachine",
+      "predicted_label": "insignificant",
+      "confidence": 0.65
+    },
+    {
+      "dataset_name": "NumberGame",
+      "predicted_label": "negative",
+      "confidence": 0.65
+    },
+    {
+      "dataset_name": "OSPsychBig5",
+      "predicted_label": "positive",
+      "confidence": 0.9
+    },
+    {
+      "dataset_name": "OSPsychMACH",
+      "predicted_label": "insignificant",
+      "confidence": 0.55
+    },
+    {
+      "dataset_name": "OSPsychMGKT",
+      "predicted_label": "negative",
+      "confidence": 0.7
+    },
+    {
+      "dataset_name": "OSPsychRWAS",
+      "predicted_label": "positive",
+      "confidence": 0.85
+    },
+    {
+      "dataset_name": "OpinionQA",
+      "predicted_label": "positive",
+      "confidence": 0.8
+    },
+    {
+      "dataset_name": "TISP",
+      "predicted_label": "positive",
+      "confidence": 0.8
+    },
+    {
+      "dataset_name": "WisdomOfCrowds",
+      "predicted_label": "negative",
+      "confidence": 0.7
+    }
+  ]
+}
