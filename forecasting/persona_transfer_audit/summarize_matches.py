@@ -51,7 +51,10 @@ def summarize(args: argparse.Namespace) -> None:
     rows = _read_jsonl(metadata_dir / "parsed_matches.jsonl")
 
     overall = Counter(str(row["most_aligned_player"]) for row in rows)
-    least = Counter(str(row["least_aligned_player"]) for row in rows)
+    probability_mass = Counter()
+    for row in rows:
+        for match in row.get("top_matches", []):
+            probability_mass[str(match.get("player"))] += float(match.get("probability", 0.0))
     by_treatment: dict[str, Counter[str]] = defaultdict(Counter)
     for row in rows:
         by_treatment[str(row.get("treatment_name", ""))][str(row["most_aligned_player"])] += 1
@@ -64,8 +67,8 @@ def summarize(args: argparse.Namespace) -> None:
                 "player": player,
                 "most_aligned_count": count,
                 "most_aligned_share": count / total if total else 0.0,
-                "least_aligned_count": least.get(player, 0),
-                "least_aligned_share": least.get(player, 0) / total if total else 0.0,
+                "top_k_probability_mass": probability_mass.get(player, 0.0),
+                "top_k_probability_share": probability_mass.get(player, 0.0) / total if total else 0.0,
             }
         )
 
@@ -113,4 +116,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

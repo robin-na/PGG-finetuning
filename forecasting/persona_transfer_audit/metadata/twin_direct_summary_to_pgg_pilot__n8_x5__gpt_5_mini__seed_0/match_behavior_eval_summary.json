@@ -1,0 +1,183 @@
+{
+  "matched_behavior": {
+    "total_weight": 40.0,
+    "mean_contribution": 18.408010057471266,
+    "mean_contribution_rate": 0.9204005028735629,
+    "first_contribution": 16.957500000000003,
+    "first_contribution_rate": 0.8478750000000002,
+    "final_contribution": 18.5275,
+    "final_contribution_rate": 0.9263750000000004,
+    "contribution_sd": 2.2271160205160117,
+    "zero_contribution_rate": 0.026232040229885057,
+    "full_contribution_rate": 0.8462679597701153,
+    "contribution_slope": 0.019874750072442764,
+    "message_count": 0.8927499999999998,
+    "messages_per_round": 0.3397083333333333,
+    "rounds_with_message_rate": 0.21608333333333332,
+    "reward_given_units": 9.254749999999998,
+    "reward_given_events": 8.848500000000003,
+    "reward_given_round_rate": 0.4100258620689655,
+    "reward_received_units": 7.783750000000002,
+    "reward_received_events": 7.355000000000001,
+    "reward_received_round_rate": 0.531262931034483,
+    "punish_given_units": 33.85,
+    "punish_given_events": 3.0300000000000002,
+    "punish_given_round_rate": 0.17171874999999998,
+    "punish_received_units": 4.1225000000000005,
+    "punish_received_events": 0.5675,
+    "punish_received_round_rate": 0.116015625
+  },
+  "candidate_uniform_behavior": {
+    "total_weight": 39.999999999999986,
+    "mean_contribution": 16.208477011494256,
+    "mean_contribution_rate": 0.8104238505747126,
+    "first_contribution": 15.23333333333334,
+    "first_contribution_rate": 0.7616666666666673,
+    "final_contribution": 16.366666666666674,
+    "final_contribution_rate": 0.8183333333333337,
+    "contribution_sd": 3.766592024118779,
+    "zero_contribution_rate": 0.061063218390804606,
+    "full_contribution_rate": 0.7086206896551724,
+    "contribution_slope": 0.06152871148459388,
+    "message_count": 0.7166666666666673,
+    "messages_per_round": 0.27500000000000013,
+    "rounds_with_message_rate": 0.19166666666666676,
+    "reward_given_units": 7.2166666666666694,
+    "reward_given_events": 6.86666666666667,
+    "reward_given_round_rate": 0.29626436781609217,
+    "reward_received_units": 7.216666666666669,
+    "reward_received_events": 6.866666666666668,
+    "reward_received_round_rate": 0.5031609195402298,
+    "punish_given_units": 27.366666666666678,
+    "punish_given_events": 2.166666666666667,
+    "punish_given_round_rate": 0.1291666666666667,
+    "punish_received_units": 27.36666666666666,
+    "punish_received_events": 2.1666666666666683,
+    "punish_received_round_rate": 0.16249999999999998
+  },
+  "unique_sampled_player_behavior": {
+    "n_players": 21,
+    "mean_contribution": 16.28684318555008,
+    "mean_contribution_rate": 0.814342159277504,
+    "first_contribution": 15.333333333333334,
+    "first_contribution_rate": 0.7666666666666667,
+    "final_contribution": 16.428571428571427,
+    "final_contribution_rate": 0.8214285714285714,
+    "contribution_sd": 3.859106879348776,
+    "zero_contribution_rate": 0.051211001642036125,
+    "full_contribution_rate": 0.7046387520525451,
+    "contribution_slope": 0.06391506602641059,
+    "message_count": 0.9047619047619048,
+    "messages_per_round": 0.373015873015873,
+    "rounds_with_message_rate": 0.25396825396825395,
+    "reward_given_units": 7.0,
+    "reward_given_events": 6.666666666666667,
+    "reward_given_round_rate": 0.30596606458675424,
+    "reward_received_units": 7.0,
+    "reward_received_events": 6.666666666666667,
+    "reward_received_round_rate": 0.5347564313081554,
+    "punish_given_units": 19.666666666666668,
+    "punish_given_events": 1.6666666666666667,
+    "punish_given_round_rate": 0.10416666666666667,
+    "punish_received_units": 19.666666666666668,
+    "punish_received_events": 1.6666666666666667,
+    "punish_received_round_rate": 0.17559523809523808
+  },
+  "concentration": {
+    "n_parsed_matches": 40,
+    "n_long_match_rows": 110,
+    "n_candidate_players": 21,
+    "probability_error_count": 0,
+    "duplicate_top_match_count": 0,
+    "top1_unique_player_count": 12,
+    "top1_effective_n": 10.415856572674086,
+    "probability_mass_unique_player_count": 20,
+    "probability_mass_effective_n": 13.950705096632994,
+    "top1_most_common": [
+      [
+        "TvaK7RsiSd758hAmp::GORILLA",
+        6
+      ],
+      [
+        "JgQY6iNGkRDTwiYTC::SLOTH",
+        6
+      ],
+      [
+        "T8RpnDhSrnavwJQL2::SLOTH",
+        6
+      ],
+      [
+        "6sSM4xSyZQkaxyHav::SLOTH",
+        5
+      ],
+      [
+        "3Ce6KgbmNCQEwYBfk::CHICKEN",
+        3
+      ],
+      [
+        "6sSM4xSyZQkaxyHav::DUCK",
+        3
+      ],
+      [
+        "3Ce6KgbmNCQEwYBfk::DUCK",
+        2
+      ],
+      [
+        "TvaK7RsiSd758hAmp::SLOTH",
+        2
+      ],
+      [
+        "JgQY6iNGkRDTwiYTC::DUCK",
+        2
+      ],
+      [
+        "T8RpnDhSrnavwJQL2::CHICKEN",
+        2
+      ]
+    ],
+    "probability_mass_top10": [
+      [
+        "T8RpnDhSrnavwJQL2::SLOTH",
+        4.869999999999999
+      ],
+      [
+        "JgQY6iNGkRDTwiYTC::SLOTH",
+        4.67
+      ],
+      [
+        "TvaK7RsiSd758hAmp::GORILLA",
+        4.65
+      ],
+      [
+        "6sSM4xSyZQkaxyHav::SLOTH",
+        3.6999999999999997
+      ],
+      [
+        "6sSM4xSyZQkaxyHav::DUCK",
+        3.6
+      ],
+      [
+        "TvaK7RsiSd758hAmp::SLOTH",
+        3.2000000000000006
+      ],
+      [
+        "3Ce6KgbmNCQEwYBfk::CHICKEN",
+        2.65
+      ],
+      [
+        "3Ce6KgbmNCQEwYBfk::DUCK",
+        2.35
+      ],
+      [
+        "T8RpnDhSrnavwJQL2::CHICKEN",
+        2.33
+      ],
+      [
+        "3Ce6KgbmNCQEwYBfk::SLOTH",
+        2.25
+      ]
+    ]
+  },
+  "probability_error_custom_ids": [],
+  "duplicate_top_match_custom_ids": []
+}

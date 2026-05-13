@@ -1,0 +1,8 @@
+{
+  "method": "character_count_divided_by_4; tokenizer unavailable locally",
+  "num_requests": 5120,
+  "total_estimated_input_tokens": 25300822,
+  "mean_estimated_input_tokens": 4941.566796875,
+  "min_estimated_input_tokens": 3646,
+  "max_estimated_input_tokens": 8809
+}

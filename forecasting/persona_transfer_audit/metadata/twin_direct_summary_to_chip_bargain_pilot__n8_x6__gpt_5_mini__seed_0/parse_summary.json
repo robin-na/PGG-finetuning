@@ -1,0 +1,7 @@
+{
+  "output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_output/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0.jsonl",
+  "parsed": 48,
+  "errors": 0,
+  "probability_error_count": 0,
+  "duplicate_player_count": 0
+}

@@ -1,0 +1,9 @@
+persona_pid,n_requests,top1_unique_player_identities,top1_effective_n,probability_unique_player_identities,probability_effective_n,top_probability_player_identity,top_probability_share
+1199,6,6,5.999999999999998,18,14.281541169651,chip2__cohort_15_m8agmu__game_2_alt_profile::camel-pink-767,0.125
+1667,6,6,5.999999999999998,18,14.457158930874566,chip3__cohort_03_m8aiq8__game_1::badger-red-5032,0.11666666666666665
+1898,6,6,5.999999999999998,18,14.637541399773422,chip3__cohort_03_m8aiq8__game_1::badger-red-5032,0.12333333333333334
+327,6,6,5.999999999999998,18,13.578665303245858,chip2__cohort_03_m8aexq__game_1::dog-purple-778,0.125
+333,6,6,5.999999999999998,18,14.311700474944356,chip2__cohort_03_m8aexq__game_1::dog-purple-778,0.1166666666666667
+448,6,6,5.999999999999998,18,13.646113540107764,chip2__cohort_03_m8aexq__game_1::owl-orange-1045,0.13333333333333333
+750,6,6,5.999999999999998,18,14.01384822352959,chip2__cohort_15_m8agmu__game_2_alt_profile::camel-pink-767,0.12500000000000003
+836,6,6,5.999999999999998,18,14.502882346684496,chip2__cohort_15_m8agmu__game_2_alt_profile::camel-pink-767,0.12500000000000003

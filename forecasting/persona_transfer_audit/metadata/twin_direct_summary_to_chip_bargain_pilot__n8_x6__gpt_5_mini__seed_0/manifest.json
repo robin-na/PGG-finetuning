@@ -1,0 +1,19 @@
+{
+  "dataset_key": "persona_transfer_audit_chip_bargain",
+  "run_name": "twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0",
+  "created_at": "2026-05-13T01:47:18.741063+00:00",
+  "model": "gpt-5-mini",
+  "num_personas": 8,
+  "num_games": 6,
+  "num_requests": 48,
+  "game_sampling_mode": "one_per_treatment",
+  "top_k": 3,
+  "persona_summaries": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/cache/twin_persona_summary_cache.jsonl",
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_input/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_output/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0",
+  "request_manifest": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0/request_manifest.csv",
+  "gold_targets": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0/gold_targets.jsonl",
+  "sample_prompt": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0/sample_prompt.txt",
+  "request_token_estimates": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0/request_token_estimates.csv"
+}

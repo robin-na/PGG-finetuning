@@ -1,0 +1,252 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{natbib}
+
+\title{When Diverse Personas Collapse: Auditing Persona Libraries Against Revealed Human Behavior}
+\author{Draft for internal discussion}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Large language models are increasingly used to simulate human participants in surveys, markets, games, and social interactions. A common strategy is persona prompting: researchers provide demographic profiles, psychological descriptions, interview summaries, or synthetic persona cards, then ask a model to answer or act as the described person. This approach is promising because it offers a scalable way to represent heterogeneous populations. But it also creates an unresolved transfer problem. A persona may appear diverse in its source domain while mapping, through an LLM, to a narrower and systematically skewed set of behaviors in a new target environment.
+
+We introduce a revealed-behavior transfer audit for persona libraries. Instead of asking an LLM to generate new actions from a persona and then comparing simulated outcomes to human outcomes, we ask the model to match each persona to real participants in completed target interactions. Given a persona summary and the full transcript of a public goods game, the model returns a sparse probability distribution over the players whose behavior the persona could most plausibly have produced. Aggregating these matches estimates the behavioral support covered by the persona-library-plus-model system. This design is an optimistic test: the model need not invent calibrated contribution, punishment, reward, or communication patterns, but only select among behaviors that actually occurred.
+
+In evaluations using direct Twin persona summaries and two multi-agent economic games, the induced match distribution was narrower and more behaviorally skewed than the target human population. In public goods games, only 58.5\% of candidate player identities were selected as top-1 matches, compared with 93.6\% under a request-conditional uniform null. Matched players also contributed more, fully contributed more often, zero-contributed less often, rewarded more, and received less punishment. In chip bargaining, identity coverage was broader but still significantly more concentrated than the same null, and matched players were shifted toward successful and accepted negotiators. These results suggest that persona diversity in source space can compress into narrowed and behaviorally skewed coverage in target-action space.
+\end{abstract}
+
+\section{Introduction}
+
+Large language models (LLMs) have made it newly plausible to simulate human responses at scale. In political science, LLMs conditioned on demographic backstories have been used to construct ``silicon samples'' that reproduce survey response patterns across subpopulations. In psychology and behavioral economics, LLMs have been evaluated through replications of classic human-subject studies. In human-computer interaction and agent-based modeling, generative agents use memory, planning, reflection, and natural-language action descriptions to create believable social worlds. Together, these lines of work suggest that LLMs can sometimes serve as inexpensive, flexible approximations of human respondents or agents.
+
+The central appeal is heterogeneity. Social and behavioral scientists rarely need a single average human. They need populations that differ in preferences, beliefs, identities, conversational styles, strategic reasoning, and social norms. Persona prompting offers a direct way to elicit this variation. A researcher can condition the model on a person's demographic background, a survey profile, an interview summary, a psychological inventory, or a generated persona card, then ask the model to answer as that person. Recent work has therefore moved beyond asking whether an unconditioned model gives human-like answers and toward asking whether conditioned models can emulate particular subgroups, individuals, or synthetic populations.
+
+Yet the promise of persona prompting depends on a transfer step that is usually left implicit. A persona is not a behavioral policy. It is a textual description that an LLM must translate into actions in a particular environment. The same profile may need to imply a vote choice in one study, a fairness judgment in another, a contribution path in a public goods game, or a bargaining strategy in a negotiation. There is no direct function from the source persona to the target behavior. The function is supplied by the model.
+
+Most existing evaluations measure the final product of that translation. They ask whether simulated survey answers match human survey answers, whether synthetic participants reproduce known experimental effects, whether simulated agents behave believably, or whether persona-conditioned outputs align with demographic groups. These evaluations are necessary, but they conflate two sources of failure. A persona library may fail because it does not contain the kinds of people who appear in the target setting. Or it may fail because the LLM is poorly calibrated when converting even a good persona into numeric actions, messages, or choices.
+
+This distinction matters for strategic interactions. In a public goods game, an LLM can be given a rich profile of a person and still overcontribute, overpunish, under-reward, write too much, fail to decay after repeated disappointment, or misread strategic incentives. If a rollout simulation then fails to match human outcomes, we do not know whether the persona library lacked the relevant behavioral types or whether the model could not produce those behaviors when asked to act. Conversely, if aggregate outcomes look plausible, the simulation may still have collapsed many distinct personas onto a narrow set of convenient behavioral scripts.
+
+We propose a complementary evaluation: audit persona libraries against revealed target behavior before asking the model to generate new behavior. Given a persona and an observed interaction, the model chooses which real participant in the interaction most closely matches the persona. Repeating this procedure over many persona-game pairs produces a distribution over actual target-study participants. That distribution can be compared with the empirical distribution of human behavior in the target study. If the matched players are too cooperative, too punitive, too chatty, too quiet, or concentrated on a small subset of observed identities, then the persona-library-plus-model system is not covering the relevant behavioral support.
+
+This audit is stricter in one sense and easier in another. It is stricter because it evaluates whether persona evidence maps onto individual revealed behavior, including communication patterns and dynamic responses, rather than only aggregate outcome moments. It is easier because the model does not need to synthesize a complete action trajectory. It only chooses among real trajectories. The test is therefore optimistic for persona-based simulation: if the system cannot recover the right region of human behavior when all candidate behaviors are already available, a free-form rollout is unlikely to recover the target distribution without additional correction.
+
+The paper makes three contributions. First, it defines revealed-behavior coverage as an evaluation target for persona libraries. Second, it introduces a practical matching assay that separates persona-to-behavior support from action-level calibration. Third, it provides preliminary evidence, using Twin persona summaries and two strategic target environments, that apparently diverse personas can map to narrowed and behaviorally skewed subsets of observed human players.
+
+\section{Related Work}
+
+\subsection{LLMs as Simulated Humans}
+
+Early work on LLM-based social simulation showed that language models can reproduce some patterns in human survey and experimental data. \citet{argyle2023silicon} introduced silicon samples and the concept of algorithmic fidelity, arguing that demographic conditioning can induce response distributions that mirror human subpopulations in U.S. public opinion. \citet{aher2023turing} proposed Turing Experiments, evaluating whether LLMs can simulate representative samples of participants in human-subject studies such as ultimatum games and social psychology experiments. These studies established that LLMs can sometimes reproduce meaningful aggregate patterns, but they primarily evaluate generated responses after the model has already translated a prompt into an answer or action.
+
+More recent benchmarks have broadened the scope. SimBench standardizes evaluation across many human-behavior datasets and reports that current models have meaningful but limited simulation ability, with particular difficulty on high-entropy and demographic-specific behavior \citep{hu2025simbench}. Other work examines LLM behavior in repeated games, dictator games, debate settings, and strategic games, often finding that models exhibit systematic behavioral signatures that differ from humans \citep{akata2025repeatedgames}. These studies provide important evidence about model behavior as behavior. Our focus is different: we ask whether a persona library, when mediated by a model, covers the revealed human behavioral types in a target environment.
+
+\subsection{Persona Prompting and Persona Libraries}
+
+Persona prompting has become a dominant strategy for eliciting heterogeneity. The description can be demographic, psychographic, autobiographical, interview-derived, or synthetically generated. However, prompt wording and persona construction matter. \citet{lutz2025prompt} show that sociodemographic persona prompts are sensitive to role-adoption format and demographic priming, and that models struggle to represent marginalized groups reliably. \citet{li2025catch} argue that LLM-generated personas are promising but biased, showing that current generation practices can produce systematic deviations in downstream election forecasts and opinion surveys. \citet{paglieri2026persona} explicitly distinguish density matching from support coverage, proposing persona generators that optimize for diversity across relevant axes rather than merely reproducing the most probable profiles.
+
+These papers sharpen the need for the present audit. If persona libraries are judged only by source-space attributes or synthetic diversity metrics, they may appear broad while failing to cover target behaviors after LLM-mediated transfer. A library that contains rare trait combinations, realistic descriptions, or balanced demographic marginals may still collapse when the model is asked what those personas would do in a new strategic setting.
+
+\subsection{Generative Agents and Agent-Based Simulation}
+
+Generative agents and related toolkits such as Concordia extend persona prompting into interactive simulations \citep{park2023generative,vezhnevets2023concordia}. Agents can remember, reflect, plan, communicate, and act in natural language. These systems are valuable because they make social simulation more flexible: agents can operate in settings where actions and contexts are too rich to encode with fixed equations. But that flexibility raises the evaluation burden. If the model is responsible for translating a persona into actions, then fidelity depends not only on the surface plausibility of the persona or the believability of the interaction, but on whether the resulting behaviors preserve the empirical distribution of the target population.
+
+\section{Conceptual Framework}
+
+Let a persona library contain source descriptions \(p \in P\). Let a target study contain observed participants \(i \in I\), each with a revealed behavior trajectory \(b_i\) in a specific environment. A standard persona-based simulation asks an LLM to generate a new behavior trajectory \(\hat{b}(p, e)\) for persona \(p\) in environment \(e\), then compares the distribution of \(\hat{b}\) with the distribution of human behavior \(b\).
+
+The transfer audit instead estimates a matching distribution:
+\[
+M(i \mid p, G) = \Pr(\text{model selects observed participant } i \text{ as behaviorally aligned with persona } p \text{ in game } G).
+\]
+Aggregating over personas and games gives an induced distribution over observed target-study participants:
+\[
+\bar{M}(i) = \mathbb{E}_{p,G}[M(i \mid p,G)].
+\]
+
+The key diagnostic is whether \(\bar{M}\) resembles the target participant distribution on behavioral features. If the target population includes high contributors, low contributors, conditional cooperators, punishers, rewarders, coordinators, and quiet participants, a well-covered persona library should place mass across those regions. A collapsed transfer system will place too much mass on a small or skewed subset.
+
+This is not a model-free estimate of the true relationship between source personas and target people. The model is part of the estimand. That is intentional. Researchers who use persona libraries for simulation are already relying on an LLM to decide how the persona maps into the new environment. The audit measures that full transfer system.
+
+\section{Method}
+
+\subsection{Target Environment}
+
+The initial target domain is an online public goods game. Players participate in repeated rounds. Each round, players decide how much of an endowment to contribute to a shared pot. The shared pot is multiplied and redistributed. Depending on treatment, players may also punish or reward others after contributions are revealed, and some games include group chat. The transcript records contributions, punishment or reward actions, summary information, and messages.
+
+Public goods games are useful for this audit because they contain several behaviorally meaningful dimensions: cooperation level, contribution dynamics, reciprocity, norm enforcement, reward use, punishment use, and communication. They also make aggregate simulation deceptively easy. A simulation may match average contribution while missing who communicates, who enforces norms, who free rides, or who changes behavior over time.
+
+\subsection{Persona Library}
+
+The first library is the direct Twin persona summary used in SimBench-style simulation. We intentionally use the original persona summary rather than a PGG-specialized transfer card. A PGG-specialized card already translates source information into target-relevant cues. The audit instead tests whether the direct persona summary, as a general-purpose persona representation, maps into PGG behavior through the LLM.
+
+Future analyses will compare Twin direct summaries with Twin task-specialized cards, demographic-only profiles, no-persona baselines, and generated persona libraries, including persona generators that explicitly optimize for support coverage.
+
+\subsection{Matching Prompt}
+
+For each request, the model receives one persona summary and one observed game transcript. The system instruction is deliberately simple: the model is told to behave as a person with the given profile and identify which player in the provided social interaction matches most closely with its personality. The user prompt begins with information about the persona, then describes the public goods game rules and the transcript format, then presents the observed interaction.
+
+The prompt avoids exposing metadata such as persona IDs, game IDs, treatment labels, or validation labels. These identifiers are kept in the request metadata and manifest only. This prevents the model from treating database structure as substantive information.
+
+The model returns valid JSON with \texttt{top\_matches}: up to three observed players and probabilities that sum to one. Unlisted players are treated as having probability zero. Top-k probabilities are used because some target games contain many players; exhaustive rankings can become tedious and less reliable. The top-k format preserves the strongest alignment judgments while allowing uncertainty among the most plausible candidates.
+
+\subsection{Outcomes}
+
+We evaluate three forms of mismatch: local concentration, global identity collapse, and behavioral skew. Local concentration asks whether, holding a transcript fixed, different personas select different players as their closest behavioral match. We report the modal top-1 player share within each game and the effective number of top-1 selected players. We also test whether top-1 choices within a game are distinguishable from a uniform distribution over the players shown in that game.
+
+Global identity collapse asks whether the matching system covers the observed target population across the corpus. Because each request shows only one game, and because games differ in the number of players, a raw global concentration measure is not enough. We therefore use a request-conditional null: for each successful request, draw one top-1 player uniformly from the players shown in that request. This preserves the exact request structure, the number of personas per game, and the number of candidate players per game. We compare observed concentration with this null using selected-identity share, entropy effective number, Gini concentration, and the share of top-1 mass captured by the most-selected identities.
+
+Behavioral skew asks whether matched players differ systematically from the humans available in the same requests. For public goods games, metrics include mean contribution rate, full-contribution rate, zero-contribution rate, within-player contribution variability, messages per round, reward-giving rate, punishment-giving rate, and punishment-received rate. For chip bargaining, metrics include final surplus, final welfare, proposer surplus, proposer acceptance rate, trade ratio, responder acceptance rate, responder surplus when accepting, and received-trade rate.
+
+We keep avatar labels in the transcript because players use them when communicating. However, avatar labels are not stable person identities: the same label can refer to a different participant in each game. We therefore treat avatar-level imbalance as a prompt and presentation diagnostic, not as substantive evidence that a particular behavioral type is being selected.
+
+\section{Results}
+
+\subsection{Design and Data Quality}
+
+We first ran a public-goods-game evaluation crossing 32 non-pilot Twin personas with 40 validation games, selecting one complete game from each treatment. This produced 1,280 persona-game requests. The model returned parseable top-k JSON for 1,279 requests. One request returned empty content after exhausting the completion budget; the remaining parsed requests had no probability-sum errors and no duplicate players within top-k lists.
+
+We then ran the same audit on chip bargaining, crossing 32 Twin personas with 48 three-player bargaining games, with 8 games from each chip-bargaining treatment. This produced 1,536 persona-game requests. All 1,536 responses parsed successfully, with no probability-sum errors and no duplicate players within top-k lists. Most responses returned three matches; 22 returned two matches with probabilities still summing to one.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/figure_1_transfer_audit_main.png}
+\caption{Twin persona summaries matched to revealed public-goods-game behavior. Panel A reports probability-weighted differences between matched players and the candidate-uniform baseline, standardized by the candidate-uniform standard deviation for each behavior metric. Error bars are 95\% game-cluster bootstrap intervals. Panel B asks whether top-1 choices collapse within each fixed game transcript. For each game, it reports the share of personas that selected the modal top-1 player.}
+\label{fig:main}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/figure_global_identity_collapse.png}
+\caption{Global identity collapse relative to a request-conditional uniform null. For each successful request, the null redraws the top-1 match uniformly from the players shown in that request. This preserves the number of personas, games, and players per game. Gray intervals show the 95\% simulation interval; open circles show the null mean; filled circles show the observed value.}
+\label{fig:global-collapse}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/figure_chip_bargain_behavior_skew.png}
+\caption{Twin persona summaries matched to chip-bargaining behavior. Points report standardized matched-minus-candidate-uniform differences. Error bars are 95\% record-cluster bootstrap intervals.}
+\label{fig:chip-skew}
+\end{figure}
+
+\subsection{Local Concentration}
+
+Holding the transcript fixed, top-1 choices were usually not distributed uniformly across observed players. In PGG, the median most-selected player in a game received 54.0\% of top-1 choices across personas. A within-game multinomial diagnostic rejected uniform top-1 selection for 39 of 40 games at \(p<.05\), and for 39 of 40 games after Benjamini-Hochberg correction at \(q<.05\). This is not a single-player collapse across the entire dataset, but within many games the personas concentrated on a small subset of observed players.
+
+Chip bargaining showed a similar local pattern after accounting for its smaller three-player games. The median most-selected player in a chip game received 59.4\% of top-1 choices across personas. The same within-game uniformity diagnostic rejected uniform top-1 selection for 39 of 48 games at \(p<.05\), and for 37 of 48 games after Benjamini-Hochberg correction at \(q<.05\).
+
+\subsection{Global Identity Collapse}
+
+The request-conditional global-collapse test showed that local concentration accumulated into corpus-level identity undercoverage, especially in PGG (Figure~\ref{fig:global-collapse}). Across 342 candidate PGG player identities, the model selected 200 as top-1 at least once, covering 58.5\% of observed identities. Under the request-conditional uniform null, the expected coverage was 93.6\% (95\% simulation interval: 91.5\%, 95.6\%). The observed entropy effective number was 38.5\% of the candidate pool, compared with a null mean of 75.1\%. The top 5\% of identities received 29.0\% of top-1 mass, compared with 16.1\% under the null. All collapse-tail simulation tests yielded \(p<.00005\).
+
+Chip bargaining showed a milder but still detectable version of the same phenomenon. Across 144 candidate bargaining identities, top-1 matches covered 135 identities, or 93.8\%. Because each three-player chip game was paired with 32 personas, the request-conditional null expected essentially complete coverage. The observed entropy effective number was 73.2\% of the candidate pool, compared with 96.8\% under the null. The top 5\% of identities received 14.6\% of top-1 mass, compared with 8.4\% under the null. Thus chip bargaining did not show severe noncoverage, but it still showed more concentration than expected from the request structure alone.
+
+The avatar-label diagnostic showed a strong imbalance in PGG, with one reused label receiving 29.3\% of probability mass. Because these labels are random within games and are reused for different people across games, this result should not be interpreted as a substantive preference for a stable player type. It instead flags a presentation feature that should be tracked in future runs. Since labels are used inside the communication transcript, removing or shuffling them is not a neutral transformation unless all within-transcript references are transformed consistently.
+
+\subsection{Behavioral Skew in Public Goods Games}
+
+Matched players were more cooperative than the candidate players shown in the same requests. In the larger run, the probability-weighted mean contribution rate was 0.831 for matched players versus 0.753 under the candidate-uniform baseline, a difference of 0.077. The full-contribution rate was 0.726 versus 0.638, a difference of 0.089. The zero-contribution rate was 0.095 versus 0.147, a difference of -0.052. Matched players also had lower contribution variability, with a difference of -1.142 contribution units.
+
+These differences were stable under game-cluster uncertainty. The 95\% game-cluster bootstrap interval was [0.056, 0.099] for mean contribution rate, [0.061, 0.118] for full-contribution rate, [-0.074, -0.032] for zero-contribution rate, and [-1.535, -0.764] for contribution variability. Persona-cluster intervals led to the same qualitative conclusions.
+
+Reward behavior showed a smaller but still stable positive skew. Reward-giving round rate was 0.165 among matched players versus 0.129 under the candidate-uniform baseline, a difference of 0.036, with a game-cluster interval of [0.006, 0.070]. Matched players were also less likely to have received punishment: punishment-received round rate was 0.056 versus 0.078, a difference of -0.022, with a game-cluster interval of [-0.035, -0.010]. Punishment-giving was weaker and less stable: the difference was 0.011, and the game-cluster interval included zero.
+
+\subsection{Behavioral Skew in Chip Bargaining}
+
+The chip-bargaining results showed a different behavioral profile (Figure~\ref{fig:chip-skew}). Matched players had higher final surplus than the candidate-uniform baseline, with a difference of 0.290 and a record-cluster interval of [0.160, 0.418]. They also had higher final welfare, with a difference of 0.502 and a record-cluster interval of [0.209, 0.794].
+
+The strongest strategic skew was in proposal success. Matched players' proposals were accepted more often than the candidate-uniform baseline: 0.526 versus 0.458, a difference of 0.068, with a record-cluster interval of [0.047, 0.088]. At the same time, matched players had slightly lower proposer net surplus, with a difference of -0.066 and a record-cluster interval of [-0.132, -0.002]. Other bargaining metrics were weaker or unstable. Responder acceptance was slightly lower, but the record-cluster interval included zero; received-trade rate was essentially unchanged.
+
+\subsection{Summary}
+
+The two target environments reveal related but distinct failure profiles. In PGG, the Twin-summary-plus-model system showed local concentration, strong global identity undercoverage, and a cooperative/rewarding behavioral skew. In chip bargaining, global coverage was much broader, but the distribution was still more concentrated than the request-conditional null and was shifted toward players with more successful bargaining outcomes. The audit therefore separates forms of transfer mismatch that would be difficult to diagnose from aggregate rollout accuracy alone.
+
+\section{Discussion}
+
+Persona prompting has often been evaluated by asking whether generated outcomes match human outcomes. That is the right final question, but it is not the only question researchers need. Before relying on a persona library to simulate a new environment, we should know whether the library maps onto the behavioral support of that environment. A simulation can fail because the generated actions are miscalibrated, but it can also fail because the persona library does not induce the right kinds of people in the target task.
+
+The revealed-behavior transfer audit isolates this second problem as much as possible. It gives the model real target behaviors and asks which ones fit each persona. If the induced match distribution is skewed, the problem is not merely that the model cannot choose the right number of coins or produce the right punishment amount. The problem is that the persona-library-plus-model system selects the wrong region of human behavior.
+
+This distinction matters for both scientific and applied uses of LLM simulation. In social science, persona-based simulations may be used to pilot experiments, explore mechanisms, or forecast responses before costly data collection. In product research or policy analysis, synthetic personas may be used to estimate how different user populations would react to interventions. In agent-based modeling, personas may initialize populations whose interactions generate emergent outcomes. In all of these settings, source-space diversity is not enough. The relevant question is whether diversity survives transfer to the action space of the target environment.
+
+The audit also reframes LLM bias. A model's tendency to prefer cooperative, articulate, normative, or strategically coherent players is not simply a nuisance to eliminate. It is part of the deployed transfer mechanism. Researchers can vary the matcher model, compare baseline and persona-augmented prompts, and test multiple persona libraries, but the bias itself is diagnostically meaningful. It tells us how a particular simulation system will translate textual profiles into target behavior.
+
+The next empirical step is to vary both the persona source and the target environment. A no-persona baseline estimates the model's default attraction to particular observed behaviors. Minimal demographic profiles, direct Twin summaries, task-specialized Twin cards, and generated persona libraries can then be compared against that baseline. If different persona libraries all map to the same narrow region of target behavior, the problem lies partly in the model-mediated transfer function. If some libraries improve coverage or reduce behavioral skew, the audit can identify which representations carry target-relevant behavioral support.
+
+\section{Limitations and Planned Analyses}
+
+The audit depends on the matcher model. A different model may map the same persona library to different target participants. This is not a flaw in the estimand, but it means results should be reported as properties of persona-library-plus-model systems rather than persona libraries alone.
+
+The top-k format compresses uncertainty. In large games, a persona may plausibly match many players, but the prompt asks the model to allocate probability over at most three. Larger top-k values or full distributions are useful robustness checks when context length and cognitive load permit.
+
+The current assay uses within-game candidate sets. This controls local context but does not directly ask the model to search across the entire target population. Cross-game retrieval or pairwise matching designs may provide complementary evidence.
+
+The current main target environment is PGG, with chip bargaining now being piloted as a second strategic interaction. The strongest evidence would show systematic support mismatch across multiple target environments and persona libraries. Planned analyses include comparing direct Twin summaries with PGG-specialized Twin cards; running no-persona, demographic-only, and generated-persona baselines; repeating the assay on chip bargaining and other available multi-agent economic games; varying matcher models; and linking match skew to rollout simulation error.
+
+\begin{thebibliography}{99}
+
+\bibitem[Aher et~al.(2023)]{aher2023turing}
+Aher, G., Arriaga, R. I., and Kalai, A. T. (2023).
+Using large language models to simulate multiple humans and replicate human subject studies.
+\textit{Proceedings of ICML}.
+
+\bibitem[Akata et~al.(2025)]{akata2025repeatedgames}
+Akata, E., Schulz, L., Coda-Forno, J., Oh, S. J., Bethge, M., and Schulz, E. (2025).
+Playing repeated games with large language models.
+\textit{Nature Human Behaviour}.
+
+\bibitem[Argyle et~al.(2023)]{argyle2023silicon}
+Argyle, L. P., Busby, E. C., Fulda, N., Gubler, J. R., Rytting, C., and Wingate, D. (2023).
+Out of one, many: Using language models to simulate human samples.
+\textit{Political Analysis}.
+
+\bibitem[Gao et~al.(2024)]{gao2024survey}
+Gao, C. et~al. (2024).
+Large language models empowered agent-based modeling and simulation: A survey and perspectives.
+\textit{Humanities and Social Sciences Communications}.
+
+\bibitem[Gui and Toubia(2025)]{gui2025causal}
+Gui, G. and Toubia, O. (2025).
+The challenge of using LLMs to simulate human behavior: A causal inference perspective.
+\textit{SSRN working paper}.
+
+\bibitem[Hu et~al.(2025)]{hu2025simbench}
+Hu, T., Baumann, J., Lupo, L., Hovy, D., Collier, N., and Roettger, P. (2025).
+SimBench: Benchmarking the ability of large language models to simulate human behaviors.
+\textit{arXiv preprint}.
+
+\bibitem[Li et~al.(2025)]{li2025catch}
+Li, A., Chen, H., Namkoong, H., and Peng, T. (2025).
+LLM generated persona is a promise with a catch.
+\textit{NeurIPS Position Paper Track}.
+
+\bibitem[Lutz et~al.(2025)]{lutz2025prompt}
+Lutz, M., Sen, I., Ahnert, G., Rogers, E., and Strohmaier, M. (2025).
+The prompt makes the person(a): A systematic evaluation of sociodemographic persona prompting for large language models.
+\textit{Findings of EMNLP}.
+
+\bibitem[Paglieri et~al.(2026)]{paglieri2026persona}
+Paglieri, D., Cross, L., Cunningham, W. A., Leibo, J. Z., and Vezhnevets, A. S. (2026).
+Persona generators: Generating diverse synthetic personas at scale.
+\textit{arXiv preprint}.
+
+\bibitem[Park et~al.(2023)]{park2023generative}
+Park, J. S., O'Brien, J. C., Cai, C. J., Morris, M. R., Liang, P., and Bernstein, M. S. (2023).
+Generative agents: Interactive simulacra of human behavior.
+\textit{Proceedings of UIST}.
+
+\bibitem[Vezhnevets et~al.(2023)]{vezhnevets2023concordia}
+Vezhnevets, A. S. et~al. (2023).
+Generative agent-based modeling with actions grounded in physical, social, or digital space using Concordia.
+\textit{arXiv preprint}.
+
+\end{thebibliography}
+
+\end{document}

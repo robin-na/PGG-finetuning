@@ -1,0 +1,109 @@
+{
+  "n_matched_rows": 144,
+  "n_candidate_rows": 144,
+  "n_behavior_players": 18,
+  "top1_unique_player_identities": 16,
+  "probability_unique_player_identities": 18,
+  "top1_effective_n_player_identity": 12.254739998673614,
+  "probability_effective_n_player_identity": 16.27724803429696,
+  "coverage_collapse": {
+    "top1_any_match_player_coverage": {
+      "metric": "top1_any_match_player_coverage",
+      "value": 16,
+      "share_of_candidate_players": 0.8888888888888888,
+      "description": "Observed player identities selected as top-1 at least once."
+    },
+    "topk_any_probability_player_coverage": {
+      "metric": "topk_any_probability_player_coverage",
+      "value": 18,
+      "share_of_candidate_players": 1.0,
+      "description": "Observed player identities assigned positive top-k probability at least once."
+    },
+    "top1_effective_n_player_identities": {
+      "metric": "top1_effective_n_player_identities",
+      "value": 12.254739998673614,
+      "share_of_candidate_players": 0.6808188888152008,
+      "description": "Entropy effective number of top-1 matched observed player identities."
+    },
+    "probability_effective_n_player_identities": {
+      "metric": "probability_effective_n_player_identities",
+      "value": 16.27724803429696,
+      "share_of_candidate_players": 0.9042915574609423,
+      "description": "Entropy effective number of probability-weighted observed player identities."
+    },
+    "top1_mass_in_top_5pct_players": {
+      "metric": "top1_mass_in_top_5pct_players",
+      "value": 0.14583333333333334,
+      "share_of_candidate_players": "",
+      "description": "Share of top-1 matches captured by the most selected 5% of matched player identities."
+    },
+    "probability_mass_in_top_5pct_players": {
+      "metric": "probability_mass_in_top_5pct_players",
+      "value": 0.10833333333333334,
+      "share_of_candidate_players": "",
+      "description": "Share of probability mass captured by the most selected 5% of matched player identities."
+    }
+  },
+  "within_game_top1_uniformity": {
+    "median_effective_n_share_of_players": 0.6955931466992388,
+    "median_top_player_share": 0.75
+  },
+  "candidate_uniform_metrics": {
+    "final_surplus": {
+      "baseline": "candidate_uniform",
+      "metric": "final_surplus",
+      "matched_value": 2.2661874999999982,
+      "baseline_value": 2.350555555555553,
+      "difference": -0.08436805555555482
+    },
+    "final_welfare": {
+      "baseline": "candidate_uniform",
+      "metric": "final_welfare",
+      "matched_value": 20.01222916666666,
+      "baseline_value": 19.572777777777755,
+      "difference": 0.4394513888889051
+    },
+    "proposer_mean_net_surplus": {
+      "baseline": "candidate_uniform",
+      "metric": "proposer_mean_net_surplus",
+      "matched_value": 1.3943958333333328,
+      "baseline_value": 1.4796296296296267,
+      "difference": -0.0852337962962939
+    },
+    "proposer_acceptance_rate": {
+      "baseline": "candidate_uniform",
+      "metric": "proposer_acceptance_rate",
+      "matched_value": 0.4093749999999998,
+      "baseline_value": 0.3888888888888877,
+      "difference": 0.02048611111111215
+    },
+    "proposer_mean_trade_ratio": {
+      "baseline": "candidate_uniform",
+      "metric": "proposer_mean_trade_ratio",
+      "matched_value": 0.9215025352733681,
+      "baseline_value": 0.9591122868900639,
+      "difference": -0.037609751616695775
+    },
+    "response_acceptance_rate": {
+      "baseline": "candidate_uniform",
+      "metric": "response_acceptance_rate",
+      "matched_value": 0.27368055555555554,
+      "baseline_value": 0.2407407407407401,
+      "difference": 0.03293981481481545
+    },
+    "response_mean_net_surplus_if_accepted": {
+      "baseline": "candidate_uniform",
+      "metric": "response_mean_net_surplus_if_accepted",
+      "matched_value": 1.193962698412698,
+      "baseline_value": 1.2374444444444437,
+      "difference": -0.043481746031745594
+    },
+    "received_trade_rate": {
+      "baseline": "candidate_uniform",
+      "metric": "received_trade_rate",
+      "matched_value": 0.2172916666666666,
+      "baseline_value": 0.19444444444444386,
+      "difference": 0.02284722222222274
+    }
+  }
+}

@@ -42,17 +42,33 @@ For PGG, the model sees:
 
 The model returns structured JSON with:
 
-- `most_aligned_player`,
-- `least_aligned_player`,
-- `player_rankings`,
-- `alignment_scores`,
+- `top_matches`, a sparse probability distribution over the top matching players,
 - short rationale fields.
+
+The current pilot asks for up to three players. Probabilities over the listed players sum to 1, and unlisted players are treated as 0.
+
+This sparse distribution is easier than exhaustive ranking when games have many players. The tradeoff is that it compresses uncertainty: if a persona plausibly matches more than three players, the model must still allocate all probability mass to the top three. Full-player distributions remain a useful robustness check for small games, and larger `--top-k` values can be used for larger pilots.
 
 ## Estimands
 
 The estimand is the behavior of the full persona-library-plus-model transfer system, not a model-free truth about the persona.
 
 If the LLM has a bias toward selecting cooperative, articulate, normatively attractive, or strategically coherent players, that bias is part of the transfer system researchers would use when simulating new environments. We can and should vary the matcher model to test robustness, but the bias itself is substantively meaningful.
+
+## Why Matching Instead Of Only Simulating
+
+This audit is stricter than sampling personas, running full LLM simulations, and comparing the simulated outcome distribution with the human outcome distribution.
+
+In rollout simulation, a mismatch can come from at least two places:
+
+- the persona library may not cover the behavioral types present in the target study;
+- the LLM may be poorly calibrated when converting even a highly informative persona into numeric target-game actions.
+
+For example, even if a model is given the best possible profile of a specific person, it may still overcontribute, overpunish, under-reward, write too much, or fail to reproduce that person's round-to-round adaptation. A failed rollout therefore mixes persona-library coverage with action-level calibration error.
+
+The transfer audit removes much of that action-calibration burden. The model does not need to invent a contribution path, punishment pattern, reward policy, or chat style from scratch. Instead, it chooses among real revealed behaviors that actually occurred in the target study. If the matched players are still systematically too cooperative, too punitive, too quiet, too chatty, or concentrated on a small subset of participants, the problem cannot be dismissed as ordinary numerical miscalibration in simulated actions.
+
+This makes the audit an optimistic test of persona-imputed simulation. We ask whether the persona-library-plus-model system can recover the right part of the human behavioral support when all candidate behaviors are already real. If it fails under this easier matching setup, then direct rollout simulation is unlikely to recover the target distribution without additional correction.
 
 ## Main Diagnostics
 
@@ -146,6 +162,74 @@ python3 -B -m forecasting.persona_transfer_audit.summarize_matches \
   --metadata-dir forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_pgg_pilot__n8_x5__gpt_5_mini__seed_0
 ```
 
+Evaluate matched players against observed PGG behavior:
+
+```bash
+python3 -B -m forecasting.persona_transfer_audit.evaluate_matches \
+  --metadata-dir forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_pgg_pilot__n8_x5__gpt_5_mini__seed_0
+```
+
+Or run all post-download steps at once:
+
+```bash
+python3 -B -m forecasting.persona_transfer_audit.run_completed_eval \
+  --metadata-dir forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_pgg_pilot__n8_x5__gpt_5_mini__seed_0 \
+  --output-jsonl forecasting/persona_transfer_audit/batch_output/twin_direct_summary_to_pgg_pilot__n8_x5__gpt_5_mini__seed_0.jsonl
+```
+
+Key outputs:
+
+- `parsed_matches.jsonl`: one parsed model response per persona-game request.
+- `parsed_matches_long.csv`: one row per returned top-k player.
+- `player_behavior_summary.csv`: observed behavior features for each player in the sampled PGG games.
+- `matched_player_behavior_long.csv`: top-k matches joined to observed player behavior.
+- `candidate_uniform_behavior_long.csv`: request-level uniform baseline over all candidate players shown to the model.
+- `matched_vs_baseline_behavior_metrics.csv`: matched behavior minus baseline behavior for each metric.
+- `match_behavior_eval_summary.json`: compact validation, concentration, and behavior summary.
+- `comprehensive_eval_report.md`: human-readable report with concentration, avatar-level skew, behavior skew, and most-matched observed players.
+- `comprehensive_*`: detailed CSV/JSON outputs for player-, avatar-, game-, persona-, and metric-level evaluation.
+
+## Pilot: Twin -> Chip Bargaining
+
+The same audit can be run on the chip-bargaining benchmark. Here the target behavior is not contribution, punishment, or chat, but bargaining behavior in three-player chip-trading games:
+
+- proposal content,
+- whether proposals are accepted,
+- proposer net surplus,
+- responder acceptance,
+- final player surplus,
+- realized trade outcomes.
+
+The chip prompt includes the player-specific chip values. This is important because the same proposal can be cooperative, exploitative, or strategically sensible depending on each player's private valuation. During the real game, players know only their own values; in the audit prompt, the matcher sees all values so it can interpret revealed behavior from an observer's perspective.
+
+Default chip pilot:
+
+```bash
+/opt/anaconda3/bin/python3.12 -B -m forecasting.persona_transfer_audit.build_twin_to_chip_bargain
+```
+
+Default output:
+
+- batch input: `forecasting/persona_transfer_audit/batch_input/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0.jsonl`
+- manifest: `forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0/manifest.json`
+- sample prompt: `forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0/sample_prompt.txt`
+
+The default crosses 8 Twin direct summaries with 6 games: one sampled game from each chip-family-by-stage treatment. Since each chip game has exactly three players, `top_k=3` is also a full sparse distribution over all candidate players.
+
+After a completed batch is downloaded, parse and evaluate with:
+
+```bash
+python3 -B -m forecasting.persona_transfer_audit.parse_match_outputs \
+  --metadata-dir forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0 \
+  --output-jsonl forecasting/persona_transfer_audit/batch_output/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0.jsonl
+
+python3 -B -m forecasting.persona_transfer_audit.summarize_matches \
+  --metadata-dir forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0
+
+python3 -B -m forecasting.persona_transfer_audit.evaluate_chip_bargain_matches \
+  --metadata-dir forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_pilot__n8_x6__gpt_5_mini__seed_0
+```
+
 ## Candidate Persona Libraries
 
 Future libraries to test:
@@ -236,7 +320,7 @@ One possible framing:
 
 ## Design Decisions To Track
 
-- Whether to use top-1 choice, full ranking, or both. Current default: both.
+- Whether to use top-1 choice, full ranking, or top-k sparse probabilities. Current pilot: top 3 sparse probabilities.
 - Whether to compare players only within the same game or across the full target population. Current pilot: within-game ranking, aggregated across sampled games.
 - Whether to show full transcripts or behavior summaries. Current pilot: full transcript plus compact metadata.
 - Whether to include player-level numeric summaries in the prompt. Current pilot: no, to force the model to infer from transcript. Parser can add this later.

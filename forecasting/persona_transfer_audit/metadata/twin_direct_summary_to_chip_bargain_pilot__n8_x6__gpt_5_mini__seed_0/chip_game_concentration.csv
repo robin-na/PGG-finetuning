@@ -1,0 +1,7 @@
+record_id,treatment_name,n_requests,n_players,top1_total,top1_unique_players,top1_effective_n,top1_effective_n_share_of_players,top1_top_player,top1_top_player_count,top1_top_player_share,top1_uniform_expected_share,probability_unique_players,probability_effective_n,top_probability_player,top_probability_share
+chip2__cohort_03_m8aexq__game_1,CHIP2__GAME_1,8,3,8.0,3,2.649351128562104,0.8831170428540346,owl-orange-1045,4.0,0.5,0.3333333333333333,3,2.837354769321736,owl-orange-1045,0.4525
+chip2__cohort_15_m8agmu__game_2_alt_profile,CHIP2__GAME_2_ALT_PROFILE,8,3,8.0,2,1.4575692649810903,0.4858564216603634,camel-pink-767,7.0,0.875,0.3333333333333333,3,2.3802992024419027,camel-pink-767,0.65
+chip3__cohort_03_m8aiq8__game_1,CHIP3__GAME_1,8,3,8.0,2,1.7547653506033232,0.584921783534441,badger-red-5032,6.0,0.75,0.3333333333333333,3,2.7480923561302526,badger-red-5032,0.5225
+chip3__g12_m5wp8p__game_2_alt_profile,CHIP3__GAME_2_ALT_PROFILE,8,3,8.0,3,2.0867794400977164,0.6955931466992388,bear-purple-7271,6.0,0.75,0.3333333333333333,3,2.8027010826180803,bear-purple-7271,0.5125
+chip4__cohort_02_m7xl5i__game_1,CHIP4__GAME_1,8,3,8.0,3,2.4602329762891006,0.8200776587630335,squid-pink-8454,5.0,0.625,0.3333333333333333,3,2.8519920015114235,squid-pink-8454,0.4875
+chip4__cohort_05_m898xg__game_2_alt_profile,CHIP4__GAME_2_ALT_PROFILE,8,3,8.0,3,2.0867794400977164,0.6955931466992388,butterfly-purple-4350,6.0,0.75,0.3333333333333333,3,2.6870564165828568,butterfly-purple-4350,0.5575

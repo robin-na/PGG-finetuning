@@ -1,8 +1,4 @@
-# PERSONA
-
-Persona ID: 327
-
-The following is a description of a person.
+Below is information about yourself.
 
 The person's demographics are the following...
 Geographic region: South (TX, OK, AR, LA, KY, TN, MS, AL, WV, DC, MD, DE, VA, NC, SC, GA, FL)
@@ -171,16 +167,24 @@ The person was then asked the question "Please describe the type of person you o
 "
 The person was finally asked the question "Please describe the type of person you actually are. That is, write about the traits and behaviors you actually possess. Please write at least 3 sentences." They answered: "Willing to help my family when needed. "
 
-# TARGET GAME CONTEXT
-Game ID: 3Ce6KgbmNCQEwYBfk
-Treatment: VALIDATION_19_C
-Rounds: 29
-Players: SLOTH, GORILLA, DUCK, CHICKEN
-Each player chooses an integer contribution each round, usually from 0 to 20.
-After contributions, players may punish or reward other players when action lines appear in the transcript.
-This observed game has no group chat messages in the transcript.
+# SOCIAL INTERACTION SCRIPT
+This is an online public goods game (PGG).
+Each round, the 20 coins begin in the shared pot. Each player chooses how many coins to withdraw for private use, and the remainder becomes their contribution. Contributions are integers from 0 to 20.
+Players do not see others' choices before deciding.
+The shared pot is multiplied by 1.8 and split equally among all active players.
+After contributions are revealed and redistributed, players may reward other players.
+Each reward unit costs 3 coins to the source and adds 2 coins to the target.
+Players cannot send group chat messages in this game.
+Players know that the game lasts 29 rounds.
+Players can identify who rewarded them in their summary information.
+At the summary stage (`ROUND N SUMMARY SHOWN TO PLAYERS`), each player sees their own net payoff of the round, along with the amount they used for rewarding other players and amount received for reward.
+However, the corresponding information of the peers are not shown.
+The observed players are: SLOTH, GORILLA, DUCK, CHICKEN.
+`### CONTRIBUTIONS: <<[...]>>` gives the players' contributions for that round in the same order as the observed player list above.
+`### REWARD: <<[(SOURCE, TARGET, UNIT), ...]>>` lists reward actions after contributions. SOURCE rewarded TARGET by UNIT units.
+`<<[]>>` means no actions of that type occurred in that round.
 
-# OBSERVED GAME TRANSCRIPT
+Below is the observed interaction.
 
 ## ROUND 1 BEGINS
 ### CONTRIBUTIONS: <<[15, 10, 1, 20]>>
@@ -299,10 +303,6 @@ This observed game has no group chat messages in the transcript.
 ### REWARD: <<[]>>
 ### ROUND 29 SUMMARY SHOWN TO PLAYERS
 
-# TASK
+Rank up to 3 observed players by how closely their revealed behavior matches your personality, the behavior you would most plausibly have produced in this game.
 
-Rank the observed players by how closely their revealed behavior matches the persona. Use contribution behavior, changes over rounds, punishment/reward behavior, responsiveness to others, and communication style when present. Do not select the player you morally prefer. Select the player whose behavior this persona would most plausibly have produced in this target game.
-
-# OUTPUT
-
-Return only valid JSON. `player_rankings` must list every player exactly once from most aligned to least aligned. `alignment_scores` must contain exactly these player keys: SLOTH, GORILLA, DUCK, CHICKEN. Scores should be numbers from 0 to 1.
+Return only valid JSON. Put the closest match first. Assign each listed player a probability from 0 to 1, and make the probabilities across the listed players sum to exactly 1. Any player not listed is treated as having probability 0.

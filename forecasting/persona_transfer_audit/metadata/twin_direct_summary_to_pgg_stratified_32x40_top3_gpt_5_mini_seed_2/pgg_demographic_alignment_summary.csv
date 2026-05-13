@@ -1,0 +1,40 @@
+distribution,field,metric_type,total_variation_from_candidate_uniform,entropy,max_abs_shift_category,max_abs_shift,matched_value,candidate_uniform_value,matched_minus_candidate_uniform
+matched_probability,country_of_birth,categorical,0.047331070692602194,1.1785430128044752,United States,0.03723500351889375,,,
+matched_probability,country_of_residence,categorical,0.030453008800035174,0.9074675024656861,United States,0.02568298471413899,,,
+matched_probability,education_self_report,categorical,0.04065951551158231,1.2870554947989745,High school,-0.030260910157906162,,,
+matched_probability,employment_status,categorical,0.05522873776994743,1.4025793765071721,Part-Time,-0.03666630141767138,,,
+matched_probability,ethnicity,categorical,0.013533126180542006,1.0304598000854064,Black,0.007628555350836133,,,
+matched_probability,gender_self_report,categorical,0.03773704409916583,0.8560985706411034,Woman,-0.03574362476114168,,,
+matched_probability,language,categorical,0.02284474417534738,0.3849022589157944,English,0.011662941305946029,,,
+matched_probability,nationality,categorical,0.03500469180558803,1.1964532504552627,United States,0.025051306319559208,,,
+matched_probability,prolific_sex,categorical,0.05310000795313896,0.7800393276582772,Woman,-0.0511769310300621,,,
+matched_probability,student_status,categorical,0.004443285027755088,0.8049924155847402,Yes,-0.004443285027755067,,,
+matched_top1,country_of_birth,categorical,0.06871205744106275,1.1014656284906654,United States,0.05338824824133226,,,
+matched_top1,country_of_residence,categorical,0.042188739839909735,0.9015004079587843,United Kingdom,-0.03762510008782732,,,
+matched_top1,education_self_report,categorical,0.059318442083890255,1.2892068551255254,High school,-0.057235108750556984,,,
+matched_top1,employment_status,categorical,0.07185891759793739,1.3925838781595852,Part-Time,-0.047635808845348945,,,
+matched_top1,ethnicity,categorical,0.029826805136457732,1.0374912059612884,Black,0.017300173802752117,,,
+matched_top1,gender_self_report,categorical,0.0543509387398389,0.8339831004517646,Man,0.05435093873983893,,,
+matched_top1,language,categorical,0.029479827779588623,0.3769570212133209,English,0.009098437787572466,,,
+matched_top1,nationality,categorical,0.054699465366662994,1.1336524070242868,United States,0.043276482238245206,,,
+matched_top1,prolific_sex,categorical,0.07388968739019966,0.7755639157735329,Woman,-0.07196661046712277,,,
+matched_top1,student_status,categorical,0.006964962607249638,0.8174553234445912,Unavailable,0.0069649626072496446,,,
+unique_human_candidate,country_of_birth,categorical,0.02919164899428757,1.3625469827229082,United Kingdom,0.012288393258793884,,,
+unique_human_candidate,country_of_residence,categorical,0.013327951288484642,0.9263148228109783,United States,-0.01078666216824864,,,
+unique_human_candidate,education_self_report,categorical,0.022003426033034967,1.271796094931883,Master,0.021162782758181092,,,
+unique_human_candidate,employment_status,categorical,0.03842824207954933,1.42358668554934,Full-Time,0.024014583734968786,,,
+unique_human_candidate,ethnicity,categorical,0.027449794357693347,1.0496838748137884,Asian,0.015600660304610617,,,
+unique_human_candidate,gender_self_report,categorical,0.006791036083798725,0.8545675105788509,Man,0.006330509768008807,,,
+unique_human_candidate,language,categorical,0.01600722559604188,0.5153110659471334,Romanian,-0.005651147098515268,,,
+unique_human_candidate,nationality,categorical,0.0258729355439947,1.3090857014750503,United Kingdom,0.008865513141834203,,,
+unique_human_candidate,prolific_sex,categorical,0.0025412891202360147,0.7770544185897363,Unavailable,-0.002541289120235962,,,
+unique_human_candidate,student_status,categorical,0.02512665879440821,0.7683196382340433,No,0.02512665879440823,,,
+matched_probability,age_self_report,numeric,,,,,37.54686473807689,37.39682095864602,0.15004377943087377
+matched_top1,age_self_report,numeric,,,,,38.12353401094605,37.39682095864602,0.7267130523000347
+unique_human_candidate,age_self_report,numeric,,,,,37.13742690058479,37.39682095864602,-0.2593940580612255
+matched_probability,age_prolific,numeric,,,,,37.41753867061059,37.340764108269475,0.07677456234111446
+matched_top1,age_prolific,numeric,,,,,37.98880895283773,37.340764108269475,0.6480448445682541
+unique_human_candidate,age_prolific,numeric,,,,,37.16913946587537,37.340764108269475,-0.17162464239410724
+matched_probability,prolific_total_approvals,numeric,,,,,1154.661133698204,1008.4790563548268,146.18207734337716
+matched_top1,prolific_total_approvals,numeric,,,,,1238.9468334636435,1008.4790563548268,230.4677771088168
+unique_human_candidate,prolific_total_approvals,numeric,,,,,1013.8976608187135,1008.4790563548268,5.418604463886709

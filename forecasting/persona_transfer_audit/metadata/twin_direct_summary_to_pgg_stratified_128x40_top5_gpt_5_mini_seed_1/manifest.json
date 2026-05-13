@@ -1,0 +1,22 @@
+{
+  "run_name": "twin_direct_summary_to_pgg_stratified_128x40_top5_gpt_5_mini_seed_1",
+  "created_at": "2026-05-13T01:01:21.032954+00:00",
+  "audit": "twin_direct_persona_summary_to_pgg_player_matching",
+  "model": "gpt-5-mini",
+  "seed": 1,
+  "num_personas": 128,
+  "num_games": 40,
+  "num_requests": 5120,
+  "min_rounds": 1,
+  "max_players": 0,
+  "game_sampling_mode": "one_per_treatment",
+  "top_k": 5,
+  "persona_summaries": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/simbench/cache/twin_persona_summary_cache.jsonl",
+  "source_gold": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/pgg/metadata/twin_sampled_seed_0_gpt_5_mini/gold_continuations_k0.jsonl",
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_input/twin_direct_summary_to_pgg_stratified_128x40_top5_gpt_5_mini_seed_1.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_output/twin_direct_summary_to_pgg_stratified_128x40_top5_gpt_5_mini_seed_1.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_pgg_stratified_128x40_top5_gpt_5_mini_seed_1",
+  "request_manifest": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_pgg_stratified_128x40_top5_gpt_5_mini_seed_1/request_manifest.csv",
+  "sample_prompt": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_pgg_stratified_128x40_top5_gpt_5_mini_seed_1/sample_prompt.txt",
+  "request_token_estimates": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_pgg_stratified_128x40_top5_gpt_5_mini_seed_1/request_token_estimates.csv"
+}

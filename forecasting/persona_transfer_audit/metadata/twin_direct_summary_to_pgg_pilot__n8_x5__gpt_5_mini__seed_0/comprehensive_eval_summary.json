@@ -1,0 +1,142 @@
+{
+  "n_parsed_matches": 40,
+  "n_candidate_players": 21,
+  "n_long_rows": 110,
+  "top1_effective_n_player_identity": 10.415856572674086,
+  "probability_effective_n_player_identity": 13.950705096632994,
+  "avatar_distribution": [
+    {
+      "avatar": "SLOTH",
+      "top1_count": 21,
+      "top1_share": 0.525,
+      "probability_mass": 18.69,
+      "probability_share": 0.4672500000000001
+    },
+    {
+      "avatar": "DUCK",
+      "top1_count": 7,
+      "top1_share": 0.175,
+      "probability_mass": 8.249999999999998,
+      "probability_share": 0.20625
+    },
+    {
+      "avatar": "GORILLA",
+      "top1_count": 7,
+      "top1_share": 0.175,
+      "probability_mass": 7.129999999999999,
+      "probability_share": 0.17825000000000002
+    },
+    {
+      "avatar": "CHICKEN",
+      "top1_count": 5,
+      "top1_share": 0.125,
+      "probability_mass": 5.78,
+      "probability_share": 0.14450000000000005
+    },
+    {
+      "avatar": "DOG",
+      "top1_count": 0,
+      "top1_share": 0.0,
+      "probability_mass": 0.15,
+      "probability_share": 0.0037500000000000007
+    }
+  ],
+  "key_metric_comparison": {
+    "mean_contribution_rate": {
+      "metric": "mean_contribution_rate",
+      "matched_mean": 0.9204005028735629,
+      "candidate_uniform_mean": 0.8104238505747126,
+      "candidate_uniform_sd": 0.24544290097573487,
+      "matched_minus_candidate_uniform": 0.10997665229885034,
+      "candidate_uniform_standardized_difference": 0.44807428473852223,
+      "unique_player_mean": 0.814342159277504,
+      "unique_player_sd": 0.2320709419304144,
+      "matched_minus_unique_player": 0.10605834359605892,
+      "unique_player_standardized_difference": 0.45700828683610084
+    },
+    "full_contribution_rate": {
+      "metric": "full_contribution_rate",
+      "matched_mean": 0.8462679597701153,
+      "candidate_uniform_mean": 0.7086206896551724,
+      "candidate_uniform_sd": 0.35159769250684725,
+      "matched_minus_candidate_uniform": 0.13764727011494282,
+      "candidate_uniform_standardized_difference": 0.3914908233143828,
+      "unique_player_mean": 0.7046387520525451,
+      "unique_player_sd": 0.3549476729751106,
+      "matched_minus_unique_player": 0.14162920771757015,
+      "unique_player_standardized_difference": 0.3990143294375151
+    },
+    "zero_contribution_rate": {
+      "metric": "zero_contribution_rate",
+      "matched_mean": 0.026232040229885057,
+      "candidate_uniform_mean": 0.061063218390804606,
+      "candidate_uniform_sd": 0.09176300202204464,
+      "matched_minus_candidate_uniform": -0.034831178160919546,
+      "candidate_uniform_standardized_difference": -0.3795775791266277,
+      "unique_player_mean": 0.051211001642036125,
+      "unique_player_sd": 0.08528751182352998,
+      "matched_minus_unique_player": -0.024978961412151068,
+      "unique_player_standardized_difference": -0.29287947177818385
+    },
+    "contribution_sd": {
+      "metric": "contribution_sd",
+      "matched_mean": 2.2271160205160117,
+      "candidate_uniform_mean": 3.766592024118779,
+      "candidate_uniform_sd": 3.6745332709343264,
+      "matched_minus_candidate_uniform": -1.5394760036027675,
+      "candidate_uniform_standardized_difference": -0.41895824315432684,
+      "unique_player_mean": 3.859106879348776,
+      "unique_player_sd": 3.8458456429566046,
+      "matched_minus_unique_player": -1.6319908588327645,
+      "unique_player_standardized_difference": -0.4243516277939134
+    },
+    "messages_per_round": {
+      "metric": "messages_per_round",
+      "matched_mean": 0.3397083333333333,
+      "candidate_uniform_mean": 0.27500000000000013,
+      "candidate_uniform_sd": 0.5484194461257635,
+      "matched_minus_candidate_uniform": 0.06470833333333315,
+      "candidate_uniform_standardized_difference": 0.11799058875548012,
+      "unique_player_mean": 0.373015873015873,
+      "unique_player_sd": 0.6276367911037315,
+      "matched_minus_unique_player": -0.033307539682539744,
+      "unique_player_standardized_difference": -0.05306817598115421
+    },
+    "reward_given_round_rate": {
+      "metric": "reward_given_round_rate",
+      "matched_mean": 0.4100258620689655,
+      "candidate_uniform_mean": 0.29626436781609217,
+      "candidate_uniform_sd": 0.3329093369597172,
+      "matched_minus_candidate_uniform": 0.11376149425287335,
+      "candidate_uniform_standardized_difference": 0.3417191457944562,
+      "unique_player_mean": 0.30596606458675424,
+      "unique_player_sd": 0.327770546862088,
+      "matched_minus_unique_player": 0.10405979748221128,
+      "unique_player_standardized_difference": 0.3174775722786198
+    },
+    "punish_given_round_rate": {
+      "metric": "punish_given_round_rate",
+      "matched_mean": 0.17171874999999998,
+      "candidate_uniform_mean": 0.1291666666666667,
+      "candidate_uniform_sd": 0.29445099573424627,
+      "matched_minus_candidate_uniform": 0.04255208333333327,
+      "candidate_uniform_standardized_difference": 0.14451329406180108,
+      "unique_player_mean": 0.10416666666666667,
+      "unique_player_sd": 0.26258029762039015,
+      "matched_minus_unique_player": 0.0675520833333333,
+      "unique_player_standardized_difference": 0.2572625743268549
+    },
+    "punish_received_round_rate": {
+      "metric": "punish_received_round_rate",
+      "matched_mean": 0.116015625,
+      "candidate_uniform_mean": 0.16249999999999998,
+      "candidate_uniform_sd": 0.28849465621856313,
+      "matched_minus_candidate_uniform": -0.04648437499999998,
+      "candidate_uniform_standardized_difference": -0.16112733459015438,
+      "unique_player_mean": 0.17559523809523808,
+      "unique_player_sd": 0.27791946499830367,
+      "matched_minus_unique_player": -0.059579613095238085,
+      "unique_player_standardized_difference": -0.2143772588782212
+    }
+  }
+}
