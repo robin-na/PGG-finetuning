@@ -1,0 +1,81 @@
+A participant with the following profile answered a Moral Machine dilemma.
+
+Participant profile:
+Age: 53
+Gender: Male
+Education: Graduate degree
+Annual income: $50,001-$80,000
+Political views: 0.18 on a conservative (0) to progressive (1) scale
+Religiosity: 0.73 on a not religious (0) to very religious (1) scale
+Country: USA
+
+Additional questionnaire responses:
+Scale notes: justifiability ratings are 1=never justifiable, 10=always justifiable. Other coded items show code and label; other numeric scales show endpoints.
+Justifiability ratings (1-10):
+- Stealing property: 1
+- Avoiding a fare on public transport: 1
+- Cheating on taxes: 1
+- Accepting a bribe: 1
+- Abortion: 5
+- Suicide: 1
+Confidence and authority:
+- Confidence in police: 1 (a great deal)
+- Confidence in courts: 2 (quite a lot)
+- Greater respect for authority would be: 1 (good thing)
+Statements about gender, work, and family:
+- Men make better political leaders than women: 3 (disagree)
+- University more important for a boy than a girl: 3 (disagree)
+- Men make better business executives than women: 3 (disagree)
+- When jobs are scarce, men should have more right to a job than women: 2 (disagree)
+- When a mother works for pay, the children suffer: 3 (disagree)
+- Main goal in life has been to make parents proud: 1 (agree strongly)
+- Family in life: 1 (very important)
+Child qualities selected as important:
+- Independence: 0 (no)
+- Hard work: 1 (yes)
+- Feeling of responsibility: 0 (no)
+- Imagination: 0 (no)
+- Thrift: 0 (no)
+- Determination and perseverance: 1 (yes)
+- Unselfishness: 0 (no)
+- Obedience: 1 (yes)
+- Self-expression: 0 (no)
+Statements about older people:
+- Older people are not respected much these days: 2 (agree)
+- Older people get more than their fair share from government: 3 (disagree)
+- Older people are a burden on society: 3 (disagree)
+Work, inequality, and responsibility:
+- Income equality versus incentives: 7 (1=incomes should be made more equal, 10=greater incentives for individual effort)
+- Government responsibility: 1 (1=people should take more responsibility, 10=government should take more responsibility)
+- Competition: 1 (1=competition is good, 10=competition is harmful)
+- Hard work brings success: 2 (1=hard work brings a better life, 10=success is luck and connections)
+Trust and neighbor preferences:
+- General trust: 2 (need to be very careful)
+- Would not like neighbor of different race: 0 (not mentioned)
+- Would not like immigrant/foreign-worker neighbor: 0 (not mentioned)
+- Would not like neighbor with AIDS: 0 (not mentioned)
+- Would not like drug-addict neighbor: 1 (mentioned)
+- Would not like homosexual neighbor: 1 (mentioned)
+- When jobs are scarce, employers should prioritize nationals over immigrants: 3 (neither)
+Environment and social priorities:
+- Environment versus growth: 2 (economic growth and jobs should be priority)
+- Environmental organization membership: 0 (not a member)
+- Post-materialist index, 12-item (0=materialist, 5=post-materialist): 1
+- Post-materialist index, 4-item: 2 (mixed)
+- Welzel emancipative values index (continuous; higher=more emancipative): 0.308657
+Freedom, technology, and science:
+- Freedom of choice and control over life: 10 (1=none at all, 10=a great deal)
+- More emphasis on technology would be: 1 (good thing)
+- Science and technology make life healthier/easier: 7 (1=completely disagree, 10=completely agree)
+- Science and technology create next-generation opportunities: 7 (1=completely disagree, 10=completely agree)
+Health:
+- Subjective health: 2 (good)
+
+A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Swerve through the other-lane crossing. The following pedestrians die: 1 female athlete.
+(B) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+
+Which option did this participant choose?
+Answer with A or B only.
+Answer:

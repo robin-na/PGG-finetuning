@@ -1,0 +1,29 @@
+{
+  "num_rows": 88,
+  "num_valid": 88,
+  "num_failed": 0,
+  "mean_abs_error_a_share": 0.33461755536605037,
+  "rmse_a_share": 0.38623552298749797,
+  "mean_binary_brier": 0.1491778792174261,
+  "mean_cross_entropy_nats": 2.4186048596362357,
+  "mean_kl_human_to_model_nats": 1.8469568622794206,
+  "mean_js_divergence_nats": 0.10240637238943742,
+  "weighted_mean_abs_error_a_share": 0.3456061088808828,
+  "weighted_rmse_a_share": 0.39697017281040853,
+  "weighted_mean_cross_entropy_nats": 2.6589658370562335,
+  "weighted_mean_kl_human_to_model_nats": 2.0910564497520427,
+  "pearson_observed_vs_model_a_share": 0.08151429701807592,
+  "spearman_observed_vs_model_a_share": 0.05719035959015536,
+  "hard_choice_accuracy_vs_observed_majority": 0.5795454545454546,
+  "mean_a_or_b_probability_mass_in_top_logprobs": 0.9984097154996686,
+  "failure_examples": [],
+  "run_name": "mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini",
+  "model": "gpt-5.4-mini",
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_output/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini.jsonl",
+  "scenario_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini/scenario_manifest.csv",
+  "results_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/results/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini",
+  "metric_notes": {
+    "model_a_prob": "A/B probability from first-token top_logprobs, renormalized over A and B only. ab_probability_mass records how much top-logprob mass was assigned to A or B before normalization.",
+    "observed_a_share": "Human share choosing option A for the scenario/order represented by the manifest row."
+  }
+}

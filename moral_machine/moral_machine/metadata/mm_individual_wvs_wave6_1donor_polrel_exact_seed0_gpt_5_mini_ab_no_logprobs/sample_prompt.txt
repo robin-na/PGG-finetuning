@@ -1,0 +1,34 @@
+A participant with the following profile answered a Moral Machine dilemma.
+
+Participant profile:
+Age: 34
+Gender: Male
+Education: Attended college
+Annual income: Under $5,000
+Political views: 0.50 on a conservative (0) to progressive (1) scale
+Religiosity: 0.50 on a not religious (0) to very religious (1) scale
+Country: USA
+
+Imputed WVS donor profile: Wave 6 (2010-2014).
+This is one matched WVS respondent, used as plausible value context for the Moral Machine participant rather than as observed answers from that participant.
+General trust: need to be very careful.
+Political self-placement: 6 on a 1 left to 10 right scale.
+Religion in life: rather important.
+Religious service attendance: never, practically never.
+Self-description on religion: a religious person.
+Child quality, feeling of responsibility: mentioned as important.
+Child quality, unselfishness: not mentioned.
+Child quality, obedience: not mentioned.
+Avoiding a fare on public transport: 1 on a 1 never justifiable to 10 always justifiable scale.
+Cheating on taxes: 7 on a 1 never justifiable to 10 always justifiable scale.
+Accepting a bribe: 1 on a 1 never justifiable to 10 always justifiable scale.
+Suicide: 1 on a 1 never justifiable to 10 always justifiable scale.
+
+A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly woman.
+(B) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+
+Which option did this participant choose?
+Answer with A or B only.
+Answer:

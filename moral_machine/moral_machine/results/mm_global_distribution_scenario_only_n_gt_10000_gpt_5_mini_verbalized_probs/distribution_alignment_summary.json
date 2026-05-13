@@ -1,0 +1,22 @@
+{
+  "num_rows": 88,
+  "num_valid": 88,
+  "num_failed": 0,
+  "num_contract_sum_violations": 0,
+  "mean_tvd": 0.11680165015495964,
+  "mean_uniform_tvd": 0.20145262385725254,
+  "one_minus_tvd_over_uniform_tvd": 0.42020288483448,
+  "weighted_mean_tvd": 0.12292857170818014,
+  "weighted_mean_uniform_tvd": 0.2054470580406249,
+  "weighted_one_minus_tvd_over_uniform_tvd": 0.4016532878077409,
+  "failure_examples": [],
+  "run_name": "mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs",
+  "model": "gpt-5-mini",
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_output/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs.jsonl",
+  "scenario_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs/scenario_manifest.csv",
+  "results_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/results/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs",
+  "metric_notes": {
+    "tvd": "For binary A/B distributions, TVD equals abs(model_a_share - observed_a_share).",
+    "uniform_tvd": "abs(0.5 - observed_a_share), the TVD of uniform guessing for that scenario."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "run_name": "mm_individual_wvs_wave6_1donor_polrel_exact_seed0_gpt_5_mini_ab_no_logprobs",
+  "source_run_name": "mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs",
+  "source_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs/manifest.json",
+  "source_sample_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs/sample_manifest.csv",
+  "model": "gpt-5-mini",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_wvs_wave6_1donor_polrel_exact_seed0_gpt_5_mini_ab_no_logprobs",
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_input/mm_individual_wvs_wave6_1donor_polrel_exact_seed0_gpt_5_mini_ab_no_logprobs.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_output/mm_individual_wvs_wave6_1donor_polrel_exact_seed0_gpt_5_mini_ab_no_logprobs.jsonl",
+  "sample_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_wvs_wave6_1donor_polrel_exact_seed0_gpt_5_mini_ab_no_logprobs/sample_manifest.csv",
+  "sample_prompt_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_wvs_wave6_1donor_polrel_exact_seed0_gpt_5_mini_ab_no_logprobs/sample_prompt.txt",
+  "endpoint": "/v1/chat/completions",
+  "logprobs": false,
+  "temperature": null,
+  "condition": "individual_demographic_wvs_wave_one_donor_exact_polrel",
+  "prompt_version": "wvs_wave_one_donor_exact_polrel_v1",
+  "system_prompt": "You need to predict a participant's decision in the following moral dilemma scenario. Use the imputed WVS profile as plausible background context. Return only A or B.",
+  "wvs_source_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/world_values_survey/raw/WVS_Time_Series_1981-2022_csv_v5_0.csv",
+  "wvs_wave": 6,
+  "wvs_wave_years": "2010-2014",
+  "donors_per_mm_participant": 1,
+  "matching": {
+    "type": "exact",
+    "fields": [
+      "country",
+      "gender2",
+      "age_bin",
+      "educ3",
+      "income3",
+      "political3",
+      "religion3"
+    ],
+    "politics": "MM review_political and WVS E033 both binned into low/mid/high progressive orientation.",
+    "religion": "MM review_religious and WVS A006 importance of religion both binned into low/mid/high religiosity.",
+    "unmatched_mm_rows_are_excluded": true
+  },
+  "relevant_wvs_fields": {
+    "A165": "general trust",
+    "E033": "left-right political self-placement",
+    "A006": "importance of religion",
+    "F028": "religious service attendance",
+    "F034": "religious person",
+    "A032": "child quality: responsibility",
+    "A041": "child quality: unselfishness",
+    "A042": "child quality: obedience",
+    "F115": "justifiable: avoiding fare on public transport",
+    "F116": "justifiable: cheating on taxes",
+    "F117": "justifiable: accepting a bribe",
+    "F122": "justifiable: euthanasia",
+    "F123": "justifiable: suicide"
+  },
+  "num_source_requests": 440,
+  "num_requests": 168,
+  "skip_reasons": {
+    "missing_or_unmappable_mm_match_key": 15,
+    "no_exact_wvs_wave_donor": 257
+  },
+  "donor_pool_stats": {
+    "wave_rows": 89565,
+    "usable_donor_rows": 65323,
+    "missing_match_key": 24242,
+    "match_cells": 17450,
+    "matched_mm_rows": 168,
+    "min_donor_pool_size": 1,
+    "median_donor_pool_size": 2,
+    "max_donor_pool_size": 31
+  },
+  "included_value_counts": {
+    "A006": 168,
+    "A032": 168,
+    "A041": 168,
+    "A042": 168,
+    "A165": 165,
+    "E033": 168,
+    "F028": 168,
+    "F034": 165,
+    "F115": 166,
+    "F116": 142,
+    "F117": 168,
+    "F122": 33,
+    "F123": 162
+  },
+  "answer_labels": {
+    "A": "actual left-hand option",
+    "B": "actual right-hand option"
+  },
+  "option_order": "actual_left_right_from_LeftHand",
+  "not_submitted": true,
+  "token_estimate": {
+    "method": "Approximate from rendered system+user message text.",
+    "input_characters_total": 301118,
+    "estimated_input_tokens_4_chars_per_token_total": 75352,
+    "estimated_input_tokens_3_5_chars_per_token_total": 86108,
+    "estimated_input_tokens_4_chars_per_token_mean": 448.5238095238095,
+    "estimated_input_tokens_3_5_chars_per_token_mean": 512.547619047619,
+    "min_estimated_input_tokens_4_chars_per_token": 423,
+    "max_estimated_input_tokens_4_chars_per_token": 481
+  }
+}

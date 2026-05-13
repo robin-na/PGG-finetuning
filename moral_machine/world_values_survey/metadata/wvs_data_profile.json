@@ -1,0 +1,101 @@
+{
+  "source_archive": "moral_machine/world_values_survey/raw/F00011931-WVS_Time_Series_1981-2022_csv_v5_0.zip",
+  "csv_name": "WVS_Time_Series_1981-2022_csv_v5_0.csv",
+  "csv_uncompressed_bytes": 1379973808,
+  "n_rows": 443488,
+  "n_columns": 1046,
+  "study_counts_S001": {
+    "2": 443488
+  },
+  "wave_counts_S002VS": {
+    "1": 10307,
+    "2": 24558,
+    "3": 77818,
+    "4": 60045,
+    "5": 83975,
+    "6": 89565,
+    "7": 97220
+  },
+  "n_countries_COUNTRY_ALPHA": 108,
+  "n_wave_country_cells": 306,
+  "unique_unified_respondent_numbers_S007": 443488,
+  "s007_unique_for_every_row": true,
+  "first_40_columns": [
+    "version",
+    "doi",
+    "S001",
+    "S002VS",
+    "S003",
+    "COUNTRY_ALPHA",
+    "COW_NUM",
+    "COW_ALPHA",
+    "S004",
+    "S006",
+    "S007",
+    "S008",
+    "MODE",
+    "S010",
+    "S011A",
+    "S011B",
+    "S012",
+    "S013",
+    "S013B",
+    "S016",
+    "S016B",
+    "S017",
+    "S018",
+    "S020",
+    "S021",
+    "S022",
+    "S023",
+    "S024",
+    "S025",
+    "A001",
+    "A002",
+    "A003",
+    "A004",
+    "A005",
+    "A006",
+    "A008",
+    "A009",
+    "A010",
+    "A011",
+    "A012"
+  ],
+  "selected_item_nonmissing_counts": {
+    "A001": 427737,
+    "A002": 427744,
+    "A003": 427625,
+    "A004": 427580,
+    "A005": 426636,
+    "F028": 429617,
+    "F034": 426355,
+    "G006": 439101,
+    "X001": 438959,
+    "X003": 439667,
+    "X007": 439255,
+    "X025": 320800,
+    "Y001": 433181,
+    "Y002": 415907
+  },
+  "codebook_definitions_checked": {
+    "S001": "Study: 1 EVS, 2 WVS",
+    "S002VS": "Chronology of EVS-WVS waves",
+    "S003": "ISO 3166-1 numeric country code",
+    "COUNTRY_ALPHA": "ISO 3166-1 alpha-3 country code",
+    "S006": "Original respondent number as coded in the respective wave",
+    "S007": "Unified respondent number (CCCWWSNNNN)"
+  },
+  "files": [
+    {
+      "path": "moral_machine/world_values_survey/raw/F00011931-WVS_Time_Series_1981-2022_csv_v5_0.zip",
+      "bytes": 123732739,
+      "sha256": "eb8dc2739a929996c4a6ba60d210cf0e8a0224071eb690cf28e559e97203cdd0"
+    },
+    {
+      "path": "moral_machine/world_values_survey/documentation/F00017184-WVS_Time_Series_1981_2022_Variables_Report_v5.0.pdf",
+      "bytes": 7584679,
+      "sha256": "1be6d8d26ed11f025f04a98a5aecb26819f79b4f1206c8a2eaa84a8198169f8c"
+    }
+  ]
+}

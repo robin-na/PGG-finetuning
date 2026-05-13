@@ -1,0 +1,19 @@
+A participant with the following profile answered a Moral Machine dilemma.
+
+Participant profile:
+Age: 33
+Gender: Male
+Education: Graduate degree
+Annual income: Over $100,000
+Political views: 0.67 on a conservative (0) to progressive (1) scale
+Religiosity: 0.31 on a not religious (0) to very religious (1) scale
+Country: DEU
+
+A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man.
+
+Which option did this participant choose?
+Answer with A or B only.
+Answer:

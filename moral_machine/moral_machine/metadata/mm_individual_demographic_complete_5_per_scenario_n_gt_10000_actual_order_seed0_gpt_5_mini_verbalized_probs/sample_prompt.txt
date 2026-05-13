@@ -1,0 +1,25 @@
+A participant with the following profile answered a Moral Machine dilemma.
+
+Participant profile:
+Age: 33
+Gender: Male
+Education: Graduate degree
+Annual income: Over $100,000
+Political views: 0.67 on a conservative (0) to progressive (1) scale
+Religiosity: 0.31 on a not religious (0) to very religious (1) scale
+Country: DEU
+
+A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man.
+
+Estimate the probability, as integer percentages, that this participant would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: "A" and "B".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {"A": 55, "B": 45}
+Answer:

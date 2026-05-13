@@ -1,0 +1,1534 @@
+{
+  "source_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/raw/moral_machine_data/SharedResponses.csv",
+  "definition": "Exact visible Stay/Swerve pair: paired outcomes with the same ResponseID, using Barrier, CrossingSignal, and all character counts for the Stay and Swerve outcomes. Respondent/session/order/choice/presentation fields are excluded.",
+  "threshold_strictly_greater_than": 532,
+  "matched_pairs": 33953503,
+  "unique_visible_scenarios": 9559552,
+  "global_repeat_thresholds": {
+    ">532": 8306,
+    ">=100": 35340,
+    ">=500": 8977,
+    ">=1000": 4109
+  },
+  "max_global_count": 25872,
+  "max_country_cell_count": 6729,
+  "top_global_scenarios": [
+    {
+      "scenario_hash": "36036f518e82eccca01a0eef133b5e75",
+      "count": 25872,
+      "choice_counts": {
+        "A": 7127,
+        "B": 18745
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 6565
+        },
+        {
+          "country": "DEU",
+          "count": 1696
+        },
+        {
+          "country": "BRA",
+          "count": 1432
+        },
+        {
+          "country": "FRA",
+          "count": 1430
+        },
+        {
+          "country": "GBR",
+          "count": 1329
+        },
+        {
+          "country": "CAN",
+          "count": 1034
+        },
+        {
+          "country": "RUS",
+          "count": 920
+        },
+        {
+          "country": "AUS",
+          "count": 705
+        },
+        {
+          "country": "POL",
+          "count": 656
+        },
+        {
+          "country": "TUR",
+          "count": 636
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 elderly man"
+      }
+    },
+    {
+      "scenario_hash": "3fe05ffd77c1035b31afc74d4707772e",
+      "count": 25765,
+      "choice_counts": {
+        "A": 6557,
+        "B": 19208
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 6729
+        },
+        {
+          "country": "DEU",
+          "count": 1712
+        },
+        {
+          "country": "FRA",
+          "count": 1520
+        },
+        {
+          "country": "BRA",
+          "count": 1468
+        },
+        {
+          "country": "GBR",
+          "count": 1313
+        },
+        {
+          "country": "CAN",
+          "count": 992
+        },
+        {
+          "country": "RUS",
+          "count": 921
+        },
+        {
+          "country": "POL",
+          "count": 676
+        },
+        {
+          "country": "AUS",
+          "count": 663
+        },
+        {
+          "country": "ESP",
+          "count": 653
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 elderly woman"
+      }
+    },
+    {
+      "scenario_hash": "a121064b5297f135808ea2f0c17843d0",
+      "count": 25742,
+      "choice_counts": {
+        "A": 18825,
+        "B": 6917
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 6574
+        },
+        {
+          "country": "DEU",
+          "count": 1653
+        },
+        {
+          "country": "FRA",
+          "count": 1496
+        },
+        {
+          "country": "GBR",
+          "count": 1417
+        },
+        {
+          "country": "BRA",
+          "count": 1412
+        },
+        {
+          "country": "CAN",
+          "count": 1018
+        },
+        {
+          "country": "RUS",
+          "count": 949
+        },
+        {
+          "country": "TUR",
+          "count": 671
+        },
+        {
+          "country": "AUS",
+          "count": 671
+        },
+        {
+          "country": "ESP",
+          "count": 643
+        }
+      ],
+      "example": {
+        "scenario_type": "Fitness",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 female athlete"
+      }
+    },
+    {
+      "scenario_hash": "acfec2d5b57f36619c3db73768def157",
+      "count": 25541,
+      "choice_counts": {
+        "A": 16214,
+        "B": 9327
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 6478
+        },
+        {
+          "country": "DEU",
+          "count": 1671
+        },
+        {
+          "country": "BRA",
+          "count": 1463
+        },
+        {
+          "country": "FRA",
+          "count": 1409
+        },
+        {
+          "country": "GBR",
+          "count": 1368
+        },
+        {
+          "country": "CAN",
+          "count": 1009
+        },
+        {
+          "country": "RUS",
+          "count": 888
+        },
+        {
+          "country": "AUS",
+          "count": 671
+        },
+        {
+          "country": "TUR",
+          "count": 670
+        },
+        {
+          "country": "ITA",
+          "count": 658
+        }
+      ],
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 male athlete",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 man"
+      }
+    },
+    {
+      "scenario_hash": "c55e348b5da3928fc12a45b370e7611f",
+      "count": 25516,
+      "choice_counts": {
+        "A": 18030,
+        "B": 7486
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 6544
+        },
+        {
+          "country": "DEU",
+          "count": 1624
+        },
+        {
+          "country": "BRA",
+          "count": 1449
+        },
+        {
+          "country": "FRA",
+          "count": 1409
+        },
+        {
+          "country": "GBR",
+          "count": 1339
+        },
+        {
+          "country": "CAN",
+          "count": 1031
+        },
+        {
+          "country": "RUS",
+          "count": 910
+        },
+        {
+          "country": "AUS",
+          "count": 676
+        },
+        {
+          "country": "TUR",
+          "count": 651
+        },
+        {
+          "country": "ESP",
+          "count": 649
+        }
+      ],
+      "example": {
+        "scenario_type": "Fitness",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 male athlete"
+      }
+    },
+    {
+      "scenario_hash": "315628bbd8130d1fd2fc5fbf1ee7604b",
+      "count": 25476,
+      "choice_counts": {
+        "A": 22417,
+        "B": 3059
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 6489
+        },
+        {
+          "country": "DEU",
+          "count": 1691
+        },
+        {
+          "country": "BRA",
+          "count": 1465
+        },
+        {
+          "country": "FRA",
+          "count": 1367
+        },
+        {
+          "country": "GBR",
+          "count": 1354
+        },
+        {
+          "country": "CAN",
+          "count": 1038
+        },
+        {
+          "country": "RUS",
+          "count": 910
+        },
+        {
+          "country": "AUS",
+          "count": 705
+        },
+        {
+          "country": "TUR",
+          "count": 693
+        },
+        {
+          "country": "ESP",
+          "count": 671
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 man"
+      }
+    },
+    {
+      "scenario_hash": "2ea9bc96836b52b20015d5aa83de37ad",
+      "count": 25427,
+      "choice_counts": {
+        "A": 14861,
+        "B": 10566
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 6518
+        },
+        {
+          "country": "DEU",
+          "count": 1664
+        },
+        {
+          "country": "FRA",
+          "count": 1483
+        },
+        {
+          "country": "BRA",
+          "count": 1446
+        },
+        {
+          "country": "GBR",
+          "count": 1339
+        },
+        {
+          "country": "CAN",
+          "count": 933
+        },
+        {
+          "country": "RUS",
+          "count": 857
+        },
+        {
+          "country": "ESP",
+          "count": 653
+        },
+        {
+          "country": "POL",
+          "count": 652
+        },
+        {
+          "country": "AUS",
+          "count": 652
+        }
+      ],
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 female athlete",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 woman"
+      }
+    },
+    {
+      "scenario_hash": "b3b0b55b248b225bc05f8005c215cca6",
+      "count": 25307,
+      "choice_counts": {
+        "A": 22537,
+        "B": 2770
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 6485
+        },
+        {
+          "country": "DEU",
+          "count": 1671
+        },
+        {
+          "country": "BRA",
+          "count": 1428
+        },
+        {
+          "country": "FRA",
+          "count": 1416
+        },
+        {
+          "country": "GBR",
+          "count": 1342
+        },
+        {
+          "country": "CAN",
+          "count": 989
+        },
+        {
+          "country": "RUS",
+          "count": 890
+        },
+        {
+          "country": "AUS",
+          "count": 661
+        },
+        {
+          "country": "ITA",
+          "count": 644
+        },
+        {
+          "country": "ESP",
+          "count": 637
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 woman"
+      }
+    },
+    {
+      "scenario_hash": "c990d2973cbe75633f5630689d16b050",
+      "count": 17621,
+      "choice_counts": {
+        "A": 15904,
+        "B": 1717
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4427
+        },
+        {
+          "country": "DEU",
+          "count": 1102
+        },
+        {
+          "country": "BRA",
+          "count": 976
+        },
+        {
+          "country": "FRA",
+          "count": 946
+        },
+        {
+          "country": "GBR",
+          "count": 914
+        },
+        {
+          "country": "CAN",
+          "count": 704
+        },
+        {
+          "country": "RUS",
+          "count": 610
+        },
+        {
+          "country": "TUR",
+          "count": 427
+        },
+        {
+          "country": "JPN",
+          "count": 425
+        },
+        {
+          "country": "ESP",
+          "count": 423
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly man\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 man\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "ae539fd4158c5cbf5e5635085930d412",
+      "count": 17316,
+      "choice_counts": {
+        "A": 14963,
+        "B": 2353
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4406
+        },
+        {
+          "country": "DEU",
+          "count": 1163
+        },
+        {
+          "country": "BRA",
+          "count": 990
+        },
+        {
+          "country": "FRA",
+          "count": 962
+        },
+        {
+          "country": "GBR",
+          "count": 914
+        },
+        {
+          "country": "CAN",
+          "count": 676
+        },
+        {
+          "country": "RUS",
+          "count": 621
+        },
+        {
+          "country": "ESP",
+          "count": 482
+        },
+        {
+          "country": "TUR",
+          "count": 452
+        },
+        {
+          "country": "AUS",
+          "count": 448
+        }
+      ],
+      "example": {
+        "scenario_type": "Fitness",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 female athlete\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "8438349e35ea65069625edddd52af96a",
+      "count": 17282,
+      "choice_counts": {
+        "A": 7003,
+        "B": 10279
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4415
+        },
+        {
+          "country": "DEU",
+          "count": 1045
+        },
+        {
+          "country": "FRA",
+          "count": 1002
+        },
+        {
+          "country": "BRA",
+          "count": 981
+        },
+        {
+          "country": "GBR",
+          "count": 947
+        },
+        {
+          "country": "CAN",
+          "count": 657
+        },
+        {
+          "country": "RUS",
+          "count": 626
+        },
+        {
+          "country": "AUS",
+          "count": 477
+        },
+        {
+          "country": "TUR",
+          "count": 462
+        },
+        {
+          "country": "POL",
+          "count": 436
+        }
+      ],
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 female athlete",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 woman"
+      }
+    },
+    {
+      "scenario_hash": "fa5312d6d4d9ab53fe9f933029c58b67",
+      "count": 17226,
+      "choice_counts": {
+        "A": 11071,
+        "B": 6155
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4356
+        },
+        {
+          "country": "DEU",
+          "count": 1108
+        },
+        {
+          "country": "FRA",
+          "count": 1018
+        },
+        {
+          "country": "BRA",
+          "count": 981
+        },
+        {
+          "country": "GBR",
+          "count": 916
+        },
+        {
+          "country": "CAN",
+          "count": 670
+        },
+        {
+          "country": "RUS",
+          "count": 623
+        },
+        {
+          "country": "TUR",
+          "count": 481
+        },
+        {
+          "country": "AUS",
+          "count": 457
+        },
+        {
+          "country": "ESP",
+          "count": 434
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 woman"
+      }
+    },
+    {
+      "scenario_hash": "68f34fdd904338799cc82431fcf5c4ad",
+      "count": 17224,
+      "choice_counts": {
+        "A": 5148,
+        "B": 12076
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4422
+        },
+        {
+          "country": "DEU",
+          "count": 1082
+        },
+        {
+          "country": "FRA",
+          "count": 992
+        },
+        {
+          "country": "BRA",
+          "count": 974
+        },
+        {
+          "country": "GBR",
+          "count": 921
+        },
+        {
+          "country": "CAN",
+          "count": 638
+        },
+        {
+          "country": "RUS",
+          "count": 619
+        },
+        {
+          "country": "ITA",
+          "count": 469
+        },
+        {
+          "country": "AUS",
+          "count": 467
+        },
+        {
+          "country": "TUR",
+          "count": 467
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 elderly man"
+      }
+    },
+    {
+      "scenario_hash": "178a4ad0eb24ebd1b5a266880d24c47d",
+      "count": 17210,
+      "choice_counts": {
+        "A": 7736,
+        "B": 9474
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4350
+        },
+        {
+          "country": "DEU",
+          "count": 1102
+        },
+        {
+          "country": "FRA",
+          "count": 959
+        },
+        {
+          "country": "BRA",
+          "count": 958
+        },
+        {
+          "country": "GBR",
+          "count": 925
+        },
+        {
+          "country": "CAN",
+          "count": 688
+        },
+        {
+          "country": "RUS",
+          "count": 590
+        },
+        {
+          "country": "AUS",
+          "count": 464
+        },
+        {
+          "country": "ESP",
+          "count": 439
+        },
+        {
+          "country": "POL",
+          "count": 428
+        }
+      ],
+      "example": {
+        "scenario_type": "Fitness",
+        "scenario_type_strict": "Fitness",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 female athlete"
+      }
+    },
+    {
+      "scenario_hash": "c5bcd476c5b67c94730a4ac29600565b",
+      "count": 17199,
+      "choice_counts": {
+        "A": 7228,
+        "B": 9971
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4389
+        },
+        {
+          "country": "DEU",
+          "count": 1169
+        },
+        {
+          "country": "FRA",
+          "count": 967
+        },
+        {
+          "country": "BRA",
+          "count": 933
+        },
+        {
+          "country": "GBR",
+          "count": 899
+        },
+        {
+          "country": "CAN",
+          "count": 690
+        },
+        {
+          "country": "RUS",
+          "count": 574
+        },
+        {
+          "country": "AUS",
+          "count": 463
+        },
+        {
+          "country": "ITA",
+          "count": 453
+        },
+        {
+          "country": "POL",
+          "count": 423
+        }
+      ],
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 male athlete",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 man"
+      }
+    },
+    {
+      "scenario_hash": "be7cb3cd5a62c89f928ef2c6247e6063",
+      "count": 17198,
+      "choice_counts": {
+        "A": 14349,
+        "B": 2849
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4347
+        },
+        {
+          "country": "DEU",
+          "count": 1165
+        },
+        {
+          "country": "BRA",
+          "count": 1016
+        },
+        {
+          "country": "FRA",
+          "count": 950
+        },
+        {
+          "country": "GBR",
+          "count": 871
+        },
+        {
+          "country": "CAN",
+          "count": 656
+        },
+        {
+          "country": "RUS",
+          "count": 557
+        },
+        {
+          "country": "ITA",
+          "count": 517
+        },
+        {
+          "country": "AUS",
+          "count": 476
+        },
+        {
+          "country": "ESP",
+          "count": 437
+        }
+      ],
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 male athlete\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 man\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "09d1fe9f0da9b572a91e67f492369538",
+      "count": 17136,
+      "choice_counts": {
+        "A": 10623,
+        "B": 6513
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4308
+        },
+        {
+          "country": "DEU",
+          "count": 1067
+        },
+        {
+          "country": "FRA",
+          "count": 1011
+        },
+        {
+          "country": "BRA",
+          "count": 965
+        },
+        {
+          "country": "GBR",
+          "count": 948
+        },
+        {
+          "country": "CAN",
+          "count": 683
+        },
+        {
+          "country": "RUS",
+          "count": 618
+        },
+        {
+          "country": "TUR",
+          "count": 458
+        },
+        {
+          "country": "ESP",
+          "count": 456
+        },
+        {
+          "country": "AUS",
+          "count": 449
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 man"
+      }
+    },
+    {
+      "scenario_hash": "77a76c25e1470b915257b9dc879cda26",
+      "count": 17132,
+      "choice_counts": {
+        "A": 9821,
+        "B": 7311
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4329
+        },
+        {
+          "country": "DEU",
+          "count": 1148
+        },
+        {
+          "country": "BRA",
+          "count": 992
+        },
+        {
+          "country": "FRA",
+          "count": 950
+        },
+        {
+          "country": "GBR",
+          "count": 924
+        },
+        {
+          "country": "CAN",
+          "count": 699
+        },
+        {
+          "country": "RUS",
+          "count": 566
+        },
+        {
+          "country": "AUS",
+          "count": 456
+        },
+        {
+          "country": "ITA",
+          "count": 446
+        },
+        {
+          "country": "ESP",
+          "count": 429
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 elderly woman\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "f7a0546a2fa54119593dec3e4406e135",
+      "count": 17106,
+      "choice_counts": {
+        "A": 10332,
+        "B": 6774
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4368
+        },
+        {
+          "country": "DEU",
+          "count": 1137
+        },
+        {
+          "country": "BRA",
+          "count": 1022
+        },
+        {
+          "country": "FRA",
+          "count": 941
+        },
+        {
+          "country": "GBR",
+          "count": 918
+        },
+        {
+          "country": "CAN",
+          "count": 703
+        },
+        {
+          "country": "RUS",
+          "count": 592
+        },
+        {
+          "country": "ESP",
+          "count": 469
+        },
+        {
+          "country": "AUS",
+          "count": 455
+        },
+        {
+          "country": "TUR",
+          "count": 445
+        }
+      ],
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 man\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 elderly man\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "2925106b8d39a2daf4ac9515d7e6302a",
+      "count": 17101,
+      "choice_counts": {
+        "A": 7687,
+        "B": 9414
+      },
+      "top_countries": [
+        {
+          "country": "USA",
+          "count": 4289
+        },
+        {
+          "country": "DEU",
+          "count": 1080
+        },
+        {
+          "country": "FRA",
+          "count": 959
+        },
+        {
+          "country": "GBR",
+          "count": 958
+        },
+        {
+          "country": "BRA",
+          "count": 958
+        },
+        {
+          "country": "CAN",
+          "count": 665
+        },
+        {
+          "country": "RUS",
+          "count": 628
+        },
+        {
+          "country": "ESP",
+          "count": 452
+        },
+        {
+          "country": "AUS",
+          "count": 448
+        },
+        {
+          "country": "TUR",
+          "count": 442
+        }
+      ],
+      "example": {
+        "scenario_type": "Fitness",
+        "scenario_type_strict": "Fitness",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 male athlete"
+      }
+    }
+  ],
+  "top_country_scenario_cells": [
+    {
+      "scenario_hash": "3fe05ffd77c1035b31afc74d4707772e",
+      "country": "USA",
+      "count": 6729,
+      "global_count": 25765,
+      "choice_counts": {
+        "A": 6557,
+        "B": 19208
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 elderly woman"
+      }
+    },
+    {
+      "scenario_hash": "a121064b5297f135808ea2f0c17843d0",
+      "country": "USA",
+      "count": 6574,
+      "global_count": 25742,
+      "choice_counts": {
+        "A": 18825,
+        "B": 6917
+      },
+      "example": {
+        "scenario_type": "Fitness",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 female athlete"
+      }
+    },
+    {
+      "scenario_hash": "36036f518e82eccca01a0eef133b5e75",
+      "country": "USA",
+      "count": 6565,
+      "global_count": 25872,
+      "choice_counts": {
+        "A": 7127,
+        "B": 18745
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 elderly man"
+      }
+    },
+    {
+      "scenario_hash": "c55e348b5da3928fc12a45b370e7611f",
+      "country": "USA",
+      "count": 6544,
+      "global_count": 25516,
+      "choice_counts": {
+        "A": 18030,
+        "B": 7486
+      },
+      "example": {
+        "scenario_type": "Fitness",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 male athlete"
+      }
+    },
+    {
+      "scenario_hash": "2ea9bc96836b52b20015d5aa83de37ad",
+      "country": "USA",
+      "count": 6518,
+      "global_count": 25427,
+      "choice_counts": {
+        "A": 14861,
+        "B": 10566
+      },
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 female athlete",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 woman"
+      }
+    },
+    {
+      "scenario_hash": "315628bbd8130d1fd2fc5fbf1ee7604b",
+      "country": "USA",
+      "count": 6489,
+      "global_count": 25476,
+      "choice_counts": {
+        "A": 22417,
+        "B": 3059
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 man"
+      }
+    },
+    {
+      "scenario_hash": "b3b0b55b248b225bc05f8005c215cca6",
+      "country": "USA",
+      "count": 6485,
+      "global_count": 25307,
+      "choice_counts": {
+        "A": 22537,
+        "B": 2770
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 woman"
+      }
+    },
+    {
+      "scenario_hash": "acfec2d5b57f36619c3db73768def157",
+      "country": "USA",
+      "count": 6478,
+      "global_count": 25541,
+      "choice_counts": {
+        "A": 16214,
+        "B": 9327
+      },
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 male athlete",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 man"
+      }
+    },
+    {
+      "scenario_hash": "c990d2973cbe75633f5630689d16b050",
+      "country": "USA",
+      "count": 4427,
+      "global_count": 17621,
+      "choice_counts": {
+        "A": 15904,
+        "B": 1717
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly man\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 man\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "68f34fdd904338799cc82431fcf5c4ad",
+      "country": "USA",
+      "count": 4422,
+      "global_count": 17224,
+      "choice_counts": {
+        "A": 5148,
+        "B": 12076
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 man",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 elderly man"
+      }
+    },
+    {
+      "scenario_hash": "8438349e35ea65069625edddd52af96a",
+      "country": "USA",
+      "count": 4415,
+      "global_count": 17282,
+      "choice_counts": {
+        "A": 7003,
+        "B": 10279
+      },
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 female athlete",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 woman"
+      }
+    },
+    {
+      "scenario_hash": "ae539fd4158c5cbf5e5635085930d412",
+      "country": "USA",
+      "count": 4406,
+      "global_count": 17316,
+      "choice_counts": {
+        "A": 14963,
+        "B": 2353
+      },
+      "example": {
+        "scenario_type": "Fitness",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 female athlete\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "c5bcd476c5b67c94730a4ac29600565b",
+      "country": "USA",
+      "count": 4389,
+      "global_count": 17199,
+      "choice_counts": {
+        "A": 7228,
+        "B": 9971
+      },
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 male athlete",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 man"
+      }
+    },
+    {
+      "scenario_hash": "f7a0546a2fa54119593dec3e4406e135",
+      "country": "USA",
+      "count": 4368,
+      "global_count": 17106,
+      "choice_counts": {
+        "A": 10332,
+        "B": 6774
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 man\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 elderly man\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "dc392be2ef2f0e0306cf39324f2f372f",
+      "country": "USA",
+      "count": 4368,
+      "global_count": 17062,
+      "choice_counts": {
+        "A": 15457,
+        "B": 1605
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly woman\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 woman\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "0ca24cd58cdf0faeec82c043821094dc",
+      "country": "USA",
+      "count": 4360,
+      "global_count": 17011,
+      "choice_counts": {
+        "A": 13754,
+        "B": 3257
+      },
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 female athlete\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 woman\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "fa5312d6d4d9ab53fe9f933029c58b67",
+      "country": "USA",
+      "count": 4356,
+      "global_count": 17226,
+      "choice_counts": {
+        "A": 11071,
+        "B": 6155
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 elderly woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 woman"
+      }
+    },
+    {
+      "scenario_hash": "178a4ad0eb24ebd1b5a266880d24c47d",
+      "country": "USA",
+      "count": 4350,
+      "global_count": 17210,
+      "choice_counts": {
+        "A": 7736,
+        "B": 9474
+      },
+      "example": {
+        "scenario_type": "Fitness",
+        "scenario_type_strict": "Fitness",
+        "pedped": "0",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and crash into a concrete barrier. This will result in the death of the passengers.\nDead:\n * 1 female athlete"
+      }
+    },
+    {
+      "scenario_hash": "be7cb3cd5a62c89f928ef2c6247e6063",
+      "country": "USA",
+      "count": 4347,
+      "global_count": 17198,
+      "choice_counts": {
+        "A": 14349,
+        "B": 2849
+      },
+      "example": {
+        "scenario_type": "Random",
+        "scenario_type_strict": "Fitness",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 male athlete\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 man\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    },
+    {
+      "scenario_hash": "77a76c25e1470b915257b9dc879cda26",
+      "country": "USA",
+      "count": 4329,
+      "global_count": 17132,
+      "choice_counts": {
+        "A": 9821,
+        "B": 7311
+      },
+      "example": {
+        "scenario_type": "Age",
+        "scenario_type_strict": "Age",
+        "pedped": "1",
+        "stay_outcome": "Stay, outcome: in this case, the self-driving car with sudden brake failure will continue ahead and drive through a pedestrian crossing ahead. This will result in the death of the pedestrians.\nDead:\n * 1 woman\nNote that the affected pedestrians are flouting the law by crossing on the red signal.",
+        "swerve_outcome": "Swerve, outcome: in this case, the self-driving car with sudden brake failure will swerve and drive through a pedestrian crossing in the other lane. This will result in the death of the pedestrians.\nDead:\n * 1 elderly woman\nNote that the affected pedestrians are abiding by the law by crossing on the green signal."
+      }
+    }
+  ],
+  "first_pass_summary": {
+    "matched_pairs": 33953503,
+    "stay_rows_without_swerve_pair": 1279792,
+    "swerve_rows_without_stay_pair": 1145557,
+    "stay_filtered_rows_seen": 35233295,
+    "swerve_filtered_rows_seen": 35099060,
+    "stay_stream_unsorted_transitions": 0,
+    "swerve_stream_unsorted_transitions": 0,
+    "stream_exit_codes": {
+      "stay_stream": 0,
+      "swerve_stream": 0
+    },
+    "stream_stderr": {
+      "stay_stream": "",
+      "swerve_stream": ""
+    }
+  },
+  "second_pass_summary": {
+    "matched_pairs": 33953503,
+    "stay_rows_without_swerve_pair": 1279792,
+    "swerve_rows_without_stay_pair": 1145557,
+    "stay_filtered_rows_seen": 35233295,
+    "swerve_filtered_rows_seen": 35099060,
+    "stay_stream_unsorted_transitions": 0,
+    "swerve_stream_unsorted_transitions": 0,
+    "stream_exit_codes": {
+      "stay_stream": 0,
+      "swerve_stream": 0
+    },
+    "stream_stderr": {
+      "stay_stream": "",
+      "swerve_stream": ""
+    }
+  },
+  "elapsed_seconds": 847.4551661014557
+}

@@ -1,0 +1,47 @@
+{
+  "sqlite_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/individual_candidates/global_n_gt_10000_demographic_complete_actual_order/individual_candidates.sqlite",
+  "scenario_candidate_counts_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/individual_candidates/global_n_gt_10000_demographic_complete_actual_order/scenario_candidate_counts.csv",
+  "source_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/raw/moral_machine_data/SharedResponses.csv",
+  "survey_source_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/raw/moral_machine_data/SharedResponsesSurvey.csv.tar.gz",
+  "scenario_db": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/high_repeat_scenario_cells/global_100_cell_100/scenario_cells.sqlite",
+  "threshold": {
+    "field": "global_count",
+    "operator": ">",
+    "value": 10000
+  },
+  "num_scenarios": 88,
+  "target_pair_stats": {
+    "inserted_target_pairs": 1109726,
+    "source": "existing_cache_table_count"
+  },
+  "candidate_stats": {
+    "inserted_candidates": 115387,
+    "source": "existing_cache_table_count"
+  },
+  "candidate_count_min": 855,
+  "candidate_count_max": 2400,
+  "candidate_count_total": 115387,
+  "demographic_filter": {
+    "source": "SharedResponsesSurvey.csv",
+    "required_fields": [
+      "Review_age",
+      "Review_education",
+      "Review_gender",
+      "Review_income",
+      "Review_political",
+      "Review_religious",
+      "UserCountry3"
+    ],
+    "age_min": 18,
+    "age_max": 75,
+    "education_gender_income": "nonblank and not default",
+    "political_religious": "valid 0-1 slider values; 0.5 retained because MM uses 0.5 both as midpoint and as the documented no-answer default",
+    "require_country": true
+  },
+  "tables": {
+    "scenarios": "One row per selected exact visible scenario.",
+    "target_pairs": "All raw individual response pairs for selected scenarios with valid LeftHand order and valid Saved-derived choice.",
+    "candidates": "Subset of target_pairs whose respondent has complete survey demographics under the documented filter."
+  },
+  "finalized_from_existing_cache": true
+}

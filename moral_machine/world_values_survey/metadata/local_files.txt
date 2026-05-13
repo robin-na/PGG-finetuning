@@ -1,0 +1,2 @@
+123732739 bytes  moral_machine/world_values_survey/raw/F00011931-WVS_Time_Series_1981-2022_csv_v5_0.zip
+7584679 bytes  moral_machine/world_values_survey/documentation/F00017184-WVS_Time_Series_1981_2022_Variables_Report_v5.0.pdf

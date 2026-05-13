@@ -1,0 +1,33 @@
+{
+  "num_rows": 440,
+  "num_valid": 440,
+  "num_failed": 0,
+  "accuracy": 0.6477272727272727,
+  "accuracy_denominator": "valid parsed outputs",
+  "num_exact_format": 440,
+  "gold_choice_counts": {
+    "A": 214,
+    "B": 226
+  },
+  "predicted_choice_counts": {
+    "A": 215,
+    "B": 225
+  },
+  "gold_majority_baseline_accuracy": 0.5136363636363637,
+  "accuracy_by_left_action": {
+    "stay": {
+      "n": 265,
+      "accuracy": 0.6528301886792452
+    },
+    "swerve": {
+      "n": 175,
+      "accuracy": 0.64
+    }
+  },
+  "failure_examples": [],
+  "run_name": "mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs",
+  "model": "gpt-5-mini",
+  "batch_output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_output/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs.jsonl",
+  "sample_manifest_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs/sample_manifest.csv",
+  "results_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/results/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs"
+}

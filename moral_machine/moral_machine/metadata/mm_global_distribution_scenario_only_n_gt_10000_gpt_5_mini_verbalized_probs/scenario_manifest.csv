@@ -1,0 +1,1233 @@
+custom_id,source_custom_id,scenario_hash,global_count,global_stay_count,global_swerve_count,global_stay_share,global_swerve_share,option_a_action,option_b_action,observed_a_count,observed_b_count,observed_a_share,observed_b_share,scenario_type,scenario_type_strict,attribute_level,pedped,input_char_count,estimated_input_tokens_4_chars_per_token,estimated_input_tokens_3_5_chars_per_token,prompt,source_run_name,prompt_version,response_format
+mm_global_distribution_0001_vprob,mm_global_distribution_0001,36036f518e82eccca01a0eef133b5e75,25872,7127,18745,0.27547155225726655,0.7245284477427335,stay,swerve,7127,18745,0.27547155225726655,0.7245284477427335,Age,Age,Young,1,724,181,207,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0002_vprob,mm_global_distribution_0002,3fe05ffd77c1035b31afc74d4707772e,25765,6557,19208,0.2544925286241025,0.7455074713758976,stay,swerve,6557,19208,0.2544925286241025,0.7455074713758976,Age,Age,Young,1,728,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0003_vprob,mm_global_distribution_0003,a121064b5297f135808ea2f0c17843d0,25742,18825,6917,0.731295159661254,0.26870484033874603,stay,swerve,18825,6917,0.731295159661254,0.26870484033874603,Fitness,Fitness,Fat,1,729,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 female athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0004_vprob,mm_global_distribution_0004,acfec2d5b57f36619c3db73768def157,25541,16214,9327,0.634822442347598,0.365177557652402,stay,swerve,16214,9327,0.634822442347598,0.365177557652402,Random,Fitness,Rand,1,725,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 male athlete.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0005_vprob,mm_global_distribution_0005,c55e348b5da3928fc12a45b370e7611f,25516,18030,7486,0.7066154569681768,0.29338454303182315,stay,swerve,18030,7486,0.7066154569681768,0.29338454303182315,Fitness,Fitness,Fat,1,725,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 male athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0006_vprob,mm_global_distribution_0006,315628bbd8130d1fd2fc5fbf1ee7604b,25476,22417,3059,0.8799262050557387,0.12007379494426126,stay,swerve,22417,3059,0.8799262050557387,0.12007379494426126,Age,Age,Old,1,724,181,207,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0007_vprob,mm_global_distribution_0007,2ea9bc96836b52b20015d5aa83de37ad,25427,14861,10566,0.5844574664726472,0.4155425335273528,stay,swerve,14861,10566,0.5844574664726472,0.4155425335273528,Random,Fitness,Rand,1,729,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female athlete.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0008_vprob,mm_global_distribution_0008,b3b0b55b248b225bc05f8005c215cca6,25307,22537,2770,0.8905441182281583,0.10945588177184179,stay,swerve,22537,2770,0.8905441182281583,0.10945588177184179,Age,Age,Old,1,728,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0009_vprob,mm_global_distribution_0009,c990d2973cbe75633f5630689d16b050,17621,15904,1717,0.9025594461154305,0.09744055388456954,stay,swerve,15904,1717,0.9025594461154305,0.09744055388456954,Age,Age,Old,1,774,194,222,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly man crossing on a red light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man crossing on a green light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0010_vprob,mm_global_distribution_0010,ae539fd4158c5cbf5e5635085930d412,17316,14963,2353,0.8641141141141141,0.13588588588588588,stay,swerve,14963,2353,0.8641141141141141,0.13588588588588588,Fitness,Fitness,Fat,1,779,195,223,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman crossing on a red light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 female athlete crossing on a green light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0011_vprob,mm_global_distribution_0011,8438349e35ea65069625edddd52af96a,17282,7003,10279,0.40521930332137485,0.5947806966786252,stay,swerve,7003,10279,0.40521930332137485,0.5947806966786252,Random,Fitness,Rand,0,720,180,206,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female athlete.
+(B) Swerve into a concrete barrier. The following passengers die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0012_vprob,mm_global_distribution_0012,fa5312d6d4d9ab53fe9f933029c58b67,17226,11071,6155,0.6426912806223151,0.3573087193776849,stay,swerve,11071,6155,0.6426912806223151,0.3573087193776849,Age,Age,Old,0,719,180,206,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly woman.
+(B) Swerve into a concrete barrier. The following passengers die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0013_vprob,mm_global_distribution_0013,68f34fdd904338799cc82431fcf5c4ad,17224,5148,12076,0.29888527635856943,0.7011147236414306,stay,swerve,5148,12076,0.29888527635856943,0.7011147236414306,Age,Age,Young,0,715,179,205,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve into a concrete barrier. The following passengers die: 1 elderly man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0014_vprob,mm_global_distribution_0014,178a4ad0eb24ebd1b5a266880d24c47d,17210,7736,9474,0.4495061011040093,0.5504938988959907,stay,swerve,7736,9474,0.4495061011040093,0.5504938988959907,Fitness,Fitness,Fat,0,720,180,206,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+(B) Swerve into a concrete barrier. The following passengers die: 1 female athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0015_vprob,mm_global_distribution_0015,c5bcd476c5b67c94730a4ac29600565b,17199,7228,9971,0.42025699168556313,0.5797430083144369,stay,swerve,7228,9971,0.42025699168556313,0.5797430083144369,Random,Fitness,Rand,0,716,179,205,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 male athlete.
+(B) Swerve into a concrete barrier. The following passengers die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0016_vprob,mm_global_distribution_0016,be7cb3cd5a62c89f928ef2c6247e6063,17198,14349,2849,0.834341202465403,0.16565879753459706,stay,swerve,14349,2849,0.834341202465403,0.16565879753459706,Random,Fitness,Rand,1,775,194,222,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 male athlete crossing on a red light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man crossing on a green light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0017_vprob,mm_global_distribution_0017,09d1fe9f0da9b572a91e67f492369538,17136,10623,6513,0.6199229691876751,0.3800770308123249,stay,swerve,10623,6513,0.6199229691876751,0.3800770308123249,Age,Age,Old,0,715,179,205,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly man.
+(B) Swerve into a concrete barrier. The following passengers die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0018_vprob,mm_global_distribution_0018,77a76c25e1470b915257b9dc879cda26,17132,9821,7311,0.5732547279943965,0.4267452720056035,stay,swerve,9821,7311,0.5732547279943965,0.4267452720056035,Age,Age,Young,1,778,195,223,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman crossing on a red light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly woman crossing on a green light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0019_vprob,mm_global_distribution_0019,f7a0546a2fa54119593dec3e4406e135,17106,10332,6774,0.6039985969835145,0.39600140301648545,stay,swerve,10332,6774,0.6039985969835145,0.39600140301648545,Age,Age,Young,1,774,194,222,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man crossing on a red light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man crossing on a green light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0020_vprob,mm_global_distribution_0020,2925106b8d39a2daf4ac9515d7e6302a,17101,7687,9414,0.44950587684930704,0.5504941231506929,stay,swerve,7687,9414,0.44950587684930704,0.5504941231506929,Fitness,Fitness,Fat,0,716,179,205,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve into a concrete barrier. The following passengers die: 1 male athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0021_vprob,mm_global_distribution_0021,dc392be2ef2f0e0306cf39324f2f372f,17062,15457,1605,0.9059313093423983,0.09406869065760169,stay,swerve,15457,1605,0.9059313093423983,0.09406869065760169,Age,Age,Old,1,778,195,223,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly woman crossing on a red light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman crossing on a green light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0022_vprob,mm_global_distribution_0022,2f2c7f336ec11a8cefc39f15069c4fd5,17047,14641,2406,0.8588607966211064,0.14113920337889366,stay,swerve,14641,2406,0.8588607966211064,0.14113920337889366,Fitness,Fitness,Fat,1,775,194,222,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man crossing on a red light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 male athlete crossing on a green light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0023_vprob,mm_global_distribution_0023,0ca24cd58cdf0faeec82c043821094dc,17011,13754,3257,0.8085356534007407,0.19146434659925932,stay,swerve,13754,3257,0.8085356534007407,0.19146434659925932,Random,Fitness,Rand,1,779,195,223,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female athlete crossing on a red light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman crossing on a green light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0024_vprob,mm_global_distribution_0024,a6d1ea9ffa14fb945cbfb1987b9ea8ca,16962,4180,12782,0.24643320363164722,0.7535667963683528,stay,swerve,4180,12782,0.24643320363164722,0.7535667963683528,Age,Age,Young,0,719,180,206,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+(B) Swerve into a concrete barrier. The following passengers die: 1 elderly woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0025_vprob,mm_global_distribution_0025,290aaba99e16d4041861909647e6ff4e,14995,11556,3439,0.7706568856285428,0.22934311437145716,stay,swerve,11556,3439,0.7706568856285428,0.22934311437145716,Gender,Gender,Male,1,717,180,205,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 boy.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 girl.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0026_vprob,mm_global_distribution_0026,57f2f3f1620ea7cadb3a45a62c948db0,14983,7571,7412,0.5053060134819463,0.4946939865180538,stay,swerve,7571,7412,0.5053060134819463,0.4946939865180538,Gender,Gender,Female,1,736,184,211,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female athlete.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 male athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0027_vprob,mm_global_distribution_0027,0205c1ee69c9f923c1b7a1e71b3e5963,14824,11970,2854,0.8074743658931463,0.19252563410685375,stay,swerve,11970,2854,0.8074743658931463,0.19252563410685375,Gender,Gender,Male,1,730,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 large man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 large woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0028_vprob,mm_global_distribution_0028,ea2b354634993cdac66fa6f859c0068e,14807,11639,3168,0.7860471398662795,0.21395286013372053,stay,swerve,11639,3168,0.7860471398662795,0.21395286013372053,Gender,Gender,Male,1,740,185,212,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 male executive.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 female executive.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0029_vprob,mm_global_distribution_0029,7c5eb9f0e9c6bb257050569d1264ea4a,14790,8364,6426,0.5655172413793104,0.43448275862068964,stay,swerve,8364,6426,0.5655172413793104,0.43448275862068964,Gender,Gender,Female,1,734,184,210,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0030_vprob,mm_global_distribution_0030,0b95430cf4c222adf9f5a842d0a6546f,14769,11235,3534,0.7607150111720495,0.23928498882795043,stay,swerve,11235,3534,0.7607150111720495,0.23928498882795043,Gender,Gender,Male,1,734,184,210,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0031_vprob,mm_global_distribution_0031,3b93b24d35338bb577169344973e079e,14760,7255,7505,0.49153116531165314,0.5084688346883469,stay,swerve,7255,7505,0.49153116531165314,0.5084688346883469,Gender,Gender,Female,1,730,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 large woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 large man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0032_vprob,mm_global_distribution_0032,658ada3062c37295a6befb570d209548,14760,11784,2976,0.7983739837398374,0.2016260162601626,stay,swerve,11784,2976,0.7983739837398374,0.2016260162601626,Gender,Gender,Male,1,736,184,211,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 male athlete.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 female athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0033_vprob,mm_global_distribution_0033,1de59853b82d8b8ffeb21679ff2e677d,14644,7449,7195,0.5086724938541383,0.4913275061458618,stay,swerve,7449,7195,0.5086724938541383,0.4913275061458618,Gender,Gender,Female,1,718,180,206,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0034_vprob,mm_global_distribution_0034,1f19e7f9ae9fcb941276e4822b3b3a68,14631,11166,3465,0.763174082427722,0.23682591757227803,stay,swerve,11166,3465,0.763174082427722,0.23682591757227803,Gender,Gender,Male,1,734,184,210,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 male doctor.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 female doctor.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0035_vprob,mm_global_distribution_0035,bb91b89f765765ce0982a3c621ee1d99,14626,11817,2809,0.8079447559141255,0.19205524408587446,stay,swerve,11817,2809,0.8079447559141255,0.19205524408587446,Gender,Gender,Male,1,718,180,206,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0036_vprob,mm_global_distribution_0036,adc5741ef7d135c4bdabe548792ec703,14570,7966,6604,0.5467398764584763,0.4532601235415237,stay,swerve,7966,6604,0.5467398764584763,0.4532601235415237,Gender,Gender,Female,1,717,180,205,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 girl.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 boy.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0037_vprob,mm_global_distribution_0037,f2d3245b01c063e4d1096b26d9921826,14557,8219,6338,0.5646080923267157,0.43539190767328434,stay,swerve,8219,6338,0.5646080923267157,0.43539190767328434,Gender,Gender,Female,1,734,184,210,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female doctor.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 male doctor.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0038_vprob,mm_global_distribution_0038,5c8c7479a5ebc4a2d9b524be2e1451eb,14526,7752,6774,0.5336637752994631,0.466336224700537,stay,swerve,7752,6774,0.5336637752994631,0.466336224700537,Gender,Gender,Female,1,740,185,212,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female executive.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 male executive.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0039_vprob,mm_global_distribution_0039,d881db7ecaca8f1cf95ccf54ca82d3e2,13680,8609,5071,0.629312865497076,0.37068713450292395,stay,swerve,8609,5071,0.629312865497076,0.37068713450292395,Random,Fitness,Rand,1,752,188,215,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female athlete; 1 male athlete.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man; 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0040_vprob,mm_global_distribution_0040,38049abc7d37e2cacb0bd5946e956cce,13357,11420,1937,0.8549824062289436,0.14501759377105639,stay,swerve,11420,1937,0.8549824062289436,0.14501759377105639,Age,Age,Old,1,750,188,215,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly man; 1 elderly woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man; 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0041_vprob,mm_global_distribution_0041,cf74956998927190759a19a9f27cca1c,13006,12070,936,0.9280332154390282,0.07196678456097186,stay,swerve,12070,936,0.9280332154390282,0.07196678456097186,Age,Age,Old,1,724,181,207,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 boy.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0042_vprob,mm_global_distribution_0042,177b0905a5980959cf38d569e4f9c7fe,12951,10675,2276,0.8242606748513628,0.17573932514863716,stay,swerve,10675,2276,0.8242606748513628,0.17573932514863716,Fitness,Fitness,Fat,1,722,181,207,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 large man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0043_vprob,mm_global_distribution_0043,29491ff886e46d484657ddcea7f72297,12946,3319,9627,0.2563726247489572,0.7436273752510428,stay,swerve,3319,9627,0.2563726247489572,0.7436273752510428,Random,Age,Rand,1,716,179,205,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 boy.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0044_vprob,mm_global_distribution_0044,60298a3a0af4e1efe84b4646e5214fcd,12918,5841,7077,0.4521597770552717,0.5478402229447283,stay,swerve,5841,7077,0.4521597770552717,0.5478402229447283,Fitness,Fitness,Fit,1,735,184,210,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female athlete.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 large woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0045_vprob,mm_global_distribution_0045,c206763910365d41d0fc71c7580c6043,12888,10510,2378,0.8154872749844817,0.18451272501551833,stay,swerve,10510,2378,0.8154872749844817,0.18451272501551833,Fitness,Fitness,Fat,1,731,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 large man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 male athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0046_vprob,mm_global_distribution_0046,21e60cb66fb9cc874a033c56cf158a9b,12872,10681,2191,0.8297855811062772,0.1702144188937228,stay,swerve,10681,2191,0.8297855811062772,0.1702144188937228,Social Status,Social Status,Low,1,728,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 homeless person.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0047_vprob,mm_global_distribution_0047,79c59073a50d6348bdf97d0b34f214ea,12863,11975,888,0.9309647827100987,0.06903521728990127,stay,swerve,11975,888,0.9309647827100987,0.06903521728990127,Age,Age,Old,1,727,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 girl.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0048_vprob,mm_global_distribution_0048,697927bab188ef452432817a12f11728,12860,10267,2593,0.7983670295489891,0.2016329704510109,stay,swerve,10267,2593,0.7983670295489891,0.2016329704510109,Fitness,Fitness,Fat,1,735,184,210,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 large woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 female athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0049_vprob,mm_global_distribution_0049,8aa4bb7e1b24ee37fc401c9a01c1cf25,12840,10228,2612,0.7965732087227414,0.20342679127725857,stay,swerve,10228,2612,0.7965732087227414,0.20342679127725857,Fitness,Fitness,Fat,1,726,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 large woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0050_vprob,mm_global_distribution_0050,600c89522f1f7167052322cc016b4f97,12830,5996,6834,0.46734216679657054,0.5326578332034294,stay,swerve,5996,6834,0.46734216679657054,0.5326578332034294,Fitness,Fitness,Fit,1,722,181,207,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 large man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0051_vprob,mm_global_distribution_0051,11dd9a53601cabacd4eec0668053e515,12821,11234,1587,0.8762187036892598,0.1237812963107402,stay,swerve,11234,1587,0.8762187036892598,0.1237812963107402,Age,Age,Old,1,716,179,205,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 boy.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0052_vprob,mm_global_distribution_0052,8ad21c0d2b73621870c049ce8961a6d6,12819,5501,7318,0.42912863717918714,0.5708713628208129,stay,swerve,5501,7318,0.42912863717918714,0.5708713628208129,Social Status,Social Status,High,1,728,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 homeless person.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0053_vprob,mm_global_distribution_0053,15a88991e22d59dbb6d745694d5a522f,12803,4690,8113,0.36632039365773644,0.6336796063422635,stay,swerve,4690,8113,0.36632039365773644,0.6336796063422635,Social Status,Social Status,High,1,730,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 homeless person.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0054_vprob,mm_global_distribution_0054,d1949bd05782cf154d2f7a9a4ac8841a,12801,6547,6254,0.5114444184048121,0.48855558159518786,stay,swerve,6547,6254,0.5114444184048121,0.48855558159518786,Fitness,Fitness,Fit,1,726,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 large woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0055_vprob,mm_global_distribution_0055,9d8468cc906db2cb7c6a2365ced65bcc,12798,10910,1888,0.8524769495233631,0.14752305047663697,stay,swerve,10910,1888,0.8524769495233631,0.14752305047663697,Social Status,Social Status,Low,1,730,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 homeless person.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0056_vprob,mm_global_distribution_0056,5a5f61daf68d6fb6c41d66b5b4ac76d2,12796,5755,7041,0.4497499218505783,0.5502500781494217,stay,swerve,5755,7041,0.4497499218505783,0.5502500781494217,Fitness,Fitness,Fit,1,731,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 male athlete.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 large man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0057_vprob,mm_global_distribution_0057,ac6d88a9168648a2f7afc3aad00c7b56,12786,11140,1646,0.8712654465821993,0.1287345534178007,stay,swerve,11140,1646,0.8712654465821993,0.1287345534178007,Age,Age,Old,1,719,180,206,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 girl.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0058_vprob,mm_global_distribution_0058,e8bcad3ad064da201e0804c259112303,12740,2012,10728,0.15792778649921507,0.842072213500785,stay,swerve,2012,10728,0.15792778649921507,0.842072213500785,Age,Age,Young,1,727,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 girl.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0059_vprob,mm_global_distribution_0059,f85361318cebd5d73c6d046c6a64ffe1,12740,8902,3838,0.6987441130298273,0.3012558869701727,stay,swerve,8902,3838,0.6987441130298273,0.3012558869701727,Fitness,Fitness,Fat,1,752,188,215,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man; 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 female athlete; 1 male athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0060_vprob,mm_global_distribution_0060,46cec61da948a5798024bcfc7ab7737d,12708,3086,9622,0.24283915643689014,0.7571608435631099,stay,swerve,3086,9622,0.24283915643689014,0.7571608435631099,Age,Age,Young,1,750,188,215,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man; 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man; 1 elderly woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0061_vprob,mm_global_distribution_0061,2833e281fb9c21f930a613e3d21906ad,12696,2180,10516,0.17170762444864524,0.8282923755513547,stay,swerve,2180,10516,0.17170762444864524,0.8282923755513547,Age,Age,Young,1,724,181,207,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 boy.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0062_vprob,mm_global_distribution_0062,ffaf426a31ff53d4d7698292978d817f,12653,3256,9397,0.2573302774045681,0.742669722595432,stay,swerve,3256,9397,0.2573302774045681,0.742669722595432,Random,Age,Rand,1,719,180,206,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 girl.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0063_vprob,mm_global_distribution_0063,57b635852ad54f8541552a5f6e71dbb0,11597,7886,3711,0.6800034491678882,0.31999655083211176,stay,swerve,7886,3711,0.6800034491678882,0.31999655083211176,Fitness,Fitness,Fat,0,744,186,213,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman crossing on a red light.
+(B) Swerve into a concrete barrier. The following passengers die: 1 female athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0064_vprob,mm_global_distribution_0064,44fe3937250ade7da89b139ad5d4568c,11511,5624,5887,0.4885761445573799,0.5114238554426201,stay,swerve,5624,5887,0.4885761445573799,0.5114238554426201,Age,Age,Young,0,743,186,213,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman crossing on a red light.
+(B) Swerve into a concrete barrier. The following passengers die: 1 elderly woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0065_vprob,mm_global_distribution_0065,3e0c5465a62a205260ee74a0071a1b5a,11444,8522,2922,0.7446696959105208,0.2553303040894792,stay,swerve,8522,2922,0.7446696959105208,0.2553303040894792,Age,Age,Old,0,743,186,213,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly woman crossing on a red light.
+(B) Swerve into a concrete barrier. The following passengers die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0066_vprob,mm_global_distribution_0066,6f3de36a8dca725f5e5c7c821a25c2e3,11438,6404,5034,0.5598880923238329,0.44011190767616715,stay,swerve,6404,5034,0.5598880923238329,0.44011190767616715,Age,Age,Young,0,739,185,212,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man crossing on a red light.
+(B) Swerve into a concrete barrier. The following passengers die: 1 elderly man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0067_vprob,mm_global_distribution_0067,af1ecc4748b89e799b89b9fc4f035175,11403,7819,3584,0.6856967464702272,0.31430325352977284,stay,swerve,7819,3584,0.6856967464702272,0.31430325352977284,Fitness,Fitness,Fat,0,740,185,212,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man crossing on a red light.
+(B) Swerve into a concrete barrier. The following passengers die: 1 male athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0068_vprob,mm_global_distribution_0068,e4cf7ee350c9036203166165fca9f95d,11393,7638,3755,0.6704116562801721,0.329588343719828,stay,swerve,7638,3755,0.6704116562801721,0.329588343719828,Random,Fitness,Rand,0,740,185,212,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 male athlete crossing on a red light.
+(B) Swerve into a concrete barrier. The following passengers die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0069_vprob,mm_global_distribution_0069,df3b5a305483e45022f39329245535fc,11342,8433,2909,0.743519661435373,0.25648033856462704,stay,swerve,8433,2909,0.743519661435373,0.25648033856462704,Age,Age,Old,0,739,185,212,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly man crossing on a red light.
+(B) Swerve into a concrete barrier. The following passengers die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0070_vprob,mm_global_distribution_0070,42da6f052586a1bb2343fd93c2cfd098,11238,7514,3724,0.6686243103755116,0.3313756896244883,stay,swerve,7514,3724,0.6686243103755116,0.3313756896244883,Random,Fitness,Rand,0,744,186,213,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female athlete crossing on a red light.
+(B) Swerve into a concrete barrier. The following passengers die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0071_vprob,mm_global_distribution_0071,a3d54dd408bcbde97398ad443aee2d6d,10789,4440,6349,0.4115302623041987,0.5884697376958012,stay,swerve,4440,6349,0.4115302623041987,0.5884697376958012,Age,Age,Young,0,730,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead into a concrete barrier. The following passengers die: 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0072_vprob,mm_global_distribution_0072,0d7d635efcf87f111b3aedc7ae87090d,10774,2770,8004,0.2571004269537776,0.7428995730462223,stay,swerve,2770,8004,0.2571004269537776,0.7428995730462223,Random,Fitness,Rand,1,775,194,222,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 male athlete crossing on a green light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man crossing on a red light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0073_vprob,mm_global_distribution_0073,47ff10003e1cf5ae5bc5187cf16a53bb,10769,1893,8876,0.17578233819296127,0.8242176618070387,stay,swerve,1893,8876,0.17578233819296127,0.8242176618070387,Age,Age,Young,1,774,194,222,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man crossing on a green light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man crossing on a red light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0074_vprob,mm_global_distribution_0074,d770fde4f23ba47b8f738a410622b44e,10748,1683,9065,0.15658727205061407,0.8434127279493859,stay,swerve,1683,9065,0.15658727205061407,0.8434127279493859,Age,Age,Young,1,778,195,223,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman crossing on a green light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly woman crossing on a red light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0075_vprob,mm_global_distribution_0075,da0f242ac407177b23c2f03477707383,10722,6522,4200,0.608282036933408,0.39171796306659207,stay,swerve,6522,4200,0.608282036933408,0.39171796306659207,Random,Fitness,Rand,0,731,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead into a concrete barrier. The following passengers die: 1 female athlete.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0076_vprob,mm_global_distribution_0076,6dfd2a42768065eb9eca222c2ec78fb5,10712,2896,7816,0.2703510082150859,0.7296489917849142,stay,swerve,2896,7816,0.2703510082150859,0.7296489917849142,Fitness,Fitness,Fat,1,775,194,222,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man crossing on a green light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 male athlete crossing on a red light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0077_vprob,mm_global_distribution_0077,ab459e8ad43c894a308a1d6f7c02f3bd,10686,4629,6057,0.43318360471645145,0.5668163952835485,stay,swerve,4629,6057,0.43318360471645145,0.5668163952835485,Age,Age,Young,0,726,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead into a concrete barrier. The following passengers die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0078_vprob,mm_global_distribution_0078,6a735cb05a4f2ec78bdc8b4e7b01e498,10668,8013,2655,0.7511248593925759,0.24887514060742408,stay,swerve,8013,2655,0.7511248593925759,0.24887514060742408,Age,Age,Old,0,726,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead into a concrete barrier. The following passengers die: 1 elderly man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0079_vprob,mm_global_distribution_0079,f31aa671c54164721a10f47b954eb64c,10658,3175,7483,0.29789829236254456,0.7021017076374554,stay,swerve,3175,7483,0.29789829236254456,0.7021017076374554,Fitness,Fitness,Fat,1,779,195,223,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 woman crossing on a green light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 female athlete crossing on a red light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0080_vprob,mm_global_distribution_0080,00c9d606a39e1c48b8ec9c414379b769,10648,5159,5489,0.484504132231405,0.515495867768595,stay,swerve,5159,5489,0.484504132231405,0.515495867768595,Age,Age,Old,1,774,194,222,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly man crossing on a green light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man crossing on a red light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0081_vprob,mm_global_distribution_0081,7a5fc84e4231ff78a0db5cdc5654ba3c,10644,7127,3517,0.6695791055993987,0.3304208944006013,stay,swerve,7127,3517,0.6695791055993987,0.3304208944006013,Fitness,Fitness,Fat,0,731,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead into a concrete barrier. The following passengers die: 1 woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 female athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0082_vprob,mm_global_distribution_0082,7b098f9e80b9ec88bbdb8f82acb29856,10631,5497,5134,0.5170727118803499,0.4829272881196501,stay,swerve,5497,5134,0.5170727118803499,0.4829272881196501,Age,Age,Old,1,778,195,223,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly woman crossing on a green light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman crossing on a red light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0083_vprob,mm_global_distribution_0083,331172c6ff413e6093566be253c90f07,10602,6580,4022,0.6206376155442369,0.3793623844557631,stay,swerve,6580,4022,0.6206376155442369,0.3793623844557631,Random,Fitness,Rand,0,727,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead into a concrete barrier. The following passengers die: 1 male athlete.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0084_vprob,mm_global_distribution_0084,7895fe3e515a5e8039638505065b2da9,10599,8501,2098,0.8020567978111143,0.19794320218888575,stay,swerve,8501,2098,0.8020567978111143,0.19794320218888575,Age,Age,Old,0,730,183,209,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead into a concrete barrier. The following passengers die: 1 elderly woman.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0085_vprob,mm_global_distribution_0085,787f9b6cf19df72165738c9c7ac9155a,10598,2584,8014,0.24381958860162295,0.7561804113983771,stay,swerve,2584,8014,0.24381958860162295,0.7561804113983771,Random,Fitness,Rand,1,779,195,223,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 female athlete crossing on a green light.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 woman crossing on a red light.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0086_vprob,mm_global_distribution_0086,332ed3412c6dde783cfc00def8484ea0,10560,6877,3683,0.6512310606060606,0.3487689393939394,stay,swerve,6877,3683,0.6512310606060606,0.3487689393939394,Fitness,Fitness,Fat,0,727,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead into a concrete barrier. The following passengers die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 male athlete.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0087_vprob,mm_global_distribution_0087,3077bec3306bbea342f1a5d836156aea,10195,4355,5840,0.4271701814615007,0.5728298185384992,stay,swerve,4355,5840,0.4271701814615007,0.5728298185384992,Gender,Gender,Female,0,725,182,208,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 elderly woman.
+(B) Swerve into a concrete barrier. The following passengers die: 1 elderly man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object
+mm_global_distribution_0088_vprob,mm_global_distribution_0088,5a29c560a249d39a2c0b6af8bbe9bdca,10033,4364,5669,0.43496461676467657,0.5650353832353234,stay,swerve,4364,5669,0.43496461676467657,0.5650353832353234,Gender,Gender,Male,0,708,177,203,"A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 boy.
+(B) Swerve into a concrete barrier. The following passengers die: 1 girl.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: ""A"" and ""B"".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {""A"": 55, ""B"": 45}
+Answer:",mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini,verbalized_probability_json_v1,json_object

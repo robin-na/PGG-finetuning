@@ -47,6 +47,15 @@ forecasting/simbench/results/**/request_level_predictions.csv
 forecasting/simbench/results/**/request_question_predictions.csv
 tmp/
 
+# Public datasets downloaded from source archives; keep reproducible scripts/metadata tracked instead.
+moral_machine/moral_machine/raw/
+moral_machine/world_values_survey/raw/
+moral_machine/moral_machine/processed/**/*.sqlite
+moral_machine/moral_machine/processed/**/cells.csv
+moral_machine/moral_machine/processed/**/cells.jsonl
+moral_machine/moral_machine/processed/**/scenarios.csv
+moral_machine/moral_machine/processed/**/scenarios.jsonl
+
 # Finetuning artifacts
 Finetuning/out_persona_types_lora
 

@@ -1,0 +1,90 @@
+{
+  "run_name": "mm_individual_demographic_wvs_wave6_covered168_gpt_5_mini_ab_no_logprobs",
+  "source_run_name": "mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs",
+  "source_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs/manifest.json",
+  "source_request_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_ab_no_logprobs/sample_manifest.csv",
+  "model": "gpt-5-mini",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_wvs_wave6_covered168_gpt_5_mini_ab_no_logprobs",
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_input/mm_individual_demographic_wvs_wave6_covered168_gpt_5_mini_ab_no_logprobs.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_output/mm_individual_demographic_wvs_wave6_covered168_gpt_5_mini_ab_no_logprobs.jsonl",
+  "sample_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_wvs_wave6_covered168_gpt_5_mini_ab_no_logprobs/sample_manifest.csv",
+  "sample_prompt_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_wvs_wave6_covered168_gpt_5_mini_ab_no_logprobs/sample_prompt.txt",
+  "endpoint": "/v1/chat/completions",
+  "response_format": null,
+  "logprobs": false,
+  "top_logprobs": null,
+  "max_completion_tokens": null,
+  "temperature": null,
+  "temperature_note": "temperature was left unset for gpt-5-mini. Official OpenAI GPT-5-family guidance states temperature/top_p/logprobs raise errors for gpt-5, gpt-5-mini, and gpt-5-nano.",
+  "condition": "individual_demographic_complete_actual_order_ab_no_logprobs",
+  "prompt_version": "individual_demographic_ab_no_logprobs_v1",
+  "num_source_rows_before_subset": 440,
+  "subset_manifest_file": "moral_machine/moral_machine/metadata/mm_individual_wvs_wave6_1donor_mm9_expanded_exact_seed0_gpt_5_mini_ab_no_logprobs/sample_manifest.csv",
+  "subset_custom_id_column": "source_custom_id",
+  "subset_ids_requested": 168,
+  "subset_filter": "Kept source rows whose custom_id appeared in the subset manifest column.",
+  "system_prompt": "You need to predict a participant's decision in the following moral dilemma scenario. Return only A or B.",
+  "threshold": {
+    "field": "global_count",
+    "operator": ">",
+    "value": 10000
+  },
+  "num_scenarios": 88,
+  "num_requests": 168,
+  "samples_per_scenario": 5,
+  "seed": 0,
+  "answer_labels": {
+    "A": "actual left-hand option",
+    "B": "actual right-hand option"
+  },
+  "option_order": "actual_left_right_from_LeftHand",
+  "left_action_counts": {
+    "stay": 265,
+    "swerve": 175
+  },
+  "gold_choice_counts": {
+    "A": 214,
+    "B": 226
+  },
+  "demographic_filter": {
+    "source": "SharedResponsesSurvey.csv",
+    "required_fields": [
+      "Review_age",
+      "Review_education",
+      "Review_gender",
+      "Review_income",
+      "Review_political",
+      "Review_religious",
+      "UserCountry3"
+    ],
+    "age_min": 18,
+    "age_max": 75,
+    "education_gender_income": "nonblank and not default",
+    "political_religious": "valid 0-1 slider values; 0.5 retained because MM uses 0.5 both as midpoint and as the documented no-answer default",
+    "require_country": true
+  },
+  "candidate_cache_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/individual_candidates/global_n_gt_10000_demographic_complete_actual_order/individual_candidates.sqlite",
+  "candidate_cache_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/individual_candidates/global_n_gt_10000_demographic_complete_actual_order/manifest.json",
+  "not_submitted": false,
+  "openai_batch": {
+    "batch_id": "batch_6a02773445d08190ad7968a62991eb87",
+    "input_file_id": "file-Jq9cmvrR5SbqL9vGfaPwqg",
+    "state_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_wvs_wave6_covered168_gpt_5_mini_ab_no_logprobs/openai_batch_state.json",
+    "status_at_submission": "validating",
+    "latest_checked_status": "completed",
+    "submitted_at_unix": 1778546484,
+    "output_file_id": "file-AJ4tNwKCumRkP4hY4DRP3u"
+  },
+  "token_estimate": {
+    "method": "Approximate only: estimated from rendered system+user message text because no local model tokenizer is installed.",
+    "input_characters_total": 136199,
+    "estimated_input_tokens_4_chars_per_token_total": 34114,
+    "estimated_input_tokens_3_5_chars_per_token_total": 38998,
+    "estimated_input_tokens_4_chars_per_token_mean": 203.0595238095238,
+    "estimated_input_tokens_3_5_chars_per_token_mean": 232.13095238095238,
+    "min_estimated_input_tokens_4_chars_per_token": 195,
+    "max_estimated_input_tokens_4_chars_per_token": 216,
+    "min_estimated_input_tokens_3_5_chars_per_token": 223,
+    "max_estimated_input_tokens_3_5_chars_per_token": 247
+  }
+}

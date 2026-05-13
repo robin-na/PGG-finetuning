@@ -1,0 +1,467 @@
+{
+  "source_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/raw/moral_machine_data/SharedResponses.csv",
+  "output_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/high_repeat_scenario_cells/global_100_cell_100",
+  "min_global_count": 100,
+  "min_cell_count": 100,
+  "definition": {
+    "scenario": "Exact visible Stay/Swerve pair, using Barrier, CrossingSignal, and all character counts for both outcomes; respondent/session/order/choice/presentation fields excluded.",
+    "cell": "Exact visible scenario crossed with UserCountry3.",
+    "answer_labels": {
+      "A": "stay",
+      "B": "swerve"
+    }
+  },
+  "matched_pairs": 33953503,
+  "unique_visible_scenarios": 9559552,
+  "retained_scenarios": 35340,
+  "retained_cells": 26706,
+  "max_global_count": 25872,
+  "max_cell_count": 6729,
+  "top_cells": [
+    {
+      "scenario_hash": "3fe05ffd77c1035b31afc74d4707772e",
+      "user_country3": "USA",
+      "cell_count": 6729,
+      "a_count": 1830,
+      "b_count": 4899,
+      "unknown_choice_count": 0,
+      "a_share": 0.2719572001783326,
+      "b_share": 0.7280427998216674,
+      "global_count": 25765,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "1",
+      "AttributeLevel": "Young"
+    },
+    {
+      "scenario_hash": "a121064b5297f135808ea2f0c17843d0",
+      "user_country3": "USA",
+      "cell_count": 6574,
+      "a_count": 4818,
+      "b_count": 1756,
+      "unknown_choice_count": 0,
+      "a_share": 0.7328871311226042,
+      "b_share": 0.2671128688773958,
+      "global_count": 25742,
+      "ScenarioType": "Fitness",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "1",
+      "AttributeLevel": "Fat"
+    },
+    {
+      "scenario_hash": "36036f518e82eccca01a0eef133b5e75",
+      "user_country3": "USA",
+      "cell_count": 6565,
+      "a_count": 1934,
+      "b_count": 4631,
+      "unknown_choice_count": 0,
+      "a_share": 0.2945925361766946,
+      "b_share": 0.7054074638233054,
+      "global_count": 25872,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "1",
+      "AttributeLevel": "Young"
+    },
+    {
+      "scenario_hash": "c55e348b5da3928fc12a45b370e7611f",
+      "user_country3": "USA",
+      "cell_count": 6544,
+      "a_count": 4642,
+      "b_count": 1902,
+      "unknown_choice_count": 0,
+      "a_share": 0.7093520782396088,
+      "b_share": 0.2906479217603912,
+      "global_count": 25516,
+      "ScenarioType": "Fitness",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "1",
+      "AttributeLevel": "Fat"
+    },
+    {
+      "scenario_hash": "2ea9bc96836b52b20015d5aa83de37ad",
+      "user_country3": "USA",
+      "cell_count": 6518,
+      "a_count": 3813,
+      "b_count": 2705,
+      "unknown_choice_count": 0,
+      "a_share": 0.5849953973611537,
+      "b_share": 0.41500460263884625,
+      "global_count": 25427,
+      "ScenarioType": "Random",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "1",
+      "AttributeLevel": "Rand"
+    },
+    {
+      "scenario_hash": "315628bbd8130d1fd2fc5fbf1ee7604b",
+      "user_country3": "USA",
+      "cell_count": 6489,
+      "a_count": 5668,
+      "b_count": 821,
+      "unknown_choice_count": 0,
+      "a_share": 0.8734781938665434,
+      "b_share": 0.12652180613345662,
+      "global_count": 25476,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "1",
+      "AttributeLevel": "Old"
+    },
+    {
+      "scenario_hash": "b3b0b55b248b225bc05f8005c215cca6",
+      "user_country3": "USA",
+      "cell_count": 6485,
+      "a_count": 5755,
+      "b_count": 730,
+      "unknown_choice_count": 0,
+      "a_share": 0.887432536622976,
+      "b_share": 0.1125674633770239,
+      "global_count": 25307,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "1",
+      "AttributeLevel": "Old"
+    },
+    {
+      "scenario_hash": "acfec2d5b57f36619c3db73768def157",
+      "user_country3": "USA",
+      "cell_count": 6478,
+      "a_count": 4015,
+      "b_count": 2463,
+      "unknown_choice_count": 0,
+      "a_share": 0.6197900586600803,
+      "b_share": 0.38020994133991975,
+      "global_count": 25541,
+      "ScenarioType": "Random",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "1",
+      "AttributeLevel": "Rand"
+    },
+    {
+      "scenario_hash": "c990d2973cbe75633f5630689d16b050",
+      "user_country3": "USA",
+      "cell_count": 4427,
+      "a_count": 3963,
+      "b_count": 464,
+      "unknown_choice_count": 0,
+      "a_share": 0.8951886153151118,
+      "b_share": 0.10481138468488818,
+      "global_count": 17621,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "1",
+      "AttributeLevel": "Old"
+    },
+    {
+      "scenario_hash": "68f34fdd904338799cc82431fcf5c4ad",
+      "user_country3": "USA",
+      "cell_count": 4422,
+      "a_count": 1340,
+      "b_count": 3082,
+      "unknown_choice_count": 0,
+      "a_share": 0.30303030303030304,
+      "b_share": 0.696969696969697,
+      "global_count": 17224,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "0",
+      "AttributeLevel": "Young"
+    },
+    {
+      "scenario_hash": "8438349e35ea65069625edddd52af96a",
+      "user_country3": "USA",
+      "cell_count": 4415,
+      "a_count": 1803,
+      "b_count": 2612,
+      "unknown_choice_count": 0,
+      "a_share": 0.4083805209513024,
+      "b_share": 0.5916194790486976,
+      "global_count": 17282,
+      "ScenarioType": "Random",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "0",
+      "AttributeLevel": "Rand"
+    },
+    {
+      "scenario_hash": "ae539fd4158c5cbf5e5635085930d412",
+      "user_country3": "USA",
+      "cell_count": 4406,
+      "a_count": 3791,
+      "b_count": 615,
+      "unknown_choice_count": 0,
+      "a_share": 0.8604176123467998,
+      "b_share": 0.1395823876532002,
+      "global_count": 17316,
+      "ScenarioType": "Fitness",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "1",
+      "AttributeLevel": "Fat"
+    },
+    {
+      "scenario_hash": "c5bcd476c5b67c94730a4ac29600565b",
+      "user_country3": "USA",
+      "cell_count": 4389,
+      "a_count": 1879,
+      "b_count": 2510,
+      "unknown_choice_count": 0,
+      "a_share": 0.4281157439052176,
+      "b_share": 0.5718842560947824,
+      "global_count": 17199,
+      "ScenarioType": "Random",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "0",
+      "AttributeLevel": "Rand"
+    },
+    {
+      "scenario_hash": "dc392be2ef2f0e0306cf39324f2f372f",
+      "user_country3": "USA",
+      "cell_count": 4368,
+      "a_count": 3915,
+      "b_count": 453,
+      "unknown_choice_count": 0,
+      "a_share": 0.8962912087912088,
+      "b_share": 0.10370879120879122,
+      "global_count": 17062,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "1",
+      "AttributeLevel": "Old"
+    },
+    {
+      "scenario_hash": "f7a0546a2fa54119593dec3e4406e135",
+      "user_country3": "USA",
+      "cell_count": 4368,
+      "a_count": 2503,
+      "b_count": 1865,
+      "unknown_choice_count": 0,
+      "a_share": 0.5730311355311355,
+      "b_share": 0.42696886446886445,
+      "global_count": 17106,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "1",
+      "AttributeLevel": "Young"
+    },
+    {
+      "scenario_hash": "0ca24cd58cdf0faeec82c043821094dc",
+      "user_country3": "USA",
+      "cell_count": 4360,
+      "a_count": 3488,
+      "b_count": 872,
+      "unknown_choice_count": 0,
+      "a_share": 0.8,
+      "b_share": 0.2,
+      "global_count": 17011,
+      "ScenarioType": "Random",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "1",
+      "AttributeLevel": "Rand"
+    },
+    {
+      "scenario_hash": "fa5312d6d4d9ab53fe9f933029c58b67",
+      "user_country3": "USA",
+      "cell_count": 4356,
+      "a_count": 2825,
+      "b_count": 1531,
+      "unknown_choice_count": 0,
+      "a_share": 0.6485307621671258,
+      "b_share": 0.3514692378328742,
+      "global_count": 17226,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "0",
+      "AttributeLevel": "Old"
+    },
+    {
+      "scenario_hash": "178a4ad0eb24ebd1b5a266880d24c47d",
+      "user_country3": "USA",
+      "cell_count": 4350,
+      "a_count": 2063,
+      "b_count": 2287,
+      "unknown_choice_count": 0,
+      "a_share": 0.4742528735632184,
+      "b_share": 0.5257471264367816,
+      "global_count": 17210,
+      "ScenarioType": "Fitness",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "0",
+      "AttributeLevel": "Fat"
+    },
+    {
+      "scenario_hash": "be7cb3cd5a62c89f928ef2c6247e6063",
+      "user_country3": "USA",
+      "cell_count": 4347,
+      "a_count": 3546,
+      "b_count": 801,
+      "unknown_choice_count": 0,
+      "a_share": 0.8157349896480331,
+      "b_share": 0.18426501035196688,
+      "global_count": 17198,
+      "ScenarioType": "Random",
+      "ScenarioTypeStrict": "Fitness",
+      "PedPed": "1",
+      "AttributeLevel": "Rand"
+    },
+    {
+      "scenario_hash": "77a76c25e1470b915257b9dc879cda26",
+      "user_country3": "USA",
+      "cell_count": 4329,
+      "a_count": 2433,
+      "b_count": 1896,
+      "unknown_choice_count": 0,
+      "a_share": 0.5620235620235621,
+      "b_share": 0.437976437976438,
+      "global_count": 17132,
+      "ScenarioType": "Age",
+      "ScenarioTypeStrict": "Age",
+      "PedPed": "1",
+      "AttributeLevel": "Young"
+    }
+  ],
+  "top_countries": [
+    {
+      "user_country3": "USA",
+      "cell_count": 11365,
+      "summed_responses_across_cells": 3711962
+    },
+    {
+      "user_country3": "DEU",
+      "cell_count": 2379,
+      "summed_responses_across_cells": 532725
+    },
+    {
+      "user_country3": "BRA",
+      "cell_count": 1929,
+      "summed_responses_across_cells": 420279
+    },
+    {
+      "user_country3": "FRA",
+      "cell_count": 1890,
+      "summed_responses_across_cells": 413010
+    },
+    {
+      "user_country3": "GBR",
+      "cell_count": 1689,
+      "summed_responses_across_cells": 367736
+    },
+    {
+      "user_country3": "CAN",
+      "cell_count": 1137,
+      "summed_responses_across_cells": 230499
+    },
+    {
+      "user_country3": "RUS",
+      "cell_count": 912,
+      "summed_responses_across_cells": 183759
+    },
+    {
+      "user_country3": "AUS",
+      "cell_count": 591,
+      "summed_responses_across_cells": 110532
+    },
+    {
+      "user_country3": "TUR",
+      "cell_count": 565,
+      "summed_responses_across_cells": 104869
+    },
+    {
+      "user_country3": "POL",
+      "cell_count": 533,
+      "summed_responses_across_cells": 95802
+    },
+    {
+      "user_country3": "ESP",
+      "cell_count": 524,
+      "summed_responses_across_cells": 96828
+    },
+    {
+      "user_country3": "ITA",
+      "cell_count": 519,
+      "summed_responses_across_cells": 94863
+    },
+    {
+      "user_country3": "JPN",
+      "cell_count": 424,
+      "summed_responses_across_cells": 75449
+    },
+    {
+      "user_country3": "CZE",
+      "cell_count": 404,
+      "summed_responses_across_cells": 70960
+    },
+    {
+      "user_country3": "BEL",
+      "cell_count": 376,
+      "summed_responses_across_cells": 64476
+    },
+    {
+      "user_country3": "HUN",
+      "cell_count": 312,
+      "summed_responses_across_cells": 52894
+    },
+    {
+      "user_country3": "NLD",
+      "cell_count": 215,
+      "summed_responses_across_cells": 34751
+    },
+    {
+      "user_country3": "SWE",
+      "cell_count": 202,
+      "summed_responses_across_cells": 32484
+    },
+    {
+      "user_country3": "FIN",
+      "cell_count": 149,
+      "summed_responses_across_cells": 21944
+    },
+    {
+      "user_country3": "MEX",
+      "cell_count": 82,
+      "summed_responses_across_cells": 11566
+    }
+  ],
+  "files": {
+    "scenarios_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/high_repeat_scenario_cells/global_100_cell_100/scenarios.csv",
+    "cells_csv": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/high_repeat_scenario_cells/global_100_cell_100/cells.csv",
+    "sqlite": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/high_repeat_scenario_cells/global_100_cell_100/scenario_cells.sqlite",
+    "manifest": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/high_repeat_scenario_cells/global_100_cell_100/manifest.json",
+    "scenarios_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/high_repeat_scenario_cells/global_100_cell_100/scenarios.jsonl",
+    "cells_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/high_repeat_scenario_cells/global_100_cell_100/cells.jsonl"
+  },
+  "first_pass_summary": {
+    "matched_pairs": 33953503,
+    "stay_rows_without_swerve_pair": 1279792,
+    "swerve_rows_without_stay_pair": 1145557,
+    "stay_filtered_rows_seen": 35233295,
+    "swerve_filtered_rows_seen": 35099060,
+    "stay_stream_unsorted_transitions": 0,
+    "swerve_stream_unsorted_transitions": 0,
+    "stream_exit_codes": {
+      "stay_stream": 0,
+      "swerve_stream": 0
+    },
+    "stream_stderr": {
+      "stay_stream": "",
+      "swerve_stream": ""
+    }
+  },
+  "second_pass_summary": {
+    "matched_pairs": 33953503,
+    "stay_rows_without_swerve_pair": 1279792,
+    "swerve_rows_without_stay_pair": 1145557,
+    "stay_filtered_rows_seen": 35233295,
+    "swerve_filtered_rows_seen": 35099060,
+    "stay_stream_unsorted_transitions": 0,
+    "swerve_stream_unsorted_transitions": 0,
+    "stream_exit_codes": {
+      "stay_stream": 0,
+      "swerve_stream": 0
+    },
+    "stream_stderr": {
+      "stay_stream": "",
+      "swerve_stream": ""
+    }
+  },
+  "elapsed_seconds": 865.6300191879272
+}

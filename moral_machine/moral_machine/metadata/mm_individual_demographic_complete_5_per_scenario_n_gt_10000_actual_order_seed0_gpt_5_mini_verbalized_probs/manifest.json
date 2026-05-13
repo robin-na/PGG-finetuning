@@ -1,0 +1,89 @@
+{
+  "run_name": "mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_verbalized_probs",
+  "source_run_name": "mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini",
+  "source_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini/manifest.json",
+  "source_request_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini/sample_manifest.csv",
+  "model": "gpt-5-mini",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_verbalized_probs",
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_input/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_verbalized_probs.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_output/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_verbalized_probs.jsonl",
+  "sample_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_verbalized_probs/sample_manifest.csv",
+  "sample_prompt_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_individual_demographic_complete_5_per_scenario_n_gt_10000_actual_order_seed0_gpt_5_mini_verbalized_probs/sample_prompt.txt",
+  "endpoint": "/v1/chat/completions",
+  "response_format": {
+    "type": "json_object"
+  },
+  "logprobs": false,
+  "top_logprobs": null,
+  "max_completion_tokens": null,
+  "condition": "individual_demographic_complete_actual_order_verbalized_probabilities",
+  "prompt_version": "verbalized_probability_json_v1",
+  "system_prompt": "You are estimating one participant's Moral Machine response probabilities. Return JSON only.",
+  "output_contract": {
+    "top_level_keys": [
+      "A",
+      "B"
+    ],
+    "value_type": "integer_percentages",
+    "sum": 100,
+    "no_explanations_or_extra_keys": true
+  },
+  "threshold": {
+    "field": "global_count",
+    "operator": ">",
+    "value": 10000
+  },
+  "num_requests": 440,
+  "answer_labels": {
+    "A": "actual left-hand option",
+    "B": "actual right-hand option"
+  },
+  "option_order": "actual_left_right_from_LeftHand",
+  "source_notes": {
+    "preserved_prompt_content": "Scenario text, demographic profile text, option labels, and option order were copied from the source run. Only the final answer instruction and system prompt were changed for verbalized probabilities.",
+    "not_submitted": true
+  },
+  "token_estimate": {
+    "method": "Approximate only: estimated from rendered system+user message text because no local model tokenizer is installed.",
+    "input_characters_total": 479629,
+    "estimated_input_tokens_4_chars_per_token_total": 120055,
+    "estimated_input_tokens_3_5_chars_per_token_total": 137227,
+    "estimated_input_tokens_4_chars_per_token_mean": 272.85227272727275,
+    "estimated_input_tokens_3_5_chars_per_token_mean": 311.87954545454545,
+    "min_estimated_input_tokens_4_chars_per_token": 265,
+    "max_estimated_input_tokens_4_chars_per_token": 286,
+    "min_estimated_input_tokens_3_5_chars_per_token": 302,
+    "max_estimated_input_tokens_3_5_chars_per_token": 327
+  },
+  "num_scenarios": 88,
+  "samples_per_scenario": 5,
+  "seed": 0,
+  "left_action_counts": {
+    "stay": 265,
+    "swerve": 175
+  },
+  "gold_choice_counts": {
+    "A": 214,
+    "B": 226
+  },
+  "demographic_filter": {
+    "source": "SharedResponsesSurvey.csv",
+    "required_fields": [
+      "Review_age",
+      "Review_education",
+      "Review_gender",
+      "Review_income",
+      "Review_political",
+      "Review_religious",
+      "UserCountry3"
+    ],
+    "age_min": 18,
+    "age_max": 75,
+    "education_gender_income": "nonblank and not default",
+    "political_religious": "valid 0-1 slider values; 0.5 retained because MM uses 0.5 both as midpoint and as the documented no-answer default",
+    "require_country": true
+  },
+  "candidate_cache_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/individual_candidates/global_n_gt_10000_demographic_complete_actual_order/individual_candidates.sqlite",
+  "candidate_cache_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/individual_candidates/global_n_gt_10000_demographic_complete_actual_order/manifest.json",
+  "sampling_source": "raw scan; matching reusable candidate cache was finalized after this batch was generated"
+}

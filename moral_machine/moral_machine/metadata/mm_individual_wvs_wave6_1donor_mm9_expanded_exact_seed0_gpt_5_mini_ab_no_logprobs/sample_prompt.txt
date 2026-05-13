@@ -1,0 +1,93 @@
+A participant with the following profile answered a Moral Machine dilemma.
+
+Participant profile:
+Age: 34
+Gender: Male
+Education: Attended college
+Annual income: Under $5,000
+Political views: 0.50 on a conservative (0) to progressive (1) scale
+Religiosity: 0.50 on a not religious (0) to very religious (1) scale
+Country: USA
+
+Imputed WVS donor profile: Wave 6 (2010-2014).
+This is one matched WVS respondent, used as plausible value context for the Moral Machine participant rather than as observed answers from that participant.
+WVS proxy coverage for the nine Moral Machine factors:
+Lawfulness and rule-following proxy (lawful pedestrians vs jaywalkers):
+- Stealing property: 1 on a 1 never justifiable to 10 always justifiable scale
+- Avoiding a fare on public transport: 1 on a 1 never justifiable to 10 always justifiable scale
+- Cheating on taxes: 7 on a 1 never justifiable to 10 always justifiable scale
+- Accepting a bribe: 1 on a 1 never justifiable to 10 always justifiable scale
+- Confidence in police: none at all
+- Confidence in courts: none at all
+- Greater respect for authority would be: do not mind
+- Child quality, obedience: not mentioned
+Gender-role proxy (men vs women):
+- Men make better political leaders than women: agree
+- University is more important for a boy than for a girl: disagree
+- Men make better business executives than women: disagree
+- When jobs are scarce, men should have more right to a job than women: neither
+- When a mother works for pay, the children suffer: agree
+Family, children, and age-hierarchy proxy (young vs elderly):
+- Family in life: very important
+- Main goal in life has been to make parents proud: disagree
+- Child quality, independence: mentioned as important
+- Child quality, hard work: mentioned as important
+- Child quality, feeling of responsibility: mentioned as important
+- Child quality, imagination: not mentioned
+- Child quality, thrift: mentioned as important
+- Child quality, determination and perseverance: not mentioned
+- Child quality, religious faith: not mentioned
+- Child quality, unselfishness: not mentioned
+- Child quality, obedience: not mentioned
+- Child quality, self-expression: mentioned as important
+- Older people are not respected much these days: disagree
+- Older people get more than their fair share from government: agree
+- Older people are a burden on society: disagree
+Status, hierarchy, and deservingness proxy (higher vs lower social status):
+- Income equality versus incentives: 6 on a 1 incomes should be made more equal to 10 greater incentives for individual effort scale
+- Government responsibility: 9 on a 1 people should take more responsibility to 10 government should take more responsibility scale
+- Competition: 5 on a 1 competition is good to 10 competition is harmful scale
+- Hard work brings success: 10 on a 1 hard work brings a better life to 10 success is luck and connections scale
+- Child quality, hard work: mentioned as important
+Religiosity and sanctity-of-life proxy (humans vs pets, more lives vs fewer, action vs inaction):
+- Religion in life: rather important
+- Religious service attendance: never, practically never
+- Self-description on religion: a religious person
+- Believes in God: yes
+- Importance of God in life: 8 on a 1 not at all important to 10 very important scale
+- Abortion: 5 on a 1 never justifiable to 10 always justifiable scale
+- Suicide: 1 on a 1 never justifiable to 10 always justifiable scale
+Universalism, trust, and tolerance proxy (more lives vs fewer; weaker group discrimination):
+- General trust: need to be very careful
+- Would not like neighbors of a different race: mentioned
+- Would not like immigrant or foreign worker neighbors: mentioned
+- Would not like neighbors with AIDS: mentioned
+- Would not like drug addict neighbors: mentioned
+- Would not like homosexual neighbors: mentioned
+- When jobs are scarce, employers should prioritize nationals over immigrants: agree
+- Post-materialist index, 4-item: materialist
+- Welzel emancipative values index: 0.411204
+Human exceptionalism and environmental concern proxy (humans vs pets):
+- Environment versus growth: protecting environment should be priority
+- Environmental organization membership: not a member
+- Post-materialist index, 4-item: materialist
+Autonomy, agency, authority, and technology proxy (passengers vs pedestrians; stay vs swerve):
+- Freedom of choice and control over life: 2 on a 1 none at all to 10 a great deal scale
+- Child quality, independence: mentioned as important
+- Child quality, feeling of responsibility: mentioned as important
+- More emphasis on technology would be: good thing
+- Greater respect for authority would be: do not mind
+- Science and technology make life healthier/easier: 6 on a 1 completely disagree to 10 completely agree scale
+- Science and technology create next-generation opportunities: 7 on a 1 completely disagree to 10 completely agree scale
+Health and fitness proxy (fit vs less fit):
+- Subjective health: good
+- Hard work brings success: 10 on a 1 hard work brings a better life to 10 success is luck and connections scale
+
+A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly woman.
+(B) Continue ahead through the crossing. The following pedestrians die: 1 woman.
+
+Which option did this participant choose?
+Answer with A or B only.
+Answer:

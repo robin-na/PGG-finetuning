@@ -1,0 +1,67 @@
+{
+  "run_name": "mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs",
+  "source_run_name": "mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini",
+  "source_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini/manifest.json",
+  "source_request_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini/scenario_manifest.csv",
+  "model": "gpt-5-mini",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs",
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_input/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_output/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs.jsonl",
+  "scenario_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs/scenario_manifest.csv",
+  "sample_prompt_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs/sample_prompt.txt",
+  "endpoint": "/v1/chat/completions",
+  "response_format": {
+    "type": "json_object"
+  },
+  "logprobs": false,
+  "top_logprobs": null,
+  "max_completion_tokens": null,
+  "condition": "scenario_only_global_distribution_alignment_verbalized_probabilities",
+  "prompt_version": "verbalized_probability_json_v1",
+  "system_prompt": "You are estimating the distribution of human responses to a Moral Machine dilemma. Return JSON only.",
+  "output_contract": {
+    "top_level_keys": [
+      "A",
+      "B"
+    ],
+    "value_type": "integer_percentages",
+    "sum": 100,
+    "no_explanations_or_extra_keys": true
+  },
+  "threshold": {
+    "field": "global_count",
+    "operator": ">",
+    "value": 10000
+  },
+  "num_requests": 88,
+  "answer_labels": {
+    "A": "stay",
+    "B": "swerve"
+  },
+  "option_order": "stay_swerve",
+  "source_notes": {
+    "preserved_prompt_content": "Scenario text, demographic profile text, option labels, and option order were copied from the source run. Only the final answer instruction and system prompt were changed for verbalized probabilities.",
+    "not_submitted": false
+  },
+  "openai_batch": {
+    "batch_id": "batch_6a025b2aab3c81909cf975922b7ad454",
+    "input_file_id": "file-PR6c9Yz7TueUGjqA7uKj3b",
+    "output_file_id": "file-3ZxC4rABMFZLK8VdJtjy7D",
+    "state_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_mini_verbalized_probs/openai_batch_state.json",
+    "status_at_submission": "validating",
+    "latest_checked_status": "completed",
+    "submitted_at_unix": 1778539306
+  },
+  "token_estimate": {
+    "method": "Approximate only: estimated from rendered system+user message text because no local model tokenizer is installed.",
+    "input_characters_total": 64907,
+    "estimated_input_tokens_4_chars_per_token_total": 16253,
+    "estimated_input_tokens_3_5_chars_per_token_total": 18587,
+    "estimated_input_tokens_4_chars_per_token_mean": 184.6931818181818,
+    "estimated_input_tokens_3_5_chars_per_token_mean": 211.2159090909091,
+    "min_estimated_input_tokens_4_chars_per_token": 177,
+    "max_estimated_input_tokens_4_chars_per_token": 195,
+    "min_estimated_input_tokens_3_5_chars_per_token": 203,
+    "max_estimated_input_tokens_3_5_chars_per_token": 223
+  }
+}

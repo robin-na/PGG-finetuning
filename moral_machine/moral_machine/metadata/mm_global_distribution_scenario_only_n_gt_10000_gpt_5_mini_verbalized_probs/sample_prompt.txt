@@ -1,0 +1,14 @@
+A self-driving car's brakes suddenly fail, and you must choose one to either stay on course or swerve.
+
+(A) Continue ahead through the crossing. The following pedestrians die: 1 man.
+(B) Swerve through the other-lane crossing. The following pedestrians die: 1 elderly man.
+
+Estimate what percentage of respondents would choose each option if asked this dilemma once.
+Return JSON only.
+Output contract:
+- Use exactly two keys: "A" and "B".
+- Use integer percentages from 0 to 100.
+- A and B must sum to exactly 100.
+- Do not include explanations, markdown, or extra keys.
+- Example: {"A": 55, "B": 45}
+Answer:

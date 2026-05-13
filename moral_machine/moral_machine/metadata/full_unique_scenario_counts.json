@@ -1,0 +1,36 @@
+{
+  "source_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/raw/moral_machine_data/SharedResponses.csv.tar.gz",
+  "definition": {
+    "visible_unique_scenario": "A paired Stay/Swerve scenario after excluding respondent/session/order/choice/presentation fields; uses only the outcome text-relevant fields Barrier, CrossingSignal, and the 20 character counts for each action.",
+    "feature_unique_scenario": "A paired Stay/Swerve scenario using the visible fields plus MM scenario metadata columns ['PedPed', 'AttributeLevel', 'ScenarioTypeStrict', 'ScenarioType', 'DefaultChoice', 'NonDefaultChoice', 'DefaultChoiceIsOmission', 'NumberOfCharacters', 'DiffNumberOFCharacters'].",
+    "excluded_fields": [
+      "ResponseID",
+      "ExtendedSessionID",
+      "UserID",
+      "ScenarioOrder",
+      "Saved",
+      "Template",
+      "DescriptionShown",
+      "LeftHand",
+      "UserCountry3"
+    ]
+  },
+  "matched_response_id_pairs": 33953503,
+  "stay_rows_without_swerve_pair": 1279792,
+  "swerve_rows_without_stay_pair": 1145557,
+  "unique_visible_scenarios": 9559552,
+  "unique_feature_scenarios": 9577339,
+  "stay_filtered_rows_seen": 35233295,
+  "swerve_filtered_rows_seen": 35099060,
+  "stay_stream_unsorted_transitions": 0,
+  "swerve_stream_unsorted_transitions": 0,
+  "elapsed_seconds": 675.3380751609802,
+  "tar_exit_codes": {
+    "stay_stream": 0,
+    "swerve_stream": 0
+  },
+  "tar_stderr": {
+    "stay_stream": "",
+    "swerve_stream": ""
+  }
+}

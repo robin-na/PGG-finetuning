@@ -1,0 +1,26 @@
+{
+  "n": 168,
+  "wvs_accuracy": 0.6190476190476191,
+  "demographics_only_accuracy": 0.6428571428571429,
+  "wvs_correct": 104,
+  "demographics_only_correct": 108,
+  "difference_wvs_minus_demo": -0.023809523809523836,
+  "gold_counts": {
+    "A": 85,
+    "B": 83
+  },
+  "wvs_pred_counts": {
+    "A": 87,
+    "B": 81
+  },
+  "demo_pred_counts": {
+    "A": 91,
+    "B": 77
+  },
+  "both_correct": 95,
+  "wvs_only_correct": 9,
+  "demo_only_correct": 13,
+  "both_wrong": 51,
+  "predictions_same": 146,
+  "predictions_differ": 22
+}

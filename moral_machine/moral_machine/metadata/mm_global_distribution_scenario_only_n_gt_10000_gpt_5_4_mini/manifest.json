@@ -1,0 +1,42 @@
+{
+  "run_name": "mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini",
+  "model": "gpt-5.4-mini",
+  "db": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/processed/high_repeat_scenario_cells/global_100_cell_100/scenario_cells.sqlite",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini",
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_input/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/batch_output/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini.jsonl",
+  "scenario_manifest_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini/scenario_manifest.csv",
+  "sample_prompt_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/moral_machine/moral_machine/metadata/mm_global_distribution_scenario_only_n_gt_10000_gpt_5_4_mini/sample_prompt.txt",
+  "endpoint": "/v1/chat/completions",
+  "execution_note": "OpenAI Batch rejected this Chat Completions logprobs run because the batch-resolved GPT-5.4-mini snapshot was unavailable; the output JSONL was produced with the same request bodies via synchronous Chat Completions.",
+  "max_completion_tokens": 16,
+  "logprobs": true,
+  "top_logprobs": 5,
+  "condition": "scenario_only_global_distribution_alignment",
+  "prompt_style": "compact",
+  "option_order": "stay_swerve",
+  "option_seed": 0,
+  "threshold": {
+    "field": "global_count",
+    "operator": ">",
+    "value": 10000
+  },
+  "num_requests": 88,
+  "answer_labels": {
+    "A": "stay",
+    "B": "swerve"
+  },
+  "observed_distribution": "observed_a_share/observed_b_share are remapped to the row-specific A/B option order. global_stay_share/global_swerve_share store the action-level human distribution.",
+  "token_estimate": {
+    "method": "Approximate only: estimated from rendered system+user message text because no local model tokenizer is installed.",
+    "input_characters_total": 37275,
+    "estimated_input_tokens_4_chars_per_token_total": 9354,
+    "estimated_input_tokens_3_5_chars_per_token_total": 10685,
+    "estimated_input_tokens_4_chars_per_token_mean": 106.29545454545455,
+    "estimated_input_tokens_3_5_chars_per_token_mean": 121.42045454545455,
+    "min_estimated_input_tokens_4_chars_per_token": 99,
+    "max_estimated_input_tokens_4_chars_per_token": 117,
+    "min_estimated_input_tokens_3_5_chars_per_token": 113,
+    "max_estimated_input_tokens_3_5_chars_per_token": 133
+  }
+}
