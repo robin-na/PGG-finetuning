@@ -1,0 +1,275 @@
+{
+  "n_parsed_matches": 40,
+  "n_candidate_players": 342,
+  "n_long_rows": 120,
+  "top1_unique_player_identities": 40,
+  "probability_unique_player_identities": 120,
+  "top1_effective_n_player_identity": 40.000000000000156,
+  "probability_effective_n_player_identity": 99.13819062182057,
+  "coverage_collapse": {
+    "top1_any_match_player_coverage": {
+      "metric": "top1_any_match_player_coverage",
+      "value": 40,
+      "share_of_candidate_players": 0.11695906432748537,
+      "description": "Observed player identities selected as top-1 at least once."
+    },
+    "topk_any_probability_player_coverage": {
+      "metric": "topk_any_probability_player_coverage",
+      "value": 120,
+      "share_of_candidate_players": 0.3508771929824561,
+      "description": "Observed player identities assigned positive top-k probability at least once."
+    },
+    "top1_effective_n_player_identities": {
+      "metric": "top1_effective_n_player_identities",
+      "value": 40.000000000000156,
+      "share_of_candidate_players": 0.11695906432748583,
+      "description": "Entropy effective number of top-1 matched observed player identities."
+    },
+    "probability_effective_n_player_identities": {
+      "metric": "probability_effective_n_player_identities",
+      "value": 99.13819062182057,
+      "share_of_candidate_players": 0.2898777503562005,
+      "description": "Entropy effective number of probability-weighted observed player identities."
+    },
+    "top1_mass_in_top_1pct_players": {
+      "metric": "top1_mass_in_top_1pct_players",
+      "value": 0.025,
+      "share_of_candidate_players": "",
+      "description": "Share of top-1 matches captured by the most selected 1% of matched player identities."
+    },
+    "probability_mass_in_top_1pct_players": {
+      "metric": "probability_mass_in_top_1pct_players",
+      "value": 0.03749999999999998,
+      "share_of_candidate_players": "",
+      "description": "Share of probability mass captured by the most selected 1% of matched player identities."
+    },
+    "top1_mass_in_top_5pct_players": {
+      "metric": "top1_mass_in_top_5pct_players",
+      "value": 0.05,
+      "share_of_candidate_players": "",
+      "description": "Share of top-1 matches captured by the most selected 5% of matched player identities."
+    },
+    "probability_mass_in_top_5pct_players": {
+      "metric": "probability_mass_in_top_5pct_players",
+      "value": 0.10874999999999996,
+      "share_of_candidate_players": "",
+      "description": "Share of probability mass captured by the most selected 5% of matched player identities."
+    }
+  },
+  "within_game_top1_uniformity": {
+    "median_effective_n_share_of_players": 0.15476190476190477,
+    "median_top_player_share": 1.0
+  },
+  "avatar_distribution": [
+    {
+      "avatar": "GORILLA",
+      "top1_count": 10,
+      "top1_share": 0.25,
+      "probability_mass": 10.099999999999998,
+      "probability_share": 0.25249999999999984
+    },
+    {
+      "avatar": "DUCK",
+      "top1_count": 11,
+      "top1_share": 0.275,
+      "probability_mass": 8.399999999999999,
+      "probability_share": 0.20999999999999985
+    },
+    {
+      "avatar": "SLOTH",
+      "top1_count": 5,
+      "top1_share": 0.125,
+      "probability_mass": 5.3999999999999995,
+      "probability_share": 0.13499999999999993
+    },
+    {
+      "avatar": "CHICKEN",
+      "top1_count": 2,
+      "top1_share": 0.05,
+      "probability_mass": 3.2199999999999998,
+      "probability_share": 0.08049999999999995
+    },
+    {
+      "avatar": "PARROT",
+      "top1_count": 2,
+      "top1_share": 0.05,
+      "probability_mass": 2.68,
+      "probability_share": 0.06699999999999996
+    },
+    {
+      "avatar": "DOG",
+      "top1_count": 2,
+      "top1_share": 0.05,
+      "probability_mass": 2.2,
+      "probability_share": 0.05499999999999997
+    },
+    {
+      "avatar": "MOOSE",
+      "top1_count": 2,
+      "top1_share": 0.05,
+      "probability_mass": 1.45,
+      "probability_share": 0.03624999999999998
+    },
+    {
+      "avatar": "RABBIT",
+      "top1_count": 1,
+      "top1_share": 0.025,
+      "probability_mass": 1.05,
+      "probability_share": 0.02624999999999999
+    },
+    {
+      "avatar": "CHICK",
+      "top1_count": 1,
+      "top1_share": 0.025,
+      "probability_mass": 1.0499999999999998,
+      "probability_share": 0.02624999999999998
+    },
+    {
+      "avatar": "MONKEY",
+      "top1_count": 1,
+      "top1_share": 0.025,
+      "probability_mass": 1.0,
+      "probability_share": 0.024999999999999988
+    },
+    {
+      "avatar": "OWL",
+      "top1_count": 1,
+      "top1_share": 0.025,
+      "probability_mass": 1.0,
+      "probability_share": 0.024999999999999988
+    },
+    {
+      "avatar": "CROCODILE",
+      "top1_count": 1,
+      "top1_share": 0.025,
+      "probability_mass": 0.8500000000000001,
+      "probability_share": 0.02124999999999999
+    },
+    {
+      "avatar": "COW",
+      "top1_count": 1,
+      "top1_share": 0.025,
+      "probability_mass": 0.85,
+      "probability_share": 0.021249999999999988
+    },
+    {
+      "avatar": "FROG",
+      "top1_count": 0,
+      "top1_share": 0.0,
+      "probability_mass": 0.3,
+      "probability_share": 0.007499999999999995
+    },
+    {
+      "avatar": "SNAKE",
+      "top1_count": 0,
+      "top1_share": 0.0,
+      "probability_mass": 0.25,
+      "probability_share": 0.006249999999999997
+    },
+    {
+      "avatar": "WHALE",
+      "top1_count": 0,
+      "top1_share": 0.0,
+      "probability_mass": 0.2,
+      "probability_share": 0.0049999999999999975
+    }
+  ],
+  "key_metric_comparison": {
+    "mean_contribution_rate": {
+      "metric": "mean_contribution_rate",
+      "matched_mean": 0.8584797963404301,
+      "candidate_uniform_mean": 0.7532341068105377,
+      "candidate_uniform_sd": 0.25796060105940616,
+      "matched_minus_candidate_uniform": 0.10524568952989244,
+      "candidate_uniform_standardized_difference": 0.40799133316352926,
+      "unique_player_mean": 0.776741235410516,
+      "unique_player_sd": 0.25403425206378977,
+      "matched_minus_unique_player": 0.08173856092991416,
+      "unique_player_standardized_difference": 0.32176196818289304
+    },
+    "full_contribution_rate": {
+      "metric": "full_contribution_rate",
+      "matched_mean": 0.7462025157547297,
+      "candidate_uniform_mean": 0.6375718618943056,
+      "candidate_uniform_sd": 0.35537570804359386,
+      "matched_minus_candidate_uniform": 0.10863065386042414,
+      "candidate_uniform_standardized_difference": 0.3056783325412283,
+      "unique_player_mean": 0.6872375049827533,
+      "unique_player_sd": 0.33624163149404335,
+      "matched_minus_unique_player": 0.05896501077197647,
+      "unique_player_standardized_difference": 0.1753649912712283
+    },
+    "zero_contribution_rate": {
+      "metric": "zero_contribution_rate",
+      "matched_mean": 0.07334204731515816,
+      "candidate_uniform_mean": 0.14650369692252746,
+      "candidate_uniform_sd": 0.23177793839252583,
+      "matched_minus_candidate_uniform": -0.0731616496073693,
+      "candidate_uniform_standardized_difference": -0.315654070075759,
+      "unique_player_mean": 0.14385030740103996,
+      "unique_player_sd": 0.23270798506447132,
+      "matched_minus_unique_player": -0.0705082600858818,
+      "unique_player_standardized_difference": -0.3029902908847224
+    },
+    "contribution_sd": {
+      "metric": "contribution_sd",
+      "matched_mean": 3.2159821811542915,
+      "candidate_uniform_mean": 4.616284084723301,
+      "candidate_uniform_sd": 3.509569980220773,
+      "matched_minus_candidate_uniform": -1.4003019035690092,
+      "candidate_uniform_standardized_difference": -0.3989952932868778,
+      "unique_player_mean": 4.504371176342422,
+      "unique_player_sd": 3.5926998873300335,
+      "matched_minus_unique_player": -1.2883889951881309,
+      "unique_player_standardized_difference": -0.35861303075487766
+    },
+    "messages_per_round": {
+      "metric": "messages_per_round",
+      "matched_mean": 0.2024605465932191,
+      "candidate_uniform_mean": 0.13741207497931923,
+      "candidate_uniform_sd": 0.2895540456545472,
+      "matched_minus_candidate_uniform": 0.06504847161389987,
+      "candidate_uniform_standardized_difference": 0.2246505361956021,
+      "unique_player_mean": 0.15344308486510813,
+      "unique_player_sd": 0.30951950780221116,
+      "matched_minus_unique_player": 0.04901746172811097,
+      "unique_player_standardized_difference": 0.15836630807591637
+    },
+    "reward_given_round_rate": {
+      "metric": "reward_given_round_rate",
+      "matched_mean": 0.20605847523056864,
+      "candidate_uniform_mean": 0.1291051773758343,
+      "candidate_uniform_sd": 0.26965358332446826,
+      "matched_minus_candidate_uniform": 0.07695329785473434,
+      "candidate_uniform_standardized_difference": 0.285378361770695,
+      "unique_player_mean": 0.12356395242715554,
+      "unique_player_sd": 0.2597767946373153,
+      "matched_minus_unique_player": 0.0824945228034131,
+      "unique_player_standardized_difference": 0.3175592451149726
+    },
+    "punish_given_round_rate": {
+      "metric": "punish_given_round_rate",
+      "matched_mean": 0.10875689711264228,
+      "candidate_uniform_mean": 0.08185487793431193,
+      "candidate_uniform_sd": 0.18788916447205842,
+      "matched_minus_candidate_uniform": 0.02690201917833035,
+      "candidate_uniform_standardized_difference": 0.14318025871221027,
+      "unique_player_mean": 0.09690236045340939,
+      "unique_player_sd": 0.2016275359653349,
+      "matched_minus_unique_player": 0.01185453665923289,
+      "unique_player_standardized_difference": 0.05879423463901775
+    },
+    "punish_received_round_rate": {
+      "metric": "punish_received_round_rate",
+      "matched_mean": 0.042093644048782415,
+      "candidate_uniform_mean": 0.07806731899485674,
+      "candidate_uniform_sd": 0.17715862098425997,
+      "matched_minus_candidate_uniform": -0.03597367494607432,
+      "candidate_uniform_standardized_difference": -0.2030591271607972,
+      "unique_player_mean": 0.09006135158338252,
+      "unique_player_sd": 0.18784238493507535,
+      "matched_minus_unique_player": -0.047967707534600106,
+      "unique_player_standardized_difference": -0.25536146994289577
+    }
+  }
+}

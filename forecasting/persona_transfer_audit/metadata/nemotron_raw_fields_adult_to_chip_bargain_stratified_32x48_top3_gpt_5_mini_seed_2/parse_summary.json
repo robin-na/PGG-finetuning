@@ -1,0 +1,7 @@
+{
+  "output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_output/nemotron_raw_fields_adult_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2.jsonl",
+  "parsed": 1536,
+  "errors": 0,
+  "probability_error_count": 0,
+  "duplicate_player_count": 0
+}

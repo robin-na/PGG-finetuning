@@ -109,6 +109,185 @@ Chip bargaining target:
 - Because chip games have exactly three players, top-k 3 is also a complete probability distribution over all players in each game.
 - Main metadata directory: `forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2/`
 
+No-persona controls:
+
+- Built on 2026-05-13.
+- These use the same target games as the scaled Twin runs but remove the persona block entirely.
+- System prompt: "You are an online participant of an experiment. Identify which player in the provided social interaction matches most closely with how you would behave."
+- User prompt starts directly with the social interaction script and asks which observed behavior the model would most plausibly have produced.
+- PGG run:
+  - run name: `no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2`
+  - requests: 40
+  - batch input: `forecasting/persona_transfer_audit/batch_input/no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2.jsonl`
+  - metadata: `forecasting/persona_transfer_audit/metadata/no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2/`
+  - tiktoken input tokens: 95,871 total; mean 2,396.8; min 746; max 7,868.
+  - OpenAI batch id: `batch_6a0489bc2838819098def0d7ea85d401`
+  - status: completed and downloaded.
+  - parse summary: 40 parsed, 0 errors, 0 probability-sum errors, 0 duplicate-player errors.
+  - key matched-minus-candidate-uniform behavior differences:
+    - mean contribution rate: +0.105;
+    - first contribution rate: +0.106;
+    - final contribution rate: +0.129;
+    - full contribution rate: +0.109;
+    - zero contribution rate: -0.073;
+    - contribution standard deviation: -1.400;
+    - messages per round: +0.065;
+    - reward-given round rate: +0.077;
+    - punish-given round rate: +0.027;
+    - punish-received round rate: -0.036.
+  - Interpretation: the no-persona/default model's affinity distribution is at least as skewed toward cooperative, communicative, reward-giving, and low-free-riding PGG trajectories as the Twin-persona condition, and often more so. This supports the idea that persona prompting is operating on top of a strong default behavioral prior.
+  - Coverage caveat: because this control has only one request per game, top-1 identity coverage and within-game top-player share are not directly comparable to the 32-persona condition. Behavioral skew and probability-weighted top-k behavior are the cleaner comparisons.
+  - Paired same-game comparison against the Twin-persona condition:
+    - output: `no_persona_vs_twin_paired_game_behavior_skew.csv`
+    - no-persona skews are larger in magnitude than Twin skews for all eight core PGG metrics checked.
+    - no-persona minus Twin:
+      - mean contribution rate: +0.028, game-bootstrap CI [+0.006, +0.051];
+      - full contribution rate: +0.020, CI [-0.020, +0.056];
+      - zero contribution rate: -0.021, CI [-0.040, -0.006];
+      - contribution standard deviation: -0.258, CI [-0.796, +0.273];
+      - messages per round: +0.023, CI [-0.003, +0.056];
+      - reward-given round rate: +0.041, CI [+0.008, +0.077];
+      - punish-given round rate: +0.015, CI [-0.009, +0.041];
+      - punish-received round rate: -0.014, CI [-0.025, -0.004].
+    - Interpretation: in PGG, Twin personas appear to attenuate the default model's cooperative/normative affinity, especially for contribution/free-riding and punishment received. However, the Twin condition remains skewed relative to candidate-uniform human behavior, so the defensible claim is attenuation rather than debiasing.
+- Chip run:
+  - run name: `no_persona_to_chip_bargain_stratified_48_top3_gpt_5_mini_seed_2`
+  - requests: 48
+  - batch input: `forecasting/persona_transfer_audit/batch_input/no_persona_to_chip_bargain_stratified_48_top3_gpt_5_mini_seed_2.jsonl`
+  - metadata: `forecasting/persona_transfer_audit/metadata/no_persona_to_chip_bargain_stratified_48_top3_gpt_5_mini_seed_2/`
+  - tiktoken input tokens: 76,231 total; mean 1,588.1; min 1,387; max 1,774.
+  - OpenAI batch id: `batch_6a0489bc315c81908e8da977a1f073df`
+  - status: completed and downloaded.
+  - parse summary: 48 parsed, 0 errors, 0 probability-sum errors, 0 duplicate-player errors. One request returned only two top matches, so there are 143 matched rows rather than 144; this is valid under the top-k schema and the unlisted player receives probability 0.
+  - outputs:
+    - `chip_no_persona_significance_checks.csv`
+    - `no_persona_vs_twin_paired_record_behavior_skew.csv`
+  - key record-level matched-minus-candidate-uniform behavior differences:
+    - final surplus: +0.481, record-bootstrap CI [+0.248, +0.723];
+    - final welfare: +1.053, CI [+0.612, +1.498];
+    - proposer mean net surplus: +0.037, CI [-0.067, +0.138];
+    - proposer acceptance rate: +0.048, CI [+0.014, +0.083];
+    - proposer mean trade ratio: -0.003, CI [-0.046, +0.036];
+    - response acceptance rate: -0.026, CI [-0.045, -0.008];
+    - responder net surplus if accepted: +0.113, CI [+0.012, +0.209];
+    - received trade rate: -0.026, CI [-0.043, -0.009].
+  - Paired same-record comparison against the Twin-persona condition:
+    - no-persona minus Twin:
+      - final surplus: +0.191, CI [-0.007, +0.410];
+      - final welfare: +0.551, CI [+0.178, +0.925];
+      - proposer mean net surplus: +0.103, CI [+0.004, +0.216];
+      - proposer acceptance rate: -0.020, CI [-0.052, +0.013];
+      - proposer mean trade ratio: -0.017, CI [-0.069, +0.028];
+      - response acceptance rate: -0.017, CI [-0.037, +0.003];
+      - responder net surplus if accepted: +0.089, CI [-0.017, +0.186];
+      - received trade rate: -0.027, CI [-0.047, -0.008].
+  - Interpretation:
+    - Chip does not follow the simple PGG pattern where Twin uniformly attenuates a cooperative default prior.
+    - The no-persona default is more skewed toward high realized welfare/surplus and higher proposer net surplus than Twin.
+    - Twin remains more skewed toward accepted proposals and lower proposer surplus, consistent with an accommodating or mutually acceptable bargaining style.
+    - The broader point is that no-persona defaults are already non-neutral, but persona prompting changes the kind of skew rather than simply increasing or decreasing a single bias dimension.
+- Interpretation:
+  - This is the default model affinity baseline. It tells us which real trajectories the model identifies with when no external persona is provided.
+  - Comparing Twin-persona matches against this baseline will show whether persona prompting broadens behavioral coverage beyond the model's default behavioral prior or mostly preserves the same attractor.
+
+Demographic and survey-conditioned baselines:
+
+- The Argyle et al. "silicon sampling" design did not merely prompt the model with abstract demographic categories. It used real survey respondent profiles from public-opinion datasets, then asked the model to answer the same survey items as those respondents. For our purposes, the closest analogue is an external source-library transfer test: sample real survey respondent records from the Argyle replication data and ask whether those survey-conditioned personas map onto the empirical behavior distribution in PGG, chip bargaining, or later CaSiNo.
+- We should therefore distinguish three increasingly informative baselines:
+  - demographic-only: age, gender/sex, education, nationality/country, employment, and other standard respondent fields;
+  - Argyle-style survey-conditioned: demographics plus real public-opinion survey responses or attitudinal variables from an external source respondent, excluding any target-game behavior;
+  - rich persona-summary: Twin-style narrative summaries or persona-generator outputs that may encode broader life history, preferences, and self-description.
+- The survey-conditioned baseline is especially useful because it asks whether actual human survey traces provide enough behavioral support to improve revealed-behavior matching in strategic games. If survey-conditioned personas still map to skewed PGG or bargaining trajectories, the result speaks directly to the limits of using survey-based or opinion-based personas for revealed-preference social simulation.
+- We should not use the actual PGG or chip-bargaining participant profiles as persona inputs for this baseline. The point is to do the same kind of transfer test as Twin, but from a different external persona library. This keeps the design clean: source personas come from Twin, Argyle-style survey records, or another persona generator/library; target behaviors come from PGG, chip bargaining, or another revealed-behavior game.
+- We should still be careful about leakage within each external source. Argyle-style prompts should use only source-domain demographics and survey/attitudinal responses, not any behavior from the target game. Twin prompts should use only source-domain persona information unless we are explicitly testing a target-specialized card as a separate condition.
+
+Implemented Argyle ANES 2016 backstory condition:
+
+- Built on 2026-05-13.
+- Source data: Argyle et al. replication Dataverse, DOI `10.7910/DVN/JPV20K`.
+- Downloaded local source files:
+  - `forecasting/persona_transfer_audit/external/argyle_out_of_one_many/Master_ReadMe.txt`
+  - `forecasting/persona_transfer_audit/external/argyle_out_of_one_many/Study2Python.py`
+  - `forecasting/persona_transfer_audit/external/argyle_out_of_one_many/full_results_2012_2.tab`
+  - `forecasting/persona_transfer_audit/external/argyle_out_of_one_many/full_results_2016_2.tab`
+  - `forecasting/persona_transfer_audit/external/argyle_out_of_one_many/full_results_2020_2.tab`
+- Current batch builder: `forecasting/persona_transfer_audit/build_argyle_to_targets.py`
+- Initial implemented source library: ANES 2016 complete-case first-person backstories, using the same fields and templates exposed in the Argyle Study 2 replication code:
+  - age, gender, race/ethnicity, state, party identification, ideology, political interest, discussion of politics, church attendance, and affect toward the American flag.
+  - The prose now follows the Argyle replication code's original template order: race/ethnicity, politics discussion, ideology, party identification, church attendance, age, gender, political interest, flag affect, and state.
+  - GPT-predicted vote probabilities and target election outcomes are not included in prompts.
+  - Target-game participant profiles from PGG/chip are not used.
+- Eligible source personas with all 10 backstory statements: 2,634.
+- Sampled personas: 32, seed 2, same count as the scaled Twin condition.
+- Prompt format:
+  - system prompt matches the persona condition used for Twin;
+  - user prompt starts with "Below is information about yourself.";
+  - source respondent IDs stay only in `custom_id` and manifest rows, not in the prompt.
+- PGG batch:
+  - run name: `argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2`
+  - requests: 1,280
+  - batch input: `forecasting/persona_transfer_audit/batch_input/argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2.jsonl`
+  - metadata: `forecasting/persona_transfer_audit/metadata/argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2/`
+  - tiktoken input tokens: 3,178,792 total; mean 2,483.4; median 2,141.5; min 829; max 7,961.
+  - OpenAI batch id: `batch_6a0496ee7e7c8190966db7def3b98f2d`
+  - submitted: 2026-05-13; status: completed and downloaded.
+  - parse summary: 1,280 parsed, 0 errors, 0 probability-sum errors, 0 duplicate-player errors.
+  - matched rows: 3,789 rather than 3,840 because some requests returned fewer than three top matches; unlisted players receive probability 0.
+  - key matched-minus-candidate-uniform behavior differences:
+    - mean contribution rate: +0.114, game-cluster CI [+0.083, +0.146];
+    - full contribution rate: +0.127, game-cluster CI [+0.089, +0.165];
+    - zero contribution rate: -0.077, game-cluster CI [-0.109, -0.049];
+    - contribution standard deviation: -1.577, game-cluster CI [-2.088, -1.080];
+    - messages per round: +0.081, game-cluster CI [+0.037, +0.135];
+    - reward-given round rate: +0.039, game-cluster CI [-0.001, +0.082];
+    - punish-given round rate: +0.015, game-cluster CI [-0.001, +0.033];
+    - punish-received round rate: -0.030, game-cluster CI [-0.049, -0.013].
+  - coverage/collapse:
+    - top-1 selected identities: 152 of 342 candidate player identities (44.4%);
+    - top-1 entropy effective identities: 96.6 of 342 (28.2%);
+    - probability-weighted top-k effective identities: 151.5 of 342 (44.3%);
+    - median within-game modal top-1 share: 59.4%;
+    - median within-game top-1 effective N / players: 35.7%.
+  - request-conditional global identity-collapse test:
+    - selected identity share observed 44.4% vs null mean 93.6%, p < 0.0001;
+    - entropy effective identity share observed 0.282 vs null mean 0.751, p < 0.0001;
+    - never-selected identity share observed 55.6% vs null mean 6.4%, p < 0.0001;
+    - top 5% of identities receive 35.5% of top-1 selections vs null mean 16.1%, p < 0.0001.
+  - Interpretation:
+    - In PGG, the sparse Argyle/ANES backstory condition is strongly skewed toward cooperative, full-contribution, lower-variance, more communicative, and less punished trajectories.
+    - Compared with Twin, Argyle is more cooperatively skewed on every core contribution metric checked. Compared with no-persona, Argyle is also slightly more skewed on mean contribution, full contribution, zero contribution, contribution variance, and messages. This suggests that survey-demographic backstories can amplify the model's cooperative/default affinity in PGG rather than attenuate it.
+- Chip-bargaining batch:
+  - run name: `argyle_anes2016_backstory_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2`
+  - requests: 1,536
+  - batch input: `forecasting/persona_transfer_audit/batch_input/argyle_anes2016_backstory_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2.jsonl`
+  - metadata: `forecasting/persona_transfer_audit/metadata/argyle_anes2016_backstory_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2/`
+  - tiktoken input tokens: 2,572,496 total; mean 1,674.8; median 1,671.0; min 1,470; max 1,867.
+  - OpenAI batch id: `batch_6a0496ee6ab88190a3f60a405fb9f419`
+  - submitted: 2026-05-13; status: completed and downloaded.
+  - parse summary: 1,536 parsed, 0 errors, 0 probability-sum errors, 0 duplicate-player errors.
+  - matched rows: 4,605; candidate rows: 4,608. Three requests returned only two top matches, so one unlisted player in each receives probability 0.
+  - key matched-minus-candidate-uniform behavior differences:
+    - final surplus: +0.253, record-cluster CI [+0.097, +0.429];
+    - final welfare: +0.418, record-cluster CI [+0.092, +0.770];
+    - proposer mean net surplus: -0.096, record-cluster CI [-0.169, -0.031];
+    - proposer acceptance rate: +0.047, record-cluster CI [+0.020, +0.074];
+    - proposer mean trade ratio: +0.003, record-cluster CI [-0.017, +0.022];
+    - response acceptance rate: -0.0003, record-cluster CI [-0.016, +0.016];
+    - responder net surplus if accepted: +0.040, record-cluster CI [-0.029, +0.079];
+    - received trade rate: +0.006, record-cluster CI [-0.008, +0.021].
+  - coverage/collapse:
+    - top-1 selected identities: 132 of 144 candidate player identities (91.7%);
+    - top-1 entropy effective identities: 98.8 of 144 (68.6%);
+    - probability-weighted top-k effective identities: 129.6 of 144 (90.0%);
+    - median within-game modal top-1 share: 65.6%.
+  - request-conditional global identity-collapse test:
+    - entropy effective identity share observed 0.686 vs null mean 0.968, p < 0.0001;
+    - never-selected identity share observed 0.083 vs null mean approximately 0, p < 0.0001;
+    - top 5% of identities receive 15.4% of top-1 selections vs null mean 8.4%, p < 0.0001.
+  - Interpretation:
+    - The sparse Argyle/ANES backstory condition is not neutral in chip bargaining. It selects higher-surplus/higher-welfare trajectories, lower proposer-surplus trajectories, and proposals that are more likely to be accepted.
+    - Compared with Twin, Argyle is directionally similar on chip bargaining but somewhat weaker for final surplus/welfare and proposal acceptance; it is more negative on proposer net surplus.
+
 ## Evaluation Metrics
 
 We currently analyze three related phenomena.
@@ -563,12 +742,21 @@ There is closely related work, but it tends to stop one step earlier or evaluate
 These papers are highly relevant because they explicitly recognize that persona support and population alignment matter. The gap is that they mostly evaluate diversity or alignment in persona space, survey space, or psychometric space, not in target-domain revealed behavior.
 
 - Paglieri, Cross, Cunningham, Leibo, and Vezhnevets, "Persona Generators: Generating Diverse Synthetic Personas at Scale" (arXiv:2602.03545). This paper frames the problem as support coverage rather than only density matching, and argues that diverse persona generation matters for evaluating AI systems that interact with heterogeneous users. It is especially useful for our framing because it acknowledges long-tail coverage as important for applications beyond simulation, including evaluation and red-teaming. Our extension is to ask whether support coverage in persona space survives the LLM mapping into real human behavior.
+- Li, Chen, Namkoong, and Peng, "LLM Generated Persona is a Promise with a Catch" (NeurIPS 2025 Position Paper Track; arXiv:2503.16527). This paper is a direct precedent for the claim that LLM-generated personas can look useful while producing systematic bias in downstream opinion and election-forecast tasks. Our extension is not merely to document another persona limitation. We change the target and measurement: instead of asking generated personas to answer survey/opinion questions or forecast aggregate outcomes, we ask persona-conditioned models to choose among real human behavioral trajectories in strategic social interactions. This tests the LLM-mediated transport from persona description to revealed behavior while holding the candidate action paths fixed.
 - Hu et al., "Population-Aligned Persona Generation for LLM-based Social Simulation" (arXiv:2509.10127). This work generates personas from long-term social media data and aligns them to reference psychometric distributions, including Big Five traits. This is exactly the kind of approach our paper can complement: even if a persona set is aligned on Big Five or other population-level descriptors, we still need to test whether those personas map onto the behavioral support of the target setting.
 - PersonaGym, "Evaluating Persona Agents and LLMs" (Samuel et al., arXiv:2407.18416; Findings of EMNLP 2025). PersonaGym evaluates whether persona agents behave consistently across persona-relevant environments and emphasizes that persona adherence is hard to evaluate in free-form settings. This supports our broader claim that persona prompting is a steering problem, not just a prompt-format problem. Our design differs by anchoring the evaluation to real human trajectories in social interactions.
 
 Key distinction to emphasize:
 
 > Persona generation papers ask whether the persona set is diverse or population-aligned. We ask whether those personas, after LLM interpretation, cover the real behavioral support of a target environment.
+
+For readers already familiar with the persona-generation limitation literature, the novelty claim should be framed narrowly and empirically:
+
+- Not novel: persona generation can be biased, stereotyped, homogeneous, or misaligned with real populations.
+- Novel: evaluating persona libraries by the distribution of real human trajectories they identify with in a target social environment.
+- Novel: separating action-generation calibration from persona-to-behavior transport by forcing the model to choose among behavior that actually occurred.
+- Novel: measuring collapse in revealed-behavior space, including behavioral skew, local coverage, global identity concentration, and demographic skew within games.
+- Novel: applying this to strategic multi-agent economic games with incentives, communication, adaptation, punishment/reward, and bargaining outcomes rather than only survey or psychometric responses.
 
 ### Persona Steering And Opinion Representation
 
@@ -618,6 +806,149 @@ Run the same evaluation on additional persona sources:
 Key comparison:
 
 - Do richer persona libraries improve target-behavior coverage, or do they still collapse into similar revealed trajectories?
+
+Next persona-library recommendation as of 2026-05-13:
+
+- Highest-priority next run: PersonaHub.
+  - Rationale: It is a large, public, widely cited synthetic persona corpus designed to create diverse synthetic data from many perspectives. It is not specifically optimized for revealed social behavior, which makes it a useful "popular generic persona library" contrast after Twin and Argyle.
+  - Design: sample the same number of personas as Twin/Argyle first (32), then optionally scale to 128. Use the raw persona text with the same matching prompt and the same 40 PGG / 48 chip target sets.
+  - Key test: whether web-scale synthetic persona diversity still maps onto the same cooperative/high-welfare real-player trajectories.
+  - Initial exploratory sampling/batch build on 2026-05-13:
+    - source: `proj-persona/PersonaHub`, `ElitePersonas/elite_personas.part*.jsonl`;
+    - builder: `forecasting/persona_transfer_audit/build_personahub_to_targets.py`;
+    - sampled 32 personas with seed 2 from the first 1,000 eligible rows in each of 19 elite part files;
+    - filter: 120 to 1,600 persona characters;
+    - candidates seen after filter: 18,954;
+    - sampled persona length: min 282 chars, median 561, mean 576.8, max 942;
+    - sample file: `forecasting/persona_transfer_audit/external/personahub/elite_personas_seed_2_n32.jsonl`;
+    - PGG batch: `forecasting/persona_transfer_audit/batch_input/personahub_elite_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2.jsonl`, 1,280 requests, 3,206,432 input tokens by tiktoken;
+    - chip batch: `forecasting/persona_transfer_audit/batch_input/personahub_elite_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2.jsonl`, 1,536 requests, 2,605,664 input tokens by tiktoken.
+    - Status: do not use this as the main PersonaHub condition because the character-length filter was arbitrary. It is retained only as an exploratory artifact.
+  - Revised sampling decision on 2026-05-13:
+    - Remove all character-length filters from PersonaHub sampling.
+    - Distinguish the official 200k-row `persona.jsonl` subset from the much larger `ElitePersonas` shards.
+    - The official `persona.jsonl` file is about 21.6 MB and can be sampled exhaustively and uniformly over all 200,000 rows. This is the cleanest non-arbitrary "random PersonaHub" condition, but the personas are short one-line role/perspective descriptions.
+    - Each `ElitePersonas` shard is about 16 GB, with 19 shards total, so a genuinely uniform full ElitePersonas sample would require streaming hundreds of GB or implementing a more elaborate remote sampling scheme. For now, any elite sample should be labeled as a preview-frame sample rather than a random sample from the full elite corpus.
+  - Unfiltered length profiles:
+    - `persona.jsonl` full 200,000-row subset: mean 91.7 chars, SD 26.9, p01 28, p05 46, p50 92, p95 133, p99 161, max 750.
+    - ElitePersonas preview frame, first 1,000 rows from each of 19 shard files: mean 597.6 chars, SD 171.4, p01 221, p05 354, p50 583, p95 889, p99 1099, max 2346.
+    - The previous 120-1,600 character filter removed only about 0.24% of the inspected elite-preview rows, but it was still arbitrary and is no longer used.
+  - Implemented unfiltered full-`persona.jsonl` batch build on 2026-05-13:
+    - sample file: `forecasting/persona_transfer_audit/external/personahub/persona_jsonl_unfiltered_seed_2_n32.jsonl`;
+    - sample frame: official `persona.jsonl` 200,000-row subset;
+    - length filter: none;
+    - sampled persona length: min 31 chars, median 90, mean 90.8, max 173;
+    - PGG batch: `forecasting/persona_transfer_audit/batch_input/personahub_persona_jsonl_unfiltered_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2.jsonl`, 1,280 requests, 3,099,392 input tokens by tiktoken;
+    - chip batch: `forecasting/persona_transfer_audit/batch_input/personahub_persona_jsonl_unfiltered_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2.jsonl`, 1,536 requests, 2,477,216 input tokens by tiktoken.
+  - Implemented unfiltered ElitePersonas preview-frame batch build on 2026-05-13:
+    - sample file: `forecasting/persona_transfer_audit/external/personahub/elite_personas_preview_unfiltered_seed_2_n32.jsonl`;
+    - sample frame: first 1,000 rows from each of 19 `ElitePersonas` shard files;
+    - length filter: none;
+    - sampled persona length: min 332 chars, median 583.5, mean 589.0, max 1140;
+    - PGG batch: `forecasting/persona_transfer_audit/batch_input/personahub_elite_preview_unfiltered_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2.jsonl`, 1,280 requests, 3,213,152 input tokens by tiktoken;
+    - chip batch: `forecasting/persona_transfer_audit/batch_input/personahub_elite_preview_unfiltered_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2.jsonl`, 1,536 requests, 2,613,728 input tokens by tiktoken.
+  - Caveat: the sampled elite personas are richer than the basic one-line PersonaHub personas, but they are mostly occupational/domain-expertise profiles (researcher, engineer, specialist, analyst). They are not respondent-like demographic/personality profiles. This makes them a good "synthetic role-perspective" condition, not a replacement for a population-representative persona library.
+- Next synthetic-population condition: NVIDIA Nemotron-Personas-USA.
+  - Rationale: Nemotron-Personas-USA is a synthetic persona dataset explicitly grounded in real-world demographic and geographic distributions. It is a stronger synthetic-population baseline than basic PersonaHub because it includes structured demographic variables and multiple rich narrative persona fields.
+  - Source: `nvidia/Nemotron-Personas-USA` on Hugging Face.
+  - Dataset shape as of 2026-05-13: 1,000,000 rows in the default train split; 11 Parquet files; about 2.7 GB compressed; 22 fields plus UUID, including persona text fields and demographics.
+  - Design positioning: NVIDIA describes Nemotron-Personas-USA as synthetically generated personas grounded in real-world demographic, geographic, and personality-trait distributions to capture population diversity and richness. The dataset card also frames the dataset as useful for improving diversity in synthetic data, mitigating bias, and preventing model collapse. However, this is diversity in persona/context space, not a validation that the personas cover revealed behavior in strategic social settings such as public goods games, punishment/reward decisions, communication, or bargaining. This distinction is exactly why it is a useful test case for our paper.
+  - Important design choice: use the full persona profile, not just demographic information. The current renderer includes structured demographics plus `persona`, `professional_persona`, `cultural_background`, `skills_and_expertise`, `skills_and_expertise_list`, `hobbies_and_interests`, `hobbies_and_interests_list`, `sports_persona`, `arts_persona`, `travel_persona`, `culinary_persona`, and `career_goals_and_ambitions`.
+  - Caveat from inspection: the full row can contain internal inconsistencies across domain-specific persona fields. For example, a record's structured location may place the person in one state while sports/travel/arts fields refer to activities in another region. This should not be silently cleaned if the goal is to evaluate the source library as provided, but it is worth noting.
+  - Initial prose-rendered batch build on 2026-05-13:
+    - builder: `forecasting/persona_transfer_audit/build_nemotron_to_targets.py`;
+    - sample file: `forecasting/persona_transfer_audit/external/nemotron/nemotron_full_persona_adult_seed_2_n32.jsonl`;
+    - sample method: uniform random row offsets from the Hugging Face dataset-server train split, with rejection sampling for `age >= 18`;
+    - reason for adult filter: target studies are online adult-participant experiments, so this is a target-eligibility filter rather than a length or content filter;
+    - sampled 32 personas with seed 2; 38 random draws were needed to obtain 32 adult profiles;
+    - sampled full-profile length: min 4,596 chars, median 5,547.5, mean 5,554.6, max 6,641;
+    - PGG batch: `forecasting/persona_transfer_audit/batch_input/nemotron_full_persona_adult_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2.jsonl`, 1,280 requests, 4,368,552 input tokens by tiktoken;
+    - chip batch: `forecasting/persona_transfer_audit/batch_input/nemotron_full_persona_adult_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2.jsonl`, 1,536 requests, 4,000,208 input tokens by tiktoken.
+    - Status: exploratory only. This version lightly re-rendered demographics into prose, humanized coded fields, and converted list strings, so it is not the cleanest "directly from the persona library" condition.
+  - Revised raw-field batch build on 2026-05-13:
+    - sample file: `forecasting/persona_transfer_audit/external/nemotron/nemotron_raw_fields_adult_seed_2_n32.jsonl`;
+    - prompt format: raw field dump preserving Nemotron field names and raw values, e.g. `age:`, `sex:`, `occupation:`, `persona:`, `professional_persona:`, `sports_persona:`, etc.;
+    - source content/style changes: no LLM rewriting, no invented traits, no humanized occupation/category labels, no converted list formatting. The only added text is the field name preceding each raw value;
+    - same seed, dataset, adult eligibility filter, and target games as the prose-rendered build;
+    - sampled raw-field profile length: min 4,782 chars, median 5,743.5, mean 5,745.8, max 6,831;
+    - PGG batch: `forecasting/persona_transfer_audit/batch_input/nemotron_raw_fields_adult_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2.jsonl`, 1,280 requests, 4,465,792 input tokens by tiktoken;
+    - chip batch: `forecasting/persona_transfer_audit/batch_input/nemotron_raw_fields_adult_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2.jsonl`, 1,536 requests, 4,116,896 input tokens by tiktoken.
+    - Token count change relative to prose-rendered build: PGG +97,240 tokens (+2.23%); chip +116,688 tokens (+2.92%). This is small enough that the raw-field version should be preferred.
+    - Submitted on 2026-05-13:
+      - PGG OpenAI batch id: `batch_6a04ac99560c8190b66a123789a63ffa`;
+      - chip OpenAI batch id: `batch_6a04ac9912248190accf38885d0b208a`.
+    - PGG batch completed and evaluated on 2026-05-13:
+      - output: `forecasting/persona_transfer_audit/batch_output/nemotron_raw_fields_adult_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2.jsonl`;
+      - parse summary: 1,280 parsed, 0 errors, 0 probability-sum errors, 0 duplicate-player errors;
+      - matched-minus-candidate-uniform behavior differences:
+        - mean contribution rate: +0.113, game-cluster CI [+0.081, +0.146];
+        - full contribution rate: +0.125, game-cluster CI [+0.085, +0.165];
+        - zero contribution rate: -0.077, game-cluster CI [-0.109, -0.049];
+        - contribution standard deviation: -1.507, game-cluster CI [-2.034, -0.994];
+        - messages per round: +0.086, game-cluster CI [+0.041, +0.139];
+        - reward-given round rate: +0.065, game-cluster CI [+0.024, +0.111];
+        - punish-given round rate: +0.011, game-cluster CI [-0.003, +0.028];
+        - punish-received round rate: -0.031, game-cluster CI [-0.051, -0.013].
+      - Coverage/collapse:
+        - top-1 selected 136/342 candidate player identities (39.8%);
+        - top-k probability mass covered 236/342 identities (69.0%);
+        - top-1 entropy effective number: 88.3/342 (25.8%);
+        - probability-mass entropy effective number: 140.6/342 (41.1%);
+        - median within-game top-1 effective N share: 31.8%;
+        - median within-game modal top-1 share: 62.5%;
+        - global selected-identity share was 0.398 versus null mean 0.936, p<0.0001;
+        - global entropy effective share was 0.258 versus null mean 0.751, p<0.0001;
+        - top 5% of candidate identities received 38.2% of top-1 selections versus null mean 16.1%, p<0.0001.
+      - Demographic skew:
+        - demographic join had 0 missing participant profiles;
+        - probability-weighted matched players were slightly more male by Prolific sex (+0.025) and slightly less female (-0.030), but gender shifts were smaller than behavioral shifts;
+        - education shifted away from self-reported high school (-0.068, game-cluster CI [-0.116, -0.019]) and toward master/other education categories, though only the high-school decrease was clearly separated from zero under the clustered checks.
+      - Interpretation: Nemotron raw-field personas map to strongly cooperative, high-contribution, low-free-riding, lower-variance, more communicative, more reward-giving, and less-punished PGG trajectories. The magnitude is very close to Argyle/ANES and notably larger than Twin on contribution/message/reward skews.
+    - Chip-bargaining batch completed and evaluated on 2026-05-13:
+      - output: `forecasting/persona_transfer_audit/batch_output/nemotron_raw_fields_adult_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2.jsonl`;
+      - parse summary: 1,536 parsed, 0 errors, 0 probability-sum errors, 0 duplicate-player errors;
+      - matched rows: 4,606 rather than 4,608 because two requests returned only two top matches, which is valid under the "rank up to 3" schema;
+      - matched-minus-candidate-uniform behavior differences:
+        - final surplus: +0.363, record-cluster CI [+0.171, +0.564];
+        - final welfare: +0.612, record-cluster CI [+0.239, +1.013];
+        - proposer mean net surplus: -0.087, record-cluster CI [-0.173, -0.007];
+        - proposer acceptance rate: +0.066, record-cluster CI [+0.039, +0.093];
+        - proposer mean trade ratio: +0.005, record-cluster CI [-0.020, +0.031];
+        - response acceptance rate: -0.013, record-cluster CI [-0.029, +0.001];
+        - responder net surplus if accepted: +0.051, record-cluster CI [-0.015, +0.117];
+        - received trade rate: -0.006, record-cluster CI [-0.019, +0.007].
+      - Coverage/collapse:
+        - top-1 selected 121/144 candidate player identities (84.0%);
+        - top-k probability mass covered 144/144 identities (100%);
+        - top-1 entropy effective number: 87.8/144 (61.0%);
+        - probability-mass entropy effective number: 126.3/144 (87.7%);
+        - median within-game top-1 effective N share: 59.8%;
+        - median within-game modal top-1 share: 79.7%;
+        - global selected-identity share was 0.840 versus null mean 1.000, p<0.0001;
+        - global entropy effective share was 0.610 versus null mean 0.969, p<0.0001;
+        - top 5% of candidate identities received 16.1% of top-1 selections versus null mean 8.4%, p<0.0001.
+      - Interpretation: Nemotron raw-field personas select higher-surplus and higher-welfare chip-bargaining trajectories, with lower proposer surplus and higher proposer acceptance. This is directionally similar to Twin/Argyle on accepted, lower-proposer-surplus bargaining, but the welfare/surplus skew is stronger than Twin/Argyle and weaker than the no-persona default.
+  - Interpretation if run: Nemotron is a particularly relevant test of whether population-structured synthetic personas improve revealed-behavior coverage. If even this condition remains skewed toward cooperative/high-welfare/low-conflict real trajectories, the result directly addresses the claim that more detailed and demographically grounded synthetic personas solve persona-collapse concerns.
+- Strongest conceptual next run: Persona Generators (Paglieri et al., arXiv:2602.03545).
+  - Rationale: This paper explicitly frames persona generation around support coverage and long-tail diversity, which is close to our claim that source-space diversity may not survive target-action matching.
+  - Design: if code or generated personas are available, generate personas for generic human/social-interaction contexts and possibly target-specific contexts such as "online public goods game participant" and "online bargaining participant." Compare generic versus target-context generator outputs.
+  - Key test: whether a method designed for support coverage in opinions/preferences also covers revealed strategic behavior.
+  - Feasibility check on 2026-05-13:
+    - The Concordia repository includes a standalone CLI at `concordia/contrib/persona_generators/generate_personas.py`.
+    - The CLI supports `--num_personas`, `--output_path`, `--generator`, `--initial_context`, `--diversity_axes`, `--shared_memories`, `--api_type`, and `--model_name`.
+    - Available generators in the CLI are `base` plus `alphaevolve_1` through `alphaevolve_5`.
+    - The output JSON has `name`, `characteristics`, `memories`, and `shared_memories`.
+    - Concordia supports an OpenAI language-model wrapper through `api_type=openai`; use the bundled Python and install `gdm-concordia[openai]` if/when we run it.
+    - Technically this is straightforward: generate 32 personas, render the generated JSON fields directly into our matching prompt, and reuse the existing PGG/chip batch/eval pipeline.
+  - Design decision:
+    - Generic condition: initial context describes adult online economic-experiment participants. This is more comparable to Twin/Nemotron/Argyle as a transfer test.
+    - Target-grounded condition: initial context explicitly describes the PGG or chip-bargaining environment and asks for diversity along target-relevant axes. This is a stronger in-domain upper-bound test: if even target-grounded generated personas collapse, the result is especially compelling.
+    - Recommended next step: run both small pilot conditions if cost permits. Use 32 generic economic-experiment personas for the main comparison and 32 target-grounded personas for the "best-case support coverage" condition.
+- Best social-simulation foil: Population-Aligned Persona Generation for LLM-based Social Simulation.
+  - Rationale: This is directly in the social-simulation lane and aligns personas to reference psychometric distributions such as Big Five. It would let us ask whether psychometric/population alignment improves revealed-behavior coverage.
+  - Practical issue: may require code/data availability or partial reimplementation.
+- Essential ablation alongside any next library: demographic-only profiles sampled from the same source library when possible.
+  - Rationale: Argyle combines demographics with sparse political/social attitudes. A demographic-only version tells us whether the observed skew comes from demographic labels alone or from the richer survey/backstory fields.
 
 ### More Matcher Models
 
@@ -897,6 +1228,7 @@ Core scripts:
 
 - `forecasting/persona_transfer_audit/build_twin_to_pgg_pilot.py`
 - `forecasting/persona_transfer_audit/build_twin_to_chip_bargain.py`
+- `forecasting/persona_transfer_audit/build_no_persona_baselines.py`
 - `forecasting/persona_transfer_audit/evaluate_matches.py`
 - `forecasting/persona_transfer_audit/evaluate_chip_bargain_matches.py`
 - `forecasting/persona_transfer_audit/comprehensive_eval.py`

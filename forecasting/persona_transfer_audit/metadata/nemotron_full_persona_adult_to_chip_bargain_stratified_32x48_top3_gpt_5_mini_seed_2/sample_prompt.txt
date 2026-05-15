@@ -1,0 +1,106 @@
+Below is information about yourself.
+
+You are 38 years old and female; you live in Twinsburg, OH, USA; your marital status is married present; your education level is bachelors with a background in arts humanities; your occupation is news analyst reporter or journalist.
+
+Anna Bridgers is an intellectually curious journalist who fuses investigative depth with artistic spontaneity, habitually juggling multiple creative projects, often overcommitting their schedule yet thriving on the eclectic energy they generate.
+
+Anna Bridgers transforms intricate news topics into compelling narratives, leveraging their investigative rigor, data‑driven storytelling, and a flair for abstract visualizations; they thrive on the freedom of a flexible work rhythm, even if it occasionally bends deadline discipline.
+
+Anna was raised in a modest, middle‑class family in the suburbs of Cleveland, Ohio. Her parents, of German‑Irish ancestry, emphasized education, community involvement, and a love for the arts, often taking her to local theater productions and museum exhibits. Growing up in the Midwest instilled a strong work ethic and a collaborative spirit, while her exposure to diverse cultural events sparked an early fascination with novelty and abstract expression. As a married adult living in Twinsburg, she balances traditional Midwestern values with a progressive, creative outlook on life and work.
+
+Anna is a seasoned news analyst and reporter with a talent for turning complex, abstract topics into clear, engaging stories. She excels at investigative research, data-driven storytelling, multimedia production, and feature writing. Her strong critical thinking and curiosity enable her to spot novel angles and synthesize disparate information quickly. She is proficient in interview techniques, social media journalism, and basic data visualization tools (e.g., Tableau, Infogram). Anna’s adaptability and networking skills help her build sources across arts, culture, and policy beats, while her creative mindset drives innovative story formats such as interactive web pieces and audio documentaries.
+
+Specific skills include: Investigative research, Data-driven storytelling, Multimedia production, Feature writing, Interview techniques, Social media journalism, Critical analysis, Story development, Networking, Adaptability
+
+In her downtime, Anna indulges in creative pursuits that fuel her imagination. She paints abstract canvases, experiments with culinary fusions, and writes speculative short stories. She frequents local art galleries, live‑music venues, and improv theater workshops, finding inspiration in spontaneous performance. Anna also enjoys exploring philosophy discussion groups, photographing urban landscapes, and traveling to historic European cities to study architecture and art. When she needs quiet, she practices mindfulness gardening and curates a personal podcast about emerging cultural trends.
+
+Specific hobbies and interests include: Painting, Experimental cooking, Speculative short fiction, Gallery visits, Live music, Improv theater, Philosophy discussion groups, Urban photography, Traveling, Mindfulness gardening, Podcasting
+
+Anna Bridgers embraces a low‑key fitness routine, joining weekend trail runs in the Columbia River Gorge, attending yoga sessions at a downtown studio, cheering for the Portland Timbers and Trail Blazers, and they occasionally play co‑ed soccer with the Portland Club Soccer league.
+
+Anna Bridgers immerses themselves in avant‑garde art, frequenting gallery openings featuring works by Banksy and Yayoi Kusama, listening to Björk’s experimental albums, attending improv shows at Portland Improv NW, and they draw narrative inspiration for their podcast from David Lynch’s cinematic storytelling.
+
+Anna Bridgers’s travel style blends curated cultural pilgrimages to historic European cities like Florence, Prague, and Tallinn with spontaneous weekend getaways along Oregon’s coast and the Columbia River Gorge, and they always document architecture with a camera lens.
+
+Anna Bridgers is a moderately skilled home chef who loves crafting fusion dishes such as kimchi‑infused risotto, miso‑caramel glazed pork belly, and rosemary‑fennel focaccia, pairing them with artisanal cheeses, truffle honey, and a glass of natural Pinot Noir, and they sometimes neglect cleaning the kitchen after experiments.
+
+Anna aspires to move beyond daily news cycles into long‑form investigative documentary journalism, focusing on under‑reported cultural and societal issues. She aims to become a senior editor or newsroom leader where she can mentor younger reporters and champion experimental storytelling formats, such as immersive podcasts and interactive web documentaries. Ultimately, she hopes to author a nationally recognized book that blends investigative reporting with literary narrative, and to establish a nonprofit platform that amplifies emerging voices in the arts and humanities.
+
+# SOCIAL INTERACTION SCRIPT
+This is an online chip-bargaining game.
+Three players bargain by proposing chip trades over 3 rounds.
+Each round has one proposal turn per player, following the observed proposer schedule.
+On a proposal turn, the proposer requests a positive quantity of one chip color and offers a positive quantity of a different chip color.
+All non-proposers privately accept or decline. If exactly one player accepts, the trade executes with that player. If multiple players accept, one accepting player is randomly selected as the trade partner. If no one accepts, no trade occurs.
+Players observe the trade history and current chip holdings, but during the game each player knows only their own private chip values. The values below are shown to you so you can interpret the incentives behind each revealed proposal and response.
+
+# CHIP TYPES
+- red (`RED`): each player starts with 10; public value range $0.10 to $1.00
+- green (`GREEN`): each player starts with 10; public value range $0.50 to $0.50
+
+# PLAYER-SPECIFIC CHIP VALUES
+- `dog-orange-384`: GREEN=$0.50, RED=$0.30
+- `buffalo-red-6989`: GREEN=$0.50, RED=$0.10
+- `cat-pink-8143`: GREEN=$0.50, RED=$0.40
+
+# OBSERVED PLAYERS
+- `dog-orange-384`
+- `buffalo-red-6989`
+- `cat-pink-8143`
+
+Below is the observed interaction.
+
+ROUND 0
+TURN 0 PROPOSER: dog-orange-384
+Proposal: proposer offers {RED: 1} to buy {GREEN: 2}.
+Responses: buffalo-red-6989: declined; cat-pink-8143: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 1 PROPOSER: buffalo-red-6989
+Proposal: proposer offers {RED: 2} to buy {GREEN: 2}.
+Responses: cat-pink-8143: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 2 PROPOSER: cat-pink-8143
+Proposal: proposer offers {RED: 3} to buy {GREEN: 3}.
+Responses: buffalo-red-6989: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+
+ROUND 1
+TURN 0 PROPOSER: dog-orange-384
+Proposal: proposer offers {RED: 1} to buy {GREEN: 1}.
+Responses: buffalo-red-6989: declined; cat-pink-8143: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 1 PROPOSER: buffalo-red-6989
+Proposal: proposer offers {RED: 1} to buy {GREEN: 1}.
+Responses: cat-pink-8143: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 2 PROPOSER: cat-pink-8143
+Proposal: proposer offers {RED: 4} to buy {GREEN: 3}.
+Responses: buffalo-red-6989: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+
+ROUND 2
+TURN 0 PROPOSER: dog-orange-384
+Proposal: proposer offers {RED: 1} to buy {GREEN: 1}.
+Responses: buffalo-red-6989: declined; cat-pink-8143: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 1 PROPOSER: buffalo-red-6989
+Proposal: proposer offers {RED: 1} to buy {GREEN: 1}.
+Responses: cat-pink-8143: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 2 PROPOSER: cat-pink-8143
+Proposal: proposer offers {RED: 4} to buy {GREEN: 2}.
+Responses: buffalo-red-6989: declined; dog-orange-384: accepted selected as trade partner.
+Outcome: ACCEPTED; realized trade partner: dog-orange-384.
+Payout change from this turn: dog-orange-384: payout 8.00 -> 8.20 (+0.20); cat-pink-8143: payout 9.00 -> 8.40 (-0.60)
+
+Rank up to 3 observed players by how closely their revealed behavior matches your personality, the behavior you would most plausibly have produced in this game.
+
+Return only valid JSON. Put the closest match first. Assign each listed player a probability from 0 to 1, and make the probabilities across the listed players sum to exactly 1. Any player not listed is treated as having probability 0.

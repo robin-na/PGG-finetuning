@@ -1,0 +1,22 @@
+{
+  "dataset_key": "argyle_anes2016_transfer_audit_pgg",
+  "run_name": "argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2",
+  "created_at": "2026-05-13T15:15:56.385988+00:00",
+  "model": "gpt-5-mini",
+  "seed": 2,
+  "source_persona_library": "Argyle et al. replication data, ANES 2016 first-person backstory fields",
+  "argyle_data_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/external/argyle_out_of_one_many/full_results_2016_2.tab",
+  "num_personas": 32,
+  "num_games": 40,
+  "num_requests": 1280,
+  "source_run": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2",
+  "source_gold": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/pgg/metadata/twin_sampled_seed_0_gpt_5_mini/gold_continuations_k0.jsonl",
+  "top_k": 3,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_input/argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_output/argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2",
+  "request_manifest": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2/request_manifest.csv",
+  "selected_personas": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2/selected_personas.csv",
+  "sample_prompt": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2/sample_prompt.txt",
+  "request_token_estimates": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/argyle_anes2016_backstory_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2/request_token_estimates.csv"
+}

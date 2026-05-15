@@ -1,0 +1,33 @@
+{
+  "candidate_unique_game_players": 342,
+  "categorical_fields": [
+    "gender_self_report",
+    "education_self_report",
+    "prolific_sex",
+    "ethnicity",
+    "country_of_birth",
+    "country_of_residence",
+    "nationality",
+    "language",
+    "student_status",
+    "employment_status"
+  ],
+  "demographics_path": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/demographics/merged_demographcs_prolific.csv",
+  "match_rows": 3810,
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/nemotron_raw_fields_adult_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2",
+  "missing_demographic_keys": 0,
+  "missing_examples": [],
+  "numeric_fields": [
+    "age_self_report",
+    "age_prolific",
+    "prolific_total_approvals"
+  ],
+  "requests": 1280,
+  "total_weight_by_distribution": {
+    "candidate_uniform": 1280.0000000000034,
+    "matched_probability": 1279.999999999988,
+    "matched_top1": 1280.0,
+    "unique_human_candidate": 342.0
+  },
+  "weighted_rows": 16376
+}

@@ -1,0 +1,7 @@
+metric,value,share_of_candidate_players,description
+top1_any_match_player_coverage,48,0.3333333333333333,Observed player identities selected as top-1 at least once.
+topk_any_probability_player_coverage,143,0.9930555555555556,Observed player identities assigned positive top-k probability at least once.
+top1_effective_n_player_identities,48.00000000000018,0.3333333333333346,Entropy effective number of top-1 matched observed player identities.
+probability_effective_n_player_identities,114.0729421912954,0.7921732096617736,Entropy effective number of probability-weighted observed player identities.
+top1_mass_in_top_5pct_players,0.0625,,Share of top-1 matches captured by the most selected 5% of matched player identities.
+probability_mass_in_top_5pct_players,0.12041666666666663,,Share of probability mass captured by the most selected 5% of matched player identities.

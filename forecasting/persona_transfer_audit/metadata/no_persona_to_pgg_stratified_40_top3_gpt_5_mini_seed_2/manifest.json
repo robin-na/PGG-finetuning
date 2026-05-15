@@ -1,0 +1,18 @@
+{
+  "dataset_key": "no_persona_transfer_audit_pgg",
+  "run_name": "no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2",
+  "created_at": "2026-05-13T14:24:38.503971+00:00",
+  "model": "gpt-5-mini",
+  "num_personas": 0,
+  "num_games": 40,
+  "num_requests": 40,
+  "source_run": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_pgg_stratified_32x40_top3_gpt_5_mini_seed_2",
+  "source_gold": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/pgg/metadata/twin_sampled_seed_0_gpt_5_mini/gold_continuations_k0.jsonl",
+  "top_k": 3,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_input/no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_output/no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2",
+  "request_manifest": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2/request_manifest.csv",
+  "sample_prompt": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2/sample_prompt.txt",
+  "request_token_estimates": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/no_persona_to_pgg_stratified_40_top3_gpt_5_mini_seed_2/request_token_estimates.csv"
+}

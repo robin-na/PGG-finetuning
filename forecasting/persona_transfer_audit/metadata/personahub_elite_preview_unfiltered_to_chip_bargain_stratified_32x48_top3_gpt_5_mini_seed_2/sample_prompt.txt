@@ -1,0 +1,82 @@
+Below is information about yourself.
+
+A creative and curious individual who enjoys exploring new and unique mathematical challenges. They are drawn to activities that require a high level of attention to detail and precision, such as creating a rainbow that reflects in a curved surface. They are likely to be interested in math concepts such as geometry, perspective, proportions/ratios, and the mathematical practices of constructing viable arguments, attending to precision, and attending to the details. They may have a passion for using technology to create their own mathematical challenges and would enjoy the challenge of creating a rainbow that can be reflected in a curved surface.
+
+# SOCIAL INTERACTION SCRIPT
+This is an online chip-bargaining game.
+Three players bargain by proposing chip trades over 3 rounds.
+Each round has one proposal turn per player, following the observed proposer schedule.
+On a proposal turn, the proposer requests a positive quantity of one chip color and offers a positive quantity of a different chip color.
+All non-proposers privately accept or decline. If exactly one player accepts, the trade executes with that player. If multiple players accept, one accepting player is randomly selected as the trade partner. If no one accepts, no trade occurs.
+Players observe the trade history and current chip holdings, but during the game each player knows only their own private chip values. The values below are shown to you so you can interpret the incentives behind each revealed proposal and response.
+
+# CHIP TYPES
+- red (`RED`): each player starts with 10; public value range $0.10 to $1.00
+- green (`GREEN`): each player starts with 10; public value range $0.50 to $0.50
+
+# PLAYER-SPECIFIC CHIP VALUES
+- `dog-orange-384`: GREEN=$0.50, RED=$0.30
+- `buffalo-red-6989`: GREEN=$0.50, RED=$0.10
+- `cat-pink-8143`: GREEN=$0.50, RED=$0.40
+
+# OBSERVED PLAYERS
+- `dog-orange-384`
+- `buffalo-red-6989`
+- `cat-pink-8143`
+
+Below is the observed interaction.
+
+ROUND 0
+TURN 0 PROPOSER: dog-orange-384
+Proposal: proposer offers {RED: 1} to buy {GREEN: 2}.
+Responses: buffalo-red-6989: declined; cat-pink-8143: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 1 PROPOSER: buffalo-red-6989
+Proposal: proposer offers {RED: 2} to buy {GREEN: 2}.
+Responses: cat-pink-8143: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 2 PROPOSER: cat-pink-8143
+Proposal: proposer offers {RED: 3} to buy {GREEN: 3}.
+Responses: buffalo-red-6989: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+
+ROUND 1
+TURN 0 PROPOSER: dog-orange-384
+Proposal: proposer offers {RED: 1} to buy {GREEN: 1}.
+Responses: buffalo-red-6989: declined; cat-pink-8143: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 1 PROPOSER: buffalo-red-6989
+Proposal: proposer offers {RED: 1} to buy {GREEN: 1}.
+Responses: cat-pink-8143: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 2 PROPOSER: cat-pink-8143
+Proposal: proposer offers {RED: 4} to buy {GREEN: 3}.
+Responses: buffalo-red-6989: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+
+ROUND 2
+TURN 0 PROPOSER: dog-orange-384
+Proposal: proposer offers {RED: 1} to buy {GREEN: 1}.
+Responses: buffalo-red-6989: declined; cat-pink-8143: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 1 PROPOSER: buffalo-red-6989
+Proposal: proposer offers {RED: 1} to buy {GREEN: 1}.
+Responses: cat-pink-8143: declined; dog-orange-384: declined.
+Outcome: DECLINED; realized trade partner: none.
+Payout change from this turn: No payout changes.
+TURN 2 PROPOSER: cat-pink-8143
+Proposal: proposer offers {RED: 4} to buy {GREEN: 2}.
+Responses: buffalo-red-6989: declined; dog-orange-384: accepted selected as trade partner.
+Outcome: ACCEPTED; realized trade partner: dog-orange-384.
+Payout change from this turn: dog-orange-384: payout 8.00 -> 8.20 (+0.20); cat-pink-8143: payout 9.00 -> 8.40 (-0.60)
+
+Rank up to 3 observed players by how closely their revealed behavior matches your personality, the behavior you would most plausibly have produced in this game.
+
+Return only valid JSON. Put the closest match first. Assign each listed player a probability from 0 to 1, and make the probabilities across the listed players sum to exactly 1. Any player not listed is treated as having probability 0.

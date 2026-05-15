@@ -1,0 +1,9 @@
+{
+  "method": "tiktoken; o200k_base fallback; chat role/content + response_format schema with small chat framing allowance",
+  "num_requests": 1536,
+  "total_input_tokens_tiktoken": 4000208,
+  "mean_input_tokens_tiktoken": 2604.3020833333335,
+  "median_input_tokens_tiktoken": 2603.5,
+  "min_input_tokens_tiktoken": 2253,
+  "max_input_tokens_tiktoken": 2964
+}

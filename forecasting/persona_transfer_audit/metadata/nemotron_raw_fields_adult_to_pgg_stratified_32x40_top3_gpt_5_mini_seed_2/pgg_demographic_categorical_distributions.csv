@@ -1,0 +1,327 @@
+distribution,field,category,weight,share
+candidate_uniform,gender_self_report,Woman,628.0167341430672,0.4906380735492578
+candidate_uniform,gender_self_report,Man,601.9554270291289,0.4702776773664941
+candidate_uniform,gender_self_report,Non-binary,28.161172161172153,0.022000915750915142
+candidate_uniform,gender_self_report,Other/unknown,21.86666666666668,0.017083333333332878
+candidate_uniform,education_self_report,Bachelor,535.3634856371773,0.4182527231540419
+candidate_uniform,education_self_report,High school,392.5103528050941,0.3066487131289776
+candidate_uniform,education_self_report,Master,234.89994216309705,0.1835155798149183
+candidate_uniform,education_self_report,Other,114.55955272797385,0.08949965056872895
+candidate_uniform,education_self_report,Unknown,2.666666666666667,0.002083333333333319
+candidate_uniform,prolific_sex,Woman,639.5449392712744,0.49964448380566856
+candidate_uniform,prolific_sex,Man,616.0272219009241,0.48127126711008295
+candidate_uniform,prolific_sex,Unavailable,21.966300366300334,0.017161172161171637
+candidate_uniform,prolific_sex,Prefer not to say,2.4615384615384617,0.0019230769230768672
+candidate_uniform,ethnicity,White,900.1088104877977,0.70321000819357
+candidate_uniform,ethnicity,Black,137.98087526508516,0.10779755880084443
+candidate_uniform,ethnicity,Asian,125.99606709080408,0.09843442741468762
+candidate_uniform,ethnicity,Mixed,68.45344129554705,0.05347925101214447
+candidate_uniform,ethnicity,Unavailable,24.09963369963366,0.01882783882783821
+candidate_uniform,ethnicity,Other,20.899633699633696,0.01632783882783832
+candidate_uniform,ethnicity,Prefer not to say,2.4615384615384617,0.0019230769230768633
+candidate_uniform,country_of_birth,United States,703.2658569500949,0.5494264507422492
+candidate_uniform,country_of_birth,United Kingdom,384.73869288606284,0.30057710381722974
+candidate_uniform,country_of_birth,Canada,46.87395411605953,0.03662027665317068
+candidate_uniform,country_of_birth,Nigeria,28.594871794871782,0.022339743589743073
+candidate_uniform,country_of_birth,Unavailable,21.966300366300334,0.017161172161171745
+candidate_uniform,country_of_birth,Romania,18.461538461538456,0.01442307692307659
+candidate_uniform,country_of_birth,Ghana,13.866666666666665,0.010833333333333086
+candidate_uniform,country_of_birth,India,10.012415654520904,0.007822199730094279
+candidate_uniform,country_of_birth,Germany,7.794871794871796,0.006089743589743452
+candidate_uniform,country_of_birth,Croatia,5.333333333333334,0.004166666666666572
+candidate_uniform,country_of_birth,Lithuania,5.333333333333334,0.004166666666666572
+candidate_uniform,country_of_birth,Botswana,3.2000000000000015,0.0024999999999999445
+candidate_uniform,country_of_birth,Iran,3.2000000000000015,0.0024999999999999445
+candidate_uniform,country_of_birth,Isle of Man,3.2000000000000015,0.0024999999999999445
+candidate_uniform,country_of_birth,Trinidad and Tobago,3.2000000000000015,0.0024999999999999445
+candidate_uniform,country_of_birth,Turkey,3.2000000000000015,0.0024999999999999445
+candidate_uniform,country_of_birth,Guyana,2.666666666666667,0.002083333333333286
+candidate_uniform,country_of_birth,United States Minor Outlying Islands,2.666666666666667,0.002083333333333286
+candidate_uniform,country_of_birth,Hong Kong,2.4615384615384617,0.0019230769230768794
+candidate_uniform,country_of_birth,Pakistan,2.4615384615384617,0.0019230769230768794
+candidate_uniform,country_of_birth,Cyprus,2.1333333333333333,0.0016666666666666288
+candidate_uniform,country_of_birth,Latvia,2.0,0.0015624999999999645
+candidate_uniform,country_of_birth,France,1.6842105263157883,0.0013157894736841797
+candidate_uniform,country_of_birth,South Africa,1.6842105263157883,0.0013157894736841797
+candidate_uniform,country_of_residence,United States,728.6607287449688,0.5692661943319913
+candidate_uniform,country_of_residence,United Kingdom,459.481472913057,0.35896990071331597
+candidate_uniform,country_of_residence,Canada,69.89149797570882,0.05460273279352102
+candidate_uniform,country_of_residence,Unavailable,21.966300366300334,0.017161172161171665
+candidate_uniform,nationality,United States,697.1940620782997,0.5446828609986588
+candidate_uniform,nationality,United Kingdom,396.60535955273076,0.30984793715056363
+candidate_uniform,nationality,Canada,60.82483130904214,0.04751939946018806
+candidate_uniform,nationality,Nigeria,28.594871794871782,0.022339743589743055
+candidate_uniform,nationality,Unavailable,21.966300366300334,0.017161172161171735
+candidate_uniform,nationality,Romania,18.461538461538456,0.01442307692307658
+candidate_uniform,nationality,Czech Republic,8.0,0.006249999999999854
+candidate_uniform,nationality,India,8.0,0.006249999999999854
+candidate_uniform,nationality,Lithuania,5.333333333333334,0.0041666666666665695
+candidate_uniform,nationality,Portugal,5.333333333333334,0.0041666666666665695
+candidate_uniform,nationality,Ireland,4.0,0.003124999999999927
+candidate_uniform,nationality,Afghanistan,3.2000000000000015,0.0024999999999999424
+candidate_uniform,nationality,Lebanon,3.2000000000000015,0.0024999999999999424
+candidate_uniform,nationality,Philippines,3.2000000000000015,0.0024999999999999424
+candidate_uniform,nationality,Turkey,3.2000000000000015,0.0024999999999999424
+candidate_uniform,nationality,Germany,2.4615384615384617,0.001923076923076878
+candidate_uniform,nationality,Hong Kong,2.4615384615384617,0.001923076923076878
+candidate_uniform,nationality,Pakistan,2.4615384615384617,0.001923076923076878
+candidate_uniform,nationality,Tajikistan,2.1333333333333333,0.0016666666666666275
+candidate_uniform,nationality,France,1.6842105263157883,0.0013157894736841788
+candidate_uniform,nationality,South Africa,1.6842105263157883,0.0013157894736841788
+candidate_uniform,language,English,1178.283632157338,0.9205340876229047
+candidate_uniform,language,Unavailable,21.966300366300334,0.017161172161171846
+candidate_uniform,language,Romanian,18.461538461538456,0.014423076923076676
+candidate_uniform,language,French,9.479082321187576,0.007405533063427669
+candidate_uniform,language,Other,7.661538461538455,0.005985576923076817
+candidate_uniform,language,Chinese,5.661538461538459,0.0044230769230768465
+candidate_uniform,language,Croatian,5.333333333333334,0.004166666666666597
+candidate_uniform,language,Lithuanian,5.333333333333334,0.004166666666666597
+candidate_uniform,language,Hindi,5.128205128205128,0.004006410256410188
+candidate_uniform,language,Farsi,3.2000000000000015,0.002499999999999959
+candidate_uniform,language,Gujarati,3.2000000000000015,0.002499999999999959
+candidate_uniform,language,Turkish,3.2000000000000015,0.002499999999999959
+candidate_uniform,language,Hebrew,2.666666666666667,0.0020833333333332986
+candidate_uniform,language,German,2.4615384615384617,0.0019230769230768907
+candidate_uniform,language,Urdu,2.4615384615384617,0.0019230769230768907
+candidate_uniform,language,Greek,2.1333333333333333,0.0016666666666666386
+candidate_uniform,language,Afrikaans,1.6842105263157883,0.0013157894736841873
+candidate_uniform,language,Korean,1.6842105263157883,0.0013157894736841873
+candidate_uniform,student_status,No,892.2823211876344,0.6970955634278141
+candidate_uniform,student_status,Yes,261.5272797378028,0.20431818729515105
+candidate_uniform,student_status,Unavailable,126.19039907460933,0.09858624927703497
+candidate_uniform,employment_status,Full-Time,639.2028532870851,0.4993772291305283
+candidate_uniform,employment_status,Part-Time,200.0825139772488,0.15631446404472346
+candidate_uniform,employment_status,Unavailable,176.1792943898193,0.1376400737420444
+candidate_uniform,employment_status,Unemployed (and job seeking),140.7625988047037,0.10997078031617326
+candidate_uniform,employment_status,"Not in paid work (e.g. homemaker', 'retired or disabled)",95.42186234817842,0.07454832995951335
+candidate_uniform,employment_status,Due to start a new job within the next month,14.884210526315776,0.01162828947368404
+candidate_uniform,employment_status,Other,13.466666666666658,0.01052083333333318
+matched_probability,gender_self_report,Woman,617.250000000004,0.4822265625000008
+matched_probability,gender_self_report,Man,603.0700000000021,0.47114843749999935
+matched_probability,gender_self_report,Non-binary,31.680000000000017,0.024749999999999894
+matched_probability,gender_self_report,Other/unknown,28.00000000000001,0.021874999999999905
+matched_probability,education_self_report,Bachelor,530.8800000000028,0.41475000000000095
+matched_probability,education_self_report,High school,305.32000000000056,0.23853124999999972
+matched_probability,education_self_report,Master,283.3100000000006,0.22133593749999983
+matched_probability,education_self_report,Other,160.4899999999999,0.12538281249999955
+matched_probability,prolific_sex,Man,648.2400000000019,0.5064374999999989
+matched_probability,prolific_sex,Woman,601.5400000000046,0.4699531250000012
+matched_probability,prolific_sex,Unavailable,30.219999999999995,0.023609374999999874
+matched_probability,ethnicity,White,894.8500000000023,0.6991015625000007
+matched_probability,ethnicity,Black,159.0699999999999,0.12427343749999972
+matched_probability,ethnicity,Asian,115.54999999999976,0.09027343749999966
+matched_probability,ethnicity,Mixed,63.399999999999984,0.04953124999999991
+matched_probability,ethnicity,Unavailable,30.219999999999995,0.02360937499999996
+matched_probability,ethnicity,Other,11.76,0.009187499999999986
+matched_probability,ethnicity,Prefer not to say,5.149999999999999,0.004023437499999992
+matched_probability,country_of_birth,United States,743.6100000000024,0.5809453125000003
+matched_probability,country_of_birth,United Kingdom,385.31000000000114,0.30102343750000005
+matched_probability,country_of_birth,Nigeria,31.130000000000013,0.02432031249999994
+matched_probability,country_of_birth,Unavailable,30.219999999999995,0.02360937499999993
+matched_probability,country_of_birth,Canada,23.060000000000002,0.018015624999999952
+matched_probability,country_of_birth,Romania,21.929999999999996,0.01713281249999995
+matched_probability,country_of_birth,Trinidad and Tobago,12.200000000000001,0.009531249999999974
+matched_probability,country_of_birth,India,12.01,0.009382812499999973
+matched_probability,country_of_birth,Croatia,7.649999999999999,0.005976562499999982
+matched_probability,country_of_birth,Lithuania,6.449999999999999,0.005039062499999985
+matched_probability,country_of_birth,Ghana,1.630000000000001,0.0012734374999999972
+matched_probability,country_of_birth,Hong Kong,1.5,0.0011718749999999967
+matched_probability,country_of_birth,Germany,1.0,0.0007812499999999978
+matched_probability,country_of_birth,Cyprus,0.95,0.0007421874999999978
+matched_probability,country_of_birth,Turkey,0.5,0.0003906249999999989
+matched_probability,country_of_birth,United States Minor Outlying Islands,0.30000000000000004,0.00023437499999999937
+matched_probability,country_of_birth,Guyana,0.3,0.00023437499999999931
+matched_probability,country_of_birth,Botswana,0.25,0.00019531249999999944
+matched_probability,country_of_residence,United States,758.6400000000018,0.5926874999999999
+matched_probability,country_of_residence,United Kingdom,432.6800000000015,0.33803125000000034
+matched_probability,country_of_residence,Canada,58.459999999999994,0.04567187499999988
+matched_probability,country_of_residence,Unavailable,30.219999999999995,0.023609374999999936
+matched_probability,nationality,United States,716.4700000000021,0.5597421875000003
+matched_probability,nationality,United Kingdom,385.9600000000012,0.30153125000000014
+matched_probability,nationality,Canada,58.059999999999995,0.04535937499999988
+matched_probability,nationality,Nigeria,31.130000000000013,0.02432031249999995
+matched_probability,nationality,Unavailable,30.219999999999995,0.023609374999999936
+matched_probability,nationality,Romania,21.929999999999996,0.017132812499999955
+matched_probability,nationality,India,10.619999999999997,0.008296874999999978
+matched_probability,nationality,Czech Republic,9.89,0.007726562499999981
+matched_probability,nationality,Lithuania,6.449999999999999,0.005039062499999987
+matched_probability,nationality,Portugal,3.3499999999999996,0.0026171874999999932
+matched_probability,nationality,Lebanon,2.8,0.0021874999999999946
+matched_probability,nationality,Hong Kong,1.5,0.0011718749999999971
+matched_probability,nationality,Tajikistan,1.1199999999999999,0.0008749999999999977
+matched_probability,nationality,Turkey,0.5,0.00039062499999999905
+matched_probability,language,English,1188.4199999999903,0.9284531249999995
+matched_probability,language,Unavailable,30.219999999999995,0.023609375000000175
+matched_probability,language,Romanian,21.929999999999996,0.01713281250000013
+matched_probability,language,Gujarati,10.96,0.008562500000000067
+matched_probability,language,Other,9.170000000000002,0.007164062500000056
+matched_probability,language,Croatian,7.649999999999999,0.005976562500000044
+matched_probability,language,Lithuanian,6.449999999999999,0.005039062500000038
+matched_probability,language,Chinese,1.48,0.0011562500000000088
+matched_probability,language,French,1.2200000000000002,0.0009531250000000075
+matched_probability,language,Hindi,1.0499999999999998,0.0008203125000000061
+matched_probability,language,Greek,0.95,0.0007421875000000056
+matched_probability,language,Turkish,0.5,0.000390625000000003
+matched_probability,student_status,No,874.6400000000012,0.6833125000000002
+matched_probability,student_status,Yes,268.3600000000003,0.20965625000000002
+matched_probability,student_status,Unavailable,136.99999999999991,0.10703124999999981
+matched_probability,employment_status,Full-Time,663.3100000000017,0.518210937500001
+matched_probability,employment_status,Unavailable,197.9799999999999,0.15467187499999985
+matched_probability,employment_status,Part-Time,144.4899999999997,0.11288281249999971
+matched_probability,employment_status,Unemployed (and job seeking),133.85999999999973,0.10457812499999973
+matched_probability,employment_status,"Not in paid work (e.g. homemaker', 'retired or disabled)",130.5199999999998,0.1019687499999998
+matched_probability,employment_status,Other,5.989999999999999,0.004679687499999997
+matched_probability,employment_status,Due to start a new job within the next month,3.8500000000000005,0.0030078124999999988
+matched_top1,gender_self_report,Man,620.0,0.484375
+matched_top1,gender_self_report,Woman,617.0,0.48203125
+matched_top1,gender_self_report,Other/unknown,28.0,0.021875
+matched_top1,gender_self_report,Non-binary,15.0,0.01171875
+matched_top1,education_self_report,Bachelor,556.0,0.434375
+matched_top1,education_self_report,Master,294.0,0.2296875
+matched_top1,education_self_report,High school,244.0,0.190625
+matched_top1,education_self_report,Other,186.0,0.1453125
+matched_top1,prolific_sex,Man,674.0,0.5265625
+matched_top1,prolific_sex,Woman,576.0,0.45
+matched_top1,prolific_sex,Unavailable,30.0,0.0234375
+matched_top1,ethnicity,White,898.0,0.7015625
+matched_top1,ethnicity,Black,160.0,0.125
+matched_top1,ethnicity,Asian,116.0,0.090625
+matched_top1,ethnicity,Mixed,62.0,0.0484375
+matched_top1,ethnicity,Unavailable,30.0,0.0234375
+matched_top1,ethnicity,Other,9.0,0.00703125
+matched_top1,ethnicity,Prefer not to say,5.0,0.00390625
+matched_top1,country_of_birth,United States,742.0,0.5796875
+matched_top1,country_of_birth,United Kingdom,400.0,0.3125
+matched_top1,country_of_birth,Nigeria,38.0,0.0296875
+matched_top1,country_of_birth,Unavailable,30.0,0.0234375
+matched_top1,country_of_birth,Romania,28.0,0.021875
+matched_top1,country_of_birth,Trinidad and Tobago,15.0,0.01171875
+matched_top1,country_of_birth,India,12.0,0.009375
+matched_top1,country_of_birth,Canada,8.0,0.00625
+matched_top1,country_of_birth,Croatia,7.0,0.00546875
+matched_top1,country_of_residence,United States,757.0,0.59140625
+matched_top1,country_of_residence,United Kingdom,442.0,0.3453125
+matched_top1,country_of_residence,Canada,51.0,0.03984375
+matched_top1,country_of_residence,Unavailable,30.0,0.0234375
+matched_top1,nationality,United States,723.0,0.56484375
+matched_top1,nationality,United Kingdom,396.0,0.309375
+matched_top1,nationality,Canada,51.0,0.03984375
+matched_top1,nationality,Nigeria,38.0,0.0296875
+matched_top1,nationality,Unavailable,30.0,0.0234375
+matched_top1,nationality,Romania,28.0,0.021875
+matched_top1,nationality,India,8.0,0.00625
+matched_top1,nationality,Czech Republic,5.0,0.00390625
+matched_top1,nationality,Lebanon,1.0,0.00078125
+matched_top1,language,English,1192.0,0.93125
+matched_top1,language,Unavailable,30.0,0.0234375
+matched_top1,language,Romanian,28.0,0.021875
+matched_top1,language,Gujarati,12.0,0.009375
+matched_top1,language,Other,11.0,0.00859375
+matched_top1,language,Croatian,7.0,0.00546875
+matched_top1,student_status,No,860.0,0.671875
+matched_top1,student_status,Yes,267.0,0.20859375
+matched_top1,student_status,Unavailable,153.0,0.11953125
+matched_top1,employment_status,Full-Time,656.0,0.5125
+matched_top1,employment_status,Unavailable,213.0,0.16640625
+matched_top1,employment_status,"Not in paid work (e.g. homemaker', 'retired or disabled)",148.0,0.115625
+matched_top1,employment_status,Unemployed (and job seeking),139.0,0.10859375
+matched_top1,employment_status,Part-Time,117.0,0.09140625
+matched_top1,employment_status,Due to start a new job within the next month,4.0,0.003125
+matched_top1,employment_status,Other,3.0,0.00234375
+unique_human_candidate,gender_self_report,Woman,166.0,0.4853801169590643
+unique_human_candidate,gender_self_report,Man,163.0,0.4766081871345029
+unique_human_candidate,gender_self_report,Non-binary,7.0,0.02046783625730994
+unique_human_candidate,gender_self_report,Other/unknown,6.0,0.017543859649122806
+unique_human_candidate,education_self_report,Bachelor,142.0,0.4152046783625731
+unique_human_candidate,education_self_report,High school,101.0,0.2953216374269006
+unique_human_candidate,education_self_report,Master,70.0,0.2046783625730994
+unique_human_candidate,education_self_report,Other,28.0,0.08187134502923976
+unique_human_candidate,education_self_report,Unknown,1.0,0.0029239766081871343
+unique_human_candidate,prolific_sex,Woman,171.0,0.5
+unique_human_candidate,prolific_sex,Man,165.0,0.4824561403508772
+unique_human_candidate,prolific_sex,Unavailable,5.0,0.014619883040935672
+unique_human_candidate,prolific_sex,Prefer not to say,1.0,0.0029239766081871343
+unique_human_candidate,ethnicity,White,237.0,0.6929824561403509
+unique_human_candidate,ethnicity,Asian,39.0,0.11403508771929824
+unique_human_candidate,ethnicity,Black,32.0,0.0935672514619883
+unique_human_candidate,ethnicity,Mixed,22.0,0.06432748538011696
+unique_human_candidate,ethnicity,Unavailable,6.0,0.017543859649122806
+unique_human_candidate,ethnicity,Other,5.0,0.014619883040935672
+unique_human_candidate,ethnicity,Prefer not to say,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,United States,185.0,0.5409356725146199
+unique_human_candidate,country_of_birth,United Kingdom,107.0,0.3128654970760234
+unique_human_candidate,country_of_birth,Canada,13.0,0.038011695906432746
+unique_human_candidate,country_of_birth,Nigeria,6.0,0.017543859649122806
+unique_human_candidate,country_of_birth,Unavailable,5.0,0.014619883040935672
+unique_human_candidate,country_of_birth,India,4.0,0.011695906432748537
+unique_human_candidate,country_of_birth,Romania,3.0,0.008771929824561403
+unique_human_candidate,country_of_birth,Germany,2.0,0.005847953216374269
+unique_human_candidate,country_of_birth,Ghana,2.0,0.005847953216374269
+unique_human_candidate,country_of_birth,Botswana,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Croatia,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Cyprus,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,France,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Guyana,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Hong Kong,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Iran,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Isle of Man,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Latvia,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Lithuania,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Pakistan,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,South Africa,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Trinidad and Tobago,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,Turkey,1.0,0.0029239766081871343
+unique_human_candidate,country_of_birth,United States Minor Outlying Islands,1.0,0.0029239766081871343
+unique_human_candidate,country_of_residence,United States,191.0,0.5584795321637427
+unique_human_candidate,country_of_residence,United Kingdom,125.0,0.3654970760233918
+unique_human_candidate,country_of_residence,Canada,21.0,0.06140350877192982
+unique_human_candidate,country_of_residence,Unavailable,5.0,0.014619883040935672
+unique_human_candidate,nationality,United States,184.0,0.5380116959064327
+unique_human_candidate,nationality,United Kingdom,109.0,0.31871345029239767
+unique_human_candidate,nationality,Canada,18.0,0.05263157894736842
+unique_human_candidate,nationality,Nigeria,6.0,0.017543859649122806
+unique_human_candidate,nationality,Unavailable,5.0,0.014619883040935672
+unique_human_candidate,nationality,Romania,3.0,0.008771929824561403
+unique_human_candidate,nationality,India,2.0,0.005847953216374269
+unique_human_candidate,nationality,Ireland,2.0,0.005847953216374269
+unique_human_candidate,nationality,Afghanistan,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Czech Republic,1.0,0.0029239766081871343
+unique_human_candidate,nationality,France,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Germany,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Hong Kong,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Lebanon,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Lithuania,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Pakistan,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Philippines,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Portugal,1.0,0.0029239766081871343
+unique_human_candidate,nationality,South Africa,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Tajikistan,1.0,0.0029239766081871343
+unique_human_candidate,nationality,Turkey,1.0,0.0029239766081871343
+unique_human_candidate,language,English,313.0,0.9152046783625731
+unique_human_candidate,language,Unavailable,5.0,0.014619883040935672
+unique_human_candidate,language,French,3.0,0.008771929824561403
+unique_human_candidate,language,Other,3.0,0.008771929824561403
+unique_human_candidate,language,Romanian,3.0,0.008771929824561403
+unique_human_candidate,language,Chinese,2.0,0.005847953216374269
+unique_human_candidate,language,Hindi,2.0,0.005847953216374269
+unique_human_candidate,language,Afrikaans,1.0,0.0029239766081871343
+unique_human_candidate,language,Croatian,1.0,0.0029239766081871343
+unique_human_candidate,language,Farsi,1.0,0.0029239766081871343
+unique_human_candidate,language,German,1.0,0.0029239766081871343
+unique_human_candidate,language,Greek,1.0,0.0029239766081871343
+unique_human_candidate,language,Gujarati,1.0,0.0029239766081871343
+unique_human_candidate,language,Hebrew,1.0,0.0029239766081871343
+unique_human_candidate,language,Korean,1.0,0.0029239766081871343
+unique_human_candidate,language,Lithuanian,1.0,0.0029239766081871343
+unique_human_candidate,language,Turkish,1.0,0.0029239766081871343
+unique_human_candidate,language,Urdu,1.0,0.0029239766081871343
+unique_human_candidate,student_status,No,247.0,0.7222222222222222
+unique_human_candidate,student_status,Yes,63.0,0.18421052631578946
+unique_human_candidate,student_status,Unavailable,32.0,0.0935672514619883
+unique_human_candidate,employment_status,Full-Time,179.0,0.5233918128654971
+unique_human_candidate,employment_status,Part-Time,49.0,0.14327485380116958
+unique_human_candidate,employment_status,Unavailable,46.0,0.13450292397660818
+unique_human_candidate,employment_status,Unemployed (and job seeking),30.0,0.08771929824561403
+unique_human_candidate,employment_status,"Not in paid work (e.g. homemaker', 'retired or disabled)",29.0,0.0847953216374269
+unique_human_candidate,employment_status,Other,5.0,0.014619883040935672
+unique_human_candidate,employment_status,Due to start a new job within the next month,4.0,0.011695906432748537
