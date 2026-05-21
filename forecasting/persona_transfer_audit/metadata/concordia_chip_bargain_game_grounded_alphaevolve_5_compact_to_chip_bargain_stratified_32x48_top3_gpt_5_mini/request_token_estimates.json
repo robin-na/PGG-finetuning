@@ -1,0 +1,8 @@
+{
+  "method": "character_count_divided_by_4",
+  "num_requests": 1536,
+  "total_estimated_input_tokens": 2418264,
+  "mean_estimated_input_tokens": 1574.390625,
+  "min_estimated_input_tokens": 1402,
+  "max_estimated_input_tokens": 1874
+}

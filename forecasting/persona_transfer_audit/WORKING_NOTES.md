@@ -1,6 +1,6 @@
 # Persona Transfer Evaluation Working Notes
 
-Last updated: 2026-05-13
+Last updated: 2026-05-20
 
 This memo records the current state of the Twin-to-target-game persona transfer project. It is intentionally rough. The goal is to preserve the argument, design decisions, results, caveats, and next steps so that the cleaner manuscript can be revised from a stable record.
 
@@ -944,6 +944,52 @@ Next persona-library recommendation as of 2026-05-13:
     - Generic condition: initial context describes adult online economic-experiment participants. This is more comparable to Twin/Nemotron/Argyle as a transfer test.
     - Target-grounded condition: initial context explicitly describes the PGG or chip-bargaining environment and asks for diversity along target-relevant axes. This is a stronger in-domain upper-bound test: if even target-grounded generated personas collapse, the result is especially compelling.
     - Recommended next step: run both small pilot conditions if cost permits. Use 32 generic economic-experiment personas for the main comparison and 32 target-grounded personas for the "best-case support coverage" condition.
+  - Game-grounded setup added on 2026-05-15:
+    - Setup document: `forecasting/persona_transfer_audit/CONCORDIA_GAME_GROUNDED_SETUP.md`.
+    - Generation wrapper: `forecasting/persona_transfer_audit/generate_concordia_game_personas.py`.
+    - Batch builder: `forecasting/persona_transfer_audit/build_concordia_to_targets.py`.
+    - PGG config: `forecasting/persona_transfer_audit/concordia_configs/pgg_game_grounded_alphaevolve_5.json`.
+    - Chip config: `forecasting/persona_transfer_audit/concordia_configs/chip_bargain_game_grounded_alphaevolve_5.json`.
+    - Prepared PGG generation artifacts: `forecasting/persona_transfer_audit/external/concordia/concordia_pgg_game_grounded_alphaevolve_5_n32_gpt_5_mini/`.
+    - Prepared chip generation artifacts: `forecasting/persona_transfer_audit/external/concordia/concordia_chip_bargain_game_grounded_alphaevolve_5_n32_gpt_5_mini/`.
+    - The PGG context is treatment-general but rule-accurate: repeated group contribution decisions, contribution/withdrawal framing, multiplied-and-redistributed public account, variable endowment/multiplier/group size/round count, all-or-nothing variants, chat, punishment, reward, visibility, and rule attention.
+    - The chip context follows the actual game structure: three players, three rounds, one proposal turn per player per round, privately valued colored chips, offer/request proposals, private accept/decline decisions by non-proposers, random partner selection when both responders accept, and no trade if nobody accepts.
+    - Current axes are target-relevant rather than generic personality axes. PGG axes include contribution tendency, conditional cooperation, free-riding tolerance, norm enforcement, punishment/reward willingness, chat responsiveness, payoff maximization, endgame sensitivity, forgiveness, and rule attention. Chip axes include fairness, surplus maximization, proposer assertiveness, proposal generosity, acceptance threshold, concession willingness, risk tolerance, trust, reciprocity, competitive claiming, strategic patience, and rule attention.
+    - PGG is not yet generated separately for each of the 40 treatment configurations. This is deliberate: the first game-grounded condition tests whether one PGG-family persona library covers the behavioral support across treatment variants. A treatment-specific version should be treated as a more permissive upper-bound condition.
+    - The generated Concordia persona JSON will be passed into the matching prompt as raw JSON after "Below is information about yourself." We do not rewrite the generated persona into our own prose.
+    - Validation so far: generation artifact creation works without API calls; `build_concordia_to_targets.py` passes a smoke test for PGG and chip using a one-persona fake Concordia JSON in `/tmp`.
+    - Runtime setup on 2026-05-15: installed `gdm-concordia[openai]` and `scipy` into `/tmp/concordia_deps`, and cloned `google-deepmind/concordia` into `/tmp/concordia_src`. The GitHub source is required because PyPI `gdm-concordia==2.4.0` does not include `concordia.contrib.persona_generators`. Verified `generate_personas.py --help` and generator registry import with `PYTHONPATH=/tmp/concordia_src:/tmp/concordia_deps`.
+    - `OPENAI_API_KEY` is loaded from the repo-root `.api_keys.env` through `repo_env.py`, matching the batch-manager credential path.
+    - Temporary Concordia runtime patches were needed for `gpt-5-mini`: removed the duplicate `alphaevolve_5` characteristic-generation block in `/tmp/concordia_src/concordia/contrib/persona_generators/persona_generator_five.py`; forced OpenAI chat-completion calls to `temperature=1.0` in `/tmp/concordia_src/concordia/contrib/language_models/openai/base_gpt_model.py` because `gpt-5-mini` rejects non-default temperatures. The first PGG attempt failed at memory generation before this temperature patch, after generating characteristics but before writing `personas.json`.
+    - PGG game-grounded personas generated on 2026-05-15:
+      - command condition: `pgg_game_grounded_alphaevolve_5`, model `gpt-5-mini`, generator `alphaevolve_5`, `num_personas=32`;
+      - output: `forecasting/persona_transfer_audit/external/concordia/concordia_pgg_game_grounded_alphaevolve_5_n32_gpt_5_mini/personas.json`;
+      - verified count: 32 personas;
+      - file size: 198 KB;
+      - raw JSON persona length: median 5,967 chars, min 5,363, max 7,684;
+      - each persona has 3 generated memory/context snippets.
+    - Chip-bargaining game-grounded personas generated on 2026-05-15:
+      - command condition: `chip_bargain_game_grounded_alphaevolve_5`, model `gpt-5-mini`, generator `alphaevolve_5`, `num_personas=32`;
+      - output: `forecasting/persona_transfer_audit/external/concordia/concordia_chip_bargain_game_grounded_alphaevolve_5_n32_gpt_5_mini/personas.json`;
+      - verified count: 32 personas;
+      - file size: 188 KB;
+      - raw JSON persona length: median 5,610 chars, min 5,026, max 7,085;
+      - each persona has 3 generated memory/context snippets.
+    - Persona-matching batches built on 2026-05-15 with matcher model `gpt-5-mini` and `top_k=3`.
+      - The builder renders generated Concordia JSON directly, but strips `characteristics.initial_context` from the prompt payload. That field contains the generation context and generation instruction text, not participant profile content. The source `personas.json` files remain unchanged.
+      - Prompt hygiene check: sample prompts do not expose `persona_pid`, `game_id`, `record_id`, `custom_id`, validation labels, source keys, or the stripped `initial_context` field.
+      - PGG run:
+        - run name: `concordia_pgg_game_grounded_alphaevolve_5_to_pgg_stratified_32x40_top3_gpt_5_mini`;
+        - batch input: `forecasting/persona_transfer_audit/batch_input/concordia_pgg_game_grounded_alphaevolve_5_to_pgg_stratified_32x40_top3_gpt_5_mini.jsonl`;
+        - metadata: `forecasting/persona_transfer_audit/metadata/concordia_pgg_game_grounded_alphaevolve_5_to_pgg_stratified_32x40_top3_gpt_5_mini/`;
+        - requests: 1,280;
+        - tiktoken input tokens: 4,257,712 total; mean 3,326.3; median 2,977.0; min 1,579; max 9,100.
+      - Chip run:
+        - run name: `concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini`;
+        - batch input: `forecasting/persona_transfer_audit/batch_input/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini.jsonl`;
+        - metadata: `forecasting/persona_transfer_audit/metadata/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini/`;
+        - requests: 1,536;
+        - tiktoken input tokens: 3,838,112 total; mean 2,498.8; median 2,491.0; min 2,171; max 2,936.
 - Best social-simulation foil: Population-Aligned Persona Generation for LLM-based Social Simulation.
   - Rationale: This is directly in the social-simulation lane and aligns personas to reference psychometric distributions such as Big Five. It would let us ask whether psychometric/population alignment improves revealed-behavior coverage.
   - Practical issue: may require code/data availability or partial reimplementation.
@@ -1252,3 +1298,632 @@ Existing rollout comparison directories checked for downstream alignment:
 - `forecasting/chip_bargain/results/twin_sampled_unadjusted_seed_0_gpt_5_mini__vs_human_treatments/`
 - `forecasting/chip_bargain/results/twin_sampled_unadjusted_seed_0_gpt_5_1_bargain_card_v1__vs_human_treatments/`
 - `forecasting/chip_bargain/results/twin_sampled_unadjusted_seed_0_gpt_5_1_pgg_aligned_v3__vs_human_treatments/`
+
+## Concordia Compact Persona Condition
+
+Built on 2026-05-15 as a separate profile-rendering condition for the game-grounded Concordia personas. This condition is meant to test whether the full Concordia profile has unnecessary internal redundancy for the matching task.
+
+Compact rendering keeps:
+
+- displayed first name;
+- `core_motivation`;
+- `defining_experience`;
+- `description`.
+
+Compact rendering removes:
+
+- `characteristics.initial_context`;
+- `axis_position`;
+- `specific_attitudes`;
+- generated `memories`;
+- `shared_memories`;
+- title-like suffixes in persona names.
+
+The original Concordia `personas.json` files are unchanged. The compact profile mode is implemented in `forecasting/persona_transfer_audit/build_concordia_to_targets.py` through `--profile-mode compact`.
+
+Compact batch artifacts:
+
+- PGG run: `concordia_pgg_game_grounded_alphaevolve_5_compact_to_pgg_stratified_32x40_top3_gpt_5_mini`
+  - requests: 1,280
+  - compact profile length: median 744.5 characters; mean 797.9; min 648; max 1,509
+  - tiktoken input tokens: 3,283,712 total; mean 2,565.4; median 2,236.5; min 883; max 8,162
+  - batch input: `forecasting/persona_transfer_audit/batch_input/concordia_pgg_game_grounded_alphaevolve_5_compact_to_pgg_stratified_32x40_top3_gpt_5_mini.jsonl`
+  - metadata: `forecasting/persona_transfer_audit/metadata/concordia_pgg_game_grounded_alphaevolve_5_compact_to_pgg_stratified_32x40_top3_gpt_5_mini/`
+- Chip run: `concordia_chip_bargain_game_grounded_alphaevolve_5_compact_to_chip_bargain_stratified_32x48_top3_gpt_5_mini`
+  - requests: 1,536
+  - compact profile length: median 690.0 characters; mean 732.0; min 583; max 1,386
+  - tiktoken input tokens: 2,681,552 total; mean 1,745.8; median 1,739.0; min 1,520; max 2,047
+  - batch input: `forecasting/persona_transfer_audit/batch_input/concordia_chip_bargain_game_grounded_alphaevolve_5_compact_to_chip_bargain_stratified_32x48_top3_gpt_5_mini.jsonl`
+  - metadata: `forecasting/persona_transfer_audit/metadata/concordia_chip_bargain_game_grounded_alphaevolve_5_compact_to_chip_bargain_stratified_32x48_top3_gpt_5_mini/`
+
+Prompt hygiene check on sampled compact prompts: no persona IDs, game IDs, record IDs, validation labels, source keys, manifest metadata, `initial_context`, axes, attitudes, or memories are exposed in the prompt text.
+
+### Compact Chip-Bargaining Results
+
+Downloaded and evaluated on 2026-05-15:
+
+- run: `concordia_chip_bargain_game_grounded_alphaevolve_5_compact_to_chip_bargain_stratified_32x48_top3_gpt_5_mini`;
+- batch id: `batch_6a071fd2d3408190bc6e6d2011059ca0`;
+- completed requests: 1,536 / 1,536;
+- failed requests: 0;
+- parse errors: 0;
+- probability errors: 0;
+- duplicate-player errors: 0.
+
+Coverage and identity-collapse:
+
+- candidate identities: 144 observed player identities across 48 chip-bargaining games;
+- top-1 selected identities: 143 / 144;
+- probability-weighted selected identities: 144 / 144;
+- top-1 entropy effective identities: 119.76 / 144 = 0.832;
+- probability-weighted entropy effective identities: 135.51 / 144 = 0.941;
+- median within-game modal top-1 share: 0.578, compared with 1/3 under uniform selection among the three players;
+- median within-game effective identity share: 0.845.
+
+Request-conditional global identity-collapse null, 20,000 simulations, one uniform top-1 draw from the three displayed players for each successful request:
+
+- entropy effective identity share: observed 0.8317, null mean 0.9685, 95% null [0.9592, 0.9766], collapse-tail p = 0.00005;
+- Simpson effective identity share: observed 0.7352, null mean 0.9411, 95% null [0.9248, 0.9554], p = 0.00005;
+- top 5% identity share: observed 0.1204, null mean 0.0839, 95% null [0.0788, 0.0898], p = 0.00005;
+- Gini: observed 0.3384, null mean 0.1400, 95% null [0.1207, 0.1601], p = 0.00005.
+
+Behavioral skew relative to within-record candidate-uniform baseline, probability-weighted top-k matches:
+
+- final surplus: +0.017, not distinguishable from zero under record/persona-cluster intervals;
+- final welfare: +0.104, iid interval excludes zero but record/persona-cluster intervals include zero;
+- proposer mean net surplus: -0.000, not distinguishable from zero;
+- proposer acceptance rate: +0.033, record-cluster 95% interval [0.018, 0.048], persona-cluster [0.016, 0.049], sign-test p = 3.17e-25;
+- proposer mean trade ratio: +0.024, record-cluster [0.007, 0.044], persona-cluster [0.015, 0.033], sign-test p = 2.44e-10;
+- response acceptance rate: -0.0145, record-cluster [-0.0226, -0.0069], persona-cluster [-0.0231, -0.0061], sign-test p = 1.44e-06;
+- response net surplus conditional on acceptance: aggregate matched-minus-uniform difference -0.0496; request-level significance mean -0.0263, persona-cluster interval [-0.0498, -0.0027], record-cluster interval includes zero;
+- received trade rate: -0.0071, iid and sign-test significant but record/persona-cluster intervals narrowly include zero.
+
+Interpretation: the compact game-grounded Concordia condition has broad nominal coverage, but top-1 choices are still non-uniform within games and globally concentrated relative to a request-conditional uniform null. The behavioral skew is narrower than the stark welfare/surplus skew seen in some earlier chip runs, but the matcher still favors players whose proposals are accepted more often and whose offers are more generous/high-ratio, while it disfavors response-side acceptance.
+
+### Cross-Persona Chip Behavioral Skew Figure
+
+Generated on 2026-05-15:
+
+- figure: `forecasting/persona_transfer_audit/figures/figure_chip_behavior_skew_across_personas.png`
+- PDF: `forecasting/persona_transfer_audit/figures/figure_chip_behavior_skew_across_personas.pdf`
+- source data: `forecasting/persona_transfer_audit/figures/figure_chip_behavior_skew_across_personas_source_data.csv`
+- script: `forecasting/persona_transfer_audit/plot_chip_behavior_skew_across_personas.py`
+
+The figure compares no-persona, Twin, Argyle-style demographic backstories, Nemotron, and compact game-grounded Concordia on the chip-bargaining behavioral-skew metrics. Cells are request-level matched-minus-candidate-uniform differences standardized by candidate-player SD. Black dots mark record-level 95% intervals excluding zero.
+
+Main read:
+
+- proposal acceptance is the most stable positive skew across every condition, including no-persona and compact Concordia;
+- Twin, Argyle-style, and Nemotron all show positive final surplus/welfare skew and negative proposer-net-surplus skew;
+- compact Concordia attenuates final-surplus/final-welfare skew almost to zero, but preserves positive proposal-acceptance and trade-ratio skews;
+- no-persona has the strongest final-welfare/final-surplus skew and negative responder/received-trade skews, consistent with the default model already preferring a relatively legible bargaining role before persona prompting.
+
+### Compact PGG Results
+
+Downloaded and evaluated on 2026-05-15:
+
+- run: `concordia_pgg_game_grounded_alphaevolve_5_compact_to_pgg_stratified_32x40_top3_gpt_5_mini`;
+- batch id: `batch_6a071fd223948190912987c9b4657f4a`;
+- completed requests: 1,280 / 1,280;
+- failed requests: 0;
+- parse errors: 0;
+- probability errors: 0;
+- duplicate-player errors: 0.
+
+Coverage and identity-collapse:
+
+- candidate identities: 342 observed player identities across 40 PGG games;
+- top-1 selected identities: 261 / 342 = 0.763;
+- probability-weighted selected identities: 333 / 342 = 0.974;
+- top-1 entropy effective identities: 198.43 / 342 = 0.580;
+- probability-weighted entropy effective identities: 247.61 / 342 = 0.724.
+
+Request-conditional global identity-collapse null, 20,000 simulations, one uniform top-1 draw from the displayed players for each successful request:
+
+- selected identity share: observed 0.7632, null mean 0.9360, 95% null [0.9123, 0.9561], collapse-tail p = 0.00005;
+- entropy effective identity share: observed 0.5802, null mean 0.7513, 95% null [0.7356, 0.7662], p = 0.00005;
+- Simpson effective identity share: observed 0.4745, null mean 0.6289, 95% null [0.6120, 0.6443], p = 0.00005;
+- top 5% identity share: observed 0.2078, null mean 0.1613, 95% null [0.1539, 0.1703], p = 0.00005;
+- Gini: observed 0.5501, null mean 0.4077, 95% null [0.3948, 0.4213], p = 0.00005.
+
+Behavioral skew relative to within-game candidate-uniform baseline, probability-weighted top-k matches:
+
+- mean contribution rate: +0.00018, not distinguishable from zero under game/persona-cluster intervals;
+- full contribution rate: -0.00014, not distinguishable from zero;
+- zero contribution rate: +0.00110, not distinguishable from zero under clustered intervals;
+- contribution variability: +0.055, not distinguishable from zero;
+- messages per round: +0.0352, game-cluster 95% interval [0.0141, 0.0604], persona-cluster [0.0115, 0.0577];
+- reward-given round rate: +0.0283, game-cluster [0.0153, 0.0435], persona-cluster [0.0038, 0.0517];
+- punishment-given round rate: +0.0042, not distinguishable from zero under clustered intervals;
+- punishment-received round rate: approximately zero.
+
+Interpretation: compact game-grounded Concordia almost eliminates the contribution-level skew that appears in no-persona, Twin, Argyle-style, and Nemotron PGG runs, but it still selects players who communicate more and give rewards more often. It also still shows significant identity concentration relative to the request-conditional uniform null, so reducing profile redundancy and grounding the personas in the target game attenuates behavioral payoff/cooperation skew but does not remove non-uniform matching.
+
+### Cross-Persona PGG Behavioral Skew Figure
+
+Generated on 2026-05-15:
+
+- figure: `forecasting/persona_transfer_audit/figures/figure_pgg_behavior_skew_across_personas.png`
+- PDF: `forecasting/persona_transfer_audit/figures/figure_pgg_behavior_skew_across_personas.pdf`
+- source data: `forecasting/persona_transfer_audit/figures/figure_pgg_behavior_skew_across_personas_source_data.csv`
+- script: `forecasting/persona_transfer_audit/plot_pgg_behavior_skew_across_personas.py`
+
+The figure compares no-persona, Twin, Argyle-style demographic backstories, Nemotron, and compact game-grounded Concordia on PGG behavioral-skew metrics. Cells are request-level matched-minus-candidate-uniform differences standardized by candidate-player SD. Black dots mark game-cluster 95% intervals excluding zero.
+
+Main read:
+
+- no-persona, Twin, Argyle-style, and Nemotron all skew toward more cooperative, less variable contributors who communicate more and receive less punishment;
+- compact Concordia nearly removes the contribution, full-contribution, zero-contribution, contribution-variability, and punishment-received skews;
+- compact Concordia preserves significant positive skew on communication and reward-giving;
+- this supports a more nuanced claim: game-grounded compact personas can attenuate the default cooperation/regularity skew, but they do not make the matching distribution uniform and they still steer toward socially legible cooperative behaviors.
+
+## Next-Step Positioning: Behavioral Axes Rather Than Only Better Prediction
+
+Discussion on 2026-05-16 after compact Concordia results:
+
+The next direction should not only be "find a persona library that predicts better." A stronger contribution is to use the real-trajectory matching design to learn what dimensions of human behavior actually need to be represented for a persona library to cover a target social environment.
+
+Two linked goals:
+
+1. Build behavior-grounded persona libraries.
+   - Generic empirical or synthetic persona libraries often preserve surface diversity but fail to cover revealed behavioral heterogeneity in PGG and chip bargaining.
+   - Target-grounded Concordia does much better, especially in attenuating PGG over-cooperation, but still shows non-uniform identity coverage and residual skew toward communicative/rewarding or accepted-proposer trajectories.
+   - A useful contribution would be a persona library whose support is explicitly calibrated to real human trajectories in a specific behavioral domain, not only to demographics, hobbies, survey responses, or generic personality prose.
+
+2. Learn behavioral dimensions.
+   - The more substantive question is: what are the minimal axes needed to distinguish real human behavior in the target setting?
+   - For PGG, candidate axes include contribution propensity, conditional cooperation, endgame sensitivity, willingness to reward/punish, punishment sensitivity, communication frequency/style, and rule comprehension.
+   - For chip bargaining, candidate axes include proposer generosity, accepted-proposal behavior, surplus claiming, responder acceptance threshold, risk tolerance, reciprocity, and strategic patience.
+   - A possible "rank" question: what is the smallest dimension \(d\) such that a \(d\)-dimensional latent/persona representation can reproduce the distribution of matched human trajectories out of sample? This can be evaluated with held-out games, held-out trajectories, and held-out persona conditions.
+   - Finding that demographics, hobbies, or broad survey backstories explain little after target-relevant behavioral axes are included would itself be a useful negative result: they may be valid human descriptors without being the right representation for LLM-mediated behavior in this environment.
+
+Relationship to Manning and Horton, "General Social Agents" (`https://benjaminmanning.io/files/optimize.pdf`):
+
+- Their paper optimizes theory-grounded agent prompts or prompt mixtures against human training data, then validates across related but distinct games. The goal is predictive simulation in novel settings.
+- Our project becomes too similar if we simply optimize persona prompts/distributions to reduce rollout prediction error.
+- The distinction is strongest if our primary object is representation and diagnosis:
+  - ask the model to choose among real human trajectories rather than generate actions;
+  - measure coverage and collapse directly in the space of revealed human behavior;
+  - identify which persona dimensions control the matching distribution;
+  - estimate the dimensionality/rank of behavioral heterogeneity;
+  - use simulation only as downstream validation, not as the only optimization target.
+- Our work can complement General Social Agents: their method needs a theory-grounded prompt space; our method can test whether a proposed prompt/persona space actually spans the relevant revealed-behavior support before using it for simulation.
+
+Concrete analysis plan:
+
+- Construct a human trajectory feature matrix by game and player.
+- Define target-relevant behavioral features for each environment before looking at match outcomes.
+- Use persona-to-trajectory match probabilities as a matrix over personas and real players.
+- Fit low-rank, sparse, or factor models to ask how many latent axes explain held-out match distributions and behavioral moments.
+- Run ablations/conjoint-style persona interventions: demographics only, hobbies only, generic personality only, target-relevant axes only, full persona, and shuffled/ablated versions.
+- Validate axes by whether they improve coverage, reduce behavioral skew, and transfer to held-out games without overfitting.
+
+## High-Impact Framing For Nature/Science/PNAS/NHB
+
+Discussion on 2026-05-16:
+
+Target framing should be broader than a benchmark of persona prompting. The paper should present a framework for social and behavioral science with LLMs:
+
+- LLM social agents require representational validation before they are used for prediction, simulation, or intervention.
+- Persona diversity in prose, demographics, hobbies, or survey backstories is not the same as behavioral support over real human trajectories.
+- Revealed-behavior matching gives a calibration-light assay: the model must choose among actual human trajectories instead of generating its own actions.
+- This lets us quantify behavioral coverage, identity collapse, skew toward socially legible behavior, and the latent behavioral dimensions needed to span a target environment.
+- The scientific payoff is not only "better simulation"; it is a way to learn which dimensions distinguish human behavior in strategic social settings.
+
+Venue positioning:
+
+- Nature Human Behaviour is the most natural aspirational target if the paper makes a substantive claim about understanding individual/collective human behavior, not only LLM engineering. Their scope explicitly covers individual and collective human behavior across psychology, economics, social behavior, communication, personality, judgment, decision-making, norms, and related topics.
+- PNAS is plausible if the contribution is framed as a general interdisciplinary method for validating AI social agents, with strong empirical demonstrations across several behavioral domains.
+- Nature or Science would require a bigger, cleaner headline: e.g., "LLM persona diversity fails to span real human behavioral diversity, but target-grounded behavioral axes recover it across strategic social environments." This likely needs several domains, external validation, and a result that changes how broad scientific audiences think about AI simulation.
+- Nature Computational Science, Nature Machine Intelligence, Science Advances, PNAS Nexus, and similar venues are realistic fallback/parallel targets if the final paper is more method/framework-heavy than behavior-theory-heavy.
+
+What the high-impact version needs:
+
+- At least three behavioral domains, ideally including PGG, chip bargaining, and a richer negotiation setting.
+- Multiple persona sources: no-persona, empirical survey/persona summaries, synthetic generic personas, and target-grounded/persona-generator conditions.
+- A positive contribution, not only a negative audit: show that behavior-grounded axes or target-grounded generation can reduce skew and improve coverage.
+- Dimensionality/rank analysis: estimate the minimal behavioral basis needed to explain matched human trajectories and held-out behavioral moments.
+- Ablations that show generic descriptors such as demographics or hobbies add little relative to target-relevant behavioral axes, if that is supported by the data.
+- Out-of-sample validation: held-out games, held-out treatments, held-out trajectories, and ideally a downstream simulation check.
+- Clear distinction from General Social Agents: they optimize theory-grounded prompts/prompt mixtures for predictive simulation; this project validates whether persona representations span the revealed-behavior support and learns the dimensions of that support. Simulation is downstream validation, not the primary object.
+
+## Identity Coverage Versus Behavioral Support
+
+Discussion on 2026-05-16:
+
+Identity-uniform coverage can be misleading if multiple observed players enacted nearly identical behavior. Example: in a 10-player PGG where nearly everyone contributes faithfully in every round, the matcher is forced to choose a top 3. It may repeatedly choose a few specific identities, producing apparent identity collapse, even though the selected trajectories cover the relevant behavior type.
+
+Implication:
+
+- Identity collapse is a useful diagnostic for label/order/person-specific concentration, but it should not be the main evidence for failure to cover human behavior.
+- The primary estimand should be coverage in behavior space, not equality over individual identities.
+- Behavioral skew metrics already partially address this, because if the selected identities are behaviorally similar to the unselected identities, matched-minus-candidate-uniform differences shrink.
+- However, moment-level behavioral skew is not enough: the selected distribution could match a few moments while missing minority behavioral modes.
+
+Recommended framing:
+
+- For each game \(g\), define the empirical candidate distribution over real trajectories:
+  \(P_g = n_g^{-1}\sum_i \delta_{x_{gi}}\), where \(x_{gi}\) is player \(i\)'s behavioral trajectory/features.
+- Define the matched distribution:
+  \(Q_g = \sum_i q_{gi}\delta_{x_{gi}}\), where \(q_{gi}\) is the LLM-assigned top-k probability, or top-1 mass in the top-1 version.
+- Evaluate whether \(Q_g\) approximates \(P_g\) in behavior space, rather than whether \(q_{gi}=1/n_g\) for every identity.
+
+Metrics to add:
+
+- Moment skew: current pre-registered behavioral feature differences \(E_Q[f]-E_P[f]\).
+- Distributional distance: MMD/energy distance/Wasserstein distance between \(P_g\) and \(Q_g\) over standardized behavioral features.
+- Behavioral cluster coverage: cluster real trajectories into behavior types, then compare selected mass versus candidate-uniform mass over clusters.
+- Epsilon-ball coverage: fraction of candidate trajectories whose behavioral neighborhood receives nontrivial matched mass.
+- Kernel effective support: entropy/effective-N over behavior clusters or kernel-smoothed trajectories, so duplicate/near-duplicate behaviors do not count as separate missing modes.
+- Residual identity concentration: after conditioning on behavior type or behavioral distance, test whether the matcher still collapses onto particular identities. This becomes a secondary diagnostic of arbitrary selection, not the main behavioral-support claim.
+
+Paper language:
+
+- Avoid saying "the model should choose all people equally."
+- Say "under candidate-uniform sampling, all real trajectories define the empirical support, but equality over identities is only a strict null. Our central question is whether the persona-conditioned model covers the behavioral support of those trajectories."
+- Identity collapse should be reported as an upper-bound or auxiliary warning: it matters most when it remains after behavior-equivalence adjustment.
+
+## Systematic Axis Discovery And Iterative Persona Generation
+
+Discussion on 2026-05-16:
+
+The next step should be behavior-first rather than persona-first. Instead of only changing Concordia axes by intuition, use the revealed human trajectories to define the behavioral support that persona libraries are supposed to cover.
+
+Recommended pipeline:
+
+1. Define behavior space.
+   - Build a feature vector \(x_{gi}\) for each player \(i\) in game \(g\).
+   - PGG features: contribution level, full/zero contribution rates, contribution slope/endgame shift, conditional cooperation if measurable, reward/punishment given/received, communication frequency/style, rule-attention proxies.
+   - Chip features: proposer acceptance, proposal generosity/trade ratio, proposer surplus, final surplus/welfare, responder acceptance threshold, responder surplus conditional on acceptance, received-trade rate.
+
+2. Estimate behavior modes and dimensionality.
+   - Use interpretable factor/PCA/NMF/latent-class or clustering models on training games.
+   - Select the number of dimensions \(K\) using held-out reconstruction/distributional distance, stability, and interpretability rather than only variance explained.
+   - The scientific question is: what is the minimal \(K\) needed to cover the behavioral distribution of real trajectories?
+
+3. Translate behavior modes into candidate persona axes.
+   - Start with theory-grounded axes plus data-derived residual axes.
+   - For each latent/mode, write a human-interpretable axis description: e.g., "baseline contribution tendency," "conditional cooperation," "norm enforcement," "communication propensity," "proposal generosity," "responder acceptance threshold."
+   - Use LLM assistance for wording, but keep human review and a frozen train/test split to avoid prompt-hacking the final validation set.
+
+4. Generate persona libraries systematically.
+   - For a fixed axis set \(A_K\), generate \(N\) personas using Concordia compact profiles.
+   - Compare several \(K\): e.g., 2, 3, 5, 8, and a richer full-axis condition.
+   - Sample axis combinations with an orthogonal design or Latin hypercube so the persona library covers the space without exploding factorially.
+   - Include controls: generic axes, demographic-only axes, random/irrelevant axes, and current game-grounded Concordia axes.
+
+5. Evaluate in behavior space.
+   - For each game, compare candidate-uniform \(P_g = n_g^{-1}\sum_i\delta_{x_{gi}}\) with matched distribution \(Q_g=\sum_i q_{gi}\delta_{x_{gi}}\).
+   - Metrics: moment skew, MMD/energy/Wasserstein distance over standardized behavior features, cluster/mode coverage, epsilon-neighborhood coverage, and residual identity collapse conditional on behavior.
+
+6. Separate support from sampling weights.
+   - Let \(M_{pi}\) be the match probability mass assigned by persona \(p\) to trajectory \(i\).
+   - Ask whether any mixture \(w\) over personas can make \(w^\top M\) approximate the human behavior distribution.
+   - If optimized reweighting works, the persona library has support but the sampling weights are wrong.
+   - If no reweighting works, the axis/persona library is missing behavioral support.
+
+7. Iterate only on training/development games.
+   - Identify under-covered behavior modes where \(P_g-Q_g\) is large.
+   - Summarize their behavioral signatures.
+   - Propose new axes or revise axis definitions to target missing modes.
+   - Regenerate personas and re-evaluate on dev games.
+   - Keep a final held-out test set untouched for the paper.
+
+Objective for automated search:
+
+\[
+\mathcal{L}(A) =
+\text{BehaviorDistance}(P,Q_A)
++ \lambda_1 \text{MomentSkew}(P,Q_A)
++ \lambda_2 \text{ResidualIdentityCollapse}
++ \lambda_3 \text{PromptLength/Redundancy}
+- \lambda_4 \text{Interpretability}.
+\]
+
+Use Bayesian optimization, evolutionary search, or coordinate ablation over axis sets, but constrain the search with theory and interpretability. Avoid fully unconstrained prompt optimization, because that would collapse into the General Social Agents style objective and risk producing prompt hacks rather than behavioral insight.
+
+Immediate implementation recommendation:
+
+- First add behavior-space distributional metrics to existing runs.
+- Then run support-versus-weight diagnostics on existing persona libraries using optimized persona reweighting.
+- Only after that generate new Concordia libraries over systematic axis sets \(K=2,3,5,8\), starting with PGG because compact Concordia already showed the clearest improvement there.
+
+Clarification on General Social Agents, checked 2026-05-16:
+
+- The main "selection method" assumes a finite candidate prompt library and optimizes mixture weights over that library to match training human distributions.
+- The paper's strategic-game examples use this selection method: candidate prompts encode theoretically motivated levels of strategic reasoning, then the optimizer finds weights over those prompts.
+- The paper also proposes a "construction method" where a hand-specified prompt template contains numeric trait parameters, and derivative-free optimization searches over those parameter values.
+- Thus it is not primarily unconstrained prompt generation by an LLM. It is closer to optimizing weights over a theory-grounded prompt library, plus optimizing numeric values inside a theory-grounded template.
+- This distinction helps our positioning: optimized persona reweighting should be framed as a diagnostic of whether a library has support, not as our final contribution. Our main contribution remains behavior-space coverage and discovery of the dimensions needed to span real trajectories.
+
+## Pipeline Schematic
+
+Created on 2026-05-19:
+
+- figure: `forecasting/persona_transfer_audit/figures/figure_persona_matching_pipeline_schematic.png`
+- PDF: `forecasting/persona_transfer_audit/figures/figure_persona_matching_pipeline_schematic.pdf`
+- script: `forecasting/persona_transfer_audit/plot_persona_matching_pipeline_schematic.py`
+- TikZ source: `forecasting/persona_transfer_audit/figure_persona_matching_pipeline_schematic_tikz.tex`
+- TikZ PDF: `forecasting/persona_transfer_audit/figures/figure_persona_matching_pipeline_schematic_tikz.pdf`
+
+The schematic shows the revealed-behavior matching pipeline in three manuscript-style panels: (A) readable persona-input categories rather than library-specific names, (B) revealed-behavior matching in a concrete PGG example, and (C) coverage/evaluation diagnostics. The PGG example illustrates that the model is not generating actions; it is choosing among real candidate trajectories such as a fully cooperative player, a conditional cooperator with no communication, and a fully defective player using cheap talk. The evaluation panel emphasizes behavioral skew, behavior-space coverage, residual identity concentration, and support-versus-sampling.
+
+The TikZ version was added after the matplotlib/SVG version because it is easier to edit directly in the LaTeX manuscript and gives finer control over vector layout. It was compiled locally with a temporary Tectonic binary into `figure_persona_matching_pipeline_schematic_tikz.pdf` and rendered to PNG for visual QA.
+
+## Cross-Persona Figure Revisions
+
+Updated on 2026-05-20:
+
+- PGG behavioral skew figure:
+  - figure: `forecasting/persona_transfer_audit/figures/figure_pgg_behavior_skew_across_personas.png`
+  - PDF: `forecasting/persona_transfer_audit/figures/figure_pgg_behavior_skew_across_personas.pdf`
+  - source data: `forecasting/persona_transfer_audit/figures/figure_pgg_behavior_skew_across_personas_source_data.csv`
+  - script: `forecasting/persona_transfer_audit/plot_pgg_behavior_skew_across_personas.py`
+- Bargaining behavioral skew figure:
+  - figure: `forecasting/persona_transfer_audit/figures/figure_chip_behavior_skew_across_personas.png`
+  - PDF: `forecasting/persona_transfer_audit/figures/figure_chip_behavior_skew_across_personas.pdf`
+  - source data: `forecasting/persona_transfer_audit/figures/figure_chip_behavior_skew_across_personas_source_data.csv`
+  - script: `forecasting/persona_transfer_audit/plot_chip_behavior_skew_across_personas.py`
+
+Display-label changes:
+
+- `Argyle-style` -> `Demographic surveys`;
+- `Twin` -> `Twin-2K-500`;
+- `Nemotron` -> `Synthetic (Nemotron)`;
+- `Concordia compact` -> `Task-adaptive (Concordia)`;
+- display order changed to: No persona, Demographic surveys, Twin-2K-500, Synthetic (Nemotron), Task-adaptive (Concordia);
+- the bottom explanatory note was removed from the rendered figures;
+- the chip-bargaining title was changed to "Bargaining game behavioral skew across persona sources."
+
+## Cross-Persona Local Collapse
+
+Created on 2026-05-20:
+
+- figure: `forecasting/persona_transfer_audit/figures/figure_local_collapse_across_personas.png`
+- PDF: `forecasting/persona_transfer_audit/figures/figure_local_collapse_across_personas.pdf`
+- source data: `forecasting/persona_transfer_audit/figures/figure_local_collapse_across_personas_source_data.csv`
+- script: `forecasting/persona_transfer_audit/plot_local_collapse_across_personas.py`
+
+The cross-persona local-collapse figure compares PGG and the bargaining game. The no-persona baseline is omitted because it has only one request per game, so "share of personas selecting the modal top-1 player" is degenerate and not comparable to persona libraries. For each persona library and game transcript, the script computes:
+
+\[
+\text{excess local collapse}_{gs}
+= \max_i \hat q_{gsi}^{\mathrm{top1}}
+- \mathbb{E}_{U_g}\left[\max_i \hat q_{gi}^{\mathrm{top1}}\right],
+\]
+
+where the first term is the observed modal top-1 player share across profiles from persona source \(s\) in game \(g\), and the second term is the expected modal share under request-conditional uniform top-1 selection over the players shown in the same game. This controls for different numbers of players in PGG games and for the finite number of requests per game.
+
+Median excess local collapse by game and persona source:
+
+- Public goods game:
+  - Demographic surveys: +0.372 excess; median observed modal top-1 share 0.594.
+  - Twin-2K-500: +0.263 excess; median observed modal top-1 share 0.540.
+  - Synthetic (Nemotron): +0.402 excess; median observed modal top-1 share 0.625.
+  - Task-adaptive (Concordia): +0.094 excess; median observed modal top-1 share 0.344.
+- Bargaining game:
+  - Demographic surveys: +0.235 excess; median observed modal top-1 share 0.656.
+  - Twin-2K-500: +0.173 excess; median observed modal top-1 share 0.594.
+  - Synthetic (Nemotron): +0.376 excess; median observed modal top-1 share 0.797.
+  - Task-adaptive (Concordia): +0.157 excess; median observed modal top-1 share 0.578.
+
+Interpretation: task-adaptive Concordia has the lowest local identity collapse in both target games, especially in PGG. Synthetic (Nemotron) has the highest median excess collapse in both games. This figure should be presented as an identity-concentration diagnostic, not as the main behavioral-support estimand, because behaviorally similar players can still make identity-uniformity too strict.
+
+## Behavior-Space Effective Support
+
+Created on 2026-05-20:
+
+- figure: `forecasting/persona_transfer_audit/figures/figure_behavioral_support_across_personas.png`
+- PDF: `forecasting/persona_transfer_audit/figures/figure_behavioral_support_across_personas.pdf`
+- source data: `forecasting/persona_transfer_audit/figures/figure_behavioral_support_across_personas_source_data.csv`
+- script: `forecasting/persona_transfer_audit/plot_behavioral_support_across_personas.py`
+
+This is the first implementation of Metric 1, motivated by the concern that identity-level collapse can be too strict. If several players in the same game behaved almost identically, repeatedly matching one of those players should not be interpreted as missing a distinct behavioral mode. The metric therefore measures how much of the empirical behavior space is covered by the matched probability distribution, not whether all identities are selected equally.
+
+For each game \(g\), each observed player \(i\) is represented by a standardized behavior vector \(z_{gi}\). PGG uses the same core features as the behavioral-skew figure:
+
+- mean contribution rate;
+- full contribution rate;
+- zero contribution rate;
+- contribution variability;
+- messages per round;
+- reward-given round rate;
+- punishment-given round rate;
+- punishment-received round rate.
+
+The bargaining game uses:
+
+- final surplus;
+- final welfare;
+- proposer net surplus;
+- proposer acceptance rate;
+- offered trade ratio;
+- responder acceptance rate;
+- responder surplus conditional on acceptance;
+- received-trade rate.
+
+Features are standardized using the candidate human trajectories for the corresponding target game. Missing feature values, mainly responder surplus conditional on acceptance in bargaining, are imputed to the target-game mean after standardization. Within each game, define an RBF similarity kernel over human trajectories:
+
+\[
+K_{gij} = \exp\left(-\frac{\lVert z_{gi}-z_{gj}\rVert^2}{2\sigma_g^2}\right),
+\]
+
+where \(\sigma_g\) is the median nonzero pairwise distance among candidate trajectories in game \(g\). Let \(P_g\) be the candidate-uniform human distribution and \(Q_{gs}\) be the persona-source-specific matched distribution, obtained by aggregating the model's top-k probabilities over profiles and normalizing within the game. The behavior-space effective support is:
+
+\[
+N_{\mathrm{eff}}^K(w) = \frac{1}{w^\top K_g w}.
+\]
+
+The plotted quantity is:
+
+\[
+\frac{N_{\mathrm{eff}}^K(Q_{gs})}{N_{\mathrm{eff}}^K(P_g)}.
+\]
+
+A value near 1 means the matched trajectories span about as much behavior-space support as the empirical human trajectories in that game. A value below 1 means matched mass is concentrated in a narrower behavioral region. Values slightly above 1 are possible because the selected subset can be more behaviorally dispersed than the full empirical distribution when the full set contains redundant near-duplicate trajectories.
+
+Median behavior-space effective support ratios:
+
+- Public goods game:
+  - No persona: 0.784.
+  - Demographic surveys: 0.879.
+  - Twin-2K-500: 0.955.
+  - Synthetic (Nemotron): 0.873.
+  - Task-adaptive (Concordia): 1.011.
+- Bargaining game:
+  - No persona: 0.921.
+  - Demographic surveys: 0.973.
+  - Twin-2K-500: 0.978.
+  - Synthetic (Nemotron): 0.960.
+  - Task-adaptive (Concordia): 0.978.
+
+The source data also includes the unkernelized probability effective-N ratio and the expected pairwise behavioral-distance ratio. The pairwise-distance ratio is useful as a more literal "span" diagnostic. Median pairwise-distance ratios are lower than the kernel support ratios and show the same ordering in PGG: no persona 0.509, demographic surveys 0.738, Twin-2K-500 0.882, Synthetic (Nemotron) 0.730, and Task-adaptive (Concordia) 1.010. In the bargaining game, median pairwise-distance ratios are 0.750, 0.884, 0.932, 0.879, and 0.934, respectively.
+
+Interpretation: this metric partly resolves the fairness concern with local identity collapse. Task-adaptive Concordia no longer merely looks less collapsed by identity; in PGG it spans the empirical behavior space almost exactly under this metric. Twin also performs better than demographic surveys, synthetic Nemotron personas, and the no-persona baseline. In the bargaining game, all persona libraries cover most of the behavioral support once behavior similarity is accounted for, but the no-persona baseline remains narrower. This suggests that bargaining identity collapse is less concerning behaviorally than the raw top-1 concentration figure implies, partly because there are only three players and some trajectories are behaviorally close under the current feature set.
+
+Important caveat: this is only as good as the behavior vector. Metric 2-style distributional tests over the same features would be close to the behavioral-skew analysis we already have, so the immediate value here is not another skew test but an identity-adjusted support diagnostic. Future versions should test feature-set sensitivity, richer communication features, and cluster-based support metrics on held-out games.
+
+## Poster Evaluation Framework Notation
+
+Created on 2026-05-20:
+
+- Word-friendly notation handout: `forecasting/persona_transfer_audit/poster/evaluation_framework_notation.docx`
+- copy-ready Markdown source: `forecasting/persona_transfer_audit/poster/evaluation_framework_notation.md`
+- generation script: `forecasting/persona_transfer_audit/poster/make_evaluation_framework_notation_docx.py`
+
+The poster notation defines games \(g\), observed players \(I_g\), real behavior trajectories \(b_{gi}\), behavioral features \(x_{gi}\), the candidate-uniform human reference distribution \(P_g\), the LLM top-k response probabilities \(r_{gasi}\), and the persona-source matched distribution \(Q_{gs}\). It also defines the behavioral skewness statistic used in the cross-persona heatmap as a matched-minus-human feature difference, averaged across target games and standardized by the empirical human standard deviation of the feature.
+
+Follow-up on 2026-05-20: the full Word notation was too long for the poster and did not render equations cleanly in Office. A shorter poster insert was created instead:
+
+- compact poster block PNG: `forecasting/persona_transfer_audit/poster/evaluation_framework_poster_block.png`
+- compact poster block SVG: `forecasting/persona_transfer_audit/poster/evaluation_framework_poster_block.svg`
+- compact poster block PDF: `forecasting/persona_transfer_audit/poster/evaluation_framework_poster_block.pdf`
+- compact copy text: `forecasting/persona_transfer_audit/poster/evaluation_framework_poster_block.md`
+- rendering script: `forecasting/persona_transfer_audit/poster/make_evaluation_framework_poster_block.py`
+
+The compact version keeps only three definitions: \(P_g(i)=1/n_g\), \(Q_{gs}(i)=\operatorname{Avg}_a r_{gasi}\), and the SD-standardized behavioral skew \(\widetilde{\delta}_{s\ell}\).
+
+## Current Conceptual Framing: Toward Behaviorally Complete Social Agents
+
+Updated on 2026-05-21.
+
+Path convention for collaborators: all file paths in these notes should be written relative to the repository root, i.e. relative to the `PGG-finetuning` folder. Do not use machine-specific absolute paths such as `/Users/...`.
+
+The current broader framing is that this project maps persona libraries into real human behavior in target social environments. A persona source can be:
+
+- no persona / default LLM behavior;
+- demographic or survey-based backstories;
+- digital-twin survey summaries such as Twin-2K-500;
+- general-purpose synthetic persona libraries such as Nemotron;
+- task-adaptive persona generation such as Concordia.
+
+For each source, the question is not only whether the persona descriptions look diverse. The question is whether the LLM, when asked to inhabit those personas in a target environment, assigns probability mass to the diverse real behaviors humans actually exhibited.
+
+A concise way to state the motivation:
+
+> Persona prompts are not agents. They are incomplete coordinate systems for human behavior.
+
+Human behavior can depend on many latent dimensions: cooperation, trust, fairness norms, spite, risk tolerance, beliefs about others, strategic sophistication, communication tendency, norm-enforcement preference, sensitivity to incentives, and many others. Generic persona descriptions based on demographics, hobbies, life history, or survey attitudes may omit the dimensions that actually drive behavior in a specific strategic setting. Even rich survey-based persona can therefore be incomplete for the behavior we want to simulate.
+
+The constructive ambition is not literally to build a complete finite representation of humans. A more defensible framing is:
+
+> Toward behaviorally complete social agents: learning the minimal persona dimensions needed to span human behavior in a target environment.
+
+This gives the project three linked contributions:
+
+1. Diagnosis: existing persona libraries can be incomplete.
+   - Survey, demographic, digital-twin, and general-purpose synthetic personas can be diverse in description space but still map to a narrower or skewed subset of revealed human behavior in incentivized social interactions.
+
+2. Decomposition: support failure and calibration failure are distinct.
+   - Support failure means the persona library cannot produce some human behavior modes at all.
+   - Calibration failure means the library has the right behavior modes, but the sampling weights over personas are wrong.
+   - This distinction is crucial because aggregate simulation error alone cannot tell us which failure occurred.
+
+3. Method: learn a behaviorally sufficient basis.
+   - Use real human trajectories to identify the behavioral axes that distinguish people in a target environment.
+   - Generate or select personas that span those axes.
+   - Evaluate whether the induced LLM-persona distribution covers held-out human trajectories, not just whether it matches a few aggregate moments.
+
+## Support Versus Calibration
+
+Let \(M_{gpi}\) be the probability that persona \(p\), when evaluated in game \(g\), assigns to human trajectory \(i\). Let \(P_g\) be the empirical human reference distribution in game \(g\). Then a persona library has behavioral support if some mixture over personas can approximate the human distribution:
+
+\[
+\min_{w \in \Delta}
+D\left(P_g,\sum_p w_p M_{gpi}\right).
+\]
+
+Interpretation:
+
+- If this optimized distance remains large, the persona library is missing behavioral support. No reweighting of available personas can recover the human distribution.
+- If this optimized distance is small but the library's natural or random sampling distribution performs badly, the issue is calibration or weighting, not support.
+- This turns persona evaluation into a sharper diagnostic: first ask whether the library spans the behavior space; then ask how to sample or weight that library.
+
+This also connects to the current behavioral-support figure:
+
+- `forecasting/persona_transfer_audit/figures/figure_behavioral_support_across_personas.png`
+- `forecasting/persona_transfer_audit/plot_behavioral_support_across_personas.py`
+
+That figure measures whether the observed matched distribution \(Q_{gs}\) spans behavior-space support similarly to candidate-uniform human trajectories. A next step is to add an optimized-mixture diagnostic over personas to separate support failure from sampling-weight failure.
+
+## Moment Matching And Missing Bases
+
+A useful analogy is moment matching. When researchers calibrate LLM agents or simulated agents, they often choose a set of target moments and tune prompts, agent types, or mixture weights until generated behavior matches those moments. This implicitly assumes the chosen representation is rich enough to express the relevant behavioral variation.
+
+The concern is a basis-completeness problem. If the persona representation omits dimensions that determine behavior, then moment matching can succeed on selected moments while failing on unmeasured dimensions or held-out settings. In a Taylor-expansion analogy, matching coefficients on an incomplete basis cannot recover variation along missing dimensions. Better calibration cannot fix a missing behavioral axis.
+
+For this project, the implication is:
+
+- behavioral skewness shows which moments current persona libraries fail to match;
+- behavior-space support asks whether selected trajectories span the empirical behavior space after accounting for similarity between players;
+- optimized persona reweighting can test whether failures come from missing support or wrong sampling weights;
+- systematic axis discovery should identify which persona dimensions are necessary to make support complete enough for a target class of environments.
+
+This reframes the project from "persona prompting is biased" to a more general methodological claim:
+
+> Moment-matching LLM agents using incomplete persona bases can produce calibrated-looking simulations that fail outside the moments used for calibration.
+
+## Relation To Adjacent Work
+
+Relevant references and how they position the project:
+
+- General Social Agents: Manning and Horton propose building agents from theory-grounded instructions, empirical data, and LLM knowledge, and show improved prediction across novel games. This is close to our constructive direction. Our distinction should be that we first diagnose whether a persona library has behavioral support before optimizing predictive performance or mixture weights. See Manning & Horton (2026), NBER Working Paper 34937: https://ideas.repec.org/p/nbr/nberwo/34937.html
+
+- Quantifying the Persona Effect: Hu and Collier show that persona variables explain limited variance in many subjective NLP datasets and that persona prompting helps most when the persona variables are actually predictive of human disagreement. This supports the basis-incompleteness framing: personas help only when their dimensions align with the behavioral variation to be predicted. See Hu & Collier (2024): https://aclanthology.org/2024.acl-long.554/
+
+- LLMs as Psychological Simulators: Lin argues that LLM simulation should move beyond demographic prompting toward psychologically grounded personas, with stronger validation frameworks and caution around prompt sensitivity, cultural bias, and simulation/substitution boundaries. This aligns with our move from generic personas to task-relevant behavioral dimensions. See Lin (2026): https://journals.sagepub.com/doi/10.1177/25152459251410153
+
+- Generative Agents and Social Simulacra: Park and colleagues show that LLM-based agents can generate believable individual and social behavior in interactive environments. These papers motivate the promise of agent simulation, but their validation emphasizes believability, interaction realism, or design utility rather than whether personas cover the support of observed human behavior in incentivized target settings. See Social Simulacra, Park et al. (2022): https://arxiv.org/abs/2208.04024 and Generative Agents, Park et al. (2023): https://arxiv.org/abs/2304.03442
+
+- Critiques of LLM Social Simulation: Zeng, Brown, and Rounsevell argue that LLM agents may be narratively realistic but methodologically difficult to use as explanatory social models. Our contribution can be framed as making one part of that problem measurable: whether the representation supplied to the LLM spans the revealed behavior it is supposed to simulate. See Zeng et al. (2026): https://www.nature.com/articles/s44260-026-00075-1
+
+## Poster And Paper Messaging
+
+Current poster title:
+
+> Toward LLM Personas That Span Human Behavioral Diversity
+
+This is good for a poster because it is clear and non-overclaiming. For the paper, a stronger title may be:
+
+> Toward Behaviorally Complete Social Agents
+
+or:
+
+> Diverse Personas, Narrow Behaviors: Revealed-Behavior Audits of LLM Social Agents
+
+Suggested poster/paper thesis:
+
+> Existing persona libraries can look diverse in text but remain incomplete for strategic human behavior. We evaluate this by asking persona-conditioned LLMs to choose among real human trajectories, then measuring whether the selected trajectories span the empirical behavior distribution. This reveals whether a persona source has the behavioral support needed for simulation before any downstream calibration.
+
+Suggested future-direction language:
+
+> We propose to learn the behavioral basis of social agents: the smallest set of persona dimensions that spans human behavioral diversity across held-out strategic environments.
+
+This is stronger than "we will vary dimensions." It says the next step is to identify the rank and content of the behavioral representation:
+
+- Which axes matter most?
+- How many dimensions are needed before behavior-space support saturates?
+- Which common persona dimensions are irrelevant in a target environment?
+- Which latent traits explain behavior better than demographics or generic personality descriptions?
+
+This framing also clarifies why the project is not only about LLM simulation accuracy. It is also about using LLMs and revealed human behavior to discover which latent dimensions matter for social and behavioral science.

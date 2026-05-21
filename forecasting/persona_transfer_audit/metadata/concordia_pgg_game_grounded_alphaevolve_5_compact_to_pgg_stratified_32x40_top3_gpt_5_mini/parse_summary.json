@@ -1,0 +1,7 @@
+{
+  "output_jsonl": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_output/concordia_pgg_game_grounded_alphaevolve_5_compact_to_pgg_stratified_32x40_top3_gpt_5_mini.jsonl",
+  "parsed": 1280,
+  "errors": 0,
+  "probability_error_count": 0,
+  "duplicate_player_count": 0
+}

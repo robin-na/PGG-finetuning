@@ -1,0 +1,12 @@
+baseline_contribution_tendency
+conditional_cooperation
+free_riding_tolerance
+trust_in_group_members
+norm_enforcement
+punishment_willingness
+reward_willingness
+responsiveness_to_group_chat
+payoff_maximization
+endgame_sensitivity
+forgiveness_after_defection
+rule_attention

@@ -1,0 +1,32 @@
+{
+  "dataset_key": "concordia_persona_generator_transfer_audit_chip_bargain",
+  "run_name": "concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini",
+  "created_at": "2026-05-15T13:14:17.526628+00:00",
+  "model": "gpt-5-mini",
+  "source_persona_library": "Concordia Persona Generators",
+  "condition": "concordia_chip_bargain_game_grounded_alphaevolve_5",
+  "personas_json": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/external/concordia/concordia_chip_bargain_game_grounded_alphaevolve_5_n32_gpt_5_mini/personas.json",
+  "num_personas": 32,
+  "num_games": 48,
+  "num_requests": 1536,
+  "source_run": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/twin_direct_summary_to_chip_bargain_stratified_32x48_top3_gpt_5_mini_seed_2",
+  "top_k": 3,
+  "max_profile_chars": 0,
+  "batch_input_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_input/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini.jsonl",
+  "expected_batch_output_file": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/batch_output/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini.jsonl",
+  "metadata_dir": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini",
+  "request_manifest": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini/request_manifest.csv",
+  "selected_personas": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini/selected_personas.jsonl",
+  "gold_targets": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini/gold_targets.jsonl",
+  "sample_prompt": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini/sample_prompt.txt",
+  "request_token_estimates": "/Users/robinna/Documents/projects/MultiAgent_LLM/PGG-finetuning/forecasting/persona_transfer_audit/metadata/concordia_chip_bargain_game_grounded_alphaevolve_5_to_chip_bargain_stratified_32x48_top3_gpt_5_mini/request_token_estimates.csv",
+  "token_summary": {
+    "method": "tiktoken; o200k_base fallback; chat role/content + response_format schema with small chat framing allowance",
+    "num_requests": 1536,
+    "total_input_tokens_tiktoken": 3838112,
+    "mean_input_tokens_tiktoken": 2498.7708333333335,
+    "median_input_tokens_tiktoken": 2491.0,
+    "min_input_tokens_tiktoken": 2171,
+    "max_input_tokens_tiktoken": 2936
+  }
+}

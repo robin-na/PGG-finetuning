@@ -1,0 +1,12 @@
+fairness_concern
+surplus_maximization
+proposer_assertiveness
+proposal_generosity
+acceptance_threshold
+concession_willingness
+risk_tolerance
+trust_in_bargaining_partners
+reciprocity
+competitive_claiming
+strategic_patience
+rule_attention
